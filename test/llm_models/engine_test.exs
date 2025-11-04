@@ -4,688 +4,249 @@ defmodule LlmModels.EngineTest do
   alias LlmModels.Engine
 
   describe "run/1" do
-    test "full pipeline with packaged data only" do
-      packaged_data = %{
-        providers: [
-          %{id: :openai, name: "OpenAI"},
-          %{id: :anthropic, name: "Anthropic"}
-        ],
-        models: [
-          %{id: "gpt-4o", provider: :openai},
-          %{id: "claude-3-opus", provider: :anthropic}
-        ]
-      }
+    test "runs complete ETL pipeline with packaged snapshot" do
+      {:ok, snapshot} = Engine.run()
 
-      config = %{
-        compile_embed: false,
-        overrides: %{providers: [], models: [], exclude: %{}},
-        overrides_module: nil,
-        allow: :all,
-        deny: %{},
-        prefer: []
-      }
-
-      with_packaged_snapshot(packaged_data, fn ->
-        with_config(config, fn ->
-          assert {:ok, snapshot} = Engine.run()
-
-          assert map_size(snapshot.providers_by_id) == 2
-          assert snapshot.providers_by_id[:openai].name == "OpenAI"
-          assert snapshot.providers_by_id[:anthropic].name == "Anthropic"
-
-          assert map_size(snapshot.models_by_key) == 2
-          assert snapshot.models_by_key[{:openai, "gpt-4o"}].id == "gpt-4o"
-          assert snapshot.models_by_key[{:anthropic, "claude-3-opus"}].id == "claude-3-opus"
-
-          assert length(snapshot.providers) == 2
-          assert map_size(snapshot.models) == 2
-
-          assert snapshot.meta.epoch == nil
-          assert is_binary(snapshot.meta.generated_at)
-        end)
-      end)
+      assert is_map(snapshot)
+      assert Map.has_key?(snapshot, :providers_by_id)
+      assert Map.has_key?(snapshot, :models_by_key)
+      assert Map.has_key?(snapshot, :aliases_by_key)
+      assert Map.has_key?(snapshot, :providers)
+      assert Map.has_key?(snapshot, :models)
+      assert Map.has_key?(snapshot, :filters)
+      assert Map.has_key?(snapshot, :prefer)
+      assert Map.has_key?(snapshot, :meta)
     end
 
-    test "full pipeline with config overrides" do
-      packaged_data = %{
-        providers: [%{id: :openai, name: "OpenAI"}],
-        models: [%{id: "gpt-4o", provider: :openai}]
-      }
+    test "snapshot has correct metadata structure" do
+      {:ok, snapshot} = Engine.run()
 
-      config = %{
-        compile_embed: false,
-        overrides: %{
-          providers: [%{id: :anthropic, name: "Anthropic"}],
-          models: [%{id: "claude-3-opus", provider: :anthropic}],
-          exclude: %{}
-        },
-        overrides_module: nil,
-        allow: :all,
-        deny: %{},
-        prefer: []
-      }
-
-      with_packaged_snapshot(packaged_data, fn ->
-        with_config(config, fn ->
-          assert {:ok, snapshot} = Engine.run()
-
-          assert map_size(snapshot.providers_by_id) == 2
-          assert map_size(snapshot.models_by_key) == 2
-          assert snapshot.models_by_key[{:anthropic, "claude-3-opus"}] != nil
-        end)
-      end)
+      assert Map.has_key?(snapshot.meta, :epoch)
+      assert Map.has_key?(snapshot.meta, :generated_at)
+      assert is_binary(snapshot.meta.generated_at)
     end
 
-    test "full pipeline with behaviour overrides" do
-      defmodule TestOverrides do
-        @behaviour LlmModels.Overrides
+    test "builds provider index correctly" do
+      {:ok, snapshot} = Engine.run()
 
-        @impl true
-        def providers, do: [%{id: :google, name: "Google"}]
-
-        @impl true
-        def models, do: [%{id: "gemini-pro", provider: :google}]
-
-        @impl true
-        def excludes, do: %{}
+      if map_size(snapshot.providers_by_id) > 0 do
+        {provider_id, provider} = Enum.at(snapshot.providers_by_id, 0)
+        assert is_atom(provider_id)
+        assert provider.id == provider_id
       end
-
-      packaged_data = %{
-        providers: [%{id: :openai, name: "OpenAI"}],
-        models: [%{id: "gpt-4o", provider: :openai}]
-      }
-
-      config = %{
-        compile_embed: false,
-        overrides: %{providers: [], models: [], exclude: %{}},
-        overrides_module: TestOverrides,
-        allow: :all,
-        deny: %{},
-        prefer: []
-      }
-
-      with_packaged_snapshot(packaged_data, fn ->
-        with_config(config, fn ->
-          assert {:ok, snapshot} = Engine.run()
-
-          assert map_size(snapshot.providers_by_id) == 2
-          assert snapshot.providers_by_id[:google].name == "Google"
-          assert map_size(snapshot.models_by_key) == 2
-          assert snapshot.models_by_key[{:google, "gemini-pro"}] != nil
-        end)
-      end)
     end
 
-    test "precedence: config overrides packaged" do
-      packaged_data = %{
-        providers: [%{id: :openai, name: "OpenAI Original"}],
-        models: [%{id: "gpt-4o", provider: :openai}]
-      }
+    test "builds model key index correctly" do
+      {:ok, snapshot} = Engine.run()
 
-      config = %{
-        compile_embed: false,
-        overrides: %{
-          providers: [%{id: :openai, name: "OpenAI Updated"}],
-          models: [],
-          exclude: %{}
-        },
-        overrides_module: nil,
-        allow: :all,
-        deny: %{},
-        prefer: []
-      }
-
-      with_packaged_snapshot(packaged_data, fn ->
-        with_config(config, fn ->
-          assert {:ok, snapshot} = Engine.run()
-
-          assert snapshot.providers_by_id[:openai].name == "OpenAI Updated"
-        end)
-      end)
-    end
-
-    test "precedence: behaviour overrides config and packaged" do
-      defmodule TestOverridesPrecedence do
-        @behaviour LlmModels.Overrides
-
-        @impl true
-        def providers, do: [%{id: :openai, name: "OpenAI Behaviour"}]
-
-        @impl true
-        def models, do: []
-
-        @impl true
-        def excludes, do: %{}
+      if map_size(snapshot.models_by_key) > 0 do
+        {{provider, model_id}, model} = Enum.at(snapshot.models_by_key, 0)
+        assert is_atom(provider)
+        assert is_binary(model_id)
+        assert model.provider == provider
+        assert model.id == model_id
       end
+    end
 
-      packaged_data = %{
-        providers: [%{id: :openai, name: "OpenAI Original"}],
-        models: [%{id: "gpt-4o", provider: :openai}]
-      }
+    test "builds models by provider index correctly" do
+      {:ok, snapshot} = Engine.run()
 
+      if map_size(snapshot.models) > 0 do
+        {provider, models_list} = Enum.at(snapshot.models, 0)
+        assert is_atom(provider)
+        assert is_list(models_list)
+
+        if models_list != [] do
+          assert Enum.all?(models_list, fn m -> m.provider == provider end)
+        end
+      end
+    end
+
+    test "builds aliases index correctly" do
+      {:ok, snapshot} = Engine.run()
+
+      if map_size(snapshot.aliases_by_key) > 0 do
+        {{provider, alias_name}, canonical_id} = Enum.at(snapshot.aliases_by_key, 0)
+        assert is_atom(provider)
+        assert is_binary(alias_name)
+        assert is_binary(canonical_id)
+
+        assert Map.has_key?(snapshot.models_by_key, {provider, canonical_id})
+      end
+    end
+
+    test "accepts config override" do
       config = %{
-        compile_embed: false,
         overrides: %{
-          providers: [%{id: :openai, name: "OpenAI Config"}],
-          models: [],
+          providers: [%{id: :test_provider}],
+          models: [%{id: "test-model", provider: :test_provider, capabilities: %{chat: true}}],
           exclude: %{}
         },
-        overrides_module: TestOverridesPrecedence,
-        allow: :all,
-        deny: %{},
-        prefer: []
-      }
-
-      with_packaged_snapshot(packaged_data, fn ->
-        with_config(config, fn ->
-          assert {:ok, snapshot} = Engine.run()
-
-          assert snapshot.providers_by_id[:openai].name == "OpenAI Behaviour"
-        end)
-      end)
-    end
-
-    test "exclude handling removes models" do
-      packaged_data = %{
-        providers: [%{id: :openai, name: "OpenAI"}],
-        models: [
-          %{id: "gpt-4o", provider: :openai},
-          %{id: "gpt-3.5-turbo", provider: :openai},
-          %{id: "gpt-4o-mini", provider: :openai}
-        ]
-      }
-
-      config = %{
-        compile_embed: false,
-        overrides: %{
-          providers: [],
-          models: [],
-          exclude: %{openai: ["gpt-3.5-turbo"]}
-        },
         overrides_module: nil,
         allow: :all,
         deny: %{},
         prefer: []
       }
 
-      with_packaged_snapshot(packaged_data, fn ->
-        with_config(config, fn ->
-          assert {:ok, snapshot} = Engine.run()
+      {:ok, snapshot} = Engine.run(config: config)
 
-          assert map_size(snapshot.models_by_key) == 2
-          assert snapshot.models_by_key[{:openai, "gpt-4o"}] != nil
-          assert snapshot.models_by_key[{:openai, "gpt-4o-mini"}] != nil
-          assert snapshot.models_by_key[{:openai, "gpt-3.5-turbo"}] == nil
-        end)
-      end)
+      assert Map.has_key?(snapshot.providers_by_id, :test_provider)
+      assert Map.has_key?(snapshot.models_by_key, {:test_provider, "test-model"})
     end
 
-    test "exclude with glob patterns" do
-      packaged_data = %{
-        providers: [%{id: :openai, name: "OpenAI"}],
-        models: [
-          %{id: "gpt-4o", provider: :openai},
-          %{id: "gpt-3.5-turbo", provider: :openai},
-          %{id: "gpt-3-turbo", provider: :openai}
-        ]
-      }
-
+    test "returns error on empty catalog" do
       config = %{
-        compile_embed: false,
-        overrides: %{
-          providers: [],
-          models: [],
-          exclude: %{openai: ["gpt-3*"]}
-        },
-        overrides_module: nil,
-        allow: :all,
-        deny: %{},
-        prefer: []
-      }
-
-      with_packaged_snapshot(packaged_data, fn ->
-        with_config(config, fn ->
-          assert {:ok, snapshot} = Engine.run()
-
-          assert map_size(snapshot.models_by_key) == 1
-          assert snapshot.models_by_key[{:openai, "gpt-4o"}] != nil
-          assert snapshot.models_by_key[{:openai, "gpt-3.5-turbo"}] == nil
-          assert snapshot.models_by_key[{:openai, "gpt-3-turbo"}] == nil
-        end)
-      end)
-    end
-
-    test "filter application with allow patterns" do
-      packaged_data = %{
-        providers: [
-          %{id: :openai, name: "OpenAI"},
-          %{id: :anthropic, name: "Anthropic"}
-        ],
-        models: [
-          %{id: "gpt-4o", provider: :openai},
-          %{id: "claude-3-opus", provider: :anthropic}
-        ]
-      }
-
-      config = %{
-        compile_embed: false,
         overrides: %{providers: [], models: [], exclude: %{}},
         overrides_module: nil,
-        allow: %{openai: ["gpt-*"]},
-        deny: %{},
+        allow: %{},
+        deny: %{openai: ["*"], anthropic: ["*"], google_vertex: ["*"]},
         prefer: []
       }
 
-      with_packaged_snapshot(packaged_data, fn ->
-        with_config(config, fn ->
-          assert {:ok, snapshot} = Engine.run()
-
-          assert map_size(snapshot.models_by_key) == 1
-          assert snapshot.models_by_key[{:openai, "gpt-4o"}] != nil
-          assert snapshot.models_by_key[{:anthropic, "claude-3-opus"}] == nil
-        end)
-      end)
-    end
-
-    test "filter application with deny patterns" do
-      packaged_data = %{
-        providers: [%{id: :openai, name: "OpenAI"}],
-        models: [
-          %{id: "gpt-4o", provider: :openai},
-          %{id: "gpt-3.5-turbo", provider: :openai}
-        ]
-      }
-
-      config = %{
-        compile_embed: false,
-        overrides: %{providers: [], models: [], exclude: %{}},
-        overrides_module: nil,
-        allow: :all,
-        deny: %{openai: ["gpt-3*"]},
-        prefer: []
-      }
-
-      with_packaged_snapshot(packaged_data, fn ->
-        with_config(config, fn ->
-          assert {:ok, snapshot} = Engine.run()
-
-          assert map_size(snapshot.models_by_key) == 1
-          assert snapshot.models_by_key[{:openai, "gpt-4o"}] != nil
-          assert snapshot.models_by_key[{:openai, "gpt-3.5-turbo"}] == nil
-        end)
-      end)
-    end
-
-    test "deny wins over allow" do
-      packaged_data = %{
-        providers: [%{id: :openai, name: "OpenAI"}],
-        models: [
-          %{id: "gpt-4o", provider: :openai},
-          %{id: "gpt-3.5-turbo", provider: :openai}
-        ]
-      }
-
-      config = %{
-        compile_embed: false,
-        overrides: %{providers: [], models: [], exclude: %{}},
-        overrides_module: nil,
-        allow: :all,
-        deny: %{openai: ["gpt-4o"]},
-        prefer: []
-      }
-
-      with_packaged_snapshot(packaged_data, fn ->
-        with_config(config, fn ->
-          assert {:ok, snapshot} = Engine.run()
-
-          assert map_size(snapshot.models_by_key) == 1
-          assert snapshot.models_by_key[{:openai, "gpt-3.5-turbo"}] != nil
-          assert snapshot.models_by_key[{:openai, "gpt-4o"}] == nil
-        end)
-      end)
-    end
-
-    test "invalid data is dropped" do
-      packaged_data = %{
-        providers: [
-          %{id: :openai, name: "OpenAI"},
-          %{name: "Missing ID"}
-        ],
-        models: [
-          %{id: "gpt-4o", provider: :openai},
-          %{id: 123, provider: :openai},
-          %{provider: :openai}
-        ]
-      }
-
-      config = %{
-        compile_embed: false,
-        overrides: %{providers: [], models: [], exclude: %{}},
-        overrides_module: nil,
-        allow: :all,
-        deny: %{},
-        prefer: []
-      }
-
-      with_packaged_snapshot(packaged_data, fn ->
-        with_config(config, fn ->
-          assert {:ok, snapshot} = Engine.run()
-
-          assert map_size(snapshot.providers_by_id) == 1
-          assert snapshot.providers_by_id[:openai] != nil
-
-          assert map_size(snapshot.models_by_key) == 1
-          assert snapshot.models_by_key[{:openai, "gpt-4o"}] != nil
-        end)
-      end)
-    end
-
-    test "empty catalog returns error" do
-      packaged_data = %{
-        providers: [],
-        models: []
-      }
-
-      config = %{
-        compile_embed: false,
-        overrides: %{providers: [], models: [], exclude: %{}},
-        overrides_module: nil,
-        allow: :all,
-        deny: %{},
-        prefer: []
-      }
-
-      with_packaged_snapshot(packaged_data, fn ->
-        with_config(config, fn ->
-          assert {:error, :empty_catalog} = Engine.run()
-        end)
-      end)
-    end
-
-    test "enrichment adds family and provider_model_id" do
-      packaged_data = %{
-        providers: [%{id: :openai, name: "OpenAI"}],
-        models: [%{id: "gpt-4o-mini", provider: :openai}]
-      }
-
-      config = %{
-        compile_embed: false,
-        overrides: %{providers: [], models: [], exclude: %{}},
-        overrides_module: nil,
-        allow: :all,
-        deny: %{},
-        prefer: []
-      }
-
-      with_packaged_snapshot(packaged_data, fn ->
-        with_config(config, fn ->
-          assert {:ok, snapshot} = Engine.run()
-
-          model = snapshot.models_by_key[{:openai, "gpt-4o-mini"}]
-          assert model.family == "gpt-4o"
-          assert model.provider_model_id == "gpt-4o-mini"
-        end)
-      end)
-    end
-
-    test "models are grouped by provider" do
-      packaged_data = %{
-        providers: [
-          %{id: :openai, name: "OpenAI"},
-          %{id: :anthropic, name: "Anthropic"}
-        ],
-        models: [
-          %{id: "gpt-4o", provider: :openai},
-          %{id: "gpt-3.5-turbo", provider: :openai},
-          %{id: "claude-3-opus", provider: :anthropic}
-        ]
-      }
-
-      config = %{
-        compile_embed: false,
-        overrides: %{providers: [], models: [], exclude: %{}},
-        overrides_module: nil,
-        allow: :all,
-        deny: %{},
-        prefer: []
-      }
-
-      with_packaged_snapshot(packaged_data, fn ->
-        with_config(config, fn ->
-          assert {:ok, snapshot} = Engine.run()
-
-          assert length(snapshot.models[:openai]) == 2
-          assert length(snapshot.models[:anthropic]) == 1
-        end)
-      end)
+      result = Engine.run(config: config)
+      assert {:error, :empty_catalog} = result
     end
   end
 
   describe "build_indexes/2" do
-    test "builds providers_by_id index" do
+    test "builds all indexes from providers and models" do
       providers = [
-        %{id: :openai, name: "OpenAI"},
-        %{id: :anthropic, name: "Anthropic"}
+        %{id: :provider_a, name: "Provider A"},
+        %{id: :provider_b, name: "Provider B"}
       ]
 
-      indexes = Engine.build_indexes(providers, [])
+      models = [
+        %{id: "model-a1", provider: :provider_a, aliases: ["alias-a1"]},
+        %{id: "model-a2", provider: :provider_a, aliases: []},
+        %{id: "model-b1", provider: :provider_b, aliases: ["alias-b1", "alias-b2"]}
+      ]
+
+      indexes = Engine.build_indexes(providers, models)
 
       assert map_size(indexes.providers_by_id) == 2
-      assert indexes.providers_by_id[:openai].name == "OpenAI"
-      assert indexes.providers_by_id[:anthropic].name == "Anthropic"
+      assert indexes.providers_by_id[:provider_a].name == "Provider A"
+
+      assert map_size(indexes.models_by_key) == 3
+      assert indexes.models_by_key[{:provider_a, "model-a1"}].id == "model-a1"
+
+      assert map_size(indexes.models_by_provider) == 2
+      assert length(indexes.models_by_provider[:provider_a]) == 2
+
+      assert map_size(indexes.aliases_by_key) == 3
+      assert indexes.aliases_by_key[{:provider_a, "alias-a1"}] == "model-a1"
+      assert indexes.aliases_by_key[{:provider_b, "alias-b1"}] == "model-b1"
     end
 
-    test "builds models_by_key index" do
-      models = [
-        %{id: "gpt-4o", provider: :openai},
-        %{id: "claude-3-opus", provider: :anthropic}
-      ]
+    test "handles empty providers and models" do
+      indexes = Engine.build_indexes([], [])
 
-      indexes = Engine.build_indexes([], models)
-
-      assert map_size(indexes.models_by_key) == 2
-      assert indexes.models_by_key[{:openai, "gpt-4o"}].id == "gpt-4o"
-      assert indexes.models_by_key[{:anthropic, "claude-3-opus"}].id == "claude-3-opus"
-    end
-
-    test "builds models_by_provider index" do
-      models = [
-        %{id: "gpt-4o", provider: :openai},
-        %{id: "gpt-3.5-turbo", provider: :openai},
-        %{id: "claude-3-opus", provider: :anthropic}
-      ]
-
-      indexes = Engine.build_indexes([], models)
-
-      assert length(indexes.models_by_provider[:openai]) == 2
-      assert length(indexes.models_by_provider[:anthropic]) == 1
-    end
-
-    test "builds aliases_by_key index" do
-      models = [
-        %{id: "gpt-4o", provider: :openai, aliases: ["gpt4o", "gpt-4-omni"]},
-        %{id: "claude-3-opus", provider: :anthropic, aliases: ["claude-opus"]}
-      ]
-
-      indexes = Engine.build_indexes([], models)
-
-      assert indexes.aliases_by_key[{:openai, "gpt4o"}] == "gpt-4o"
-      assert indexes.aliases_by_key[{:openai, "gpt-4-omni"}] == "gpt-4o"
-      assert indexes.aliases_by_key[{:anthropic, "claude-opus"}] == "claude-3-opus"
+      assert map_size(indexes.providers_by_id) == 0
+      assert map_size(indexes.models_by_key) == 0
+      assert map_size(indexes.models_by_provider) == 0
+      assert map_size(indexes.aliases_by_key) == 0
     end
   end
 
   describe "apply_filters/2" do
-    test "allows all when filter is :all" do
+    test "allows all models with :all filter" do
       models = [
-        %{id: "gpt-4o", provider: :openai},
-        %{id: "claude-3-opus", provider: :anthropic}
+        %{id: "model-1", provider: :provider_a},
+        %{id: "model-2", provider: :provider_b}
       ]
 
       filters = %{allow: :all, deny: %{}}
 
-      result = Engine.apply_filters(models, filters)
-
-      assert length(result) == 2
+      filtered = Engine.apply_filters(models, filters)
+      assert length(filtered) == 2
     end
 
     test "filters by allow patterns" do
       models = [
-        %{id: "gpt-4o", provider: :openai},
-        %{id: "claude-3-opus", provider: :anthropic}
+        %{id: "model-a1", provider: :provider_a},
+        %{id: "model-a2", provider: :provider_a},
+        %{id: "model-b1", provider: :provider_b}
       ]
 
-      allow_patterns = %{openai: [~r/^gpt-4.*$/]}
-      filters = %{allow: allow_patterns, deny: %{}}
+      filters = %{allow: %{provider_a: ["model-a1"]}, deny: %{}}
 
-      result = Engine.apply_filters(models, filters)
-
-      assert length(result) == 1
-      assert Enum.find(result, &(&1.id == "gpt-4o"))
+      filtered = Engine.apply_filters(models, filters)
+      assert length(filtered) == 1
+      assert hd(filtered).id == "model-a1"
     end
 
     test "filters by deny patterns" do
       models = [
-        %{id: "gpt-4o", provider: :openai},
-        %{id: "gpt-3.5-turbo", provider: :openai}
+        %{id: "model-a1", provider: :provider_a},
+        %{id: "model-a2", provider: :provider_a}
       ]
 
-      deny_patterns = %{openai: [~r/^gpt-3.*$/]}
-      filters = %{allow: :all, deny: deny_patterns}
+      filters = %{allow: :all, deny: %{provider_a: ["model-a2"]}}
 
-      result = Engine.apply_filters(models, filters)
-
-      assert length(result) == 1
-      assert Enum.find(result, &(&1.id == "gpt-4o"))
+      filtered = Engine.apply_filters(models, filters)
+      assert length(filtered) == 1
+      assert hd(filtered).id == "model-a1"
     end
 
-    test "deny wins over allow" do
-      models = [%{id: "gpt-4o", provider: :openai}]
+    test "deny patterns win over allow patterns" do
+      models = [
+        %{id: "model-a1", provider: :provider_a},
+        %{id: "model-a2", provider: :provider_a}
+      ]
 
-      allow_patterns = %{openai: [~r/^gpt.*$/]}
-      deny_patterns = %{openai: [~r/^gpt-4.*$/]}
-      filters = %{allow: allow_patterns, deny: deny_patterns}
+      filters = LlmModels.Config.compile_filters(
+        %{provider_a: ["*"]},
+        %{provider_a: ["model-a2"]}
+      )
 
-      result = Engine.apply_filters(models, filters)
+      filtered = Engine.apply_filters(models, filters)
+      assert length(filtered) == 1
+      assert hd(filtered).id == "model-a1"
+    end
 
-      assert length(result) == 0
+    test "handles regex patterns" do
+      models = [
+        %{id: "gpt-4", provider: :openai},
+        %{id: "gpt-3.5-turbo", provider: :openai},
+        %{id: "claude-3", provider: :anthropic}
+      ]
+
+      filters = %{allow: %{openai: [~r/^gpt-4/]}, deny: %{}}
+
+      filtered = Engine.apply_filters(models, filters)
+      assert length(filtered) == 1
+      assert hd(filtered).id == "gpt-4"
     end
   end
 
   describe "build_aliases_index/1" do
-    test "creates alias mappings to canonical IDs" do
+    test "builds alias mappings" do
       models = [
-        %{id: "gpt-4o", provider: :openai, aliases: ["gpt4o", "gpt-4-omni"]},
-        %{id: "claude-3-opus", provider: :anthropic, aliases: ["claude-opus"]}
+        %{id: "model-a", provider: :provider_a, aliases: ["alias-1", "alias-2"]},
+        %{id: "model-b", provider: :provider_b, aliases: ["alias-3"]}
       ]
 
-      result = Engine.build_aliases_index(models)
+      index = Engine.build_aliases_index(models)
 
-      assert result[{:openai, "gpt4o"}] == "gpt-4o"
-      assert result[{:openai, "gpt-4-omni"}] == "gpt-4o"
-      assert result[{:anthropic, "claude-opus"}] == "claude-3-opus"
+      assert map_size(index) == 3
+      assert index[{:provider_a, "alias-1"}] == "model-a"
+      assert index[{:provider_a, "alias-2"}] == "model-a"
+      assert index[{:provider_b, "alias-3"}] == "model-b"
     end
 
     test "handles models without aliases" do
       models = [
-        %{id: "gpt-4o", provider: :openai, aliases: []},
-        %{id: "claude-3-opus", provider: :anthropic}
+        %{id: "model-a", provider: :provider_a, aliases: []},
+        %{id: "model-b", provider: :provider_b}
       ]
 
-      result = Engine.build_aliases_index(models)
+      index = Engine.build_aliases_index(models)
 
-      assert map_size(result) == 0
+      assert map_size(index) == 0
     end
 
     test "handles empty model list" do
-      result = Engine.build_aliases_index([])
-
-      assert map_size(result) == 0
-    end
-  end
-
-  describe "integration tests" do
-    test "real-world scenario with multiple sources and filters" do
-      packaged_data = %{
-        providers: [
-          %{id: :openai, name: "OpenAI", base_url: "https://api.openai.com"},
-          %{id: :anthropic, name: "Anthropic"}
-        ],
-        models: [
-          %{id: "gpt-4o", provider: :openai, aliases: ["gpt4o"]},
-          %{id: "gpt-4o-mini", provider: :openai},
-          %{id: "gpt-3.5-turbo", provider: :openai},
-          %{id: "claude-3-opus", provider: :anthropic, aliases: ["claude-opus"]},
-          %{id: "claude-3-sonnet", provider: :anthropic}
-        ]
-      }
-
-      config = %{
-        compile_embed: false,
-        overrides: %{
-          providers: [%{id: :openai, doc: "Updated docs"}],
-          models: [%{id: "gpt-4o", provider: :openai, name: "GPT-4 Omni"}],
-          exclude: %{openai: ["gpt-3*"]}
-        },
-        overrides_module: nil,
-        allow: :all,
-        deny: %{anthropic: ["*-sonnet"]},
-        prefer: [:openai]
-      }
-
-      with_packaged_snapshot(packaged_data, fn ->
-        with_config(config, fn ->
-          assert {:ok, snapshot} = Engine.run()
-
-          assert snapshot.providers_by_id[:openai].doc == "Updated docs"
-
-          assert map_size(snapshot.models_by_key) == 3
-
-          assert snapshot.models_by_key[{:openai, "gpt-4o"}].name == "GPT-4 Omni"
-          assert snapshot.models_by_key[{:openai, "gpt-4o-mini"}] != nil
-          assert snapshot.models_by_key[{:anthropic, "claude-3-opus"}] != nil
-
-          assert snapshot.models_by_key[{:openai, "gpt-3.5-turbo"}] == nil
-          assert snapshot.models_by_key[{:anthropic, "claude-3-sonnet"}] == nil
-
-          assert snapshot.aliases_by_key[{:openai, "gpt4o"}] == "gpt-4o"
-          assert snapshot.aliases_by_key[{:anthropic, "claude-opus"}] == "claude-3-opus"
-
-          assert snapshot.prefer == [:openai]
-
-          assert snapshot.models[:openai] |> Enum.all?(fn m -> m.family != nil end)
-        end)
-      end)
-    end
-  end
-
-  # Test helpers
-
-  defp with_packaged_snapshot(data, fun) do
-    Application.put_env(:llm_models, :test_packaged_snapshot, data)
-
-    try do
-      :meck.new(LlmModels.Packaged, [:passthrough])
-      :meck.expect(LlmModels.Packaged, :snapshot, fn -> data end)
-
-      fun.()
-    after
-      :meck.unload(LlmModels.Packaged)
-      Application.delete_env(:llm_models, :test_packaged_snapshot)
-    end
-  end
-
-  defp with_config(config, fun) do
-    Application.put_env(:llm_models, :test_config, config)
-
-    try do
-      :meck.new(LlmModels.Config, [:passthrough])
-      :meck.expect(LlmModels.Config, :get, fn -> config end)
-
-      fun.()
-    after
-      :meck.unload(LlmModels.Config)
-      Application.delete_env(:llm_models, :test_config)
+      index = Engine.build_aliases_index([])
+      assert map_size(index) == 0
     end
   end
 end

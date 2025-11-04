@@ -1,48 +1,19 @@
 {
   "providers": [
-    {"id": "openai", "name": "OpenAI"},
-    {"id": "anthropic", "name": "Anthropic"},
-    {"id": "google_vertex", "name": "Google Vertex AI"}
+    {
+      "id": "openai",
+      "name": "OpenAI"
+    }
   ],
   "models": [
     {
-      "id": "gpt-4o",
+      "id": "gpt-4",
+      "name": "GPT-4",
+      "family": "gpt",
+      "aliases": [],
       "provider": "openai",
-      "family": "gpt-4o",
-      "capabilities": {
-        "chat": true,
-        "embeddings": false,
-        "reasoning": {"enabled": false},
-        "tools": {"enabled": true, "streaming": true, "strict": false, "parallel": true},
-        "json": {"native": true, "schema": true, "strict": true},
-        "streaming": {"text": true, "tool_calls": true}
-      }
-    },
-    {
-      "id": "claude-3-opus-20240229",
-      "provider": "anthropic",
-      "family": "claude-3",
-      "capabilities": {
-        "chat": true,
-        "embeddings": false,
-        "reasoning": {"enabled": false},
-        "tools": {"enabled": true, "streaming": true, "strict": false, "parallel": false},
-        "json": {"native": false, "schema": false, "strict": false},
-        "streaming": {"text": true, "tool_calls": false}
-      }
-    },
-    {
-      "id": "gemini-1.5-pro",
-      "provider": "google_vertex",
-      "family": "gemini-1.5",
-      "capabilities": {
-        "chat": true,
-        "embeddings": false,
-        "reasoning": {"enabled": false},
-        "tools": {"enabled": true, "streaming": false, "strict": false, "parallel": false},
-        "json": {"native": true, "schema": true, "strict": false},
-        "streaming": {"text": true, "tool_calls": false}
-      }
+      "deprecated?": false,
+      "provider_model_id": "gpt-4"
     }
   ]
 }

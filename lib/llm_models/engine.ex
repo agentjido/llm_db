@@ -318,12 +318,13 @@ defmodule LlmModels.Engine do
       provider = model.provider
       model_id = model.id
 
+      # Deny wins - check first
       deny_patterns = Map.get(deny, provider, [])
-      denied? = matches_patterns?(model_id, deny_patterns)
 
-      if denied? do
+      if matches_patterns?(model_id, deny_patterns) do
         false
       else
+        # Then check allow
         case allow do
           :all ->
             true
