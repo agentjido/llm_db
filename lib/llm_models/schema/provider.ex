@@ -1,4 +1,4 @@
-defmodule LlmModels.Schema.Provider do
+defmodule LLMModels.Schema.Provider do
   @moduledoc """
   Zoi schema for LLM provider metadata.
 
@@ -7,13 +7,13 @@ defmodule LlmModels.Schema.Provider do
   """
 
   @schema Zoi.object(%{
-    id: Zoi.atom(),
-    name: Zoi.string() |> Zoi.optional(),
-    base_url: Zoi.string() |> Zoi.optional(),
-    env: Zoi.array(Zoi.string()) |> Zoi.optional(),
-    doc: Zoi.string() |> Zoi.optional(),
-    extra: Zoi.map() |> Zoi.optional()
-  })
+            id: Zoi.atom(),
+            name: Zoi.string() |> Zoi.optional(),
+            base_url: Zoi.string() |> Zoi.optional(),
+            env: Zoi.array(Zoi.string()) |> Zoi.optional(),
+            doc: Zoi.string() |> Zoi.optional(),
+            extra: Zoi.map() |> Zoi.optional()
+          })
 
   @type t :: unquote(Zoi.type_spec(@schema))
 

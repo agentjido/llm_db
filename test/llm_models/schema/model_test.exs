@@ -1,7 +1,7 @@
-defmodule LlmModels.Schema.ModelTest do
+defmodule LLMModels.Schema.ModelTest do
   use ExUnit.Case, async: true
 
-  alias LlmModels.Schema.Model
+  alias LLMModels.Schema.Model
 
   describe "valid parsing" do
     test "parses minimal valid model" do

@@ -1,7 +1,7 @@
-defmodule LlmModels.Schema.ProviderTest do
+defmodule LLMModels.Schema.ProviderTest do
   use ExUnit.Case, async: true
 
-  alias LlmModels.Schema.Provider
+  alias LLMModels.Schema.Provider
 
   describe "valid parsing" do
     test "parses minimal valid provider" do

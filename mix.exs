@@ -1,4 +1,4 @@
-defmodule LlmModels.MixProject do
+defmodule LLMModels.MixProject do
   use Mix.Project
 
   def project do

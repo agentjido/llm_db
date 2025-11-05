@@ -1,10 +1,10 @@
-defmodule LlmModels.OverridesTest do
+defmodule LLMModels.OverridesTest do
   use ExUnit.Case, async: true
-  doctest LlmModels.Overrides
+  doctest LLMModels.Overrides
 
   describe "behaviour defaults" do
     defmodule DefaultOverrides do
-      use LlmModels.Overrides
+      use LLMModels.Overrides
     end
 
     test "provides empty providers by default" do
@@ -22,7 +22,7 @@ defmodule LlmModels.OverridesTest do
 
   describe "behaviour with custom implementation" do
     defmodule CustomOverrides do
-      use LlmModels.Overrides
+      use LLMModels.Overrides
 
       @impl true
       def providers do
@@ -77,7 +77,7 @@ defmodule LlmModels.OverridesTest do
 
   describe "behaviour with partial overrides" do
     defmodule PartialOverrides do
-      use LlmModels.Overrides
+      use LLMModels.Overrides
 
       @impl true
       def models do
@@ -95,16 +95,16 @@ defmodule LlmModels.OverridesTest do
   describe "behaviour implementation validation" do
     test "module implements required callbacks" do
       behaviours =
-        LlmModels.OverridesTest.CustomOverrides.__info__(:attributes)[:behaviour] || []
+        LLMModels.OverridesTest.CustomOverrides.__info__(:attributes)[:behaviour] || []
 
-      assert LlmModels.Overrides in behaviours
+      assert LLMModels.Overrides in behaviours
     end
 
     test "callbacks are defoverridable" do
       # All callbacks should be overridable, which we've tested by overriding them
-      assert function_exported?(LlmModels.OverridesTest.CustomOverrides, :providers, 0)
-      assert function_exported?(LlmModels.OverridesTest.CustomOverrides, :models, 0)
-      assert function_exported?(LlmModels.OverridesTest.CustomOverrides, :excludes, 0)
+      assert function_exported?(LLMModels.OverridesTest.CustomOverrides, :providers, 0)
+      assert function_exported?(LLMModels.OverridesTest.CustomOverrides, :models, 0)
+      assert function_exported?(LLMModels.OverridesTest.CustomOverrides, :excludes, 0)
     end
   end
 end

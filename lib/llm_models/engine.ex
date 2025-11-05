@@ -1,4 +1,4 @@
-defmodule LlmModels.Engine do
+defmodule LLMModels.Engine do
   @moduledoc """
   Orchestrates the complete ETL pipeline for LLM model catalog generation.
 
@@ -8,7 +8,7 @@ defmodule LlmModels.Engine do
 
   require Logger
 
-  alias LlmModels.{Config, Packaged, Normalize, Validate, Merge, Enrich}
+  alias LLMModels.{Config, Packaged, Normalize, Validate, Merge, Enrich}
 
   @doc """
   Runs the complete ETL pipeline to generate a model catalog snapshot.

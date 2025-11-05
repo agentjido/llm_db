@@ -1,4 +1,4 @@
-defmodule LlmModels.Packaged do
+defmodule LLMModels.Packaged do
   @moduledoc """
   Reads packaged snapshot from priv directory at compile-time or runtime.
 

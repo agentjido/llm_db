@@ -1,7 +1,7 @@
-defmodule LlmModels.SpecTest do
+defmodule LLMModels.SpecTest do
   use ExUnit.Case, async: false
 
-  alias LlmModels.{Spec, Store}
+  alias LLMModels.{Spec, Store}
 
   setup do
     Store.clear!()

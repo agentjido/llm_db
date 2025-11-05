@@ -1,7 +1,7 @@
-defmodule LlmModels.Schema.LimitsTest do
+defmodule LLMModels.Schema.LimitsTest do
   use ExUnit.Case, async: true
 
-  alias LlmModels.Schema.Limits
+  alias LLMModels.Schema.Limits
 
   describe "valid parsing" do
     test "parses empty limits" do

@@ -1,4 +1,4 @@
-defmodule LlmModels.Normalize do
+defmodule LLMModels.Normalize do
   @moduledoc """
   Utilities for normalizing raw data into consistent formats.
 
@@ -15,13 +15,13 @@ defmodule LlmModels.Normalize do
 
   ## Examples
 
-      iex> LlmModels.Normalize.normalize_provider_id("google-vertex")
+      iex> LLMModels.Normalize.normalize_provider_id("google-vertex")
       {:ok, :google_vertex}
 
-      iex> LlmModels.Normalize.normalize_provider_id(:openai)
+      iex> LLMModels.Normalize.normalize_provider_id(:openai)
       {:ok, :openai}
 
-      iex> LlmModels.Normalize.normalize_provider_id("malicious#{String.duplicate("a", 1000)}")
+      iex> LLMModels.Normalize.normalize_provider_id("malicious#{String.duplicate("a", 1000)}")
       {:error, :bad_provider}
   """
   @spec normalize_provider_id(binary() | atom(), keyword()) ::
@@ -52,26 +52,14 @@ defmodule LlmModels.Normalize do
       # Runtime: only accept existing atoms to prevent atom leaking
       try do
         atom = String.to_existing_atom(str)
-
-        # Verify it's in our whitelist
-        if valid_provider_atom?(atom) do
-          {:ok, atom}
-        else
-          # Atom exists but not in whitelist - treat as unknown provider
-          {:error, :unknown_provider}
-        end
+        {:ok, atom}
+        # Note: Whitelist check removed - validation now happens in verify_provider_exists
+        # which checks the loaded catalog, supporting custom/test providers
       rescue
         # Atom doesn't exist at all - treat as unknown provider
         ArgumentError -> {:error, :unknown_provider}
       end
     end
-  end
-
-  # Check if atom is in the valid providers list
-  defp valid_provider_atom?(atom) do
-    LlmModels.Generated.ValidProviders.member?(atom)
-  rescue
-    UndefinedFunctionError -> true
   end
 
   @doc """
@@ -81,13 +69,13 @@ defmodule LlmModels.Normalize do
 
   ## Examples
 
-      iex> LlmModels.Normalize.normalize_model_identity(%{provider: "google-vertex", id: "gemini-pro"})
+      iex> LLMModels.Normalize.normalize_model_identity(%{provider: "google-vertex", id: "gemini-pro"})
       {:ok, {:google_vertex, "gemini-pro"}}
 
-      iex> LlmModels.Normalize.normalize_model_identity(%{provider: :openai, id: "gpt-4"})
+      iex> LLMModels.Normalize.normalize_model_identity(%{provider: :openai, id: "gpt-4"})
       {:ok, {:openai, "gpt-4"}}
 
-      iex> LlmModels.Normalize.normalize_model_identity(%{provider: "openai"})
+      iex> LLMModels.Normalize.normalize_model_identity(%{provider: "openai"})
       {:error, :missing_id}
   """
   @spec normalize_model_identity(map(), keyword()) ::
@@ -116,16 +104,16 @@ defmodule LlmModels.Normalize do
 
   ## Examples
 
-      iex> LlmModels.Normalize.normalize_date("2024-01-15")
+      iex> LLMModels.Normalize.normalize_date("2024-01-15")
       "2024-01-15"
 
-      iex> LlmModels.Normalize.normalize_date("2024/01/15")
+      iex> LLMModels.Normalize.normalize_date("2024/01/15")
       "2024-01-15"
 
-      iex> LlmModels.Normalize.normalize_date("invalid-date")
+      iex> LLMModels.Normalize.normalize_date("invalid-date")
       "invalid-date"
 
-      iex> LlmModels.Normalize.normalize_date(nil)
+      iex> LLMModels.Normalize.normalize_date(nil)
       nil
   """
   @spec normalize_date(String.t() | nil) :: String.t() | nil
@@ -149,7 +137,7 @@ defmodule LlmModels.Normalize do
 
   ## Examples
 
-      iex> LlmModels.Normalize.normalize_providers([%{id: "google-vertex"}, %{id: :openai}])
+      iex> LLMModels.Normalize.normalize_providers([%{id: "google-vertex"}, %{id: :openai}])
       [%{id: :google_vertex}, %{id: :openai}]
   """
   @spec normalize_providers([map()]) :: [map()]
@@ -164,7 +152,7 @@ defmodule LlmModels.Normalize do
 
   ## Examples
 
-      iex> LlmModels.Normalize.normalize_models([%{provider: "google-vertex", id: "gemini-pro"}])
+      iex> LLMModels.Normalize.normalize_models([%{provider: "google-vertex", id: "gemini-pro"}])
       [%{provider: :google_vertex, id: "gemini-pro"}]
   """
   @spec normalize_models([map()]) :: [map()]
@@ -222,8 +210,14 @@ defmodule LlmModels.Normalize do
 
   # Known valid modality atoms - these represent input/output types for models
   @valid_modalities MapSet.new([
-    :text, :image, :audio, :video, :code, :document, :embedding
-  ])
+                      :text,
+                      :image,
+                      :audio,
+                      :video,
+                      :code,
+                      :document,
+                      :embedding
+                    ])
 
   defp normalize_modality_atom(value) when is_binary(value) do
     # Try to convert to existing atom first (safe)
@@ -238,7 +232,7 @@ defmodule LlmModels.Normalize do
         if MapSet.member?(@valid_modalities, atom), do: atom, else: value
     end
   end
-  
+
   defp normalize_modality_atom(value) when is_atom(value) do
     if MapSet.member?(@valid_modalities, value), do: value, else: value
   end

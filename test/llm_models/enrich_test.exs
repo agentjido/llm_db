@@ -1,9 +1,9 @@
-defmodule LlmModels.EnrichTest do
+defmodule LLMModels.EnrichTest do
   use ExUnit.Case, async: true
 
-  alias LlmModels.Enrich
+  alias LLMModels.Enrich
 
-  doctest LlmModels.Enrich
+  doctest LLMModels.Enrich
 
   describe "derive_family/1" do
     test "derives family from gpt-* models" do
@@ -49,7 +49,9 @@ defmodule LlmModels.EnrichTest do
     end
 
     test "handles complex multi-segment names" do
-      assert Enrich.derive_family("provider-family-version-variant-size") == "provider-family-version-variant"
+      assert Enrich.derive_family("provider-family-version-variant-size") ==
+               "provider-family-version-variant"
+
       assert Enrich.derive_family("a-b-c-d-e") == "a-b-c-d"
     end
 
@@ -236,7 +238,7 @@ defmodule LlmModels.EnrichTest do
 
   describe "integration with validation" do
     test "enrichment works before validation" do
-      alias LlmModels.Validate
+      alias LLMModels.Validate
 
       raw_model = %{
         id: "gpt-4o-mini",
@@ -255,7 +257,7 @@ defmodule LlmModels.EnrichTest do
     end
 
     test "batch enrichment works before batch validation" do
-      alias LlmModels.Validate
+      alias LLMModels.Validate
 
       raw_models = [
         %{id: "gpt-4o", provider: :openai},
@@ -272,7 +274,7 @@ defmodule LlmModels.EnrichTest do
     end
 
     test "enrichment preserves complex nested structures for validation" do
-      alias LlmModels.Validate
+      alias LLMModels.Validate
 
       raw_model = %{
         id: "gpt-4o-mini",

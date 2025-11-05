@@ -1,8 +1,8 @@
-defmodule LlmModels.MergeTest do
+defmodule LLMModels.MergeTest do
   use ExUnit.Case, async: true
-  alias LlmModels.Merge
+  alias LLMModels.Merge
 
-  doctest LlmModels.Merge
+  doctest LLMModels.Merge
 
   describe "merge/3 scalar values" do
     test "higher precedence wins on scalar conflict" do

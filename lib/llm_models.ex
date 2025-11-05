@@ -1,4 +1,4 @@
-defmodule LlmModels do
+defmodule LLMModels do
   @moduledoc """
   Fast, persistent_term-backed LLM model metadata catalog with explicit refresh controls.
 
@@ -30,36 +30,36 @@ defmodule LlmModels do
   ## Examples
 
       # Get all providers
-      providers = LlmModels.provider()
+      providers = LLMModels.provider()
 
       # Get a specific provider
-      {:ok, provider} = LlmModels.provider(:openai)
+      {:ok, provider} = LLMModels.provider(:openai)
 
       # Get all models for a provider
-      models = LlmModels.models(:openai)
+      models = LLMModels.models(:openai)
 
       # Get a specific model
-      {:ok, model} = LlmModels.model(:openai, "gpt-4o-mini")
+      {:ok, model} = LLMModels.model(:openai, "gpt-4o-mini")
 
       # Parse spec and get model
-      {:ok, model} = LlmModels.model("openai:gpt-4o-mini")
+      {:ok, model} = LLMModels.model("openai:gpt-4o-mini")
 
       # Access capabilities from model
-      {:ok, model} = LlmModels.model(:openai, "gpt-4o-mini")
+      {:ok, model} = LLMModels.model(:openai, "gpt-4o-mini")
       model.capabilities.tools.enabled
       #=> true
 
       # Select a model matching requirements
-      {:ok, {:openai, "gpt-4o-mini"}} = LlmModels.select(
+      {:ok, {:openai, "gpt-4o-mini"}} = LLMModels.select(
         require: [chat: true, tools: true, json_native: true],
         prefer: [:openai, :anthropic]
       )
 
       # Check if a model is allowed
-      true = LlmModels.allowed?({:openai, "gpt-4o-mini"})
+      true = LLMModels.allowed?({:openai, "gpt-4o-mini"})
   """
 
-  alias LlmModels.{Engine, Store, Spec, Provider, Model}
+  alias LLMModels.{Engine, Store, Spec, Provider, Model}
 
   @type provider :: atom()
   @type model_id :: String.t()
@@ -85,8 +85,8 @@ defmodule LlmModels do
 
   ## Examples
 
-      {:ok, snapshot} = LlmModels.load()
-      {:ok, snapshot} = LlmModels.load(config: custom_config)
+      {:ok, snapshot} = LLMModels.load()
+      {:ok, snapshot} = LLMModels.load(config: custom_config)
   """
   @spec load(keyword()) :: {:ok, map()} | {:error, term()}
   def load(opts \\ []) do
@@ -109,7 +109,7 @@ defmodule LlmModels do
 
   ## Examples
 
-      :ok = LlmModels.reload()
+      :ok = LLMModels.reload()
   """
   @spec reload() :: :ok | {:error, term()}
   def reload do
@@ -144,8 +144,8 @@ defmodule LlmModels do
 
   ## Examples
 
-      providers = LlmModels.provider()
-      #=> [%LlmModels.Provider{id: :anthropic, ...}, ...]
+      providers = LLMModels.provider()
+      #=> [%LLMModels.Provider{id: :anthropic, ...}, ...]
 
   """
   @spec provider() :: [Provider.t()]
@@ -179,7 +179,7 @@ defmodule LlmModels do
 
   ## Examples
 
-      {:ok, provider} = LlmModels.provider(:openai)
+      {:ok, provider} = LLMModels.provider(:openai)
       provider.name
       #=> "OpenAI"
   """
@@ -209,8 +209,8 @@ defmodule LlmModels do
 
   ## Examples
 
-      models = LlmModels.model()
-      #=> [%LlmModels.Model{}, ...]
+      models = LLMModels.model()
+      #=> [%LLMModels.Model{}, ...]
 
   """
   @spec model() :: [Model.t()]
@@ -246,7 +246,7 @@ defmodule LlmModels do
 
   ## Examples
 
-      {:ok, model} = LlmModels.model("openai:gpt-4o-mini")
+      {:ok, model} = LLMModels.model("openai:gpt-4o-mini")
       model.id
       #=> "gpt-4o-mini"
   """
@@ -273,8 +273,8 @@ defmodule LlmModels do
 
   ## Examples
 
-      models = LlmModels.models(:openai)
-      #=> [%LlmModels.Model{id: "gpt-4o", ...}, ...]
+      models = LLMModels.models(:openai)
+      #=> [%LLMModels.Model{id: "gpt-4o", ...}, ...]
   """
   @spec models(provider()) :: [Model.t()]
   def models(provider) when is_atom(provider) do
@@ -309,8 +309,8 @@ defmodule LlmModels do
 
   ## Examples
 
-      {:ok, model} = LlmModels.model(:openai, "gpt-4o-mini")
-      {:ok, model} = LlmModels.model(:openai, "gpt-4-mini")  # alias
+      {:ok, model} = LLMModels.model(:openai, "gpt-4o-mini")
+      {:ok, model} = LLMModels.model(:openai, "gpt-4-mini")  # alias
   """
   @spec model(provider(), model_id()) :: {:ok, Model.t()} | {:error, :not_found}
   def model(provider, model_id) when is_atom(provider) and is_binary(model_id) do
@@ -346,8 +346,8 @@ defmodule LlmModels do
 
   ## Examples
 
-      true = LlmModels.allowed?({:openai, "gpt-4o-mini"})
-      false = LlmModels.allowed?({:openai, "gpt-5-pro"})  # if denied
+      true = LLMModels.allowed?({:openai, "gpt-4o-mini"})
+      false = LLMModels.allowed?({:openai, "gpt-5-pro"})  # if denied
   """
   @spec allowed?(model_spec()) :: boolean()
   def allowed?(spec)
@@ -413,12 +413,12 @@ defmodule LlmModels do
 
   ## Examples
 
-      {:ok, {provider, model_id}} = LlmModels.select(
+      {:ok, {provider, model_id}} = LLMModels.select(
         require: [chat: true, tools: true],
         prefer: [:openai, :anthropic]
       )
 
-      {:ok, {provider, model_id}} = LlmModels.select(
+      {:ok, {provider, model_id}} = LLMModels.select(
         require: [json_native: true],
         forbid: [streaming_tool_calls: true],
         scope: :openai
@@ -449,6 +449,129 @@ defmodule LlmModels do
     find_first_match(providers, require_kw, forbid_kw)
   end
 
+  # Backward-compatibility wrappers (old API)
+
+  @doc """
+  Returns list of provider atoms.
+
+  **Deprecated:** Use `provider/0` for Provider structs.
+
+  ## Examples
+
+      providers = LLMModels.list_providers()
+      #=> [:openai, :anthropic, ...]
+  """
+  @spec list_providers() :: [provider()]
+  def list_providers do
+    provider() |> Enum.map(& &1.id)
+  end
+
+  @doc """
+  Gets a provider by ID.
+
+  **Deprecated:** Use `provider/1`.
+
+  ## Examples
+
+      {:ok, provider} = LLMModels.get_provider(:openai)
+      :error = LLMModels.get_provider(:nonexistent)
+  """
+  @spec get_provider(provider()) :: {:ok, Provider.t()} | :error
+  def get_provider(id) when is_atom(id), do: provider(id)
+
+  @doc """
+  Lists models for a provider.
+
+  **Deprecated:** Use `models/1` for Model structs.
+
+  ## Examples
+
+      models = LLMModels.list_models(:openai)
+      #=> [%LLMModels.Model{id: "gpt-4o", ...}, ...]
+  """
+  @spec list_models(provider()) :: [Model.t()]
+  def list_models(provider) when is_atom(provider) do
+    models(provider)
+  end
+
+  @doc """
+  Lists models for a provider with optional capability filtering.
+
+  **Deprecated:** Use `models/1` with `Enum.filter` or `select/1`.
+
+  ## Options
+
+  - `:require` - Keyword list of required capabilities (e.g., `[tools: true, json_native: true]`)
+  - `:forbid` - Keyword list of forbidden capabilities
+
+  ## Examples
+
+      models = LLMModels.list_models(:openai, require: [chat: true, tools: true])
+      #=> [%LLMModels.Model{id: "gpt-4o", ...}, ...]
+  """
+  @spec list_models(provider(), keyword()) :: [Model.t()]
+  def list_models(provider, opts) when is_atom(provider) and is_list(opts) do
+    require_kw = Keyword.get(opts, :require, [])
+    forbid_kw = Keyword.get(opts, :forbid, [])
+
+    models(provider)
+    |> Enum.filter(&matches_require?(&1, require_kw))
+    |> Enum.reject(&matches_forbid?(&1, forbid_kw))
+  end
+
+  @doc """
+  Gets a model by provider and ID.
+
+  **Deprecated:** Use `model/2`.
+
+  ## Examples
+
+      {:ok, model} = LLMModels.get_model(:openai, "gpt-4o-mini")
+      :error = LLMModels.get_model(:openai, "nonexistent")
+  """
+  @spec get_model(provider(), model_id()) :: {:ok, Model.t()} | :error
+  def get_model(provider, model_id) when is_atom(provider) and is_binary(model_id) do
+    case model(provider, model_id) do
+      {:ok, m} -> {:ok, m}
+      {:error, :not_found} -> :error
+    end
+  end
+
+  @doc """
+  Gets capabilities for a model spec.
+
+  Returns capabilities map or nil if model not found.
+
+  ## Parameters
+
+  - `spec` - Either `{provider, model_id}` tuple or `"provider:model"` string
+
+  ## Examples
+
+      caps = LLMModels.capabilities({:openai, "gpt-4o-mini"})
+      #=> %{chat: true, tools: %{enabled: true, ...}, ...}
+
+      caps = LLMModels.capabilities("openai:gpt-4o-mini")
+      #=> %{chat: true, tools: %{enabled: true, ...}, ...}
+
+      nil = LLMModels.capabilities({:openai, "nonexistent"})
+  """
+  @spec capabilities({provider(), model_id()} | String.t()) :: map() | nil
+  def capabilities({provider, model_id}) when is_atom(provider) and is_binary(model_id) do
+    case model(provider, model_id) do
+      {:ok, m} -> Map.get(m, :capabilities)
+      _ -> nil
+    end
+  end
+
+  def capabilities(spec) when is_binary(spec) do
+    with {:ok, {p, id}} <- Spec.parse_spec(spec) do
+      capabilities({p, id})
+    else
+      _ -> nil
+    end
+  end
+
   # Spec parsing (internal use only)
 
   @doc false
@@ -472,7 +595,7 @@ defmodule LlmModels do
   defp matches_require?(_model, []), do: true
 
   defp matches_require?(model, require_kw) do
-    caps = Map.get(model, :capabilities, %{})
+    caps = Map.get(model, :capabilities) || %{}
 
     Enum.all?(require_kw, fn {key, value} ->
       check_capability(caps, key, value)
@@ -482,7 +605,7 @@ defmodule LlmModels do
   defp matches_forbid?(_model, []), do: false
 
   defp matches_forbid?(model, forbid_kw) do
-    caps = Map.get(model, :capabilities, %{})
+    caps = Map.get(model, :capabilities) || %{}
 
     Enum.any?(forbid_kw, fn {key, value} ->
       check_capability(caps, key, value)
@@ -519,13 +642,13 @@ defmodule LlmModels do
   defp find_first_match([], _require_kw, _forbid_kw), do: {:error, :no_match}
 
   defp find_first_match([provider | rest], require_kw, forbid_kw) do
-    models =
-      model(provider)
+    models_list =
+      models(provider)
       |> Enum.filter(&matches_require?(&1, require_kw))
       |> Enum.reject(&matches_forbid?(&1, forbid_kw))
       |> Enum.filter(&allowed?({provider, &1.id}))
 
-    case models do
+    case models_list do
       [] -> find_first_match(rest, require_kw, forbid_kw)
       [model | _] -> {:ok, {provider, model.id}}
     end

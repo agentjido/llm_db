@@ -1,7 +1,7 @@
-defmodule LlmModels.Schema.CostTest do
+defmodule LLMModels.Schema.CostTest do
   use ExUnit.Case, async: true
 
-  alias LlmModels.Schema.Cost
+  alias LLMModels.Schema.Cost
 
   describe "valid parsing" do
     test "parses empty cost" do

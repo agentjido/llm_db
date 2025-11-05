@@ -1,7 +1,7 @@
-defmodule LlmModels.PackagedTest do
+defmodule LLMModels.PackagedTest do
   use ExUnit.Case, async: true
 
-  alias LlmModels.Packaged
+  alias LLMModels.Packaged
 
   describe "path/0" do
     test "returns correct snapshot path" do

@@ -1,6 +1,6 @@
-defmodule LlmModels.Config do
+defmodule LLMModels.Config do
   @moduledoc """
-  Configuration reading and normalization for LlmModels.
+  Configuration reading and normalization for LLMModels.
 
   Reads from Application environment and provides normalized config maps,
   compiled filter patterns, and module-based overrides.
@@ -16,7 +16,7 @@ defmodule LlmModels.Config do
   A map with keys:
   - `:compile_embed` - Whether to compile-time embed snapshot (default: false)
   - `:overrides` - Map with `:providers`, `:models`, `:exclude` keys
-  - `:overrides_module` - Module implementing LlmModels.Overrides behaviour (optional)
+  - `:overrides_module` - Module implementing LLMModels.Overrides behaviour (optional)
   - `:allow` - Allow patterns (`:all` or `%{provider => [patterns]}`)
   - `:deny` - Deny patterns (`%{provider => [patterns]}`)
   - `:prefer` - List of preferred provider atoms
@@ -43,7 +43,7 @@ defmodule LlmModels.Config do
   - `allow` - `:all` or `%{provider_atom => [pattern_strings]}`
   - `deny` - `%{provider_atom => [pattern_strings]}`
 
-  Patterns support glob syntax with `*` wildcards via `LlmModels.Merge.compile_pattern/1`.
+  Patterns support glob syntax with `*` wildcards via `LLMModels.Merge.compile_pattern/1`.
 
   Deny patterns always win over allow patterns.
 
@@ -65,7 +65,7 @@ defmodule LlmModels.Config do
   end
 
   @doc """
-  Retrieves overrides from a module implementing LlmModels.Overrides behaviour.
+  Retrieves overrides from a module implementing LLMModels.Overrides behaviour.
 
   ## Parameters
 
@@ -123,7 +123,7 @@ defmodule LlmModels.Config do
 
   defp compile_patterns(patterns) when is_map(patterns) do
     Map.new(patterns, fn {provider, pattern_list} ->
-      compiled = Enum.map(pattern_list, &LlmModels.Merge.compile_pattern/1)
+      compiled = Enum.map(pattern_list, &LLMModels.Merge.compile_pattern/1)
       {provider, compiled}
     end)
   end

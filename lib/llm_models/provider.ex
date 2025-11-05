@@ -1,4 +1,4 @@
-defmodule LlmModels.Provider do
+defmodule LLMModels.Provider do
   @moduledoc """
   Provider struct with Zoi schema validation.
 
@@ -6,7 +6,7 @@ defmodule LlmModels.Provider do
   environment variables, and documentation.
   """
 
-  @schema LlmModels.Schema.Provider.schema()
+  @schema LLMModels.Schema.Provider.schema()
 
   @type t :: %__MODULE__{
           id: atom(),
@@ -24,10 +24,10 @@ defmodule LlmModels.Provider do
 
   ## Examples
 
-      iex> LlmModels.Provider.new(%{id: :openai, name: "OpenAI"})
-      {:ok, %LlmModels.Provider{id: :openai, name: "OpenAI"}}
+      iex> LLMModels.Provider.new(%{id: :openai, name: "OpenAI"})
+      {:ok, %LLMModels.Provider{id: :openai, name: "OpenAI"}}
 
-      iex> LlmModels.Provider.new(%{})
+      iex> LLMModels.Provider.new(%{})
       {:error, _validation_errors}
   """
   @spec new(map()) :: {:ok, t()} | {:error, term()}
@@ -43,8 +43,8 @@ defmodule LlmModels.Provider do
 
   ## Examples
 
-      iex> LlmModels.Provider.new!(%{id: :openai, name: "OpenAI"})
-      %LlmModels.Provider{id: :openai, name: "OpenAI"}
+      iex> LLMModels.Provider.new!(%{id: :openai, name: "OpenAI"})
+      %LLMModels.Provider{id: :openai, name: "OpenAI"}
   """
   @spec new!(map()) :: t()
   def new!(attrs) when is_map(attrs) do

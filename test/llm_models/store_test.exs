@@ -1,7 +1,7 @@
-defmodule LlmModels.StoreTest do
+defmodule LLMModels.StoreTest do
   use ExUnit.Case, async: false
 
-  alias LlmModels.Store
+  alias LLMModels.Store
 
   setup do
     Store.clear!()
@@ -82,10 +82,10 @@ defmodule LlmModels.StoreTest do
     end
 
     test "returns updated opts after subsequent put" do
-      Store.put!(%{}, [first: true])
+      Store.put!(%{}, first: true)
       assert Store.last_opts() == [first: true]
 
-      Store.put!(%{}, [second: true])
+      Store.put!(%{}, second: true)
       assert Store.last_opts() == [second: true]
     end
   end
@@ -114,10 +114,10 @@ defmodule LlmModels.StoreTest do
 
     test "overwrites previous store atomically" do
       snapshot1 = %{providers: [], models: []}
-      Store.put!(snapshot1, [first: true])
+      Store.put!(snapshot1, first: true)
 
       snapshot2 = %{providers: [%{id: "test"}], models: [%{id: "model"}]}
-      Store.put!(snapshot2, [second: true])
+      Store.put!(snapshot2, second: true)
 
       assert Store.snapshot() == snapshot2
       assert Store.last_opts() == [second: true]
@@ -153,7 +153,7 @@ defmodule LlmModels.StoreTest do
       tasks =
         for i <- 1..10 do
           Task.async(fn ->
-            Store.put!(%{index: i}, [index: i])
+            Store.put!(%{index: i}, index: i)
             Store.epoch()
           end)
         end
@@ -167,7 +167,7 @@ defmodule LlmModels.StoreTest do
     end
 
     test "readers always see complete store state" do
-      Store.put!(%{providers: [], models: []}, [initial: true])
+      Store.put!(%{providers: [], models: []}, initial: true)
 
       task =
         Task.async(fn ->
@@ -184,7 +184,7 @@ defmodule LlmModels.StoreTest do
         end)
 
       for i <- 1..10 do
-        Store.put!(%{providers: [%{id: "p#{i}"}], models: []}, [iteration: i])
+        Store.put!(%{providers: [%{id: "p#{i}"}], models: []}, iteration: i)
         Process.sleep(1)
       end
 

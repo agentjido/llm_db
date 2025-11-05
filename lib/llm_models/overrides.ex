@@ -1,4 +1,4 @@
-defmodule LlmModels.Overrides do
+defmodule LLMModels.Overrides do
   @moduledoc """
   Behaviour for providing runtime overrides to the LLM models catalog.
 
@@ -8,7 +8,7 @@ defmodule LlmModels.Overrides do
   ## Usage
 
       defmodule MyApp.LlmModelOverrides do
-        use LlmModels.Overrides
+        use LLMModels.Overrides
 
         @impl true
         def providers do
@@ -65,7 +65,7 @@ defmodule LlmModels.Overrides do
 
   defmacro __using__(_opts) do
     quote do
-      @behaviour LlmModels.Overrides
+      @behaviour LLMModels.Overrides
       @impl true
       def providers, do: []
       @impl true

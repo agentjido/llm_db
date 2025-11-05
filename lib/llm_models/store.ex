@@ -1,4 +1,4 @@
-defmodule LlmModels.Store do
+defmodule LLMModels.Store do
   @moduledoc """
   Manages persistent_term storage for LLM model snapshots with atomic swaps.
 

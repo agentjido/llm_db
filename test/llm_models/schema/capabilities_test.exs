@@ -1,7 +1,7 @@
-defmodule LlmModels.Schema.CapabilitiesTest do
+defmodule LLMModels.Schema.CapabilitiesTest do
   use ExUnit.Case, async: true
 
-  alias LlmModels.Schema.Capabilities
+  alias LLMModels.Schema.Capabilities
 
   describe "defaults" do
     test "applies default values when empty" do

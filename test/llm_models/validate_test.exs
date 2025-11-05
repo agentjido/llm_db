@@ -1,7 +1,7 @@
-defmodule LlmModels.ValidateTest do
+defmodule LLMModels.ValidateTest do
   use ExUnit.Case, async: true
 
-  alias LlmModels.Validate
+  alias LLMModels.Validate
 
   describe "validate_provider/1" do
     test "validates minimal valid provider" do

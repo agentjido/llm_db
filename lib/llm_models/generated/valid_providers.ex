@@ -1,4 +1,4 @@
-defmodule LlmModels.Generated.ValidProviders do
+defmodule LLMModels.Generated.ValidProviders do
   @moduledoc """
   Auto-generated module containing all valid provider atoms.
 

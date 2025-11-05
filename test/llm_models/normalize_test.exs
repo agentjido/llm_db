@@ -1,13 +1,15 @@
-defmodule LlmModels.NormalizeTest do
+defmodule LLMModels.NormalizeTest do
   use ExUnit.Case, async: true
 
-  alias LlmModels.Normalize
+  alias LLMModels.Normalize
 
   doctest Normalize
 
   describe "normalize_provider_id/1" do
     test "converts binary provider ID with hyphens to atom with underscores" do
-      assert {:ok, :google_vertex} = Normalize.normalize_provider_id("google-vertex", unsafe: true)
+      assert {:ok, :google_vertex} =
+               Normalize.normalize_provider_id("google-vertex", unsafe: true)
+
       assert {:ok, :azure_openai} = Normalize.normalize_provider_id("azure-openai", unsafe: true)
 
       assert {:ok, :anthropic_vertex} =
@@ -15,8 +17,11 @@ defmodule LlmModels.NormalizeTest do
     end
 
     test "converts binary provider ID with underscores to atom" do
-      assert {:ok, :google_vertex} = Normalize.normalize_provider_id("google_vertex", unsafe: true)
-      assert {:ok, :some_provider} = Normalize.normalize_provider_id("some_provider", unsafe: true)
+      assert {:ok, :google_vertex} =
+               Normalize.normalize_provider_id("google_vertex", unsafe: true)
+
+      assert {:ok, :some_provider} =
+               Normalize.normalize_provider_id("some_provider", unsafe: true)
     end
 
     test "converts simple binary provider ID to atom" do
@@ -51,7 +56,9 @@ defmodule LlmModels.NormalizeTest do
 
     test "handles mixed case provider IDs" do
       assert {:ok, :OpenAI} = Normalize.normalize_provider_id("OpenAI", unsafe: true)
-      assert {:ok, :Google_Vertex} = Normalize.normalize_provider_id("Google-Vertex", unsafe: true)
+
+      assert {:ok, :Google_Vertex} =
+               Normalize.normalize_provider_id("Google-Vertex", unsafe: true)
     end
 
     test "handles alphanumeric provider IDs" do
@@ -105,7 +112,9 @@ defmodule LlmModels.NormalizeTest do
 
     test "handles complex model IDs" do
       model = %{provider: "anthropic", id: "claude-3-opus-20240229"}
-      assert {:ok, {:anthropic, "claude-3-opus-20240229"}} = Normalize.normalize_model_identity(model)
+
+      assert {:ok, {:anthropic, "claude-3-opus-20240229"}} =
+               Normalize.normalize_model_identity(model)
     end
   end
 

@@ -1,4 +1,4 @@
-defmodule LlmModels.Spec do
+defmodule LLMModels.Spec do
   @moduledoc """
   Canonical "provider:model" spec parsing and resolution.
 
@@ -6,8 +6,8 @@ defmodule LlmModels.Spec do
   including "provider:model" strings, tuples, and bare model IDs with provider scope.
   """
 
-  alias LlmModels.{Normalize, Store}
-  alias LlmModels.Schema.Model
+  alias LLMModels.{Normalize, Store}
+  alias LLMModels.Schema.Model
 
   @doc """
   Parses and validates a provider identifier.
@@ -27,13 +27,13 @@ defmodule LlmModels.Spec do
 
   ## Examples
 
-      iex> LlmModels.Spec.parse_provider(:openai)
+      iex> LLMModels.Spec.parse_provider(:openai)
       {:ok, :openai}
 
-      iex> LlmModels.Spec.parse_provider("google-vertex")
+      iex> LLMModels.Spec.parse_provider("google-vertex")
       {:ok, :google_vertex}
 
-      iex> LlmModels.Spec.parse_provider("nonexistent")
+      iex> LLMModels.Spec.parse_provider("nonexistent")
       {:error, :unknown_provider}
   """
   @spec parse_provider(atom() | binary()) ::
@@ -67,13 +67,13 @@ defmodule LlmModels.Spec do
 
   ## Examples
 
-      iex> LlmModels.Spec.parse_spec("openai:gpt-4")
+      iex> LLMModels.Spec.parse_spec("openai:gpt-4")
       {:ok, {:openai, "gpt-4"}}
 
-      iex> LlmModels.Spec.parse_spec("google-vertex:gemini-pro")
+      iex> LLMModels.Spec.parse_spec("google-vertex:gemini-pro")
       {:ok, {:google_vertex, "gemini-pro"}}
 
-      iex> LlmModels.Spec.parse_spec("gpt-4")
+      iex> LLMModels.Spec.parse_spec("gpt-4")
       {:error, :invalid_format}
   """
   @spec parse_spec(String.t()) ::
@@ -116,16 +116,16 @@ defmodule LlmModels.Spec do
 
   ## Examples
 
-      iex> LlmModels.Spec.resolve("openai:gpt-4")
-      {:ok, {:openai, "gpt-4", %LlmModels.Schema.Model{}}}
+      iex> LLMModels.Spec.resolve("openai:gpt-4")
+      {:ok, {:openai, "gpt-4", %LLMModels.Schema.Model{}}}
 
-      iex> LlmModels.Spec.resolve({:openai, "gpt-4"})
-      {:ok, {:openai, "gpt-4", %LlmModels.Schema.Model{}}}
+      iex> LLMModels.Spec.resolve({:openai, "gpt-4"})
+      {:ok, {:openai, "gpt-4", %LLMModels.Schema.Model{}}}
 
-      iex> LlmModels.Spec.resolve("gpt-4", scope: :openai)
-      {:ok, {:openai, "gpt-4", %LlmModels.Schema.Model{}}}
+      iex> LLMModels.Spec.resolve("gpt-4", scope: :openai)
+      {:ok, {:openai, "gpt-4", %LLMModels.Schema.Model{}}}
 
-      iex> LlmModels.Spec.resolve("gpt-4")
+      iex> LLMModels.Spec.resolve("gpt-4")
       {:error, :ambiguous}
   """
   @spec resolve(String.t() | {atom(), String.t()}, keyword()) ::
@@ -157,10 +157,7 @@ defmodule LlmModels.Spec do
 
   defp verify_provider_exists(provider_atom) do
     case Store.snapshot() do
-      nil ->
-        {:error, :unknown_provider}
-
-      %{providers_by_id: providers} ->
+      %{providers_by_id: providers} when is_map(providers) ->
         if Map.has_key?(providers, provider_atom) do
           {:ok, provider_atom}
         else

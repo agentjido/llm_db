@@ -1,4 +1,4 @@
-defmodule LlmModels.Schema.Limits do
+defmodule LLMModels.Schema.Limits do
   @moduledoc """
   Zoi schema for LLM model token limits.
 
@@ -6,9 +6,9 @@ defmodule LlmModels.Schema.Limits do
   """
 
   @schema Zoi.object(%{
-    context: Zoi.integer() |> Zoi.min(1) |> Zoi.optional(),
-    output: Zoi.integer() |> Zoi.min(1) |> Zoi.optional()
-  })
+            context: Zoi.integer() |> Zoi.min(1) |> Zoi.optional(),
+            output: Zoi.integer() |> Zoi.min(1) |> Zoi.optional()
+          })
 
   @type t :: unquote(Zoi.type_spec(@schema))
 

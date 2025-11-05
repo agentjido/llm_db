@@ -1,6 +1,6 @@
-defmodule LlmModels.ConfigTest do
+defmodule LLMModels.ConfigTest do
   use ExUnit.Case, async: false
-  doctest LlmModels.Config
+  doctest LLMModels.Config
 
   setup do
     original_config = Application.get_all_env(:llm_models)
@@ -21,7 +21,7 @@ defmodule LlmModels.ConfigTest do
       Application.delete_env(:llm_models, :deny)
       Application.delete_env(:llm_models, :prefer)
 
-      config = LlmModels.Config.get()
+      config = LLMModels.Config.get()
 
       assert config.compile_embed == false
       assert config.overrides == %{providers: [], models: [], exclude: %{}}
@@ -35,7 +35,7 @@ defmodule LlmModels.ConfigTest do
       Application.put_env(:llm_models, :compile_embed, true)
       Application.put_env(:llm_models, :prefer, [:openai, :anthropic])
 
-      config = LlmModels.Config.get()
+      config = LLMModels.Config.get()
 
       assert config.compile_embed == true
       assert config.prefer == [:openai, :anthropic]
@@ -48,7 +48,7 @@ defmodule LlmModels.ConfigTest do
         exclude: %{openai: ["gpt-5"]}
       })
 
-      config = LlmModels.Config.get()
+      config = LLMModels.Config.get()
 
       assert config.overrides.providers == [%{id: :openai}]
       assert config.overrides.models == [%{id: "gpt-4"}]
@@ -62,7 +62,7 @@ defmodule LlmModels.ConfigTest do
         exclude: %{anthropic: ["claude-2"]}
       )
 
-      config = LlmModels.Config.get()
+      config = LLMModels.Config.get()
 
       assert config.overrides.providers == [%{id: :anthropic}]
       assert config.overrides.models == [%{id: "claude"}]
@@ -74,7 +74,7 @@ defmodule LlmModels.ConfigTest do
         models: [%{id: "test"}]
       })
 
-      config = LlmModels.Config.get()
+      config = LLMModels.Config.get()
 
       assert config.overrides.providers == []
       assert config.overrides.models == [%{id: "test"}]
@@ -84,7 +84,7 @@ defmodule LlmModels.ConfigTest do
     test "handles invalid overrides gracefully" do
       Application.put_env(:llm_models, :overrides, "invalid")
 
-      config = LlmModels.Config.get()
+      config = LLMModels.Config.get()
 
       assert config.overrides == %{providers: [], models: [], exclude: %{}}
     end
@@ -92,7 +92,7 @@ defmodule LlmModels.ConfigTest do
 
   describe "compile_filters/2" do
     test "compiles :all allow pattern" do
-      result = LlmModels.Config.compile_filters(:all, %{})
+      result = LLMModels.Config.compile_filters(:all, %{})
 
       assert result.allow == :all
       assert result.deny == %{}
@@ -102,7 +102,7 @@ defmodule LlmModels.ConfigTest do
       allow = %{openai: ["gpt-4*", "gpt-3*"]}
       deny = %{}
 
-      result = LlmModels.Config.compile_filters(allow, deny)
+      result = LLMModels.Config.compile_filters(allow, deny)
 
       assert is_map(result.allow)
       assert Map.has_key?(result.allow, :openai)
@@ -114,7 +114,7 @@ defmodule LlmModels.ConfigTest do
       allow = :all
       deny = %{openai: ["gpt-5*"], anthropic: ["claude-2*"]}
 
-      result = LlmModels.Config.compile_filters(allow, deny)
+      result = LLMModels.Config.compile_filters(allow, deny)
 
       assert result.allow == :all
       assert is_map(result.deny)
@@ -128,7 +128,7 @@ defmodule LlmModels.ConfigTest do
       allow = %{openai: ["gpt-4*"]}
       deny = %{openai: ["gpt-4-32k"]}
 
-      result = LlmModels.Config.compile_filters(allow, deny)
+      result = LLMModels.Config.compile_filters(allow, deny)
 
       assert is_map(result.allow)
       assert is_map(result.deny)
@@ -137,7 +137,7 @@ defmodule LlmModels.ConfigTest do
     end
 
     test "handles empty patterns" do
-      result = LlmModels.Config.compile_filters(%{}, %{})
+      result = LLMModels.Config.compile_filters(%{}, %{})
 
       assert result.allow == %{}
       assert result.deny == %{}
@@ -145,7 +145,7 @@ defmodule LlmModels.ConfigTest do
 
     test "compiled patterns match correctly" do
       allow = %{openai: ["gpt-4*"]}
-      result = LlmModels.Config.compile_filters(allow, %{})
+      result = LLMModels.Config.compile_filters(allow, %{})
 
       [pattern] = result.allow.openai
 
@@ -157,7 +157,7 @@ defmodule LlmModels.ConfigTest do
 
   describe "get_overrides_from_module/1" do
     defmodule TestOverrides do
-      use LlmModels.Overrides
+      use LLMModels.Overrides
 
       @impl true
       def providers do
@@ -176,13 +176,13 @@ defmodule LlmModels.ConfigTest do
     end
 
     test "returns empty maps when module is nil" do
-      result = LlmModels.Config.get_overrides_from_module(nil)
+      result = LLMModels.Config.get_overrides_from_module(nil)
 
       assert result == %{providers: [], models: [], excludes: %{}}
     end
 
     test "retrieves overrides from valid module" do
-      result = LlmModels.Config.get_overrides_from_module(TestOverrides)
+      result = LLMModels.Config.get_overrides_from_module(TestOverrides)
 
       assert result.providers == [%{id: :test_provider}]
       assert result.models == [%{id: "test-model", provider: :test_provider}]
@@ -190,7 +190,7 @@ defmodule LlmModels.ConfigTest do
     end
 
     test "handles non-existent module gracefully" do
-      result = LlmModels.Config.get_overrides_from_module(NonExistent.Module)
+      result = LLMModels.Config.get_overrides_from_module(NonExistent.Module)
 
       assert result == %{providers: [], models: [], excludes: %{}}
     end
@@ -200,7 +200,7 @@ defmodule LlmModels.ConfigTest do
         def some_function, do: :ok
       end
 
-      result = LlmModels.Config.get_overrides_from_module(NotAnOverride)
+      result = LLMModels.Config.get_overrides_from_module(NotAnOverride)
 
       assert result == %{providers: [], models: [], excludes: %{}}
     end
@@ -208,7 +208,7 @@ defmodule LlmModels.ConfigTest do
 
   describe "integration tests" do
     defmodule IntegrationOverrides do
-      use LlmModels.Overrides
+      use LLMModels.Overrides
 
       @impl true
       def providers do
@@ -238,9 +238,9 @@ defmodule LlmModels.ConfigTest do
       Application.put_env(:llm_models, :deny, %{openai: ["gpt-4-32k"]})
       Application.put_env(:llm_models, :prefer, [:openai, :custom])
 
-      config = LlmModels.Config.get()
-      module_overrides = LlmModels.Config.get_overrides_from_module(config.overrides_module)
-      filters = LlmModels.Config.compile_filters(config.allow, config.deny)
+      config = LLMModels.Config.get()
+      module_overrides = LLMModels.Config.get_overrides_from_module(config.overrides_module)
+      filters = LLMModels.Config.compile_filters(config.allow, config.deny)
 
       assert config.compile_embed == true
       assert config.prefer == [:openai, :custom]

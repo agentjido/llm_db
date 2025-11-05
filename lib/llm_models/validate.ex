@@ -1,4 +1,4 @@
-defmodule LlmModels.Validate do
+defmodule LLMModels.Validate do
   @moduledoc """
   Validation functions for providers and models using Zoi schemas.
 
@@ -6,7 +6,7 @@ defmodule LlmModels.Validate do
   handling errors gracefully and ensuring catalog viability.
   """
 
-  alias LlmModels.Schema.{Model, Provider}
+  alias LLMModels.Schema.{Model, Provider}
 
   @type validation_error :: term()
 

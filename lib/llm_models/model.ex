@@ -1,4 +1,4 @@
-defmodule LlmModels.Model do
+defmodule LLMModels.Model do
   @moduledoc """
   Model struct with Zoi schema validation.
 
@@ -6,7 +6,7 @@ defmodule LlmModels.Model do
   dates, limits, costs, modalities, capabilities, tags, deprecation status, and aliases.
   """
 
-  @schema LlmModels.Schema.Model.schema()
+  @schema LLMModels.Schema.Model.schema()
 
   @type t :: %__MODULE__{
           id: String.t(),
@@ -51,10 +51,10 @@ defmodule LlmModels.Model do
 
   ## Examples
 
-      iex> LlmModels.Model.new(%{id: "gpt-4", provider: :openai})
-      {:ok, %LlmModels.Model{id: "gpt-4", provider: :openai}}
+      iex> LLMModels.Model.new(%{id: "gpt-4", provider: :openai})
+      {:ok, %LLMModels.Model{id: "gpt-4", provider: :openai}}
 
-      iex> LlmModels.Model.new(%{})
+      iex> LLMModels.Model.new(%{})
       {:error, _validation_errors}
   """
   @spec new(map()) :: {:ok, t()} | {:error, term()}
@@ -70,8 +70,8 @@ defmodule LlmModels.Model do
 
   ## Examples
 
-      iex> LlmModels.Model.new!(%{id: "gpt-4", provider: :openai})
-      %LlmModels.Model{id: "gpt-4", provider: :openai}
+      iex> LLMModels.Model.new!(%{id: "gpt-4", provider: :openai})
+      %LLMModels.Model{id: "gpt-4", provider: :openai}
   """
   @spec new!(map()) :: t()
   def new!(attrs) when is_map(attrs) do
