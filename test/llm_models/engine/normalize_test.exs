@@ -70,12 +70,16 @@ defmodule LLMModels.Engine.NormalizeTest do
   describe "normalize_model_identity/1" do
     test "extracts provider and id from model map with binary provider" do
       model = %{provider: "test-provider-alpha", id: "test-model-pro"}
-      assert {:ok, {:test_provider_alpha, "test-model-pro"}} = Normalize.normalize_model_identity(model)
+
+      assert {:ok, {:test_provider_alpha, "test-model-pro"}} =
+               Normalize.normalize_model_identity(model)
     end
 
     test "extracts provider and id from model map with atom provider" do
       model = %{provider: :test_provider_alpha, id: "test-model-v1"}
-      assert {:ok, {:test_provider_alpha, "test-model-v1"}} = Normalize.normalize_model_identity(model)
+
+      assert {:ok, {:test_provider_alpha, "test-model-v1"}} =
+               Normalize.normalize_model_identity(model)
     end
 
     test "handles provider with underscores" do

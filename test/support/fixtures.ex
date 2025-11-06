@@ -1,19 +1,19 @@
 defmodule LLMModels.Test.Fixtures do
   @moduledoc """
   Synthetic test data fixtures for LLM model testing.
-  
+
   Uses generic, descriptive names to avoid coupling to real-world models
   and providers. All fixtures return maps that can be overridden with
   custom values via the `overrides` parameter.
-  
+
   ## Provider Fixtures
-  
+
   - `provider_alpha/1` - Basic test provider
   - `provider_beta/1` - Alternative test provider
   - `provider_gamma/1` - Third test provider
-  
+
   ## Model Fixtures
-  
+
   - `model_simple/1` - Minimal valid model
   - `model_basic/1` - Model with common fields
   - `model_full/1` - Model with complete metadata
@@ -25,9 +25,9 @@ defmodule LLMModels.Test.Fixtures do
   - `model_with_special_chars/1` - Model ID with special characters
   - `model_with_custom_fields/1` - Model with unknown/custom fields
   - `model_with_family/2` - Model belonging to a family
-  
+
   ## Usage
-  
+
       # Use as-is
       provider = provider_alpha()
       
@@ -267,9 +267,9 @@ defmodule LLMModels.Test.Fixtures do
 
   @doc """
   Model belonging to a specific family.
-  
+
   ## Examples
-  
+
       model_with_family("test-family-v1")
       model_with_family("test-family-v2", %{max_output_tokens: 8192})
   """
@@ -313,9 +313,9 @@ defmodule LLMModels.Test.Fixtures do
 
   @doc """
   Returns a spec string for a test model.
-  
+
   ## Examples
-  
+
       spec(:test_provider_alpha, "test-model-1")
       # => "test_provider_alpha:test-model-1"
   """
@@ -325,9 +325,9 @@ defmodule LLMModels.Test.Fixtures do
 
   @doc """
   Returns a spec string from a model map.
-  
+
   ## Examples
-  
+
       spec_from_model(model_simple())
       # => "test_provider_alpha:test-model-simple"
   """
@@ -431,7 +431,11 @@ defmodule LLMModels.Test.Fixtures do
     [
       %{id: "test-model-v1", provider: :test_provider_alpha},
       %{id: "test-model-v2-pro", provider: :test_provider_beta, family: "custom"},
-      %{id: "test-model-v3-flash", provider: :test_provider_gamma, provider_model_id: "test-model-v3-flash-002"}
+      %{
+        id: "test-model-v3-flash",
+        provider: :test_provider_gamma,
+        provider_model_id: "test-model-v3-flash-002"
+      }
     ]
   end
 

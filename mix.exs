@@ -28,7 +28,17 @@ defmodule LLMModels.MixProject do
       source_ref: "v#{@version}",
       docs: [
         main: "readme",
-        extras: ["README.md"]
+        extras: [
+          "README.md",
+          "guides/schema-system.md",
+          "guides/sources-and-engine.md",
+          "guides/using-the-data.md",
+          "guides/release-process.md",
+          "CHANGELOG.md"
+        ],
+        groups_for_extras: [
+          Guides: ~r/guides\/.+\.md/
+        ]
       ]
     ]
   end

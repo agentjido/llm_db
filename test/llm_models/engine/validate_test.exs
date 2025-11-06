@@ -165,7 +165,12 @@ defmodule LLMModels.Engine.ValidateTest do
     end
 
     test "rejects model with non-string elements in aliases" do
-      input = %{id: "test-model-v1", provider: :test_provider_alpha, aliases: ["test-model-latest", 123]}
+      input = %{
+        id: "test-model-v1",
+        provider: :test_provider_alpha,
+        aliases: ["test-model-latest", 123]
+      }
+
       assert {:error, _} = Validate.validate_model(input)
     end
 
@@ -494,7 +499,10 @@ defmodule LLMModels.Engine.ValidateTest do
   describe "ensure_viable/2" do
     test "returns :ok with non-empty providers and models" do
       providers = [%{id: :test_provider_alpha}]
-      models = [%{id: "test-model-v1", provider: :test_provider_alpha, deprecated: false, aliases: []}]
+
+      models = [
+        %{id: "test-model-v1", provider: :test_provider_alpha, deprecated: false, aliases: []}
+      ]
 
       assert :ok = Validate.ensure_viable(providers, models)
     end
@@ -517,7 +525,10 @@ defmodule LLMModels.Engine.ValidateTest do
 
     test "returns error when providers is empty" do
       providers = []
-      models = [%{id: "test-model-v1", provider: :test_provider_alpha, deprecated: false, aliases: []}]
+
+      models = [
+        %{id: "test-model-v1", provider: :test_provider_alpha, deprecated: false, aliases: []}
+      ]
 
       assert {:error, :empty_catalog} = Validate.ensure_viable(providers, models)
     end

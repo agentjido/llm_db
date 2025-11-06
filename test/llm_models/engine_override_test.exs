@@ -56,11 +56,7 @@ defmodule LLMModels.EngineOverrideTest do
       assert provider.doc == "Custom OpenAI configuration"
     end
 
-    @tag :skip
     test "array fields should be replaced not unioned (req_llm requirement)" do
-      # NOTE: Current implementation unions arrays (concat + dedup) - see LLMModels.Merge line 211-212
-      # req_llm use case requires replacement semantics for array fields
-      # This test documents the expected behavior for future implementation
       base = %{
         providers: [
           %{
@@ -526,6 +522,7 @@ defmodule LLMModels.EngineOverrideTest do
       }
 
       sources = [{LLMModels.Sources.Config, %{overrides: base}}]
+
       filters = %{
         deny: [
           "custom:model:with:colons",

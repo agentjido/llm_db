@@ -1,7 +1,7 @@
 # LLMModels
 
 [![Hex.pm](https://img.shields.io/hexpm/v/llm_models.svg)](https://hex.pm/packages/llm_models)
-[![License](https://img.shields.io/hexpm/l/llm_models.svg)](https://github.com/yourorg/llm_models/blob/main/LICENSE)
+[![License](https://img.shields.io/hexpm/l/llm_models.svg)](https://github.com/agentjido/llm_models/blob/main/LICENSE)
 
 Fast, persistent_term-backed LLM model metadata catalog with explicit refresh controls.
 
@@ -319,7 +319,7 @@ You can configure **optional** sources that merge on top of the packaged base:
 **Note:** The packaged snapshot is NOT a source - it's the pre-processed base
 that always loads first. Sources provide additional data merged on top.
 
-See [OVERVIEW.md](OVERVIEW.md) for detailed source documentation.
+See the [Sources and Engine](guides/sources-and-engine.md) guide for detailed source documentation.
 
 ### Precedence Rules
 
@@ -477,7 +477,7 @@ model.cost.input                    #=> 0.15
 
 - `load/1` - Load provider and model data from the source
 
-See [OVERVIEW.md](OVERVIEW.md) for detailed source documentation and examples.
+See the [Sources and Engine](guides/sources-and-engine.md) guide for detailed source documentation and examples.
 
 ### Mix Tasks
 
@@ -486,8 +486,6 @@ See [OVERVIEW.md](OVERVIEW.md) for detailed source documentation and examples.
 - `mix llm_models.version` - Update version to current date
 
 ## Design Principles
-
-From the [design plan](LLM_MODELS_PLAN.md):
 
 1. **Standalone with packaged snapshot** - No network required by default
 2. **Manual refresh only** - Explicit updates via Mix tasks
@@ -516,8 +514,11 @@ Contributions are welcome! Please:
 
 ## License
 
-MIT License. See [LICENSE](LICENSE) for details.
+MIT License - see LICENSE file for details.
 
----
+## Documentation
 
-For detailed architectural information, see [LLM_MODELS_PLAN.md](LLM_MODELS_PLAN.md).
+- [Schema System](guides/schema-system.md) - Zoi validation and data structures
+- [Sources and Engine](guides/sources-and-engine.md) - ETL pipeline and data ingestion
+- [Using the Data](guides/using-the-data.md) - Runtime API and querying
+- [Release Process](guides/release-process.md) - Snapshot-based releases

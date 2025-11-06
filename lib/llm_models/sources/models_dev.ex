@@ -366,9 +366,11 @@ defmodule LLMModels.Sources.ModelsDev do
   # Helper: put limit value if valid (not nil, not 0)
   defp put_if_valid_limit(map, _key, nil), do: map
   defp put_if_valid_limit(map, _key, 0), do: map
+
   defp put_if_valid_limit(map, key, value) when is_integer(value) and value > 0 do
     Map.put(map, key, value)
   end
+
   defp put_if_valid_limit(map, _key, _value), do: map
 
   # Helper: put nested map if boolean is true
