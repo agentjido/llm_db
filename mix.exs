@@ -60,7 +60,7 @@ defmodule LLMModels.MixProject do
       {:req, "~> 0.5"},
       {:deep_merge, "~> 1.0"},
       {:plug, "~> 1.16", only: :test},
-      {:meck, "~> 0.9", only: :test},
+      {:meck, "~> 1.1", only: :test},
       {:ex_doc, "~> 0.31", only: :dev, runtime: false},
       {:git_ops, "~> 2.6", only: :dev, runtime: false},
       {:dialyxir, "~> 1.4", only: [:dev, :test], runtime: false},
