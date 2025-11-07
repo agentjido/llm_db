@@ -223,17 +223,17 @@ defmodule LLMDb.Normalize do
   defp normalize_modality_atom(value) when is_binary(value) do
     # Try to convert to existing atom first (safe)
     atom = String.to_existing_atom(value)
-    if MapSet.member?(@valid_modalities, atom), do: atom, else: value
+    if atom in @valid_modalities, do: atom, else: value
   rescue
     ArgumentError ->
       # Atom doesn't exist yet - check if it's a known modality
       # This is safe because we only create atoms from a small, known set
       atom = String.to_atom(value)
-      if MapSet.member?(@valid_modalities, atom), do: atom, else: value
+      if atom in @valid_modalities, do: atom, else: value
   end
 
   defp normalize_modality_atom(value) when is_atom(value) do
-    if MapSet.member?(@valid_modalities, value), do: value, else: value
+    if value in @valid_modalities, do: value, else: value
   end
 
   defp parse_date(date_string) do
