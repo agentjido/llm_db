@@ -91,9 +91,13 @@ defmodule LLMDb.Spec do
       iex> LLMDb.Spec.parse_spec("gpt-4")
       {:error, :invalid_format}
   """
-  @spec parse_spec(String.t()) ::
+  @spec parse_spec(String.t() | {atom(), String.t()}) ::
           {:ok, {atom(), String.t()}}
           | {:error, :invalid_format | :unknown_provider | :bad_provider}
+  def parse_spec({provider, model_id}) when is_atom(provider) and is_binary(model_id) do
+    {:ok, {provider, model_id}}
+  end
+
   def parse_spec(spec) when is_binary(spec) do
     case String.split(spec, ":", parts: 2) do
       [provider_str, model_id] ->

@@ -191,4 +191,239 @@ defmodule LLMDb.EngineTest do
       assert hd(filtered).id == "gpt-4"
     end
   end
+
+  describe "list merge behavior" do
+    test "unions accumulative list fields across sources" do
+      # First source (lower precedence)
+      source1 =
+        {LLMDb.Sources.Config,
+         %{
+           overrides: %{
+             providers: [%{id: :openai, name: "OpenAI"}],
+             models: [
+               %{
+                 provider: :openai,
+                 id: "gpt-4",
+                 aliases: ["gpt-4-0314"],
+                 tags: ["general", "production"],
+                 modalities: %{input: [:text], output: [:text]}
+               }
+             ]
+           }
+         }}
+
+      # Second source (higher precedence)
+      source2 =
+        {LLMDb.Sources.Config,
+         %{
+           overrides: %{
+             providers: [],
+             models: [
+               %{
+                 provider: :openai,
+                 id: "gpt-4",
+                 aliases: ["gpt-4-2023", "gpt4"],
+                 tags: ["fast"],
+                 modalities: %{input: [:image], output: [:json]}
+               }
+             ]
+           }
+         }}
+
+      {:ok, snapshot} = Engine.run(sources: [source1, source2])
+      m = snapshot.providers[:openai].models["gpt-4"]
+
+      # Should union aliases and tags
+      assert m.aliases == ["gpt-4-0314", "gpt-4-2023", "gpt4"]
+      assert m.tags == ["general", "production", "fast"]
+
+      # Should union nested modalities
+      assert m.modalities.input == [:text, :image]
+      assert m.modalities.output == [:text, :json]
+    end
+
+    test "replaces non-accumulative lists with last-wins" do
+      # First source (lower precedence)
+      source1 =
+        {LLMDb.Sources.Config,
+         %{
+           overrides: %{
+             providers: [%{id: :openai, name: "OpenAI"}],
+             models: [
+               %{
+                 provider: :openai,
+                 id: "gpt-4",
+                 extra: %{custom_list: ["a", "b"]}
+               }
+             ]
+           }
+         }}
+
+      # Second source (higher precedence)
+      source2 =
+        {LLMDb.Sources.Config,
+         %{
+           overrides: %{
+             providers: [],
+             models: [
+               %{
+                 provider: :openai,
+                 id: "gpt-4",
+                 extra: %{custom_list: ["c"]}
+               }
+             ]
+           }
+         }}
+
+      {:ok, snapshot} = Engine.run(sources: [source1, source2])
+      m = snapshot.providers[:openai].models["gpt-4"]
+
+      # Unknown list fields should replace (last-wins)
+      assert m.extra.custom_list == ["c"]
+    end
+
+    test "removes duplicates when unioning lists" do
+      # First source
+      source1 =
+        {LLMDb.Sources.Config,
+         %{
+           overrides: %{
+             providers: [%{id: :openai, name: "OpenAI"}],
+             models: [
+               %{
+                 provider: :openai,
+                 id: "gpt-4",
+                 aliases: ["gpt4", "gpt-4-0314"],
+                 tags: ["production"]
+               }
+             ]
+           }
+         }}
+
+      # Second source with some duplicates
+      source2 =
+        {LLMDb.Sources.Config,
+         %{
+           overrides: %{
+             providers: [],
+             models: [
+               %{
+                 provider: :openai,
+                 id: "gpt-4",
+                 aliases: ["gpt4", "gpt-4-2023"],
+                 tags: ["production", "fast"]
+               }
+             ]
+           }
+         }}
+
+      {:ok, snapshot} = Engine.run(sources: [source1, source2])
+      m = snapshot.providers[:openai].models["gpt-4"]
+
+      # Should preserve left-first order and remove duplicates
+      assert m.aliases == ["gpt4", "gpt-4-0314", "gpt-4-2023"]
+      assert m.tags == ["production", "fast"]
+    end
+
+    test "handles empty lists in union" do
+      # First source with populated lists
+      source1 =
+        {LLMDb.Sources.Config,
+         %{
+           overrides: %{
+             providers: [%{id: :openai, name: "OpenAI"}],
+             models: [
+               %{
+                 provider: :openai,
+                 id: "gpt-4",
+                 aliases: ["gpt-4-0314"],
+                 tags: ["production"]
+               }
+             ]
+           }
+         }}
+
+      # Second source with empty lists
+      source2 =
+        {LLMDb.Sources.Config,
+         %{
+           overrides: %{
+             providers: [],
+             models: [
+               %{
+                 provider: :openai,
+                 id: "gpt-4",
+                 aliases: [],
+                 tags: []
+               }
+             ]
+           }
+         }}
+
+      {:ok, snapshot} = Engine.run(sources: [source1, source2])
+      m = snapshot.providers[:openai].models["gpt-4"]
+
+      # Empty lists should not clear earlier values (union behavior)
+      assert m.aliases == ["gpt-4-0314"]
+      assert m.tags == ["production"]
+    end
+
+    test "unions lists across multiple sources" do
+      # Three sources with different data
+      source1 =
+        {LLMDb.Sources.Config,
+         %{
+           overrides: %{
+             providers: [%{id: :openai, name: "OpenAI"}],
+             models: [
+               %{
+                 provider: :openai,
+                 id: "gpt-4",
+                 aliases: ["alias1"],
+                 tags: ["tag1"]
+               }
+             ]
+           }
+         }}
+
+      source2 =
+        {LLMDb.Sources.Config,
+         %{
+           overrides: %{
+             providers: [],
+             models: [
+               %{
+                 provider: :openai,
+                 id: "gpt-4",
+                 aliases: ["alias2"],
+                 tags: ["tag2"]
+               }
+             ]
+           }
+         }}
+
+      source3 =
+        {LLMDb.Sources.Config,
+         %{
+           overrides: %{
+             providers: [],
+             models: [
+               %{
+                 provider: :openai,
+                 id: "gpt-4",
+                 aliases: ["alias3"],
+                 tags: ["tag3"]
+               }
+             ]
+           }
+         }}
+
+      {:ok, snapshot} = Engine.run(sources: [source1, source2, source3])
+      m = snapshot.providers[:openai].models["gpt-4"]
+
+      # Should union all values from all sources
+      assert m.aliases == ["alias1", "alias2", "alias3"]
+      assert m.tags == ["tag1", "tag2", "tag3"]
+    end
+  end
 end

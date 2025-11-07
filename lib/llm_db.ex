@@ -5,26 +5,28 @@ defmodule LLMDb do
   Provides a simple, capability-aware API for querying LLM model metadata.
   All queries are backed by `:persistent_term` for O(1), lock-free access.
 
-  ## Lifecycle
-
-  - `reload/0` - Re-run load with last-known options
-
   ## Providers
 
-  - `provider/0` - Get all providers as Provider structs
+  - `providers/0` - Get all providers as list of Provider structs
   - `provider/1` - Get a specific provider by ID
 
   ## Models
 
-  - `model/0` - Get all models as Model structs
+  - `models/0` - Get all models as list of Model structs
+  - `models/1` - Get all models for a provider
   - `model/1` - Parse "provider:model" spec and get model
   - `model/2` - Get a specific model by provider and ID
-  - `models/1` - Get all models for a provider
 
   ## Selection and Policy
 
-  - `select/1` - Select a model matching capability requirements
+  - `select/1` - Select first model matching capability requirements
+  - `candidates/1` - Get all models matching capability requirements
   - `allowed?/1` - Check if a model passes allow/deny filters
+  - `capabilities/1` - Get capabilities map for a model
+
+  ## Utilities
+
+  - `parse/1` - Parse a model spec string into {provider, model_id} tuple
 
   ## Examples
 
@@ -309,7 +311,74 @@ defmodule LLMDb do
     Store.epoch()
   end
 
-  # Lookup and listing functions
+  # Listing functions
+
+  @doc """
+  Gets all providers from the catalog.
+
+  Returns list of all Provider structs, sorted by ID.
+
+  ## Examples
+
+      providers = LLMDb.providers()
+      #=> [%LLMDb.Provider{id: :anthropic, ...}, ...]
+
+  """
+  @spec providers() :: [Provider.t()]
+  def providers do
+    provider()
+  end
+
+  @doc """
+  Gets all models from the catalog.
+
+  Returns all models as Model structs across all providers.
+
+  ## Examples
+
+      models = LLMDb.models()
+      #=> [%LLMDb.Model{}, ...]
+
+  """
+  @spec models() :: [Model.t()]
+  def models do
+    model()
+  end
+
+  @doc """
+  Gets all models for a specific provider.
+
+  ## Parameters
+
+  - `provider` - Provider atom (e.g., `:openai`, `:anthropic`)
+
+  ## Returns
+
+  List of Model structs for the provider, or empty list if provider not found.
+
+  ## Examples
+
+      models = LLMDb.models(:openai)
+      #=> [%LLMDb.Model{id: "gpt-4o", ...}, ...]
+
+  """
+  @spec models(provider()) :: [Model.t()]
+  def models(provider_id) when is_atom(provider_id) do
+    case snapshot() do
+      nil ->
+        []
+
+      %{models: models_by_provider} ->
+        models_by_provider
+        |> Map.get(provider_id, [])
+        |> Enum.map(&Model.new!/1)
+
+      _ ->
+        []
+    end
+  end
+
+  # Lookup functions
 
   @doc """
   Gets provider(s) from the catalog.
@@ -437,38 +506,7 @@ defmodule LLMDb do
   @doc """
   Gets all models for a specific provider.
 
-  Returns list of Model structs for the specified provider.
-
-  ## Parameters
-
-  - `provider` - Provider atom (e.g., `:openai`)
-
-  ## Returns
-
-  List of Model structs for the provider.
-
-  ## Examples
-
-      models = LLMDb.models(:openai)
-      #=> [%LLMDb.Model{id: "gpt-4o", ...}, ...]
-  """
-  @spec models(provider()) :: [Model.t()]
-  def models(provider) when is_atom(provider) do
-    case snapshot() do
-      nil ->
-        []
-
-      %{models: models_by_provider} ->
-        models_by_provider
-        |> Map.get(provider, [])
-        |> Enum.map(&Model.new!/1)
-
-      _ ->
-        []
-    end
-  end
-
-  @doc """
+  @doc \"""
   Gets a specific model by provider and model ID.
 
   Handles alias resolution automatically.
@@ -540,9 +578,12 @@ defmodule LLMDb do
       nil ->
         false
 
-      %{filters: %{allow: allow, deny: deny}} ->
+      %{filters: %{allow: allow, deny: deny}, aliases_by_key: aliases} ->
+        # Resolve aliases to canonical model ID
+        canonical_id = Map.get(aliases, {provider, model_id}, model_id)
+
         deny_patterns = Map.get(deny, provider, [])
-        denied? = matches_patterns?(model_id, deny_patterns)
+        denied? = matches_patterns?(canonical_id, deny_patterns)
 
         if denied? do
           false
@@ -557,7 +598,7 @@ defmodule LLMDb do
               if map_size(allow_map) > 0 and allow_patterns == [] do
                 false
               else
-                allow_patterns == [] or matches_patterns?(model_id, allow_patterns)
+                allow_patterns == [] or matches_patterns?(canonical_id, allow_patterns)
               end
           end
         end
@@ -645,6 +686,76 @@ defmodule LLMDb do
   end
 
   @doc """
+  Gets all allowed models matching capability requirements.
+
+  Returns all models that match the capability filters in preference order.
+  Similar to `select/1` but returns all matches instead of just the first.
+
+  ## Options
+
+  - `:require` - Keyword list of required capabilities (e.g., `[tools: true, json_native: true]`)
+  - `:forbid` - Keyword list of forbidden capabilities
+  - `:prefer` - List of provider atoms in preference order (e.g., `[:openai, :anthropic]`)
+  - `:scope` - Either `:all` (default) or a specific provider atom
+
+  ## Returns
+
+  List of `{provider, model_id}` tuples matching the criteria, in preference order.
+
+  ## Examples
+
+      # Get all models with chat and tools
+      candidates = LLMDb.candidates(
+        require: [chat: true, tools: true],
+        prefer: [:openai, :anthropic]
+      )
+      #=> [{:openai, "gpt-4o"}, {:openai, "gpt-4o-mini"}, {:anthropic, "claude-3-5-sonnet-20241022"}, ...]
+
+      # Get all OpenAI models with JSON support
+      candidates = LLMDb.candidates(
+        require: [json_native: true],
+        scope: :openai
+      )
+      #=> [{:openai, "gpt-4o"}, {:openai, "gpt-4o-mini"}, ...]
+  """
+  @spec candidates(keyword()) :: [{provider(), model_id()}]
+  def candidates(opts \\ []) do
+    require_kw = Keyword.get(opts, :require, [])
+    forbid_kw = Keyword.get(opts, :forbid, [])
+    scope = Keyword.get(opts, :scope, :all)
+
+    # Use snapshot.prefer as default if :prefer not explicitly provided
+    prefer =
+      case Keyword.fetch(opts, :prefer) do
+        :error ->
+          case snapshot() do
+            %{prefer: p} when is_list(p) -> p
+            _ -> []
+          end
+
+        {:ok, p} ->
+          p
+      end
+
+    providers =
+      case scope do
+        :all ->
+          all_providers = provider() |> Enum.map(& &1.id)
+
+          if prefer != [] do
+            prefer ++ (all_providers -- prefer)
+          else
+            all_providers
+          end
+
+        provider when is_atom(provider) ->
+          [provider]
+      end
+
+    find_all_matches(providers, require_kw, forbid_kw)
+  end
+
+  @doc """
   Gets capabilities for a model spec.
 
   Returns capabilities map or nil if model not found.
@@ -685,6 +796,33 @@ defmodule LLMDb do
       _ -> nil
     end
   end
+
+  # Utilities
+
+  @doc """
+  Parses a model spec string into a {provider, model_id} tuple.
+
+  Accepts either "provider:model" format or a {provider, model_id} tuple.
+
+  ## Parameters
+
+  - `spec` - Either a string like `"openai:gpt-4o-mini"` or tuple like `{:openai, "gpt-4o-mini"}`
+
+  ## Returns
+
+  - `{:ok, {provider, model_id}}` - Successfully parsed spec
+  - `{:error, term}` - Invalid spec format
+
+  ## Examples
+
+      {:ok, {:openai, "gpt-4o-mini"}} = LLMDb.parse("openai:gpt-4o-mini")
+      {:ok, {:anthropic, "claude-3-5-sonnet-20241022"}} = LLMDb.parse("anthropic:claude-3-5-sonnet-20241022")
+      {:ok, {:openai, "gpt-4o"}} = LLMDb.parse({:openai, "gpt-4o"})
+      {:error, _} = LLMDb.parse("invalid")
+  """
+  @spec parse(String.t() | {provider(), model_id()}) ::
+          {:ok, {provider(), model_id()}} | {:error, term()}
+  def parse(spec), do: Spec.parse_spec(spec)
 
   # Private helpers
 
@@ -750,6 +888,16 @@ defmodule LLMDb do
       [] -> find_first_match(rest, require_kw, forbid_kw)
       [model | _] -> {:ok, {provider, model.id}}
     end
+  end
+
+  defp find_all_matches(providers, require_kw, forbid_kw) do
+    Enum.flat_map(providers, fn provider ->
+      models(provider)
+      |> Enum.filter(&matches_require?(&1, require_kw))
+      |> Enum.reject(&matches_forbid?(&1, forbid_kw))
+      |> Enum.filter(&allowed?({provider, &1.id}))
+      |> Enum.map(&{provider, &1.id})
+    end)
   end
 
   defp summarize_filter(:all), do: ":all"

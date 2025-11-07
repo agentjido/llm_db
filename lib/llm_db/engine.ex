@@ -38,6 +38,9 @@ defmodule LLMDb.Engine do
 
   alias LLMDb.{Config, Enrich, Merge, Normalize, Source, Validate}
 
+  # List fields that should be unioned when merging models from multiple sources
+  @list_union_keys MapSet.new([:aliases, :tags, :input, :output])
+
   @doc """
   Runs the complete ETL pipeline to generate a model catalog snapshot.
 
@@ -308,7 +311,7 @@ defmodule LLMDb.Engine do
   # Private helpers
 
   # Merge models with special list handling rules
-  # Union for known list fields (aliases), replace for others
+  # Union for known list fields (:aliases, :tags, modalities :input/:output), replace for others
   defp merge_models_with_list_rules(base_models, override_models) do
     base_map = Map.new(base_models, fn m -> {{Map.get(m, :provider), Map.get(m, :id)}, m} end)
 
@@ -326,10 +329,14 @@ defmodule LLMDb.Engine do
     LLMDb.DeepMergeShim.deep_merge(left, right, &model_merge_resolver/3)
   end
 
-  defp model_merge_resolver(_key, left_val, right_val)
+  defp model_merge_resolver(key, left_val, right_val)
        when is_list(left_val) and is_list(right_val) do
-    # For lists: replace (right wins)
-    right_val
+    # For lists: union if accumulative field, replace otherwise
+    if MapSet.member?(@list_union_keys, key) do
+      union_unique(left_val, right_val)
+    else
+      right_val
+    end
   end
 
   defp model_merge_resolver(_key, left_val, right_val)
@@ -341,6 +348,11 @@ defmodule LLMDb.Engine do
   defp model_merge_resolver(_key, _left_val, right_val) do
     # For scalars: right wins
     right_val
+  end
+
+  # Union two lists, removing duplicates while preserving left-first order
+  defp union_unique(left, right) do
+    (left ++ right) |> Enum.uniq()
   end
 
   defp matches_patterns?(_model_id, []), do: false

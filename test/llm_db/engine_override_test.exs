@@ -336,7 +336,7 @@ defmodule LLMDb.EngineOverrideTest do
       assert model.limits.output == 4096
     end
 
-    test "deep merges modalities (override input, preserve output)" do
+    test "deep merges modalities (unions input, preserves output)" do
       base = %{
         providers: [%{id: :openai, name: "OpenAI"}],
         models: [
@@ -374,7 +374,9 @@ defmodule LLMDb.EngineOverrideTest do
       assert {:ok, _snapshot} = run_and_store(sources)
 
       {:ok, model} = LLMDb.model(:openai, "gpt-4")
-      assert model.modalities.input == [:text]
+      # Input should union since it's an accumulative field
+      assert model.modalities.input == [:text, :image]
+      # Output should be preserved from base
       assert model.modalities.output == [:text]
     end
   end
@@ -678,7 +680,7 @@ defmodule LLMDb.EngineOverrideTest do
       assert model.cost.input == 30.0
     end
 
-    test "array fields replaced by last source, not unioned" do
+    test "array fields replaced by last source, not unioned (except for accumulative fields)" do
       source1 = %{
         providers: [
           %{
@@ -726,13 +728,16 @@ defmodule LLMDb.EngineOverrideTest do
       assert {:ok, _snapshot} = run_and_store(sources)
 
       {:ok, provider} = LLMDb.provider(:openai)
+      # Provider env is not a union field, should replace
       assert provider.env == ["KEY3"]
       refute "KEY1" in provider.env
       refute "KEY2" in provider.env
 
       {:ok, model} = LLMDb.model(:openai, "gpt-4")
-      assert model.modalities.input == [:text, :audio]
-      refute :image in model.modalities.input
+      # Modalities.input IS a union field, should union
+      assert model.modalities.input == [:text, :image, :audio]
+      assert :image in model.modalities.input
+      assert :audio in model.modalities.input
     end
 
     test "deep merge preserves fields from earlier sources" do
