@@ -1,0 +1,44 @@
+id = "claude-haiku-4-5@20251001"
+provider = "google_vertex"
+name = "Claude Haiku 4.5"
+family = "claude"
+release_date = "2025-10-01"
+
+# Vertex Anthropic models use @ separator for versioning
+aliases = [
+  "claude-haiku-4-5@latest"
+]
+
+[limits]
+context = 200000
+output = 8192
+
+[cost]
+input = 0.8
+output = 4.0
+
+[modalities]
+input = ["text", "image"]
+output = ["text"]
+
+[capabilities]
+chat = true
+
+[capabilities.tools]
+enabled = true
+streaming = true
+strict = false
+parallel = true
+
+[capabilities.json]
+native = false
+schema = false
+strict = false
+
+[capabilities.streaming]
+text = true
+tool_calls = true
+
+[extra]
+vertex_model_path = "publishers/anthropic/models/claude-haiku-4-5"
+supports_thinking = false

@@ -1,0 +1,50 @@
+# Amazon Bedrock Provider Definition
+id = "amazon_bedrock"
+name = "Amazon Bedrock"
+base_url = "https://bedrock-runtime.{region}.amazonaws.com"
+doc = "https://docs.aws.amazon.com/bedrock/"
+
+env = ["AWS_ACCESS_KEY_ID", "AWS_SECRET_ACCESS_KEY", "AWS_BEARER_TOKEN_BEDROCK"]
+
+# Runtime configuration schema
+# Documents what configuration fields are needed beyond credentials
+[[config_schema]]
+name = "region"
+type = "string"
+required = false
+default = "us-east-1"
+doc = "AWS region where Bedrock is available"
+
+[[config_schema]]
+name = "api_key"
+type = "string"
+required = false
+doc = "Bedrock API key for simplified authentication (alternative to IAM credentials)"
+
+[[config_schema]]
+name = "access_key_id"
+type = "string"
+required = false
+doc = "AWS Access Key ID for IAM authentication"
+
+[[config_schema]]
+name = "secret_access_key"
+type = "string"
+required = false
+doc = "AWS Secret Access Key for IAM authentication"
+
+[[config_schema]]
+name = "session_token"
+type = "string"
+required = false
+doc = "AWS Session Token for temporary credentials"
+
+[[config_schema]]
+name = "use_converse"
+type = "boolean"
+required = false
+doc = "Force use of Bedrock Converse API (default: auto-detect based on tools presence)"
+
+[extra]
+auth_patterns = ["bearer_token", "sigv4"]
+default_api = "converse"

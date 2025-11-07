@@ -1,0 +1,32 @@
+# Google Vertex AI Provider Definition
+id = "google_vertex"
+name = "Google Vertex AI"
+base_url = "https://{region}-aiplatform.googleapis.com"
+doc = "https://cloud.google.com/vertex-ai/docs"
+
+env = ["GOOGLE_APPLICATION_CREDENTIALS", "GOOGLE_CLOUD_PROJECT"]
+
+# Runtime configuration schema
+[[config_schema]]
+name = "service_account_json"
+type = "string"
+required = false
+doc = "Path to service account JSON file (can also use GOOGLE_APPLICATION_CREDENTIALS env var)"
+
+[[config_schema]]
+name = "project_id"
+type = "string"
+required = true
+doc = "Google Cloud project ID (can also use GOOGLE_CLOUD_PROJECT env var)"
+
+[[config_schema]]
+name = "region"
+type = "string"
+required = false
+default = "global"
+doc = "Google Cloud region where Vertex AI is available (default 'global' for newest models)"
+
+[extra]
+auth_pattern = "service_account"
+supports_anthropic_models = true
+supports_gemini_models = true

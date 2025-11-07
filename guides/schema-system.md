@@ -8,10 +8,40 @@ Provider and Model schemas are defined using [Zoi](https://hexdocs.pm/zoi). Vali
 
 - `:id` (atom, required) - Unique provider identifier (e.g., `:openai`)
 - `:name` (string, required) - Display name
-- `:base_url` (string, optional) - Base API URL
-- `:env` (map, optional) - Environment variable mappings
+- `:base_url` (string, optional) - Base API URL (supports template variables)
+- `:env` (list of strings, optional) - Environment variable names for credentials
+- `:config_schema` (list of maps, optional) - Runtime configuration field definitions
 - `:doc` (string, optional) - Documentation URL
 - `:extra` (map, optional) - Additional provider-specific data
+
+#### Base URL Templates
+
+The `:base_url` field supports template variables in the format `{variable_name}`. These are typically substituted at runtime by client libraries based on configuration:
+
+```elixir
+"base_url" => "https://bedrock-runtime.{region}.amazonaws.com"
+```
+
+Common template variables:
+
+- `{region}` - Cloud provider region (e.g., AWS: "us-east-1", GCP: "us-central1")
+- `{project_id}` - Project identifier (e.g., Google Cloud project ID)
+
+#### Runtime Configuration Schema
+
+The `:config_schema` field documents what runtime configuration parameters the provider accepts beyond credentials. Each entry defines a configuration field:
+
+```elixir
+%{
+  "name" => "region",           # Field name
+  "type" => "string",           # Data type
+  "required" => false,          # Whether required
+  "default" => "us-east-1",     # Default value (optional)
+  "doc" => "AWS region..."      # Description (optional)
+}
+```
+
+This metadata helps client libraries validate configuration and generate documentation.
 
 ### Construction
 
@@ -20,12 +50,41 @@ provider_data = %{
   "id" => :openai,
   "name" => "OpenAI",
   "base_url" => "https://api.openai.com/v1",
-  "env" => %{"api_key" => "OPENAI_API_KEY"},
+  "env" => ["OPENAI_API_KEY"],
   "doc" => "https://platform.openai.com/docs"
 }
 
 {:ok, provider} = LLMDb.Provider.new(provider_data)
 provider = LLMDb.Provider.new!(provider_data)
+```
+
+### Example: AWS Bedrock
+
+```elixir
+%{
+  "id" => :amazon_bedrock,
+  "name" => "Amazon Bedrock",
+  "base_url" => "https://bedrock-runtime.{region}.amazonaws.com",
+  "env" => ["AWS_ACCESS_KEY_ID", "AWS_SECRET_ACCESS_KEY"],
+  "config_schema" => [
+    %{
+      "name" => "region",
+      "type" => "string",
+      "required" => false,
+      "default" => "us-east-1",
+      "doc" => "AWS region where Bedrock is available"
+    },
+    %{
+      "name" => "api_key",
+      "type" => "string",
+      "required" => false,
+      "doc" => "Bedrock API key for simplified authentication"
+    }
+  ],
+  "extra" => %{
+    "auth_patterns" => ["bearer_token", "sigv4"]
+  }
+}
 ```
 
 See `LLMDb.Schema.Provider` and `LLMDb.Provider` for details.
@@ -34,7 +93,7 @@ See `LLMDb.Schema.Provider` and `LLMDb.Provider` for details.
 
 ### Core Fields
 
-- `:id` (string, required) - Model identifier (e.g., "gpt-4")
+- `:id` (string, required) - Canonical model identifier (e.g., "gpt-4")
 - `:provider` (atom, required) - Provider atom (e.g., `:openai`)
 - `:provider_model_id` (string, optional) - Provider's internal ID (defaults to `:id`)
 - `:name` (string, required) - Display name
@@ -43,9 +102,39 @@ See `LLMDb.Schema.Provider` and `LLMDb.Provider` for details.
 - `:last_updated` (date, optional) - Last update date
 - `:knowledge` (date, optional) - Knowledge cutoff date
 - `:deprecated` (boolean, default: `false`) - Deprecation status
-- `:aliases` (list of strings, default: `[]`) - Alternative names
+- `:aliases` (list of strings, default: `[]`) - Alternative identifiers (see below)
 - `:tags` (list of strings, optional) - Categorization tags
 - `:extra` (map, optional) - Additional model-specific data
+
+#### Model Aliases
+
+The `:aliases` field allows a single model entry to be referenced by multiple identifiers. This is particularly useful for:
+
+1. **Provider-specific routing** - AWS Bedrock inference profiles prefix models with region identifiers:
+
+   ```elixir
+   %{
+     "id" => "anthropic.claude-opus-4-1-20250805-v1:0",  # Canonical ID
+     "aliases" => [
+       "us.anthropic.claude-opus-4-1-20250805-v1:0",     # US routing
+       "eu.anthropic.claude-opus-4-1-20250805-v1:0",     # EU routing
+       "global.anthropic.claude-opus-4-1-20250805-v1:0"  # Global routing
+     ]
+   }
+   ```
+
+2. **Version shortcuts** - Latest/stable version aliases:
+
+   ```elixir
+   %{
+     "id" => "claude-haiku-4-5@20251001",
+     "aliases" => ["claude-haiku-4-5@latest"]
+   }
+   ```
+
+3. **Legacy compatibility** - Supporting deprecated identifiers during migrations
+
+Client libraries should normalize model IDs before catalog lookup (e.g., strip region prefixes) and check both the `:id` and `:aliases` fields when resolving models.
 
 ### Capability Fields
 
@@ -94,6 +183,8 @@ See `LLMDb.Schema.Model` and `LLMDb.Model` for details.
 
 ### Capabilities
 
+The capabilities schema uses granular nested objects to accurately represent real-world provider limitations, moving beyond simple boolean flags.
+
 ```elixir
 %{
   "chat" => true,
@@ -104,14 +195,14 @@ See `LLMDb.Schema.Model` and `LLMDb.Model` for details.
   },
   "tools" => %{
     "enabled" => true,
-    "streaming" => true,
-    "strict" => true,
-    "parallel" => true
+    "streaming" => true,    # Can stream tool calls?
+    "strict" => true,       # Supports strict schema validation?
+    "parallel" => true      # Can invoke multiple tools in one turn?
   },
   "json" => %{
-    "native" => true,
-    "schema" => true,
-    "strict" => true
+    "native" => true,       # Native JSON mode support?
+    "schema" => true,       # Supports JSON schema?
+    "strict" => true        # Strict schema enforcement?
   },
   "streaming" => %{
     "text" => true,
@@ -119,6 +210,23 @@ See `LLMDb.Schema.Model` and `LLMDb.Model` for details.
   }
 }
 ```
+
+#### Granular Tool Capabilities
+
+The `tools` capability object allows precise documentation of provider-specific limitations. For example, **AWS Bedrock's Llama 3.3 70B** supports tools but not in streaming mode:
+
+```elixir
+%{
+  "tools" => %{
+    "enabled" => true,
+    "streaming" => false,  # ← Bedrock API restriction
+    "strict" => false,
+    "parallel" => false
+  }
+}
+```
+
+This granularity eliminates the need for client libraries to maintain provider-specific override lists, as the limitations are documented directly in the model metadata.
 
 Defaults applied during Enrich stage: booleans default to `false`, optional values to `nil`. See `LLMDb.Schema.Capabilities`.
 

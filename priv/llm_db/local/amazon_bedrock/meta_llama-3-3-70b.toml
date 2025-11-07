@@ -1,0 +1,55 @@
+id = "meta.llama3-3-70b-instruct-v1:0"
+provider = "amazon_bedrock"
+name = "Meta Llama 3.3 70B Instruct"
+family = "llama"
+release_date = "2024-12-01"
+
+# Inference profile aliases
+aliases = [
+  "us.meta.llama3-3-70b-instruct-v1:0",
+  "eu.meta.llama3-3-70b-instruct-v1:0",
+  "ap.meta.llama3-3-70b-instruct-v1:0",
+  "ca.meta.llama3-3-70b-instruct-v1:0",
+  "global.meta.llama3-3-70b-instruct-v1:0"
+]
+
+[limits]
+context = 128000
+output = 2048
+
+[cost]
+input = 0.265
+output = 0.354
+
+[modalities]
+input = ["text"]
+output = ["text"]
+
+[capabilities]
+chat = true
+
+# This demonstrates the granular capabilities fixing issue #163/#342
+# Tools work, but NOT in streaming mode (Bedrock API limitation)
+[capabilities.tools]
+enabled = true
+streaming = false  # <-- This is the key fix!
+strict = false
+parallel = false
+
+[capabilities.json]
+native = true
+schema = false
+strict = false
+
+[capabilities.streaming]
+text = true
+tool_calls = false  # Can't stream tool calls
+
+[extra]
+requires_converse = true
+# Known issues documented in extra field
+known_limitations = [
+  "Tools not supported in streaming mode",
+  "Integer type coercion issues (integers >= 2^31 may be dropped)",
+  "Tool calls may be returned as JSON text strings instead of structured objects"
+]

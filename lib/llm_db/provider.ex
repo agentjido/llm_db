@@ -13,11 +13,12 @@ defmodule LLMDb.Provider do
           name: String.t() | nil,
           base_url: String.t() | nil,
           env: [String.t()] | nil,
+          config_schema: [map()] | nil,
           doc: String.t() | nil,
           extra: map() | nil
         }
 
-  defstruct [:id, :name, :base_url, :env, :doc, :extra]
+  defstruct [:id, :name, :base_url, :env, :config_schema, :doc, :extra]
 
   @doc """
   Creates a new Provider struct from a map, validating with Zoi schema.
