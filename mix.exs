@@ -83,7 +83,8 @@ defmodule LLMDb.MixProject do
         "GitHub" => @source_url,
         "Agent Jido" => "https://agentjido.xyz"
       },
-      files: ~w(lib priv mix.exs LICENSE README.md CHANGELOG.md AGENTS.md .formatter.exs)
+      files:
+        ~w(config lib priv/llm_db/snapshot.json mix.exs LICENSE README.md CHANGELOG.md AGENTS.md usage-rules.md .formatter.exs)
     ]
   end
 
