@@ -74,9 +74,7 @@ defmodule Mix.Tasks.LlmModels.Pull do
     results = pull_all_sources(sources)
     print_summary(results)
 
-    Mix.shell().info(
-      "\nRun 'mix llm_db.build' to generate snapshot.json and valid_providers.ex"
-    )
+    Mix.shell().info("\nRun 'mix llm_db.build' to generate snapshot.json and valid_providers.ex")
   end
 
   # Pull from all sources and return list of {module, result} tuples

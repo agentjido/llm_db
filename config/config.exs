@@ -6,8 +6,7 @@ config :llm_db,
   sources: [
     {LLMDb.Sources.ModelsDev, %{}},
     {LLMDb.Sources.Local, %{dir: "priv/llm_db/local"}},
-    {LLMDb.Sources.Config,
-     %{overrides: Application.compile_env(:llm_db, :overrides, %{})}}
+    {LLMDb.Sources.Config, %{overrides: Application.compile_env(:llm_db, :overrides, %{})}}
   ],
 
   # Cache directory for remote sources
