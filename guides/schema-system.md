@@ -253,8 +253,13 @@ Pricing per million tokens (USD):
   "cache_read" => 0.5,     # Per 1M cached tokens read
   "cache_write" => 1.25,   # Per 1M tokens written to cache
   "training" => 25.0,      # Per 1M tokens for fine-tuning
+  "reasoning" => 10.0,     # Per 1M reasoning/thinking tokens
   "image" => 0.01,         # Per image
-  "audio" => 0.001         # Per second of audio
+  "audio" => 0.001,        # Per second of audio (deprecated, use input_audio/output_audio)
+  "input_audio" => 1.0,    # Per 1M input audio tokens
+  "output_audio" => 2.5,   # Per 1M output audio tokens
+  "input_video" => 3.0,    # Per 1M input video tokens
+  "output_video" => 5.0    # Per 1M output video tokens
 }
 ```
 

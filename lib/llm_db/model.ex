@@ -18,8 +18,13 @@ defmodule LLMDb.Model do
                  cache_read: Zoi.number() |> Zoi.nullish(),
                  cache_write: Zoi.number() |> Zoi.nullish(),
                  training: Zoi.number() |> Zoi.nullish(),
+                 reasoning: Zoi.number() |> Zoi.nullish(),
                  image: Zoi.number() |> Zoi.nullish(),
-                 audio: Zoi.number() |> Zoi.nullish()
+                 audio: Zoi.number() |> Zoi.nullish(),
+                 input_audio: Zoi.number() |> Zoi.nullish(),
+                 output_audio: Zoi.number() |> Zoi.nullish(),
+                 input_video: Zoi.number() |> Zoi.nullish(),
+                 output_video: Zoi.number() |> Zoi.nullish()
                })
 
   @reasoning_schema Zoi.object(%{

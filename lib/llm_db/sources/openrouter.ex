@@ -344,7 +344,13 @@ defmodule LLMDb.Sources.OpenRouter do
       %{}
       |> put_cost_if_present(:input, pricing["prompt"])
       |> put_cost_if_present(:output, pricing["completion"])
+      |> put_cost_if_present(:request, pricing["request"])
+      |> put_cost_if_present(:reasoning, pricing["internal_reasoning"])
       |> put_cost_if_present(:image, pricing["image"])
+      |> put_cost_if_present(:input_audio, pricing["input_audio"])
+      |> put_cost_if_present(:output_audio, pricing["output_audio"])
+      |> put_cost_if_present(:input_video, pricing["input_video"])
+      |> put_cost_if_present(:output_video, pricing["output_video"])
 
     if map_size(cost) > 0 do
       Map.put(model, :cost, cost)

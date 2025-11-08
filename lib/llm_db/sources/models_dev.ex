@@ -296,8 +296,13 @@ defmodule LLMDb.Sources.ModelsDev do
       |> put_if_present(:cache_read, cost["cache_read"])
       |> put_if_present(:cache_write, cost["cache_write"])
       |> put_if_present(:training, cost["training"])
+      |> put_if_present(:reasoning, cost["reasoning"])
       |> put_if_present(:image, cost["image"])
       |> put_if_present(:audio, cost["audio"])
+      |> put_if_present(:input_audio, cost["input_audio"])
+      |> put_if_present(:output_audio, cost["output_audio"])
+      |> put_if_present(:input_video, cost["input_video"])
+      |> put_if_present(:output_video, cost["output_video"])
 
     if map_size(cost_canonical) > 0 do
       Map.put(model, :cost, cost_canonical)
