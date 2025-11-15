@@ -60,18 +60,18 @@ defmodule LLMDB.Sources.ModelsDev do
         bin =
           cond do
             is_binary(body) and String.starts_with?(body, ["{", "["]) ->
-              # Already JSON string
-              body
+              case Jason.decode(body) do
+                {:ok, decoded} -> Jason.encode!(decoded, pretty: true)
+                {:error, _} -> body
+              end
 
             is_binary(body) ->
-              # Try to decode and re-encode for validation
               case Jason.decode(body) do
                 {:ok, decoded} -> Jason.encode!(decoded, pretty: true)
                 {:error, _} -> body
               end
 
             is_map(body) or is_list(body) ->
-              # Req decoded JSON - re-encode
               Jason.encode!(body, pretty: true)
 
             true ->

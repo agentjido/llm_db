@@ -108,9 +108,42 @@ See `LLMDB.Schema.Provider` and `LLMDB.Provider` for details.
 
 #### Model Aliases
 
-The `:aliases` field allows a single model entry to be referenced by multiple identifiers. This is particularly useful for:
+The `:aliases` field allows a single model entry to be referenced by multiple identifiers. This enables model consolidation and supports naming variations.
 
-1. **Provider-specific routing** - AWS Bedrock inference profiles prefix models with region identifiers:
+**Canonical ID Strategy:**
+- Each unique model has ONE canonical `id` (typically the dated version)
+- All naming variants are stored in the `aliases` array
+- Lookups check both `id` and `aliases` - both resolve to the same model
+
+**Common Use Cases:**
+
+1. **Naming Variants** - Dot vs dash notation, dated vs undated:
+
+   ```elixir
+   %{
+     "id" => "claude-haiku-4-5-20251001",  # Canonical (dated, dash notation)
+     "aliases" => [
+       "claude-haiku-4-5",                  # Undated version
+       "claude-haiku-4.5",                  # Dot notation
+       "claude-haiku-4.5-20251001"          # Dot + date variant
+     ]
+   }
+   ```
+
+2. **Version Shortcuts** - Latest/stable aliases:
+
+   ```elixir
+   %{
+     "id" => "claude-3-5-haiku-20241022",
+     "aliases" => [
+       "claude-3-5-haiku-latest",           # Latest version pointer
+       "claude-3.5-haiku",                  # Dot notation
+       "claude-3.5-haiku-20241022"          # Dot + date
+     ]
+   }
+   ```
+
+3. **Provider-specific Routing** - AWS Bedrock region prefixes:
 
    ```elixir
    %{
@@ -123,18 +156,71 @@ The `:aliases` field allows a single model entry to be referenced by multiple id
    }
    ```
 
-2. **Version shortcuts** - Latest/stable version aliases:
+4. **Legacy Compatibility** - Support deprecated identifiers:
 
    ```elixir
    %{
-     "id" => "claude-haiku-4-5@20251001",
-     "aliases" => ["claude-haiku-4-5@latest"]
+     "id" => "gpt-4o-2024-11-20",
+     "aliases" => [
+       "gpt-4o",                             # Undated version
+       "gpt-4o-latest",                      # Latest pointer
+       "chatgpt-4o-latest"                   # Legacy name
+     ]
    }
    ```
 
-3. **Legacy compatibility** - Supporting deprecated identifiers during migrations
+**Canonicalization Rules:**
 
-Client libraries should normalize model IDs before catalog lookup (e.g., strip region prefixes) and check both the `:id` and `:aliases` fields when resolving models.
+When consolidating models with multiple naming variants:
+1. **Prefer dated versions** - Dated IDs are immutable and map to a single release
+2. **Use dash notation** - `4-5` over `4.5` (dashes are the standard separator)
+3. **Full date format** - `YYYYMMDD` when available
+4. **Exclude from upstream** - Add non-canonical IDs to provider's `exclude_models`
+5. **Document aliases** - Create local TOML override with canonical ID and aliases
+
+**Example Consolidation:**
+
+```toml
+# llm_db/priv/llm_db/local/anthropic/claude-haiku-4-5-20251001.toml
+id = "claude-haiku-4-5-20251001"
+
+aliases = [
+  "claude-haiku-4-5",
+  "claude-haiku-4.5"
+]
+```
+
+```toml
+# llm_db/priv/llm_db/local/anthropic/provider.toml
+exclude_models = [
+  "claude-haiku-4-5",      # Now an alias
+  "claude-haiku-4.5"       # Now an alias
+]
+```
+
+**Resolution Behavior:**
+
+Client libraries should:
+1. Accept any variant (canonical ID or alias) in user input
+2. Resolve to canonical model via `LLMDB.model/1` or `LLMDB.model/2`
+3. Use `model.id` (canonical ID) for internal operations, fixtures, and cache keys
+4. Use `model.provider_model_id` (if set) for API requests
+
+**Important for Filtering:**
+
+Allow/deny filters match against **canonical IDs only**, not aliases. Always use canonical IDs in filter patterns:
+
+```elixir
+# ✓ Correct
+config :llm_db,
+  filter: %{allow: %{anthropic: ["claude-haiku-4-5-20251001"]}}
+
+# ✗ Incorrect (alias won't match)
+config :llm_db,
+  filter: %{allow: %{anthropic: ["claude-haiku-4.5"]}}
+```
+
+See [Consumer Integration Guide](consumer-integration.md) for detailed guidance on using aliases in your library.
 
 ### Capability Fields
 

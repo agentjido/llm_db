@@ -94,13 +94,48 @@ LLMDB.model(:openai, "unknown")  # => {:error, :not_found}
 
 ### Alias Resolution
 
-Aliases auto-resolve:
+Models can have multiple aliases that resolve to a single canonical model ID. This is useful for handling naming variations (dots vs dashes, dated vs undated versions, `-latest` shortcuts).
 
 ```elixir
-{:ok, model} = LLMDB.model(:openai, "gpt4")
-# => {:ok, %LLMDB.Model{id: "gpt-4", ...}}
+# All of these resolve to the same canonical model
+{:ok, model} = LLMDB.model(:anthropic, "claude-haiku-4-5-20251001")  # Canonical
+{:ok, model} = LLMDB.model(:anthropic, "claude-haiku-4-5")            # Undated
+{:ok, model} = LLMDB.model(:anthropic, "claude-haiku-4.5")            # Dot notation
+# All return: %LLMDB.Model{id: "claude-haiku-4-5-20251001", ...}
 
-{:ok, model} = LLMDB.model("openai:gpt4")
+# Aliases work in spec format too
+{:ok, model} = LLMDB.model("anthropic:claude-haiku-4.5")
+model.id  #=> "claude-haiku-4-5-20251001"
+
+# Check the aliases for a model
+model.aliases  #=> ["claude-haiku-4-5", "claude-haiku-4.5"]
+```
+
+**How Aliases Work:**
+- Each model has ONE canonical `id` (stored in `model.id`)
+- Additional naming variants are stored in `model.aliases`
+- Lookups check both `id` and `aliases` - both resolve to the same model
+- Canonical IDs are typically dated versions (e.g., `claude-haiku-4-5-20251001`)
+- Aliases include undated versions, dot/dash variations, and `-latest` shortcuts
+
+**Important for Filtering:**
+- Allow/deny filters match against **canonical IDs only**, not aliases
+- Alias resolution happens AFTER filtering during model lookup
+- Always use canonical IDs in filter patterns (see example below)
+
+```elixir
+# ✓ Correct - filter by canonical ID
+{:ok, _} = LLMDB.load(
+  allow: %{anthropic: ["claude-haiku-4-5-20251001"]},
+  deny: %{}
+)
+
+# ✗ Incorrect - alias won't match filter
+{:ok, _} = LLMDB.load(
+  allow: %{anthropic: ["claude-haiku-4.5"]},  # Won't work!
+  deny: %{}
+)
+# This will eliminate all models because "claude-haiku-4.5" is an alias, not a canonical ID
 ```
 
 ## Capabilities

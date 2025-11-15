@@ -48,6 +48,10 @@ model.capabilities.tools.enabled  #=> true
 model.cost.input                  #=> 0.15  (per 1M tokens)
 model.limits.context              #=> 128_000
 
+# Model aliases auto-resolve to canonical IDs
+{:ok, model} = LLMDB.model("anthropic:claude-haiku-4.5")
+model.id  #=> "claude-haiku-4-5-20251001" (canonical ID)
+
 # Select a model by capabilities (returns {provider, id})
 {:ok, {provider, id}} = LLMDB.select(
   require: [chat: true, tools: true, json_native: true],
@@ -174,6 +178,8 @@ config :llm_db,
 )
 ```
 
+**Important:** Filters match against **canonical model IDs only**, not aliases. Use canonical IDs (typically dated versions like `claude-haiku-4-5-20251001`) in filter patterns. Aliases are resolved during model lookup, after filtering is applied.
+
 ### Custom Providers
 
 Add local or private models to the catalog:
@@ -244,6 +250,7 @@ Designed to power [ReqLLM](https://github.com/agentjido/req_llm), but fully stan
 ## Docs & Guides
 
 - [Using the Data](guides/using-the-data.md) — Runtime API and querying
+- [Consumer Integration](guides/consumer-integration.md) — Best practices for libraries using llm_db
 - [Runtime Filters](guides/runtime-filters.md) — Load-time and runtime filtering
 - [Sources & Engine](guides/sources-and-engine.md) — ETL pipeline, data sources, precedence
 - [Schema System](guides/schema-system.md) — Zoi validation and data structures

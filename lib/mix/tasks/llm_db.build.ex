@@ -1,4 +1,4 @@
-defmodule Mix.Tasks.LLMDB.Build do
+defmodule Mix.Tasks.Llmdb.Build do
   use Mix.Task
 
   @shortdoc "Build snapshot.json from sources using the ETL pipeline"

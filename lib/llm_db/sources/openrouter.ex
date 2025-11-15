@@ -69,7 +69,10 @@ defmodule LLMDB.Sources.OpenRouter do
         bin =
           cond do
             is_binary(body) and String.starts_with?(body, ["{", "["]) ->
-              body
+              case Jason.decode(body) do
+                {:ok, decoded} -> Jason.encode!(decoded, pretty: true)
+                {:error, _} -> body
+              end
 
             is_binary(body) ->
               case Jason.decode(body) do
