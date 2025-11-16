@@ -18,6 +18,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Fixed
 
+- Claude Opus 4.1: Changed `provider_model_id` from `global.` to `us.` prefix - Opus 4.1 is only available with `us.` inference profile on AWS Bedrock, not `global.` like Haiku and Sonnet
 - Claude Haiku 4.5 and Sonnet 4.5: Override `tools.strict=false` to disable object generation hack - waiting for native Anthropic JSON support instead
 - Model spec parsing now handles ambiguous formats (specs with both `:` and `@` separators) by attempting provider validation to determine the correct format
 - Removed overly strict character validation that rejected `@` in model IDs when using colon format and `:` in model IDs when using @ format
