@@ -5,7 +5,8 @@ family = "claude"
 release_date = "2025-08-05"
 
 # Bedrock requires inference profile prefix for API calls
-provider_model_id = "global.anthropic.claude-opus-4-1-20250805-v1:0"
+# Note: Opus 4.1 only available with us. prefix, not global.
+provider_model_id = "us.anthropic.claude-opus-4-1-20250805-v1:0"
 
 # Inference profile aliases - allow routing across AWS regions
 aliases = [
