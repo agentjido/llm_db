@@ -11,14 +11,14 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Added
 
-- AWS Bedrock inference profile aliases for cross-region routing (us., eu., ap., ca., global. prefixes)
-  - anthropic.claude-haiku-4-5-20251001-v1:0
-  - anthropic.claude-sonnet-4-5-20250929-v1:0
-  - anthropic.claude-opus-4-1-20250805-v1:0
-  - meta.llama3-2-3b-instruct-v1:0
+- `provider_model_id` field for AWS Bedrock inference profile models that require API-specific identifiers
+  - Enables models to use canonical IDs (e.g., `anthropic.claude-haiku-4-5-20251001-v1:0`) while making API calls with inference profile prefixes (e.g., `us.anthropic.claude-haiku-4-5-20251001-v1:0`)
+  - Addresses AWS requirement: "Invocation of model ID [...] with on-demand throughput isn't supported. Retry your request with the ID or ARN of an inference profile"
+  - Applied to: Claude Haiku 4.5, Claude Sonnet 4.5, Claude Opus 4.1, Llama 3.3 70B, Llama 3.2 3B
 
 ### Fixed
 
+- Claude Haiku 4.5 and Sonnet 4.5: Override `tools.strict=false` to disable object generation hack - waiting for native Anthropic JSON support instead
 - Model spec parsing now handles ambiguous formats (specs with both `:` and `@` separators) by attempting provider validation to determine the correct format
 - Removed overly strict character validation that rejected `@` in model IDs when using colon format and `:` in model IDs when using @ format
 

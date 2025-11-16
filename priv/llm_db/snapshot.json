@@ -1,5 +1,5 @@
 {
-  "generated_at": "2025-11-15T21:56:31.399390Z",
+  "generated_at": "2025-11-16T18:27:14.448342Z",
   "providers": {
     "z-ai": {
       "base_url": null,
@@ -13094,7 +13094,7 @@
           "model": null,
           "name": "Meta Llama 3.3 70B Instruct",
           "provider": "amazon_bedrock",
-          "provider_model_id": null,
+          "provider_model_id": "us.meta.llama3-3-70b-instruct-v1:0",
           "release_date": "2024-12-01",
           "tags": null
         },
@@ -13115,32 +13115,27 @@
               "strict": false
             },
             "reasoning": {
-              "enabled": true,
-              "token_budget": 10000
+              "enabled": false
             },
             "streaming": {
               "text": true,
-              "tool_calls": true
+              "tool_calls": false
             },
             "tools": {
               "enabled": true,
-              "parallel": true,
-              "streaming": true,
               "strict": false
             }
           },
           "cost": {
             "cache_read": 1.5,
             "cache_write": 18.75,
-            "input": 15.0,
-            "output": 75.0
+            "input": 15,
+            "output": 75
           },
           "deprecated": false,
           "extra": {
             "attachment": true,
             "open_weights": false,
-            "requires_converse": true,
-            "supports_thinking": true,
             "temperature": true
           },
           "family": "claude",
@@ -13150,7 +13145,7 @@
           "lifecycle": null,
           "limits": {
             "context": 200000,
-            "output": 16384
+            "output": 32000
           },
           "modalities": {
             "input": [
@@ -13164,7 +13159,7 @@
           "model": null,
           "name": "Claude Opus 4.1",
           "provider": "amazon_bedrock",
-          "provider_model_id": null,
+          "provider_model_id": "global.anthropic.claude-opus-4-1-20250805-v1:0",
           "release_date": "2025-08-05",
           "tags": null
         },
@@ -13485,14 +13480,15 @@
               "strict": false
             },
             "reasoning": {
-              "enabled": true
+              "enabled": false
             },
             "streaming": {
               "text": true,
               "tool_calls": false
             },
             "tools": {
-              "enabled": true
+              "enabled": true,
+              "strict": false
             }
           },
           "cost": {
@@ -13528,7 +13524,7 @@
           "model": null,
           "name": "Claude Haiku 4.5",
           "provider": "amazon_bedrock",
-          "provider_model_id": null,
+          "provider_model_id": "global.anthropic.claude-haiku-4-5-20251001-v1:0",
           "release_date": "2025-10-15",
           "tags": null
         },
@@ -14034,14 +14030,15 @@
               "strict": false
             },
             "reasoning": {
-              "enabled": true
+              "enabled": false
             },
             "streaming": {
               "text": true,
               "tool_calls": false
             },
             "tools": {
-              "enabled": true
+              "enabled": true,
+              "strict": false
             }
           },
           "cost": {
@@ -14077,7 +14074,7 @@
           "model": null,
           "name": "Claude Sonnet 4.5",
           "provider": "amazon_bedrock",
-          "provider_model_id": null,
+          "provider_model_id": "global.anthropic.claude-sonnet-4-5-20250929-v1:0",
           "release_date": "2025-09-29",
           "tags": null
         },
@@ -14477,7 +14474,7 @@
           "model": null,
           "name": "Llama 3.2 3B Instruct",
           "provider": "amazon_bedrock",
-          "provider_model_id": null,
+          "provider_model_id": "global.meta.llama3-2-3b-instruct-v1:0",
           "release_date": "2024-09-25",
           "tags": null
         },
@@ -29975,63 +29972,6 @@
           "release_date": "2025-09-22",
           "tags": null
         },
-        "sherlock-think-alpha": {
-          "aliases": [],
-          "capabilities": {
-            "chat": true,
-            "embeddings": false,
-            "json": {
-              "native": false,
-              "schema": false,
-              "strict": false
-            },
-            "reasoning": {
-              "enabled": false
-            },
-            "streaming": {
-              "text": true,
-              "tool_calls": false
-            },
-            "tools": {
-              "enabled": true
-            }
-          },
-          "cost": {
-            "image": 0.0,
-            "input": 0.0,
-            "output": 0.0,
-            "reasoning": 0.0,
-            "request": 0.0
-          },
-          "deprecated": false,
-          "extra": {
-            "hugging_face_id": ""
-          },
-          "family": null,
-          "id": "sherlock-think-alpha",
-          "knowledge": null,
-          "last_updated": null,
-          "lifecycle": null,
-          "limits": {
-            "context": 1840000,
-            "output": 64000
-          },
-          "modalities": {
-            "input": [
-              "text",
-              "image"
-            ],
-            "output": [
-              "text"
-            ]
-          },
-          "model": null,
-          "name": "Sherlock Think Alpha",
-          "provider": "openrouter",
-          "provider_model_id": null,
-          "release_date": "2025-11-15",
-          "tags": null
-        },
         "qwen/qwen-2.5-coder-32b-instruct": {
           "aliases": [],
           "capabilities": null,
@@ -31680,63 +31620,6 @@
           "release_date": "2025-09-05",
           "tags": null
         },
-        "minimax/minimax-m2": {
-          "aliases": [],
-          "capabilities": {
-            "chat": true,
-            "embeddings": false,
-            "json": {
-              "native": false,
-              "schema": false,
-              "strict": false
-            },
-            "reasoning": {
-              "enabled": true
-            },
-            "streaming": {
-              "text": true,
-              "tool_calls": false
-            },
-            "tools": {
-              "enabled": true
-            }
-          },
-          "cost": {
-            "cache_read": 0.28,
-            "cache_write": 1.15,
-            "input": 0.28,
-            "output": 1.15
-          },
-          "deprecated": false,
-          "extra": {
-            "attachment": false,
-            "open_weights": true,
-            "temperature": true
-          },
-          "family": null,
-          "id": "minimax/minimax-m2",
-          "knowledge": null,
-          "last_updated": "2025-10-23",
-          "lifecycle": null,
-          "limits": {
-            "context": 196600,
-            "output": 118000
-          },
-          "modalities": {
-            "input": [
-              "text"
-            ],
-            "output": [
-              "text"
-            ]
-          },
-          "model": null,
-          "name": "MiniMax M2",
-          "provider": "openrouter",
-          "provider_model_id": null,
-          "release_date": "2025-10-23",
-          "tags": null
-        },
         "qwen/qwen3-30b-a3b-instruct-2507": {
           "aliases": [],
           "capabilities": {
@@ -32351,63 +32234,6 @@
           "release_date": "2024-09-25",
           "tags": null
         },
-        "sherlock-dash-alpha": {
-          "aliases": [],
-          "capabilities": {
-            "chat": true,
-            "embeddings": false,
-            "json": {
-              "native": false,
-              "schema": false,
-              "strict": false
-            },
-            "reasoning": {
-              "enabled": false
-            },
-            "streaming": {
-              "text": true,
-              "tool_calls": false
-            },
-            "tools": {
-              "enabled": true
-            }
-          },
-          "cost": {
-            "image": 0.0,
-            "input": 0.0,
-            "output": 0.0,
-            "reasoning": 0.0,
-            "request": 0.0
-          },
-          "deprecated": false,
-          "extra": {
-            "hugging_face_id": ""
-          },
-          "family": null,
-          "id": "sherlock-dash-alpha",
-          "knowledge": null,
-          "last_updated": null,
-          "lifecycle": null,
-          "limits": {
-            "context": 1840000,
-            "output": 64000
-          },
-          "modalities": {
-            "input": [
-              "text",
-              "image"
-            ],
-            "output": [
-              "text"
-            ]
-          },
-          "model": null,
-          "name": "Sherlock Dash Alpha",
-          "provider": "openrouter",
-          "provider_model_id": null,
-          "release_date": "2025-11-15",
-          "tags": null
-        },
         "google/gemini-2.0-flash-001": {
           "aliases": [],
           "capabilities": {
@@ -32735,6 +32561,63 @@
           "provider": "openrouter",
           "provider_model_id": null,
           "release_date": "2023-11-08",
+          "tags": null
+        },
+        "minimax/minimax-m2:free": {
+          "aliases": [],
+          "capabilities": {
+            "chat": true,
+            "embeddings": false,
+            "json": {
+              "native": false,
+              "schema": false,
+              "strict": false
+            },
+            "reasoning": {
+              "enabled": true
+            },
+            "streaming": {
+              "text": true,
+              "tool_calls": false
+            },
+            "tools": {
+              "enabled": true
+            }
+          },
+          "cost": {
+            "cache_read": 0,
+            "cache_write": 0,
+            "input": 0,
+            "output": 0
+          },
+          "deprecated": false,
+          "extra": {
+            "attachment": false,
+            "open_weights": true,
+            "temperature": true
+          },
+          "family": null,
+          "id": "minimax/minimax-m2:free",
+          "knowledge": null,
+          "last_updated": "2025-10-23",
+          "lifecycle": null,
+          "limits": {
+            "context": 204800,
+            "output": 131100
+          },
+          "modalities": {
+            "input": [
+              "text"
+            ],
+            "output": [
+              "text"
+            ]
+          },
+          "model": null,
+          "name": "MiniMax M2 (free)",
+          "provider": "openrouter",
+          "provider_model_id": null,
+          "release_date": "2025-10-23",
           "tags": null
         },
         "google/gemini-2.5-pro": {
@@ -40601,6 +40484,63 @@
           "provider": "anthropic",
           "provider_model_id": null,
           "release_date": "2024-03-05",
+          "tags": null
+        },
+        "claude-3.5-sonnet-20240620": {
+          "aliases": [],
+          "capabilities": {
+            "chat": true,
+            "embeddings": false,
+            "json": {
+              "native": false,
+              "schema": false,
+              "strict": false
+            },
+            "reasoning": {
+              "enabled": false
+            },
+            "streaming": {
+              "text": true,
+              "tool_calls": false
+            },
+            "tools": {
+              "enabled": true
+            }
+          },
+          "cost": {
+            "image": 4.8,
+            "input": 0.003,
+            "output": 0.015000000000000001,
+            "reasoning": 0.0,
+            "request": 0.0
+          },
+          "deprecated": false,
+          "extra": {
+            "hugging_face_id": null
+          },
+          "family": null,
+          "id": "claude-3.5-sonnet-20240620",
+          "knowledge": null,
+          "last_updated": null,
+          "lifecycle": null,
+          "limits": {
+            "context": 200000,
+            "output": 8192
+          },
+          "modalities": {
+            "input": [
+              "text",
+              "image"
+            ],
+            "output": [
+              "text"
+            ]
+          },
+          "model": null,
+          "name": "Anthropic: Claude 3.5 Sonnet (2024-06-20)",
+          "provider": "anthropic",
+          "provider_model_id": null,
+          "release_date": "2024-06-20",
           "tags": null
         },
         "claude-3.7-sonnet": {

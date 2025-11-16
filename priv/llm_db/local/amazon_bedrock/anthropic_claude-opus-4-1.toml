@@ -4,6 +4,9 @@ name = "Claude Opus 4.1"
 family = "claude"
 release_date = "2025-08-05"
 
+# Bedrock requires inference profile prefix for API calls
+provider_model_id = "global.anthropic.claude-opus-4-1-20250805-v1:0"
+
 # Inference profile aliases - allow routing across AWS regions
 aliases = [
   "us.anthropic.claude-opus-4-1-20250805-v1:0",
@@ -13,40 +16,6 @@ aliases = [
   "global.anthropic.claude-opus-4-1-20250805-v1:0"
 ]
 
-[limits]
-context = 200000
-output = 16384
-
-[cost]
-input = 15.0
-output = 75.0
-
-[modalities]
-input = ["text"]
-output = ["text"]
-
-[capabilities]
-chat = true
-
+# Override: Disable object generation hack - wait for native Anthropic support
 [capabilities.tools]
-enabled = true
-streaming = true
 strict = false
-parallel = true
-
-[capabilities.json]
-native = false
-schema = false
-strict = false
-
-[capabilities.streaming]
-text = true
-tool_calls = true
-
-[capabilities.reasoning]
-enabled = true
-token_budget = 10000
-
-[extra]
-requires_converse = true
-supports_thinking = true

@@ -1,6 +1,9 @@
 id = "anthropic.claude-haiku-4-5-20251001-v1:0"
 name = "Claude Haiku 4.5"
 
+# Bedrock requires inference profile prefix for API calls
+provider_model_id = "global.anthropic.claude-haiku-4-5-20251001-v1:0"
+
 # Inference profile aliases - allow routing across AWS regions
 aliases = [
   "us.anthropic.claude-haiku-4-5-20251001-v1:0",
@@ -9,3 +12,7 @@ aliases = [
   "ca.anthropic.claude-haiku-4-5-20251001-v1:0",
   "global.anthropic.claude-haiku-4-5-20251001-v1:0"
 ]
+
+# Override: Disable object generation hack - wait for native Anthropic support
+[capabilities.tools]
+strict = false
