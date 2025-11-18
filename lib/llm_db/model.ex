@@ -239,6 +239,32 @@ defmodule LLMDB.Model do
   def spec(%__MODULE__{provider: provider, id: id}, format \\ nil) do
     LLMDB.Spec.format_spec({provider, id}, format)
   end
+
+  @doc """
+  Checks if a model has reasoning capability enabled.
+
+  Encapsulates the knowledge of where reasoning.enabled lives in the capabilities structure.
+
+  ## Examples
+
+      iex> model = %LLMDB.Model{capabilities: %{reasoning: %{enabled: true}}}
+      iex> LLMDB.Model.reasoning_enabled?(model)
+      true
+
+      iex> model = %LLMDB.Model{capabilities: %{reasoning: %{enabled: false}}}
+      iex> LLMDB.Model.reasoning_enabled?(model)
+      false
+
+      iex> model = %LLMDB.Model{capabilities: %{}}
+      iex> LLMDB.Model.reasoning_enabled?(model)
+      false
+  """
+  @spec reasoning_enabled?(t()) :: boolean()
+  def reasoning_enabled?(%__MODULE__{capabilities: capabilities}) when is_map(capabilities) do
+    get_in(capabilities, [:reasoning, :enabled]) == true
+  end
+
+  def reasoning_enabled?(_model), do: false
 end
 
 defimpl DeepMerge.Resolver, for: LLMDB.Model do

@@ -107,4 +107,72 @@ defmodule LLMDB.ModelStructAPITest do
       assert LLMDB.Model.spec(model, :filename_safe) == "gpt-4o-mini@openai"
     end
   end
+
+  describe "LLMDB.Model.reasoning_enabled?/1" do
+    test "returns true when reasoning is enabled" do
+      model = %LLMDB.Model{
+        id: "claude-sonnet",
+        provider: :anthropic,
+        capabilities: %{reasoning: %{enabled: true}}
+      }
+
+      assert LLMDB.Model.reasoning_enabled?(model) == true
+    end
+
+    test "returns false when reasoning is explicitly disabled" do
+      model = %LLMDB.Model{
+        id: "claude-sonnet",
+        provider: :anthropic,
+        capabilities: %{reasoning: %{enabled: false}}
+      }
+
+      assert LLMDB.Model.reasoning_enabled?(model) == false
+    end
+
+    test "returns false when capabilities is empty map" do
+      model = %LLMDB.Model{
+        id: "gpt-4",
+        provider: :openai,
+        capabilities: %{}
+      }
+
+      assert LLMDB.Model.reasoning_enabled?(model) == false
+    end
+
+    test "returns false when capabilities is nil" do
+      model = %LLMDB.Model{
+        id: "gpt-4",
+        provider: :openai,
+        capabilities: nil
+      }
+
+      assert LLMDB.Model.reasoning_enabled?(model) == false
+    end
+
+    test "returns false when reasoning key exists but enabled is missing" do
+      model = %LLMDB.Model{
+        id: "claude-sonnet",
+        provider: :anthropic,
+        capabilities: %{reasoning: %{}}
+      }
+
+      assert LLMDB.Model.reasoning_enabled?(model) == false
+    end
+
+    test "returns false when reasoning key exists but enabled is nil" do
+      model = %LLMDB.Model{
+        id: "claude-sonnet",
+        provider: :anthropic,
+        capabilities: %{reasoning: %{enabled: nil}}
+      }
+
+      assert LLMDB.Model.reasoning_enabled?(model) == false
+    end
+
+    test "returns false for non-Model struct" do
+      assert LLMDB.Model.reasoning_enabled?(%{}) == false
+      assert LLMDB.Model.reasoning_enabled?(nil) == false
+      assert LLMDB.Model.reasoning_enabled?("model") == false
+    end
+  end
 end
