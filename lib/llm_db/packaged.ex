@@ -237,32 +237,27 @@ defmodule LLMDB.Packaged do
       defp secure_compare(_, _), do: false
     end
 
-    defp validate_schema(snapshot) when is_map(snapshot) do
+    defp validate_schema(%{providers: providers} = _snapshot)
+         when is_map(providers) do
       # Lightweight schema checks to prevent atom/memory exhaustion
-      case snapshot do
-        %{providers: providers} when is_map(providers) ->
-          provider_count = map_size(providers)
+      provider_count = map_size(providers)
 
-          if provider_count > 1000 do
-            Logger.warning(
-              "llm_db: snapshot contains unusually large number of providers: #{provider_count}. " <>
-                "Expected < 1000. Potential DoS attempt."
-            )
-          end
-
-          # Check provider IDs match safe regex
-          Enum.each(providers, fn {provider_id, _data} ->
-            unless is_atom(provider_id) and
-                     Atom.to_string(provider_id) =~ ~r/^[a-z][a-z0-9_:-]{0,63}$/ do
-              Logger.warning(
-                "llm_db: snapshot contains suspicious provider ID: #{inspect(provider_id)}"
-              )
-            end
-          end)
-
-        _ ->
-          :ok
+      if provider_count > 1000 do
+        Logger.warning(
+          "llm_db: snapshot contains unusually large number of providers: #{provider_count}. " <>
+            "Expected < 1000. Potential DoS attempt."
+        )
       end
+
+      # Check provider IDs match safe regex
+      Enum.each(providers, fn {provider_id, _data} ->
+        unless is_atom(provider_id) and
+                 Atom.to_string(provider_id) =~ ~r/^[a-z][a-z0-9_:-]{0,63}$/ do
+          Logger.warning(
+            "llm_db: snapshot contains suspicious provider ID: #{inspect(provider_id)}"
+          )
+        end
+      end)
 
       :ok
     end

@@ -232,25 +232,6 @@ defmodule LLMDB.Sources.Google do
 
   defp fetch_all_pages(url, req_opts, page_size, acc) do
     params = [pageSize: page_size]
-
-    params =
-      case acc do
-        [] ->
-          params
-
-        _ ->
-          case List.last(acc) do
-            %{"name" => _} ->
-              case get_next_page_token(acc) do
-                nil -> params
-                token -> [{:pageToken, token} | params]
-              end
-
-            _ ->
-              params
-          end
-      end
-
     req_opts = Keyword.put(req_opts, :params, params)
 
     case Req.get(url, req_opts) do
@@ -275,9 +256,6 @@ defmodule LLMDB.Sources.Google do
         {:error, reason}
     end
   end
-
-  defp get_next_page_token([]), do: nil
-  defp get_next_page_token(_models), do: nil
 
   defp put_if_present(map, _key, nil), do: map
   defp put_if_present(map, key, value), do: Map.put(map, key, value)
