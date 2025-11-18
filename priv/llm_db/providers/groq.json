@@ -1,0 +1,515 @@
+{
+  "alias_of": null,
+  "base_url": "https://api.groq.com/openai/v1",
+  "config_schema": null,
+  "doc": "https://groq.com/docs",
+  "env": [
+    "GROQ_API_KEY"
+  ],
+  "exclude_models": [
+    "deepseek-r1-distill-llama-70b",
+    "deepseek-r1-distill-llama-70b-specdec",
+    "deepseek-r1-distill-qwen-32b",
+    "distil-whisper-large-v3-en",
+    "gemma-7b-it",
+    "gemma2-9b-it",
+    "llama-3.1-70b-specdec",
+    "llama-3.1-70b-versatile",
+    "llama-3.2-11b-text-preview",
+    "llama-3.2-11b-vision-preview",
+    "llama-3.2-1b-preview",
+    "llama-3.2-3b-preview",
+    "llama-3.2-90b-text-preview",
+    "llama-3.2-90b-vision-preview",
+    "llama-3.3-70b-specdec",
+    "llama-guard-3-8b",
+    "llama3-70b-8192",
+    "llama3-8b-8192",
+    "llama3-groq-70b-8192-tool-use-preview",
+    "llama3-groq-8b-8192-tool-use-preview",
+    "llava-v1.5-7b-4096-preview",
+    "mistral-saba-24b",
+    "mixtral-8x7b-32768",
+    "moonshotai/kimi-k2-instruct",
+    "qwen-2.5-32b",
+    "qwen-2.5-coder-32b",
+    "qwen-qwq-32b"
+  ],
+  "extra": null,
+  "id": "groq",
+  "models": {
+    "llama-3.1-8b-instant": {
+      "aliases": [],
+      "capabilities": {
+        "chat": true,
+        "embeddings": false,
+        "json": {
+          "native": false,
+          "schema": false,
+          "strict": false
+        },
+        "reasoning": {
+          "enabled": false
+        },
+        "streaming": {
+          "tool_calls": true
+        },
+        "tools": {
+          "enabled": true
+        }
+      },
+      "cost": {
+        "input": 0.05,
+        "output": 0.08
+      },
+      "deprecated": false,
+      "extra": {
+        "attachment": false,
+        "open_weights": true,
+        "temperature": true
+      },
+      "family": null,
+      "id": "llama-3.1-8b-instant",
+      "knowledge": "2023-12",
+      "last_updated": "2024-07-23",
+      "lifecycle": null,
+      "limits": {
+        "context": 131072,
+        "output": 8192
+      },
+      "modalities": {
+        "input": [
+          "text"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "model": null,
+      "name": "Llama 3.1 8B Instant",
+      "provider": "groq",
+      "provider_model_id": null,
+      "release_date": "2024-07-23",
+      "tags": null
+    },
+    "llama-3.3-70b-versatile": {
+      "aliases": [],
+      "capabilities": {
+        "chat": true,
+        "embeddings": false,
+        "json": {
+          "native": false,
+          "schema": false,
+          "strict": false
+        },
+        "reasoning": {
+          "enabled": false
+        },
+        "streaming": {
+          "tool_calls": true
+        },
+        "tools": {
+          "enabled": true
+        }
+      },
+      "cost": {
+        "input": 0.59,
+        "output": 0.79
+      },
+      "deprecated": false,
+      "extra": {
+        "attachment": false,
+        "open_weights": true,
+        "temperature": true
+      },
+      "family": null,
+      "id": "llama-3.3-70b-versatile",
+      "knowledge": "2023-12",
+      "last_updated": "2024-12-06",
+      "lifecycle": null,
+      "limits": {
+        "context": 131072,
+        "output": 32768
+      },
+      "modalities": {
+        "input": [
+          "text"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "model": null,
+      "name": "Llama 3.3 70B Versatile",
+      "provider": "groq",
+      "provider_model_id": null,
+      "release_date": "2024-12-06",
+      "tags": null
+    },
+    "meta-llama/llama-4-maverick-17b-128e-instruct": {
+      "aliases": [],
+      "capabilities": {
+        "chat": true,
+        "embeddings": false,
+        "json": {
+          "native": false,
+          "schema": false,
+          "strict": false
+        },
+        "reasoning": {
+          "enabled": false
+        },
+        "streaming": {
+          "tool_calls": true
+        },
+        "tools": {
+          "enabled": true
+        }
+      },
+      "cost": {
+        "input": 0.2,
+        "output": 0.6
+      },
+      "deprecated": false,
+      "extra": {
+        "attachment": false,
+        "open_weights": true,
+        "temperature": true
+      },
+      "family": null,
+      "id": "meta-llama/llama-4-maverick-17b-128e-instruct",
+      "knowledge": "2024-08",
+      "last_updated": "2025-04-05",
+      "lifecycle": null,
+      "limits": {
+        "context": 131072,
+        "output": 8192
+      },
+      "modalities": {
+        "input": [
+          "text",
+          "image"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "model": null,
+      "name": "Llama 4 Maverick 17B",
+      "provider": "groq",
+      "provider_model_id": null,
+      "release_date": "2025-04-05",
+      "tags": null
+    },
+    "meta-llama/llama-4-scout-17b-16e-instruct": {
+      "aliases": [],
+      "capabilities": {
+        "chat": true,
+        "embeddings": false,
+        "json": {
+          "native": false,
+          "schema": false,
+          "strict": false
+        },
+        "reasoning": {
+          "enabled": false
+        },
+        "streaming": {
+          "tool_calls": true
+        },
+        "tools": {
+          "enabled": true
+        }
+      },
+      "cost": {
+        "input": 0.11,
+        "output": 0.34
+      },
+      "deprecated": false,
+      "extra": {
+        "attachment": false,
+        "open_weights": true,
+        "temperature": true
+      },
+      "family": null,
+      "id": "meta-llama/llama-4-scout-17b-16e-instruct",
+      "knowledge": "2024-08",
+      "last_updated": "2025-04-05",
+      "lifecycle": null,
+      "limits": {
+        "context": 131072,
+        "output": 8192
+      },
+      "modalities": {
+        "input": [
+          "text",
+          "image"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "model": null,
+      "name": "Llama 4 Scout 17B",
+      "provider": "groq",
+      "provider_model_id": null,
+      "release_date": "2025-04-05",
+      "tags": null
+    },
+    "meta-llama/llama-guard-4-12b": {
+      "aliases": [],
+      "capabilities": null,
+      "cost": {
+        "input": 0.2,
+        "output": 0.2
+      },
+      "deprecated": false,
+      "extra": {
+        "attachment": false,
+        "open_weights": true,
+        "temperature": true
+      },
+      "family": null,
+      "id": "meta-llama/llama-guard-4-12b",
+      "knowledge": null,
+      "last_updated": "2025-04-05",
+      "lifecycle": null,
+      "limits": {
+        "context": 131072,
+        "output": 128
+      },
+      "modalities": {
+        "input": [
+          "text",
+          "image"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "model": null,
+      "name": "Llama Guard 4 12B",
+      "provider": "groq",
+      "provider_model_id": null,
+      "release_date": "2025-04-05",
+      "tags": null
+    },
+    "moonshotai/kimi-k2-instruct-0905": {
+      "aliases": [],
+      "capabilities": {
+        "chat": true,
+        "embeddings": false,
+        "json": {
+          "native": false,
+          "schema": false,
+          "strict": false
+        },
+        "reasoning": {
+          "enabled": false
+        },
+        "streaming": {
+          "tool_calls": true
+        },
+        "tools": {
+          "enabled": true
+        }
+      },
+      "cost": {
+        "input": 1,
+        "output": 3
+      },
+      "deprecated": false,
+      "extra": {
+        "attachment": false,
+        "open_weights": true,
+        "temperature": true
+      },
+      "family": null,
+      "id": "moonshotai/kimi-k2-instruct-0905",
+      "knowledge": "2024-10",
+      "last_updated": "2025-09-05",
+      "lifecycle": null,
+      "limits": {
+        "context": 262144,
+        "output": 16384
+      },
+      "modalities": {
+        "input": [
+          "text"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "model": null,
+      "name": "Kimi K2 Instruct 0905",
+      "provider": "groq",
+      "provider_model_id": null,
+      "release_date": "2025-09-05",
+      "tags": null
+    },
+    "openai/gpt-oss-120b": {
+      "aliases": [],
+      "capabilities": {
+        "chat": true,
+        "embeddings": false,
+        "json": {
+          "native": false,
+          "schema": false,
+          "strict": false
+        },
+        "reasoning": {
+          "enabled": true
+        },
+        "streaming": {
+          "tool_calls": true
+        },
+        "tools": {
+          "enabled": true
+        }
+      },
+      "cost": {
+        "input": 0.15,
+        "output": 0.75
+      },
+      "deprecated": false,
+      "extra": {
+        "attachment": false,
+        "open_weights": true,
+        "temperature": true
+      },
+      "family": null,
+      "id": "openai/gpt-oss-120b",
+      "knowledge": null,
+      "last_updated": "2025-08-05",
+      "lifecycle": null,
+      "limits": {
+        "context": 131072,
+        "output": 32768
+      },
+      "modalities": {
+        "input": [
+          "text"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "model": null,
+      "name": "GPT OSS 120B",
+      "provider": "groq",
+      "provider_model_id": null,
+      "release_date": "2025-08-05",
+      "tags": null
+    },
+    "openai/gpt-oss-20b": {
+      "aliases": [],
+      "capabilities": {
+        "chat": true,
+        "embeddings": false,
+        "json": {
+          "native": false,
+          "schema": false,
+          "strict": false
+        },
+        "reasoning": {
+          "enabled": true
+        },
+        "streaming": {
+          "tool_calls": true
+        },
+        "tools": {
+          "enabled": true
+        }
+      },
+      "cost": {
+        "input": 0.1,
+        "output": 0.5
+      },
+      "deprecated": false,
+      "extra": {
+        "attachment": false,
+        "open_weights": true,
+        "temperature": true
+      },
+      "family": null,
+      "id": "openai/gpt-oss-20b",
+      "knowledge": null,
+      "last_updated": "2025-08-05",
+      "lifecycle": null,
+      "limits": {
+        "context": 131072,
+        "output": 32768
+      },
+      "modalities": {
+        "input": [
+          "text"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "model": null,
+      "name": "GPT OSS 20B",
+      "provider": "groq",
+      "provider_model_id": null,
+      "release_date": "2025-08-05",
+      "tags": null
+    },
+    "qwen/qwen3-32b": {
+      "aliases": [],
+      "capabilities": {
+        "chat": true,
+        "embeddings": false,
+        "json": {
+          "native": false,
+          "schema": false,
+          "strict": false
+        },
+        "reasoning": {
+          "enabled": true
+        },
+        "streaming": {
+          "tool_calls": true
+        },
+        "tools": {
+          "enabled": true
+        }
+      },
+      "cost": {
+        "input": 0.29,
+        "output": 0.59
+      },
+      "deprecated": false,
+      "extra": {
+        "attachment": false,
+        "open_weights": true,
+        "temperature": true
+      },
+      "family": null,
+      "id": "qwen/qwen3-32b",
+      "knowledge": "2024-11-08",
+      "last_updated": "2024-12-23",
+      "lifecycle": null,
+      "limits": {
+        "context": 131072,
+        "output": 16384
+      },
+      "modalities": {
+        "input": [
+          "text"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "model": null,
+      "name": "Qwen3 32B",
+      "provider": "groq",
+      "provider_model_id": null,
+      "release_date": "2024-12-23",
+      "tags": null
+    }
+  },
+  "name": "Groq"
+}

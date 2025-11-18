@@ -1,0 +1,686 @@
+{
+  "alias_of": null,
+  "base_url": null,
+  "config_schema": null,
+  "doc": "https://www.scaleway.com/en/docs/generative-apis/",
+  "env": [
+    "SCALEWAY_API_KEY"
+  ],
+  "exclude_models": null,
+  "extra": null,
+  "id": "scaleway",
+  "models": {
+    "bge-multilingual-gemma2": {
+      "aliases": [],
+      "capabilities": null,
+      "cost": {
+        "input": 0.13,
+        "output": 0
+      },
+      "deprecated": false,
+      "extra": {
+        "attachment": false,
+        "open_weights": false,
+        "temperature": false
+      },
+      "family": null,
+      "id": "bge-multilingual-gemma2",
+      "knowledge": null,
+      "last_updated": "2025-06-15",
+      "lifecycle": null,
+      "limits": {
+        "context": 8191,
+        "output": 3072
+      },
+      "modalities": {
+        "input": [
+          "text"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "model": null,
+      "name": "BGE Multilingual Gemma2",
+      "provider": "scaleway",
+      "provider_model_id": null,
+      "release_date": "2024-07-26",
+      "tags": null
+    },
+    "deepseek-r1-distill-llama-70b": {
+      "aliases": [],
+      "capabilities": {
+        "chat": true,
+        "embeddings": false,
+        "json": {
+          "native": false,
+          "schema": false,
+          "strict": false
+        },
+        "reasoning": {
+          "enabled": true
+        },
+        "streaming": {
+          "tool_calls": true
+        },
+        "tools": {
+          "enabled": true
+        }
+      },
+      "cost": {
+        "input": 0.9,
+        "output": 0.9
+      },
+      "deprecated": false,
+      "extra": {
+        "attachment": false,
+        "open_weights": true,
+        "temperature": true
+      },
+      "family": null,
+      "id": "deepseek-r1-distill-llama-70b",
+      "knowledge": "2024-07",
+      "last_updated": "2025-01-20",
+      "lifecycle": null,
+      "limits": {
+        "context": 32000,
+        "output": 4096
+      },
+      "modalities": {
+        "input": [
+          "text"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "model": null,
+      "name": "DeepSeek R1 Distill Llama 70B",
+      "provider": "scaleway",
+      "provider_model_id": null,
+      "release_date": "2025-01-20",
+      "tags": null
+    },
+    "gemma-3-27b-it": {
+      "aliases": [],
+      "capabilities": {
+        "chat": true,
+        "embeddings": false,
+        "json": {
+          "native": false,
+          "schema": false,
+          "strict": false
+        },
+        "reasoning": {
+          "enabled": true
+        },
+        "streaming": {
+          "tool_calls": true
+        },
+        "tools": {
+          "enabled": true
+        }
+      },
+      "cost": {
+        "input": 0.25,
+        "output": 0.5
+      },
+      "deprecated": false,
+      "extra": {
+        "attachment": true,
+        "open_weights": false,
+        "temperature": true
+      },
+      "family": null,
+      "id": "gemma-3-27b-it",
+      "knowledge": "2024-12",
+      "last_updated": "2025-09-05",
+      "lifecycle": null,
+      "limits": {
+        "context": 40000,
+        "output": 8192
+      },
+      "modalities": {
+        "input": [
+          "text",
+          "image"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "model": null,
+      "name": "Gemma-3-27B-IT",
+      "provider": "scaleway",
+      "provider_model_id": null,
+      "release_date": "2024-12-01",
+      "tags": null
+    },
+    "gpt-oss-120b": {
+      "aliases": [],
+      "capabilities": {
+        "chat": true,
+        "embeddings": false,
+        "json": {
+          "native": false,
+          "schema": false,
+          "strict": false
+        },
+        "reasoning": {
+          "enabled": false
+        },
+        "streaming": {
+          "tool_calls": true
+        },
+        "tools": {
+          "enabled": true
+        }
+      },
+      "cost": {
+        "input": 0.15,
+        "output": 0.6
+      },
+      "deprecated": false,
+      "extra": {
+        "attachment": true,
+        "open_weights": true,
+        "temperature": true
+      },
+      "family": null,
+      "id": "gpt-oss-120b",
+      "knowledge": null,
+      "last_updated": "2024-01-01",
+      "lifecycle": null,
+      "limits": {
+        "context": 128000,
+        "output": 8192
+      },
+      "modalities": {
+        "input": [
+          "text"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "model": null,
+      "name": "GPT-OSS 120B",
+      "provider": "scaleway",
+      "provider_model_id": null,
+      "release_date": "2024-01-01",
+      "tags": null
+    },
+    "llama-3.1-8b-instruct": {
+      "aliases": [],
+      "capabilities": {
+        "chat": true,
+        "embeddings": false,
+        "json": {
+          "native": false,
+          "schema": false,
+          "strict": false
+        },
+        "reasoning": {
+          "enabled": false
+        },
+        "streaming": {
+          "tool_calls": true
+        },
+        "tools": {
+          "enabled": true
+        }
+      },
+      "cost": {
+        "input": 0.2,
+        "output": 0.2
+      },
+      "deprecated": false,
+      "extra": {
+        "attachment": false,
+        "open_weights": true,
+        "temperature": true
+      },
+      "family": null,
+      "id": "llama-3.1-8b-instruct",
+      "knowledge": "2023-12",
+      "last_updated": "2025-01-01",
+      "lifecycle": null,
+      "limits": {
+        "context": 128000,
+        "output": 16384
+      },
+      "modalities": {
+        "input": [
+          "text"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "model": null,
+      "name": "Llama 3.1 8B Instruct",
+      "provider": "scaleway",
+      "provider_model_id": null,
+      "release_date": "2025-01-01",
+      "tags": null
+    },
+    "llama-3.3-70b-instruct": {
+      "aliases": [],
+      "capabilities": {
+        "chat": true,
+        "embeddings": false,
+        "json": {
+          "native": false,
+          "schema": false,
+          "strict": false
+        },
+        "reasoning": {
+          "enabled": false
+        },
+        "streaming": {
+          "tool_calls": true
+        },
+        "tools": {
+          "enabled": true
+        }
+      },
+      "cost": {
+        "input": 0.9,
+        "output": 0.9
+      },
+      "deprecated": false,
+      "extra": {
+        "attachment": true,
+        "open_weights": true,
+        "temperature": true
+      },
+      "family": null,
+      "id": "llama-3.3-70b-instruct",
+      "knowledge": "2023-12",
+      "last_updated": "2024-12-06",
+      "lifecycle": null,
+      "limits": {
+        "context": 100000,
+        "output": 4096
+      },
+      "modalities": {
+        "input": [
+          "text"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "model": null,
+      "name": "Llama-3.3-70B-Instruct",
+      "provider": "scaleway",
+      "provider_model_id": null,
+      "release_date": "2024-12-06",
+      "tags": null
+    },
+    "mistral-nemo-instruct-2407": {
+      "aliases": [],
+      "capabilities": {
+        "chat": true,
+        "embeddings": false,
+        "json": {
+          "native": false,
+          "schema": false,
+          "strict": false
+        },
+        "reasoning": {
+          "enabled": false
+        },
+        "streaming": {
+          "tool_calls": true
+        },
+        "tools": {
+          "enabled": true
+        }
+      },
+      "cost": {
+        "input": 0.2,
+        "output": 0.2
+      },
+      "deprecated": false,
+      "extra": {
+        "attachment": true,
+        "open_weights": true,
+        "temperature": true
+      },
+      "family": null,
+      "id": "mistral-nemo-instruct-2407",
+      "knowledge": null,
+      "last_updated": "2024-07-25",
+      "lifecycle": null,
+      "limits": {
+        "context": 128000,
+        "output": 8192
+      },
+      "modalities": {
+        "input": [
+          "text"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "model": null,
+      "name": "Mistral Nemo Instruct 2407",
+      "provider": "scaleway",
+      "provider_model_id": null,
+      "release_date": "2024-07-25",
+      "tags": null
+    },
+    "mistral-small-3.2-24b-instruct-2506": {
+      "aliases": [],
+      "capabilities": {
+        "chat": true,
+        "embeddings": false,
+        "json": {
+          "native": false,
+          "schema": false,
+          "strict": false
+        },
+        "reasoning": {
+          "enabled": false
+        },
+        "streaming": {
+          "tool_calls": true
+        },
+        "tools": {
+          "enabled": true
+        }
+      },
+      "cost": {
+        "input": 0.15,
+        "output": 0.35
+      },
+      "deprecated": false,
+      "extra": {
+        "attachment": false,
+        "open_weights": true,
+        "temperature": true
+      },
+      "family": null,
+      "id": "mistral-small-3.2-24b-instruct-2506",
+      "knowledge": null,
+      "last_updated": "2025-06-20",
+      "lifecycle": null,
+      "limits": {
+        "context": 128000,
+        "output": 8192
+      },
+      "modalities": {
+        "input": [
+          "text",
+          "image"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "model": null,
+      "name": "Mistral Small 3.2 24B Instruct (2506)",
+      "provider": "scaleway",
+      "provider_model_id": null,
+      "release_date": "2025-06-20",
+      "tags": null
+    },
+    "pixtral-12b-2409": {
+      "aliases": [],
+      "capabilities": {
+        "chat": true,
+        "embeddings": false,
+        "json": {
+          "native": false,
+          "schema": false,
+          "strict": false
+        },
+        "reasoning": {
+          "enabled": false
+        },
+        "streaming": {
+          "tool_calls": true
+        },
+        "tools": {
+          "enabled": true
+        }
+      },
+      "cost": {
+        "input": 0.2,
+        "output": 0.2
+      },
+      "deprecated": false,
+      "extra": {
+        "attachment": true,
+        "open_weights": true,
+        "temperature": true
+      },
+      "family": null,
+      "id": "pixtral-12b-2409",
+      "knowledge": null,
+      "last_updated": "2024-09-25",
+      "lifecycle": null,
+      "limits": {
+        "context": 128000,
+        "output": 4096
+      },
+      "modalities": {
+        "input": [
+          "text",
+          "image"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "model": null,
+      "name": "Pixtral 12B 2409",
+      "provider": "scaleway",
+      "provider_model_id": null,
+      "release_date": "2024-09-25",
+      "tags": null
+    },
+    "qwen3-235b-a22b-instruct-2507": {
+      "aliases": [],
+      "capabilities": {
+        "chat": true,
+        "embeddings": false,
+        "json": {
+          "native": false,
+          "schema": false,
+          "strict": false
+        },
+        "reasoning": {
+          "enabled": false
+        },
+        "streaming": {
+          "tool_calls": true
+        },
+        "tools": {
+          "enabled": true
+        }
+      },
+      "cost": {
+        "input": 0.75,
+        "output": 2.25
+      },
+      "deprecated": false,
+      "extra": {
+        "attachment": true,
+        "open_weights": true,
+        "temperature": true
+      },
+      "family": null,
+      "id": "qwen3-235b-a22b-instruct-2507",
+      "knowledge": null,
+      "last_updated": "2025-07-01",
+      "lifecycle": null,
+      "limits": {
+        "context": 260000,
+        "output": 8192
+      },
+      "modalities": {
+        "input": [
+          "text"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "model": null,
+      "name": "Qwen3 235B A22B Instruct 2507",
+      "provider": "scaleway",
+      "provider_model_id": null,
+      "release_date": "2025-07-01",
+      "tags": null
+    },
+    "qwen3-coder-30b-a3b-instruct": {
+      "aliases": [],
+      "capabilities": {
+        "chat": true,
+        "embeddings": false,
+        "json": {
+          "native": false,
+          "schema": false,
+          "strict": false
+        },
+        "reasoning": {
+          "enabled": false
+        },
+        "streaming": {
+          "tool_calls": true
+        },
+        "tools": {
+          "enabled": true
+        }
+      },
+      "cost": {
+        "input": 0.2,
+        "output": 0.8
+      },
+      "deprecated": false,
+      "extra": {
+        "attachment": false,
+        "open_weights": true,
+        "temperature": true
+      },
+      "family": null,
+      "id": "qwen3-coder-30b-a3b-instruct",
+      "knowledge": "2025-04",
+      "last_updated": "2025-04",
+      "lifecycle": null,
+      "limits": {
+        "context": 128000,
+        "output": 8192
+      },
+      "modalities": {
+        "input": [
+          "text"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "model": null,
+      "name": "Qwen3-Coder 30B-A3B Instruct",
+      "provider": "scaleway",
+      "provider_model_id": null,
+      "release_date": "2025-04",
+      "tags": null
+    },
+    "voxtral-small-24b-2507": {
+      "aliases": [],
+      "capabilities": {
+        "chat": true,
+        "embeddings": false,
+        "json": {
+          "native": false,
+          "schema": false,
+          "strict": false
+        },
+        "reasoning": {
+          "enabled": false
+        },
+        "streaming": {
+          "tool_calls": true
+        },
+        "tools": {
+          "enabled": true
+        }
+      },
+      "cost": {
+        "input": 0.15,
+        "output": 0.35
+      },
+      "deprecated": false,
+      "extra": {
+        "attachment": true,
+        "open_weights": true,
+        "temperature": true
+      },
+      "family": null,
+      "id": "voxtral-small-24b-2507",
+      "knowledge": null,
+      "last_updated": "2025-07-01",
+      "lifecycle": null,
+      "limits": {
+        "context": 32000,
+        "output": 8192
+      },
+      "modalities": {
+        "input": [
+          "text",
+          "audio"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "model": null,
+      "name": "Voxtral Small 24B 2507",
+      "provider": "scaleway",
+      "provider_model_id": null,
+      "release_date": "2025-07-01",
+      "tags": null
+    },
+    "whisper-large-v3": {
+      "aliases": [],
+      "capabilities": null,
+      "cost": {
+        "input": 0.003,
+        "output": 0
+      },
+      "deprecated": false,
+      "extra": {
+        "attachment": false,
+        "open_weights": true,
+        "temperature": false
+      },
+      "family": null,
+      "id": "whisper-large-v3",
+      "knowledge": "2023-09",
+      "last_updated": "2025-09-05",
+      "lifecycle": null,
+      "limits": {
+        "output": 4096
+      },
+      "modalities": {
+        "input": [
+          "audio"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "model": null,
+      "name": "Whisper Large v3",
+      "provider": "scaleway",
+      "provider_model_id": null,
+      "release_date": "2023-09-01",
+      "tags": null
+    }
+  },
+  "name": "Scaleway"
+}

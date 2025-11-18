@@ -6,13 +6,21 @@ config :llm_db,
   sources: [
     {LLMDB.Sources.ModelsDev, %{}},
     {LLMDB.Sources.OpenRouter, %{}},
+    {LLMDB.Sources.OpenAI, %{}},
+    {LLMDB.Sources.Anthropic, %{}},
+    {LLMDB.Sources.Google, %{}},
+    {LLMDB.Sources.XAI, %{}},
     {LLMDB.Sources.Local, %{dir: "priv/llm_db/local"}}
   ],
 
   # Cache directory for remote sources
   models_dev_cache_dir: "priv/llm_db/upstream",
   openrouter_cache_dir: "priv/llm_db/upstream",
-  upstream_cache_dir: "priv/llm_db/upstream"
+  upstream_cache_dir: "priv/llm_db/upstream",
+  openai_cache_dir: "priv/llm_db/remote",
+  anthropic_cache_dir: "priv/llm_db/remote",
+  google_cache_dir: "priv/llm_db/remote",
+  xai_cache_dir: "priv/llm_db/remote"
 
 if Mix.env() == :dev do
   config :git_ops,

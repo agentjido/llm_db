@@ -3,10 +3,18 @@ defmodule LLMDB.PackagedTest do
 
   alias LLMDB.Packaged
 
-  describe "path/0" do
-    test "returns correct snapshot path" do
-      path = Packaged.path()
-      assert String.ends_with?(path, "priv/llm_db/snapshot.json")
+  describe "manifest_path/0" do
+    test "returns correct manifest path" do
+      path = Packaged.manifest_path()
+      assert String.ends_with?(path, "priv/llm_db/manifest.json")
+      assert is_binary(path)
+    end
+  end
+
+  describe "providers_dir/0" do
+    test "returns correct providers directory path" do
+      path = Packaged.providers_dir()
+      assert String.ends_with?(path, "priv/llm_db/providers")
       assert is_binary(path)
     end
   end

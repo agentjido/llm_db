@@ -53,7 +53,6 @@ defmodule LLMDB.Sources.ModelsDev do
 
     case Req.get(url, req_opts) do
       {:ok, %Req.Response{status: 304}} ->
-        Logger.info("ModelsDev: not modified (304)")
         :noop
 
       {:ok, %Req.Response{status: 200, body: body, headers: resp_headers}} ->
@@ -79,7 +78,6 @@ defmodule LLMDB.Sources.ModelsDev do
           end
 
         write_cache(cache_path, manifest_path, bin, url, resp_headers)
-        Logger.info("ModelsDev: cached #{byte_size(bin)} bytes to #{cache_path}")
         {:ok, cache_path}
 
       {:ok, %Req.Response{status: status}} when status >= 400 ->

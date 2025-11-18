@@ -10,7 +10,6 @@ defmodule LLMDB.Generated.ValidProviders do
   """
 
   @providers [
-    :"agentica-org",
     :ai21,
     :aihubmix,
     :"aion-labs",
@@ -26,6 +25,7 @@ defmodule LLMDB.Generated.ValidProviders do
     :"arcee-ai",
     :arliai,
     :azure,
+    :azure_cognitive_services,
     :baidu,
     :baseten,
     :bytedance,
@@ -52,7 +52,6 @@ defmodule LLMDB.Generated.ValidProviders do
     :"ibm-granite",
     :iflowcn,
     :inception,
-    :inclusionai,
     :inference,
     :inflection,
     :kwaipilot,

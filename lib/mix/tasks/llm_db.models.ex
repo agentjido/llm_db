@@ -1,4 +1,4 @@
-defmodule Mix.Tasks.Llmdb.Models do
+defmodule Mix.Tasks.LlmDb.Models do
   @shortdoc "List LLM models with optional spec filtering"
 
   @moduledoc """

@@ -1,0 +1,574 @@
+{
+  "alias_of": null,
+  "base_url": null,
+  "config_schema": null,
+  "doc": "https://platform.moonshot.ai/docs/api/chat",
+  "env": [
+    "MOONSHOT_API_KEY"
+  ],
+  "exclude_models": null,
+  "extra": null,
+  "id": "moonshotai",
+  "models": {
+    "kimi-dev-72b": {
+      "aliases": [],
+      "capabilities": null,
+      "cost": {
+        "image": 0.0,
+        "input": 2.9e-4,
+        "output": 0.00115,
+        "reasoning": 0.0,
+        "request": 0.0
+      },
+      "deprecated": false,
+      "extra": {
+        "hugging_face_id": "moonshotai/Kimi-Dev-72B"
+      },
+      "family": null,
+      "id": "kimi-dev-72b",
+      "knowledge": null,
+      "last_updated": null,
+      "lifecycle": null,
+      "limits": {
+        "context": 131072,
+        "output": 131072
+      },
+      "modalities": {
+        "input": [
+          "text"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "model": null,
+      "name": "MoonshotAI: Kimi Dev 72B",
+      "provider": "moonshotai",
+      "provider_model_id": null,
+      "release_date": "2025-06-16",
+      "tags": null
+    },
+    "kimi-k2": {
+      "aliases": [],
+      "capabilities": {
+        "chat": true,
+        "embeddings": false,
+        "json": {
+          "native": false,
+          "schema": false,
+          "strict": false
+        },
+        "reasoning": {
+          "enabled": false
+        },
+        "streaming": {
+          "text": true,
+          "tool_calls": false
+        },
+        "tools": {
+          "enabled": true
+        }
+      },
+      "cost": {
+        "image": 0.0,
+        "input": 0.0005,
+        "output": 0.0024,
+        "reasoning": 0.0,
+        "request": 0.0
+      },
+      "deprecated": false,
+      "extra": {
+        "hugging_face_id": "moonshotai/Kimi-K2-Instruct"
+      },
+      "family": null,
+      "id": "kimi-k2",
+      "knowledge": null,
+      "last_updated": null,
+      "lifecycle": null,
+      "limits": {
+        "context": 131072
+      },
+      "modalities": {
+        "input": [
+          "text"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "model": null,
+      "name": "MoonshotAI: Kimi K2 0711",
+      "provider": "moonshotai",
+      "provider_model_id": null,
+      "release_date": "2025-07-11",
+      "tags": null
+    },
+    "kimi-k2-0711-preview": {
+      "aliases": [],
+      "capabilities": {
+        "chat": true,
+        "embeddings": false,
+        "json": {
+          "native": false,
+          "schema": false,
+          "strict": false
+        },
+        "reasoning": {
+          "enabled": false
+        },
+        "streaming": {
+          "tool_calls": true
+        },
+        "tools": {
+          "enabled": true
+        }
+      },
+      "cost": {
+        "cache_read": 0.15,
+        "input": 0.6,
+        "output": 2.5
+      },
+      "deprecated": false,
+      "extra": {
+        "attachment": false,
+        "open_weights": true,
+        "temperature": true
+      },
+      "family": null,
+      "id": "kimi-k2-0711-preview",
+      "knowledge": "2024-10",
+      "last_updated": "2025-07-14",
+      "lifecycle": null,
+      "limits": {
+        "context": 131072,
+        "output": 16384
+      },
+      "modalities": {
+        "input": [
+          "text"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "model": null,
+      "name": "Kimi K2 0711",
+      "provider": "moonshotai",
+      "provider_model_id": null,
+      "release_date": "2025-07-14",
+      "tags": null
+    },
+    "kimi-k2-0905": {
+      "aliases": [],
+      "capabilities": {
+        "chat": true,
+        "embeddings": false,
+        "json": {
+          "native": false,
+          "schema": false,
+          "strict": false
+        },
+        "reasoning": {
+          "enabled": false
+        },
+        "streaming": {
+          "text": true,
+          "tool_calls": false
+        },
+        "tools": {
+          "enabled": true
+        }
+      },
+      "cost": {
+        "image": 0.0,
+        "input": 3.9000000000000005e-4,
+        "output": 0.0019,
+        "reasoning": 0.0,
+        "request": 0.0
+      },
+      "deprecated": false,
+      "extra": {
+        "hugging_face_id": "moonshotai/Kimi-K2-Instruct-0905"
+      },
+      "family": null,
+      "id": "kimi-k2-0905",
+      "knowledge": null,
+      "last_updated": null,
+      "lifecycle": null,
+      "limits": {
+        "context": 262144,
+        "output": 262144
+      },
+      "modalities": {
+        "input": [
+          "text"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "model": null,
+      "name": "MoonshotAI: Kimi K2 0905",
+      "provider": "moonshotai",
+      "provider_model_id": null,
+      "release_date": "2025-09-04",
+      "tags": null
+    },
+    "kimi-k2-0905-preview": {
+      "aliases": [],
+      "capabilities": {
+        "chat": true,
+        "embeddings": false,
+        "json": {
+          "native": false,
+          "schema": false,
+          "strict": false
+        },
+        "reasoning": {
+          "enabled": false
+        },
+        "streaming": {
+          "tool_calls": true
+        },
+        "tools": {
+          "enabled": true
+        }
+      },
+      "cost": {
+        "cache_read": 0.15,
+        "input": 0.6,
+        "output": 2.5
+      },
+      "deprecated": false,
+      "extra": {
+        "attachment": false,
+        "open_weights": true,
+        "temperature": true
+      },
+      "family": null,
+      "id": "kimi-k2-0905-preview",
+      "knowledge": "2024-10",
+      "last_updated": "2025-09-05",
+      "lifecycle": null,
+      "limits": {
+        "context": 262144,
+        "output": 262144
+      },
+      "modalities": {
+        "input": [
+          "text"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "model": null,
+      "name": "Kimi K2 0905",
+      "provider": "moonshotai",
+      "provider_model_id": null,
+      "release_date": "2025-09-05",
+      "tags": null
+    },
+    "kimi-k2-0905:exacto": {
+      "aliases": [],
+      "capabilities": {
+        "chat": true,
+        "embeddings": false,
+        "json": {
+          "native": false,
+          "schema": false,
+          "strict": false
+        },
+        "reasoning": {
+          "enabled": false
+        },
+        "streaming": {
+          "text": true,
+          "tool_calls": false
+        },
+        "tools": {
+          "enabled": true
+        }
+      },
+      "cost": {
+        "image": 0.0,
+        "input": 0.0006,
+        "output": 0.0025,
+        "reasoning": 0.0,
+        "request": 0.0
+      },
+      "deprecated": false,
+      "extra": {
+        "hugging_face_id": "moonshotai/Kimi-K2-Instruct-0905"
+      },
+      "family": null,
+      "id": "kimi-k2-0905:exacto",
+      "knowledge": null,
+      "last_updated": null,
+      "lifecycle": null,
+      "limits": {
+        "context": 262144
+      },
+      "modalities": {
+        "input": [
+          "text"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "model": null,
+      "name": "MoonshotAI: Kimi K2 0905 (exacto)",
+      "provider": "moonshotai",
+      "provider_model_id": null,
+      "release_date": "2025-09-04",
+      "tags": null
+    },
+    "kimi-k2-thinking": {
+      "aliases": [],
+      "capabilities": {
+        "chat": true,
+        "embeddings": false,
+        "json": {
+          "native": false,
+          "schema": false,
+          "strict": false
+        },
+        "reasoning": {
+          "enabled": false
+        },
+        "streaming": {
+          "text": true,
+          "tool_calls": false
+        },
+        "tools": {
+          "enabled": true
+        }
+      },
+      "cost": {
+        "cache_read": 0.15,
+        "image": 0.0,
+        "input": 0.0005,
+        "output": 0.0025,
+        "reasoning": 0.0,
+        "request": 0.0
+      },
+      "deprecated": false,
+      "extra": {
+        "attachment": false,
+        "hugging_face_id": "moonshotai/Kimi-K2-Thinking",
+        "open_weights": true,
+        "temperature": true
+      },
+      "family": null,
+      "id": "kimi-k2-thinking",
+      "knowledge": "2024-08",
+      "last_updated": "2025-11-06",
+      "lifecycle": null,
+      "limits": {
+        "context": 262144,
+        "output": 262144
+      },
+      "modalities": {
+        "input": [
+          "text"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "model": null,
+      "name": "MoonshotAI: Kimi K2 Thinking",
+      "provider": "moonshotai",
+      "provider_model_id": null,
+      "release_date": "2025-11-06",
+      "tags": null
+    },
+    "kimi-k2-thinking-turbo": {
+      "aliases": [],
+      "capabilities": {
+        "chat": true,
+        "embeddings": false,
+        "json": {
+          "native": false,
+          "schema": false,
+          "strict": false
+        },
+        "reasoning": {
+          "enabled": true
+        },
+        "streaming": {
+          "tool_calls": true
+        },
+        "tools": {
+          "enabled": true
+        }
+      },
+      "cost": {
+        "cache_read": 0.15,
+        "input": 1.15,
+        "output": 8
+      },
+      "deprecated": false,
+      "extra": {
+        "attachment": false,
+        "open_weights": true,
+        "temperature": true
+      },
+      "family": null,
+      "id": "kimi-k2-thinking-turbo",
+      "knowledge": "2024-08",
+      "last_updated": "2025-11-06",
+      "lifecycle": null,
+      "limits": {
+        "context": 262144,
+        "output": 262144
+      },
+      "modalities": {
+        "input": [
+          "text"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "model": null,
+      "name": "Kimi K2 Thinking Turbo",
+      "provider": "moonshotai",
+      "provider_model_id": null,
+      "release_date": "2025-11-06",
+      "tags": null
+    },
+    "kimi-k2-turbo-preview": {
+      "aliases": [],
+      "capabilities": {
+        "chat": true,
+        "embeddings": false,
+        "json": {
+          "native": false,
+          "schema": false,
+          "strict": false
+        },
+        "reasoning": {
+          "enabled": false
+        },
+        "streaming": {
+          "tool_calls": true
+        },
+        "tools": {
+          "enabled": true
+        }
+      },
+      "cost": {
+        "cache_read": 0.6,
+        "input": 2.4,
+        "output": 10
+      },
+      "deprecated": false,
+      "extra": {
+        "attachment": false,
+        "open_weights": true,
+        "temperature": true
+      },
+      "family": null,
+      "id": "kimi-k2-turbo-preview",
+      "knowledge": "2024-10",
+      "last_updated": "2025-09-05",
+      "lifecycle": null,
+      "limits": {
+        "context": 262144,
+        "output": 262144
+      },
+      "modalities": {
+        "input": [
+          "text"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "model": null,
+      "name": "Kimi K2 Turbo",
+      "provider": "moonshotai",
+      "provider_model_id": null,
+      "release_date": "2025-09-05",
+      "tags": null
+    },
+    "kimi-k2:free": {
+      "aliases": [],
+      "capabilities": null,
+      "cost": {
+        "image": 0.0,
+        "input": 0.0,
+        "output": 0.0,
+        "reasoning": 0.0,
+        "request": 0.0
+      },
+      "deprecated": false,
+      "extra": {
+        "hugging_face_id": "moonshotai/Kimi-K2-Instruct"
+      },
+      "family": null,
+      "id": "kimi-k2:free",
+      "knowledge": null,
+      "last_updated": null,
+      "lifecycle": null,
+      "limits": {
+        "context": 32768
+      },
+      "modalities": {
+        "input": [
+          "text"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "model": null,
+      "name": "MoonshotAI: Kimi K2 0711 (free)",
+      "provider": "moonshotai",
+      "provider_model_id": null,
+      "release_date": "2025-07-11",
+      "tags": null
+    },
+    "kimi-linear-48b-a3b-instruct": {
+      "aliases": [],
+      "capabilities": null,
+      "cost": {
+        "image": 0.0,
+        "input": 0.0005,
+        "output": 0.0006,
+        "reasoning": 0.0,
+        "request": 0.0
+      },
+      "deprecated": false,
+      "extra": {
+        "hugging_face_id": "moonshotai/Kimi-Linear-48B-A3B-Instruct"
+      },
+      "family": null,
+      "id": "kimi-linear-48b-a3b-instruct",
+      "knowledge": null,
+      "last_updated": null,
+      "lifecycle": null,
+      "limits": {
+        "context": 1048576,
+        "output": 1048576
+      },
+      "modalities": {
+        "input": [
+          "text"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "model": null,
+      "name": "MoonshotAI: Kimi Linear 48B A3B Instruct",
+      "provider": "moonshotai",
+      "provider_model_id": null,
+      "release_date": "2025-11-08",
+      "tags": null
+    }
+  },
+  "name": "Moonshotai"
+}

@@ -63,6 +63,7 @@ defmodule LLMDB.MixProject do
       {:toml, "~> 0.7"},
       {:req, "~> 0.5"},
       {:deep_merge, "~> 1.0"},
+      {:dotenvy, "~> 0.8"},
       {:plug, "~> 1.16", only: :test},
       {:meck, "~> 1.0", only: :test},
       {:ex_doc, "~> 0.31", only: :dev, runtime: false},

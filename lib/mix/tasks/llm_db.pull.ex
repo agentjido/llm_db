@@ -1,4 +1,4 @@
-defmodule Mix.Tasks.Llmdb.Pull do
+defmodule Mix.Tasks.LlmDb.Pull do
   use Mix.Task
 
   @shortdoc "Pull latest data from all configured remote sources"
@@ -17,6 +17,12 @@ defmodule Mix.Tasks.Llmdb.Pull do
   ## Usage
 
       mix llm_db.pull
+      mix llm_db.pull --source openai
+      mix llm_db.pull --source anthropic
+
+  ## Switches
+
+  - `--source` - Pull from a specific source only (openai, anthropic, google, xai, models_dev)
 
   ## Configuration
 
@@ -36,6 +42,9 @@ defmodule Mix.Tasks.Llmdb.Pull do
       # Pull from all configured remote sources
       mix llm_db.pull
 
+      # Pull from OpenAI only
+      mix llm_db.pull --source openai
+
   ## Output
 
   The task prints a summary of pull results:
@@ -51,11 +60,41 @@ defmodule Mix.Tasks.Llmdb.Pull do
       Run 'mix llm_db.build' to generate snapshot.json and valid_providers.ex
   """
 
+  @source_modules %{
+    "openai" => LLMDB.Sources.OpenAI,
+    "anthropic" => LLMDB.Sources.Anthropic,
+    "google" => LLMDB.Sources.Google,
+    "xai" => LLMDB.Sources.XAI,
+    "models_dev" => LLMDB.Sources.ModelsDev
+  }
+
   @impl Mix.Task
-  def run(_args) do
+  def run(args) do
+    # Load .env before starting app
+    load_dotenv()
+
     Mix.Task.run("app.start")
 
-    sources = LLMDB.Config.sources!()
+    {opts, _} = OptionParser.parse!(args, strict: [source: :string])
+
+    sources =
+      case opts[:source] do
+        nil ->
+          # Pull from all available sources
+          Enum.map(@source_modules, fn {_name, module} -> {module, %{}} end)
+
+        source_name ->
+          # Pull from specific source
+          case Map.get(@source_modules, source_name) do
+            nil ->
+              Mix.shell().error("Unknown source: #{source_name}")
+              Mix.shell().info("Available sources: #{Enum.join(Map.keys(@source_modules), ", ")}")
+              Mix.raise("Invalid source")
+
+            module ->
+              [{module, %{}}]
+          end
+      end
 
     if sources == [] do
       Mix.shell().info("No sources configured. Add sources to your config:")
@@ -108,8 +147,10 @@ defmodule Mix.Tasks.Llmdb.Pull do
   defp print_summary(results) do
     updated = Enum.count(results, fn {_, r} -> match?({:ok, _}, r) end)
     unchanged = Enum.count(results, fn {_, r} -> r == :not_modified end)
-    skipped = Enum.count(results, fn {_, r} -> r == :no_callback end)
-    failed = Enum.count(results, fn {_, r} -> match?({:error, _}, r) end)
+    skipped_no_callback = Enum.count(results, fn {_, r} -> r == :no_callback end)
+    skipped_no_key = Enum.count(results, fn {_, r} -> r == {:error, :no_api_key} end)
+    skipped = skipped_no_callback + skipped_no_key
+    failed = Enum.count(results, fn {_, r} -> match?({:error, _}, r) end) - skipped_no_key
 
     Enum.each(results, fn {module, result} ->
       print_source_result(module, result)
@@ -136,6 +177,9 @@ defmodule Mix.Tasks.Llmdb.Pull do
 
       :no_callback ->
         Mix.shell().info("- #{module_name}: No pull callback (skipped)")
+
+      {:error, :no_api_key} ->
+        Mix.shell().info("⚠ #{module_name}: Skipped (no API key)")
 
       {:error, reason} ->
         Mix.shell().error("✗ #{module_name}: Failed - #{format_error(reason)}")
@@ -207,6 +251,15 @@ defmodule Mix.Tasks.Llmdb.Pull do
       |> Enum.each(fn {_, path, _} ->
         File.rm(path)
       end)
+    end
+  end
+
+  defp load_dotenv do
+    env_path = Path.join(File.cwd!(), ".env")
+
+    if File.exists?(env_path) do
+      vars = Dotenvy.source!(env_path)
+      System.put_env(vars)
     end
   end
 end

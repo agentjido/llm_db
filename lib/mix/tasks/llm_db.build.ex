@@ -1,4 +1,4 @@
-defmodule Mix.Tasks.Llmdb.Build do
+defmodule Mix.Tasks.LlmDb.Build do
   use Mix.Task
 
   @shortdoc "Build snapshot.json from sources using the ETL pipeline"
@@ -29,7 +29,8 @@ defmodule Mix.Tasks.Llmdb.Build do
         prefer: [:openai, :anthropic]
   """
 
-  @snapshot_path "priv/llm_db/snapshot.json"
+  @manifest_path "priv/llm_db/manifest.json"
+  @providers_dir "priv/llm_db/providers"
 
   @impl Mix.Task
   def run(_args) do
@@ -59,21 +60,38 @@ defmodule Mix.Tasks.Llmdb.Build do
   end
 
   defp save_snapshot(snapshot) do
-    @snapshot_path
-    |> Path.dirname()
-    |> File.mkdir_p!()
+    # Create providers directory
+    File.mkdir_p!(@providers_dir)
 
-    # V2 schema: nested providers with models
-    output_data = %{
+    # Write each provider to its own file
+    provider_ids =
+      snapshot.providers
+      |> Enum.map(fn {provider_id, provider_data} ->
+        filename = "#{provider_id}.json"
+        path = Path.join(@providers_dir, filename)
+
+        provider_output = map_with_string_keys(provider_data)
+        json = Jason.encode!(provider_output, pretty: true)
+        File.write!(path, json)
+
+        Atom.to_string(provider_id)
+      end)
+      |> Enum.sort()
+
+    # Write manifest with metadata
+    File.mkdir_p!(Path.dirname(@manifest_path))
+
+    manifest = %{
       "version" => snapshot.version,
       "generated_at" => snapshot.generated_at,
-      "providers" => map_with_string_keys(snapshot.providers)
+      "providers" => provider_ids
     }
 
-    json = Jason.encode!(output_data, pretty: true)
-    File.write!(@snapshot_path, json)
+    json = Jason.encode!(manifest, pretty: true)
+    File.write!(@manifest_path, json)
 
-    Mix.shell().info("✓ Snapshot written to #{@snapshot_path} (v#{snapshot.version})")
+    Mix.shell().info("✓ Manifest written to #{@manifest_path} (v#{snapshot.version})")
+    Mix.shell().info("✓ #{length(provider_ids)} provider files written to #{@providers_dir}/")
 
     # Generate ValidProviders module from normalized snapshot data
     generate_valid_providers(snapshot)

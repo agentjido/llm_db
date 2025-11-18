@@ -1,0 +1,241 @@
+{
+  "alias_of": null,
+  "base_url": "https://api.cerebras.ai/v1",
+  "config_schema": null,
+  "doc": "https://cerebras.ai/docs",
+  "env": [
+    "CEREBRAS_API_KEY"
+  ],
+  "exclude_models": [
+    "qwen-3-235b-a22b-thinking-2507"
+  ],
+  "extra": null,
+  "id": "cerebras",
+  "models": {
+    "gpt-oss-120b": {
+      "aliases": [],
+      "capabilities": {
+        "chat": true,
+        "embeddings": false,
+        "json": {
+          "native": false,
+          "schema": false,
+          "strict": false
+        },
+        "reasoning": {
+          "enabled": true
+        },
+        "streaming": {
+          "text": true,
+          "tool_calls": false
+        },
+        "tools": {
+          "enabled": true,
+          "strict": true
+        }
+      },
+      "cost": {
+        "input": 0.25,
+        "output": 0.69
+      },
+      "deprecated": false,
+      "extra": {
+        "attachment": false,
+        "open_weights": true,
+        "temperature": true
+      },
+      "family": null,
+      "id": "gpt-oss-120b",
+      "knowledge": null,
+      "last_updated": "2025-08-05",
+      "lifecycle": null,
+      "limits": {
+        "context": 131072,
+        "output": 32768
+      },
+      "modalities": {
+        "input": [
+          "text"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "model": null,
+      "name": "GPT OSS 120B",
+      "provider": "cerebras",
+      "provider_model_id": null,
+      "release_date": "2025-08-05",
+      "tags": null
+    },
+    "qwen-3-235b-a22b-instruct-2507": {
+      "aliases": [],
+      "capabilities": {
+        "chat": true,
+        "embeddings": false,
+        "json": {
+          "native": false,
+          "schema": false,
+          "strict": false
+        },
+        "reasoning": {
+          "enabled": false
+        },
+        "streaming": {
+          "text": true,
+          "tool_calls": false
+        },
+        "tools": {
+          "enabled": true,
+          "strict": false
+        }
+      },
+      "cost": {
+        "input": 0.6,
+        "output": 1.2
+      },
+      "deprecated": false,
+      "extra": {
+        "attachment": false,
+        "open_weights": true,
+        "temperature": true
+      },
+      "family": null,
+      "id": "qwen-3-235b-a22b-instruct-2507",
+      "knowledge": "2025-04",
+      "last_updated": "2025-07-22",
+      "lifecycle": null,
+      "limits": {
+        "context": 131000,
+        "output": 32000
+      },
+      "modalities": {
+        "input": [
+          "text"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "model": null,
+      "name": "Qwen 3 235B Instruct",
+      "provider": "cerebras",
+      "provider_model_id": null,
+      "release_date": "2025-07-22",
+      "tags": null
+    },
+    "qwen-3-coder-480b": {
+      "aliases": [],
+      "capabilities": {
+        "chat": true,
+        "embeddings": false,
+        "json": {
+          "native": false,
+          "schema": false,
+          "strict": false
+        },
+        "reasoning": {
+          "enabled": false
+        },
+        "streaming": {
+          "text": true,
+          "tool_calls": false
+        },
+        "tools": {
+          "enabled": true,
+          "strict": false
+        }
+      },
+      "cost": {
+        "input": 2,
+        "output": 2
+      },
+      "deprecated": false,
+      "extra": {
+        "attachment": false,
+        "open_weights": true,
+        "temperature": true
+      },
+      "family": null,
+      "id": "qwen-3-coder-480b",
+      "knowledge": "2025-04",
+      "last_updated": "2025-07-23",
+      "lifecycle": null,
+      "limits": {
+        "context": 131000,
+        "output": 32000
+      },
+      "modalities": {
+        "input": [
+          "text"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "model": null,
+      "name": "Qwen 3 Coder 480B",
+      "provider": "cerebras",
+      "provider_model_id": null,
+      "release_date": "2025-07-23",
+      "tags": null
+    },
+    "zai-glm-4.6": {
+      "aliases": [],
+      "capabilities": {
+        "chat": true,
+        "embeddings": false,
+        "json": {
+          "native": false,
+          "schema": false,
+          "strict": false
+        },
+        "reasoning": {
+          "enabled": false
+        },
+        "streaming": {
+          "tool_calls": true
+        },
+        "tools": {
+          "enabled": true
+        }
+      },
+      "cost": {
+        "cache_read": 0,
+        "cache_write": 0,
+        "input": 0,
+        "output": 0
+      },
+      "deprecated": false,
+      "extra": {
+        "attachment": false,
+        "open_weights": true,
+        "temperature": true
+      },
+      "family": null,
+      "id": "zai-glm-4.6",
+      "knowledge": null,
+      "last_updated": "2025-11-05",
+      "lifecycle": null,
+      "limits": {
+        "context": 131072,
+        "output": 40960
+      },
+      "modalities": {
+        "input": [
+          "text"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "model": null,
+      "name": "Z.AI GLM-4.6",
+      "provider": "cerebras",
+      "provider_model_id": null,
+      "release_date": "2025-11-05",
+      "tags": null
+    }
+  },
+  "name": "Cerebras"
+}
