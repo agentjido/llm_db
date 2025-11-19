@@ -9,6 +9,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Changed
+
+- Updated model data from upstream sources (includes Gemini 3 Pro Preview)
+
 ## [2025.11.18-preview] - 2025-11-18
 
 ### Added
