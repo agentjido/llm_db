@@ -1,48 +1,72 @@
 {
   "alias_of": null,
-  "base_url": "https://api.x.ai/v1",
+  "base_url": null,
   "config_schema": null,
-  "doc": "https://docs.x.ai",
+  "doc": "https://io.net/docs/guides/intelligence/io-intelligence",
   "env": [
-    "XAI_API_KEY"
+    "IOINTELLIGENCE_API_KEY"
   ],
-  "exclude_models": [
-    "grok-vision-beta",
-    "grok-beta",
-    "grok-2",
-    "grok-2-1212",
-    "grok-2-latest",
-    "grok-2-vision",
-    "grok-2-vision-1212",
-    "grok-2-vision-latest"
-  ],
+  "exclude_models": null,
   "extra": null,
-  "id": "xai",
+  "id": "io_intelligence",
   "models": {
-    "grok-2-image-1212": {
+    "deepseek-ai-deepseek-r1-0528": {
       "aliases": [],
-      "capabilities": null,
-      "cost": null,
+      "capabilities": {
+        "chat": true,
+        "embeddings": false,
+        "json": {
+          "native": false,
+          "schema": false,
+          "strict": false
+        },
+        "reasoning": {
+          "enabled": true
+        },
+        "streaming": {
+          "tool_calls": true
+        },
+        "tools": {
+          "enabled": true
+        }
+      },
+      "cost": {
+        "cache_read": 1,
+        "cache_write": 4,
+        "input": 2,
+        "output": 8.75
+      },
       "deprecated": false,
       "extra": {
-        "created": 1736726400,
-        "owned_by": "xai"
+        "attachment": false,
+        "open_weights": true,
+        "temperature": true
       },
       "family": null,
-      "id": "grok-2-image-1212",
-      "knowledge": null,
-      "last_updated": null,
+      "id": "deepseek-ai-deepseek-r1-0528",
+      "knowledge": "2024-07",
+      "last_updated": "2025-05-28",
       "lifecycle": null,
-      "limits": null,
-      "modalities": null,
+      "limits": {
+        "context": 128000,
+        "output": 4096
+      },
+      "modalities": {
+        "input": [
+          "text"
+        ],
+        "output": [
+          "text"
+        ]
+      },
       "model": null,
-      "name": null,
-      "provider": "xai",
+      "name": "DeepSeek R1",
+      "provider": "io_intelligence",
       "provider_model_id": null,
-      "release_date": null,
+      "release_date": "2025-01-20",
       "tags": null
     },
-    "grok-3": {
+    "intel-qwen3-coder-480b-a35b-instruct-int4-mixed-ar": {
       "aliases": [],
       "capabilities": {
         "chat": true,
@@ -63,26 +87,25 @@
         }
       },
       "cost": {
-        "cache_read": 0.75,
-        "input": 3,
-        "output": 15
+        "cache_read": 0.11,
+        "cache_write": 0.44,
+        "input": 0.22,
+        "output": 0.95
       },
       "deprecated": false,
       "extra": {
         "attachment": false,
-        "created": 1743724800,
-        "open_weights": false,
-        "owned_by": "xai",
+        "open_weights": true,
         "temperature": true
       },
       "family": null,
-      "id": "grok-3",
-      "knowledge": "2024-11",
-      "last_updated": "2025-02-17",
+      "id": "intel-qwen3-coder-480b-a35b-instruct-int4-mixed-ar",
+      "knowledge": "2024-12",
+      "last_updated": "2025-01-15",
       "lifecycle": null,
       "limits": {
-        "context": 131072,
-        "output": 8192
+        "context": 106000,
+        "output": 4096
       },
       "modalities": {
         "input": [
@@ -93,13 +116,13 @@
         ]
       },
       "model": null,
-      "name": "Grok 3",
-      "provider": "xai",
+      "name": "Qwen 3 Coder 480B",
+      "provider": "io_intelligence",
       "provider_model_id": null,
-      "release_date": "2025-02-17",
+      "release_date": "2025-01-15",
       "tags": null
     },
-    "grok-3-fast": {
+    "meta-llama-llama-3-2-90b-vision-instruct": {
       "aliases": [],
       "capabilities": {
         "chat": true,
@@ -120,41 +143,43 @@
         }
       },
       "cost": {
-        "cache_read": 1.25,
-        "input": 5,
-        "output": 25
+        "cache_read": 0.175,
+        "cache_write": 0.7,
+        "input": 0.35,
+        "output": 0.4
       },
       "deprecated": false,
       "extra": {
         "attachment": false,
-        "open_weights": false,
+        "open_weights": true,
         "temperature": true
       },
       "family": null,
-      "id": "grok-3-fast",
-      "knowledge": "2024-11",
-      "last_updated": "2025-02-17",
+      "id": "meta-llama-llama-3-2-90b-vision-instruct",
+      "knowledge": "2023-12",
+      "last_updated": "2024-09-25",
       "lifecycle": null,
       "limits": {
-        "context": 131072,
-        "output": 8192
+        "context": 16000,
+        "output": 4096
       },
       "modalities": {
         "input": [
-          "text"
+          "text",
+          "image"
         ],
         "output": [
           "text"
         ]
       },
       "model": null,
-      "name": "Grok 3 Fast",
-      "provider": "xai",
+      "name": "Llama 3.2 90B Vision Instruct",
+      "provider": "io_intelligence",
       "provider_model_id": null,
-      "release_date": "2025-02-17",
+      "release_date": "2024-09-25",
       "tags": null
     },
-    "grok-3-fast-latest": {
+    "meta-llama-llama-3-3-70b-instruct": {
       "aliases": [],
       "capabilities": {
         "chat": true,
@@ -175,24 +200,25 @@
         }
       },
       "cost": {
-        "cache_read": 1.25,
-        "input": 5,
-        "output": 25
+        "cache_read": 0.065,
+        "cache_write": 0.26,
+        "input": 0.13,
+        "output": 0.38
       },
       "deprecated": false,
       "extra": {
         "attachment": false,
-        "open_weights": false,
+        "open_weights": true,
         "temperature": true
       },
       "family": null,
-      "id": "grok-3-fast-latest",
-      "knowledge": "2024-11",
-      "last_updated": "2025-02-17",
+      "id": "meta-llama-llama-3-3-70b-instruct",
+      "knowledge": "2023-12",
+      "last_updated": "2024-12-06",
       "lifecycle": null,
       "limits": {
-        "context": 131072,
-        "output": 8192
+        "context": 128000,
+        "output": 4096
       },
       "modalities": {
         "input": [
@@ -203,13 +229,13 @@
         ]
       },
       "model": null,
-      "name": "Grok 3 Fast Latest",
-      "provider": "xai",
+      "name": "Llama 3.3 70B Instruct",
+      "provider": "io_intelligence",
       "provider_model_id": null,
-      "release_date": "2025-02-17",
+      "release_date": "2024-12-06",
       "tags": null
     },
-    "grok-3-latest": {
+    "meta-llama-llama-4-maverick-17b-128e-instruct-fp8": {
       "aliases": [],
       "capabilities": {
         "chat": true,
@@ -227,407 +253,28 @@
         },
         "tools": {
           "enabled": true
-        }
-      },
-      "cost": {
-        "cache_read": 0.75,
-        "input": 3,
-        "output": 15
-      },
-      "deprecated": false,
-      "extra": {
-        "attachment": false,
-        "open_weights": false,
-        "temperature": true
-      },
-      "family": null,
-      "id": "grok-3-latest",
-      "knowledge": "2024-11",
-      "last_updated": "2025-02-17",
-      "lifecycle": null,
-      "limits": {
-        "context": 131072,
-        "output": 8192
-      },
-      "modalities": {
-        "input": [
-          "text"
-        ],
-        "output": [
-          "text"
-        ]
-      },
-      "model": null,
-      "name": "Grok 3 Latest",
-      "provider": "xai",
-      "provider_model_id": null,
-      "release_date": "2025-02-17",
-      "tags": null
-    },
-    "grok-3-mini": {
-      "aliases": [],
-      "capabilities": {
-        "chat": true,
-        "embeddings": false,
-        "json": {
-          "native": false,
-          "schema": false,
-          "strict": false
-        },
-        "reasoning": {
-          "enabled": false
-        },
-        "streaming": {
-          "text": true,
-          "tool_calls": false
-        },
-        "tools": {
-          "enabled": false,
-          "parallel": false,
-          "streaming": false,
-          "strict": false
         }
       },
       "cost": {
         "cache_read": 0.075,
-        "input": 0.3,
-        "output": 0.5,
-        "reasoning": 0.5
+        "cache_write": 0.3,
+        "input": 0.15,
+        "output": 0.6
       },
       "deprecated": false,
       "extra": {
         "attachment": false,
-        "created": 1743724800,
-        "open_weights": false,
-        "owned_by": "xai",
+        "open_weights": true,
         "temperature": true
       },
       "family": null,
-      "id": "grok-3-mini",
-      "knowledge": "2024-11",
-      "last_updated": "2025-02-17",
+      "id": "meta-llama-llama-4-maverick-17b-128e-instruct-fp8",
+      "knowledge": "2024-12",
+      "last_updated": "2025-01-15",
       "lifecycle": null,
       "limits": {
-        "context": 131072,
-        "output": 8192
-      },
-      "modalities": {
-        "input": [
-          "text"
-        ],
-        "output": [
-          "text"
-        ]
-      },
-      "model": null,
-      "name": "Grok 3 Mini",
-      "provider": "xai",
-      "provider_model_id": null,
-      "release_date": "2025-02-17",
-      "tags": null
-    },
-    "grok-3-mini-fast": {
-      "aliases": [],
-      "capabilities": {
-        "chat": true,
-        "embeddings": false,
-        "json": {
-          "native": false,
-          "schema": false,
-          "strict": false
-        },
-        "reasoning": {
-          "enabled": false
-        },
-        "streaming": {
-          "text": true,
-          "tool_calls": false
-        },
-        "tools": {
-          "enabled": false,
-          "parallel": false,
-          "streaming": false,
-          "strict": false
-        }
-      },
-      "cost": {
-        "cache_read": 0.15,
-        "input": 0.6,
-        "output": 4,
-        "reasoning": 4
-      },
-      "deprecated": false,
-      "extra": {
-        "attachment": false,
-        "open_weights": false,
-        "temperature": true
-      },
-      "family": null,
-      "id": "grok-3-mini-fast",
-      "knowledge": "2024-11",
-      "last_updated": "2025-02-17",
-      "lifecycle": null,
-      "limits": {
-        "context": 131072,
-        "output": 8192
-      },
-      "modalities": {
-        "input": [
-          "text"
-        ],
-        "output": [
-          "text"
-        ]
-      },
-      "model": null,
-      "name": "Grok 3 Mini Fast",
-      "provider": "xai",
-      "provider_model_id": null,
-      "release_date": "2025-02-17",
-      "tags": null
-    },
-    "grok-3-mini-fast-latest": {
-      "aliases": [],
-      "capabilities": {
-        "chat": true,
-        "embeddings": false,
-        "json": {
-          "native": false,
-          "schema": false,
-          "strict": false
-        },
-        "reasoning": {
-          "enabled": false
-        },
-        "streaming": {
-          "text": true,
-          "tool_calls": false
-        },
-        "tools": {
-          "enabled": false,
-          "parallel": false,
-          "streaming": false,
-          "strict": false
-        }
-      },
-      "cost": {
-        "cache_read": 0.15,
-        "input": 0.6,
-        "output": 4,
-        "reasoning": 4
-      },
-      "deprecated": false,
-      "extra": {
-        "attachment": false,
-        "open_weights": false,
-        "temperature": true
-      },
-      "family": null,
-      "id": "grok-3-mini-fast-latest",
-      "knowledge": "2024-11",
-      "last_updated": "2025-02-17",
-      "lifecycle": null,
-      "limits": {
-        "context": 131072,
-        "output": 8192
-      },
-      "modalities": {
-        "input": [
-          "text"
-        ],
-        "output": [
-          "text"
-        ]
-      },
-      "model": null,
-      "name": "Grok 3 Mini Fast Latest",
-      "provider": "xai",
-      "provider_model_id": null,
-      "release_date": "2025-02-17",
-      "tags": null
-    },
-    "grok-3-mini-latest": {
-      "aliases": [],
-      "capabilities": {
-        "chat": true,
-        "embeddings": false,
-        "json": {
-          "native": false,
-          "schema": false,
-          "strict": false
-        },
-        "reasoning": {
-          "enabled": false
-        },
-        "streaming": {
-          "text": true,
-          "tool_calls": false
-        },
-        "tools": {
-          "enabled": false,
-          "parallel": false,
-          "streaming": false,
-          "strict": false
-        }
-      },
-      "cost": {
-        "cache_read": 0.075,
-        "input": 0.3,
-        "output": 0.5,
-        "reasoning": 0.5
-      },
-      "deprecated": false,
-      "extra": {
-        "attachment": false,
-        "open_weights": false,
-        "temperature": true
-      },
-      "family": null,
-      "id": "grok-3-mini-latest",
-      "knowledge": "2024-11",
-      "last_updated": "2025-02-17",
-      "lifecycle": null,
-      "limits": {
-        "context": 131072,
-        "output": 8192
-      },
-      "modalities": {
-        "input": [
-          "text"
-        ],
-        "output": [
-          "text"
-        ]
-      },
-      "model": null,
-      "name": "Grok 3 Mini Latest",
-      "provider": "xai",
-      "provider_model_id": null,
-      "release_date": "2025-02-17",
-      "tags": null
-    },
-    "grok-4": {
-      "aliases": [],
-      "capabilities": {
-        "chat": true,
-        "embeddings": false,
-        "json": {
-          "native": false,
-          "schema": false,
-          "strict": false
-        },
-        "reasoning": {
-          "enabled": false
-        },
-        "streaming": {
-          "text": true,
-          "tool_calls": false
-        },
-        "tools": {
-          "enabled": false,
-          "parallel": false,
-          "streaming": false,
-          "strict": false
-        }
-      },
-      "cost": {
-        "cache_read": 0.75,
-        "input": 3,
-        "output": 15,
-        "reasoning": 15
-      },
-      "deprecated": false,
-      "extra": {
-        "attachment": false,
-        "open_weights": false,
-        "temperature": true
-      },
-      "family": null,
-      "id": "grok-4",
-      "knowledge": "2025-07",
-      "last_updated": "2025-07-09",
-      "lifecycle": null,
-      "limits": {
-        "context": 256000,
-        "output": 64000
-      },
-      "modalities": {
-        "input": [
-          "text"
-        ],
-        "output": [
-          "text"
-        ]
-      },
-      "model": null,
-      "name": "Grok 4",
-      "provider": "xai",
-      "provider_model_id": null,
-      "release_date": "2025-07-09",
-      "tags": null
-    },
-    "grok-4-0709": {
-      "aliases": [],
-      "capabilities": null,
-      "cost": null,
-      "deprecated": false,
-      "extra": {
-        "created": 1752019200,
-        "owned_by": "xai"
-      },
-      "family": null,
-      "id": "grok-4-0709",
-      "knowledge": null,
-      "last_updated": null,
-      "lifecycle": null,
-      "limits": null,
-      "modalities": null,
-      "model": null,
-      "name": null,
-      "provider": "xai",
-      "provider_model_id": null,
-      "release_date": null,
-      "tags": null
-    },
-    "grok-4-1-fast": {
-      "aliases": [],
-      "capabilities": {
-        "chat": true,
-        "embeddings": false,
-        "json": {
-          "native": false,
-          "schema": false,
-          "strict": false
-        },
-        "reasoning": {
-          "enabled": true
-        },
-        "streaming": {
-          "tool_calls": true
-        },
-        "tools": {
-          "enabled": true
-        }
-      },
-      "cost": {
-        "cache_read": 0.05,
-        "input": 0.2,
-        "output": 0.5
-      },
-      "deprecated": false,
-      "extra": {
-        "attachment": true,
-        "open_weights": false,
-        "temperature": true
-      },
-      "family": null,
-      "id": "grok-4-1-fast",
-      "knowledge": "2025-07",
-      "last_updated": "2025-11-19",
-      "lifecycle": null,
-      "limits": {
-        "context": 2000000,
-        "output": 30000
+        "context": 430000,
+        "output": 4096
       },
       "modalities": {
         "input": [
@@ -639,13 +286,13 @@
         ]
       },
       "model": null,
-      "name": "Grok 4.1 Fast",
-      "provider": "xai",
+      "name": "Llama 4 Maverick 17B 128E Instruct",
+      "provider": "io_intelligence",
       "provider_model_id": null,
-      "release_date": "2025-11-19",
+      "release_date": "2025-01-15",
       "tags": null
     },
-    "grok-4-1-fast-non-reasoning": {
+    "mistralai-devstral-small-2505": {
       "aliases": [],
       "capabilities": {
         "chat": true,
@@ -666,42 +313,42 @@
         }
       },
       "cost": {
-        "cache_read": 0.05,
-        "input": 0.2,
-        "output": 0.5
+        "cache_read": 0.025,
+        "cache_write": 0.1,
+        "input": 0.05,
+        "output": 0.22
       },
       "deprecated": false,
       "extra": {
-        "attachment": true,
+        "attachment": false,
         "open_weights": false,
         "temperature": true
       },
       "family": null,
-      "id": "grok-4-1-fast-non-reasoning",
-      "knowledge": "2025-07",
-      "last_updated": "2025-11-19",
+      "id": "mistralai-devstral-small-2505",
+      "knowledge": "2024-12",
+      "last_updated": "2025-05-01",
       "lifecycle": null,
       "limits": {
-        "context": 2000000,
-        "output": 30000
+        "context": 128000,
+        "output": 4096
       },
       "modalities": {
         "input": [
-          "text",
-          "image"
+          "text"
         ],
         "output": [
           "text"
         ]
       },
       "model": null,
-      "name": "Grok 4.1 Fast (Non-Reasoning)",
-      "provider": "xai",
+      "name": "Devstral Small 2505",
+      "provider": "io_intelligence",
       "provider_model_id": null,
-      "release_date": "2025-11-19",
+      "release_date": "2025-05-01",
       "tags": null
     },
-    "grok-4-fast": {
+    "mistralai-magistral-small-2506": {
       "aliases": [],
       "capabilities": {
         "chat": true,
@@ -715,214 +362,32 @@
           "enabled": false
         },
         "streaming": {
-          "text": true,
-          "tool_calls": false
-        },
-        "tools": {
-          "enabled": false,
-          "parallel": false,
-          "streaming": false,
-          "strict": false
-        }
-      },
-      "cost": {
-        "cache_read": 0.05,
-        "input": 0.2,
-        "output": 0.5
-      },
-      "deprecated": false,
-      "extra": {
-        "attachment": true,
-        "open_weights": false,
-        "temperature": true
-      },
-      "family": null,
-      "id": "grok-4-fast",
-      "knowledge": "2025-07",
-      "last_updated": "2025-09-19",
-      "lifecycle": null,
-      "limits": {
-        "context": 2000000,
-        "output": 30000
-      },
-      "modalities": {
-        "input": [
-          "text",
-          "image"
-        ],
-        "output": [
-          "text"
-        ]
-      },
-      "model": null,
-      "name": "Grok 4 Fast",
-      "provider": "xai",
-      "provider_model_id": null,
-      "release_date": "2025-09-19",
-      "tags": null
-    },
-    "grok-4-fast-non-reasoning": {
-      "aliases": [],
-      "capabilities": {
-        "chat": true,
-        "embeddings": false,
-        "json": {
-          "native": false,
-          "schema": false,
-          "strict": false
-        },
-        "reasoning": {
-          "enabled": false
-        },
-        "streaming": {
-          "text": true,
-          "tool_calls": false
+          "tool_calls": true
         },
         "tools": {
           "enabled": true
         }
       },
       "cost": {
-        "cache_read": 0.02,
-        "input": 0.2,
-        "output": 0.5
-      },
-      "deprecated": false,
-      "extra": {
-        "attachment": false,
-        "created": 1756944000,
-        "open_weights": false,
-        "owned_by": "xai",
-        "temperature": true
-      },
-      "family": null,
-      "id": "grok-4-fast-non-reasoning",
-      "knowledge": "2024-11",
-      "last_updated": "2025-09-21",
-      "lifecycle": null,
-      "limits": {
-        "context": 2000000,
-        "output": 64000
-      },
-      "modalities": {
-        "input": [
-          "text",
-          "image"
-        ],
-        "output": [
-          "text"
-        ]
-      },
-      "model": null,
-      "name": "Grok 4 Fast Non-Reasoning",
-      "provider": "xai",
-      "provider_model_id": "grok-4-fast-non-reasoning",
-      "release_date": "2025-09-21",
-      "tags": null
-    },
-    "grok-4-fast-reasoning": {
-      "aliases": [],
-      "capabilities": {
-        "chat": true,
-        "embeddings": false,
-        "json": {
-          "native": false,
-          "schema": false,
-          "strict": false
-        },
-        "reasoning": {
-          "enabled": false
-        },
-        "streaming": {
-          "text": true,
-          "tool_calls": false
-        },
-        "tools": {
-          "enabled": true
-        }
-      },
-      "cost": {
-        "cache_read": 0.02,
-        "input": 0.2,
-        "output": 0.5
-      },
-      "deprecated": false,
-      "extra": {
-        "attachment": false,
-        "created": 1756944000,
-        "open_weights": false,
-        "owned_by": "xai",
-        "temperature": true
-      },
-      "family": null,
-      "id": "grok-4-fast-reasoning",
-      "knowledge": "2024-11",
-      "last_updated": "2025-09-21",
-      "lifecycle": null,
-      "limits": {
-        "context": 2000000,
-        "output": 64000
-      },
-      "modalities": {
-        "input": [
-          "text"
-        ],
-        "output": [
-          "text"
-        ]
-      },
-      "model": null,
-      "name": "Grok 4 Fast Reasoning",
-      "provider": "xai",
-      "provider_model_id": "grok-4-fast-reasoning",
-      "release_date": "2025-09-21",
-      "tags": null
-    },
-    "grok-code-fast-1": {
-      "aliases": [],
-      "capabilities": {
-        "chat": true,
-        "embeddings": false,
-        "json": {
-          "native": false,
-          "schema": false,
-          "strict": false
-        },
-        "reasoning": {
-          "enabled": false
-        },
-        "streaming": {
-          "text": true,
-          "tool_calls": false
-        },
-        "tools": {
-          "enabled": false,
-          "parallel": false,
-          "streaming": false,
-          "strict": false
-        }
-      },
-      "cost": {
-        "cache_read": 0.02,
-        "input": 0.2,
+        "cache_read": 0.25,
+        "cache_write": 1,
+        "input": 0.5,
         "output": 1.5
       },
       "deprecated": false,
       "extra": {
         "attachment": false,
-        "created": 1755993600,
         "open_weights": false,
-        "owned_by": "xai",
         "temperature": true
       },
       "family": null,
-      "id": "grok-code-fast-1",
-      "knowledge": "2023-10",
-      "last_updated": "2025-08-28",
+      "id": "mistralai-magistral-small-2506",
+      "knowledge": "2025-01",
+      "last_updated": "2025-06-01",
       "lifecycle": null,
       "limits": {
-        "context": 256000,
-        "output": 10000
+        "context": 128000,
+        "output": 4096
       },
       "modalities": {
         "input": [
@@ -933,12 +398,574 @@
         ]
       },
       "model": null,
-      "name": "Grok Code Fast 1",
-      "provider": "xai",
+      "name": "Magistral Small 2506",
+      "provider": "io_intelligence",
       "provider_model_id": null,
-      "release_date": "2025-08-28",
+      "release_date": "2025-06-01",
+      "tags": null
+    },
+    "mistralai-mistral-large-instruct-2411": {
+      "aliases": [],
+      "capabilities": {
+        "chat": true,
+        "embeddings": false,
+        "json": {
+          "native": false,
+          "schema": false,
+          "strict": false
+        },
+        "reasoning": {
+          "enabled": false
+        },
+        "streaming": {
+          "tool_calls": true
+        },
+        "tools": {
+          "enabled": true
+        }
+      },
+      "cost": {
+        "cache_read": 1,
+        "cache_write": 4,
+        "input": 2,
+        "output": 6
+      },
+      "deprecated": false,
+      "extra": {
+        "attachment": false,
+        "open_weights": false,
+        "temperature": true
+      },
+      "family": null,
+      "id": "mistralai-mistral-large-instruct-2411",
+      "knowledge": "2024-10",
+      "last_updated": "2024-11-01",
+      "lifecycle": null,
+      "limits": {
+        "context": 128000,
+        "output": 4096
+      },
+      "modalities": {
+        "input": [
+          "text",
+          "image"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "model": null,
+      "name": "Mistral Large Instruct 2411",
+      "provider": "io_intelligence",
+      "provider_model_id": null,
+      "release_date": "2024-11-01",
+      "tags": null
+    },
+    "mistralai-mistral-nemo-instruct-2407": {
+      "aliases": [],
+      "capabilities": {
+        "chat": true,
+        "embeddings": false,
+        "json": {
+          "native": false,
+          "schema": false,
+          "strict": false
+        },
+        "reasoning": {
+          "enabled": false
+        },
+        "streaming": {
+          "tool_calls": true
+        },
+        "tools": {
+          "enabled": true
+        }
+      },
+      "cost": {
+        "cache_read": 0.01,
+        "cache_write": 0.04,
+        "input": 0.02,
+        "output": 0.04
+      },
+      "deprecated": false,
+      "extra": {
+        "attachment": false,
+        "open_weights": true,
+        "temperature": true
+      },
+      "family": null,
+      "id": "mistralai-mistral-nemo-instruct-2407",
+      "knowledge": "2024-05",
+      "last_updated": "2024-07-01",
+      "lifecycle": null,
+      "limits": {
+        "context": 128000,
+        "output": 4096
+      },
+      "modalities": {
+        "input": [
+          "text"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "model": null,
+      "name": "Mistral Nemo Instruct 2407",
+      "provider": "io_intelligence",
+      "provider_model_id": null,
+      "release_date": "2024-07-01",
+      "tags": null
+    },
+    "moonshotai-kimi-k2-instruct-0905": {
+      "aliases": [],
+      "capabilities": {
+        "chat": true,
+        "embeddings": false,
+        "json": {
+          "native": false,
+          "schema": false,
+          "strict": false
+        },
+        "reasoning": {
+          "enabled": false
+        },
+        "streaming": {
+          "tool_calls": true
+        },
+        "tools": {
+          "enabled": true
+        }
+      },
+      "cost": {
+        "cache_read": 0.195,
+        "cache_write": 0.78,
+        "input": 0.39,
+        "output": 1.9
+      },
+      "deprecated": false,
+      "extra": {
+        "attachment": false,
+        "open_weights": false,
+        "temperature": true
+      },
+      "family": null,
+      "id": "moonshotai-kimi-k2-instruct-0905",
+      "knowledge": "2024-08",
+      "last_updated": "2024-09-05",
+      "lifecycle": null,
+      "limits": {
+        "context": 32768,
+        "output": 4096
+      },
+      "modalities": {
+        "input": [
+          "text"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "model": null,
+      "name": "Kimi K2 Instruct",
+      "provider": "io_intelligence",
+      "provider_model_id": null,
+      "release_date": "2024-09-05",
+      "tags": null
+    },
+    "moonshotai-kimi-k2-thinking": {
+      "aliases": [],
+      "capabilities": {
+        "chat": true,
+        "embeddings": false,
+        "json": {
+          "native": false,
+          "schema": false,
+          "strict": false
+        },
+        "reasoning": {
+          "enabled": true
+        },
+        "streaming": {
+          "tool_calls": true
+        },
+        "tools": {
+          "enabled": true
+        }
+      },
+      "cost": {
+        "cache_read": 0.275,
+        "cache_write": 1.1,
+        "input": 0.55,
+        "output": 2.25
+      },
+      "deprecated": false,
+      "extra": {
+        "attachment": false,
+        "open_weights": false,
+        "temperature": true
+      },
+      "family": null,
+      "id": "moonshotai-kimi-k2-thinking",
+      "knowledge": "2024-08",
+      "last_updated": "2024-11-01",
+      "lifecycle": null,
+      "limits": {
+        "context": 32768,
+        "output": 4096
+      },
+      "modalities": {
+        "input": [
+          "text"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "model": null,
+      "name": "Kimi K2 Thinking",
+      "provider": "io_intelligence",
+      "provider_model_id": null,
+      "release_date": "2024-11-01",
+      "tags": null
+    },
+    "openai-gpt-oss-120b": {
+      "aliases": [],
+      "capabilities": {
+        "chat": true,
+        "embeddings": false,
+        "json": {
+          "native": false,
+          "schema": false,
+          "strict": false
+        },
+        "reasoning": {
+          "enabled": false
+        },
+        "streaming": {
+          "tool_calls": true
+        },
+        "tools": {
+          "enabled": true
+        }
+      },
+      "cost": {
+        "cache_read": 0.02,
+        "cache_write": 0.08,
+        "input": 0.04,
+        "output": 0.4
+      },
+      "deprecated": false,
+      "extra": {
+        "attachment": false,
+        "open_weights": true,
+        "temperature": true
+      },
+      "family": null,
+      "id": "openai-gpt-oss-120b",
+      "knowledge": "2024-10",
+      "last_updated": "2024-12-01",
+      "lifecycle": null,
+      "limits": {
+        "context": 131072,
+        "output": 4096
+      },
+      "modalities": {
+        "input": [
+          "text"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "model": null,
+      "name": "GPT-OSS 120B",
+      "provider": "io_intelligence",
+      "provider_model_id": null,
+      "release_date": "2024-12-01",
+      "tags": null
+    },
+    "openai-gpt-oss-20b": {
+      "aliases": [],
+      "capabilities": {
+        "chat": true,
+        "embeddings": false,
+        "json": {
+          "native": false,
+          "schema": false,
+          "strict": false
+        },
+        "reasoning": {
+          "enabled": false
+        },
+        "streaming": {
+          "tool_calls": true
+        },
+        "tools": {
+          "enabled": true
+        }
+      },
+      "cost": {
+        "cache_read": 0.015,
+        "cache_write": 0.06,
+        "input": 0.03,
+        "output": 0.14
+      },
+      "deprecated": false,
+      "extra": {
+        "attachment": false,
+        "open_weights": true,
+        "temperature": true
+      },
+      "family": null,
+      "id": "openai-gpt-oss-20b",
+      "knowledge": "2024-10",
+      "last_updated": "2024-12-01",
+      "lifecycle": null,
+      "limits": {
+        "context": 64000,
+        "output": 4096
+      },
+      "modalities": {
+        "input": [
+          "text"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "model": null,
+      "name": "GPT-OSS 20B",
+      "provider": "io_intelligence",
+      "provider_model_id": null,
+      "release_date": "2024-12-01",
+      "tags": null
+    },
+    "qwen-qwen2-5-vl-32b-instruct": {
+      "aliases": [],
+      "capabilities": {
+        "chat": true,
+        "embeddings": false,
+        "json": {
+          "native": false,
+          "schema": false,
+          "strict": false
+        },
+        "reasoning": {
+          "enabled": false
+        },
+        "streaming": {
+          "tool_calls": true
+        },
+        "tools": {
+          "enabled": true
+        }
+      },
+      "cost": {
+        "cache_read": 0.025,
+        "cache_write": 0.1,
+        "input": 0.05,
+        "output": 0.22
+      },
+      "deprecated": false,
+      "extra": {
+        "attachment": false,
+        "open_weights": true,
+        "temperature": true
+      },
+      "family": null,
+      "id": "qwen-qwen2-5-vl-32b-instruct",
+      "knowledge": "2024-09",
+      "last_updated": "2024-11-01",
+      "lifecycle": null,
+      "limits": {
+        "context": 32000,
+        "output": 4096
+      },
+      "modalities": {
+        "input": [
+          "text",
+          "image"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "model": null,
+      "name": "Qwen 2.5 VL 32B Instruct",
+      "provider": "io_intelligence",
+      "provider_model_id": null,
+      "release_date": "2024-11-01",
+      "tags": null
+    },
+    "qwen-qwen3-235b-a22b-thinking-2507": {
+      "aliases": [],
+      "capabilities": {
+        "chat": true,
+        "embeddings": false,
+        "json": {
+          "native": false,
+          "schema": false,
+          "strict": false
+        },
+        "reasoning": {
+          "enabled": true
+        },
+        "streaming": {
+          "tool_calls": true
+        },
+        "tools": {
+          "enabled": true
+        }
+      },
+      "cost": {
+        "cache_read": 0.055,
+        "cache_write": 0.22,
+        "input": 0.11,
+        "output": 0.6
+      },
+      "deprecated": false,
+      "extra": {
+        "attachment": false,
+        "open_weights": true,
+        "temperature": true
+      },
+      "family": null,
+      "id": "qwen-qwen3-235b-a22b-thinking-2507",
+      "knowledge": "2024-12",
+      "last_updated": "2025-07-01",
+      "lifecycle": null,
+      "limits": {
+        "context": 262144,
+        "output": 4096
+      },
+      "modalities": {
+        "input": [
+          "text"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "model": null,
+      "name": "Qwen 3 235B Thinking",
+      "provider": "io_intelligence",
+      "provider_model_id": null,
+      "release_date": "2025-07-01",
+      "tags": null
+    },
+    "qwen-qwen3-next-80b-a3b-instruct": {
+      "aliases": [],
+      "capabilities": {
+        "chat": true,
+        "embeddings": false,
+        "json": {
+          "native": false,
+          "schema": false,
+          "strict": false
+        },
+        "reasoning": {
+          "enabled": false
+        },
+        "streaming": {
+          "tool_calls": true
+        },
+        "tools": {
+          "enabled": true
+        }
+      },
+      "cost": {
+        "cache_read": 0.05,
+        "cache_write": 0.2,
+        "input": 0.1,
+        "output": 0.8
+      },
+      "deprecated": false,
+      "extra": {
+        "attachment": false,
+        "open_weights": true,
+        "temperature": true
+      },
+      "family": null,
+      "id": "qwen-qwen3-next-80b-a3b-instruct",
+      "knowledge": "2024-12",
+      "last_updated": "2025-01-10",
+      "lifecycle": null,
+      "limits": {
+        "context": 262144,
+        "output": 4096
+      },
+      "modalities": {
+        "input": [
+          "text"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "model": null,
+      "name": "Qwen 3 Next 80B Instruct",
+      "provider": "io_intelligence",
+      "provider_model_id": null,
+      "release_date": "2025-01-10",
+      "tags": null
+    },
+    "zai-org-glm-4-6": {
+      "aliases": [],
+      "capabilities": {
+        "chat": true,
+        "embeddings": false,
+        "json": {
+          "native": false,
+          "schema": false,
+          "strict": false
+        },
+        "reasoning": {
+          "enabled": false
+        },
+        "streaming": {
+          "tool_calls": true
+        },
+        "tools": {
+          "enabled": true
+        }
+      },
+      "cost": {
+        "cache_read": 0.2,
+        "cache_write": 0.8,
+        "input": 0.4,
+        "output": 1.75
+      },
+      "deprecated": false,
+      "extra": {
+        "attachment": false,
+        "open_weights": false,
+        "temperature": true
+      },
+      "family": null,
+      "id": "zai-org-glm-4-6",
+      "knowledge": "2024-10",
+      "last_updated": "2024-11-15",
+      "lifecycle": null,
+      "limits": {
+        "context": 200000,
+        "output": 4096
+      },
+      "modalities": {
+        "input": [
+          "text"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "model": null,
+      "name": "GLM 4.6",
+      "provider": "io_intelligence",
+      "provider_model_id": null,
+      "release_date": "2024-11-15",
       "tags": null
     }
   },
-  "name": "xAI"
+  "name": "IO Intelligence"
 }
