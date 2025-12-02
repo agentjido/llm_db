@@ -126,9 +126,7 @@ jobs:
             --base main \
             --head "$BRANCH_NAME" \
             --title "$TITLE" \
-            --body-file "$OUTPUT_FILE" \
-            --label "metadata-update" \
-            --label "automated"
+            --body-file "$OUTPUT_FILE"
 
       - name: Report no changes
         if: steps.changes.outputs.has_changes == 'false'
