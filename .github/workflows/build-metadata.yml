@@ -47,12 +47,10 @@ jobs:
           mix deps.get
 
       - name: Pull latest metadata from sources
-        id: pull
         run: |
           echo "Pulling latest LLM model metadata..."
-          mix llm_models.pull
-          mix llm_models.build
-          echo "pull_complete=true" >> $GITHUB_OUTPUT
+          mix llm_db.pull
+          mix llm_db.build
 
       - name: Check for changes
         id: changes
@@ -60,7 +58,7 @@ jobs:
           if [ "${{ inputs.force_update }}" = "true" ]; then
             echo "has_changes=true" >> $GITHUB_OUTPUT
             echo "Force update enabled - proceeding with PR creation"
-          elif git diff --quiet priv/llm_models/upstream/ priv/llm_models/snapshot.json lib/llm_models/generated/valid_providers.ex; then
+          elif git diff --quiet priv/llm_db/upstream/ priv/llm_db/snapshot.json lib/llm_db/generated/valid_providers.ex; then
             echo "has_changes=false" >> $GITHUB_OUTPUT
             echo "No changes detected in metadata files"
           else
@@ -68,44 +66,93 @@ jobs:
             echo "Changes detected in metadata files"
           fi
 
-      - name: Generate metadata summary
+      - name: Generate summary and create PR
         if: steps.changes.outputs.has_changes == 'true'
-        id: summary
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
-          chmod +x .github/workflows/scripts/generate_summary.sh
-          .github/workflows/scripts/generate_summary.sh
+          SNAPSHOT_FILE="priv/llm_db/snapshot.json"
+          SNAPSHOT_OLD="/tmp/snapshot_old.json"
+          OUTPUT_FILE="/tmp/metadata_summary.md"
 
-      - name: Create branch and commit changes
-        if: steps.changes.outputs.has_changes == 'true'
-        id: commit
-        run: |
+          # Backup old snapshot for comparison
+          git show HEAD:"$SNAPSHOT_FILE" > "$SNAPSHOT_OLD" 2>/dev/null || echo "{}" > "$SNAPSHOT_OLD"
+
+          echo "## Model Metadata Update" > "$OUTPUT_FILE"
+          echo "" >> "$OUTPUT_FILE"
+          echo "Automated metadata update from upstream sources." >> "$OUTPUT_FILE"
+          echo "" >> "$OUTPUT_FILE"
+
+          if [ -f "$SNAPSHOT_FILE" ]; then
+            PROVIDER_COUNT=$(jq '.providers | length' "$SNAPSHOT_FILE")
+            MODEL_COUNT=$(jq '.models | length' "$SNAPSHOT_FILE")
+            GENERATED_AT=$(jq -r '.metadata.generated_at' "$SNAPSHOT_FILE")
+
+            echo "### Summary" >> "$OUTPUT_FILE"
+            echo "" >> "$OUTPUT_FILE"
+            echo "- Providers: $PROVIDER_COUNT" >> "$OUTPUT_FILE"
+            echo "- Models: $MODEL_COUNT" >> "$OUTPUT_FILE"
+            echo "- Generated: $GENERATED_AT" >> "$OUTPUT_FILE"
+            echo "" >> "$OUTPUT_FILE"
+
+            # Calculate changes
+            if [ -f "$SNAPSHOT_OLD" ] && [ "$(cat "$SNAPSHOT_OLD")" != "{}" ]; then
+              OLD_PROVIDER_COUNT=$(jq '.providers | length' "$SNAPSHOT_OLD" 2>/dev/null || echo "0")
+              OLD_MODEL_COUNT=$(jq '.models | length' "$SNAPSHOT_OLD" 2>/dev/null || echo "0")
+
+              PROVIDER_DIFF=$((PROVIDER_COUNT - OLD_PROVIDER_COUNT))
+              MODEL_DIFF=$((MODEL_COUNT - OLD_MODEL_COUNT))
+
+              if [ $PROVIDER_DIFF -ne 0 ] || [ $MODEL_DIFF -ne 0 ]; then
+                echo "### Changes" >> "$OUTPUT_FILE"
+                echo "" >> "$OUTPUT_FILE"
+
+                if [ $PROVIDER_DIFF -gt 0 ]; then
+                  echo "- Providers added: $PROVIDER_DIFF" >> "$OUTPUT_FILE"
+                elif [ $PROVIDER_DIFF -lt 0 ]; then
+                  echo "- Providers removed: ${PROVIDER_DIFF#-}" >> "$OUTPUT_FILE"
+                fi
+
+                if [ $MODEL_DIFF -gt 0 ]; then
+                  echo "- Models added: $MODEL_DIFF" >> "$OUTPUT_FILE"
+                elif [ $MODEL_DIFF -lt 0 ]; then
+                  echo "- Models removed: ${MODEL_DIFF#-}" >> "$OUTPUT_FILE"
+                fi
+
+                echo "" >> "$OUTPUT_FILE"
+              fi
+            fi
+          fi
+
+          echo "### Changed Files" >> "$OUTPUT_FILE"
+          echo "" >> "$OUTPUT_FILE"
+          echo "\`\`\`" >> "$OUTPUT_FILE"
+          git diff --stat priv/llm_db/upstream/ priv/llm_db/snapshot.json lib/llm_db/generated/valid_providers.ex >> "$OUTPUT_FILE"
+          echo "\`\`\`" >> "$OUTPUT_FILE"
+
+          # Create branch and commit
           BRANCH_NAME="metadata-update-${{ github.run_number }}"
-          echo "branch_name=$BRANCH_NAME" >> $GITHUB_OUTPUT
 
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
 
           git checkout -b "$BRANCH_NAME"
-          git add priv/llm_models/upstream/
-          git add priv/llm_models/snapshot.json
-          git add lib/llm_models/generated/valid_providers.ex
+          git add priv/llm_db/upstream/
+          git add priv/llm_db/snapshot.json
+          git add lib/llm_db/generated/valid_providers.ex
 
           git commit -m "Update model metadata" \
                      -m "Automated metadata update from upstream sources"
 
           git push origin "$BRANCH_NAME"
 
-      - name: Create Pull Request
-        if: steps.changes.outputs.has_changes == 'true'
-        env:
-          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        run: |
+          # Create PR
           TITLE="Update model metadata - $(date +%Y-%m-%d)"
           gh pr create \
             --base main \
-            --head "${{ steps.commit.outputs.branch_name }}" \
+            --head "$BRANCH_NAME" \
             --title "$TITLE" \
-            --body-file "/tmp/metadata_summary.md" \
+            --body-file "$OUTPUT_FILE" \
             --label "metadata-update" \
             --label "automated"
 
