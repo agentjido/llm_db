@@ -36,7 +36,8 @@ defmodule LLMDB.Model do
                   enabled: Zoi.boolean() |> Zoi.nullish(),
                   streaming: Zoi.boolean() |> Zoi.nullish(),
                   strict: Zoi.boolean() |> Zoi.nullish(),
-                  parallel: Zoi.boolean() |> Zoi.nullish()
+                  parallel: Zoi.boolean() |> Zoi.nullish(),
+                  forced_choice: Zoi.boolean() |> Zoi.nullish()
                 })
 
   @json_schema Zoi.object(%{
