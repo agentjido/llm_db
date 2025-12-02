@@ -142,9 +142,17 @@ jobs:
             git checkout -b "$BRANCH_NAME"
           fi
 
-          # Stage and commit changes
+          # Stage changes
           git add priv/llm_db/
           git add lib/llm_db/generated/
+
+          # Check if there are staged changes to commit
+          if git diff --cached --quiet; then
+            echo "No new changes to commit (branch already up to date)"
+            echo "### No New Changes" >> "$GITHUB_STEP_SUMMARY"
+            echo "The metadata-update branch already contains the latest changes." >> "$GITHUB_STEP_SUMMARY"
+            exit 0
+          fi
 
           git commit -m "Update model metadata" \
                      -m "Automated metadata update from upstream sources"
