@@ -4,7 +4,12 @@ on:
   workflow_dispatch:
     inputs:
       dry_run:
-        description: "Dry run (no publish, no tag, no push)"
+        description: "Dry run (no git push, no tag, no GitHub release, no Hex publish)"
+        required: false
+        type: boolean
+        default: false
+      hex_dry_run:
+        description: "Hex dry run only (run all git/release steps, but skip actual Hex publish)"
         required: false
         type: boolean
         default: false
@@ -89,8 +94,8 @@ jobs:
           HEX_API_KEY: ${{ secrets.HEX_API_KEY }}
         run: |
           set -euo pipefail
-          if [ "${{ inputs.dry_run }}" = "true" ]; then
-            echo "### Dry Run - Would publish:" >> "$GITHUB_STEP_SUMMARY"
+          if [ "${{ inputs.dry_run }}" = "true" ] || [ "${{ inputs.hex_dry_run }}" = "true" ]; then
+            echo "### Hex Dry Run - Would publish:" >> "$GITHUB_STEP_SUMMARY"
             mix hex.publish --dry-run
           else
             mix hex.publish --yes
