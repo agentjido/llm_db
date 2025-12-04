@@ -92,6 +92,7 @@ defmodule LLMDB.MixProject do
 
   defp aliases do
     [
+      setup: ["deps.get"],
       quality: [
         "format --check-formatted",
         "compile --warnings-as-errors",
