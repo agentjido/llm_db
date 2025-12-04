@@ -247,6 +247,40 @@ See the [Sources & Engine](guides/sources-and-engine.md) guide for details.
 
 Designed to power [ReqLLM](https://github.com/agentjido/req_llm), but fully standalone. Use `model_spec` + `model/1` to retrieve metadata for API calls.
 
+## Contributing
+
+### Setup
+
+```bash
+mix setup  # Install dependencies and git hooks
+```
+
+### Git Hooks
+
+This project uses [git_hooks](https://hex.pm/packages/git_hooks) to enforce code quality. Hooks install automatically on `mix compile` in dev:
+
+| Hook | Action |
+|------|--------|
+| **commit-msg** | Validates [conventional commit](https://www.conventionalcommits.org/) format |
+| **pre-commit** | Runs `mix format --check-formatted` |
+| **pre-push** | Runs `mix quality` (format, compile warnings, dialyzer, credo) |
+
+### Conventional Commits
+
+All commits must follow conventional commit format:
+
+```
+type(scope): description
+
+# Examples:
+feat: add new provider support
+fix: resolve model lookup edge case
+docs: update API documentation
+chore: update dependencies
+```
+
+Types: `feat`, `fix`, `docs`, `style`, `refactor`, `perf`, `test`, `build`, `ci`, `chore`, `revert`
+
 ## Docs & Guides
 
 - [Using the Data](guides/using-the-data.md) — Runtime API and querying

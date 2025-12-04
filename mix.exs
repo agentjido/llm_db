@@ -68,6 +68,7 @@ defmodule LLMDB.MixProject do
       {:meck, "~> 1.0", only: :test},
       {:ex_doc, "~> 0.31", only: :dev, runtime: false},
       {:git_ops, "~> 2.6", only: :dev, runtime: false},
+      {:git_hooks, "~> 0.8", only: :dev, runtime: false},
       {:dialyxir, "~> 1.4", only: [:dev, :test], runtime: false},
       {:credo, "~> 1.7", only: [:dev, :test], runtime: false},
       {:usage_rules, "~> 0.1", only: :dev, runtime: false}

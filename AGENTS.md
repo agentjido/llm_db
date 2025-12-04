@@ -2,15 +2,29 @@
 
 ## Commands
 
+- **Setup**: `mix setup` (install deps, git hooks auto-install on compile)
 - **Test all**: `mix test`
 - **Test single file**: `mix test test/path/to/file_test.exs`
 - **Test single test**: `mix test test/path/to/file_test.exs:12` (line number)
 - **Test with coverage**: `mix test --cover`
 - **Format code**: `mix format`
 - **Compile**: `mix compile`
+- **Quality check**: `mix quality` (format, compile warnings, dialyzer, credo)
 - **Update model data**: `mix llm_db.pull` (fetches from configured remote sources and regenerates snapshot)
 - **Dependencies**: `mix deps.get`
 - **Release**: `mix llm_db.version && mix git_ops.release && git push && git push --tags` (bumps to date-based version, updates CHANGELOG, tags, and pushes)
+
+## Git Hooks
+
+Hooks auto-install via `git_hooks` on `mix compile` in dev:
+
+| Hook | Action |
+|------|--------|
+| **commit-msg** | Validates conventional commit format via `git_ops.check_message` |
+| **pre-commit** | `mix format --check-formatted` |
+| **pre-push** | `mix quality` |
+
+Conventional commit types: `feat`, `fix`, `docs`, `style`, `refactor`, `perf`, `test`, `build`, `ci`, `chore`, `revert`
 
 ## Configuration
 

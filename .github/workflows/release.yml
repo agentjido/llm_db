@@ -54,6 +54,7 @@ jobs:
         run: |
           set -euo pipefail
           mix deps.get
+          MIX_ENV=dev mix deps.compile git_ops
 
       - name: Run tests
         if: ${{ inputs.skip_tests != true }}
@@ -78,9 +79,11 @@ jobs:
 
       - name: Generate changelog and create tag
         if: ${{ inputs.dry_run != true }}
+        env:
+          MIX_ENV: dev
         run: |
           set -euo pipefail
-          mix git_ops.release --yes
+          mix git_ops.release --yes --force-patch
 
       - name: Push changes and tags
         if: ${{ inputs.dry_run != true }}
