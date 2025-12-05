@@ -7,6 +7,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 <!-- changelog -->
 
+## [v2025.12.6](https://github.com/agentjido/llm_db/compare/v2025.12.5...v2025.12.6) (2025-12-05)
+
+
+
+
 ## [Unreleased]
 
 ### Changed
