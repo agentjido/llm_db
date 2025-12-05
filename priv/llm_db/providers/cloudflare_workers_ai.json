@@ -11,1144 +11,6 @@
   "extra": null,
   "id": "cloudflare_workers_ai",
   "models": {
-    "llama-3.1-8b-instruct-fast": {
-      "aliases": [],
-      "capabilities": {
-        "chat": true,
-        "embeddings": false,
-        "json": {
-          "native": false,
-          "schema": false,
-          "strict": false
-        },
-        "reasoning": {
-          "enabled": false
-        },
-        "streaming": {
-          "tool_calls": true
-        },
-        "tools": {
-          "enabled": true
-        }
-      },
-      "cost": {
-        "input": 0.045,
-        "output": 0.384
-      },
-      "deprecated": false,
-      "extra": {
-        "attachment": false,
-        "open_weights": true,
-        "temperature": true
-      },
-      "family": null,
-      "id": "llama-3.1-8b-instruct-fast",
-      "knowledge": null,
-      "last_updated": "2024-09-25",
-      "lifecycle": null,
-      "limits": {
-        "context": 128000,
-        "output": 128000
-      },
-      "modalities": {
-        "input": [
-          "text"
-        ],
-        "output": [
-          "text"
-        ]
-      },
-      "model": null,
-      "name": "@cf/meta/llama-3.1-8b-instruct-fast",
-      "provider": "cloudflare_workers_ai",
-      "provider_model_id": null,
-      "release_date": "2024-07-18",
-      "tags": null
-    },
-    "whisper-large-v3-turbo": {
-      "aliases": [],
-      "capabilities": null,
-      "cost": {
-        "input": 5.1e-4,
-        "output": 5.1e-4
-      },
-      "deprecated": false,
-      "extra": {
-        "attachment": false,
-        "open_weights": true,
-        "temperature": false
-      },
-      "family": null,
-      "id": "whisper-large-v3-turbo",
-      "knowledge": null,
-      "last_updated": "2024-10-04",
-      "lifecycle": null,
-      "limits": null,
-      "modalities": {
-        "input": [
-          "audio"
-        ],
-        "output": [
-          "text"
-        ]
-      },
-      "model": null,
-      "name": "@cf/openai/whisper-large-v3-turbo",
-      "provider": "cloudflare_workers_ai",
-      "provider_model_id": null,
-      "release_date": "2024-10-01",
-      "tags": null
-    },
-    "llama-3-8b-instruct-awq": {
-      "aliases": [],
-      "capabilities": {
-        "chat": true,
-        "embeddings": false,
-        "json": {
-          "native": false,
-          "schema": false,
-          "strict": false
-        },
-        "reasoning": {
-          "enabled": false
-        },
-        "streaming": {
-          "tool_calls": true
-        },
-        "tools": {
-          "enabled": true
-        }
-      },
-      "cost": {
-        "input": 0.12,
-        "output": 0.27
-      },
-      "deprecated": false,
-      "extra": {
-        "attachment": false,
-        "open_weights": true,
-        "temperature": true
-      },
-      "family": null,
-      "id": "llama-3-8b-instruct-awq",
-      "knowledge": null,
-      "last_updated": "2024-05-09",
-      "lifecycle": null,
-      "limits": {
-        "context": 8192,
-        "output": 8192
-      },
-      "modalities": {
-        "input": [
-          "text"
-        ],
-        "output": [
-          "text"
-        ]
-      },
-      "model": null,
-      "name": "@cf/meta/llama-3-8b-instruct-awq",
-      "provider": "cloudflare_workers_ai",
-      "provider_model_id": null,
-      "release_date": "2024-05-09",
-      "tags": null
-    },
-    "qwen1.5-1.8b-chat": {
-      "aliases": [],
-      "capabilities": {
-        "chat": true,
-        "embeddings": false,
-        "json": {
-          "native": false,
-          "schema": false,
-          "strict": false
-        },
-        "reasoning": {
-          "enabled": false
-        },
-        "streaming": {
-          "tool_calls": true
-        },
-        "tools": {
-          "enabled": true
-        }
-      },
-      "cost": {
-        "input": 0,
-        "output": 0
-      },
-      "deprecated": false,
-      "extra": {
-        "attachment": false,
-        "open_weights": true,
-        "temperature": true
-      },
-      "family": null,
-      "id": "qwen1.5-1.8b-chat",
-      "knowledge": null,
-      "last_updated": "2024-04-30",
-      "lifecycle": null,
-      "limits": {
-        "context": 32000,
-        "output": 32000
-      },
-      "modalities": {
-        "input": [
-          "text"
-        ],
-        "output": [
-          "text"
-        ]
-      },
-      "model": null,
-      "name": "@cf/qwen/qwen1.5-1.8b-chat",
-      "provider": "cloudflare_workers_ai",
-      "provider_model_id": null,
-      "release_date": "2024-01-30",
-      "tags": null
-    },
-    "melotts": {
-      "aliases": [],
-      "capabilities": null,
-      "cost": {
-        "input": 0.0002,
-        "output": 0
-      },
-      "deprecated": false,
-      "extra": {
-        "attachment": true,
-        "open_weights": true,
-        "temperature": false
-      },
-      "family": null,
-      "id": "melotts",
-      "knowledge": null,
-      "last_updated": "2024-07-19",
-      "lifecycle": null,
-      "limits": null,
-      "modalities": {
-        "input": [
-          "text"
-        ],
-        "output": [
-          "audio"
-        ]
-      },
-      "model": null,
-      "name": "@cf/myshell-ai/melotts",
-      "provider": "cloudflare_workers_ai",
-      "provider_model_id": null,
-      "release_date": "2024-07-19",
-      "tags": null
-    },
-    "qwen2.5-coder-32b-instruct": {
-      "aliases": [],
-      "capabilities": {
-        "chat": true,
-        "embeddings": false,
-        "json": {
-          "native": false,
-          "schema": false,
-          "strict": false
-        },
-        "reasoning": {
-          "enabled": false
-        },
-        "streaming": {
-          "tool_calls": true
-        },
-        "tools": {
-          "enabled": true
-        }
-      },
-      "cost": {
-        "input": 0.66,
-        "output": 1
-      },
-      "deprecated": false,
-      "extra": {
-        "attachment": false,
-        "open_weights": true,
-        "temperature": true
-      },
-      "family": null,
-      "id": "qwen2.5-coder-32b-instruct",
-      "knowledge": null,
-      "last_updated": "2025-01-12",
-      "lifecycle": null,
-      "limits": {
-        "context": 32768,
-        "output": 32768
-      },
-      "modalities": {
-        "input": [
-          "text"
-        ],
-        "output": [
-          "text"
-        ]
-      },
-      "model": null,
-      "name": "@cf/qwen/qwen2.5-coder-32b-instruct",
-      "provider": "cloudflare_workers_ai",
-      "provider_model_id": null,
-      "release_date": "2024-11-06",
-      "tags": null
-    },
-    "llama-2-7b-chat-hf-lora": {
-      "aliases": [],
-      "capabilities": {
-        "chat": true,
-        "embeddings": false,
-        "json": {
-          "native": false,
-          "schema": false,
-          "strict": false
-        },
-        "reasoning": {
-          "enabled": false
-        },
-        "streaming": {
-          "tool_calls": true
-        },
-        "tools": {
-          "enabled": true
-        }
-      },
-      "cost": {
-        "input": 0,
-        "output": 0
-      },
-      "deprecated": false,
-      "extra": {
-        "attachment": false,
-        "open_weights": true,
-        "temperature": true
-      },
-      "family": null,
-      "id": "llama-2-7b-chat-hf-lora",
-      "knowledge": null,
-      "last_updated": "2024-04-17",
-      "lifecycle": null,
-      "limits": {
-        "context": 8192,
-        "output": 8192
-      },
-      "modalities": {
-        "input": [
-          "text"
-        ],
-        "output": [
-          "text"
-        ]
-      },
-      "model": null,
-      "name": "@cf/meta-llama/llama-2-7b-chat-hf-lora",
-      "provider": "cloudflare_workers_ai",
-      "provider_model_id": null,
-      "release_date": "2023-07-13",
-      "tags": null
-    },
-    "resnet-50": {
-      "aliases": [],
-      "capabilities": null,
-      "cost": {
-        "input": 2.5e-6,
-        "output": 0
-      },
-      "deprecated": false,
-      "extra": {
-        "attachment": false,
-        "open_weights": true,
-        "temperature": false
-      },
-      "family": null,
-      "id": "resnet-50",
-      "knowledge": null,
-      "last_updated": "2024-02-13",
-      "lifecycle": null,
-      "limits": null,
-      "modalities": {
-        "input": [
-          "image"
-        ],
-        "output": [
-          "text"
-        ]
-      },
-      "model": null,
-      "name": "@cf/microsoft/resnet-50",
-      "provider": "cloudflare_workers_ai",
-      "provider_model_id": null,
-      "release_date": "2022-03-16",
-      "tags": null
-    },
-    "discolm-german-7b-v1-awq": {
-      "aliases": [],
-      "capabilities": {
-        "chat": true,
-        "embeddings": false,
-        "json": {
-          "native": false,
-          "schema": false,
-          "strict": false
-        },
-        "reasoning": {
-          "enabled": false
-        },
-        "streaming": {
-          "tool_calls": true
-        },
-        "tools": {
-          "enabled": true
-        }
-      },
-      "cost": {
-        "input": 0,
-        "output": 0
-      },
-      "deprecated": false,
-      "extra": {
-        "attachment": false,
-        "open_weights": true,
-        "temperature": true
-      },
-      "family": null,
-      "id": "discolm-german-7b-v1-awq",
-      "knowledge": null,
-      "last_updated": "2024-01-24",
-      "lifecycle": null,
-      "limits": {
-        "context": 4096,
-        "output": 4096
-      },
-      "modalities": {
-        "input": [
-          "text"
-        ],
-        "output": [
-          "text"
-        ]
-      },
-      "model": null,
-      "name": "@cf/thebloke/discolm-german-7b-v1-awq",
-      "provider": "cloudflare_workers_ai",
-      "provider_model_id": null,
-      "release_date": "2024-01-18",
-      "tags": null
-    },
-    "phoenix-1.0": {
-      "aliases": [],
-      "capabilities": null,
-      "cost": {
-        "input": 0.0058,
-        "output": 0.0058
-      },
-      "deprecated": false,
-      "extra": {
-        "attachment": false,
-        "open_weights": false,
-        "temperature": false
-      },
-      "family": null,
-      "id": "phoenix-1.0",
-      "knowledge": null,
-      "last_updated": "2025-08-25",
-      "lifecycle": null,
-      "limits": null,
-      "modalities": {
-        "input": [
-          "text"
-        ],
-        "output": [
-          "image"
-        ]
-      },
-      "model": null,
-      "name": "@cf/leonardo/phoenix-1.0",
-      "provider": "cloudflare_workers_ai",
-      "provider_model_id": null,
-      "release_date": "2025-08-25",
-      "tags": null
-    },
-    "neural-chat-7b-v3-1-awq": {
-      "aliases": [],
-      "capabilities": {
-        "chat": true,
-        "embeddings": false,
-        "json": {
-          "native": false,
-          "schema": false,
-          "strict": false
-        },
-        "reasoning": {
-          "enabled": false
-        },
-        "streaming": {
-          "tool_calls": true
-        },
-        "tools": {
-          "enabled": true
-        }
-      },
-      "cost": {
-        "input": 0,
-        "output": 0
-      },
-      "deprecated": false,
-      "extra": {
-        "attachment": false,
-        "open_weights": true,
-        "temperature": true
-      },
-      "family": null,
-      "id": "neural-chat-7b-v3-1-awq",
-      "knowledge": null,
-      "last_updated": "2023-11-17",
-      "lifecycle": null,
-      "limits": {
-        "context": 4096,
-        "output": 4096
-      },
-      "modalities": {
-        "input": [
-          "text"
-        ],
-        "output": [
-          "text"
-        ]
-      },
-      "model": null,
-      "name": "@hf/thebloke/neural-chat-7b-v3-1-awq",
-      "provider": "cloudflare_workers_ai",
-      "provider_model_id": null,
-      "release_date": "2023-11-15",
-      "tags": null
-    },
-    "llama-3.2-1b-instruct": {
-      "aliases": [],
-      "capabilities": {
-        "chat": true,
-        "embeddings": false,
-        "json": {
-          "native": false,
-          "schema": false,
-          "strict": false
-        },
-        "reasoning": {
-          "enabled": false
-        },
-        "streaming": {
-          "tool_calls": true
-        },
-        "tools": {
-          "enabled": true
-        }
-      },
-      "cost": {
-        "input": 0.027,
-        "output": 0.2
-      },
-      "deprecated": false,
-      "extra": {
-        "attachment": false,
-        "open_weights": true,
-        "temperature": true
-      },
-      "family": null,
-      "id": "llama-3.2-1b-instruct",
-      "knowledge": null,
-      "last_updated": "2024-10-24",
-      "lifecycle": null,
-      "limits": {
-        "context": 60000,
-        "output": 60000
-      },
-      "modalities": {
-        "input": [
-          "text"
-        ],
-        "output": [
-          "text"
-        ]
-      },
-      "model": null,
-      "name": "@cf/meta/llama-3.2-1b-instruct",
-      "provider": "cloudflare_workers_ai",
-      "provider_model_id": null,
-      "release_date": "2024-09-18",
-      "tags": null
-    },
-    "starling-lm-7b-beta": {
-      "aliases": [],
-      "capabilities": {
-        "chat": true,
-        "embeddings": false,
-        "json": {
-          "native": false,
-          "schema": false,
-          "strict": false
-        },
-        "reasoning": {
-          "enabled": false
-        },
-        "streaming": {
-          "tool_calls": true
-        },
-        "tools": {
-          "enabled": true
-        }
-      },
-      "cost": {
-        "input": 0,
-        "output": 0
-      },
-      "deprecated": false,
-      "extra": {
-        "attachment": false,
-        "open_weights": true,
-        "temperature": true
-      },
-      "family": null,
-      "id": "starling-lm-7b-beta",
-      "knowledge": null,
-      "last_updated": "2024-04-03",
-      "lifecycle": null,
-      "limits": {
-        "context": 4096,
-        "output": 4096
-      },
-      "modalities": {
-        "input": [
-          "text"
-        ],
-        "output": [
-          "text"
-        ]
-      },
-      "model": null,
-      "name": "@hf/nexusflow/starling-lm-7b-beta",
-      "provider": "cloudflare_workers_ai",
-      "provider_model_id": null,
-      "release_date": "2024-03-19",
-      "tags": null
-    },
-    "qwen1.5-0.5b-chat": {
-      "aliases": [],
-      "capabilities": {
-        "chat": true,
-        "embeddings": false,
-        "json": {
-          "native": false,
-          "schema": false,
-          "strict": false
-        },
-        "reasoning": {
-          "enabled": false
-        },
-        "streaming": {
-          "tool_calls": true
-        },
-        "tools": {
-          "enabled": true
-        }
-      },
-      "cost": {
-        "input": 0,
-        "output": 0
-      },
-      "deprecated": false,
-      "extra": {
-        "attachment": false,
-        "open_weights": true,
-        "temperature": true
-      },
-      "family": null,
-      "id": "qwen1.5-0.5b-chat",
-      "knowledge": null,
-      "last_updated": "2024-04-30",
-      "lifecycle": null,
-      "limits": {
-        "context": 32000,
-        "output": 32000
-      },
-      "modalities": {
-        "input": [
-          "text"
-        ],
-        "output": [
-          "text"
-        ]
-      },
-      "model": null,
-      "name": "@cf/qwen/qwen1.5-0.5b-chat",
-      "provider": "cloudflare_workers_ai",
-      "provider_model_id": null,
-      "release_date": "2024-01-31",
-      "tags": null
-    },
-    "lucid-origin": {
-      "aliases": [],
-      "capabilities": null,
-      "cost": {
-        "input": 0.007,
-        "output": 0.007
-      },
-      "deprecated": false,
-      "extra": {
-        "attachment": false,
-        "open_weights": false,
-        "temperature": false
-      },
-      "family": null,
-      "id": "lucid-origin",
-      "knowledge": null,
-      "last_updated": "2025-08-05",
-      "lifecycle": null,
-      "limits": null,
-      "modalities": {
-        "input": [
-          "text"
-        ],
-        "output": [
-          "image"
-        ]
-      },
-      "model": null,
-      "name": "@cf/leonardo/lucid-origin",
-      "provider": "cloudflare_workers_ai",
-      "provider_model_id": null,
-      "release_date": "2025-08-25",
-      "tags": null
-    },
-    "flux-1-schnell": {
-      "aliases": [],
-      "capabilities": null,
-      "cost": {
-        "input": 5.3e-5,
-        "output": 1.1e-4
-      },
-      "deprecated": false,
-      "extra": {
-        "attachment": false,
-        "open_weights": true,
-        "temperature": false
-      },
-      "family": null,
-      "id": "flux-1-schnell",
-      "knowledge": null,
-      "last_updated": "2024-08-16",
-      "lifecycle": null,
-      "limits": {
-        "context": 2048
-      },
-      "modalities": {
-        "input": [
-          "text"
-        ],
-        "output": [
-          "image"
-        ]
-      },
-      "model": null,
-      "name": "@cf/black-forest-labs/flux-1-schnell",
-      "provider": "cloudflare_workers_ai",
-      "provider_model_id": null,
-      "release_date": "2024-07-31",
-      "tags": null
-    },
-    "llama-3.1-8b-instruct-fp8": {
-      "aliases": [],
-      "capabilities": {
-        "chat": true,
-        "embeddings": false,
-        "json": {
-          "native": false,
-          "schema": false,
-          "strict": false
-        },
-        "reasoning": {
-          "enabled": false
-        },
-        "streaming": {
-          "tool_calls": true
-        },
-        "tools": {
-          "enabled": true
-        }
-      },
-      "cost": {
-        "input": 0.15,
-        "output": 0.29
-      },
-      "deprecated": false,
-      "extra": {
-        "attachment": false,
-        "open_weights": true,
-        "temperature": true
-      },
-      "family": null,
-      "id": "llama-3.1-8b-instruct-fp8",
-      "knowledge": null,
-      "last_updated": "2024-07-25",
-      "lifecycle": null,
-      "limits": {
-        "context": 32000,
-        "output": 32000
-      },
-      "modalities": {
-        "input": [
-          "text"
-        ],
-        "output": [
-          "text"
-        ]
-      },
-      "model": null,
-      "name": "@cf/meta/llama-3.1-8b-instruct-fp8",
-      "provider": "cloudflare_workers_ai",
-      "provider_model_id": null,
-      "release_date": "2024-07-25",
-      "tags": null
-    },
-    "qwen1.5-7b-chat-awq": {
-      "aliases": [],
-      "capabilities": {
-        "chat": true,
-        "embeddings": false,
-        "json": {
-          "native": false,
-          "schema": false,
-          "strict": false
-        },
-        "reasoning": {
-          "enabled": false
-        },
-        "streaming": {
-          "tool_calls": true
-        },
-        "tools": {
-          "enabled": true
-        }
-      },
-      "cost": {
-        "input": 0,
-        "output": 0
-      },
-      "deprecated": false,
-      "extra": {
-        "attachment": false,
-        "open_weights": true,
-        "temperature": true
-      },
-      "family": null,
-      "id": "qwen1.5-7b-chat-awq",
-      "knowledge": null,
-      "last_updated": "2024-04-30",
-      "lifecycle": null,
-      "limits": {
-        "context": 20000,
-        "output": 20000
-      },
-      "modalities": {
-        "input": [
-          "text"
-        ],
-        "output": [
-          "text"
-        ]
-      },
-      "model": null,
-      "name": "@cf/qwen/qwen1.5-7b-chat-awq",
-      "provider": "cloudflare_workers_ai",
-      "provider_model_id": null,
-      "release_date": "2024-02-03",
-      "tags": null
-    },
-    "stable-diffusion-xl-base-1.0": {
-      "aliases": [],
-      "capabilities": null,
-      "cost": {
-        "input": 0,
-        "output": 0
-      },
-      "deprecated": false,
-      "extra": {
-        "attachment": false,
-        "open_weights": true,
-        "temperature": false
-      },
-      "family": null,
-      "id": "stable-diffusion-xl-base-1.0",
-      "knowledge": null,
-      "last_updated": "2023-10-30",
-      "lifecycle": null,
-      "limits": null,
-      "modalities": {
-        "input": [
-          "text"
-        ],
-        "output": [
-          "image"
-        ]
-      },
-      "model": null,
-      "name": "@cf/stabilityai/stable-diffusion-xl-base-1.0",
-      "provider": "cloudflare_workers_ai",
-      "provider_model_id": null,
-      "release_date": "2023-07-25",
-      "tags": null
-    },
-    "llamaguard-7b-awq": {
-      "aliases": [],
-      "capabilities": {
-        "chat": true,
-        "embeddings": false,
-        "json": {
-          "native": false,
-          "schema": false,
-          "strict": false
-        },
-        "reasoning": {
-          "enabled": false
-        },
-        "streaming": {
-          "tool_calls": true
-        },
-        "tools": {
-          "enabled": true
-        }
-      },
-      "cost": {
-        "input": 0,
-        "output": 0
-      },
-      "deprecated": false,
-      "extra": {
-        "attachment": false,
-        "open_weights": true,
-        "temperature": true
-      },
-      "family": null,
-      "id": "llamaguard-7b-awq",
-      "knowledge": null,
-      "last_updated": "2023-12-11",
-      "lifecycle": null,
-      "limits": {
-        "context": 4096,
-        "output": 4096
-      },
-      "modalities": {
-        "input": [
-          "text"
-        ],
-        "output": [
-          "text"
-        ]
-      },
-      "model": null,
-      "name": "@hf/thebloke/llamaguard-7b-awq",
-      "provider": "cloudflare_workers_ai",
-      "provider_model_id": null,
-      "release_date": "2023-12-11",
-      "tags": null
-    },
-    "hermes-2-pro-mistral-7b": {
-      "aliases": [],
-      "capabilities": {
-        "chat": true,
-        "embeddings": false,
-        "json": {
-          "native": false,
-          "schema": false,
-          "strict": false
-        },
-        "reasoning": {
-          "enabled": false
-        },
-        "streaming": {
-          "tool_calls": true
-        },
-        "tools": {
-          "enabled": true
-        }
-      },
-      "cost": {
-        "input": 0,
-        "output": 0
-      },
-      "deprecated": false,
-      "extra": {
-        "attachment": false,
-        "open_weights": true,
-        "temperature": true
-      },
-      "family": null,
-      "id": "hermes-2-pro-mistral-7b",
-      "knowledge": null,
-      "last_updated": "2024-09-08",
-      "lifecycle": null,
-      "limits": {
-        "context": 24000,
-        "output": 24000
-      },
-      "modalities": {
-        "input": [
-          "text"
-        ],
-        "output": [
-          "text"
-        ]
-      },
-      "model": null,
-      "name": "@hf/nousresearch/hermes-2-pro-mistral-7b",
-      "provider": "cloudflare_workers_ai",
-      "provider_model_id": null,
-      "release_date": "2024-03-11",
-      "tags": null
-    },
-    "mistral-small-3.1-24b-instruct": {
-      "aliases": [],
-      "capabilities": {
-        "chat": true,
-        "embeddings": false,
-        "json": {
-          "native": false,
-          "schema": false,
-          "strict": false
-        },
-        "reasoning": {
-          "enabled": false
-        },
-        "streaming": {
-          "tool_calls": true
-        },
-        "tools": {
-          "enabled": true
-        }
-      },
-      "cost": {
-        "input": 0.35,
-        "output": 0.56
-      },
-      "deprecated": false,
-      "extra": {
-        "attachment": false,
-        "open_weights": true,
-        "temperature": true
-      },
-      "family": null,
-      "id": "mistral-small-3.1-24b-instruct",
-      "knowledge": null,
-      "last_updated": "2025-07-28",
-      "lifecycle": null,
-      "limits": {
-        "context": 128000,
-        "output": 128000
-      },
-      "modalities": {
-        "input": [
-          "text"
-        ],
-        "output": [
-          "text"
-        ]
-      },
-      "model": null,
-      "name": "@cf/mistralai/mistral-small-3.1-24b-instruct",
-      "provider": "cloudflare_workers_ai",
-      "provider_model_id": null,
-      "release_date": "2025-03-11",
-      "tags": null
-    },
-    "stable-diffusion-xl-lightning": {
-      "aliases": [],
-      "capabilities": null,
-      "cost": {
-        "input": 0,
-        "output": 0
-      },
-      "deprecated": false,
-      "extra": {
-        "attachment": false,
-        "open_weights": true,
-        "temperature": false
-      },
-      "family": null,
-      "id": "stable-diffusion-xl-lightning",
-      "knowledge": null,
-      "last_updated": "2024-04-03",
-      "lifecycle": null,
-      "limits": null,
-      "modalities": {
-        "input": [
-          "text"
-        ],
-        "output": [
-          "image"
-        ]
-      },
-      "model": null,
-      "name": "@cf/bytedance/stable-diffusion-xl-lightning",
-      "provider": "cloudflare_workers_ai",
-      "provider_model_id": null,
-      "release_date": "2024-02-20",
-      "tags": null
-    },
-    "gemma-7b-it": {
-      "aliases": [],
-      "capabilities": {
-        "chat": true,
-        "embeddings": false,
-        "json": {
-          "native": false,
-          "schema": false,
-          "strict": false
-        },
-        "reasoning": {
-          "enabled": false
-        },
-        "streaming": {
-          "tool_calls": true
-        },
-        "tools": {
-          "enabled": true
-        }
-      },
-      "cost": {
-        "input": 0,
-        "output": 0
-      },
-      "deprecated": false,
-      "extra": {
-        "attachment": false,
-        "open_weights": true,
-        "temperature": true
-      },
-      "family": null,
-      "id": "gemma-7b-it",
-      "knowledge": null,
-      "last_updated": "2024-08-14",
-      "lifecycle": null,
-      "limits": {
-        "context": 8192,
-        "output": 8192
-      },
-      "modalities": {
-        "input": [
-          "text"
-        ],
-        "output": [
-          "text"
-        ]
-      },
-      "model": null,
-      "name": "@hf/google/gemma-7b-it",
-      "provider": "cloudflare_workers_ai",
-      "provider_model_id": null,
-      "release_date": "2024-02-13",
-      "tags": null
-    },
     "zephyr-7b-beta-awq": {
       "aliases": [],
       "capabilities": {
@@ -1177,6 +39,7 @@
       "extra": {
         "attachment": false,
         "open_weights": true,
+        "status": "deprecated",
         "temperature": true
       },
       "family": null,
@@ -1201,378 +64,6 @@
       "provider": "cloudflare_workers_ai",
       "provider_model_id": null,
       "release_date": "2023-10-27",
-      "tags": null
-    },
-    "llama-3.2-3b-instruct": {
-      "aliases": [],
-      "capabilities": {
-        "chat": true,
-        "embeddings": false,
-        "json": {
-          "native": false,
-          "schema": false,
-          "strict": false
-        },
-        "reasoning": {
-          "enabled": false
-        },
-        "streaming": {
-          "tool_calls": true
-        },
-        "tools": {
-          "enabled": true
-        }
-      },
-      "cost": {
-        "input": 0.051,
-        "output": 0.34
-      },
-      "deprecated": false,
-      "extra": {
-        "attachment": false,
-        "open_weights": true,
-        "temperature": true
-      },
-      "family": null,
-      "id": "llama-3.2-3b-instruct",
-      "knowledge": null,
-      "last_updated": "2024-10-24",
-      "lifecycle": null,
-      "limits": {
-        "context": 128000,
-        "output": 128000
-      },
-      "modalities": {
-        "input": [
-          "text"
-        ],
-        "output": [
-          "text"
-        ]
-      },
-      "model": null,
-      "name": "@cf/meta/llama-3.2-3b-instruct",
-      "provider": "cloudflare_workers_ai",
-      "provider_model_id": null,
-      "release_date": "2024-09-18",
-      "tags": null
-    },
-    "m2m100-1.2b": {
-      "aliases": [],
-      "capabilities": null,
-      "cost": {
-        "input": 0.34,
-        "output": 0.34
-      },
-      "deprecated": false,
-      "extra": {
-        "attachment": false,
-        "open_weights": true,
-        "temperature": false
-      },
-      "family": null,
-      "id": "m2m100-1.2b",
-      "knowledge": null,
-      "last_updated": "2023-11-16",
-      "lifecycle": null,
-      "limits": null,
-      "modalities": {
-        "input": [
-          "text"
-        ],
-        "output": [
-          "text"
-        ]
-      },
-      "model": null,
-      "name": "@cf/meta/m2m100-1.2b",
-      "provider": "cloudflare_workers_ai",
-      "provider_model_id": null,
-      "release_date": "2022-03-02",
-      "tags": null
-    },
-    "bart-large-cnn": {
-      "aliases": [],
-      "capabilities": null,
-      "cost": {
-        "input": 0,
-        "output": 0
-      },
-      "deprecated": false,
-      "extra": {
-        "attachment": false,
-        "open_weights": true,
-        "temperature": false
-      },
-      "family": null,
-      "id": "bart-large-cnn",
-      "knowledge": null,
-      "last_updated": "2024-02-13",
-      "lifecycle": null,
-      "limits": null,
-      "modalities": {
-        "input": [
-          "text"
-        ],
-        "output": [
-          "text"
-        ]
-      },
-      "model": null,
-      "name": "@cf/facebook/bart-large-cnn",
-      "provider": "cloudflare_workers_ai",
-      "provider_model_id": null,
-      "release_date": "2022-03-02",
-      "tags": null
-    },
-    "qwq-32b": {
-      "aliases": [],
-      "capabilities": {
-        "chat": true,
-        "embeddings": false,
-        "json": {
-          "native": false,
-          "schema": false,
-          "strict": false
-        },
-        "reasoning": {
-          "enabled": false
-        },
-        "streaming": {
-          "tool_calls": true
-        },
-        "tools": {
-          "enabled": true
-        }
-      },
-      "cost": {
-        "input": 0.66,
-        "output": 1
-      },
-      "deprecated": false,
-      "extra": {
-        "attachment": false,
-        "open_weights": true,
-        "temperature": true
-      },
-      "family": null,
-      "id": "qwq-32b",
-      "knowledge": null,
-      "last_updated": "2025-03-11",
-      "lifecycle": null,
-      "limits": {
-        "context": 24000,
-        "output": 24000
-      },
-      "modalities": {
-        "input": [
-          "text"
-        ],
-        "output": [
-          "text"
-        ]
-      },
-      "model": null,
-      "name": "@cf/qwen/qwq-32b",
-      "provider": "cloudflare_workers_ai",
-      "provider_model_id": null,
-      "release_date": "2025-03-05",
-      "tags": null
-    },
-    "gemma-3-12b-it": {
-      "aliases": [],
-      "capabilities": {
-        "chat": true,
-        "embeddings": false,
-        "json": {
-          "native": false,
-          "schema": false,
-          "strict": false
-        },
-        "reasoning": {
-          "enabled": false
-        },
-        "streaming": {
-          "tool_calls": true
-        },
-        "tools": {
-          "enabled": true
-        }
-      },
-      "cost": {
-        "input": 0.35,
-        "output": 0.56
-      },
-      "deprecated": false,
-      "extra": {
-        "attachment": false,
-        "open_weights": true,
-        "temperature": true
-      },
-      "family": null,
-      "id": "gemma-3-12b-it",
-      "knowledge": null,
-      "last_updated": "2025-03-21",
-      "lifecycle": null,
-      "limits": {
-        "context": 80000,
-        "output": 80000
-      },
-      "modalities": {
-        "input": [
-          "text"
-        ],
-        "output": [
-          "text"
-        ]
-      },
-      "model": null,
-      "name": "@cf/google/gemma-3-12b-it",
-      "provider": "cloudflare_workers_ai",
-      "provider_model_id": null,
-      "release_date": "2025-03-01",
-      "tags": null
-    },
-    "llama-3.3-70b-instruct-fp8-fast": {
-      "aliases": [],
-      "capabilities": {
-        "chat": true,
-        "embeddings": false,
-        "json": {
-          "native": false,
-          "schema": false,
-          "strict": false
-        },
-        "reasoning": {
-          "enabled": false
-        },
-        "streaming": {
-          "tool_calls": true
-        },
-        "tools": {
-          "enabled": true
-        }
-      },
-      "cost": {
-        "input": 0.29,
-        "output": 2.25
-      },
-      "deprecated": false,
-      "extra": {
-        "attachment": false,
-        "open_weights": true,
-        "temperature": true
-      },
-      "family": null,
-      "id": "llama-3.3-70b-instruct-fp8-fast",
-      "knowledge": null,
-      "last_updated": "2024-12-06",
-      "lifecycle": null,
-      "limits": {
-        "context": 24000,
-        "output": 24000
-      },
-      "modalities": {
-        "input": [
-          "text"
-        ],
-        "output": [
-          "text"
-        ]
-      },
-      "model": null,
-      "name": "@cf/meta/llama-3.3-70b-instruct-fp8-fast",
-      "provider": "cloudflare_workers_ai",
-      "provider_model_id": null,
-      "release_date": "2024-12-06",
-      "tags": null
-    },
-    "openhermes-2.5-mistral-7b-awq": {
-      "aliases": [],
-      "capabilities": {
-        "chat": true,
-        "embeddings": false,
-        "json": {
-          "native": false,
-          "schema": false,
-          "strict": false
-        },
-        "reasoning": {
-          "enabled": false
-        },
-        "streaming": {
-          "tool_calls": true
-        },
-        "tools": {
-          "enabled": true
-        }
-      },
-      "cost": {
-        "input": 0,
-        "output": 0
-      },
-      "deprecated": false,
-      "extra": {
-        "attachment": false,
-        "open_weights": true,
-        "temperature": true
-      },
-      "family": null,
-      "id": "openhermes-2.5-mistral-7b-awq",
-      "knowledge": null,
-      "last_updated": "2023-11-09",
-      "lifecycle": null,
-      "limits": {
-        "context": 4096,
-        "output": 4096
-      },
-      "modalities": {
-        "input": [
-          "text"
-        ],
-        "output": [
-          "text"
-        ]
-      },
-      "model": null,
-      "name": "@hf/thebloke/openhermes-2.5-mistral-7b-awq",
-      "provider": "cloudflare_workers_ai",
-      "provider_model_id": null,
-      "release_date": "2023-11-02",
-      "tags": null
-    },
-    "whisper": {
-      "aliases": [],
-      "capabilities": null,
-      "cost": {
-        "input": 4.5e-4,
-        "output": 4.5e-4
-      },
-      "deprecated": false,
-      "extra": {
-        "attachment": false,
-        "open_weights": true,
-        "temperature": false
-      },
-      "family": null,
-      "id": "whisper",
-      "knowledge": null,
-      "last_updated": "2024-08-12",
-      "lifecycle": null,
-      "limits": null,
-      "modalities": {
-        "input": [
-          "audio"
-        ],
-        "output": [
-          "text"
-        ]
-      },
-      "model": null,
-      "name": "@cf/openai/whisper",
-      "provider": "cloudflare_workers_ai",
-      "provider_model_id": null,
-      "release_date": "2023-11-07",
       "tags": null
     },
     "qwen1.5-14b-chat-awq": {
@@ -1603,6 +94,7 @@
       "extra": {
         "attachment": false,
         "open_weights": true,
+        "status": "deprecated",
         "temperature": true
       },
       "family": null,
@@ -1663,720 +155,6 @@
       "release_date": "2025-08-27",
       "tags": null
     },
-    "mistral-7b-instruct-v0.2-lora": {
-      "aliases": [],
-      "capabilities": {
-        "chat": true,
-        "embeddings": false,
-        "json": {
-          "native": false,
-          "schema": false,
-          "strict": false
-        },
-        "reasoning": {
-          "enabled": false
-        },
-        "streaming": {
-          "tool_calls": true
-        },
-        "tools": {
-          "enabled": true
-        }
-      },
-      "cost": {
-        "input": 0,
-        "output": 0
-      },
-      "deprecated": false,
-      "extra": {
-        "attachment": false,
-        "open_weights": true,
-        "temperature": true
-      },
-      "family": null,
-      "id": "mistral-7b-instruct-v0.2-lora",
-      "knowledge": null,
-      "last_updated": "2024-04-01",
-      "lifecycle": null,
-      "limits": {
-        "context": 15000,
-        "output": 15000
-      },
-      "modalities": {
-        "input": [
-          "text"
-        ],
-        "output": [
-          "text"
-        ]
-      },
-      "model": null,
-      "name": "@cf/mistral/mistral-7b-instruct-v0.2-lora",
-      "provider": "cloudflare_workers_ai",
-      "provider_model_id": null,
-      "release_date": "2024-04-01",
-      "tags": null
-    },
-    "nova-3": {
-      "aliases": [],
-      "capabilities": null,
-      "cost": {
-        "input": 0.0052,
-        "output": 0.0052
-      },
-      "deprecated": false,
-      "extra": {
-        "attachment": false,
-        "open_weights": true,
-        "temperature": false
-      },
-      "family": null,
-      "id": "nova-3",
-      "knowledge": null,
-      "last_updated": "2025-07-08",
-      "lifecycle": null,
-      "limits": null,
-      "modalities": {
-        "input": [
-          "audio"
-        ],
-        "output": [
-          "text"
-        ]
-      },
-      "model": null,
-      "name": "@cf/deepgram/nova-3",
-      "provider": "cloudflare_workers_ai",
-      "provider_model_id": null,
-      "release_date": "2025-06-05",
-      "tags": null
-    },
-    "gpt-oss-20b": {
-      "aliases": [],
-      "capabilities": null,
-      "cost": {
-        "input": 0.2,
-        "output": 0.3
-      },
-      "deprecated": false,
-      "extra": {
-        "attachment": false,
-        "open_weights": true,
-        "temperature": false
-      },
-      "family": null,
-      "id": "gpt-oss-20b",
-      "knowledge": null,
-      "last_updated": "2025-08-14",
-      "lifecycle": null,
-      "limits": {
-        "context": 128000,
-        "output": 128000
-      },
-      "modalities": {
-        "input": [
-          "text"
-        ],
-        "output": [
-          "text"
-        ]
-      },
-      "model": null,
-      "name": "@cf/openai/gpt-oss-20b",
-      "provider": "cloudflare_workers_ai",
-      "provider_model_id": null,
-      "release_date": "2025-08-04",
-      "tags": null
-    },
-    "sqlcoder-7b-2": {
-      "aliases": [],
-      "capabilities": {
-        "chat": true,
-        "embeddings": false,
-        "json": {
-          "native": false,
-          "schema": false,
-          "strict": false
-        },
-        "reasoning": {
-          "enabled": false
-        },
-        "streaming": {
-          "tool_calls": true
-        },
-        "tools": {
-          "enabled": true
-        }
-      },
-      "cost": {
-        "input": 0,
-        "output": 0
-      },
-      "deprecated": false,
-      "extra": {
-        "attachment": false,
-        "open_weights": true,
-        "temperature": true
-      },
-      "family": null,
-      "id": "sqlcoder-7b-2",
-      "knowledge": null,
-      "last_updated": "2024-02-12",
-      "lifecycle": null,
-      "limits": {
-        "context": 10000,
-        "output": 10000
-      },
-      "modalities": {
-        "input": [
-          "text"
-        ],
-        "output": [
-          "text"
-        ]
-      },
-      "model": null,
-      "name": "@cf/defog/sqlcoder-7b-2",
-      "provider": "cloudflare_workers_ai",
-      "provider_model_id": null,
-      "release_date": "2024-02-05",
-      "tags": null
-    },
-    "llama-guard-3-8b": {
-      "aliases": [],
-      "capabilities": null,
-      "cost": {
-        "input": 0.48,
-        "output": 0.03
-      },
-      "deprecated": false,
-      "extra": {
-        "attachment": false,
-        "open_weights": true,
-        "temperature": true
-      },
-      "family": null,
-      "id": "llama-guard-3-8b",
-      "knowledge": null,
-      "last_updated": "2024-10-11",
-      "lifecycle": null,
-      "limits": null,
-      "modalities": {
-        "input": [
-          "text"
-        ],
-        "output": [
-          "text"
-        ]
-      },
-      "model": null,
-      "name": "@cf/meta/llama-guard-3-8b",
-      "provider": "cloudflare_workers_ai",
-      "provider_model_id": null,
-      "release_date": "2024-07-22",
-      "tags": null
-    },
-    "llama-2-7b-chat-int8": {
-      "aliases": [],
-      "capabilities": {
-        "chat": true,
-        "embeddings": false,
-        "json": {
-          "native": false,
-          "schema": false,
-          "strict": false
-        },
-        "reasoning": {
-          "enabled": false
-        },
-        "streaming": {
-          "tool_calls": true
-        },
-        "tools": {
-          "enabled": true
-        }
-      },
-      "cost": {
-        "input": 0.556,
-        "output": 6.667
-      },
-      "deprecated": false,
-      "extra": {
-        "attachment": false,
-        "open_weights": true,
-        "temperature": true
-      },
-      "family": null,
-      "id": "llama-2-7b-chat-int8",
-      "knowledge": null,
-      "last_updated": "2023-09-25",
-      "lifecycle": null,
-      "limits": {
-        "context": 8192,
-        "output": 8192
-      },
-      "modalities": {
-        "input": [
-          "text"
-        ],
-        "output": [
-          "text"
-        ]
-      },
-      "model": null,
-      "name": "@cf/meta/llama-2-7b-chat-int8",
-      "provider": "cloudflare_workers_ai",
-      "provider_model_id": null,
-      "release_date": "2023-09-25",
-      "tags": null
-    },
-    "llama-3-8b-instruct": {
-      "aliases": [],
-      "capabilities": {
-        "chat": true,
-        "embeddings": false,
-        "json": {
-          "native": false,
-          "schema": false,
-          "strict": false
-        },
-        "reasoning": {
-          "enabled": false
-        },
-        "streaming": {
-          "tool_calls": true
-        },
-        "tools": {
-          "enabled": true
-        }
-      },
-      "cost": {
-        "input": 0.28,
-        "output": 0.83
-      },
-      "deprecated": false,
-      "extra": {
-        "attachment": false,
-        "open_weights": true,
-        "temperature": true
-      },
-      "family": null,
-      "id": "llama-3-8b-instruct",
-      "knowledge": null,
-      "last_updated": "2025-06-19",
-      "lifecycle": null,
-      "limits": {
-        "context": 7968,
-        "output": 7968
-      },
-      "modalities": {
-        "input": [
-          "text"
-        ],
-        "output": [
-          "text"
-        ]
-      },
-      "model": null,
-      "name": "@cf/meta/llama-3-8b-instruct",
-      "provider": "cloudflare_workers_ai",
-      "provider_model_id": null,
-      "release_date": "2024-04-17",
-      "tags": null
-    },
-    "uform-gen2-qwen-500m": {
-      "aliases": [],
-      "capabilities": null,
-      "cost": {
-        "input": 0,
-        "output": 0
-      },
-      "deprecated": false,
-      "extra": {
-        "attachment": false,
-        "open_weights": true,
-        "temperature": false
-      },
-      "family": null,
-      "id": "uform-gen2-qwen-500m",
-      "knowledge": null,
-      "last_updated": "2024-04-24",
-      "lifecycle": null,
-      "limits": null,
-      "modalities": {
-        "input": [
-          "image",
-          "text"
-        ],
-        "output": [
-          "text"
-        ]
-      },
-      "model": null,
-      "name": "@cf/unum/uform-gen2-qwen-500m",
-      "provider": "cloudflare_workers_ai",
-      "provider_model_id": null,
-      "release_date": "2024-02-15",
-      "tags": null
-    },
-    "tinyllama-1.1b-chat-v1.0": {
-      "aliases": [],
-      "capabilities": {
-        "chat": true,
-        "embeddings": false,
-        "json": {
-          "native": false,
-          "schema": false,
-          "strict": false
-        },
-        "reasoning": {
-          "enabled": false
-        },
-        "streaming": {
-          "tool_calls": true
-        },
-        "tools": {
-          "enabled": true
-        }
-      },
-      "cost": {
-        "input": 0,
-        "output": 0
-      },
-      "deprecated": false,
-      "extra": {
-        "attachment": false,
-        "open_weights": true,
-        "temperature": true
-      },
-      "family": null,
-      "id": "tinyllama-1.1b-chat-v1.0",
-      "knowledge": null,
-      "last_updated": "2024-03-17",
-      "lifecycle": null,
-      "limits": {
-        "context": 2048,
-        "output": 2048
-      },
-      "modalities": {
-        "input": [
-          "text"
-        ],
-        "output": [
-          "text"
-        ]
-      },
-      "model": null,
-      "name": "@cf/tinyllama/tinyllama-1.1b-chat-v1.0",
-      "provider": "cloudflare_workers_ai",
-      "provider_model_id": null,
-      "release_date": "2023-12-30",
-      "tags": null
-    },
-    "llama-3.2-11b-vision-instruct": {
-      "aliases": [],
-      "capabilities": {
-        "chat": true,
-        "embeddings": false,
-        "json": {
-          "native": false,
-          "schema": false,
-          "strict": false
-        },
-        "reasoning": {
-          "enabled": false
-        },
-        "streaming": {
-          "tool_calls": true
-        },
-        "tools": {
-          "enabled": true
-        }
-      },
-      "cost": {
-        "input": 0.049,
-        "output": 0.68
-      },
-      "deprecated": false,
-      "extra": {
-        "attachment": false,
-        "open_weights": true,
-        "temperature": true
-      },
-      "family": null,
-      "id": "llama-3.2-11b-vision-instruct",
-      "knowledge": null,
-      "last_updated": "2024-12-04",
-      "lifecycle": null,
-      "limits": {
-        "context": 128000,
-        "output": 128000
-      },
-      "modalities": {
-        "input": [
-          "text"
-        ],
-        "output": [
-          "text"
-        ]
-      },
-      "model": null,
-      "name": "@cf/meta/llama-3.2-11b-vision-instruct",
-      "provider": "cloudflare_workers_ai",
-      "provider_model_id": null,
-      "release_date": "2024-09-18",
-      "tags": null
-    },
-    "mistral-7b-instruct-v0.1": {
-      "aliases": [],
-      "capabilities": {
-        "chat": true,
-        "embeddings": false,
-        "json": {
-          "native": false,
-          "schema": false,
-          "strict": false
-        },
-        "reasoning": {
-          "enabled": false
-        },
-        "streaming": {
-          "tool_calls": true
-        },
-        "tools": {
-          "enabled": true
-        }
-      },
-      "cost": {
-        "input": 0.11,
-        "output": 0.19
-      },
-      "deprecated": false,
-      "extra": {
-        "attachment": false,
-        "open_weights": true,
-        "temperature": true
-      },
-      "family": null,
-      "id": "mistral-7b-instruct-v0.1",
-      "knowledge": null,
-      "last_updated": "2025-07-24",
-      "lifecycle": null,
-      "limits": {
-        "context": 2824,
-        "output": 2824
-      },
-      "modalities": {
-        "input": [
-          "text"
-        ],
-        "output": [
-          "text"
-        ]
-      },
-      "model": null,
-      "name": "@cf/mistral/mistral-7b-instruct-v0.1",
-      "provider": "cloudflare_workers_ai",
-      "provider_model_id": null,
-      "release_date": "2023-09-27",
-      "tags": null
-    },
-    "phi-2": {
-      "aliases": [],
-      "capabilities": {
-        "chat": true,
-        "embeddings": false,
-        "json": {
-          "native": false,
-          "schema": false,
-          "strict": false
-        },
-        "reasoning": {
-          "enabled": false
-        },
-        "streaming": {
-          "tool_calls": true
-        },
-        "tools": {
-          "enabled": true
-        }
-      },
-      "cost": {
-        "input": 0,
-        "output": 0
-      },
-      "deprecated": false,
-      "extra": {
-        "attachment": false,
-        "open_weights": true,
-        "temperature": true
-      },
-      "family": null,
-      "id": "phi-2",
-      "knowledge": null,
-      "last_updated": "2024-04-29",
-      "lifecycle": null,
-      "limits": {
-        "context": 2048,
-        "output": 2048
-      },
-      "modalities": {
-        "input": [
-          "text"
-        ],
-        "output": [
-          "text"
-        ]
-      },
-      "model": null,
-      "name": "@cf/microsoft/phi-2",
-      "provider": "cloudflare_workers_ai",
-      "provider_model_id": null,
-      "release_date": "2023-12-13",
-      "tags": null
-    },
-    "stable-diffusion-v1-5-img2img": {
-      "aliases": [],
-      "capabilities": null,
-      "cost": {
-        "input": 0,
-        "output": 0
-      },
-      "deprecated": false,
-      "extra": {
-        "attachment": false,
-        "open_weights": true,
-        "temperature": false
-      },
-      "family": null,
-      "id": "stable-diffusion-v1-5-img2img",
-      "knowledge": null,
-      "last_updated": "2024-02-27",
-      "lifecycle": null,
-      "limits": null,
-      "modalities": {
-        "input": [
-          "text"
-        ],
-        "output": [
-          "image"
-        ]
-      },
-      "model": null,
-      "name": "@cf/runwayml/stable-diffusion-v1-5-img2img",
-      "provider": "cloudflare_workers_ai",
-      "provider_model_id": null,
-      "release_date": "2024-02-27",
-      "tags": null
-    },
-    "llama-3.1-70b-instruct": {
-      "aliases": [],
-      "capabilities": {
-        "chat": true,
-        "embeddings": false,
-        "json": {
-          "native": false,
-          "schema": false,
-          "strict": false
-        },
-        "reasoning": {
-          "enabled": false
-        },
-        "streaming": {
-          "tool_calls": true
-        },
-        "tools": {
-          "enabled": true
-        }
-      },
-      "cost": {
-        "input": 0.293,
-        "output": 2.253
-      },
-      "deprecated": false,
-      "extra": {
-        "attachment": false,
-        "open_weights": true,
-        "temperature": true
-      },
-      "family": null,
-      "id": "llama-3.1-70b-instruct",
-      "knowledge": null,
-      "last_updated": "2024-12-15",
-      "lifecycle": null,
-      "limits": {
-        "context": 24000,
-        "output": 24000
-      },
-      "modalities": {
-        "input": [
-          "text"
-        ],
-        "output": [
-          "text"
-        ]
-      },
-      "model": null,
-      "name": "@cf/meta/llama-3.1-70b-instruct",
-      "provider": "cloudflare_workers_ai",
-      "provider_model_id": null,
-      "release_date": "2024-07-16",
-      "tags": null
-    },
-    "openchat-3.5-0106": {
-      "aliases": [],
-      "capabilities": {
-        "chat": true,
-        "embeddings": false,
-        "json": {
-          "native": false,
-          "schema": false,
-          "strict": false
-        },
-        "reasoning": {
-          "enabled": false
-        },
-        "streaming": {
-          "tool_calls": true
-        },
-        "tools": {
-          "enabled": true
-        }
-      },
-      "cost": {
-        "input": 0,
-        "output": 0
-      },
-      "deprecated": false,
-      "extra": {
-        "attachment": false,
-        "open_weights": true,
-        "temperature": true
-      },
-      "family": null,
-      "id": "openchat-3.5-0106",
-      "knowledge": null,
-      "last_updated": "2024-05-18",
-      "lifecycle": null,
-      "limits": {
-        "context": 8192,
-        "output": 8192
-      },
-      "modalities": {
-        "input": [
-          "text"
-        ],
-        "output": [
-          "text"
-        ]
-      },
-      "model": null,
-      "name": "@cf/openchat/openchat-3.5-0106",
-      "provider": "cloudflare_workers_ai",
-      "provider_model_id": null,
-      "release_date": "2024-01-07",
-      "tags": null
-    },
     "llava-1.5-7b-hf": {
       "aliases": [],
       "capabilities": null,
@@ -2410,776 +188,6 @@
       "provider": "cloudflare_workers_ai",
       "provider_model_id": null,
       "release_date": "2023-12-05",
-      "tags": null
-    },
-    "falcon-7b-instruct": {
-      "aliases": [],
-      "capabilities": {
-        "chat": true,
-        "embeddings": false,
-        "json": {
-          "native": false,
-          "schema": false,
-          "strict": false
-        },
-        "reasoning": {
-          "enabled": false
-        },
-        "streaming": {
-          "tool_calls": true
-        },
-        "tools": {
-          "enabled": true
-        }
-      },
-      "cost": {
-        "input": 0,
-        "output": 0
-      },
-      "deprecated": false,
-      "extra": {
-        "attachment": false,
-        "open_weights": true,
-        "temperature": true
-      },
-      "family": null,
-      "id": "falcon-7b-instruct",
-      "knowledge": null,
-      "last_updated": "2024-10-12",
-      "lifecycle": null,
-      "limits": {
-        "context": 4096,
-        "output": 4096
-      },
-      "modalities": {
-        "input": [
-          "text"
-        ],
-        "output": [
-          "text"
-        ]
-      },
-      "model": null,
-      "name": "@cf/tiiuae/falcon-7b-instruct",
-      "provider": "cloudflare_workers_ai",
-      "provider_model_id": null,
-      "release_date": "2023-04-25",
-      "tags": null
-    },
-    "mistral-7b-instruct-v0.2": {
-      "aliases": [],
-      "capabilities": {
-        "chat": true,
-        "embeddings": false,
-        "json": {
-          "native": false,
-          "schema": false,
-          "strict": false
-        },
-        "reasoning": {
-          "enabled": false
-        },
-        "streaming": {
-          "tool_calls": true
-        },
-        "tools": {
-          "enabled": true
-        }
-      },
-      "cost": {
-        "input": 0,
-        "output": 0
-      },
-      "deprecated": false,
-      "extra": {
-        "attachment": false,
-        "open_weights": true,
-        "temperature": true
-      },
-      "family": null,
-      "id": "mistral-7b-instruct-v0.2",
-      "knowledge": null,
-      "last_updated": "2025-07-24",
-      "lifecycle": null,
-      "limits": {
-        "context": 3072,
-        "output": 3072
-      },
-      "modalities": {
-        "input": [
-          "text"
-        ],
-        "output": [
-          "text"
-        ]
-      },
-      "model": null,
-      "name": "@hf/mistral/mistral-7b-instruct-v0.2",
-      "provider": "cloudflare_workers_ai",
-      "provider_model_id": null,
-      "release_date": "2023-12-11",
-      "tags": null
-    },
-    "deepseek-coder-6.7b-instruct-awq": {
-      "aliases": [],
-      "capabilities": {
-        "chat": true,
-        "embeddings": false,
-        "json": {
-          "native": false,
-          "schema": false,
-          "strict": false
-        },
-        "reasoning": {
-          "enabled": false
-        },
-        "streaming": {
-          "tool_calls": true
-        },
-        "tools": {
-          "enabled": true
-        }
-      },
-      "cost": {
-        "input": 0,
-        "output": 0
-      },
-      "deprecated": false,
-      "extra": {
-        "attachment": false,
-        "open_weights": true,
-        "temperature": true
-      },
-      "family": null,
-      "id": "deepseek-coder-6.7b-instruct-awq",
-      "knowledge": null,
-      "last_updated": "2023-11-13",
-      "lifecycle": null,
-      "limits": {
-        "context": 4096,
-        "output": 4096
-      },
-      "modalities": {
-        "input": [
-          "text"
-        ],
-        "output": [
-          "text"
-        ]
-      },
-      "model": null,
-      "name": "@hf/thebloke/deepseek-coder-6.7b-instruct-awq",
-      "provider": "cloudflare_workers_ai",
-      "provider_model_id": null,
-      "release_date": "2023-11-05",
-      "tags": null
-    },
-    "llama-3.1-8b-instruct-awq": {
-      "aliases": [],
-      "capabilities": {
-        "chat": true,
-        "embeddings": false,
-        "json": {
-          "native": false,
-          "schema": false,
-          "strict": false
-        },
-        "reasoning": {
-          "enabled": false
-        },
-        "streaming": {
-          "tool_calls": true
-        },
-        "tools": {
-          "enabled": true
-        }
-      },
-      "cost": {
-        "input": 0.12,
-        "output": 0.27
-      },
-      "deprecated": false,
-      "extra": {
-        "attachment": false,
-        "open_weights": true,
-        "temperature": true
-      },
-      "family": null,
-      "id": "llama-3.1-8b-instruct-awq",
-      "knowledge": null,
-      "last_updated": "2024-07-25",
-      "lifecycle": null,
-      "limits": {
-        "context": 8192,
-        "output": 8192
-      },
-      "modalities": {
-        "input": [
-          "text"
-        ],
-        "output": [
-          "text"
-        ]
-      },
-      "model": null,
-      "name": "@cf/meta/llama-3.1-8b-instruct-awq",
-      "provider": "cloudflare_workers_ai",
-      "provider_model_id": null,
-      "release_date": "2024-07-25",
-      "tags": null
-    },
-    "deepseek-math-7b-instruct": {
-      "aliases": [],
-      "capabilities": {
-        "chat": true,
-        "embeddings": false,
-        "json": {
-          "native": false,
-          "schema": false,
-          "strict": false
-        },
-        "reasoning": {
-          "enabled": false
-        },
-        "streaming": {
-          "tool_calls": true
-        },
-        "tools": {
-          "enabled": true
-        }
-      },
-      "cost": {
-        "input": 0,
-        "output": 0
-      },
-      "deprecated": false,
-      "extra": {
-        "attachment": false,
-        "open_weights": true,
-        "temperature": true
-      },
-      "family": null,
-      "id": "deepseek-math-7b-instruct",
-      "knowledge": null,
-      "last_updated": "2024-02-06",
-      "lifecycle": null,
-      "limits": {
-        "context": 4096,
-        "output": 4096
-      },
-      "modalities": {
-        "input": [
-          "text"
-        ],
-        "output": [
-          "text"
-        ]
-      },
-      "model": null,
-      "name": "@cf/deepseek-ai/deepseek-math-7b-instruct",
-      "provider": "cloudflare_workers_ai",
-      "provider_model_id": null,
-      "release_date": "2024-02-05",
-      "tags": null
-    },
-    "deepseek-r1-distill-qwen-32b": {
-      "aliases": [],
-      "capabilities": {
-        "chat": true,
-        "embeddings": false,
-        "json": {
-          "native": false,
-          "schema": false,
-          "strict": false
-        },
-        "reasoning": {
-          "enabled": true
-        },
-        "streaming": {
-          "tool_calls": true
-        },
-        "tools": {
-          "enabled": true
-        }
-      },
-      "cost": {
-        "input": 0.5,
-        "output": 4.88
-      },
-      "deprecated": false,
-      "extra": {
-        "attachment": false,
-        "open_weights": true,
-        "temperature": true
-      },
-      "family": null,
-      "id": "deepseek-r1-distill-qwen-32b",
-      "knowledge": null,
-      "last_updated": "2025-02-24",
-      "lifecycle": null,
-      "limits": {
-        "context": 80000,
-        "output": 80000
-      },
-      "modalities": {
-        "input": [
-          "text"
-        ],
-        "output": [
-          "text"
-        ]
-      },
-      "model": null,
-      "name": "@cf/deepseek-ai/deepseek-r1-distill-qwen-32b",
-      "provider": "cloudflare_workers_ai",
-      "provider_model_id": null,
-      "release_date": "2025-01-20",
-      "tags": null
-    },
-    "gemma-7b-it-lora": {
-      "aliases": [],
-      "capabilities": {
-        "chat": true,
-        "embeddings": false,
-        "json": {
-          "native": false,
-          "schema": false,
-          "strict": false
-        },
-        "reasoning": {
-          "enabled": false
-        },
-        "streaming": {
-          "tool_calls": true
-        },
-        "tools": {
-          "enabled": true
-        }
-      },
-      "cost": {
-        "input": 0,
-        "output": 0
-      },
-      "deprecated": false,
-      "extra": {
-        "attachment": false,
-        "open_weights": true,
-        "temperature": true
-      },
-      "family": null,
-      "id": "gemma-7b-it-lora",
-      "knowledge": null,
-      "last_updated": "2024-04-02",
-      "lifecycle": null,
-      "limits": {
-        "context": 3500,
-        "output": 3500
-      },
-      "modalities": {
-        "input": [
-          "text"
-        ],
-        "output": [
-          "text"
-        ]
-      },
-      "model": null,
-      "name": "@cf/google/gemma-7b-it-lora",
-      "provider": "cloudflare_workers_ai",
-      "provider_model_id": null,
-      "release_date": "2024-04-02",
-      "tags": null
-    },
-    "llama-3.1-8b-instruct": {
-      "aliases": [],
-      "capabilities": {
-        "chat": true,
-        "embeddings": false,
-        "json": {
-          "native": false,
-          "schema": false,
-          "strict": false
-        },
-        "reasoning": {
-          "enabled": false
-        },
-        "streaming": {
-          "tool_calls": true
-        },
-        "tools": {
-          "enabled": true
-        }
-      },
-      "cost": {
-        "input": 0.28,
-        "output": 0.83
-      },
-      "deprecated": false,
-      "extra": {
-        "attachment": false,
-        "open_weights": true,
-        "temperature": true
-      },
-      "family": null,
-      "id": "llama-3.1-8b-instruct",
-      "knowledge": null,
-      "last_updated": "2024-09-25",
-      "lifecycle": null,
-      "limits": {
-        "context": 7968,
-        "output": 7968
-      },
-      "modalities": {
-        "input": [
-          "text"
-        ],
-        "output": [
-          "text"
-        ]
-      },
-      "model": null,
-      "name": "@cf/meta/llama-3.1-8b-instruct",
-      "provider": "cloudflare_workers_ai",
-      "provider_model_id": null,
-      "release_date": "2024-07-18",
-      "tags": null
-    },
-    "deepseek-coder-6.7b-base-awq": {
-      "aliases": [],
-      "capabilities": {
-        "chat": true,
-        "embeddings": false,
-        "json": {
-          "native": false,
-          "schema": false,
-          "strict": false
-        },
-        "reasoning": {
-          "enabled": false
-        },
-        "streaming": {
-          "tool_calls": true
-        },
-        "tools": {
-          "enabled": true
-        }
-      },
-      "cost": {
-        "input": 0,
-        "output": 0
-      },
-      "deprecated": false,
-      "extra": {
-        "attachment": false,
-        "open_weights": true,
-        "temperature": true
-      },
-      "family": null,
-      "id": "deepseek-coder-6.7b-base-awq",
-      "knowledge": null,
-      "last_updated": "2023-11-09",
-      "lifecycle": null,
-      "limits": {
-        "context": 4096,
-        "output": 4096
-      },
-      "modalities": {
-        "input": [
-          "text"
-        ],
-        "output": [
-          "text"
-        ]
-      },
-      "model": null,
-      "name": "@hf/thebloke/deepseek-coder-6.7b-base-awq",
-      "provider": "cloudflare_workers_ai",
-      "provider_model_id": null,
-      "release_date": "2023-11-05",
-      "tags": null
-    },
-    "whisper-tiny-en": {
-      "aliases": [],
-      "capabilities": null,
-      "cost": {
-        "input": 0,
-        "output": 0
-      },
-      "deprecated": false,
-      "extra": {
-        "attachment": false,
-        "open_weights": true,
-        "temperature": false
-      },
-      "family": null,
-      "id": "whisper-tiny-en",
-      "knowledge": null,
-      "last_updated": "2024-01-22",
-      "lifecycle": null,
-      "limits": null,
-      "modalities": {
-        "input": [
-          "audio"
-        ],
-        "output": [
-          "text"
-        ]
-      },
-      "model": null,
-      "name": "@cf/openai/whisper-tiny-en",
-      "provider": "cloudflare_workers_ai",
-      "provider_model_id": null,
-      "release_date": "2022-09-26",
-      "tags": null
-    },
-    "gemma-2b-it-lora": {
-      "aliases": [],
-      "capabilities": {
-        "chat": true,
-        "embeddings": false,
-        "json": {
-          "native": false,
-          "schema": false,
-          "strict": false
-        },
-        "reasoning": {
-          "enabled": false
-        },
-        "streaming": {
-          "tool_calls": true
-        },
-        "tools": {
-          "enabled": true
-        }
-      },
-      "cost": {
-        "input": 0,
-        "output": 0
-      },
-      "deprecated": false,
-      "extra": {
-        "attachment": false,
-        "open_weights": true,
-        "temperature": true
-      },
-      "family": null,
-      "id": "gemma-2b-it-lora",
-      "knowledge": null,
-      "last_updated": "2024-04-02",
-      "lifecycle": null,
-      "limits": {
-        "context": 8192,
-        "output": 8192
-      },
-      "modalities": {
-        "input": [
-          "text"
-        ],
-        "output": [
-          "text"
-        ]
-      },
-      "model": null,
-      "name": "@cf/google/gemma-2b-it-lora",
-      "provider": "cloudflare_workers_ai",
-      "provider_model_id": null,
-      "release_date": "2024-04-02",
-      "tags": null
-    },
-    "mistral-7b-instruct-v0.1-awq": {
-      "aliases": [],
-      "capabilities": {
-        "chat": true,
-        "embeddings": false,
-        "json": {
-          "native": false,
-          "schema": false,
-          "strict": false
-        },
-        "reasoning": {
-          "enabled": false
-        },
-        "streaming": {
-          "tool_calls": true
-        },
-        "tools": {
-          "enabled": true
-        }
-      },
-      "cost": {
-        "input": 0,
-        "output": 0
-      },
-      "deprecated": false,
-      "extra": {
-        "attachment": false,
-        "open_weights": true,
-        "temperature": true
-      },
-      "family": null,
-      "id": "mistral-7b-instruct-v0.1-awq",
-      "knowledge": null,
-      "last_updated": "2023-11-09",
-      "lifecycle": null,
-      "limits": {
-        "context": 4096,
-        "output": 4096
-      },
-      "modalities": {
-        "input": [
-          "text"
-        ],
-        "output": [
-          "text"
-        ]
-      },
-      "model": null,
-      "name": "@hf/thebloke/mistral-7b-instruct-v0.1-awq",
-      "provider": "cloudflare_workers_ai",
-      "provider_model_id": null,
-      "release_date": "2023-09-27",
-      "tags": null
-    },
-    "llama-2-7b-chat-fp16": {
-      "aliases": [],
-      "capabilities": {
-        "chat": true,
-        "embeddings": false,
-        "json": {
-          "native": false,
-          "schema": false,
-          "strict": false
-        },
-        "reasoning": {
-          "enabled": false
-        },
-        "streaming": {
-          "tool_calls": true
-        },
-        "tools": {
-          "enabled": true
-        }
-      },
-      "cost": {
-        "input": 0.56,
-        "output": 6.67
-      },
-      "deprecated": false,
-      "extra": {
-        "attachment": false,
-        "open_weights": true,
-        "temperature": true
-      },
-      "family": null,
-      "id": "llama-2-7b-chat-fp16",
-      "knowledge": null,
-      "last_updated": "2023-07-26",
-      "lifecycle": null,
-      "limits": {
-        "context": 4096,
-        "output": 4096
-      },
-      "modalities": {
-        "input": [
-          "text"
-        ],
-        "output": [
-          "text"
-        ]
-      },
-      "model": null,
-      "name": "@cf/meta/llama-2-7b-chat-fp16",
-      "provider": "cloudflare_workers_ai",
-      "provider_model_id": null,
-      "release_date": "2023-07-26",
-      "tags": null
-    },
-    "dreamshaper-8-lcm": {
-      "aliases": [],
-      "capabilities": null,
-      "cost": {
-        "input": 0,
-        "output": 0
-      },
-      "deprecated": false,
-      "extra": {
-        "attachment": true,
-        "open_weights": true,
-        "temperature": false
-      },
-      "family": null,
-      "id": "dreamshaper-8-lcm",
-      "knowledge": null,
-      "last_updated": "2023-12-07",
-      "lifecycle": null,
-      "limits": null,
-      "modalities": {
-        "input": [
-          "text"
-        ],
-        "output": [
-          "image"
-        ]
-      },
-      "model": null,
-      "name": "@cf/lykon/dreamshaper-8-lcm",
-      "provider": "cloudflare_workers_ai",
-      "provider_model_id": null,
-      "release_date": "2023-12-06",
-      "tags": null
-    },
-    "llama-2-13b-chat-awq": {
-      "aliases": [],
-      "capabilities": {
-        "chat": true,
-        "embeddings": false,
-        "json": {
-          "native": false,
-          "schema": false,
-          "strict": false
-        },
-        "reasoning": {
-          "enabled": false
-        },
-        "streaming": {
-          "tool_calls": true
-        },
-        "tools": {
-          "enabled": true
-        }
-      },
-      "cost": {
-        "input": 0,
-        "output": 0
-      },
-      "deprecated": false,
-      "extra": {
-        "attachment": false,
-        "open_weights": true,
-        "temperature": true
-      },
-      "family": null,
-      "id": "llama-2-13b-chat-awq",
-      "knowledge": null,
-      "last_updated": "2023-11-09",
-      "lifecycle": null,
-      "limits": {
-        "context": 4096,
-        "output": 4096
-      },
-      "modalities": {
-        "input": [
-          "text"
-        ],
-        "output": [
-          "text"
-        ]
-      },
-      "model": null,
-      "name": "@hf/thebloke/llama-2-13b-chat-awq",
-      "provider": "cloudflare_workers_ai",
-      "provider_model_id": null,
-      "release_date": "2023-09-19",
       "tags": null
     },
     "llama-4-scout-17b-16e-instruct": {
@@ -3236,43 +244,30 @@
       "release_date": "2025-04-02",
       "tags": null
     },
-    "stable-diffusion-v1-5-inpainting": {
-      "aliases": [],
-      "capabilities": null,
-      "cost": {
-        "input": 0,
-        "output": 0
-      },
-      "deprecated": false,
-      "extra": {
-        "attachment": false,
-        "open_weights": true,
-        "temperature": false
-      },
-      "family": null,
-      "id": "stable-diffusion-v1-5-inpainting",
-      "knowledge": null,
-      "last_updated": "2024-02-27",
-      "lifecycle": null,
-      "limits": null,
-      "modalities": {
-        "input": [
-          "text"
-        ],
-        "output": [
-          "image"
-        ]
-      },
-      "model": null,
-      "name": "@cf/runwayml/stable-diffusion-v1-5-inpainting",
-      "provider": "cloudflare_workers_ai",
-      "provider_model_id": null,
-      "release_date": "2024-02-27",
-      "tags": null
-    },
     "gpt-oss-120b": {
       "aliases": [],
-      "capabilities": null,
+      "capabilities": {
+        "chat": true,
+        "embeddings": false,
+        "json": {
+          "native": false,
+          "schema": false,
+          "strict": false
+        },
+        "reasoning": {
+          "enabled": true
+        },
+        "streaming": {
+          "text": true,
+          "tool_calls": false
+        },
+        "tools": {
+          "enabled": false,
+          "parallel": false,
+          "streaming": false,
+          "strict": false
+        }
+      },
       "cost": {
         "input": 0.35,
         "output": 0.75
@@ -3307,7 +302,204 @@
       "release_date": "2025-08-04",
       "tags": null
     },
-    "una-cybertron-7b-v2-bf16": {
+    "openhermes-2.5-mistral-7b-awq": {
+      "aliases": [],
+      "capabilities": {
+        "chat": true,
+        "embeddings": false,
+        "json": {
+          "native": false,
+          "schema": false,
+          "strict": false
+        },
+        "reasoning": {
+          "enabled": false
+        },
+        "streaming": {
+          "tool_calls": true
+        },
+        "tools": {
+          "enabled": true
+        }
+      },
+      "cost": {
+        "input": 0,
+        "output": 0
+      },
+      "deprecated": false,
+      "extra": {
+        "attachment": false,
+        "open_weights": true,
+        "status": "deprecated",
+        "temperature": true
+      },
+      "family": null,
+      "id": "openhermes-2.5-mistral-7b-awq",
+      "knowledge": null,
+      "last_updated": "2023-11-09",
+      "lifecycle": null,
+      "limits": {
+        "context": 4096,
+        "output": 4096
+      },
+      "modalities": {
+        "input": [
+          "text"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "model": null,
+      "name": "@hf/thebloke/openhermes-2.5-mistral-7b-awq",
+      "provider": "cloudflare_workers_ai",
+      "provider_model_id": null,
+      "release_date": "2023-11-02",
+      "tags": null
+    },
+    "uform-gen2-qwen-500m": {
+      "aliases": [],
+      "capabilities": null,
+      "cost": {
+        "input": 0,
+        "output": 0
+      },
+      "deprecated": false,
+      "extra": {
+        "attachment": false,
+        "open_weights": true,
+        "temperature": false
+      },
+      "family": null,
+      "id": "uform-gen2-qwen-500m",
+      "knowledge": null,
+      "last_updated": "2024-04-24",
+      "lifecycle": null,
+      "limits": null,
+      "modalities": {
+        "input": [
+          "image",
+          "text"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "model": null,
+      "name": "@cf/unum/uform-gen2-qwen-500m",
+      "provider": "cloudflare_workers_ai",
+      "provider_model_id": null,
+      "release_date": "2024-02-15",
+      "tags": null
+    },
+    "llama-3.1-8b-instruct-fast": {
+      "aliases": [],
+      "capabilities": {
+        "chat": true,
+        "embeddings": false,
+        "json": {
+          "native": false,
+          "schema": false,
+          "strict": false
+        },
+        "reasoning": {
+          "enabled": false
+        },
+        "streaming": {
+          "tool_calls": true
+        },
+        "tools": {
+          "enabled": true
+        }
+      },
+      "cost": {
+        "input": 0.045,
+        "output": 0.384
+      },
+      "deprecated": false,
+      "extra": {
+        "attachment": false,
+        "open_weights": true,
+        "temperature": true
+      },
+      "family": null,
+      "id": "llama-3.1-8b-instruct-fast",
+      "knowledge": null,
+      "last_updated": "2024-09-25",
+      "lifecycle": null,
+      "limits": {
+        "context": 128000,
+        "output": 128000
+      },
+      "modalities": {
+        "input": [
+          "text"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "model": null,
+      "name": "@cf/meta/llama-3.1-8b-instruct-fast",
+      "provider": "cloudflare_workers_ai",
+      "provider_model_id": null,
+      "release_date": "2024-07-18",
+      "tags": null
+    },
+    "qwen3-30b-a3b-fp8": {
+      "aliases": [],
+      "capabilities": {
+        "chat": true,
+        "embeddings": false,
+        "json": {
+          "native": false,
+          "schema": false,
+          "strict": false
+        },
+        "reasoning": {
+          "enabled": true
+        },
+        "streaming": {
+          "tool_calls": true
+        },
+        "tools": {
+          "enabled": true
+        }
+      },
+      "cost": {
+        "input": 0.051,
+        "output": 0.34
+      },
+      "deprecated": false,
+      "extra": {
+        "attachment": false,
+        "open_weights": true,
+        "temperature": true
+      },
+      "family": null,
+      "id": "qwen3-30b-a3b-fp8",
+      "knowledge": null,
+      "last_updated": "2025-12-02",
+      "lifecycle": null,
+      "limits": {
+        "context": 32768
+      },
+      "modalities": {
+        "input": [
+          "text"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "model": null,
+      "name": "@cf/qwen/qwen3-30b-a3b-fp8",
+      "provider": "cloudflare_workers_ai",
+      "provider_model_id": null,
+      "release_date": "2025-04-30",
+      "tags": null
+    },
+    "phi-2": {
       "aliases": [],
       "capabilities": {
         "chat": true,
@@ -3338,6 +530,708 @@
         "temperature": true
       },
       "family": null,
+      "id": "phi-2",
+      "knowledge": null,
+      "last_updated": "2024-04-29",
+      "lifecycle": null,
+      "limits": {
+        "context": 2048,
+        "output": 2048
+      },
+      "modalities": {
+        "input": [
+          "text"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "model": null,
+      "name": "@cf/microsoft/phi-2",
+      "provider": "cloudflare_workers_ai",
+      "provider_model_id": null,
+      "release_date": "2023-12-13",
+      "tags": null
+    },
+    "llamaguard-7b-awq": {
+      "aliases": [],
+      "capabilities": {
+        "chat": true,
+        "embeddings": false,
+        "json": {
+          "native": false,
+          "schema": false,
+          "strict": false
+        },
+        "reasoning": {
+          "enabled": false
+        },
+        "streaming": {
+          "tool_calls": true
+        },
+        "tools": {
+          "enabled": true
+        }
+      },
+      "cost": {
+        "input": 0,
+        "output": 0
+      },
+      "deprecated": false,
+      "extra": {
+        "attachment": false,
+        "open_weights": true,
+        "status": "deprecated",
+        "temperature": true
+      },
+      "family": null,
+      "id": "llamaguard-7b-awq",
+      "knowledge": null,
+      "last_updated": "2023-12-11",
+      "lifecycle": null,
+      "limits": {
+        "context": 4096,
+        "output": 4096
+      },
+      "modalities": {
+        "input": [
+          "text"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "model": null,
+      "name": "@hf/thebloke/llamaguard-7b-awq",
+      "provider": "cloudflare_workers_ai",
+      "provider_model_id": null,
+      "release_date": "2023-12-11",
+      "tags": null
+    },
+    "gemma-7b-it-lora": {
+      "aliases": [],
+      "capabilities": {
+        "chat": true,
+        "embeddings": false,
+        "json": {
+          "native": false,
+          "schema": false,
+          "strict": false
+        },
+        "reasoning": {
+          "enabled": false
+        },
+        "streaming": {
+          "tool_calls": true
+        },
+        "tools": {
+          "enabled": true
+        }
+      },
+      "cost": {
+        "input": 0,
+        "output": 0
+      },
+      "deprecated": false,
+      "extra": {
+        "attachment": false,
+        "open_weights": true,
+        "temperature": true
+      },
+      "family": null,
+      "id": "gemma-7b-it-lora",
+      "knowledge": null,
+      "last_updated": "2024-04-02",
+      "lifecycle": null,
+      "limits": {
+        "context": 3500,
+        "output": 3500
+      },
+      "modalities": {
+        "input": [
+          "text"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "model": null,
+      "name": "@cf/google/gemma-7b-it-lora",
+      "provider": "cloudflare_workers_ai",
+      "provider_model_id": null,
+      "release_date": "2024-04-02",
+      "tags": null
+    },
+    "llama-guard-3-8b": {
+      "aliases": [],
+      "capabilities": null,
+      "cost": {
+        "input": 0.48,
+        "output": 0.03
+      },
+      "deprecated": false,
+      "extra": {
+        "attachment": false,
+        "open_weights": true,
+        "temperature": true
+      },
+      "family": null,
+      "id": "llama-guard-3-8b",
+      "knowledge": null,
+      "last_updated": "2024-10-11",
+      "lifecycle": null,
+      "limits": {
+        "context": 131072
+      },
+      "modalities": {
+        "input": [
+          "text"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "model": null,
+      "name": "@cf/meta/llama-guard-3-8b",
+      "provider": "cloudflare_workers_ai",
+      "provider_model_id": null,
+      "release_date": "2024-07-22",
+      "tags": null
+    },
+    "llama-3.3-70b-instruct-fp8-fast": {
+      "aliases": [],
+      "capabilities": {
+        "chat": true,
+        "embeddings": false,
+        "json": {
+          "native": false,
+          "schema": false,
+          "strict": false
+        },
+        "reasoning": {
+          "enabled": false
+        },
+        "streaming": {
+          "tool_calls": true
+        },
+        "tools": {
+          "enabled": true
+        }
+      },
+      "cost": {
+        "input": 0.29,
+        "output": 2.25
+      },
+      "deprecated": false,
+      "extra": {
+        "attachment": false,
+        "open_weights": true,
+        "temperature": true
+      },
+      "family": null,
+      "id": "llama-3.3-70b-instruct-fp8-fast",
+      "knowledge": null,
+      "last_updated": "2024-12-06",
+      "lifecycle": null,
+      "limits": {
+        "context": 24000,
+        "output": 24000
+      },
+      "modalities": {
+        "input": [
+          "text"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "model": null,
+      "name": "@cf/meta/llama-3.3-70b-instruct-fp8-fast",
+      "provider": "cloudflare_workers_ai",
+      "provider_model_id": null,
+      "release_date": "2024-12-06",
+      "tags": null
+    },
+    "flux-1-schnell": {
+      "aliases": [],
+      "capabilities": null,
+      "cost": {
+        "input": 5.3e-5,
+        "output": 1.1e-4
+      },
+      "deprecated": false,
+      "extra": {
+        "attachment": false,
+        "open_weights": true,
+        "temperature": false
+      },
+      "family": null,
+      "id": "flux-1-schnell",
+      "knowledge": null,
+      "last_updated": "2024-08-16",
+      "lifecycle": null,
+      "limits": {
+        "context": 2048
+      },
+      "modalities": {
+        "input": [
+          "text"
+        ],
+        "output": [
+          "image"
+        ]
+      },
+      "model": null,
+      "name": "@cf/black-forest-labs/flux-1-schnell",
+      "provider": "cloudflare_workers_ai",
+      "provider_model_id": null,
+      "release_date": "2024-07-31",
+      "tags": null
+    },
+    "resnet-50": {
+      "aliases": [],
+      "capabilities": null,
+      "cost": {
+        "input": 2.5e-6,
+        "output": 0
+      },
+      "deprecated": false,
+      "extra": {
+        "attachment": false,
+        "open_weights": true,
+        "temperature": false
+      },
+      "family": null,
+      "id": "resnet-50",
+      "knowledge": null,
+      "last_updated": "2024-02-13",
+      "lifecycle": null,
+      "limits": null,
+      "modalities": {
+        "input": [
+          "image"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "model": null,
+      "name": "@cf/microsoft/resnet-50",
+      "provider": "cloudflare_workers_ai",
+      "provider_model_id": null,
+      "release_date": "2022-03-16",
+      "tags": null
+    },
+    "llama-2-7b-chat-fp16": {
+      "aliases": [],
+      "capabilities": {
+        "chat": true,
+        "embeddings": false,
+        "json": {
+          "native": false,
+          "schema": false,
+          "strict": false
+        },
+        "reasoning": {
+          "enabled": false
+        },
+        "streaming": {
+          "tool_calls": true
+        },
+        "tools": {
+          "enabled": true
+        }
+      },
+      "cost": {
+        "input": 0.56,
+        "output": 6.67
+      },
+      "deprecated": false,
+      "extra": {
+        "attachment": false,
+        "open_weights": true,
+        "temperature": true
+      },
+      "family": null,
+      "id": "llama-2-7b-chat-fp16",
+      "knowledge": null,
+      "last_updated": "2023-07-26",
+      "lifecycle": null,
+      "limits": {
+        "context": 4096,
+        "output": 4096
+      },
+      "modalities": {
+        "input": [
+          "text"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "model": null,
+      "name": "@cf/meta/llama-2-7b-chat-fp16",
+      "provider": "cloudflare_workers_ai",
+      "provider_model_id": null,
+      "release_date": "2023-07-26",
+      "tags": null
+    },
+    "stable-diffusion-xl-lightning": {
+      "aliases": [],
+      "capabilities": null,
+      "cost": {
+        "input": 0,
+        "output": 0
+      },
+      "deprecated": false,
+      "extra": {
+        "attachment": false,
+        "open_weights": true,
+        "temperature": false
+      },
+      "family": null,
+      "id": "stable-diffusion-xl-lightning",
+      "knowledge": null,
+      "last_updated": "2024-04-03",
+      "lifecycle": null,
+      "limits": null,
+      "modalities": {
+        "input": [
+          "text"
+        ],
+        "output": [
+          "image"
+        ]
+      },
+      "model": null,
+      "name": "@cf/bytedance/stable-diffusion-xl-lightning",
+      "provider": "cloudflare_workers_ai",
+      "provider_model_id": null,
+      "release_date": "2024-02-20",
+      "tags": null
+    },
+    "qwen1.5-7b-chat-awq": {
+      "aliases": [],
+      "capabilities": {
+        "chat": true,
+        "embeddings": false,
+        "json": {
+          "native": false,
+          "schema": false,
+          "strict": false
+        },
+        "reasoning": {
+          "enabled": false
+        },
+        "streaming": {
+          "tool_calls": true
+        },
+        "tools": {
+          "enabled": true
+        }
+      },
+      "cost": {
+        "input": 0,
+        "output": 0
+      },
+      "deprecated": false,
+      "extra": {
+        "attachment": false,
+        "open_weights": true,
+        "status": "deprecated",
+        "temperature": true
+      },
+      "family": null,
+      "id": "qwen1.5-7b-chat-awq",
+      "knowledge": null,
+      "last_updated": "2024-04-30",
+      "lifecycle": null,
+      "limits": {
+        "context": 20000,
+        "output": 20000
+      },
+      "modalities": {
+        "input": [
+          "text"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "model": null,
+      "name": "@cf/qwen/qwen1.5-7b-chat-awq",
+      "provider": "cloudflare_workers_ai",
+      "provider_model_id": null,
+      "release_date": "2024-02-03",
+      "tags": null
+    },
+    "gpt-oss-20b": {
+      "aliases": [],
+      "capabilities": {
+        "chat": true,
+        "embeddings": false,
+        "json": {
+          "native": false,
+          "schema": false,
+          "strict": false
+        },
+        "reasoning": {
+          "enabled": true
+        },
+        "streaming": {
+          "text": true,
+          "tool_calls": false
+        },
+        "tools": {
+          "enabled": false,
+          "parallel": false,
+          "streaming": false,
+          "strict": false
+        }
+      },
+      "cost": {
+        "input": 0.2,
+        "output": 0.3
+      },
+      "deprecated": false,
+      "extra": {
+        "attachment": false,
+        "open_weights": true,
+        "temperature": false
+      },
+      "family": null,
+      "id": "gpt-oss-20b",
+      "knowledge": null,
+      "last_updated": "2025-08-14",
+      "lifecycle": null,
+      "limits": {
+        "context": 128000,
+        "output": 128000
+      },
+      "modalities": {
+        "input": [
+          "text"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "model": null,
+      "name": "@cf/openai/gpt-oss-20b",
+      "provider": "cloudflare_workers_ai",
+      "provider_model_id": null,
+      "release_date": "2025-08-04",
+      "tags": null
+    },
+    "stable-diffusion-v1-5-img2img": {
+      "aliases": [],
+      "capabilities": null,
+      "cost": {
+        "input": 0,
+        "output": 0
+      },
+      "deprecated": false,
+      "extra": {
+        "attachment": false,
+        "open_weights": true,
+        "temperature": false
+      },
+      "family": null,
+      "id": "stable-diffusion-v1-5-img2img",
+      "knowledge": null,
+      "last_updated": "2024-02-27",
+      "lifecycle": null,
+      "limits": null,
+      "modalities": {
+        "input": [
+          "text"
+        ],
+        "output": [
+          "image"
+        ]
+      },
+      "model": null,
+      "name": "@cf/runwayml/stable-diffusion-v1-5-img2img",
+      "provider": "cloudflare_workers_ai",
+      "provider_model_id": null,
+      "release_date": "2024-02-27",
+      "tags": null
+    },
+    "llama-2-13b-chat-awq": {
+      "aliases": [],
+      "capabilities": {
+        "chat": true,
+        "embeddings": false,
+        "json": {
+          "native": false,
+          "schema": false,
+          "strict": false
+        },
+        "reasoning": {
+          "enabled": false
+        },
+        "streaming": {
+          "tool_calls": true
+        },
+        "tools": {
+          "enabled": true
+        }
+      },
+      "cost": {
+        "input": 0,
+        "output": 0
+      },
+      "deprecated": false,
+      "extra": {
+        "attachment": false,
+        "open_weights": true,
+        "status": "deprecated",
+        "temperature": true
+      },
+      "family": null,
+      "id": "llama-2-13b-chat-awq",
+      "knowledge": null,
+      "last_updated": "2023-11-09",
+      "lifecycle": null,
+      "limits": {
+        "context": 4096,
+        "output": 4096
+      },
+      "modalities": {
+        "input": [
+          "text"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "model": null,
+      "name": "@hf/thebloke/llama-2-13b-chat-awq",
+      "provider": "cloudflare_workers_ai",
+      "provider_model_id": null,
+      "release_date": "2023-09-19",
+      "tags": null
+    },
+    "m2m100-1.2b": {
+      "aliases": [],
+      "capabilities": null,
+      "cost": {
+        "input": 0.34,
+        "output": 0.34
+      },
+      "deprecated": false,
+      "extra": {
+        "attachment": false,
+        "open_weights": true,
+        "temperature": false
+      },
+      "family": null,
+      "id": "m2m100-1.2b",
+      "knowledge": null,
+      "last_updated": "2023-11-16",
+      "lifecycle": null,
+      "limits": null,
+      "modalities": {
+        "input": [
+          "text"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "model": null,
+      "name": "@cf/meta/m2m100-1.2b",
+      "provider": "cloudflare_workers_ai",
+      "provider_model_id": null,
+      "release_date": "2022-03-02",
+      "tags": null
+    },
+    "qwq-32b": {
+      "aliases": [],
+      "capabilities": {
+        "chat": true,
+        "embeddings": false,
+        "json": {
+          "native": false,
+          "schema": false,
+          "strict": false
+        },
+        "reasoning": {
+          "enabled": false
+        },
+        "streaming": {
+          "tool_calls": true
+        },
+        "tools": {
+          "enabled": true
+        }
+      },
+      "cost": {
+        "input": 0.66,
+        "output": 1
+      },
+      "deprecated": false,
+      "extra": {
+        "attachment": false,
+        "open_weights": true,
+        "temperature": true
+      },
+      "family": null,
+      "id": "qwq-32b",
+      "knowledge": null,
+      "last_updated": "2025-03-11",
+      "lifecycle": null,
+      "limits": {
+        "context": 24000,
+        "output": 24000
+      },
+      "modalities": {
+        "input": [
+          "text"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "model": null,
+      "name": "@cf/qwen/qwq-32b",
+      "provider": "cloudflare_workers_ai",
+      "provider_model_id": null,
+      "release_date": "2025-03-05",
+      "tags": null
+    },
+    "una-cybertron-7b-v2-bf16": {
+      "aliases": [],
+      "capabilities": {
+        "chat": true,
+        "embeddings": false,
+        "json": {
+          "native": false,
+          "schema": false,
+          "strict": false
+        },
+        "reasoning": {
+          "enabled": false
+        },
+        "streaming": {
+          "tool_calls": true
+        },
+        "tools": {
+          "enabled": true
+        }
+      },
+      "cost": {
+        "input": 0,
+        "output": 0
+      },
+      "deprecated": false,
+      "extra": {
+        "attachment": false,
+        "open_weights": true,
+        "status": "deprecated",
+        "temperature": true
+      },
+      "family": null,
       "id": "una-cybertron-7b-v2-bf16",
       "knowledge": null,
       "last_updated": "2024-03-08",
@@ -3359,6 +1253,2334 @@
       "provider": "cloudflare_workers_ai",
       "provider_model_id": null,
       "release_date": "2023-12-02",
+      "tags": null
+    },
+    "phoenix-1.0": {
+      "aliases": [],
+      "capabilities": null,
+      "cost": {
+        "input": 0.0058,
+        "output": 0.0058
+      },
+      "deprecated": false,
+      "extra": {
+        "attachment": false,
+        "open_weights": false,
+        "temperature": false
+      },
+      "family": null,
+      "id": "phoenix-1.0",
+      "knowledge": null,
+      "last_updated": "2025-08-25",
+      "lifecycle": null,
+      "limits": null,
+      "modalities": {
+        "input": [
+          "text"
+        ],
+        "output": [
+          "image"
+        ]
+      },
+      "model": null,
+      "name": "@cf/leonardo/phoenix-1.0",
+      "provider": "cloudflare_workers_ai",
+      "provider_model_id": null,
+      "release_date": "2025-08-25",
+      "tags": null
+    },
+    "mistral-small-3.1-24b-instruct": {
+      "aliases": [],
+      "capabilities": {
+        "chat": true,
+        "embeddings": false,
+        "json": {
+          "native": false,
+          "schema": false,
+          "strict": false
+        },
+        "reasoning": {
+          "enabled": false
+        },
+        "streaming": {
+          "tool_calls": true
+        },
+        "tools": {
+          "enabled": true
+        }
+      },
+      "cost": {
+        "input": 0.35,
+        "output": 0.56
+      },
+      "deprecated": false,
+      "extra": {
+        "attachment": false,
+        "open_weights": true,
+        "temperature": true
+      },
+      "family": null,
+      "id": "mistral-small-3.1-24b-instruct",
+      "knowledge": null,
+      "last_updated": "2025-07-28",
+      "lifecycle": null,
+      "limits": {
+        "context": 128000,
+        "output": 128000
+      },
+      "modalities": {
+        "input": [
+          "text"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "model": null,
+      "name": "@cf/mistralai/mistral-small-3.1-24b-instruct",
+      "provider": "cloudflare_workers_ai",
+      "provider_model_id": null,
+      "release_date": "2025-03-11",
+      "tags": null
+    },
+    "mistral-7b-instruct-v0.1": {
+      "aliases": [],
+      "capabilities": {
+        "chat": true,
+        "embeddings": false,
+        "json": {
+          "native": false,
+          "schema": false,
+          "strict": false
+        },
+        "reasoning": {
+          "enabled": false
+        },
+        "streaming": {
+          "tool_calls": true
+        },
+        "tools": {
+          "enabled": true
+        }
+      },
+      "cost": {
+        "input": 0.11,
+        "output": 0.19
+      },
+      "deprecated": false,
+      "extra": {
+        "attachment": false,
+        "open_weights": true,
+        "temperature": true
+      },
+      "family": null,
+      "id": "mistral-7b-instruct-v0.1",
+      "knowledge": null,
+      "last_updated": "2025-07-24",
+      "lifecycle": null,
+      "limits": {
+        "context": 2824,
+        "output": 2824
+      },
+      "modalities": {
+        "input": [
+          "text"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "model": null,
+      "name": "@cf/mistral/mistral-7b-instruct-v0.1",
+      "provider": "cloudflare_workers_ai",
+      "provider_model_id": null,
+      "release_date": "2023-09-27",
+      "tags": null
+    },
+    "whisper": {
+      "aliases": [],
+      "capabilities": null,
+      "cost": {
+        "input": 4.5e-4,
+        "output": 4.5e-4
+      },
+      "deprecated": false,
+      "extra": {
+        "attachment": false,
+        "open_weights": true,
+        "temperature": false
+      },
+      "family": null,
+      "id": "whisper",
+      "knowledge": null,
+      "last_updated": "2024-08-12",
+      "lifecycle": null,
+      "limits": null,
+      "modalities": {
+        "input": [
+          "audio"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "model": null,
+      "name": "@cf/openai/whisper",
+      "provider": "cloudflare_workers_ai",
+      "provider_model_id": null,
+      "release_date": "2023-11-07",
+      "tags": null
+    },
+    "neural-chat-7b-v3-1-awq": {
+      "aliases": [],
+      "capabilities": {
+        "chat": true,
+        "embeddings": false,
+        "json": {
+          "native": false,
+          "schema": false,
+          "strict": false
+        },
+        "reasoning": {
+          "enabled": false
+        },
+        "streaming": {
+          "tool_calls": true
+        },
+        "tools": {
+          "enabled": true
+        }
+      },
+      "cost": {
+        "input": 0,
+        "output": 0
+      },
+      "deprecated": false,
+      "extra": {
+        "attachment": false,
+        "open_weights": true,
+        "status": "deprecated",
+        "temperature": true
+      },
+      "family": null,
+      "id": "neural-chat-7b-v3-1-awq",
+      "knowledge": null,
+      "last_updated": "2023-11-17",
+      "lifecycle": null,
+      "limits": {
+        "context": 4096,
+        "output": 4096
+      },
+      "modalities": {
+        "input": [
+          "text"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "model": null,
+      "name": "@hf/thebloke/neural-chat-7b-v3-1-awq",
+      "provider": "cloudflare_workers_ai",
+      "provider_model_id": null,
+      "release_date": "2023-11-15",
+      "tags": null
+    },
+    "sqlcoder-7b-2": {
+      "aliases": [],
+      "capabilities": {
+        "chat": true,
+        "embeddings": false,
+        "json": {
+          "native": false,
+          "schema": false,
+          "strict": false
+        },
+        "reasoning": {
+          "enabled": false
+        },
+        "streaming": {
+          "tool_calls": true
+        },
+        "tools": {
+          "enabled": true
+        }
+      },
+      "cost": {
+        "input": 0,
+        "output": 0
+      },
+      "deprecated": false,
+      "extra": {
+        "attachment": false,
+        "open_weights": true,
+        "temperature": true
+      },
+      "family": null,
+      "id": "sqlcoder-7b-2",
+      "knowledge": null,
+      "last_updated": "2024-02-12",
+      "lifecycle": null,
+      "limits": {
+        "context": 10000,
+        "output": 10000
+      },
+      "modalities": {
+        "input": [
+          "text"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "model": null,
+      "name": "@cf/defog/sqlcoder-7b-2",
+      "provider": "cloudflare_workers_ai",
+      "provider_model_id": null,
+      "release_date": "2024-02-05",
+      "tags": null
+    },
+    "whisper-large-v3-turbo": {
+      "aliases": [],
+      "capabilities": null,
+      "cost": {
+        "input": 5.1e-4,
+        "output": 5.1e-4
+      },
+      "deprecated": false,
+      "extra": {
+        "attachment": false,
+        "open_weights": true,
+        "temperature": false
+      },
+      "family": null,
+      "id": "whisper-large-v3-turbo",
+      "knowledge": null,
+      "last_updated": "2024-10-04",
+      "lifecycle": null,
+      "limits": null,
+      "modalities": {
+        "input": [
+          "audio"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "model": null,
+      "name": "@cf/openai/whisper-large-v3-turbo",
+      "provider": "cloudflare_workers_ai",
+      "provider_model_id": null,
+      "release_date": "2024-10-01",
+      "tags": null
+    },
+    "llama-3.2-1b-instruct": {
+      "aliases": [],
+      "capabilities": {
+        "chat": true,
+        "embeddings": false,
+        "json": {
+          "native": false,
+          "schema": false,
+          "strict": false
+        },
+        "reasoning": {
+          "enabled": false
+        },
+        "streaming": {
+          "tool_calls": true
+        },
+        "tools": {
+          "enabled": true
+        }
+      },
+      "cost": {
+        "input": 0.027,
+        "output": 0.2
+      },
+      "deprecated": false,
+      "extra": {
+        "attachment": false,
+        "open_weights": true,
+        "temperature": true
+      },
+      "family": null,
+      "id": "llama-3.2-1b-instruct",
+      "knowledge": null,
+      "last_updated": "2024-10-24",
+      "lifecycle": null,
+      "limits": {
+        "context": 60000,
+        "output": 60000
+      },
+      "modalities": {
+        "input": [
+          "text"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "model": null,
+      "name": "@cf/meta/llama-3.2-1b-instruct",
+      "provider": "cloudflare_workers_ai",
+      "provider_model_id": null,
+      "release_date": "2024-09-18",
+      "tags": null
+    },
+    "gemma-7b-it": {
+      "aliases": [],
+      "capabilities": {
+        "chat": true,
+        "embeddings": false,
+        "json": {
+          "native": false,
+          "schema": false,
+          "strict": false
+        },
+        "reasoning": {
+          "enabled": false
+        },
+        "streaming": {
+          "tool_calls": true
+        },
+        "tools": {
+          "enabled": true
+        }
+      },
+      "cost": {
+        "input": 0,
+        "output": 0
+      },
+      "deprecated": false,
+      "extra": {
+        "attachment": false,
+        "open_weights": true,
+        "temperature": true
+      },
+      "family": null,
+      "id": "gemma-7b-it",
+      "knowledge": null,
+      "last_updated": "2024-08-14",
+      "lifecycle": null,
+      "limits": {
+        "context": 8192,
+        "output": 8192
+      },
+      "modalities": {
+        "input": [
+          "text"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "model": null,
+      "name": "@hf/google/gemma-7b-it",
+      "provider": "cloudflare_workers_ai",
+      "provider_model_id": null,
+      "release_date": "2024-02-13",
+      "tags": null
+    },
+    "llama-3.1-8b-instruct-awq": {
+      "aliases": [],
+      "capabilities": {
+        "chat": true,
+        "embeddings": false,
+        "json": {
+          "native": false,
+          "schema": false,
+          "strict": false
+        },
+        "reasoning": {
+          "enabled": false
+        },
+        "streaming": {
+          "tool_calls": true
+        },
+        "tools": {
+          "enabled": true
+        }
+      },
+      "cost": {
+        "input": 0.12,
+        "output": 0.27
+      },
+      "deprecated": false,
+      "extra": {
+        "attachment": false,
+        "open_weights": true,
+        "temperature": true
+      },
+      "family": null,
+      "id": "llama-3.1-8b-instruct-awq",
+      "knowledge": null,
+      "last_updated": "2024-07-25",
+      "lifecycle": null,
+      "limits": {
+        "context": 8192,
+        "output": 8192
+      },
+      "modalities": {
+        "input": [
+          "text"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "model": null,
+      "name": "@cf/meta/llama-3.1-8b-instruct-awq",
+      "provider": "cloudflare_workers_ai",
+      "provider_model_id": null,
+      "release_date": "2024-07-25",
+      "tags": null
+    },
+    "llama-3.1-8b-instruct-fp8": {
+      "aliases": [],
+      "capabilities": {
+        "chat": true,
+        "embeddings": false,
+        "json": {
+          "native": false,
+          "schema": false,
+          "strict": false
+        },
+        "reasoning": {
+          "enabled": false
+        },
+        "streaming": {
+          "tool_calls": true
+        },
+        "tools": {
+          "enabled": true
+        }
+      },
+      "cost": {
+        "input": 0.15,
+        "output": 0.29
+      },
+      "deprecated": false,
+      "extra": {
+        "attachment": false,
+        "open_weights": true,
+        "temperature": true
+      },
+      "family": null,
+      "id": "llama-3.1-8b-instruct-fp8",
+      "knowledge": null,
+      "last_updated": "2024-07-25",
+      "lifecycle": null,
+      "limits": {
+        "context": 32000,
+        "output": 32000
+      },
+      "modalities": {
+        "input": [
+          "text"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "model": null,
+      "name": "@cf/meta/llama-3.1-8b-instruct-fp8",
+      "provider": "cloudflare_workers_ai",
+      "provider_model_id": null,
+      "release_date": "2024-07-25",
+      "tags": null
+    },
+    "deepseek-coder-6.7b-instruct-awq": {
+      "aliases": [],
+      "capabilities": {
+        "chat": true,
+        "embeddings": false,
+        "json": {
+          "native": false,
+          "schema": false,
+          "strict": false
+        },
+        "reasoning": {
+          "enabled": false
+        },
+        "streaming": {
+          "tool_calls": true
+        },
+        "tools": {
+          "enabled": true
+        }
+      },
+      "cost": {
+        "input": 0,
+        "output": 0
+      },
+      "deprecated": false,
+      "extra": {
+        "attachment": false,
+        "open_weights": true,
+        "status": "deprecated",
+        "temperature": true
+      },
+      "family": null,
+      "id": "deepseek-coder-6.7b-instruct-awq",
+      "knowledge": null,
+      "last_updated": "2023-11-13",
+      "lifecycle": null,
+      "limits": {
+        "context": 4096,
+        "output": 4096
+      },
+      "modalities": {
+        "input": [
+          "text"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "model": null,
+      "name": "@hf/thebloke/deepseek-coder-6.7b-instruct-awq",
+      "provider": "cloudflare_workers_ai",
+      "provider_model_id": null,
+      "release_date": "2023-11-05",
+      "tags": null
+    },
+    "gemma-sea-lion-v4-27b-it": {
+      "aliases": [],
+      "capabilities": {
+        "chat": true,
+        "embeddings": false,
+        "json": {
+          "native": false,
+          "schema": false,
+          "strict": false
+        },
+        "reasoning": {
+          "enabled": false
+        },
+        "streaming": {
+          "tool_calls": true
+        },
+        "tools": {
+          "enabled": true
+        }
+      },
+      "cost": {
+        "input": 0.35,
+        "output": 0.56
+      },
+      "deprecated": false,
+      "extra": {
+        "attachment": false,
+        "open_weights": false,
+        "temperature": true
+      },
+      "family": null,
+      "id": "gemma-sea-lion-v4-27b-it",
+      "knowledge": null,
+      "last_updated": "2025-12-02",
+      "lifecycle": null,
+      "limits": {
+        "context": 128000
+      },
+      "modalities": {
+        "input": [
+          "text"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "model": null,
+      "name": "@cf/aisingapore/gemma-sea-lion-v4-27b-it",
+      "provider": "cloudflare_workers_ai",
+      "provider_model_id": null,
+      "release_date": "2025-09-23",
+      "tags": null
+    },
+    "stable-diffusion-v1-5-inpainting": {
+      "aliases": [],
+      "capabilities": null,
+      "cost": {
+        "input": 0,
+        "output": 0
+      },
+      "deprecated": false,
+      "extra": {
+        "attachment": false,
+        "open_weights": true,
+        "temperature": false
+      },
+      "family": null,
+      "id": "stable-diffusion-v1-5-inpainting",
+      "knowledge": null,
+      "last_updated": "2024-02-27",
+      "lifecycle": null,
+      "limits": null,
+      "modalities": {
+        "input": [
+          "text"
+        ],
+        "output": [
+          "image"
+        ]
+      },
+      "model": null,
+      "name": "@cf/runwayml/stable-diffusion-v1-5-inpainting",
+      "provider": "cloudflare_workers_ai",
+      "provider_model_id": null,
+      "release_date": "2024-02-27",
+      "tags": null
+    },
+    "mistral-7b-instruct-v0.2-lora": {
+      "aliases": [],
+      "capabilities": {
+        "chat": true,
+        "embeddings": false,
+        "json": {
+          "native": false,
+          "schema": false,
+          "strict": false
+        },
+        "reasoning": {
+          "enabled": false
+        },
+        "streaming": {
+          "tool_calls": true
+        },
+        "tools": {
+          "enabled": true
+        }
+      },
+      "cost": {
+        "input": 0,
+        "output": 0
+      },
+      "deprecated": false,
+      "extra": {
+        "attachment": false,
+        "open_weights": true,
+        "temperature": true
+      },
+      "family": null,
+      "id": "mistral-7b-instruct-v0.2-lora",
+      "knowledge": null,
+      "last_updated": "2024-04-01",
+      "lifecycle": null,
+      "limits": {
+        "context": 15000,
+        "output": 15000
+      },
+      "modalities": {
+        "input": [
+          "text"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "model": null,
+      "name": "@cf/mistral/mistral-7b-instruct-v0.2-lora",
+      "provider": "cloudflare_workers_ai",
+      "provider_model_id": null,
+      "release_date": "2024-04-01",
+      "tags": null
+    },
+    "gemma-2b-it-lora": {
+      "aliases": [],
+      "capabilities": {
+        "chat": true,
+        "embeddings": false,
+        "json": {
+          "native": false,
+          "schema": false,
+          "strict": false
+        },
+        "reasoning": {
+          "enabled": false
+        },
+        "streaming": {
+          "tool_calls": true
+        },
+        "tools": {
+          "enabled": true
+        }
+      },
+      "cost": {
+        "input": 0,
+        "output": 0
+      },
+      "deprecated": false,
+      "extra": {
+        "attachment": false,
+        "open_weights": true,
+        "temperature": true
+      },
+      "family": null,
+      "id": "gemma-2b-it-lora",
+      "knowledge": null,
+      "last_updated": "2024-04-02",
+      "lifecycle": null,
+      "limits": {
+        "context": 8192,
+        "output": 8192
+      },
+      "modalities": {
+        "input": [
+          "text"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "model": null,
+      "name": "@cf/google/gemma-2b-it-lora",
+      "provider": "cloudflare_workers_ai",
+      "provider_model_id": null,
+      "release_date": "2024-04-02",
+      "tags": null
+    },
+    "starling-lm-7b-beta": {
+      "aliases": [],
+      "capabilities": {
+        "chat": true,
+        "embeddings": false,
+        "json": {
+          "native": false,
+          "schema": false,
+          "strict": false
+        },
+        "reasoning": {
+          "enabled": false
+        },
+        "streaming": {
+          "tool_calls": true
+        },
+        "tools": {
+          "enabled": true
+        }
+      },
+      "cost": {
+        "input": 0,
+        "output": 0
+      },
+      "deprecated": false,
+      "extra": {
+        "attachment": false,
+        "open_weights": true,
+        "status": "deprecated",
+        "temperature": true
+      },
+      "family": null,
+      "id": "starling-lm-7b-beta",
+      "knowledge": null,
+      "last_updated": "2024-04-03",
+      "lifecycle": null,
+      "limits": {
+        "context": 4096,
+        "output": 4096
+      },
+      "modalities": {
+        "input": [
+          "text"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "model": null,
+      "name": "@hf/nexusflow/starling-lm-7b-beta",
+      "provider": "cloudflare_workers_ai",
+      "provider_model_id": null,
+      "release_date": "2024-03-19",
+      "tags": null
+    },
+    "stable-diffusion-xl-base-1.0": {
+      "aliases": [],
+      "capabilities": null,
+      "cost": {
+        "input": 0,
+        "output": 0
+      },
+      "deprecated": false,
+      "extra": {
+        "attachment": false,
+        "open_weights": true,
+        "temperature": false
+      },
+      "family": null,
+      "id": "stable-diffusion-xl-base-1.0",
+      "knowledge": null,
+      "last_updated": "2023-10-30",
+      "lifecycle": null,
+      "limits": null,
+      "modalities": {
+        "input": [
+          "text"
+        ],
+        "output": [
+          "image"
+        ]
+      },
+      "model": null,
+      "name": "@cf/stabilityai/stable-diffusion-xl-base-1.0",
+      "provider": "cloudflare_workers_ai",
+      "provider_model_id": null,
+      "release_date": "2023-07-25",
+      "tags": null
+    },
+    "tinyllama-1.1b-chat-v1.0": {
+      "aliases": [],
+      "capabilities": {
+        "chat": true,
+        "embeddings": false,
+        "json": {
+          "native": false,
+          "schema": false,
+          "strict": false
+        },
+        "reasoning": {
+          "enabled": false
+        },
+        "streaming": {
+          "tool_calls": true
+        },
+        "tools": {
+          "enabled": true
+        }
+      },
+      "cost": {
+        "input": 0,
+        "output": 0
+      },
+      "deprecated": false,
+      "extra": {
+        "attachment": false,
+        "open_weights": true,
+        "status": "deprecated",
+        "temperature": true
+      },
+      "family": null,
+      "id": "tinyllama-1.1b-chat-v1.0",
+      "knowledge": null,
+      "last_updated": "2024-03-17",
+      "lifecycle": null,
+      "limits": {
+        "context": 2048,
+        "output": 2048
+      },
+      "modalities": {
+        "input": [
+          "text"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "model": null,
+      "name": "@cf/tinyllama/tinyllama-1.1b-chat-v1.0",
+      "provider": "cloudflare_workers_ai",
+      "provider_model_id": null,
+      "release_date": "2023-12-30",
+      "tags": null
+    },
+    "discolm-german-7b-v1-awq": {
+      "aliases": [],
+      "capabilities": {
+        "chat": true,
+        "embeddings": false,
+        "json": {
+          "native": false,
+          "schema": false,
+          "strict": false
+        },
+        "reasoning": {
+          "enabled": false
+        },
+        "streaming": {
+          "tool_calls": true
+        },
+        "tools": {
+          "enabled": true
+        }
+      },
+      "cost": {
+        "input": 0,
+        "output": 0
+      },
+      "deprecated": false,
+      "extra": {
+        "attachment": false,
+        "open_weights": true,
+        "status": "deprecated",
+        "temperature": true
+      },
+      "family": null,
+      "id": "discolm-german-7b-v1-awq",
+      "knowledge": null,
+      "last_updated": "2024-01-24",
+      "lifecycle": null,
+      "limits": {
+        "context": 4096,
+        "output": 4096
+      },
+      "modalities": {
+        "input": [
+          "text"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "model": null,
+      "name": "@cf/thebloke/discolm-german-7b-v1-awq",
+      "provider": "cloudflare_workers_ai",
+      "provider_model_id": null,
+      "release_date": "2024-01-18",
+      "tags": null
+    },
+    "gemma-3-12b-it": {
+      "aliases": [],
+      "capabilities": {
+        "chat": true,
+        "embeddings": false,
+        "json": {
+          "native": false,
+          "schema": false,
+          "strict": false
+        },
+        "reasoning": {
+          "enabled": false
+        },
+        "streaming": {
+          "tool_calls": true
+        },
+        "tools": {
+          "enabled": true
+        }
+      },
+      "cost": {
+        "input": 0.35,
+        "output": 0.56
+      },
+      "deprecated": false,
+      "extra": {
+        "attachment": false,
+        "open_weights": true,
+        "temperature": true
+      },
+      "family": null,
+      "id": "gemma-3-12b-it",
+      "knowledge": null,
+      "last_updated": "2025-03-21",
+      "lifecycle": null,
+      "limits": {
+        "context": 80000,
+        "output": 80000
+      },
+      "modalities": {
+        "input": [
+          "text"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "model": null,
+      "name": "@cf/google/gemma-3-12b-it",
+      "provider": "cloudflare_workers_ai",
+      "provider_model_id": null,
+      "release_date": "2025-03-01",
+      "tags": null
+    },
+    "llama-3.1-8b-instruct": {
+      "aliases": [],
+      "capabilities": {
+        "chat": true,
+        "embeddings": false,
+        "json": {
+          "native": false,
+          "schema": false,
+          "strict": false
+        },
+        "reasoning": {
+          "enabled": false
+        },
+        "streaming": {
+          "tool_calls": true
+        },
+        "tools": {
+          "enabled": true
+        }
+      },
+      "cost": {
+        "input": 0.28,
+        "output": 0.83
+      },
+      "deprecated": false,
+      "extra": {
+        "attachment": false,
+        "open_weights": true,
+        "temperature": true
+      },
+      "family": null,
+      "id": "llama-3.1-8b-instruct",
+      "knowledge": null,
+      "last_updated": "2024-09-25",
+      "lifecycle": null,
+      "limits": {
+        "context": 7968,
+        "output": 7968
+      },
+      "modalities": {
+        "input": [
+          "text"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "model": null,
+      "name": "@cf/meta/llama-3.1-8b-instruct",
+      "provider": "cloudflare_workers_ai",
+      "provider_model_id": null,
+      "release_date": "2024-07-18",
+      "tags": null
+    },
+    "melotts": {
+      "aliases": [],
+      "capabilities": null,
+      "cost": {
+        "input": 0.0002,
+        "output": 0
+      },
+      "deprecated": false,
+      "extra": {
+        "attachment": true,
+        "open_weights": true,
+        "temperature": false
+      },
+      "family": null,
+      "id": "melotts",
+      "knowledge": null,
+      "last_updated": "2024-07-19",
+      "lifecycle": null,
+      "limits": null,
+      "modalities": {
+        "input": [
+          "text"
+        ],
+        "output": [
+          "audio"
+        ]
+      },
+      "model": null,
+      "name": "@cf/myshell-ai/melotts",
+      "provider": "cloudflare_workers_ai",
+      "provider_model_id": null,
+      "release_date": "2024-07-19",
+      "tags": null
+    },
+    "granite-4.0-h-micro": {
+      "aliases": [],
+      "capabilities": {
+        "chat": true,
+        "embeddings": false,
+        "json": {
+          "native": false,
+          "schema": false,
+          "strict": false
+        },
+        "reasoning": {
+          "enabled": false
+        },
+        "streaming": {
+          "tool_calls": true
+        },
+        "tools": {
+          "enabled": true
+        }
+      },
+      "cost": {
+        "input": 0.017,
+        "output": 0.11
+      },
+      "deprecated": false,
+      "extra": {
+        "attachment": false,
+        "open_weights": false,
+        "temperature": true
+      },
+      "family": null,
+      "id": "granite-4.0-h-micro",
+      "knowledge": null,
+      "last_updated": "2025-12-02",
+      "lifecycle": null,
+      "limits": {
+        "context": 131000
+      },
+      "modalities": {
+        "input": [
+          "text"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "model": null,
+      "name": "@cf/ibm-granite/granite-4.0-h-micro",
+      "provider": "cloudflare_workers_ai",
+      "provider_model_id": null,
+      "release_date": "2025-10-07",
+      "tags": null
+    },
+    "llama-2-7b-chat-hf-lora": {
+      "aliases": [],
+      "capabilities": {
+        "chat": true,
+        "embeddings": false,
+        "json": {
+          "native": false,
+          "schema": false,
+          "strict": false
+        },
+        "reasoning": {
+          "enabled": false
+        },
+        "streaming": {
+          "tool_calls": true
+        },
+        "tools": {
+          "enabled": true
+        }
+      },
+      "cost": {
+        "input": 0,
+        "output": 0
+      },
+      "deprecated": false,
+      "extra": {
+        "attachment": false,
+        "open_weights": true,
+        "temperature": true
+      },
+      "family": null,
+      "id": "llama-2-7b-chat-hf-lora",
+      "knowledge": null,
+      "last_updated": "2024-04-17",
+      "lifecycle": null,
+      "limits": {
+        "context": 8192,
+        "output": 8192
+      },
+      "modalities": {
+        "input": [
+          "text"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "model": null,
+      "name": "@cf/meta-llama/llama-2-7b-chat-hf-lora",
+      "provider": "cloudflare_workers_ai",
+      "provider_model_id": null,
+      "release_date": "2023-07-13",
+      "tags": null
+    },
+    "deepseek-coder-6.7b-base-awq": {
+      "aliases": [],
+      "capabilities": {
+        "chat": true,
+        "embeddings": false,
+        "json": {
+          "native": false,
+          "schema": false,
+          "strict": false
+        },
+        "reasoning": {
+          "enabled": false
+        },
+        "streaming": {
+          "tool_calls": true
+        },
+        "tools": {
+          "enabled": true
+        }
+      },
+      "cost": {
+        "input": 0,
+        "output": 0
+      },
+      "deprecated": false,
+      "extra": {
+        "attachment": false,
+        "open_weights": true,
+        "status": "deprecated",
+        "temperature": true
+      },
+      "family": null,
+      "id": "deepseek-coder-6.7b-base-awq",
+      "knowledge": null,
+      "last_updated": "2023-11-09",
+      "lifecycle": null,
+      "limits": {
+        "context": 4096,
+        "output": 4096
+      },
+      "modalities": {
+        "input": [
+          "text"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "model": null,
+      "name": "@hf/thebloke/deepseek-coder-6.7b-base-awq",
+      "provider": "cloudflare_workers_ai",
+      "provider_model_id": null,
+      "release_date": "2023-11-05",
+      "tags": null
+    },
+    "llama-3.2-11b-vision-instruct": {
+      "aliases": [],
+      "capabilities": {
+        "chat": true,
+        "embeddings": false,
+        "json": {
+          "native": false,
+          "schema": false,
+          "strict": false
+        },
+        "reasoning": {
+          "enabled": false
+        },
+        "streaming": {
+          "tool_calls": true
+        },
+        "tools": {
+          "enabled": true
+        }
+      },
+      "cost": {
+        "input": 0.049,
+        "output": 0.68
+      },
+      "deprecated": false,
+      "extra": {
+        "attachment": false,
+        "open_weights": true,
+        "temperature": true
+      },
+      "family": null,
+      "id": "llama-3.2-11b-vision-instruct",
+      "knowledge": null,
+      "last_updated": "2024-12-04",
+      "lifecycle": null,
+      "limits": {
+        "context": 128000,
+        "output": 128000
+      },
+      "modalities": {
+        "input": [
+          "text"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "model": null,
+      "name": "@cf/meta/llama-3.2-11b-vision-instruct",
+      "provider": "cloudflare_workers_ai",
+      "provider_model_id": null,
+      "release_date": "2024-09-18",
+      "tags": null
+    },
+    "qwen1.5-0.5b-chat": {
+      "aliases": [],
+      "capabilities": {
+        "chat": true,
+        "embeddings": false,
+        "json": {
+          "native": false,
+          "schema": false,
+          "strict": false
+        },
+        "reasoning": {
+          "enabled": false
+        },
+        "streaming": {
+          "tool_calls": true
+        },
+        "tools": {
+          "enabled": true
+        }
+      },
+      "cost": {
+        "input": 0,
+        "output": 0
+      },
+      "deprecated": false,
+      "extra": {
+        "attachment": false,
+        "open_weights": true,
+        "status": "deprecated",
+        "temperature": true
+      },
+      "family": null,
+      "id": "qwen1.5-0.5b-chat",
+      "knowledge": null,
+      "last_updated": "2024-04-30",
+      "lifecycle": null,
+      "limits": {
+        "context": 32000,
+        "output": 32000
+      },
+      "modalities": {
+        "input": [
+          "text"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "model": null,
+      "name": "@cf/qwen/qwen1.5-0.5b-chat",
+      "provider": "cloudflare_workers_ai",
+      "provider_model_id": null,
+      "release_date": "2024-01-31",
+      "tags": null
+    },
+    "mistral-7b-instruct-v0.2": {
+      "aliases": [],
+      "capabilities": {
+        "chat": true,
+        "embeddings": false,
+        "json": {
+          "native": false,
+          "schema": false,
+          "strict": false
+        },
+        "reasoning": {
+          "enabled": false
+        },
+        "streaming": {
+          "tool_calls": true
+        },
+        "tools": {
+          "enabled": true
+        }
+      },
+      "cost": {
+        "input": 0,
+        "output": 0
+      },
+      "deprecated": false,
+      "extra": {
+        "attachment": false,
+        "open_weights": true,
+        "temperature": true
+      },
+      "family": null,
+      "id": "mistral-7b-instruct-v0.2",
+      "knowledge": null,
+      "last_updated": "2025-07-24",
+      "lifecycle": null,
+      "limits": {
+        "context": 3072,
+        "output": 4096
+      },
+      "modalities": {
+        "input": [
+          "text"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "model": null,
+      "name": "@hf/mistral/mistral-7b-instruct-v0.2",
+      "provider": "cloudflare_workers_ai",
+      "provider_model_id": null,
+      "release_date": "2023-12-11",
+      "tags": null
+    },
+    "hermes-2-pro-mistral-7b": {
+      "aliases": [],
+      "capabilities": {
+        "chat": true,
+        "embeddings": false,
+        "json": {
+          "native": false,
+          "schema": false,
+          "strict": false
+        },
+        "reasoning": {
+          "enabled": false
+        },
+        "streaming": {
+          "tool_calls": true
+        },
+        "tools": {
+          "enabled": true
+        }
+      },
+      "cost": {
+        "input": 0,
+        "output": 0
+      },
+      "deprecated": false,
+      "extra": {
+        "attachment": false,
+        "open_weights": true,
+        "temperature": true
+      },
+      "family": null,
+      "id": "hermes-2-pro-mistral-7b",
+      "knowledge": null,
+      "last_updated": "2024-09-08",
+      "lifecycle": null,
+      "limits": {
+        "context": 24000,
+        "output": 24000
+      },
+      "modalities": {
+        "input": [
+          "text"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "model": null,
+      "name": "@hf/nousresearch/hermes-2-pro-mistral-7b",
+      "provider": "cloudflare_workers_ai",
+      "provider_model_id": null,
+      "release_date": "2024-03-11",
+      "tags": null
+    },
+    "llama-3.2-3b-instruct": {
+      "aliases": [],
+      "capabilities": {
+        "chat": true,
+        "embeddings": false,
+        "json": {
+          "native": false,
+          "schema": false,
+          "strict": false
+        },
+        "reasoning": {
+          "enabled": false
+        },
+        "streaming": {
+          "tool_calls": true
+        },
+        "tools": {
+          "enabled": true
+        }
+      },
+      "cost": {
+        "input": 0.051,
+        "output": 0.34
+      },
+      "deprecated": false,
+      "extra": {
+        "attachment": false,
+        "open_weights": true,
+        "temperature": true
+      },
+      "family": null,
+      "id": "llama-3.2-3b-instruct",
+      "knowledge": null,
+      "last_updated": "2024-10-24",
+      "lifecycle": null,
+      "limits": {
+        "context": 128000,
+        "output": 128000
+      },
+      "modalities": {
+        "input": [
+          "text"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "model": null,
+      "name": "@cf/meta/llama-3.2-3b-instruct",
+      "provider": "cloudflare_workers_ai",
+      "provider_model_id": null,
+      "release_date": "2024-09-18",
+      "tags": null
+    },
+    "qwen2.5-coder-32b-instruct": {
+      "aliases": [],
+      "capabilities": {
+        "chat": true,
+        "embeddings": false,
+        "json": {
+          "native": false,
+          "schema": false,
+          "strict": false
+        },
+        "reasoning": {
+          "enabled": false
+        },
+        "streaming": {
+          "tool_calls": true
+        },
+        "tools": {
+          "enabled": true
+        }
+      },
+      "cost": {
+        "input": 0.66,
+        "output": 1
+      },
+      "deprecated": false,
+      "extra": {
+        "attachment": false,
+        "open_weights": true,
+        "temperature": true
+      },
+      "family": null,
+      "id": "qwen2.5-coder-32b-instruct",
+      "knowledge": null,
+      "last_updated": "2025-01-12",
+      "lifecycle": null,
+      "limits": {
+        "context": 32768,
+        "output": 32768
+      },
+      "modalities": {
+        "input": [
+          "text"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "model": null,
+      "name": "@cf/qwen/qwen2.5-coder-32b-instruct",
+      "provider": "cloudflare_workers_ai",
+      "provider_model_id": null,
+      "release_date": "2024-11-06",
+      "tags": null
+    },
+    "nova-3": {
+      "aliases": [],
+      "capabilities": null,
+      "cost": {
+        "input": 0.0052,
+        "output": 0.0052
+      },
+      "deprecated": false,
+      "extra": {
+        "attachment": false,
+        "open_weights": true,
+        "temperature": false
+      },
+      "family": null,
+      "id": "nova-3",
+      "knowledge": null,
+      "last_updated": "2025-07-08",
+      "lifecycle": null,
+      "limits": null,
+      "modalities": {
+        "input": [
+          "audio"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "model": null,
+      "name": "@cf/deepgram/nova-3",
+      "provider": "cloudflare_workers_ai",
+      "provider_model_id": null,
+      "release_date": "2025-06-05",
+      "tags": null
+    },
+    "llama-2-7b-chat-int8": {
+      "aliases": [],
+      "capabilities": {
+        "chat": true,
+        "embeddings": false,
+        "json": {
+          "native": false,
+          "schema": false,
+          "strict": false
+        },
+        "reasoning": {
+          "enabled": false
+        },
+        "streaming": {
+          "tool_calls": true
+        },
+        "tools": {
+          "enabled": true
+        }
+      },
+      "cost": {
+        "input": 0.556,
+        "output": 6.667
+      },
+      "deprecated": false,
+      "extra": {
+        "attachment": false,
+        "open_weights": true,
+        "temperature": true
+      },
+      "family": null,
+      "id": "llama-2-7b-chat-int8",
+      "knowledge": null,
+      "last_updated": "2023-09-25",
+      "lifecycle": null,
+      "limits": {
+        "context": 8192,
+        "output": 8192
+      },
+      "modalities": {
+        "input": [
+          "text"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "model": null,
+      "name": "@cf/meta/llama-2-7b-chat-int8",
+      "provider": "cloudflare_workers_ai",
+      "provider_model_id": null,
+      "release_date": "2023-09-25",
+      "tags": null
+    },
+    "bart-large-cnn": {
+      "aliases": [],
+      "capabilities": null,
+      "cost": {
+        "input": 0,
+        "output": 0
+      },
+      "deprecated": false,
+      "extra": {
+        "attachment": false,
+        "open_weights": true,
+        "temperature": false
+      },
+      "family": null,
+      "id": "bart-large-cnn",
+      "knowledge": null,
+      "last_updated": "2024-02-13",
+      "lifecycle": null,
+      "limits": null,
+      "modalities": {
+        "input": [
+          "text"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "model": null,
+      "name": "@cf/facebook/bart-large-cnn",
+      "provider": "cloudflare_workers_ai",
+      "provider_model_id": null,
+      "release_date": "2022-03-02",
+      "tags": null
+    },
+    "llama-3-8b-instruct-awq": {
+      "aliases": [],
+      "capabilities": {
+        "chat": true,
+        "embeddings": false,
+        "json": {
+          "native": false,
+          "schema": false,
+          "strict": false
+        },
+        "reasoning": {
+          "enabled": false
+        },
+        "streaming": {
+          "tool_calls": true
+        },
+        "tools": {
+          "enabled": true
+        }
+      },
+      "cost": {
+        "input": 0.12,
+        "output": 0.27
+      },
+      "deprecated": false,
+      "extra": {
+        "attachment": false,
+        "open_weights": true,
+        "temperature": true
+      },
+      "family": null,
+      "id": "llama-3-8b-instruct-awq",
+      "knowledge": null,
+      "last_updated": "2024-05-09",
+      "lifecycle": null,
+      "limits": {
+        "context": 8192,
+        "output": 8192
+      },
+      "modalities": {
+        "input": [
+          "text"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "model": null,
+      "name": "@cf/meta/llama-3-8b-instruct-awq",
+      "provider": "cloudflare_workers_ai",
+      "provider_model_id": null,
+      "release_date": "2024-05-09",
+      "tags": null
+    },
+    "deepseek-r1-distill-qwen-32b": {
+      "aliases": [],
+      "capabilities": {
+        "chat": true,
+        "embeddings": false,
+        "json": {
+          "native": false,
+          "schema": false,
+          "strict": false
+        },
+        "reasoning": {
+          "enabled": true
+        },
+        "streaming": {
+          "tool_calls": true
+        },
+        "tools": {
+          "enabled": true
+        }
+      },
+      "cost": {
+        "input": 0.5,
+        "output": 4.88
+      },
+      "deprecated": false,
+      "extra": {
+        "attachment": false,
+        "open_weights": true,
+        "temperature": true
+      },
+      "family": null,
+      "id": "deepseek-r1-distill-qwen-32b",
+      "knowledge": null,
+      "last_updated": "2025-02-24",
+      "lifecycle": null,
+      "limits": {
+        "context": 80000,
+        "output": 80000
+      },
+      "modalities": {
+        "input": [
+          "text"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "model": null,
+      "name": "@cf/deepseek-ai/deepseek-r1-distill-qwen-32b",
+      "provider": "cloudflare_workers_ai",
+      "provider_model_id": null,
+      "release_date": "2025-01-20",
+      "tags": null
+    },
+    "dreamshaper-8-lcm": {
+      "aliases": [],
+      "capabilities": null,
+      "cost": {
+        "input": 0,
+        "output": 0
+      },
+      "deprecated": false,
+      "extra": {
+        "attachment": true,
+        "open_weights": true,
+        "temperature": false
+      },
+      "family": null,
+      "id": "dreamshaper-8-lcm",
+      "knowledge": null,
+      "last_updated": "2023-12-07",
+      "lifecycle": null,
+      "limits": null,
+      "modalities": {
+        "input": [
+          "text"
+        ],
+        "output": [
+          "image"
+        ]
+      },
+      "model": null,
+      "name": "@cf/lykon/dreamshaper-8-lcm",
+      "provider": "cloudflare_workers_ai",
+      "provider_model_id": null,
+      "release_date": "2023-12-06",
+      "tags": null
+    },
+    "whisper-tiny-en": {
+      "aliases": [],
+      "capabilities": null,
+      "cost": {
+        "input": 0,
+        "output": 0
+      },
+      "deprecated": false,
+      "extra": {
+        "attachment": false,
+        "open_weights": true,
+        "temperature": false
+      },
+      "family": null,
+      "id": "whisper-tiny-en",
+      "knowledge": null,
+      "last_updated": "2024-01-22",
+      "lifecycle": null,
+      "limits": null,
+      "modalities": {
+        "input": [
+          "audio"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "model": null,
+      "name": "@cf/openai/whisper-tiny-en",
+      "provider": "cloudflare_workers_ai",
+      "provider_model_id": null,
+      "release_date": "2022-09-26",
+      "tags": null
+    },
+    "qwen1.5-1.8b-chat": {
+      "aliases": [],
+      "capabilities": {
+        "chat": true,
+        "embeddings": false,
+        "json": {
+          "native": false,
+          "schema": false,
+          "strict": false
+        },
+        "reasoning": {
+          "enabled": false
+        },
+        "streaming": {
+          "tool_calls": true
+        },
+        "tools": {
+          "enabled": true
+        }
+      },
+      "cost": {
+        "input": 0,
+        "output": 0
+      },
+      "deprecated": false,
+      "extra": {
+        "attachment": false,
+        "open_weights": true,
+        "status": "deprecated",
+        "temperature": true
+      },
+      "family": null,
+      "id": "qwen1.5-1.8b-chat",
+      "knowledge": null,
+      "last_updated": "2024-04-30",
+      "lifecycle": null,
+      "limits": {
+        "context": 32000,
+        "output": 32000
+      },
+      "modalities": {
+        "input": [
+          "text"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "model": null,
+      "name": "@cf/qwen/qwen1.5-1.8b-chat",
+      "provider": "cloudflare_workers_ai",
+      "provider_model_id": null,
+      "release_date": "2024-01-30",
+      "tags": null
+    },
+    "mistral-7b-instruct-v0.1-awq": {
+      "aliases": [],
+      "capabilities": {
+        "chat": true,
+        "embeddings": false,
+        "json": {
+          "native": false,
+          "schema": false,
+          "strict": false
+        },
+        "reasoning": {
+          "enabled": false
+        },
+        "streaming": {
+          "tool_calls": true
+        },
+        "tools": {
+          "enabled": true
+        }
+      },
+      "cost": {
+        "input": 0,
+        "output": 0
+      },
+      "deprecated": false,
+      "extra": {
+        "attachment": false,
+        "open_weights": true,
+        "status": "deprecated",
+        "temperature": true
+      },
+      "family": null,
+      "id": "mistral-7b-instruct-v0.1-awq",
+      "knowledge": null,
+      "last_updated": "2023-11-09",
+      "lifecycle": null,
+      "limits": {
+        "context": 4096,
+        "output": 4096
+      },
+      "modalities": {
+        "input": [
+          "text"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "model": null,
+      "name": "@hf/thebloke/mistral-7b-instruct-v0.1-awq",
+      "provider": "cloudflare_workers_ai",
+      "provider_model_id": null,
+      "release_date": "2023-09-27",
+      "tags": null
+    },
+    "openchat-3.5-0106": {
+      "aliases": [],
+      "capabilities": {
+        "chat": true,
+        "embeddings": false,
+        "json": {
+          "native": false,
+          "schema": false,
+          "strict": false
+        },
+        "reasoning": {
+          "enabled": false
+        },
+        "streaming": {
+          "tool_calls": true
+        },
+        "tools": {
+          "enabled": true
+        }
+      },
+      "cost": {
+        "input": 0,
+        "output": 0
+      },
+      "deprecated": false,
+      "extra": {
+        "attachment": false,
+        "open_weights": true,
+        "status": "deprecated",
+        "temperature": true
+      },
+      "family": null,
+      "id": "openchat-3.5-0106",
+      "knowledge": null,
+      "last_updated": "2024-05-18",
+      "lifecycle": null,
+      "limits": {
+        "context": 8192,
+        "output": 8192
+      },
+      "modalities": {
+        "input": [
+          "text"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "model": null,
+      "name": "@cf/openchat/openchat-3.5-0106",
+      "provider": "cloudflare_workers_ai",
+      "provider_model_id": null,
+      "release_date": "2024-01-07",
+      "tags": null
+    },
+    "falcon-7b-instruct": {
+      "aliases": [],
+      "capabilities": {
+        "chat": true,
+        "embeddings": false,
+        "json": {
+          "native": false,
+          "schema": false,
+          "strict": false
+        },
+        "reasoning": {
+          "enabled": false
+        },
+        "streaming": {
+          "tool_calls": true
+        },
+        "tools": {
+          "enabled": true
+        }
+      },
+      "cost": {
+        "input": 0,
+        "output": 0
+      },
+      "deprecated": false,
+      "extra": {
+        "attachment": false,
+        "open_weights": true,
+        "status": "deprecated",
+        "temperature": true
+      },
+      "family": null,
+      "id": "falcon-7b-instruct",
+      "knowledge": null,
+      "last_updated": "2024-10-12",
+      "lifecycle": null,
+      "limits": {
+        "context": 4096,
+        "output": 4096
+      },
+      "modalities": {
+        "input": [
+          "text"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "model": null,
+      "name": "@cf/tiiuae/falcon-7b-instruct",
+      "provider": "cloudflare_workers_ai",
+      "provider_model_id": null,
+      "release_date": "2023-04-25",
+      "tags": null
+    },
+    "deepseek-math-7b-instruct": {
+      "aliases": [],
+      "capabilities": {
+        "chat": true,
+        "embeddings": false,
+        "json": {
+          "native": false,
+          "schema": false,
+          "strict": false
+        },
+        "reasoning": {
+          "enabled": false
+        },
+        "streaming": {
+          "tool_calls": true
+        },
+        "tools": {
+          "enabled": true
+        }
+      },
+      "cost": {
+        "input": 0,
+        "output": 0
+      },
+      "deprecated": false,
+      "extra": {
+        "attachment": false,
+        "open_weights": true,
+        "status": "deprecated",
+        "temperature": true
+      },
+      "family": null,
+      "id": "deepseek-math-7b-instruct",
+      "knowledge": null,
+      "last_updated": "2024-02-06",
+      "lifecycle": null,
+      "limits": {
+        "context": 4096,
+        "output": 4096
+      },
+      "modalities": {
+        "input": [
+          "text"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "model": null,
+      "name": "@cf/deepseek-ai/deepseek-math-7b-instruct",
+      "provider": "cloudflare_workers_ai",
+      "provider_model_id": null,
+      "release_date": "2024-02-05",
+      "tags": null
+    },
+    "llama-3-8b-instruct": {
+      "aliases": [],
+      "capabilities": {
+        "chat": true,
+        "embeddings": false,
+        "json": {
+          "native": false,
+          "schema": false,
+          "strict": false
+        },
+        "reasoning": {
+          "enabled": false
+        },
+        "streaming": {
+          "tool_calls": true
+        },
+        "tools": {
+          "enabled": true
+        }
+      },
+      "cost": {
+        "input": 0.28,
+        "output": 0.83
+      },
+      "deprecated": false,
+      "extra": {
+        "attachment": false,
+        "open_weights": true,
+        "temperature": true
+      },
+      "family": null,
+      "id": "llama-3-8b-instruct",
+      "knowledge": null,
+      "last_updated": "2025-06-19",
+      "lifecycle": null,
+      "limits": {
+        "context": 7968,
+        "output": 7968
+      },
+      "modalities": {
+        "input": [
+          "text"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "model": null,
+      "name": "@cf/meta/llama-3-8b-instruct",
+      "provider": "cloudflare_workers_ai",
+      "provider_model_id": null,
+      "release_date": "2024-04-17",
+      "tags": null
+    },
+    "lucid-origin": {
+      "aliases": [],
+      "capabilities": null,
+      "cost": {
+        "input": 0.007,
+        "output": 0.007
+      },
+      "deprecated": false,
+      "extra": {
+        "attachment": false,
+        "open_weights": false,
+        "temperature": false
+      },
+      "family": null,
+      "id": "lucid-origin",
+      "knowledge": null,
+      "last_updated": "2025-08-05",
+      "lifecycle": null,
+      "limits": null,
+      "modalities": {
+        "input": [
+          "text"
+        ],
+        "output": [
+          "image"
+        ]
+      },
+      "model": null,
+      "name": "@cf/leonardo/lucid-origin",
+      "provider": "cloudflare_workers_ai",
+      "provider_model_id": null,
+      "release_date": "2025-08-25",
+      "tags": null
+    },
+    "llama-3.1-70b-instruct": {
+      "aliases": [],
+      "capabilities": {
+        "chat": true,
+        "embeddings": false,
+        "json": {
+          "native": false,
+          "schema": false,
+          "strict": false
+        },
+        "reasoning": {
+          "enabled": false
+        },
+        "streaming": {
+          "tool_calls": true
+        },
+        "tools": {
+          "enabled": true
+        }
+      },
+      "cost": {
+        "input": 0.293,
+        "output": 2.253
+      },
+      "deprecated": false,
+      "extra": {
+        "attachment": false,
+        "open_weights": true,
+        "temperature": true
+      },
+      "family": null,
+      "id": "llama-3.1-70b-instruct",
+      "knowledge": null,
+      "last_updated": "2024-12-15",
+      "lifecycle": null,
+      "limits": {
+        "context": 24000,
+        "output": 24000
+      },
+      "modalities": {
+        "input": [
+          "text"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "model": null,
+      "name": "@cf/meta/llama-3.1-70b-instruct",
+      "provider": "cloudflare_workers_ai",
+      "provider_model_id": null,
+      "release_date": "2024-07-16",
       "tags": null
     }
   },

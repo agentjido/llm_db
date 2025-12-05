@@ -66,7 +66,7 @@
   "extra": null,
   "id": "openrouter",
   "models": {
-    "openai/gpt-5.1-chat": {
+    "nousresearch/hermes-4-70b": {
       "aliases": [],
       "capabilities": {
         "chat": true,
@@ -87,1165 +87,40 @@
         }
       },
       "cost": {
-        "cache_read": 0.125,
-        "input": 1.25,
-        "output": 10
-      },
-      "deprecated": false,
-      "extra": {
-        "attachment": true,
-        "open_weights": false,
-        "structured_output": true,
-        "temperature": true
-      },
-      "family": null,
-      "id": "openai/gpt-5.1-chat",
-      "knowledge": "2024-09-30",
-      "last_updated": "2025-11-13",
-      "lifecycle": null,
-      "limits": {
-        "context": 128000,
-        "output": 16384
-      },
-      "modalities": {
-        "input": [
-          "text",
-          "image"
-        ],
-        "output": [
-          "text"
-        ]
-      },
-      "model": null,
-      "name": "GPT-5.1 Chat",
-      "provider": "openrouter",
-      "provider_model_id": null,
-      "release_date": "2025-11-13",
-      "tags": null
-    },
-    "qwen/qwen3-235b-a22b-thinking-2507": {
-      "aliases": [],
-      "capabilities": {
-        "chat": true,
-        "embeddings": false,
-        "json": {
-          "native": false,
-          "schema": false,
-          "strict": false
-        },
-        "reasoning": {
-          "enabled": true
-        },
-        "streaming": {
-          "tool_calls": true
-        },
-        "tools": {
-          "enabled": true
-        }
-      },
-      "cost": {
-        "input": 0.078,
-        "output": 0.312
-      },
-      "deprecated": false,
-      "extra": {
-        "attachment": false,
-        "open_weights": true,
-        "temperature": true
-      },
-      "family": null,
-      "id": "qwen/qwen3-235b-a22b-thinking-2507",
-      "knowledge": "2025-04",
-      "last_updated": "2025-07-25",
-      "lifecycle": null,
-      "limits": {
-        "context": 262144,
-        "output": 81920
-      },
-      "modalities": {
-        "input": [
-          "text"
-        ],
-        "output": [
-          "text"
-        ]
-      },
-      "model": null,
-      "name": "Qwen3 235B A22B Thinking 2507",
-      "provider": "openrouter",
-      "provider_model_id": null,
-      "release_date": "2025-07-25",
-      "tags": null
-    },
-    "qwen/qwen3-next-80b-a3b-thinking": {
-      "aliases": [],
-      "capabilities": {
-        "chat": true,
-        "embeddings": false,
-        "json": {
-          "native": false,
-          "schema": false,
-          "strict": false
-        },
-        "reasoning": {
-          "enabled": true
-        },
-        "streaming": {
-          "tool_calls": true
-        },
-        "tools": {
-          "enabled": true
-        }
-      },
-      "cost": {
-        "input": 0.14,
-        "output": 1.4
-      },
-      "deprecated": false,
-      "extra": {
-        "attachment": false,
-        "open_weights": true,
-        "temperature": true
-      },
-      "family": null,
-      "id": "qwen/qwen3-next-80b-a3b-thinking",
-      "knowledge": "2025-04",
-      "last_updated": "2025-09-11",
-      "lifecycle": null,
-      "limits": {
-        "context": 262144,
-        "output": 262144
-      },
-      "modalities": {
-        "input": [
-          "text"
-        ],
-        "output": [
-          "text"
-        ]
-      },
-      "model": null,
-      "name": "Qwen3 Next 80B A3B Thinking",
-      "provider": "openrouter",
-      "provider_model_id": null,
-      "release_date": "2025-09-11",
-      "tags": null
-    },
-    "openai/gpt-4o-mini": {
-      "aliases": [],
-      "capabilities": {
-        "chat": true,
-        "embeddings": false,
-        "json": {
-          "native": false,
-          "schema": false,
-          "strict": false
-        },
-        "reasoning": {
-          "enabled": false
-        },
-        "streaming": {
-          "tool_calls": true
-        },
-        "tools": {
-          "enabled": true
-        }
-      },
-      "cost": {
-        "cache_read": 0.08,
-        "input": 0.15,
-        "output": 0.6
-      },
-      "deprecated": false,
-      "extra": {
-        "attachment": true,
-        "open_weights": false,
-        "temperature": true
-      },
-      "family": null,
-      "id": "openai/gpt-4o-mini",
-      "knowledge": "2024-10",
-      "last_updated": "2024-07-18",
-      "lifecycle": null,
-      "limits": {
-        "context": 128000,
-        "output": 16384
-      },
-      "modalities": {
-        "input": [
-          "text",
-          "image"
-        ],
-        "output": [
-          "text"
-        ]
-      },
-      "model": null,
-      "name": "GPT-4o-mini",
-      "provider": "openrouter",
-      "provider_model_id": null,
-      "release_date": "2024-07-18",
-      "tags": null
-    },
-    "qwen/qwen2.5-vl-72b-instruct": {
-      "aliases": [],
-      "capabilities": null,
-      "cost": {
-        "input": 0,
-        "output": 0
-      },
-      "deprecated": false,
-      "extra": {
-        "attachment": true,
-        "open_weights": true,
-        "temperature": true
-      },
-      "family": null,
-      "id": "qwen/qwen2.5-vl-72b-instruct",
-      "knowledge": "2024-10",
-      "last_updated": "2025-02-01",
-      "lifecycle": null,
-      "limits": {
-        "context": 32768,
-        "output": 8192
-      },
-      "modalities": {
-        "input": [
-          "text",
-          "image"
-        ],
-        "output": [
-          "text"
-        ]
-      },
-      "model": null,
-      "name": "Qwen2.5 VL 72B Instruct",
-      "provider": "openrouter",
-      "provider_model_id": null,
-      "release_date": "2025-02-01",
-      "tags": null
-    },
-    "mistralai/mistral-medium-3": {
-      "aliases": [],
-      "capabilities": {
-        "chat": true,
-        "embeddings": false,
-        "json": {
-          "native": false,
-          "schema": false,
-          "strict": false
-        },
-        "reasoning": {
-          "enabled": false
-        },
-        "streaming": {
-          "tool_calls": true
-        },
-        "tools": {
-          "enabled": true
-        }
-      },
-      "cost": {
-        "input": 0.4,
-        "output": 2
-      },
-      "deprecated": false,
-      "extra": {
-        "attachment": true,
-        "open_weights": false,
-        "temperature": true
-      },
-      "family": null,
-      "id": "mistralai/mistral-medium-3",
-      "knowledge": "2025-05",
-      "last_updated": "2025-05-07",
-      "lifecycle": null,
-      "limits": {
-        "context": 131072,
-        "output": 131072
-      },
-      "modalities": {
-        "input": [
-          "text",
-          "image"
-        ],
-        "output": [
-          "text"
-        ]
-      },
-      "model": null,
-      "name": "Mistral Medium 3",
-      "provider": "openrouter",
-      "provider_model_id": null,
-      "release_date": "2025-05-07",
-      "tags": null
-    },
-    "qwen/qwen3-235b-a22b-07-25": {
-      "aliases": [],
-      "capabilities": {
-        "chat": true,
-        "embeddings": false,
-        "json": {
-          "native": false,
-          "schema": false,
-          "strict": false
-        },
-        "reasoning": {
-          "enabled": false
-        },
-        "streaming": {
-          "tool_calls": true
-        },
-        "tools": {
-          "enabled": true
-        }
-      },
-      "cost": {
-        "input": 0.15,
-        "output": 0.85
-      },
-      "deprecated": false,
-      "extra": {
-        "attachment": false,
-        "open_weights": true,
-        "temperature": true
-      },
-      "family": null,
-      "id": "qwen/qwen3-235b-a22b-07-25",
-      "knowledge": "2025-04",
-      "last_updated": "2025-07-21",
-      "lifecycle": null,
-      "limits": {
-        "context": 262144,
-        "output": 131072
-      },
-      "modalities": {
-        "input": [
-          "text"
-        ],
-        "output": [
-          "text"
-        ]
-      },
-      "model": null,
-      "name": "Qwen3 235B A22B Instruct 2507",
-      "provider": "openrouter",
-      "provider_model_id": null,
-      "release_date": "2025-04-28",
-      "tags": null
-    },
-    "qwen/qwen3-coder:exacto": {
-      "aliases": [],
-      "capabilities": {
-        "chat": true,
-        "embeddings": false,
-        "json": {
-          "native": false,
-          "schema": false,
-          "strict": false
-        },
-        "reasoning": {
-          "enabled": false
-        },
-        "streaming": {
-          "tool_calls": true
-        },
-        "tools": {
-          "enabled": true
-        }
-      },
-      "cost": {
-        "input": 0.38,
-        "output": 1.53
-      },
-      "deprecated": false,
-      "extra": {
-        "attachment": false,
-        "open_weights": true,
-        "temperature": true
-      },
-      "family": null,
-      "id": "qwen/qwen3-coder:exacto",
-      "knowledge": "2025-04",
-      "last_updated": "2025-07-23",
-      "lifecycle": null,
-      "limits": {
-        "context": 131072,
-        "output": 32768
-      },
-      "modalities": {
-        "input": [
-          "text"
-        ],
-        "output": [
-          "text"
-        ]
-      },
-      "model": null,
-      "name": "Qwen3 Coder (exacto)",
-      "provider": "openrouter",
-      "provider_model_id": null,
-      "release_date": "2025-07-23",
-      "tags": null
-    },
-    "x-ai/grok-3": {
-      "aliases": [],
-      "capabilities": {
-        "chat": true,
-        "embeddings": false,
-        "json": {
-          "native": false,
-          "schema": false,
-          "strict": false
-        },
-        "reasoning": {
-          "enabled": false
-        },
-        "streaming": {
-          "tool_calls": true
-        },
-        "tools": {
-          "enabled": true
-        }
-      },
-      "cost": {
-        "cache_read": 0.75,
-        "cache_write": 15,
-        "input": 3,
-        "output": 15
-      },
-      "deprecated": false,
-      "extra": {
-        "attachment": false,
-        "open_weights": false,
-        "temperature": true
-      },
-      "family": null,
-      "id": "x-ai/grok-3",
-      "knowledge": "2024-11",
-      "last_updated": "2025-02-17",
-      "lifecycle": null,
-      "limits": {
-        "context": 131072,
-        "output": 8192
-      },
-      "modalities": {
-        "input": [
-          "text"
-        ],
-        "output": [
-          "text"
-        ]
-      },
-      "model": null,
-      "name": "Grok 3",
-      "provider": "openrouter",
-      "provider_model_id": null,
-      "release_date": "2025-02-17",
-      "tags": null
-    },
-    "openai/gpt-5-pro": {
-      "aliases": [],
-      "capabilities": {
-        "chat": true,
-        "embeddings": false,
-        "json": {
-          "native": false,
-          "schema": false,
-          "strict": false
-        },
-        "reasoning": {
-          "enabled": true
-        },
-        "streaming": {
-          "tool_calls": true
-        },
-        "tools": {
-          "enabled": true
-        }
-      },
-      "cost": {
-        "input": 15,
-        "output": 120
-      },
-      "deprecated": false,
-      "extra": {
-        "attachment": true,
-        "open_weights": false,
-        "temperature": false
-      },
-      "family": null,
-      "id": "openai/gpt-5-pro",
-      "knowledge": "2024-09-30",
-      "last_updated": "2025-10-06",
-      "lifecycle": null,
-      "limits": {
-        "context": 400000,
-        "output": 272000
-      },
-      "modalities": {
-        "input": [
-          "text",
-          "image"
-        ],
-        "output": [
-          "text"
-        ]
-      },
-      "model": null,
-      "name": "GPT-5 Pro",
-      "provider": "openrouter",
-      "provider_model_id": null,
-      "release_date": "2025-10-06",
-      "tags": null
-    },
-    "openai/gpt-5.1-codex-mini": {
-      "aliases": [],
-      "capabilities": {
-        "chat": true,
-        "embeddings": false,
-        "json": {
-          "native": false,
-          "schema": false,
-          "strict": false
-        },
-        "reasoning": {
-          "enabled": true
-        },
-        "streaming": {
-          "tool_calls": true
-        },
-        "tools": {
-          "enabled": true
-        }
-      },
-      "cost": {
-        "cache_read": 0.025,
-        "input": 0.25,
-        "output": 2
-      },
-      "deprecated": false,
-      "extra": {
-        "attachment": true,
-        "open_weights": false,
-        "structured_output": true,
-        "temperature": true
-      },
-      "family": null,
-      "id": "openai/gpt-5.1-codex-mini",
-      "knowledge": "2024-09-30",
-      "last_updated": "2025-11-13",
-      "lifecycle": null,
-      "limits": {
-        "context": 400000,
-        "output": 100000
-      },
-      "modalities": {
-        "input": [
-          "text",
-          "image"
-        ],
-        "output": [
-          "text"
-        ]
-      },
-      "model": null,
-      "name": "GPT-5.1-Codex-Mini",
-      "provider": "openrouter",
-      "provider_model_id": null,
-      "release_date": "2025-11-13",
-      "tags": null
-    },
-    "x-ai/grok-3-beta": {
-      "aliases": [],
-      "capabilities": {
-        "chat": true,
-        "embeddings": false,
-        "json": {
-          "native": false,
-          "schema": false,
-          "strict": false
-        },
-        "reasoning": {
-          "enabled": false
-        },
-        "streaming": {
-          "tool_calls": true
-        },
-        "tools": {
-          "enabled": true
-        }
-      },
-      "cost": {
-        "cache_read": 0.75,
-        "cache_write": 15,
-        "input": 3,
-        "output": 15
-      },
-      "deprecated": false,
-      "extra": {
-        "attachment": false,
-        "open_weights": false,
-        "temperature": true
-      },
-      "family": null,
-      "id": "x-ai/grok-3-beta",
-      "knowledge": "2024-11",
-      "last_updated": "2025-02-17",
-      "lifecycle": null,
-      "limits": {
-        "context": 131072,
-        "output": 8192
-      },
-      "modalities": {
-        "input": [
-          "text"
-        ],
-        "output": [
-          "text"
-        ]
-      },
-      "model": null,
-      "name": "Grok 3 Beta",
-      "provider": "openrouter",
-      "provider_model_id": null,
-      "release_date": "2025-02-17",
-      "tags": null
-    },
-    "openrouter/sherlock-dash-alpha": {
-      "aliases": [],
-      "capabilities": {
-        "chat": true,
-        "embeddings": false,
-        "json": {
-          "native": false,
-          "schema": false,
-          "strict": false
-        },
-        "reasoning": {
-          "enabled": false
-        },
-        "streaming": {
-          "tool_calls": true
-        },
-        "tools": {
-          "enabled": true
-        }
-      },
-      "cost": {
-        "input": 0,
-        "output": 0
-      },
-      "deprecated": false,
-      "extra": {
-        "attachment": true,
-        "open_weights": false,
-        "temperature": false
-      },
-      "family": null,
-      "id": "openrouter/sherlock-dash-alpha",
-      "knowledge": "2025-11",
-      "last_updated": "2025-11-15",
-      "lifecycle": null,
-      "limits": {
-        "context": 1840000,
-        "output": 64000
-      },
-      "modalities": {
-        "input": [
-          "text",
-          "image"
-        ],
-        "output": [
-          "text"
-        ]
-      },
-      "model": null,
-      "name": "Sherlock Dash Alpha",
-      "provider": "openrouter",
-      "provider_model_id": null,
-      "release_date": "2025-11-15",
-      "tags": null
-    },
-    "openai/gpt-5": {
-      "aliases": [],
-      "capabilities": {
-        "chat": true,
-        "embeddings": false,
-        "json": {
-          "native": false,
-          "schema": false,
-          "strict": false
-        },
-        "reasoning": {
-          "enabled": true
-        },
-        "streaming": {
-          "tool_calls": true
-        },
-        "tools": {
-          "enabled": true
-        }
-      },
-      "cost": {
-        "input": 1.25,
-        "output": 10
-      },
-      "deprecated": false,
-      "extra": {
-        "attachment": true,
-        "open_weights": false,
-        "temperature": true
-      },
-      "family": null,
-      "id": "openai/gpt-5",
-      "knowledge": "2024-10-01",
-      "last_updated": "2025-08-07",
-      "lifecycle": null,
-      "limits": {
-        "context": 400000,
-        "output": 128000
-      },
-      "modalities": {
-        "input": [
-          "text",
-          "image"
-        ],
-        "output": [
-          "text"
-        ]
-      },
-      "model": null,
-      "name": "GPT-5",
-      "provider": "openrouter",
-      "provider_model_id": null,
-      "release_date": "2025-08-07",
-      "tags": null
-    },
-    "moonshotai/kimi-k2-0905:exacto": {
-      "aliases": [],
-      "capabilities": {
-        "chat": true,
-        "embeddings": false,
-        "json": {
-          "native": false,
-          "schema": false,
-          "strict": false
-        },
-        "reasoning": {
-          "enabled": false
-        },
-        "streaming": {
-          "tool_calls": true
-        },
-        "tools": {
-          "enabled": true
-        }
-      },
-      "cost": {
-        "input": 0.6,
-        "output": 2.5
-      },
-      "deprecated": false,
-      "extra": {
-        "attachment": false,
-        "open_weights": true,
-        "temperature": true
-      },
-      "family": null,
-      "id": "moonshotai/kimi-k2-0905:exacto",
-      "knowledge": "2024-10",
-      "last_updated": "2025-09-05",
-      "lifecycle": null,
-      "limits": {
-        "context": 262144,
-        "output": 16384
-      },
-      "modalities": {
-        "input": [
-          "text"
-        ],
-        "output": [
-          "text"
-        ]
-      },
-      "model": null,
-      "name": "Kimi K2 Instruct 0905 (exacto)",
-      "provider": "openrouter",
-      "provider_model_id": null,
-      "release_date": "2025-09-05",
-      "tags": null
-    },
-    "deepseek/deepseek-v3.1-terminus:exacto": {
-      "aliases": [],
-      "capabilities": {
-        "chat": true,
-        "embeddings": false,
-        "json": {
-          "native": false,
-          "schema": false,
-          "strict": false
-        },
-        "reasoning": {
-          "enabled": true
-        },
-        "streaming": {
-          "tool_calls": true
-        },
-        "tools": {
-          "enabled": true
-        }
-      },
-      "cost": {
-        "input": 0.27,
-        "output": 1
-      },
-      "deprecated": false,
-      "extra": {
-        "attachment": false,
-        "open_weights": true,
-        "temperature": true
-      },
-      "family": null,
-      "id": "deepseek/deepseek-v3.1-terminus:exacto",
-      "knowledge": "2025-07",
-      "last_updated": "2025-09-22",
-      "lifecycle": null,
-      "limits": {
-        "context": 131072,
-        "output": 65536
-      },
-      "modalities": {
-        "input": [
-          "text"
-        ],
-        "output": [
-          "text"
-        ]
-      },
-      "model": null,
-      "name": "DeepSeek V3.1 Terminus (exacto)",
-      "provider": "openrouter",
-      "provider_model_id": null,
-      "release_date": "2025-09-22",
-      "tags": null
-    },
-    "sherlock-think-alpha": {
-      "aliases": [],
-      "capabilities": {
-        "chat": true,
-        "embeddings": false,
-        "json": {
-          "native": false,
-          "schema": false,
-          "strict": false
-        },
-        "reasoning": {
-          "enabled": false
-        },
-        "streaming": {
-          "text": true,
-          "tool_calls": false
-        },
-        "tools": {
-          "enabled": true
-        }
-      },
-      "cost": {
-        "image": 0.0,
-        "input": 0.0,
-        "output": 0.0,
-        "reasoning": 0.0,
-        "request": 0.0
-      },
-      "deprecated": false,
-      "extra": {
-        "hugging_face_id": ""
-      },
-      "family": null,
-      "id": "sherlock-think-alpha",
-      "knowledge": null,
-      "last_updated": null,
-      "lifecycle": null,
-      "limits": {
-        "context": 1840000,
-        "output": 64000
-      },
-      "modalities": {
-        "input": [
-          "text",
-          "image"
-        ],
-        "output": [
-          "text"
-        ]
-      },
-      "model": null,
-      "name": "Sherlock Think Alpha",
-      "provider": "openrouter",
-      "provider_model_id": null,
-      "release_date": "2025-11-15",
-      "tags": null
-    },
-    "qwen/qwen-2.5-coder-32b-instruct": {
-      "aliases": [],
-      "capabilities": null,
-      "cost": {
-        "input": 0,
-        "output": 0
-      },
-      "deprecated": false,
-      "extra": {
-        "attachment": false,
-        "open_weights": true,
-        "temperature": true
-      },
-      "family": null,
-      "id": "qwen/qwen-2.5-coder-32b-instruct",
-      "knowledge": "2024-10",
-      "last_updated": "2024-11-11",
-      "lifecycle": null,
-      "limits": {
-        "context": 32768,
-        "output": 8192
-      },
-      "modalities": {
-        "input": [
-          "text"
-        ],
-        "output": [
-          "text"
-        ]
-      },
-      "model": null,
-      "name": "Qwen2.5 Coder 32B Instruct",
-      "provider": "openrouter",
-      "provider_model_id": null,
-      "release_date": "2024-11-11",
-      "tags": null
-    },
-    "qwen/qwen3-30b-a3b-thinking-2507": {
-      "aliases": [],
-      "capabilities": {
-        "chat": true,
-        "embeddings": false,
-        "json": {
-          "native": false,
-          "schema": false,
-          "strict": false
-        },
-        "reasoning": {
-          "enabled": true
-        },
-        "streaming": {
-          "tool_calls": true
-        },
-        "tools": {
-          "enabled": true
-        }
-      },
-      "cost": {
-        "input": 0.2,
-        "output": 0.8
-      },
-      "deprecated": false,
-      "extra": {
-        "attachment": false,
-        "open_weights": true,
-        "temperature": true
-      },
-      "family": null,
-      "id": "qwen/qwen3-30b-a3b-thinking-2507",
-      "knowledge": "2025-04",
-      "last_updated": "2025-07-29",
-      "lifecycle": null,
-      "limits": {
-        "context": 262000,
-        "output": 262000
-      },
-      "modalities": {
-        "input": [
-          "text"
-        ],
-        "output": [
-          "text"
-        ]
-      },
-      "model": null,
-      "name": "Qwen3 30B A3B Thinking 2507",
-      "provider": "openrouter",
-      "provider_model_id": null,
-      "release_date": "2025-07-29",
-      "tags": null
-    },
-    "qwen/qwen3-next-80b-a3b-instruct": {
-      "aliases": [],
-      "capabilities": {
-        "chat": true,
-        "embeddings": false,
-        "json": {
-          "native": false,
-          "schema": false,
-          "strict": false
-        },
-        "reasoning": {
-          "enabled": false
-        },
-        "streaming": {
-          "tool_calls": true
-        },
-        "tools": {
-          "enabled": true
-        }
-      },
-      "cost": {
-        "input": 0.14,
-        "output": 1.4
-      },
-      "deprecated": false,
-      "extra": {
-        "attachment": false,
-        "open_weights": true,
-        "temperature": true
-      },
-      "family": null,
-      "id": "qwen/qwen3-next-80b-a3b-instruct",
-      "knowledge": "2025-04",
-      "last_updated": "2025-09-11",
-      "lifecycle": null,
-      "limits": {
-        "context": 262144,
-        "output": 262144
-      },
-      "modalities": {
-        "input": [
-          "text"
-        ],
-        "output": [
-          "text"
-        ]
-      },
-      "model": null,
-      "name": "Qwen3 Next 80B A3B Instruct",
-      "provider": "openrouter",
-      "provider_model_id": null,
-      "release_date": "2025-09-11",
-      "tags": null
-    },
-    "kwaipilot/kat-coder-pro:free": {
-      "aliases": [],
-      "capabilities": {
-        "chat": true,
-        "embeddings": false,
-        "json": {
-          "native": false,
-          "schema": false,
-          "strict": false
-        },
-        "reasoning": {
-          "enabled": false
-        },
-        "streaming": {
-          "tool_calls": true
-        },
-        "tools": {
-          "enabled": true
-        }
-      },
-      "cost": {
-        "input": 0,
-        "output": 0
-      },
-      "deprecated": false,
-      "extra": {
-        "attachment": false,
-        "open_weights": false,
-        "temperature": true
-      },
-      "family": null,
-      "id": "kwaipilot/kat-coder-pro:free",
-      "knowledge": "2025-11",
-      "last_updated": "2025-11-10",
-      "lifecycle": null,
-      "limits": {
-        "context": 256000,
-        "output": 65536
-      },
-      "modalities": {
-        "input": [
-          "text"
-        ],
-        "output": [
-          "text"
-        ]
-      },
-      "model": null,
-      "name": "Kat Coder Pro (free)",
-      "provider": "openrouter",
-      "provider_model_id": null,
-      "release_date": "2025-11-10",
-      "tags": null
-    },
-    "google/gemini-2.5-flash-lite-preview-09-2025": {
-      "aliases": [],
-      "capabilities": {
-        "chat": true,
-        "embeddings": false,
-        "json": {
-          "native": false,
-          "schema": false,
-          "strict": false
-        },
-        "reasoning": {
-          "enabled": true
-        },
-        "streaming": {
-          "tool_calls": true
-        },
-        "tools": {
-          "enabled": true
-        }
-      },
-      "cost": {
-        "cache_read": 0.025,
-        "input": 0.1,
+        "input": 0.13,
         "output": 0.4
       },
       "deprecated": false,
       "extra": {
-        "attachment": true,
-        "open_weights": false,
+        "attachment": false,
+        "open_weights": true,
         "temperature": true
       },
       "family": null,
-      "id": "google/gemini-2.5-flash-lite-preview-09-2025",
-      "knowledge": "2025-01",
-      "last_updated": "2025-09-25",
+      "id": "nousresearch/hermes-4-70b",
+      "knowledge": "2023-12",
+      "last_updated": "2025-08-25",
       "lifecycle": null,
       "limits": {
-        "context": 1048576,
-        "output": 65536
+        "context": 131072,
+        "output": 131072
       },
       "modalities": {
         "input": [
-          "text",
-          "image",
-          "audio",
-          "video",
-          "pdf"
+          "text"
         ],
         "output": [
           "text"
         ]
       },
       "model": null,
-      "name": "Gemini 2.5 Flash Lite Preview 09-25",
+      "name": "Hermes 4 70B",
       "provider": "openrouter",
       "provider_model_id": null,
-      "release_date": "2025-09-25",
+      "release_date": "2025-08-25",
       "tags": null
     },
-    "openai/o4-mini": {
+    "minimax/minimax-m2": {
       "aliases": [],
       "capabilities": {
         "chat": true,
@@ -1267,134 +142,27 @@
       },
       "cost": {
         "cache_read": 0.28,
-        "input": 1.1,
-        "output": 4.4
-      },
-      "deprecated": false,
-      "extra": {
-        "attachment": true,
-        "open_weights": false,
-        "temperature": true
-      },
-      "family": null,
-      "id": "openai/o4-mini",
-      "knowledge": "2024-06",
-      "last_updated": "2025-04-16",
-      "lifecycle": null,
-      "limits": {
-        "context": 200000,
-        "output": 100000
-      },
-      "modalities": {
-        "input": [
-          "text",
-          "image"
-        ],
-        "output": [
-          "text"
-        ]
-      },
-      "model": null,
-      "name": "o4 Mini",
-      "provider": "openrouter",
-      "provider_model_id": null,
-      "release_date": "2025-04-16",
-      "tags": null
-    },
-    "openai/gpt-5-codex": {
-      "aliases": [],
-      "capabilities": {
-        "chat": true,
-        "embeddings": false,
-        "json": {
-          "native": false,
-          "schema": false,
-          "strict": false
-        },
-        "reasoning": {
-          "enabled": true
-        },
-        "streaming": {
-          "tool_calls": true
-        },
-        "tools": {
-          "enabled": true
-        }
-      },
-      "cost": {
-        "cache_read": 0.125,
-        "input": 1.25,
-        "output": 10
-      },
-      "deprecated": false,
-      "extra": {
-        "attachment": true,
-        "open_weights": false,
-        "temperature": true
-      },
-      "family": null,
-      "id": "openai/gpt-5-codex",
-      "knowledge": "2024-10-01",
-      "last_updated": "2025-09-15",
-      "lifecycle": null,
-      "limits": {
-        "context": 400000,
-        "output": 128000
-      },
-      "modalities": {
-        "input": [
-          "text",
-          "image"
-        ],
-        "output": [
-          "text"
-        ]
-      },
-      "model": null,
-      "name": "GPT-5 Codex",
-      "provider": "openrouter",
-      "provider_model_id": null,
-      "release_date": "2025-09-15",
-      "tags": null
-    },
-    "z-ai/glm-4.5": {
-      "aliases": [],
-      "capabilities": {
-        "chat": true,
-        "embeddings": false,
-        "json": {
-          "native": false,
-          "schema": false,
-          "strict": false
-        },
-        "reasoning": {
-          "enabled": true
-        },
-        "streaming": {
-          "tool_calls": true
-        },
-        "tools": {
-          "enabled": true
-        }
-      },
-      "cost": {
-        "input": 0.6,
-        "output": 2.2
+        "cache_write": 1.15,
+        "input": 0.28,
+        "output": 1.15
       },
       "deprecated": false,
       "extra": {
         "attachment": false,
         "open_weights": true,
+        "provider": {
+          "npm": "@openrouter/ai-sdk-provider"
+        },
         "temperature": true
       },
       "family": null,
-      "id": "z-ai/glm-4.5",
-      "knowledge": "2025-04",
-      "last_updated": "2025-07-28",
+      "id": "minimax/minimax-m2",
+      "knowledge": null,
+      "last_updated": "2025-10-23",
       "lifecycle": null,
       "limits": {
-        "context": 128000,
-        "output": 96000
+        "context": 196600,
+        "output": 118000
       },
       "modalities": {
         "input": [
@@ -1405,10 +173,10 @@
         ]
       },
       "model": null,
-      "name": "GLM 4.5",
+      "name": "MiniMax M2",
       "provider": "openrouter",
       "provider_model_id": null,
-      "release_date": "2025-07-28",
+      "release_date": "2025-10-23",
       "tags": null
     },
     "deepseek/deepseek-r1-distill-qwen-14b": {
@@ -1469,7 +237,7 @@
       "release_date": "2025-01-29",
       "tags": null
     },
-    "openai/gpt-oss-120b:exacto": {
+    "openai/gpt-5-mini": {
       "aliases": [],
       "capabilities": {
         "chat": true,
@@ -1490,8 +258,63 @@
         }
       },
       "cost": {
-        "input": 0.05,
-        "output": 0.24
+        "input": 0.25,
+        "output": 2
+      },
+      "deprecated": false,
+      "extra": {
+        "attachment": true,
+        "open_weights": false,
+        "temperature": true
+      },
+      "family": null,
+      "id": "openai/gpt-5-mini",
+      "knowledge": "2024-10-01",
+      "last_updated": "2025-08-07",
+      "lifecycle": null,
+      "limits": {
+        "context": 400000,
+        "output": 128000
+      },
+      "modalities": {
+        "input": [
+          "text",
+          "image"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "model": null,
+      "name": "GPT-5 Mini",
+      "provider": "openrouter",
+      "provider_model_id": null,
+      "release_date": "2025-08-07",
+      "tags": null
+    },
+    "qwen/qwen3-235b-a22b-07-25": {
+      "aliases": [],
+      "capabilities": {
+        "chat": true,
+        "embeddings": false,
+        "json": {
+          "native": false,
+          "schema": false,
+          "strict": false
+        },
+        "reasoning": {
+          "enabled": false
+        },
+        "streaming": {
+          "tool_calls": true
+        },
+        "tools": {
+          "enabled": true
+        }
+      },
+      "cost": {
+        "input": 0.15,
+        "output": 0.85
       },
       "deprecated": false,
       "extra": {
@@ -1500,7 +323,117 @@
         "temperature": true
       },
       "family": null,
-      "id": "openai/gpt-oss-120b:exacto",
+      "id": "qwen/qwen3-235b-a22b-07-25",
+      "knowledge": "2025-04",
+      "last_updated": "2025-07-21",
+      "lifecycle": null,
+      "limits": {
+        "context": 262144,
+        "output": 131072
+      },
+      "modalities": {
+        "input": [
+          "text"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "model": null,
+      "name": "Qwen3 235B A22B Instruct 2507",
+      "provider": "openrouter",
+      "provider_model_id": null,
+      "release_date": "2025-04-28",
+      "tags": null
+    },
+    "openai/gpt-4o-mini": {
+      "aliases": [],
+      "capabilities": {
+        "chat": true,
+        "embeddings": false,
+        "json": {
+          "native": false,
+          "schema": false,
+          "strict": false
+        },
+        "reasoning": {
+          "enabled": false
+        },
+        "streaming": {
+          "tool_calls": true
+        },
+        "tools": {
+          "enabled": true
+        }
+      },
+      "cost": {
+        "cache_read": 0.08,
+        "input": 0.15,
+        "output": 0.6
+      },
+      "deprecated": false,
+      "extra": {
+        "attachment": true,
+        "open_weights": false,
+        "temperature": true
+      },
+      "family": null,
+      "id": "openai/gpt-4o-mini",
+      "knowledge": "2024-10",
+      "last_updated": "2024-07-18",
+      "lifecycle": null,
+      "limits": {
+        "context": 128000,
+        "output": 16384
+      },
+      "modalities": {
+        "input": [
+          "text",
+          "image"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "model": null,
+      "name": "GPT-4o-mini",
+      "provider": "openrouter",
+      "provider_model_id": null,
+      "release_date": "2024-07-18",
+      "tags": null
+    },
+    "openai/gpt-oss-120b": {
+      "aliases": [],
+      "capabilities": {
+        "chat": true,
+        "embeddings": false,
+        "json": {
+          "native": false,
+          "schema": false,
+          "strict": false
+        },
+        "reasoning": {
+          "enabled": true
+        },
+        "streaming": {
+          "tool_calls": true
+        },
+        "tools": {
+          "enabled": true
+        }
+      },
+      "cost": {
+        "input": 0.072,
+        "output": 0.28
+      },
+      "deprecated": false,
+      "extra": {
+        "attachment": false,
+        "open_weights": true,
+        "temperature": true
+      },
+      "family": null,
+      "id": "openai/gpt-oss-120b",
       "knowledge": null,
       "last_updated": "2025-08-05",
       "lifecycle": null,
@@ -1517,67 +450,13 @@
         ]
       },
       "model": null,
-      "name": "GPT OSS 120B (exacto)",
+      "name": "GPT OSS 120B",
       "provider": "openrouter",
       "provider_model_id": null,
       "release_date": "2025-08-05",
       "tags": null
     },
-    "deepseek/deepseek-v3.1-terminus": {
-      "aliases": [],
-      "capabilities": {
-        "chat": true,
-        "embeddings": false,
-        "json": {
-          "native": false,
-          "schema": false,
-          "strict": false
-        },
-        "reasoning": {
-          "enabled": true
-        },
-        "streaming": {
-          "tool_calls": true
-        },
-        "tools": {
-          "enabled": true
-        }
-      },
-      "cost": {
-        "input": 0.27,
-        "output": 1
-      },
-      "deprecated": false,
-      "extra": {
-        "attachment": false,
-        "open_weights": true,
-        "temperature": true
-      },
-      "family": null,
-      "id": "deepseek/deepseek-v3.1-terminus",
-      "knowledge": "2025-07",
-      "last_updated": "2025-09-22",
-      "lifecycle": null,
-      "limits": {
-        "context": 131072,
-        "output": 65536
-      },
-      "modalities": {
-        "input": [
-          "text"
-        ],
-        "output": [
-          "text"
-        ]
-      },
-      "model": null,
-      "name": "DeepSeek V3.1 Terminus",
-      "provider": "openrouter",
-      "provider_model_id": null,
-      "release_date": "2025-09-22",
-      "tags": null
-    },
-    "mistralai/codestral-2508": {
+    "x-ai/grok-3": {
       "aliases": [],
       "capabilities": {
         "chat": true,
@@ -1598,179 +477,28 @@
         }
       },
       "cost": {
-        "input": 0.3,
-        "output": 0.9
+        "cache_read": 0.75,
+        "cache_write": 15,
+        "input": 3,
+        "output": 15
       },
       "deprecated": false,
       "extra": {
         "attachment": false,
-        "open_weights": true,
-        "temperature": true
-      },
-      "family": null,
-      "id": "mistralai/codestral-2508",
-      "knowledge": "2025-05",
-      "last_updated": "2025-08-01",
-      "lifecycle": null,
-      "limits": {
-        "context": 256000,
-        "output": 256000
-      },
-      "modalities": {
-        "input": [
-          "text"
-        ],
-        "output": [
-          "text"
-        ]
-      },
-      "model": null,
-      "name": "Codestral 2508",
-      "provider": "openrouter",
-      "provider_model_id": null,
-      "release_date": "2025-08-01",
-      "tags": null
-    },
-    "google/gemini-2.5-flash-preview-09-2025": {
-      "aliases": [],
-      "capabilities": {
-        "chat": true,
-        "embeddings": false,
-        "json": {
-          "native": false,
-          "schema": false,
-          "strict": false
-        },
-        "reasoning": {
-          "enabled": true
-        },
-        "streaming": {
-          "tool_calls": true
-        },
-        "tools": {
-          "enabled": true
-        }
-      },
-      "cost": {
-        "cache_read": 0.031,
-        "input": 0.3,
-        "output": 2.5
-      },
-      "deprecated": false,
-      "extra": {
-        "attachment": true,
         "open_weights": false,
         "temperature": true
       },
       "family": null,
-      "id": "google/gemini-2.5-flash-preview-09-2025",
-      "knowledge": "2025-01",
-      "last_updated": "2025-09-25",
+      "id": "x-ai/grok-3",
+      "knowledge": "2024-11",
+      "last_updated": "2025-02-17",
       "lifecycle": null,
       "limits": {
-        "context": 1048576,
-        "output": 65536
-      },
-      "modalities": {
-        "input": [
-          "text",
-          "image",
-          "audio",
-          "video",
-          "pdf"
-        ],
-        "output": [
-          "text"
-        ]
-      },
-      "model": null,
-      "name": "Gemini 2.5 Flash Preview 09-25",
-      "provider": "openrouter",
-      "provider_model_id": null,
-      "release_date": "2025-09-25",
-      "tags": null
-    },
-    "google/gemma-3n-e4b-it": {
-      "aliases": [],
-      "capabilities": null,
-      "cost": {
-        "input": 0,
-        "output": 0
-      },
-      "deprecated": false,
-      "extra": {
-        "attachment": true,
-        "open_weights": true,
-        "temperature": true
-      },
-      "family": null,
-      "id": "google/gemma-3n-e4b-it",
-      "knowledge": "2024-10",
-      "last_updated": "2025-05-20",
-      "lifecycle": null,
-      "limits": {
-        "context": 8192,
+        "context": 131072,
         "output": 8192
       },
       "modalities": {
         "input": [
-          "text",
-          "image",
-          "audio"
-        ],
-        "output": [
-          "text"
-        ]
-      },
-      "model": null,
-      "name": "Gemma 3n E4B IT",
-      "provider": "openrouter",
-      "provider_model_id": null,
-      "release_date": "2025-05-20",
-      "tags": null
-    },
-    "z-ai/glm-4.6:exacto": {
-      "aliases": [],
-      "capabilities": {
-        "chat": true,
-        "embeddings": false,
-        "json": {
-          "native": false,
-          "schema": false,
-          "strict": false
-        },
-        "reasoning": {
-          "enabled": true
-        },
-        "streaming": {
-          "tool_calls": true
-        },
-        "tools": {
-          "enabled": true
-        }
-      },
-      "cost": {
-        "cache_read": 0.11,
-        "input": 0.6,
-        "output": 1.9
-      },
-      "deprecated": false,
-      "extra": {
-        "attachment": false,
-        "open_weights": true,
-        "temperature": true
-      },
-      "family": null,
-      "id": "z-ai/glm-4.6:exacto",
-      "knowledge": "2025-09",
-      "last_updated": "2025-09-30",
-      "lifecycle": null,
-      "limits": {
-        "context": 200000,
-        "output": 128000
-      },
-      "modalities": {
-        "input": [
           "text"
         ],
         "output": [
@@ -1778,350 +506,13 @@
         ]
       },
       "model": null,
-      "name": "GLM 4.6 (exacto)",
+      "name": "Grok 3",
       "provider": "openrouter",
       "provider_model_id": null,
-      "release_date": "2025-09-30",
+      "release_date": "2025-02-17",
       "tags": null
     },
-    "nvidia/nemotron-nano-9b-v2": {
-      "aliases": [],
-      "capabilities": {
-        "chat": true,
-        "embeddings": false,
-        "json": {
-          "native": false,
-          "schema": false,
-          "strict": false
-        },
-        "reasoning": {
-          "enabled": true
-        },
-        "streaming": {
-          "tool_calls": true
-        },
-        "tools": {
-          "enabled": true
-        }
-      },
-      "cost": {
-        "input": 0.04,
-        "output": 0.16
-      },
-      "deprecated": false,
-      "extra": {
-        "attachment": false,
-        "open_weights": true,
-        "temperature": true
-      },
-      "family": null,
-      "id": "nvidia/nemotron-nano-9b-v2",
-      "knowledge": "2024-09",
-      "last_updated": "2025-08-18",
-      "lifecycle": null,
-      "limits": {
-        "context": 131072,
-        "output": 131072
-      },
-      "modalities": {
-        "input": [
-          "text"
-        ],
-        "output": [
-          "text"
-        ]
-      },
-      "model": null,
-      "name": "nvidia-nemotron-nano-9b-v2",
-      "provider": "openrouter",
-      "provider_model_id": null,
-      "release_date": "2025-08-18",
-      "tags": null
-    },
-    "openai/gpt-5.1-codex": {
-      "aliases": [],
-      "capabilities": {
-        "chat": true,
-        "embeddings": false,
-        "json": {
-          "native": false,
-          "schema": false,
-          "strict": false
-        },
-        "reasoning": {
-          "enabled": true
-        },
-        "streaming": {
-          "tool_calls": true
-        },
-        "tools": {
-          "enabled": true
-        }
-      },
-      "cost": {
-        "cache_read": 0.125,
-        "input": 1.25,
-        "output": 10
-      },
-      "deprecated": false,
-      "extra": {
-        "attachment": true,
-        "open_weights": false,
-        "structured_output": true,
-        "temperature": true
-      },
-      "family": null,
-      "id": "openai/gpt-5.1-codex",
-      "knowledge": "2024-09-30",
-      "last_updated": "2025-11-13",
-      "lifecycle": null,
-      "limits": {
-        "context": 400000,
-        "output": 128000
-      },
-      "modalities": {
-        "input": [
-          "text",
-          "image"
-        ],
-        "output": [
-          "text"
-        ]
-      },
-      "model": null,
-      "name": "GPT-5.1-Codex",
-      "provider": "openrouter",
-      "provider_model_id": null,
-      "release_date": "2025-11-13",
-      "tags": null
-    },
-    "minimax/minimax-01": {
-      "aliases": [],
-      "capabilities": {
-        "chat": true,
-        "embeddings": false,
-        "json": {
-          "native": false,
-          "schema": false,
-          "strict": false
-        },
-        "reasoning": {
-          "enabled": true
-        },
-        "streaming": {
-          "tool_calls": true
-        },
-        "tools": {
-          "enabled": true
-        }
-      },
-      "cost": {
-        "input": 0.2,
-        "output": 1.1
-      },
-      "deprecated": false,
-      "extra": {
-        "attachment": true,
-        "open_weights": true,
-        "temperature": true
-      },
-      "family": null,
-      "id": "minimax/minimax-01",
-      "knowledge": null,
-      "last_updated": "2025-01-15",
-      "lifecycle": null,
-      "limits": {
-        "context": 1000000,
-        "output": 1000000
-      },
-      "modalities": {
-        "input": [
-          "text",
-          "image"
-        ],
-        "output": [
-          "text"
-        ]
-      },
-      "model": null,
-      "name": "MiniMax-01",
-      "provider": "openrouter",
-      "provider_model_id": null,
-      "release_date": "2025-01-15",
-      "tags": null
-    },
-    "anthropic/claude-3.7-sonnet": {
-      "aliases": [],
-      "capabilities": {
-        "chat": true,
-        "embeddings": false,
-        "json": {
-          "native": false,
-          "schema": false,
-          "strict": false
-        },
-        "reasoning": {
-          "enabled": false
-        },
-        "streaming": {
-          "text": true,
-          "tool_calls": false
-        },
-        "tools": {
-          "enabled": false,
-          "parallel": false,
-          "streaming": false,
-          "strict": false
-        }
-      },
-      "cost": {
-        "cache_read": 1.5,
-        "cache_write": 18.75,
-        "input": 15,
-        "output": 75
-      },
-      "deprecated": false,
-      "extra": {
-        "attachment": true,
-        "open_weights": false,
-        "temperature": true
-      },
-      "family": null,
-      "id": "anthropic/claude-3.7-sonnet",
-      "knowledge": "2024-01",
-      "last_updated": "2025-02-19",
-      "lifecycle": null,
-      "limits": {
-        "context": 200000,
-        "output": 128000
-      },
-      "modalities": {
-        "input": [
-          "text",
-          "image"
-        ],
-        "output": [
-          "text"
-        ]
-      },
-      "model": null,
-      "name": "Claude Sonnet 3.7",
-      "provider": "openrouter",
-      "provider_model_id": null,
-      "release_date": "2025-02-19",
-      "tags": null
-    },
-    "openrouter/sherlock-think-alpha": {
-      "aliases": [],
-      "capabilities": {
-        "chat": true,
-        "embeddings": false,
-        "json": {
-          "native": false,
-          "schema": false,
-          "strict": false
-        },
-        "reasoning": {
-          "enabled": true
-        },
-        "streaming": {
-          "tool_calls": true
-        },
-        "tools": {
-          "enabled": true
-        }
-      },
-      "cost": {
-        "input": 0,
-        "output": 0
-      },
-      "deprecated": false,
-      "extra": {
-        "attachment": true,
-        "open_weights": false,
-        "temperature": false
-      },
-      "family": null,
-      "id": "openrouter/sherlock-think-alpha",
-      "knowledge": "2025-11",
-      "last_updated": "2025-11-15",
-      "lifecycle": null,
-      "limits": {
-        "context": 1840000,
-        "output": 64000
-      },
-      "modalities": {
-        "input": [
-          "text",
-          "image"
-        ],
-        "output": [
-          "text"
-        ]
-      },
-      "model": null,
-      "name": "Sherlock Think Alpha",
-      "provider": "openrouter",
-      "provider_model_id": null,
-      "release_date": "2025-11-15",
-      "tags": null
-    },
-    "moonshotai/kimi-k2-thinking": {
-      "aliases": [],
-      "capabilities": {
-        "chat": true,
-        "embeddings": false,
-        "json": {
-          "native": false,
-          "schema": false,
-          "strict": false
-        },
-        "reasoning": {
-          "enabled": true
-        },
-        "streaming": {
-          "tool_calls": true
-        },
-        "tools": {
-          "enabled": true
-        }
-      },
-      "cost": {
-        "cache_read": 0.15,
-        "input": 0.6,
-        "output": 2.5
-      },
-      "deprecated": false,
-      "extra": {
-        "attachment": false,
-        "open_weights": true,
-        "temperature": true
-      },
-      "family": null,
-      "id": "moonshotai/kimi-k2-thinking",
-      "knowledge": "2024-08",
-      "last_updated": "2025-11-06",
-      "lifecycle": null,
-      "limits": {
-        "context": 262144,
-        "output": 262144
-      },
-      "modalities": {
-        "input": [
-          "text"
-        ],
-        "output": [
-          "text"
-        ]
-      },
-      "model": null,
-      "name": "Kimi K2 Thinking",
-      "provider": "openrouter",
-      "provider_model_id": null,
-      "release_date": "2025-11-06",
-      "tags": null
-    },
-    "google/gemini-2.5-pro-preview-05-06": {
+    "google/gemini-2.5-pro-preview-06-05": {
       "aliases": [],
       "capabilities": {
         "chat": true,
@@ -2153,9 +544,9 @@
         "temperature": true
       },
       "family": null,
-      "id": "google/gemini-2.5-pro-preview-05-06",
+      "id": "google/gemini-2.5-pro-preview-06-05",
       "knowledge": "2025-01",
-      "last_updated": "2025-05-06",
+      "last_updated": "2025-06-05",
       "lifecycle": null,
       "limits": {
         "context": 1048576,
@@ -2174,122 +565,13 @@
         ]
       },
       "model": null,
-      "name": "Gemini 2.5 Pro Preview 05-06",
+      "name": "Gemini 2.5 Pro Preview 06-05",
       "provider": "openrouter",
       "provider_model_id": null,
-      "release_date": "2025-05-06",
+      "release_date": "2025-06-05",
       "tags": null
     },
-    "deepseek/deepseek-chat-v3.1": {
-      "aliases": [],
-      "capabilities": {
-        "chat": true,
-        "embeddings": false,
-        "json": {
-          "native": false,
-          "schema": false,
-          "strict": false
-        },
-        "reasoning": {
-          "enabled": true
-        },
-        "streaming": {
-          "tool_calls": true
-        },
-        "tools": {
-          "enabled": true
-        }
-      },
-      "cost": {
-        "input": 0.2,
-        "output": 0.8
-      },
-      "deprecated": false,
-      "extra": {
-        "attachment": false,
-        "open_weights": true,
-        "temperature": true
-      },
-      "family": null,
-      "id": "deepseek/deepseek-chat-v3.1",
-      "knowledge": "2025-07",
-      "last_updated": "2025-08-21",
-      "lifecycle": null,
-      "limits": {
-        "context": 163840,
-        "output": 163840
-      },
-      "modalities": {
-        "input": [
-          "text"
-        ],
-        "output": [
-          "text"
-        ]
-      },
-      "model": null,
-      "name": "DeepSeek-V3.1",
-      "provider": "openrouter",
-      "provider_model_id": null,
-      "release_date": "2025-08-21",
-      "tags": null
-    },
-    "z-ai/glm-4.6": {
-      "aliases": [],
-      "capabilities": {
-        "chat": true,
-        "embeddings": false,
-        "json": {
-          "native": false,
-          "schema": false,
-          "strict": false
-        },
-        "reasoning": {
-          "enabled": true
-        },
-        "streaming": {
-          "tool_calls": true
-        },
-        "tools": {
-          "enabled": true
-        }
-      },
-      "cost": {
-        "cache_read": 0.11,
-        "input": 0.6,
-        "output": 2.2
-      },
-      "deprecated": false,
-      "extra": {
-        "attachment": false,
-        "open_weights": true,
-        "temperature": true
-      },
-      "family": null,
-      "id": "z-ai/glm-4.6",
-      "knowledge": "2025-09",
-      "last_updated": "2025-09-30",
-      "lifecycle": null,
-      "limits": {
-        "context": 200000,
-        "output": 128000
-      },
-      "modalities": {
-        "input": [
-          "text"
-        ],
-        "output": [
-          "text"
-        ]
-      },
-      "model": null,
-      "name": "GLM 4.6",
-      "provider": "openrouter",
-      "provider_model_id": null,
-      "release_date": "2025-09-30",
-      "tags": null
-    },
-    "anthropic/claude-3.5-haiku": {
+    "qwen/qwen3-next-80b-a3b-instruct": {
       "aliases": [],
       "capabilities": {
         "chat": true,
@@ -2310,40 +592,37 @@
         }
       },
       "cost": {
-        "cache_read": 0.08,
-        "cache_write": 1,
-        "input": 0.8,
-        "output": 4
+        "input": 0.14,
+        "output": 1.4
       },
       "deprecated": false,
       "extra": {
-        "attachment": true,
-        "open_weights": false,
+        "attachment": false,
+        "open_weights": true,
         "temperature": true
       },
       "family": null,
-      "id": "anthropic/claude-3.5-haiku",
-      "knowledge": "2024-07-31",
-      "last_updated": "2024-10-22",
+      "id": "qwen/qwen3-next-80b-a3b-instruct",
+      "knowledge": "2025-04",
+      "last_updated": "2025-09-11",
       "lifecycle": null,
       "limits": {
-        "context": 200000,
-        "output": 8192
+        "context": 262144,
+        "output": 262144
       },
       "modalities": {
         "input": [
-          "text",
-          "image"
+          "text"
         ],
         "output": [
           "text"
         ]
       },
       "model": null,
-      "name": "Claude Haiku 3.5",
+      "name": "Qwen3 Next 80B A3B Instruct",
       "provider": "openrouter",
       "provider_model_id": null,
-      "release_date": "2024-10-22",
+      "release_date": "2025-09-11",
       "tags": null
     },
     "mistralai/mistral-medium-3.1": {
@@ -2401,119 +680,6 @@
       "release_date": "2025-08-12",
       "tags": null
     },
-    "google/gemini-2.5-flash": {
-      "aliases": [],
-      "capabilities": {
-        "chat": true,
-        "embeddings": false,
-        "json": {
-          "native": false,
-          "schema": false,
-          "strict": false
-        },
-        "reasoning": {
-          "enabled": true
-        },
-        "streaming": {
-          "tool_calls": true
-        },
-        "tools": {
-          "enabled": true
-        }
-      },
-      "cost": {
-        "cache_read": 0.0375,
-        "input": 0.3,
-        "output": 2.5
-      },
-      "deprecated": false,
-      "extra": {
-        "attachment": true,
-        "open_weights": false,
-        "temperature": true
-      },
-      "family": null,
-      "id": "google/gemini-2.5-flash",
-      "knowledge": "2025-01",
-      "last_updated": "2025-07-17",
-      "lifecycle": null,
-      "limits": {
-        "context": 1048576,
-        "output": 65536
-      },
-      "modalities": {
-        "input": [
-          "text",
-          "image",
-          "audio",
-          "video",
-          "pdf"
-        ],
-        "output": [
-          "text"
-        ]
-      },
-      "model": null,
-      "name": "Gemini 2.5 Flash",
-      "provider": "openrouter",
-      "provider_model_id": null,
-      "release_date": "2025-07-17",
-      "tags": null
-    },
-    "nousresearch/hermes-4-70b": {
-      "aliases": [],
-      "capabilities": {
-        "chat": true,
-        "embeddings": false,
-        "json": {
-          "native": false,
-          "schema": false,
-          "strict": false
-        },
-        "reasoning": {
-          "enabled": true
-        },
-        "streaming": {
-          "tool_calls": true
-        },
-        "tools": {
-          "enabled": true
-        }
-      },
-      "cost": {
-        "input": 0.13,
-        "output": 0.4
-      },
-      "deprecated": false,
-      "extra": {
-        "attachment": false,
-        "open_weights": true,
-        "temperature": true
-      },
-      "family": null,
-      "id": "nousresearch/hermes-4-70b",
-      "knowledge": "2023-12",
-      "last_updated": "2025-08-25",
-      "lifecycle": null,
-      "limits": {
-        "context": 131072,
-        "output": 131072
-      },
-      "modalities": {
-        "input": [
-          "text"
-        ],
-        "output": [
-          "text"
-        ]
-      },
-      "model": null,
-      "name": "Hermes 4 70B",
-      "provider": "openrouter",
-      "provider_model_id": null,
-      "release_date": "2025-08-25",
-      "tags": null
-    },
     "deepseek/deepseek-chat-v3-0324": {
       "aliases": [],
       "capabilities": null,
@@ -2551,7 +717,7 @@
       "release_date": "2025-03-24",
       "tags": null
     },
-    "anthropic/claude-opus-4.1": {
+    "kwaipilot/kat-coder-pro:free": {
       "aliases": [],
       "capabilities": {
         "chat": true,
@@ -2565,36 +731,140 @@
           "enabled": false
         },
         "streaming": {
-          "text": true,
-          "tool_calls": false
+          "tool_calls": true
         },
         "tools": {
-          "enabled": false,
-          "parallel": false,
-          "streaming": false,
-          "strict": false
+          "enabled": true
         }
       },
       "cost": {
-        "cache_read": 1.5,
-        "cache_write": 18.75,
-        "input": 15,
-        "output": 75
+        "input": 0,
+        "output": 0
+      },
+      "deprecated": false,
+      "extra": {
+        "attachment": false,
+        "open_weights": false,
+        "temperature": true
+      },
+      "family": null,
+      "id": "kwaipilot/kat-coder-pro:free",
+      "knowledge": "2025-11",
+      "last_updated": "2025-11-10",
+      "lifecycle": null,
+      "limits": {
+        "context": 256000,
+        "output": 65536
+      },
+      "modalities": {
+        "input": [
+          "text"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "model": null,
+      "name": "Kat Coder Pro (free)",
+      "provider": "openrouter",
+      "provider_model_id": null,
+      "release_date": "2025-11-10",
+      "tags": null
+    },
+    "qwen/qwen3-next-80b-a3b-thinking": {
+      "aliases": [],
+      "capabilities": {
+        "chat": true,
+        "embeddings": false,
+        "json": {
+          "native": false,
+          "schema": false,
+          "strict": false
+        },
+        "reasoning": {
+          "enabled": true
+        },
+        "streaming": {
+          "tool_calls": true
+        },
+        "tools": {
+          "enabled": true
+        }
+      },
+      "cost": {
+        "input": 0.14,
+        "output": 1.4
+      },
+      "deprecated": false,
+      "extra": {
+        "attachment": false,
+        "open_weights": true,
+        "temperature": true
+      },
+      "family": null,
+      "id": "qwen/qwen3-next-80b-a3b-thinking",
+      "knowledge": "2025-04",
+      "last_updated": "2025-09-11",
+      "lifecycle": null,
+      "limits": {
+        "context": 262144,
+        "output": 262144
+      },
+      "modalities": {
+        "input": [
+          "text"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "model": null,
+      "name": "Qwen3 Next 80B A3B Thinking",
+      "provider": "openrouter",
+      "provider_model_id": null,
+      "release_date": "2025-09-11",
+      "tags": null
+    },
+    "openai/gpt-5.1-codex-mini": {
+      "aliases": [],
+      "capabilities": {
+        "chat": true,
+        "embeddings": false,
+        "json": {
+          "native": false,
+          "schema": false,
+          "strict": false
+        },
+        "reasoning": {
+          "enabled": true
+        },
+        "streaming": {
+          "tool_calls": true
+        },
+        "tools": {
+          "enabled": true
+        }
+      },
+      "cost": {
+        "cache_read": 0.025,
+        "input": 0.25,
+        "output": 2
       },
       "deprecated": false,
       "extra": {
         "attachment": true,
         "open_weights": false,
+        "structured_output": true,
         "temperature": true
       },
       "family": null,
-      "id": "anthropic/claude-opus-4.1",
-      "knowledge": "2025-03-31",
-      "last_updated": "2025-08-05",
+      "id": "openai/gpt-5.1-codex-mini",
+      "knowledge": "2024-09-30",
+      "last_updated": "2025-11-13",
       "lifecycle": null,
       "limits": {
-        "context": 200000,
-        "output": 32000
+        "context": 400000,
+        "output": 100000
       },
       "modalities": {
         "input": [
@@ -2606,67 +876,13 @@
         ]
       },
       "model": null,
-      "name": "Claude Opus 4.1",
+      "name": "GPT-5.1-Codex-Mini",
       "provider": "openrouter",
       "provider_model_id": null,
-      "release_date": "2025-08-05",
+      "release_date": "2025-11-13",
       "tags": null
     },
-    "moonshotai/kimi-k2-0905": {
-      "aliases": [],
-      "capabilities": {
-        "chat": true,
-        "embeddings": false,
-        "json": {
-          "native": false,
-          "schema": false,
-          "strict": false
-        },
-        "reasoning": {
-          "enabled": false
-        },
-        "streaming": {
-          "tool_calls": true
-        },
-        "tools": {
-          "enabled": true
-        }
-      },
-      "cost": {
-        "input": 0.6,
-        "output": 2.5
-      },
-      "deprecated": false,
-      "extra": {
-        "attachment": false,
-        "open_weights": true,
-        "temperature": true
-      },
-      "family": null,
-      "id": "moonshotai/kimi-k2-0905",
-      "knowledge": "2024-10",
-      "last_updated": "2025-09-05",
-      "lifecycle": null,
-      "limits": {
-        "context": 262144,
-        "output": 16384
-      },
-      "modalities": {
-        "input": [
-          "text"
-        ],
-        "output": [
-          "text"
-        ]
-      },
-      "model": null,
-      "name": "Kimi K2 Instruct 0905",
-      "provider": "openrouter",
-      "provider_model_id": null,
-      "release_date": "2025-09-05",
-      "tags": null
-    },
-    "minimax/minimax-m2": {
+    "anthropic/claude-haiku-4.5": {
       "aliases": [],
       "capabilities": {
         "chat": true,
@@ -2687,207 +903,40 @@
         }
       },
       "cost": {
-        "cache_read": 0.28,
-        "cache_write": 1.15,
-        "input": 0.28,
-        "output": 1.15
+        "cache_read": 0.1,
+        "cache_write": 1.25,
+        "input": 1,
+        "output": 5
       },
       "deprecated": false,
       "extra": {
-        "attachment": false,
-        "open_weights": true,
-        "temperature": true
-      },
-      "family": null,
-      "id": "minimax/minimax-m2",
-      "knowledge": null,
-      "last_updated": "2025-10-23",
-      "lifecycle": null,
-      "limits": {
-        "context": 196600,
-        "output": 118000
-      },
-      "modalities": {
-        "input": [
-          "text"
-        ],
-        "output": [
-          "text"
-        ]
-      },
-      "model": null,
-      "name": "MiniMax M2",
-      "provider": "openrouter",
-      "provider_model_id": null,
-      "release_date": "2025-10-23",
-      "tags": null
-    },
-    "qwen/qwen3-30b-a3b-instruct-2507": {
-      "aliases": [],
-      "capabilities": {
-        "chat": true,
-        "embeddings": false,
-        "json": {
-          "native": false,
-          "schema": false,
-          "strict": false
-        },
-        "reasoning": {
-          "enabled": false
-        },
-        "streaming": {
-          "tool_calls": true
-        },
-        "tools": {
-          "enabled": true
-        }
-      },
-      "cost": {
-        "input": 0.2,
-        "output": 0.8
-      },
-      "deprecated": false,
-      "extra": {
-        "attachment": false,
-        "open_weights": true,
-        "temperature": true
-      },
-      "family": null,
-      "id": "qwen/qwen3-30b-a3b-instruct-2507",
-      "knowledge": "2025-04",
-      "last_updated": "2025-07-29",
-      "lifecycle": null,
-      "limits": {
-        "context": 262000,
-        "output": 262000
-      },
-      "modalities": {
-        "input": [
-          "text"
-        ],
-        "output": [
-          "text"
-        ]
-      },
-      "model": null,
-      "name": "Qwen3 30B A3B Instruct 2507",
-      "provider": "openrouter",
-      "provider_model_id": null,
-      "release_date": "2025-07-29",
-      "tags": null
-    },
-    "x-ai/grok-3-mini": {
-      "aliases": [],
-      "capabilities": {
-        "chat": true,
-        "embeddings": false,
-        "json": {
-          "native": false,
-          "schema": false,
-          "strict": false
-        },
-        "reasoning": {
-          "enabled": false
-        },
-        "streaming": {
-          "text": true,
-          "tool_calls": false
-        },
-        "tools": {
-          "enabled": false,
-          "parallel": false,
-          "streaming": false,
-          "strict": false
-        }
-      },
-      "cost": {
-        "cache_read": 0.075,
-        "cache_write": 0.5,
-        "input": 0.3,
-        "output": 0.5
-      },
-      "deprecated": false,
-      "extra": {
-        "attachment": false,
+        "attachment": true,
         "open_weights": false,
         "temperature": true
       },
       "family": null,
-      "id": "x-ai/grok-3-mini",
-      "knowledge": "2024-11",
-      "last_updated": "2025-02-17",
+      "id": "anthropic/claude-haiku-4.5",
+      "knowledge": "2025-02-28",
+      "last_updated": "2025-10-15",
       "lifecycle": null,
       "limits": {
-        "context": 131072,
-        "output": 8192
+        "context": 200000,
+        "output": 64000
       },
       "modalities": {
         "input": [
-          "text"
+          "text",
+          "image"
         ],
         "output": [
           "text"
         ]
       },
       "model": null,
-      "name": "Grok 3 Mini",
+      "name": "Claude Haiku 4.5",
       "provider": "openrouter",
       "provider_model_id": null,
-      "release_date": "2025-02-17",
-      "tags": null
-    },
-    "openai/gpt-oss-20b": {
-      "aliases": [],
-      "capabilities": {
-        "chat": true,
-        "embeddings": false,
-        "json": {
-          "native": false,
-          "schema": false,
-          "strict": false
-        },
-        "reasoning": {
-          "enabled": true
-        },
-        "streaming": {
-          "tool_calls": true
-        },
-        "tools": {
-          "enabled": true
-        }
-      },
-      "cost": {
-        "input": 0.05,
-        "output": 0.2
-      },
-      "deprecated": false,
-      "extra": {
-        "attachment": false,
-        "open_weights": true,
-        "temperature": true
-      },
-      "family": null,
-      "id": "openai/gpt-oss-20b",
-      "knowledge": null,
-      "last_updated": "2025-08-05",
-      "lifecycle": null,
-      "limits": {
-        "context": 131072,
-        "output": 32768
-      },
-      "modalities": {
-        "input": [
-          "text"
-        ],
-        "output": [
-          "text"
-        ]
-      },
-      "model": null,
-      "name": "GPT OSS 20B",
-      "provider": "openrouter",
-      "provider_model_id": null,
-      "release_date": "2025-08-05",
+      "release_date": "2025-10-15",
       "tags": null
     },
     "x-ai/grok-3-mini-beta": {
@@ -2948,173 +997,6 @@
       "provider": "openrouter",
       "provider_model_id": null,
       "release_date": "2025-02-17",
-      "tags": null
-    },
-    "mistralai/devstral-small-2507": {
-      "aliases": [],
-      "capabilities": {
-        "chat": true,
-        "embeddings": false,
-        "json": {
-          "native": false,
-          "schema": false,
-          "strict": false
-        },
-        "reasoning": {
-          "enabled": false
-        },
-        "streaming": {
-          "tool_calls": true
-        },
-        "tools": {
-          "enabled": true
-        }
-      },
-      "cost": {
-        "input": 0.1,
-        "output": 0.3
-      },
-      "deprecated": false,
-      "extra": {
-        "attachment": false,
-        "open_weights": true,
-        "temperature": true
-      },
-      "family": null,
-      "id": "mistralai/devstral-small-2507",
-      "knowledge": "2025-05",
-      "last_updated": "2025-07-10",
-      "lifecycle": null,
-      "limits": {
-        "context": 131072,
-        "output": 131072
-      },
-      "modalities": {
-        "input": [
-          "text"
-        ],
-        "output": [
-          "text"
-        ]
-      },
-      "model": null,
-      "name": "Devstral Small 1.1",
-      "provider": "openrouter",
-      "provider_model_id": null,
-      "release_date": "2025-07-10",
-      "tags": null
-    },
-    "openrouter/polaris-alpha": {
-      "aliases": [],
-      "capabilities": {
-        "chat": true,
-        "embeddings": false,
-        "json": {
-          "native": false,
-          "schema": false,
-          "strict": false
-        },
-        "reasoning": {
-          "enabled": false
-        },
-        "streaming": {
-          "tool_calls": true
-        },
-        "tools": {
-          "enabled": true
-        }
-      },
-      "cost": {
-        "input": 0,
-        "output": 0
-      },
-      "deprecated": false,
-      "extra": {
-        "attachment": true,
-        "open_weights": false,
-        "temperature": false
-      },
-      "family": null,
-      "id": "openrouter/polaris-alpha",
-      "knowledge": "2025-07",
-      "last_updated": "2025-07-30",
-      "lifecycle": null,
-      "limits": {
-        "context": 256000,
-        "output": 128000
-      },
-      "modalities": {
-        "input": [
-          "text",
-          "image"
-        ],
-        "output": [
-          "text"
-        ]
-      },
-      "model": null,
-      "name": "Polaris Alpha",
-      "provider": "openrouter",
-      "provider_model_id": null,
-      "release_date": "2025-07-30",
-      "tags": null
-    },
-    "deepseek/deepseek-r1-distill-llama-70b": {
-      "aliases": [],
-      "capabilities": {
-        "chat": true,
-        "embeddings": false,
-        "json": {
-          "native": false,
-          "schema": false,
-          "strict": false
-        },
-        "reasoning": {
-          "enabled": true
-        },
-        "streaming": {
-          "text": true,
-          "tool_calls": false
-        },
-        "tools": {
-          "enabled": false,
-          "parallel": false,
-          "streaming": false,
-          "strict": false
-        }
-      },
-      "cost": {
-        "input": 0,
-        "output": 0
-      },
-      "deprecated": false,
-      "extra": {
-        "attachment": false,
-        "open_weights": true,
-        "temperature": true
-      },
-      "family": null,
-      "id": "deepseek/deepseek-r1-distill-llama-70b",
-      "knowledge": "2024-10",
-      "last_updated": "2025-01-23",
-      "lifecycle": null,
-      "limits": {
-        "context": 8192,
-        "output": 8192
-      },
-      "modalities": {
-        "input": [
-          "text"
-        ],
-        "output": [
-          "text"
-        ]
-      },
-      "model": null,
-      "name": "DeepSeek R1 Distill Llama 70B",
-      "provider": "openrouter",
-      "provider_model_id": null,
-      "release_date": "2025-01-23",
       "tags": null
     },
     "anthropic/claude-sonnet-4.5": {
@@ -3178,6 +1060,584 @@
       "release_date": "2025-09-29",
       "tags": null
     },
+    "openai/gpt-oss-120b:exacto": {
+      "aliases": [],
+      "capabilities": {
+        "chat": true,
+        "embeddings": false,
+        "json": {
+          "native": false,
+          "schema": false,
+          "strict": false
+        },
+        "reasoning": {
+          "enabled": true
+        },
+        "streaming": {
+          "tool_calls": true
+        },
+        "tools": {
+          "enabled": true
+        }
+      },
+      "cost": {
+        "input": 0.05,
+        "output": 0.24
+      },
+      "deprecated": false,
+      "extra": {
+        "attachment": false,
+        "open_weights": true,
+        "temperature": true
+      },
+      "family": null,
+      "id": "openai/gpt-oss-120b:exacto",
+      "knowledge": null,
+      "last_updated": "2025-08-05",
+      "lifecycle": null,
+      "limits": {
+        "context": 131072,
+        "output": 32768
+      },
+      "modalities": {
+        "input": [
+          "text"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "model": null,
+      "name": "GPT OSS 120B (exacto)",
+      "provider": "openrouter",
+      "provider_model_id": null,
+      "release_date": "2025-08-05",
+      "tags": null
+    },
+    "x-ai/grok-4.1-fast": {
+      "aliases": [],
+      "capabilities": {
+        "chat": true,
+        "embeddings": false,
+        "json": {
+          "native": false,
+          "schema": false,
+          "strict": false
+        },
+        "reasoning": {
+          "enabled": true
+        },
+        "streaming": {
+          "tool_calls": true
+        },
+        "tools": {
+          "enabled": true
+        }
+      },
+      "cost": {
+        "cache_read": 0.05,
+        "cache_write": 0.05,
+        "input": 0.2,
+        "output": 0.5
+      },
+      "deprecated": false,
+      "extra": {
+        "attachment": false,
+        "open_weights": false,
+        "temperature": true
+      },
+      "family": null,
+      "id": "x-ai/grok-4.1-fast",
+      "knowledge": "2024-11",
+      "last_updated": "2025-11-19",
+      "lifecycle": null,
+      "limits": {
+        "context": 2000000,
+        "output": 30000
+      },
+      "modalities": {
+        "input": [
+          "text",
+          "image"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "model": null,
+      "name": "Grok 4.1 Fast",
+      "provider": "openrouter",
+      "provider_model_id": null,
+      "release_date": "2025-11-19",
+      "tags": null
+    },
+    "deepseek/deepseek-v3.2-speciale": {
+      "aliases": [],
+      "capabilities": {
+        "chat": true,
+        "embeddings": false,
+        "json": {
+          "native": false,
+          "schema": false,
+          "strict": false
+        },
+        "reasoning": {
+          "enabled": true
+        },
+        "streaming": {
+          "tool_calls": true
+        },
+        "tools": {
+          "enabled": true
+        }
+      },
+      "cost": {
+        "input": 0.27,
+        "output": 0.41
+      },
+      "deprecated": false,
+      "extra": {
+        "attachment": false,
+        "open_weights": true,
+        "temperature": true
+      },
+      "family": null,
+      "id": "deepseek/deepseek-v3.2-speciale",
+      "knowledge": "2024-07",
+      "last_updated": "2025-12-01",
+      "lifecycle": null,
+      "limits": {
+        "context": 163840,
+        "output": 65536
+      },
+      "modalities": {
+        "input": [
+          "text"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "model": null,
+      "name": "DeepSeek V3.2 Speciale",
+      "provider": "openrouter",
+      "provider_model_id": null,
+      "release_date": "2025-12-01",
+      "tags": null
+    },
+    "meta-llama/llama-3.2-11b-vision-instruct": {
+      "aliases": [],
+      "capabilities": null,
+      "cost": {
+        "input": 0,
+        "output": 0
+      },
+      "deprecated": false,
+      "extra": {
+        "attachment": true,
+        "open_weights": true,
+        "temperature": true
+      },
+      "family": null,
+      "id": "meta-llama/llama-3.2-11b-vision-instruct",
+      "knowledge": "2023-12",
+      "last_updated": "2024-09-25",
+      "lifecycle": null,
+      "limits": {
+        "context": 131072,
+        "output": 8192
+      },
+      "modalities": {
+        "input": [
+          "text",
+          "image"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "model": null,
+      "name": "Llama 3.2 11B Vision Instruct",
+      "provider": "openrouter",
+      "provider_model_id": null,
+      "release_date": "2024-09-25",
+      "tags": null
+    },
+    "google/gemini-3-pro-preview": {
+      "aliases": [],
+      "capabilities": {
+        "chat": true,
+        "embeddings": false,
+        "json": {
+          "native": false,
+          "schema": false,
+          "strict": false
+        },
+        "reasoning": {
+          "enabled": true
+        },
+        "streaming": {
+          "tool_calls": true
+        },
+        "tools": {
+          "enabled": true
+        }
+      },
+      "cost": {
+        "input": 2,
+        "output": 12
+      },
+      "deprecated": false,
+      "extra": {
+        "attachment": true,
+        "open_weights": false,
+        "provider": {
+          "npm": "@openrouter/ai-sdk-provider"
+        },
+        "temperature": true
+      },
+      "family": null,
+      "id": "google/gemini-3-pro-preview",
+      "knowledge": "2025-01",
+      "last_updated": "2025-11",
+      "lifecycle": null,
+      "limits": {
+        "context": 1050000,
+        "output": 66000
+      },
+      "modalities": {
+        "input": [
+          "text",
+          "image",
+          "audio",
+          "video",
+          "pdf"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "model": null,
+      "name": "Gemini 3 Pro Preview",
+      "provider": "openrouter",
+      "provider_model_id": null,
+      "release_date": "2025-11-18",
+      "tags": null
+    },
+    "z-ai/glm-4.6": {
+      "aliases": [],
+      "capabilities": {
+        "chat": true,
+        "embeddings": false,
+        "json": {
+          "native": false,
+          "schema": false,
+          "strict": false
+        },
+        "reasoning": {
+          "enabled": true
+        },
+        "streaming": {
+          "tool_calls": true
+        },
+        "tools": {
+          "enabled": true
+        }
+      },
+      "cost": {
+        "cache_read": 0.11,
+        "input": 0.6,
+        "output": 2.2
+      },
+      "deprecated": false,
+      "extra": {
+        "attachment": false,
+        "open_weights": true,
+        "temperature": true
+      },
+      "family": null,
+      "id": "z-ai/glm-4.6",
+      "knowledge": "2025-09",
+      "last_updated": "2025-09-30",
+      "lifecycle": null,
+      "limits": {
+        "context": 200000,
+        "output": 128000
+      },
+      "modalities": {
+        "input": [
+          "text"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "model": null,
+      "name": "GLM 4.6",
+      "provider": "openrouter",
+      "provider_model_id": null,
+      "release_date": "2025-09-30",
+      "tags": null
+    },
+    "qwen/qwen3-30b-a3b-instruct-2507": {
+      "aliases": [],
+      "capabilities": {
+        "chat": true,
+        "embeddings": false,
+        "json": {
+          "native": false,
+          "schema": false,
+          "strict": false
+        },
+        "reasoning": {
+          "enabled": false
+        },
+        "streaming": {
+          "tool_calls": true
+        },
+        "tools": {
+          "enabled": true
+        }
+      },
+      "cost": {
+        "input": 0.2,
+        "output": 0.8
+      },
+      "deprecated": false,
+      "extra": {
+        "attachment": false,
+        "open_weights": true,
+        "temperature": true
+      },
+      "family": null,
+      "id": "qwen/qwen3-30b-a3b-instruct-2507",
+      "knowledge": "2025-04",
+      "last_updated": "2025-07-29",
+      "lifecycle": null,
+      "limits": {
+        "context": 262000,
+        "output": 262000
+      },
+      "modalities": {
+        "input": [
+          "text"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "model": null,
+      "name": "Qwen3 30B A3B Instruct 2507",
+      "provider": "openrouter",
+      "provider_model_id": null,
+      "release_date": "2025-07-29",
+      "tags": null
+    },
+    "openai/gpt-5.1-chat": {
+      "aliases": [],
+      "capabilities": {
+        "chat": true,
+        "embeddings": false,
+        "json": {
+          "native": false,
+          "schema": false,
+          "strict": false
+        },
+        "reasoning": {
+          "enabled": true
+        },
+        "streaming": {
+          "tool_calls": true
+        },
+        "tools": {
+          "enabled": true
+        }
+      },
+      "cost": {
+        "cache_read": 0.125,
+        "input": 1.25,
+        "output": 10
+      },
+      "deprecated": false,
+      "extra": {
+        "attachment": true,
+        "open_weights": false,
+        "structured_output": true,
+        "temperature": true
+      },
+      "family": null,
+      "id": "openai/gpt-5.1-chat",
+      "knowledge": "2024-09-30",
+      "last_updated": "2025-11-13",
+      "lifecycle": null,
+      "limits": {
+        "context": 128000,
+        "output": 16384
+      },
+      "modalities": {
+        "input": [
+          "text",
+          "image"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "model": null,
+      "name": "GPT-5.1 Chat",
+      "provider": "openrouter",
+      "provider_model_id": null,
+      "release_date": "2025-11-13",
+      "tags": null
+    },
+    "google/gemma-3n-e4b-it": {
+      "aliases": [],
+      "capabilities": null,
+      "cost": {
+        "input": 0,
+        "output": 0
+      },
+      "deprecated": false,
+      "extra": {
+        "attachment": true,
+        "open_weights": true,
+        "temperature": true
+      },
+      "family": null,
+      "id": "google/gemma-3n-e4b-it",
+      "knowledge": "2024-10",
+      "last_updated": "2025-05-20",
+      "lifecycle": null,
+      "limits": {
+        "context": 8192,
+        "output": 8192
+      },
+      "modalities": {
+        "input": [
+          "text",
+          "image",
+          "audio"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "model": null,
+      "name": "Gemma 3n E4B IT",
+      "provider": "openrouter",
+      "provider_model_id": null,
+      "release_date": "2025-05-20",
+      "tags": null
+    },
+    "openai/gpt-oss-20b": {
+      "aliases": [],
+      "capabilities": {
+        "chat": true,
+        "embeddings": false,
+        "json": {
+          "native": false,
+          "schema": false,
+          "strict": false
+        },
+        "reasoning": {
+          "enabled": true
+        },
+        "streaming": {
+          "tool_calls": true
+        },
+        "tools": {
+          "enabled": true
+        }
+      },
+      "cost": {
+        "input": 0.05,
+        "output": 0.2
+      },
+      "deprecated": false,
+      "extra": {
+        "attachment": false,
+        "open_weights": true,
+        "temperature": true
+      },
+      "family": null,
+      "id": "openai/gpt-oss-20b",
+      "knowledge": null,
+      "last_updated": "2025-08-05",
+      "lifecycle": null,
+      "limits": {
+        "context": 131072,
+        "output": 32768
+      },
+      "modalities": {
+        "input": [
+          "text"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "model": null,
+      "name": "GPT OSS 20B",
+      "provider": "openrouter",
+      "provider_model_id": null,
+      "release_date": "2025-08-05",
+      "tags": null
+    },
+    "openai/gpt-5-pro": {
+      "aliases": [],
+      "capabilities": {
+        "chat": true,
+        "embeddings": false,
+        "json": {
+          "native": false,
+          "schema": false,
+          "strict": false
+        },
+        "reasoning": {
+          "enabled": true
+        },
+        "streaming": {
+          "tool_calls": true
+        },
+        "tools": {
+          "enabled": true
+        }
+      },
+      "cost": {
+        "input": 15,
+        "output": 120
+      },
+      "deprecated": false,
+      "extra": {
+        "attachment": true,
+        "open_weights": false,
+        "temperature": false
+      },
+      "family": null,
+      "id": "openai/gpt-5-pro",
+      "knowledge": "2024-09-30",
+      "last_updated": "2025-10-06",
+      "lifecycle": null,
+      "limits": {
+        "context": 400000,
+        "output": 272000
+      },
+      "modalities": {
+        "input": [
+          "text",
+          "image"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "model": null,
+      "name": "GPT-5 Pro",
+      "provider": "openrouter",
+      "provider_model_id": null,
+      "release_date": "2025-10-06",
+      "tags": null
+    },
     "qwen/qwen3-coder": {
       "aliases": [],
       "capabilities": {
@@ -3232,7 +1692,233 @@
       "release_date": "2025-07-23",
       "tags": null
     },
-    "anthropic/claude-opus-4": {
+    "deepseek/deepseek-r1-distill-llama-70b": {
+      "aliases": [],
+      "capabilities": {
+        "chat": true,
+        "embeddings": false,
+        "json": {
+          "native": false,
+          "schema": false,
+          "strict": false
+        },
+        "reasoning": {
+          "enabled": true
+        },
+        "streaming": {
+          "text": true,
+          "tool_calls": false
+        },
+        "tools": {
+          "enabled": false,
+          "parallel": false,
+          "streaming": false,
+          "strict": false
+        }
+      },
+      "cost": {
+        "input": 0,
+        "output": 0
+      },
+      "deprecated": false,
+      "extra": {
+        "attachment": false,
+        "open_weights": true,
+        "temperature": true
+      },
+      "family": null,
+      "id": "deepseek/deepseek-r1-distill-llama-70b",
+      "knowledge": "2024-10",
+      "last_updated": "2025-01-23",
+      "lifecycle": null,
+      "limits": {
+        "context": 8192,
+        "output": 8192
+      },
+      "modalities": {
+        "input": [
+          "text"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "model": null,
+      "name": "DeepSeek R1 Distill Llama 70B",
+      "provider": "openrouter",
+      "provider_model_id": null,
+      "release_date": "2025-01-23",
+      "tags": null
+    },
+    "openai/gpt-5-image": {
+      "aliases": [],
+      "capabilities": {
+        "chat": true,
+        "embeddings": false,
+        "json": {
+          "native": false,
+          "schema": false,
+          "strict": false
+        },
+        "reasoning": {
+          "enabled": true
+        },
+        "streaming": {
+          "tool_calls": true
+        },
+        "tools": {
+          "enabled": true
+        }
+      },
+      "cost": {
+        "cache_read": 1.25,
+        "input": 5,
+        "output": 10
+      },
+      "deprecated": false,
+      "extra": {
+        "attachment": true,
+        "open_weights": false,
+        "temperature": true
+      },
+      "family": null,
+      "id": "openai/gpt-5-image",
+      "knowledge": "2024-10-01",
+      "last_updated": "2025-10-14",
+      "lifecycle": null,
+      "limits": {
+        "context": 400000,
+        "output": 128000
+      },
+      "modalities": {
+        "input": [
+          "text",
+          "image",
+          "pdf"
+        ],
+        "output": [
+          "text",
+          "image"
+        ]
+      },
+      "model": null,
+      "name": "GPT-5 Image",
+      "provider": "openrouter",
+      "provider_model_id": null,
+      "release_date": "2025-10-14",
+      "tags": null
+    },
+    "openai/gpt-5-codex": {
+      "aliases": [],
+      "capabilities": {
+        "chat": true,
+        "embeddings": false,
+        "json": {
+          "native": false,
+          "schema": false,
+          "strict": false
+        },
+        "reasoning": {
+          "enabled": true
+        },
+        "streaming": {
+          "tool_calls": true
+        },
+        "tools": {
+          "enabled": true
+        }
+      },
+      "cost": {
+        "cache_read": 0.125,
+        "input": 1.25,
+        "output": 10
+      },
+      "deprecated": false,
+      "extra": {
+        "attachment": true,
+        "open_weights": false,
+        "temperature": true
+      },
+      "family": null,
+      "id": "openai/gpt-5-codex",
+      "knowledge": "2024-10-01",
+      "last_updated": "2025-09-15",
+      "lifecycle": null,
+      "limits": {
+        "context": 400000,
+        "output": 128000
+      },
+      "modalities": {
+        "input": [
+          "text",
+          "image"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "model": null,
+      "name": "GPT-5 Codex",
+      "provider": "openrouter",
+      "provider_model_id": null,
+      "release_date": "2025-09-15",
+      "tags": null
+    },
+    "moonshotai/kimi-k2-0905:exacto": {
+      "aliases": [],
+      "capabilities": {
+        "chat": true,
+        "embeddings": false,
+        "json": {
+          "native": false,
+          "schema": false,
+          "strict": false
+        },
+        "reasoning": {
+          "enabled": false
+        },
+        "streaming": {
+          "tool_calls": true
+        },
+        "tools": {
+          "enabled": true
+        }
+      },
+      "cost": {
+        "input": 0.6,
+        "output": 2.5
+      },
+      "deprecated": false,
+      "extra": {
+        "attachment": false,
+        "open_weights": true,
+        "temperature": true
+      },
+      "family": null,
+      "id": "moonshotai/kimi-k2-0905:exacto",
+      "knowledge": "2024-10",
+      "last_updated": "2025-09-05",
+      "lifecycle": null,
+      "limits": {
+        "context": 262144,
+        "output": 16384
+      },
+      "modalities": {
+        "input": [
+          "text"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "model": null,
+      "name": "Kimi K2 Instruct 0905 (exacto)",
+      "provider": "openrouter",
+      "provider_model_id": null,
+      "release_date": "2025-09-05",
+      "tags": null
+    },
+    "anthropic/claude-3.7-sonnet": {
       "aliases": [],
       "capabilities": {
         "chat": true,
@@ -3269,13 +1955,13 @@
         "temperature": true
       },
       "family": null,
-      "id": "anthropic/claude-opus-4",
-      "knowledge": "2025-03-31",
-      "last_updated": "2025-05-22",
+      "id": "anthropic/claude-3.7-sonnet",
+      "knowledge": "2024-01",
+      "last_updated": "2025-02-19",
       "lifecycle": null,
       "limits": {
         "context": 200000,
-        "output": 32000
+        "output": 128000
       },
       "modalities": {
         "input": [
@@ -3287,33 +1973,106 @@
         ]
       },
       "model": null,
-      "name": "Claude Opus 4",
+      "name": "Claude Sonnet 3.7",
       "provider": "openrouter",
       "provider_model_id": null,
-      "release_date": "2025-05-22",
+      "release_date": "2025-02-19",
       "tags": null
     },
-    "meta-llama/llama-3.2-11b-vision-instruct": {
+    "qwen/qwen3-30b-a3b-thinking-2507": {
       "aliases": [],
-      "capabilities": null,
+      "capabilities": {
+        "chat": true,
+        "embeddings": false,
+        "json": {
+          "native": false,
+          "schema": false,
+          "strict": false
+        },
+        "reasoning": {
+          "enabled": true
+        },
+        "streaming": {
+          "tool_calls": true
+        },
+        "tools": {
+          "enabled": true
+        }
+      },
       "cost": {
-        "input": 0,
-        "output": 0
+        "input": 0.2,
+        "output": 0.8
       },
       "deprecated": false,
       "extra": {
-        "attachment": true,
+        "attachment": false,
         "open_weights": true,
         "temperature": true
       },
       "family": null,
-      "id": "meta-llama/llama-3.2-11b-vision-instruct",
-      "knowledge": "2023-12",
-      "last_updated": "2024-09-25",
+      "id": "qwen/qwen3-30b-a3b-thinking-2507",
+      "knowledge": "2025-04",
+      "last_updated": "2025-07-29",
       "lifecycle": null,
       "limits": {
-        "context": 131072,
-        "output": 8192
+        "context": 262000,
+        "output": 262000
+      },
+      "modalities": {
+        "input": [
+          "text"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "model": null,
+      "name": "Qwen3 30B A3B Thinking 2507",
+      "provider": "openrouter",
+      "provider_model_id": null,
+      "release_date": "2025-07-29",
+      "tags": null
+    },
+    "openai/gpt-5.1-codex": {
+      "aliases": [],
+      "capabilities": {
+        "chat": true,
+        "embeddings": false,
+        "json": {
+          "native": false,
+          "schema": false,
+          "strict": false
+        },
+        "reasoning": {
+          "enabled": true
+        },
+        "streaming": {
+          "tool_calls": true
+        },
+        "tools": {
+          "enabled": true
+        }
+      },
+      "cost": {
+        "cache_read": 0.125,
+        "input": 1.25,
+        "output": 10
+      },
+      "deprecated": false,
+      "extra": {
+        "attachment": true,
+        "open_weights": false,
+        "structured_output": true,
+        "temperature": true
+      },
+      "family": null,
+      "id": "openai/gpt-5.1-codex",
+      "knowledge": "2024-09-30",
+      "last_updated": "2025-11-13",
+      "lifecycle": null,
+      "limits": {
+        "context": 400000,
+        "output": 128000
       },
       "modalities": {
         "input": [
@@ -3325,13 +2084,13 @@
         ]
       },
       "model": null,
-      "name": "Llama 3.2 11B Vision Instruct",
+      "name": "GPT-5.1-Codex",
       "provider": "openrouter",
       "provider_model_id": null,
-      "release_date": "2024-09-25",
+      "release_date": "2025-11-13",
       "tags": null
     },
-    "sherlock-dash-alpha": {
+    "moonshotai/kimi-k2": {
       "aliases": [],
       "capabilities": {
         "chat": true,
@@ -3345,32 +2104,84 @@
           "enabled": false
         },
         "streaming": {
-          "text": true,
-          "tool_calls": false
+          "tool_calls": true
         },
         "tools": {
           "enabled": true
         }
       },
       "cost": {
-        "image": 0.0,
-        "input": 0.0,
-        "output": 0.0,
-        "reasoning": 0.0,
-        "request": 0.0
+        "input": 0.55,
+        "output": 2.2
       },
       "deprecated": false,
       "extra": {
-        "hugging_face_id": ""
+        "attachment": false,
+        "open_weights": true,
+        "temperature": true
       },
       "family": null,
-      "id": "sherlock-dash-alpha",
-      "knowledge": null,
-      "last_updated": null,
+      "id": "moonshotai/kimi-k2",
+      "knowledge": "2024-10",
+      "last_updated": "2025-07-11",
       "lifecycle": null,
       "limits": {
-        "context": 1840000,
-        "output": 64000
+        "context": 131072,
+        "output": 32768
+      },
+      "modalities": {
+        "input": [
+          "text"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "model": null,
+      "name": "Kimi K2",
+      "provider": "openrouter",
+      "provider_model_id": null,
+      "release_date": "2025-07-11",
+      "tags": null
+    },
+    "openai/gpt-5": {
+      "aliases": [],
+      "capabilities": {
+        "chat": true,
+        "embeddings": false,
+        "json": {
+          "native": false,
+          "schema": false,
+          "strict": false
+        },
+        "reasoning": {
+          "enabled": true
+        },
+        "streaming": {
+          "tool_calls": true
+        },
+        "tools": {
+          "enabled": true
+        }
+      },
+      "cost": {
+        "input": 1.25,
+        "output": 10
+      },
+      "deprecated": false,
+      "extra": {
+        "attachment": true,
+        "open_weights": false,
+        "temperature": true
+      },
+      "family": null,
+      "id": "openai/gpt-5",
+      "knowledge": "2024-10-01",
+      "last_updated": "2025-08-07",
+      "lifecycle": null,
+      "limits": {
+        "context": 400000,
+        "output": 128000
       },
       "modalities": {
         "input": [
@@ -3382,10 +2193,863 @@
         ]
       },
       "model": null,
-      "name": "Sherlock Dash Alpha",
+      "name": "GPT-5",
       "provider": "openrouter",
       "provider_model_id": null,
-      "release_date": "2025-11-15",
+      "release_date": "2025-08-07",
+      "tags": null
+    },
+    "openai/o4-mini": {
+      "aliases": [],
+      "capabilities": {
+        "chat": true,
+        "embeddings": false,
+        "json": {
+          "native": false,
+          "schema": false,
+          "strict": false
+        },
+        "reasoning": {
+          "enabled": true
+        },
+        "streaming": {
+          "tool_calls": true
+        },
+        "tools": {
+          "enabled": true
+        }
+      },
+      "cost": {
+        "cache_read": 0.28,
+        "input": 1.1,
+        "output": 4.4
+      },
+      "deprecated": false,
+      "extra": {
+        "attachment": true,
+        "open_weights": false,
+        "temperature": true
+      },
+      "family": null,
+      "id": "openai/o4-mini",
+      "knowledge": "2024-06",
+      "last_updated": "2025-04-16",
+      "lifecycle": null,
+      "limits": {
+        "context": 200000,
+        "output": 100000
+      },
+      "modalities": {
+        "input": [
+          "text",
+          "image"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "model": null,
+      "name": "o4 Mini",
+      "provider": "openrouter",
+      "provider_model_id": null,
+      "release_date": "2025-04-16",
+      "tags": null
+    },
+    "z-ai/glm-4.5v": {
+      "aliases": [],
+      "capabilities": {
+        "chat": true,
+        "embeddings": false,
+        "json": {
+          "native": false,
+          "schema": false,
+          "strict": false
+        },
+        "reasoning": {
+          "enabled": true
+        },
+        "streaming": {
+          "tool_calls": true
+        },
+        "tools": {
+          "enabled": true
+        }
+      },
+      "cost": {
+        "input": 0.6,
+        "output": 1.8
+      },
+      "deprecated": false,
+      "extra": {
+        "attachment": true,
+        "open_weights": true,
+        "temperature": true
+      },
+      "family": null,
+      "id": "z-ai/glm-4.5v",
+      "knowledge": "2025-04",
+      "last_updated": "2025-08-11",
+      "lifecycle": null,
+      "limits": {
+        "context": 64000,
+        "output": 16384
+      },
+      "modalities": {
+        "input": [
+          "text",
+          "image",
+          "video"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "model": null,
+      "name": "GLM 4.5V",
+      "provider": "openrouter",
+      "provider_model_id": null,
+      "release_date": "2025-08-11",
+      "tags": null
+    },
+    "anthropic/claude-3.5-haiku": {
+      "aliases": [],
+      "capabilities": {
+        "chat": true,
+        "embeddings": false,
+        "json": {
+          "native": false,
+          "schema": false,
+          "strict": false
+        },
+        "reasoning": {
+          "enabled": false
+        },
+        "streaming": {
+          "tool_calls": true
+        },
+        "tools": {
+          "enabled": true
+        }
+      },
+      "cost": {
+        "cache_read": 0.08,
+        "cache_write": 1,
+        "input": 0.8,
+        "output": 4
+      },
+      "deprecated": false,
+      "extra": {
+        "attachment": true,
+        "open_weights": false,
+        "temperature": true
+      },
+      "family": null,
+      "id": "anthropic/claude-3.5-haiku",
+      "knowledge": "2024-07-31",
+      "last_updated": "2024-10-22",
+      "lifecycle": null,
+      "limits": {
+        "context": 200000,
+        "output": 8192
+      },
+      "modalities": {
+        "input": [
+          "text",
+          "image"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "model": null,
+      "name": "Claude Haiku 3.5",
+      "provider": "openrouter",
+      "provider_model_id": null,
+      "release_date": "2024-10-22",
+      "tags": null
+    },
+    "openai/gpt-5.1": {
+      "aliases": [],
+      "capabilities": {
+        "chat": true,
+        "embeddings": false,
+        "json": {
+          "native": false,
+          "schema": false,
+          "strict": false
+        },
+        "reasoning": {
+          "enabled": true
+        },
+        "streaming": {
+          "tool_calls": true
+        },
+        "tools": {
+          "enabled": true
+        }
+      },
+      "cost": {
+        "cache_read": 0.125,
+        "input": 1.25,
+        "output": 10
+      },
+      "deprecated": false,
+      "extra": {
+        "attachment": true,
+        "open_weights": false,
+        "structured_output": true,
+        "temperature": true
+      },
+      "family": null,
+      "id": "openai/gpt-5.1",
+      "knowledge": "2024-09-30",
+      "last_updated": "2025-11-13",
+      "lifecycle": null,
+      "limits": {
+        "context": 400000,
+        "output": 128000
+      },
+      "modalities": {
+        "input": [
+          "text",
+          "image"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "model": null,
+      "name": "GPT-5.1",
+      "provider": "openrouter",
+      "provider_model_id": null,
+      "release_date": "2025-11-13",
+      "tags": null
+    },
+    "google/gemini-2.5-pro": {
+      "aliases": [],
+      "capabilities": {
+        "chat": true,
+        "embeddings": false,
+        "json": {
+          "native": false,
+          "schema": false,
+          "strict": false
+        },
+        "reasoning": {
+          "enabled": true
+        },
+        "streaming": {
+          "tool_calls": true
+        },
+        "tools": {
+          "enabled": true
+        }
+      },
+      "cost": {
+        "cache_read": 0.31,
+        "input": 1.25,
+        "output": 10
+      },
+      "deprecated": false,
+      "extra": {
+        "attachment": true,
+        "open_weights": false,
+        "temperature": true
+      },
+      "family": null,
+      "id": "google/gemini-2.5-pro",
+      "knowledge": "2025-01",
+      "last_updated": "2025-06-05",
+      "lifecycle": null,
+      "limits": {
+        "context": 1048576,
+        "output": 65536
+      },
+      "modalities": {
+        "input": [
+          "text",
+          "image",
+          "audio",
+          "video",
+          "pdf"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "model": null,
+      "name": "Gemini 2.5 Pro",
+      "provider": "openrouter",
+      "provider_model_id": null,
+      "release_date": "2025-03-20",
+      "tags": null
+    },
+    "deepseek/deepseek-v3.1-terminus": {
+      "aliases": [],
+      "capabilities": {
+        "chat": true,
+        "embeddings": false,
+        "json": {
+          "native": false,
+          "schema": false,
+          "strict": false
+        },
+        "reasoning": {
+          "enabled": true
+        },
+        "streaming": {
+          "tool_calls": true
+        },
+        "tools": {
+          "enabled": true
+        }
+      },
+      "cost": {
+        "input": 0.27,
+        "output": 1
+      },
+      "deprecated": false,
+      "extra": {
+        "attachment": false,
+        "open_weights": true,
+        "temperature": true
+      },
+      "family": null,
+      "id": "deepseek/deepseek-v3.1-terminus",
+      "knowledge": "2025-07",
+      "last_updated": "2025-09-22",
+      "lifecycle": null,
+      "limits": {
+        "context": 131072,
+        "output": 65536
+      },
+      "modalities": {
+        "input": [
+          "text"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "model": null,
+      "name": "DeepSeek V3.1 Terminus",
+      "provider": "openrouter",
+      "provider_model_id": null,
+      "release_date": "2025-09-22",
+      "tags": null
+    },
+    "deepseek/deepseek-v3.1-terminus:exacto": {
+      "aliases": [],
+      "capabilities": {
+        "chat": true,
+        "embeddings": false,
+        "json": {
+          "native": false,
+          "schema": false,
+          "strict": false
+        },
+        "reasoning": {
+          "enabled": true
+        },
+        "streaming": {
+          "tool_calls": true
+        },
+        "tools": {
+          "enabled": true
+        }
+      },
+      "cost": {
+        "input": 0.27,
+        "output": 1
+      },
+      "deprecated": false,
+      "extra": {
+        "attachment": false,
+        "open_weights": true,
+        "temperature": true
+      },
+      "family": null,
+      "id": "deepseek/deepseek-v3.1-terminus:exacto",
+      "knowledge": "2025-07",
+      "last_updated": "2025-09-22",
+      "lifecycle": null,
+      "limits": {
+        "context": 131072,
+        "output": 65536
+      },
+      "modalities": {
+        "input": [
+          "text"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "model": null,
+      "name": "DeepSeek V3.1 Terminus (exacto)",
+      "provider": "openrouter",
+      "provider_model_id": null,
+      "release_date": "2025-09-22",
+      "tags": null
+    },
+    "google/gemini-2.5-flash": {
+      "aliases": [],
+      "capabilities": {
+        "chat": true,
+        "embeddings": false,
+        "json": {
+          "native": false,
+          "schema": false,
+          "strict": false
+        },
+        "reasoning": {
+          "enabled": true
+        },
+        "streaming": {
+          "tool_calls": true
+        },
+        "tools": {
+          "enabled": true
+        }
+      },
+      "cost": {
+        "cache_read": 0.0375,
+        "input": 0.3,
+        "output": 2.5
+      },
+      "deprecated": false,
+      "extra": {
+        "attachment": true,
+        "open_weights": false,
+        "temperature": true
+      },
+      "family": null,
+      "id": "google/gemini-2.5-flash",
+      "knowledge": "2025-01",
+      "last_updated": "2025-07-17",
+      "lifecycle": null,
+      "limits": {
+        "context": 1048576,
+        "output": 65536
+      },
+      "modalities": {
+        "input": [
+          "text",
+          "image",
+          "audio",
+          "video",
+          "pdf"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "model": null,
+      "name": "Gemini 2.5 Flash",
+      "provider": "openrouter",
+      "provider_model_id": null,
+      "release_date": "2025-07-17",
+      "tags": null
+    },
+    "google/gemini-2.5-flash-preview-09-2025": {
+      "aliases": [],
+      "capabilities": {
+        "chat": true,
+        "embeddings": false,
+        "json": {
+          "native": false,
+          "schema": false,
+          "strict": false
+        },
+        "reasoning": {
+          "enabled": true
+        },
+        "streaming": {
+          "tool_calls": true
+        },
+        "tools": {
+          "enabled": true
+        }
+      },
+      "cost": {
+        "cache_read": 0.031,
+        "input": 0.3,
+        "output": 2.5
+      },
+      "deprecated": false,
+      "extra": {
+        "attachment": true,
+        "open_weights": false,
+        "temperature": true
+      },
+      "family": null,
+      "id": "google/gemini-2.5-flash-preview-09-2025",
+      "knowledge": "2025-01",
+      "last_updated": "2025-09-25",
+      "lifecycle": null,
+      "limits": {
+        "context": 1048576,
+        "output": 65536
+      },
+      "modalities": {
+        "input": [
+          "text",
+          "image",
+          "audio",
+          "video",
+          "pdf"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "model": null,
+      "name": "Gemini 2.5 Flash Preview 09-25",
+      "provider": "openrouter",
+      "provider_model_id": null,
+      "release_date": "2025-09-25",
+      "tags": null
+    },
+    "mistralai/codestral-2508": {
+      "aliases": [],
+      "capabilities": {
+        "chat": true,
+        "embeddings": false,
+        "json": {
+          "native": false,
+          "schema": false,
+          "strict": false
+        },
+        "reasoning": {
+          "enabled": false
+        },
+        "streaming": {
+          "tool_calls": true
+        },
+        "tools": {
+          "enabled": true
+        }
+      },
+      "cost": {
+        "input": 0.3,
+        "output": 0.9
+      },
+      "deprecated": false,
+      "extra": {
+        "attachment": false,
+        "open_weights": true,
+        "temperature": true
+      },
+      "family": null,
+      "id": "mistralai/codestral-2508",
+      "knowledge": "2025-05",
+      "last_updated": "2025-08-01",
+      "lifecycle": null,
+      "limits": {
+        "context": 256000,
+        "output": 256000
+      },
+      "modalities": {
+        "input": [
+          "text"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "model": null,
+      "name": "Codestral 2508",
+      "provider": "openrouter",
+      "provider_model_id": null,
+      "release_date": "2025-08-01",
+      "tags": null
+    },
+    "z-ai/glm-4.5-air": {
+      "aliases": [],
+      "capabilities": {
+        "chat": true,
+        "embeddings": false,
+        "json": {
+          "native": false,
+          "schema": false,
+          "strict": false
+        },
+        "reasoning": {
+          "enabled": true
+        },
+        "streaming": {
+          "tool_calls": true
+        },
+        "tools": {
+          "enabled": true
+        }
+      },
+      "cost": {
+        "input": 0.2,
+        "output": 1.1
+      },
+      "deprecated": false,
+      "extra": {
+        "attachment": false,
+        "open_weights": true,
+        "temperature": true
+      },
+      "family": null,
+      "id": "z-ai/glm-4.5-air",
+      "knowledge": "2025-04",
+      "last_updated": "2025-07-28",
+      "lifecycle": null,
+      "limits": {
+        "context": 128000,
+        "output": 96000
+      },
+      "modalities": {
+        "input": [
+          "text"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "model": null,
+      "name": "GLM 4.5 Air",
+      "provider": "openrouter",
+      "provider_model_id": null,
+      "release_date": "2025-07-28",
+      "tags": null
+    },
+    "qwen/qwen3-coder-flash": {
+      "aliases": [],
+      "capabilities": {
+        "chat": true,
+        "embeddings": false,
+        "json": {
+          "native": false,
+          "schema": false,
+          "strict": false
+        },
+        "reasoning": {
+          "enabled": false
+        },
+        "streaming": {
+          "tool_calls": true
+        },
+        "tools": {
+          "enabled": true
+        }
+      },
+      "cost": {
+        "input": 0.3,
+        "output": 1.5
+      },
+      "deprecated": false,
+      "extra": {
+        "attachment": false,
+        "open_weights": false,
+        "structured_output": false,
+        "temperature": true
+      },
+      "family": null,
+      "id": "qwen/qwen3-coder-flash",
+      "knowledge": "2025-04",
+      "last_updated": "2025-07-23",
+      "lifecycle": null,
+      "limits": {
+        "context": 128000,
+        "output": 66536
+      },
+      "modalities": {
+        "input": [
+          "text"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "model": null,
+      "name": "Qwen3 Coder Flash",
+      "provider": "openrouter",
+      "provider_model_id": null,
+      "release_date": "2025-07-23",
+      "tags": null
+    },
+    "qwen/qwen-2.5-coder-32b-instruct": {
+      "aliases": [],
+      "capabilities": null,
+      "cost": {
+        "input": 0,
+        "output": 0
+      },
+      "deprecated": false,
+      "extra": {
+        "attachment": false,
+        "open_weights": true,
+        "temperature": true
+      },
+      "family": null,
+      "id": "qwen/qwen-2.5-coder-32b-instruct",
+      "knowledge": "2024-10",
+      "last_updated": "2024-11-11",
+      "lifecycle": null,
+      "limits": {
+        "context": 32768,
+        "output": 8192
+      },
+      "modalities": {
+        "input": [
+          "text"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "model": null,
+      "name": "Qwen2.5 Coder 32B Instruct",
+      "provider": "openrouter",
+      "provider_model_id": null,
+      "release_date": "2024-11-11",
+      "tags": null
+    },
+    "deepseek/deepseek-chat-v3.1": {
+      "aliases": [],
+      "capabilities": {
+        "chat": true,
+        "embeddings": false,
+        "json": {
+          "native": false,
+          "schema": false,
+          "strict": false
+        },
+        "reasoning": {
+          "enabled": true
+        },
+        "streaming": {
+          "tool_calls": true
+        },
+        "tools": {
+          "enabled": true
+        }
+      },
+      "cost": {
+        "input": 0.2,
+        "output": 0.8
+      },
+      "deprecated": false,
+      "extra": {
+        "attachment": false,
+        "open_weights": true,
+        "temperature": true
+      },
+      "family": null,
+      "id": "deepseek/deepseek-chat-v3.1",
+      "knowledge": "2025-07",
+      "last_updated": "2025-08-21",
+      "lifecycle": null,
+      "limits": {
+        "context": 163840,
+        "output": 163840
+      },
+      "modalities": {
+        "input": [
+          "text"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "model": null,
+      "name": "DeepSeek-V3.1",
+      "provider": "openrouter",
+      "provider_model_id": null,
+      "release_date": "2025-08-21",
+      "tags": null
+    },
+    "auto": {
+      "aliases": [],
+      "capabilities": null,
+      "cost": {
+        "input": -1.0e3,
+        "output": -1.0e3
+      },
+      "deprecated": false,
+      "extra": {
+        "hugging_face_id": null
+      },
+      "family": null,
+      "id": "auto",
+      "knowledge": null,
+      "last_updated": null,
+      "lifecycle": null,
+      "limits": {
+        "context": 2000000
+      },
+      "modalities": {
+        "input": [
+          "text"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "model": null,
+      "name": "Auto Router",
+      "provider": "openrouter",
+      "provider_model_id": null,
+      "release_date": "2023-11-08",
+      "tags": null
+    },
+    "deepseek/deepseek-v3.2": {
+      "aliases": [],
+      "capabilities": {
+        "chat": true,
+        "embeddings": false,
+        "json": {
+          "native": false,
+          "schema": false,
+          "strict": false
+        },
+        "reasoning": {
+          "enabled": true
+        },
+        "streaming": {
+          "tool_calls": true
+        },
+        "tools": {
+          "enabled": true
+        }
+      },
+      "cost": {
+        "input": 0.28,
+        "output": 0.4
+      },
+      "deprecated": false,
+      "extra": {
+        "attachment": false,
+        "open_weights": true,
+        "temperature": true
+      },
+      "family": null,
+      "id": "deepseek/deepseek-v3.2",
+      "knowledge": "2024-07",
+      "last_updated": "2025-12-01",
+      "lifecycle": null,
+      "limits": {
+        "context": 163840,
+        "output": 65536
+      },
+      "modalities": {
+        "input": [
+          "text"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "model": null,
+      "name": "DeepSeek V3.2",
+      "provider": "openrouter",
+      "provider_model_id": null,
+      "release_date": "2025-12-01",
       "tags": null
     },
     "google/gemini-2.0-flash-001": {
@@ -3447,7 +3111,7 @@
       "release_date": "2024-12-11",
       "tags": null
     },
-    "openai/gpt-5-image": {
+    "moonshotai/kimi-k2-thinking": {
       "aliases": [],
       "capabilities": {
         "chat": true,
@@ -3468,9 +3132,68 @@
         }
       },
       "cost": {
-        "cache_read": 1.25,
+        "cache_read": 0.15,
+        "input": 0.6,
+        "output": 2.5
+      },
+      "deprecated": false,
+      "extra": {
+        "attachment": false,
+        "open_weights": true,
+        "provider": {
+          "npm": "@openrouter/ai-sdk-provider"
+        },
+        "temperature": true
+      },
+      "family": null,
+      "id": "moonshotai/kimi-k2-thinking",
+      "knowledge": "2024-08",
+      "last_updated": "2025-11-06",
+      "lifecycle": null,
+      "limits": {
+        "context": 262144,
+        "output": 262144
+      },
+      "modalities": {
+        "input": [
+          "text"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "model": null,
+      "name": "Kimi K2 Thinking",
+      "provider": "openrouter",
+      "provider_model_id": null,
+      "release_date": "2025-11-06",
+      "tags": null
+    },
+    "anthropic/claude-opus-4.5": {
+      "aliases": [],
+      "capabilities": {
+        "chat": true,
+        "embeddings": false,
+        "json": {
+          "native": false,
+          "schema": false,
+          "strict": false
+        },
+        "reasoning": {
+          "enabled": true
+        },
+        "streaming": {
+          "tool_calls": true
+        },
+        "tools": {
+          "enabled": true
+        }
+      },
+      "cost": {
+        "cache_read": 0.5,
+        "cache_write": 6.25,
         "input": 5,
-        "output": 10
+        "output": 25
       },
       "deprecated": false,
       "extra": {
@@ -3479,33 +3202,31 @@
         "temperature": true
       },
       "family": null,
-      "id": "openai/gpt-5-image",
-      "knowledge": "2024-10-01",
-      "last_updated": "2025-10-14",
+      "id": "anthropic/claude-opus-4.5",
+      "knowledge": "2025-05-30",
+      "last_updated": "2025-11-24",
       "lifecycle": null,
       "limits": {
-        "context": 400000,
-        "output": 128000
+        "context": 200000,
+        "output": 32000
       },
       "modalities": {
         "input": [
           "text",
-          "image",
-          "pdf"
+          "image"
         ],
         "output": [
-          "text",
-          "image"
+          "text"
         ]
       },
       "model": null,
-      "name": "GPT-5 Image",
+      "name": "Claude Opus 4.5",
       "provider": "openrouter",
       "provider_model_id": null,
-      "release_date": "2025-10-14",
+      "release_date": "2025-11-24",
       "tags": null
     },
-    "google/gemini-2.5-pro-preview-06-05": {
+    "google/gemini-2.5-flash-lite-preview-09-2025": {
       "aliases": [],
       "capabilities": {
         "chat": true,
@@ -3526,9 +3247,9 @@
         }
       },
       "cost": {
-        "cache_read": 0.31,
-        "input": 1.25,
-        "output": 10
+        "cache_read": 0.025,
+        "input": 0.1,
+        "output": 0.4
       },
       "deprecated": false,
       "extra": {
@@ -3537,9 +3258,9 @@
         "temperature": true
       },
       "family": null,
-      "id": "google/gemini-2.5-pro-preview-06-05",
+      "id": "google/gemini-2.5-flash-lite-preview-09-2025",
       "knowledge": "2025-01",
-      "last_updated": "2025-06-05",
+      "last_updated": "2025-09-25",
       "lifecycle": null,
       "limits": {
         "context": 1048576,
@@ -3558,10 +3279,119 @@
         ]
       },
       "model": null,
-      "name": "Gemini 2.5 Pro Preview 06-05",
+      "name": "Gemini 2.5 Flash Lite Preview 09-25",
       "provider": "openrouter",
       "provider_model_id": null,
-      "release_date": "2025-06-05",
+      "release_date": "2025-09-25",
+      "tags": null
+    },
+    "mistralai/devstral-small-2507": {
+      "aliases": [],
+      "capabilities": {
+        "chat": true,
+        "embeddings": false,
+        "json": {
+          "native": false,
+          "schema": false,
+          "strict": false
+        },
+        "reasoning": {
+          "enabled": false
+        },
+        "streaming": {
+          "tool_calls": true
+        },
+        "tools": {
+          "enabled": true
+        }
+      },
+      "cost": {
+        "input": 0.1,
+        "output": 0.3
+      },
+      "deprecated": false,
+      "extra": {
+        "attachment": false,
+        "open_weights": true,
+        "temperature": true
+      },
+      "family": null,
+      "id": "mistralai/devstral-small-2507",
+      "knowledge": "2025-05",
+      "last_updated": "2025-07-10",
+      "lifecycle": null,
+      "limits": {
+        "context": 131072,
+        "output": 131072
+      },
+      "modalities": {
+        "input": [
+          "text"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "model": null,
+      "name": "Devstral Small 1.1",
+      "provider": "openrouter",
+      "provider_model_id": null,
+      "release_date": "2025-07-10",
+      "tags": null
+    },
+    "minimax/minimax-01": {
+      "aliases": [],
+      "capabilities": {
+        "chat": true,
+        "embeddings": false,
+        "json": {
+          "native": false,
+          "schema": false,
+          "strict": false
+        },
+        "reasoning": {
+          "enabled": true
+        },
+        "streaming": {
+          "tool_calls": true
+        },
+        "tools": {
+          "enabled": true
+        }
+      },
+      "cost": {
+        "input": 0.2,
+        "output": 1.1
+      },
+      "deprecated": false,
+      "extra": {
+        "attachment": true,
+        "open_weights": true,
+        "temperature": true
+      },
+      "family": null,
+      "id": "minimax/minimax-01",
+      "knowledge": null,
+      "last_updated": "2025-01-15",
+      "lifecycle": null,
+      "limits": {
+        "context": 1000000,
+        "output": 1000000
+      },
+      "modalities": {
+        "input": [
+          "text",
+          "image"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "model": null,
+      "name": "MiniMax-01",
+      "provider": "openrouter",
+      "provider_model_id": null,
+      "release_date": "2025-01-15",
       "tags": null
     },
     "anthropic/claude-sonnet-4": {
@@ -3625,7 +3455,7 @@
       "release_date": "2025-05-22",
       "tags": null
     },
-    "openai/gpt-oss-120b": {
+    "z-ai/glm-4.6:exacto": {
       "aliases": [],
       "capabilities": {
         "chat": true,
@@ -3646,8 +3476,9 @@
         }
       },
       "cost": {
-        "input": 0.072,
-        "output": 0.28
+        "cache_read": 0.11,
+        "input": 0.6,
+        "output": 1.9
       },
       "deprecated": false,
       "extra": {
@@ -3656,9 +3487,231 @@
         "temperature": true
       },
       "family": null,
-      "id": "openai/gpt-oss-120b",
+      "id": "z-ai/glm-4.6:exacto",
+      "knowledge": "2025-09",
+      "last_updated": "2025-09-30",
+      "lifecycle": null,
+      "limits": {
+        "context": 200000,
+        "output": 128000
+      },
+      "modalities": {
+        "input": [
+          "text"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "model": null,
+      "name": "GLM 4.6 (exacto)",
+      "provider": "openrouter",
+      "provider_model_id": null,
+      "release_date": "2025-09-30",
+      "tags": null
+    },
+    "minimax/minimax-m1": {
+      "aliases": [],
+      "capabilities": {
+        "chat": true,
+        "embeddings": false,
+        "json": {
+          "native": false,
+          "schema": false,
+          "strict": false
+        },
+        "reasoning": {
+          "enabled": true
+        },
+        "streaming": {
+          "tool_calls": true
+        },
+        "tools": {
+          "enabled": true
+        }
+      },
+      "cost": {
+        "input": 0.4,
+        "output": 2.2
+      },
+      "deprecated": false,
+      "extra": {
+        "attachment": false,
+        "open_weights": true,
+        "temperature": true
+      },
+      "family": null,
+      "id": "minimax/minimax-m1",
       "knowledge": null,
-      "last_updated": "2025-08-05",
+      "last_updated": "2025-06-17",
+      "lifecycle": null,
+      "limits": {
+        "context": 1000000,
+        "output": 40000
+      },
+      "modalities": {
+        "input": [
+          "text"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "model": null,
+      "name": "MiniMax M1",
+      "provider": "openrouter",
+      "provider_model_id": null,
+      "release_date": "2025-06-17",
+      "tags": null
+    },
+    "openai/gpt-oss-safeguard-20b": {
+      "aliases": [],
+      "capabilities": {
+        "chat": true,
+        "embeddings": false,
+        "json": {
+          "native": false,
+          "schema": false,
+          "strict": false
+        },
+        "reasoning": {
+          "enabled": true
+        },
+        "streaming": {
+          "tool_calls": true
+        },
+        "tools": {
+          "enabled": true
+        }
+      },
+      "cost": {
+        "input": 0.075,
+        "output": 0.3
+      },
+      "deprecated": false,
+      "extra": {
+        "attachment": false,
+        "open_weights": false,
+        "temperature": true
+      },
+      "family": null,
+      "id": "openai/gpt-oss-safeguard-20b",
+      "knowledge": null,
+      "last_updated": "2025-10-29",
+      "lifecycle": null,
+      "limits": {
+        "context": 131072,
+        "output": 65536
+      },
+      "modalities": {
+        "input": [
+          "text"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "model": null,
+      "name": "GPT OSS Safeguard 20B",
+      "provider": "openrouter",
+      "provider_model_id": null,
+      "release_date": "2025-10-29",
+      "tags": null
+    },
+    "x-ai/grok-3-mini": {
+      "aliases": [],
+      "capabilities": {
+        "chat": true,
+        "embeddings": false,
+        "json": {
+          "native": false,
+          "schema": false,
+          "strict": false
+        },
+        "reasoning": {
+          "enabled": false
+        },
+        "streaming": {
+          "text": true,
+          "tool_calls": false
+        },
+        "tools": {
+          "enabled": false,
+          "parallel": false,
+          "streaming": false,
+          "strict": false
+        }
+      },
+      "cost": {
+        "cache_read": 0.075,
+        "cache_write": 0.5,
+        "input": 0.3,
+        "output": 0.5
+      },
+      "deprecated": false,
+      "extra": {
+        "attachment": false,
+        "open_weights": false,
+        "temperature": true
+      },
+      "family": null,
+      "id": "x-ai/grok-3-mini",
+      "knowledge": "2024-11",
+      "last_updated": "2025-02-17",
+      "lifecycle": null,
+      "limits": {
+        "context": 131072,
+        "output": 8192
+      },
+      "modalities": {
+        "input": [
+          "text"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "model": null,
+      "name": "Grok 3 Mini",
+      "provider": "openrouter",
+      "provider_model_id": null,
+      "release_date": "2025-02-17",
+      "tags": null
+    },
+    "qwen/qwen3-coder:exacto": {
+      "aliases": [],
+      "capabilities": {
+        "chat": true,
+        "embeddings": false,
+        "json": {
+          "native": false,
+          "schema": false,
+          "strict": false
+        },
+        "reasoning": {
+          "enabled": false
+        },
+        "streaming": {
+          "tool_calls": true
+        },
+        "tools": {
+          "enabled": true
+        }
+      },
+      "cost": {
+        "input": 0.38,
+        "output": 1.53
+      },
+      "deprecated": false,
+      "extra": {
+        "attachment": false,
+        "open_weights": true,
+        "temperature": true
+      },
+      "family": null,
+      "id": "qwen/qwen3-coder:exacto",
+      "knowledge": "2025-04",
+      "last_updated": "2025-07-23",
       "lifecycle": null,
       "limits": {
         "context": 131072,
@@ -3673,145 +3726,52 @@
         ]
       },
       "model": null,
-      "name": "GPT OSS 120B",
+      "name": "Qwen3 Coder (exacto)",
       "provider": "openrouter",
       "provider_model_id": null,
-      "release_date": "2025-08-05",
+      "release_date": "2025-07-23",
       "tags": null
     },
-    "auto": {
+    "sherlock-dash-alpha": {
       "aliases": [],
-      "capabilities": null,
+      "capabilities": {
+        "chat": true,
+        "embeddings": false,
+        "json": {
+          "native": false,
+          "schema": false,
+          "strict": false
+        },
+        "reasoning": {
+          "enabled": false
+        },
+        "streaming": {
+          "text": true,
+          "tool_calls": false
+        },
+        "tools": {
+          "enabled": true
+        }
+      },
       "cost": {
-        "input": -1.0e3,
-        "output": -1.0e3
+        "image": 0.0,
+        "input": 0.0,
+        "output": 0.0,
+        "reasoning": 0.0,
+        "request": 0.0
       },
       "deprecated": false,
       "extra": {
-        "hugging_face_id": null
+        "hugging_face_id": ""
       },
       "family": null,
-      "id": "auto",
+      "id": "sherlock-dash-alpha",
       "knowledge": null,
       "last_updated": null,
       "lifecycle": null,
       "limits": {
-        "context": 2000000
-      },
-      "modalities": {
-        "input": [
-          "text"
-        ],
-        "output": [
-          "text"
-        ]
-      },
-      "model": null,
-      "name": "Auto Router",
-      "provider": "openrouter",
-      "provider_model_id": null,
-      "release_date": "2023-11-08",
-      "tags": null
-    },
-    "google/gemini-2.5-pro": {
-      "aliases": [],
-      "capabilities": {
-        "chat": true,
-        "embeddings": false,
-        "json": {
-          "native": false,
-          "schema": false,
-          "strict": false
-        },
-        "reasoning": {
-          "enabled": true
-        },
-        "streaming": {
-          "tool_calls": true
-        },
-        "tools": {
-          "enabled": true
-        }
-      },
-      "cost": {
-        "cache_read": 0.31,
-        "input": 1.25,
-        "output": 10
-      },
-      "deprecated": false,
-      "extra": {
-        "attachment": true,
-        "open_weights": false,
-        "temperature": true
-      },
-      "family": null,
-      "id": "google/gemini-2.5-pro",
-      "knowledge": "2025-01",
-      "last_updated": "2025-06-05",
-      "lifecycle": null,
-      "limits": {
-        "context": 1048576,
-        "output": 65536
-      },
-      "modalities": {
-        "input": [
-          "text",
-          "image",
-          "audio",
-          "video",
-          "pdf"
-        ],
-        "output": [
-          "text"
-        ]
-      },
-      "model": null,
-      "name": "Gemini 2.5 Pro",
-      "provider": "openrouter",
-      "provider_model_id": null,
-      "release_date": "2025-03-20",
-      "tags": null
-    },
-    "openai/gpt-5.1": {
-      "aliases": [],
-      "capabilities": {
-        "chat": true,
-        "embeddings": false,
-        "json": {
-          "native": false,
-          "schema": false,
-          "strict": false
-        },
-        "reasoning": {
-          "enabled": true
-        },
-        "streaming": {
-          "tool_calls": true
-        },
-        "tools": {
-          "enabled": true
-        }
-      },
-      "cost": {
-        "cache_read": 0.125,
-        "input": 1.25,
-        "output": 10
-      },
-      "deprecated": false,
-      "extra": {
-        "attachment": true,
-        "open_weights": false,
-        "structured_output": true,
-        "temperature": true
-      },
-      "family": null,
-      "id": "openai/gpt-5.1",
-      "knowledge": "2024-09-30",
-      "last_updated": "2025-11-13",
-      "lifecycle": null,
-      "limits": {
-        "context": 400000,
-        "output": 128000
+        "context": 1840000,
+        "output": 64000
       },
       "modalities": {
         "input": [
@@ -3823,10 +3783,455 @@
         ]
       },
       "model": null,
-      "name": "GPT-5.1",
+      "name": "Sherlock Dash Alpha",
       "provider": "openrouter",
       "provider_model_id": null,
-      "release_date": "2025-11-13",
+      "release_date": "2025-11-15",
+      "tags": null
+    },
+    "z-ai/glm-4.5": {
+      "aliases": [],
+      "capabilities": {
+        "chat": true,
+        "embeddings": false,
+        "json": {
+          "native": false,
+          "schema": false,
+          "strict": false
+        },
+        "reasoning": {
+          "enabled": true
+        },
+        "streaming": {
+          "tool_calls": true
+        },
+        "tools": {
+          "enabled": true
+        }
+      },
+      "cost": {
+        "input": 0.6,
+        "output": 2.2
+      },
+      "deprecated": false,
+      "extra": {
+        "attachment": false,
+        "open_weights": true,
+        "temperature": true
+      },
+      "family": null,
+      "id": "z-ai/glm-4.5",
+      "knowledge": "2025-04",
+      "last_updated": "2025-07-28",
+      "lifecycle": null,
+      "limits": {
+        "context": 128000,
+        "output": 96000
+      },
+      "modalities": {
+        "input": [
+          "text"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "model": null,
+      "name": "GLM 4.5",
+      "provider": "openrouter",
+      "provider_model_id": null,
+      "release_date": "2025-07-28",
+      "tags": null
+    },
+    "moonshotai/kimi-k2-0905": {
+      "aliases": [],
+      "capabilities": {
+        "chat": true,
+        "embeddings": false,
+        "json": {
+          "native": false,
+          "schema": false,
+          "strict": false
+        },
+        "reasoning": {
+          "enabled": false
+        },
+        "streaming": {
+          "tool_calls": true
+        },
+        "tools": {
+          "enabled": true
+        }
+      },
+      "cost": {
+        "input": 0.6,
+        "output": 2.5
+      },
+      "deprecated": false,
+      "extra": {
+        "attachment": false,
+        "open_weights": true,
+        "temperature": true
+      },
+      "family": null,
+      "id": "moonshotai/kimi-k2-0905",
+      "knowledge": "2024-10",
+      "last_updated": "2025-09-05",
+      "lifecycle": null,
+      "limits": {
+        "context": 262144,
+        "output": 16384
+      },
+      "modalities": {
+        "input": [
+          "text"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "model": null,
+      "name": "Kimi K2 Instruct 0905",
+      "provider": "openrouter",
+      "provider_model_id": null,
+      "release_date": "2025-09-05",
+      "tags": null
+    },
+    "sherlock-think-alpha": {
+      "aliases": [],
+      "capabilities": {
+        "chat": true,
+        "embeddings": false,
+        "json": {
+          "native": false,
+          "schema": false,
+          "strict": false
+        },
+        "reasoning": {
+          "enabled": false
+        },
+        "streaming": {
+          "text": true,
+          "tool_calls": false
+        },
+        "tools": {
+          "enabled": true
+        }
+      },
+      "cost": {
+        "image": 0.0,
+        "input": 0.0,
+        "output": 0.0,
+        "reasoning": 0.0,
+        "request": 0.0
+      },
+      "deprecated": false,
+      "extra": {
+        "hugging_face_id": ""
+      },
+      "family": null,
+      "id": "sherlock-think-alpha",
+      "knowledge": null,
+      "last_updated": null,
+      "lifecycle": null,
+      "limits": {
+        "context": 1840000,
+        "output": 64000
+      },
+      "modalities": {
+        "input": [
+          "text",
+          "image"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "model": null,
+      "name": "Sherlock Think Alpha",
+      "provider": "openrouter",
+      "provider_model_id": null,
+      "release_date": "2025-11-15",
+      "tags": null
+    },
+    "mistralai/mistral-medium-3": {
+      "aliases": [],
+      "capabilities": {
+        "chat": true,
+        "embeddings": false,
+        "json": {
+          "native": false,
+          "schema": false,
+          "strict": false
+        },
+        "reasoning": {
+          "enabled": false
+        },
+        "streaming": {
+          "tool_calls": true
+        },
+        "tools": {
+          "enabled": true
+        }
+      },
+      "cost": {
+        "input": 0.4,
+        "output": 2
+      },
+      "deprecated": false,
+      "extra": {
+        "attachment": true,
+        "open_weights": false,
+        "temperature": true
+      },
+      "family": null,
+      "id": "mistralai/mistral-medium-3",
+      "knowledge": "2025-05",
+      "last_updated": "2025-05-07",
+      "lifecycle": null,
+      "limits": {
+        "context": 131072,
+        "output": 131072
+      },
+      "modalities": {
+        "input": [
+          "text",
+          "image"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "model": null,
+      "name": "Mistral Medium 3",
+      "provider": "openrouter",
+      "provider_model_id": null,
+      "release_date": "2025-05-07",
+      "tags": null
+    },
+    "anthropic/claude-opus-4": {
+      "aliases": [],
+      "capabilities": {
+        "chat": true,
+        "embeddings": false,
+        "json": {
+          "native": false,
+          "schema": false,
+          "strict": false
+        },
+        "reasoning": {
+          "enabled": false
+        },
+        "streaming": {
+          "text": true,
+          "tool_calls": false
+        },
+        "tools": {
+          "enabled": false,
+          "parallel": false,
+          "streaming": false,
+          "strict": false
+        }
+      },
+      "cost": {
+        "cache_read": 1.5,
+        "cache_write": 18.75,
+        "input": 15,
+        "output": 75
+      },
+      "deprecated": false,
+      "extra": {
+        "attachment": true,
+        "open_weights": false,
+        "temperature": true
+      },
+      "family": null,
+      "id": "anthropic/claude-opus-4",
+      "knowledge": "2025-03-31",
+      "last_updated": "2025-05-22",
+      "lifecycle": null,
+      "limits": {
+        "context": 200000,
+        "output": 32000
+      },
+      "modalities": {
+        "input": [
+          "text",
+          "image"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "model": null,
+      "name": "Claude Opus 4",
+      "provider": "openrouter",
+      "provider_model_id": null,
+      "release_date": "2025-05-22",
+      "tags": null
+    },
+    "x-ai/grok-3-beta": {
+      "aliases": [],
+      "capabilities": {
+        "chat": true,
+        "embeddings": false,
+        "json": {
+          "native": false,
+          "schema": false,
+          "strict": false
+        },
+        "reasoning": {
+          "enabled": false
+        },
+        "streaming": {
+          "tool_calls": true
+        },
+        "tools": {
+          "enabled": true
+        }
+      },
+      "cost": {
+        "cache_read": 0.75,
+        "cache_write": 15,
+        "input": 3,
+        "output": 15
+      },
+      "deprecated": false,
+      "extra": {
+        "attachment": false,
+        "open_weights": false,
+        "temperature": true
+      },
+      "family": null,
+      "id": "x-ai/grok-3-beta",
+      "knowledge": "2024-11",
+      "last_updated": "2025-02-17",
+      "lifecycle": null,
+      "limits": {
+        "context": 131072,
+        "output": 8192
+      },
+      "modalities": {
+        "input": [
+          "text"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "model": null,
+      "name": "Grok 3 Beta",
+      "provider": "openrouter",
+      "provider_model_id": null,
+      "release_date": "2025-02-17",
+      "tags": null
+    },
+    "nvidia/nemotron-nano-9b-v2": {
+      "aliases": [],
+      "capabilities": {
+        "chat": true,
+        "embeddings": false,
+        "json": {
+          "native": false,
+          "schema": false,
+          "strict": false
+        },
+        "reasoning": {
+          "enabled": true
+        },
+        "streaming": {
+          "tool_calls": true
+        },
+        "tools": {
+          "enabled": true
+        }
+      },
+      "cost": {
+        "input": 0.04,
+        "output": 0.16
+      },
+      "deprecated": false,
+      "extra": {
+        "attachment": false,
+        "open_weights": true,
+        "temperature": true
+      },
+      "family": null,
+      "id": "nvidia/nemotron-nano-9b-v2",
+      "knowledge": "2024-09",
+      "last_updated": "2025-08-18",
+      "lifecycle": null,
+      "limits": {
+        "context": 131072,
+        "output": 131072
+      },
+      "modalities": {
+        "input": [
+          "text"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "model": null,
+      "name": "nvidia-nemotron-nano-9b-v2",
+      "provider": "openrouter",
+      "provider_model_id": null,
+      "release_date": "2025-08-18",
+      "tags": null
+    },
+    "qwen/qwen3-235b-a22b-thinking-2507": {
+      "aliases": [],
+      "capabilities": {
+        "chat": true,
+        "embeddings": false,
+        "json": {
+          "native": false,
+          "schema": false,
+          "strict": false
+        },
+        "reasoning": {
+          "enabled": true
+        },
+        "streaming": {
+          "tool_calls": true
+        },
+        "tools": {
+          "enabled": true
+        }
+      },
+      "cost": {
+        "input": 0.078,
+        "output": 0.312
+      },
+      "deprecated": false,
+      "extra": {
+        "attachment": false,
+        "open_weights": true,
+        "temperature": true
+      },
+      "family": null,
+      "id": "qwen/qwen3-235b-a22b-thinking-2507",
+      "knowledge": "2025-04",
+      "last_updated": "2025-07-25",
+      "lifecycle": null,
+      "limits": {
+        "context": 262144,
+        "output": 81920
+      },
+      "modalities": {
+        "input": [
+          "text"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "model": null,
+      "name": "Qwen3 235B A22B Thinking 2507",
+      "provider": "openrouter",
+      "provider_model_id": null,
+      "release_date": "2025-07-25",
       "tags": null
     },
     "openai/gpt-5-nano": {
@@ -3882,6 +4287,126 @@
       "provider": "openrouter",
       "provider_model_id": null,
       "release_date": "2025-08-07",
+      "tags": null
+    },
+    "anthropic/claude-opus-4.1": {
+      "aliases": [],
+      "capabilities": {
+        "chat": true,
+        "embeddings": false,
+        "json": {
+          "native": false,
+          "schema": false,
+          "strict": false
+        },
+        "reasoning": {
+          "enabled": false
+        },
+        "streaming": {
+          "text": true,
+          "tool_calls": false
+        },
+        "tools": {
+          "enabled": false,
+          "parallel": false,
+          "streaming": false,
+          "strict": false
+        }
+      },
+      "cost": {
+        "cache_read": 1.5,
+        "cache_write": 18.75,
+        "input": 15,
+        "output": 75
+      },
+      "deprecated": false,
+      "extra": {
+        "attachment": true,
+        "open_weights": false,
+        "temperature": true
+      },
+      "family": null,
+      "id": "anthropic/claude-opus-4.1",
+      "knowledge": "2025-03-31",
+      "last_updated": "2025-08-05",
+      "lifecycle": null,
+      "limits": {
+        "context": 200000,
+        "output": 32000
+      },
+      "modalities": {
+        "input": [
+          "text",
+          "image"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "model": null,
+      "name": "Claude Opus 4.1",
+      "provider": "openrouter",
+      "provider_model_id": null,
+      "release_date": "2025-08-05",
+      "tags": null
+    },
+    "google/gemini-2.5-pro-preview-05-06": {
+      "aliases": [],
+      "capabilities": {
+        "chat": true,
+        "embeddings": false,
+        "json": {
+          "native": false,
+          "schema": false,
+          "strict": false
+        },
+        "reasoning": {
+          "enabled": true
+        },
+        "streaming": {
+          "tool_calls": true
+        },
+        "tools": {
+          "enabled": true
+        }
+      },
+      "cost": {
+        "cache_read": 0.31,
+        "input": 1.25,
+        "output": 10
+      },
+      "deprecated": false,
+      "extra": {
+        "attachment": true,
+        "open_weights": false,
+        "temperature": true
+      },
+      "family": null,
+      "id": "google/gemini-2.5-pro-preview-05-06",
+      "knowledge": "2025-01",
+      "last_updated": "2025-05-06",
+      "lifecycle": null,
+      "limits": {
+        "context": 1048576,
+        "output": 65536
+      },
+      "modalities": {
+        "input": [
+          "text",
+          "image",
+          "audio",
+          "video",
+          "pdf"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "model": null,
+      "name": "Gemini 2.5 Pro Preview 05-06",
+      "provider": "openrouter",
+      "provider_model_id": null,
+      "release_date": "2025-05-06",
       "tags": null
     },
     "google/gemini-2.5-flash-lite": {
@@ -3943,334 +4468,42 @@
       "release_date": "2025-06-17",
       "tags": null
     },
-    "z-ai/glm-4.5-air": {
+    "qwen/qwen2.5-vl-72b-instruct": {
       "aliases": [],
-      "capabilities": {
-        "chat": true,
-        "embeddings": false,
-        "json": {
-          "native": false,
-          "schema": false,
-          "strict": false
-        },
-        "reasoning": {
-          "enabled": true
-        },
-        "streaming": {
-          "tool_calls": true
-        },
-        "tools": {
-          "enabled": true
-        }
-      },
+      "capabilities": null,
       "cost": {
-        "input": 0.2,
-        "output": 1.1
-      },
-      "deprecated": false,
-      "extra": {
-        "attachment": false,
-        "open_weights": true,
-        "temperature": true
-      },
-      "family": null,
-      "id": "z-ai/glm-4.5-air",
-      "knowledge": "2025-04",
-      "last_updated": "2025-07-28",
-      "lifecycle": null,
-      "limits": {
-        "context": 128000,
-        "output": 96000
-      },
-      "modalities": {
-        "input": [
-          "text"
-        ],
-        "output": [
-          "text"
-        ]
-      },
-      "model": null,
-      "name": "GLM 4.5 Air",
-      "provider": "openrouter",
-      "provider_model_id": null,
-      "release_date": "2025-07-28",
-      "tags": null
-    },
-    "anthropic/claude-haiku-4.5": {
-      "aliases": [],
-      "capabilities": {
-        "chat": true,
-        "embeddings": false,
-        "json": {
-          "native": false,
-          "schema": false,
-          "strict": false
-        },
-        "reasoning": {
-          "enabled": true
-        },
-        "streaming": {
-          "tool_calls": true
-        },
-        "tools": {
-          "enabled": true
-        }
-      },
-      "cost": {
-        "cache_read": 0.1,
-        "cache_write": 1.25,
-        "input": 1,
-        "output": 5
+        "input": 0,
+        "output": 0
       },
       "deprecated": false,
       "extra": {
         "attachment": true,
-        "open_weights": false,
-        "temperature": true
-      },
-      "family": null,
-      "id": "anthropic/claude-haiku-4.5",
-      "knowledge": "2025-02-31",
-      "last_updated": "2025-10-15",
-      "lifecycle": null,
-      "limits": {
-        "context": 200000,
-        "output": 64000
-      },
-      "modalities": {
-        "input": [
-          "text",
-          "image"
-        ],
-        "output": [
-          "text"
-        ]
-      },
-      "model": null,
-      "name": "Claude Haiku 4.5",
-      "provider": "openrouter",
-      "provider_model_id": null,
-      "release_date": "2025-10-15",
-      "tags": null
-    },
-    "openai/gpt-5-mini": {
-      "aliases": [],
-      "capabilities": {
-        "chat": true,
-        "embeddings": false,
-        "json": {
-          "native": false,
-          "schema": false,
-          "strict": false
-        },
-        "reasoning": {
-          "enabled": true
-        },
-        "streaming": {
-          "tool_calls": true
-        },
-        "tools": {
-          "enabled": true
-        }
-      },
-      "cost": {
-        "input": 0.25,
-        "output": 2
-      },
-      "deprecated": false,
-      "extra": {
-        "attachment": true,
-        "open_weights": false,
-        "temperature": true
-      },
-      "family": null,
-      "id": "openai/gpt-5-mini",
-      "knowledge": "2024-10-01",
-      "last_updated": "2025-08-07",
-      "lifecycle": null,
-      "limits": {
-        "context": 400000,
-        "output": 128000
-      },
-      "modalities": {
-        "input": [
-          "text",
-          "image"
-        ],
-        "output": [
-          "text"
-        ]
-      },
-      "model": null,
-      "name": "GPT-5 Mini",
-      "provider": "openrouter",
-      "provider_model_id": null,
-      "release_date": "2025-08-07",
-      "tags": null
-    },
-    "moonshotai/kimi-k2": {
-      "aliases": [],
-      "capabilities": {
-        "chat": true,
-        "embeddings": false,
-        "json": {
-          "native": false,
-          "schema": false,
-          "strict": false
-        },
-        "reasoning": {
-          "enabled": false
-        },
-        "streaming": {
-          "tool_calls": true
-        },
-        "tools": {
-          "enabled": true
-        }
-      },
-      "cost": {
-        "input": 0.55,
-        "output": 2.2
-      },
-      "deprecated": false,
-      "extra": {
-        "attachment": false,
         "open_weights": true,
         "temperature": true
       },
       "family": null,
-      "id": "moonshotai/kimi-k2",
+      "id": "qwen/qwen2.5-vl-72b-instruct",
       "knowledge": "2024-10",
-      "last_updated": "2025-07-11",
+      "last_updated": "2025-02-01",
       "lifecycle": null,
       "limits": {
-        "context": 131072,
-        "output": 32768
-      },
-      "modalities": {
-        "input": [
-          "text"
-        ],
-        "output": [
-          "text"
-        ]
-      },
-      "model": null,
-      "name": "Kimi K2",
-      "provider": "openrouter",
-      "provider_model_id": null,
-      "release_date": "2025-07-11",
-      "tags": null
-    },
-    "minimax/minimax-m1": {
-      "aliases": [],
-      "capabilities": {
-        "chat": true,
-        "embeddings": false,
-        "json": {
-          "native": false,
-          "schema": false,
-          "strict": false
-        },
-        "reasoning": {
-          "enabled": true
-        },
-        "streaming": {
-          "tool_calls": true
-        },
-        "tools": {
-          "enabled": true
-        }
-      },
-      "cost": {
-        "input": 0.4,
-        "output": 2.2
-      },
-      "deprecated": false,
-      "extra": {
-        "attachment": false,
-        "open_weights": true,
-        "temperature": true
-      },
-      "family": null,
-      "id": "minimax/minimax-m1",
-      "knowledge": null,
-      "last_updated": "2025-06-17",
-      "lifecycle": null,
-      "limits": {
-        "context": 1000000,
-        "output": 40000
-      },
-      "modalities": {
-        "input": [
-          "text"
-        ],
-        "output": [
-          "text"
-        ]
-      },
-      "model": null,
-      "name": "MiniMax M1",
-      "provider": "openrouter",
-      "provider_model_id": null,
-      "release_date": "2025-06-17",
-      "tags": null
-    },
-    "z-ai/glm-4.5v": {
-      "aliases": [],
-      "capabilities": {
-        "chat": true,
-        "embeddings": false,
-        "json": {
-          "native": false,
-          "schema": false,
-          "strict": false
-        },
-        "reasoning": {
-          "enabled": true
-        },
-        "streaming": {
-          "tool_calls": true
-        },
-        "tools": {
-          "enabled": true
-        }
-      },
-      "cost": {
-        "input": 0.6,
-        "output": 1.8
-      },
-      "deprecated": false,
-      "extra": {
-        "attachment": true,
-        "open_weights": true,
-        "temperature": true
-      },
-      "family": null,
-      "id": "z-ai/glm-4.5v",
-      "knowledge": "2025-04",
-      "last_updated": "2025-08-11",
-      "lifecycle": null,
-      "limits": {
-        "context": 64000,
-        "output": 16384
+        "context": 32768,
+        "output": 8192
       },
       "modalities": {
         "input": [
           "text",
-          "image",
-          "video"
+          "image"
         ],
         "output": [
           "text"
         ]
       },
       "model": null,
-      "name": "GLM 4.5V",
+      "name": "Qwen2.5 VL 72B Instruct",
       "provider": "openrouter",
       "provider_model_id": null,
-      "release_date": "2025-08-11",
+      "release_date": "2025-02-01",
       "tags": null
     }
   },
