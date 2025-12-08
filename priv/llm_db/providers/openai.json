@@ -1126,8 +1126,7 @@
           "image"
         ],
         "output": [
-          "text",
-          "image"
+          "text"
         ]
       },
       "model": null,
@@ -2464,25 +2463,61 @@
     },
     "gpt-5.1-codex-max": {
       "aliases": [],
-      "capabilities": null,
-      "cost": null,
+      "capabilities": {
+        "chat": true,
+        "embeddings": false,
+        "json": {
+          "native": false,
+          "schema": false,
+          "strict": false
+        },
+        "reasoning": {
+          "enabled": true
+        },
+        "streaming": {
+          "tool_calls": true
+        },
+        "tools": {
+          "enabled": true
+        }
+      },
+      "cost": {
+        "cache_read": 0.125,
+        "input": 1.25,
+        "output": 10
+      },
       "deprecated": false,
       "extra": {
+        "attachment": true,
         "created": 1763671532,
-        "owned_by": "system"
+        "open_weights": false,
+        "owned_by": "system",
+        "structured_output": true,
+        "temperature": false
       },
       "family": null,
       "id": "gpt-5.1-codex-max",
-      "knowledge": null,
-      "last_updated": null,
+      "knowledge": "2024-09-30",
+      "last_updated": "2025-11-13",
       "lifecycle": null,
-      "limits": null,
-      "modalities": null,
+      "limits": {
+        "context": 400000,
+        "output": 128000
+      },
+      "modalities": {
+        "input": [
+          "text",
+          "image"
+        ],
+        "output": [
+          "text"
+        ]
+      },
       "model": null,
-      "name": null,
+      "name": "GPT-5.1 Codex Max",
       "provider": "openai",
       "provider_model_id": null,
-      "release_date": null,
+      "release_date": "2025-11-13",
       "tags": null
     },
     "gpt-4-0125-preview": {

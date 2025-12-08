@@ -32,6 +32,7 @@ defmodule LLMDB.Generated.ValidProviders do
     :bytedance,
     :cerebras,
     :chutes,
+    :cloudflare_ai_gateway,
     :cloudflare_workers_ai,
     :cognitivecomputations,
     :cohere,

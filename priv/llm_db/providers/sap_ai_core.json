@@ -10,7 +10,174 @@
   "extra": null,
   "id": "sap_ai_core",
   "models": {
-    "claude-3-5-sonnet": {
+    "anthropic--claude-3-haiku": {
+      "aliases": [],
+      "capabilities": {
+        "chat": true,
+        "embeddings": false,
+        "json": {
+          "native": false,
+          "schema": false,
+          "strict": false
+        },
+        "reasoning": {
+          "enabled": false
+        },
+        "streaming": {
+          "tool_calls": true
+        },
+        "tools": {
+          "enabled": true
+        }
+      },
+      "cost": {
+        "cache_read": 0.03,
+        "cache_write": 0.3,
+        "input": 0.25,
+        "output": 1.25
+      },
+      "deprecated": false,
+      "extra": {
+        "attachment": true,
+        "open_weights": false,
+        "temperature": true
+      },
+      "family": null,
+      "id": "anthropic--claude-3-haiku",
+      "knowledge": "2023-08-31",
+      "last_updated": "2024-03-13",
+      "lifecycle": null,
+      "limits": {
+        "context": 200000,
+        "output": 4096
+      },
+      "modalities": {
+        "input": [
+          "text",
+          "image"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "model": null,
+      "name": "anthropic--claude-3-haiku",
+      "provider": "sap_ai_core",
+      "provider_model_id": null,
+      "release_date": "2024-03-13",
+      "tags": null
+    },
+    "anthropic--claude-3-opus": {
+      "aliases": [],
+      "capabilities": {
+        "chat": true,
+        "embeddings": false,
+        "json": {
+          "native": false,
+          "schema": false,
+          "strict": false
+        },
+        "reasoning": {
+          "enabled": false
+        },
+        "streaming": {
+          "tool_calls": true
+        },
+        "tools": {
+          "enabled": true
+        }
+      },
+      "cost": {
+        "input": 15,
+        "output": 75
+      },
+      "deprecated": false,
+      "extra": {
+        "attachment": true,
+        "open_weights": false,
+        "temperature": true
+      },
+      "family": null,
+      "id": "anthropic--claude-3-opus",
+      "knowledge": "2023-08-31",
+      "last_updated": "2024-02-29",
+      "lifecycle": null,
+      "limits": {
+        "context": 200000,
+        "output": 4096
+      },
+      "modalities": {
+        "input": [
+          "text",
+          "image"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "model": null,
+      "name": "anthropic--claude-3-opus",
+      "provider": "sap_ai_core",
+      "provider_model_id": null,
+      "release_date": "2024-02-29",
+      "tags": null
+    },
+    "anthropic--claude-3-sonnet": {
+      "aliases": [],
+      "capabilities": {
+        "chat": true,
+        "embeddings": false,
+        "json": {
+          "native": false,
+          "schema": false,
+          "strict": false
+        },
+        "reasoning": {
+          "enabled": false
+        },
+        "streaming": {
+          "tool_calls": true
+        },
+        "tools": {
+          "enabled": true
+        }
+      },
+      "cost": {
+        "input": 3,
+        "output": 15
+      },
+      "deprecated": false,
+      "extra": {
+        "attachment": true,
+        "open_weights": false,
+        "temperature": true
+      },
+      "family": null,
+      "id": "anthropic--claude-3-sonnet",
+      "knowledge": "2023-08-31",
+      "last_updated": "2024-03-04",
+      "lifecycle": null,
+      "limits": {
+        "context": 200000,
+        "output": 4096
+      },
+      "modalities": {
+        "input": [
+          "text",
+          "image"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "model": null,
+      "name": "anthropic--claude-3-sonnet",
+      "provider": "sap_ai_core",
+      "provider_model_id": null,
+      "release_date": "2024-03-04",
+      "tags": null
+    },
+    "anthropic--claude-3.5-sonnet": {
       "aliases": [],
       "capabilities": {
         "chat": true,
@@ -43,9 +210,9 @@
         "temperature": true
       },
       "family": null,
-      "id": "claude-3-5-sonnet",
-      "knowledge": null,
-      "last_updated": "2024-06-20",
+      "id": "anthropic--claude-3.5-sonnet",
+      "knowledge": "2024-04-30",
+      "last_updated": "2024-10-22",
       "lifecycle": null,
       "limits": {
         "context": 200000,
@@ -61,13 +228,13 @@
         ]
       },
       "model": null,
-      "name": "Claude Sonnet 3.5",
+      "name": "anthropic--claude-3.5-sonnet",
       "provider": "sap_ai_core",
       "provider_model_id": null,
-      "release_date": "2024-06-20",
+      "release_date": "2024-10-22",
       "tags": null
     },
-    "gemini-1.5-pro": {
+    "anthropic--claude-3.7-sonnet": {
       "aliases": [],
       "capabilities": {
         "chat": true,
@@ -78,7 +245,7 @@
           "strict": false
         },
         "reasoning": {
-          "enabled": false
+          "enabled": true
         },
         "streaming": {
           "tool_calls": true
@@ -88,8 +255,10 @@
         }
       },
       "cost": {
-        "input": 1.25,
-        "output": 5
+        "cache_read": 0.3,
+        "cache_write": 3.75,
+        "input": 3,
+        "output": 15
       },
       "deprecated": false,
       "extra": {
@@ -98,70 +267,13 @@
         "temperature": true
       },
       "family": null,
-      "id": "gemini-1.5-pro",
-      "knowledge": null,
-      "last_updated": "2024-02-15",
+      "id": "anthropic--claude-3.7-sonnet",
+      "knowledge": "2024-10-31",
+      "last_updated": "2025-02-24",
       "lifecycle": null,
       "limits": {
-        "context": 2000000,
-        "output": 8192
-      },
-      "modalities": {
-        "input": [
-          "text",
-          "image",
-          "audio",
-          "video"
-        ],
-        "output": [
-          "text"
-        ]
-      },
-      "model": null,
-      "name": "Gemini 1.5 Pro",
-      "provider": "sap_ai_core",
-      "provider_model_id": null,
-      "release_date": "2024-02-15",
-      "tags": null
-    },
-    "gpt-4o": {
-      "aliases": [],
-      "capabilities": {
-        "chat": true,
-        "embeddings": false,
-        "json": {
-          "native": false,
-          "schema": false,
-          "strict": false
-        },
-        "reasoning": {
-          "enabled": false
-        },
-        "streaming": {
-          "tool_calls": true
-        },
-        "tools": {
-          "enabled": true
-        }
-      },
-      "cost": {
-        "input": 2.5,
-        "output": 10
-      },
-      "deprecated": false,
-      "extra": {
-        "attachment": true,
-        "open_weights": false,
-        "temperature": true
-      },
-      "family": null,
-      "id": "gpt-4o",
-      "knowledge": null,
-      "last_updated": "2024-05-13",
-      "lifecycle": null,
-      "limits": {
-        "context": 128000,
-        "output": 4096
+        "context": 200000,
+        "output": 64000
       },
       "modalities": {
         "input": [
@@ -173,10 +285,473 @@
         ]
       },
       "model": null,
-      "name": "GPT-4o",
+      "name": "anthropic--claude-3.7-sonnet",
       "provider": "sap_ai_core",
       "provider_model_id": null,
-      "release_date": "2024-05-13",
+      "release_date": "2025-02-24",
+      "tags": null
+    },
+    "anthropic--claude-4-opus": {
+      "aliases": [],
+      "capabilities": {
+        "chat": true,
+        "embeddings": false,
+        "json": {
+          "native": false,
+          "schema": false,
+          "strict": false
+        },
+        "reasoning": {
+          "enabled": true
+        },
+        "streaming": {
+          "tool_calls": true
+        },
+        "tools": {
+          "enabled": true
+        }
+      },
+      "cost": {
+        "cache_read": 1.5,
+        "cache_write": 18.75,
+        "input": 15,
+        "output": 75
+      },
+      "deprecated": false,
+      "extra": {
+        "attachment": true,
+        "open_weights": false,
+        "temperature": true
+      },
+      "family": null,
+      "id": "anthropic--claude-4-opus",
+      "knowledge": "2025-01-31",
+      "last_updated": "2025-05-22",
+      "lifecycle": null,
+      "limits": {
+        "context": 200000,
+        "output": 32000
+      },
+      "modalities": {
+        "input": [
+          "text",
+          "image"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "model": null,
+      "name": "anthropic--claude-4-opus",
+      "provider": "sap_ai_core",
+      "provider_model_id": null,
+      "release_date": "2025-05-22",
+      "tags": null
+    },
+    "anthropic--claude-4-sonnet": {
+      "aliases": [],
+      "capabilities": {
+        "chat": true,
+        "embeddings": false,
+        "json": {
+          "native": false,
+          "schema": false,
+          "strict": false
+        },
+        "reasoning": {
+          "enabled": true
+        },
+        "streaming": {
+          "tool_calls": true
+        },
+        "tools": {
+          "enabled": true
+        }
+      },
+      "cost": {
+        "cache_read": 0.3,
+        "cache_write": 3.75,
+        "input": 3,
+        "output": 15
+      },
+      "deprecated": false,
+      "extra": {
+        "attachment": true,
+        "open_weights": false,
+        "temperature": true
+      },
+      "family": null,
+      "id": "anthropic--claude-4-sonnet",
+      "knowledge": "2025-01-31",
+      "last_updated": "2025-05-22",
+      "lifecycle": null,
+      "limits": {
+        "context": 200000,
+        "output": 64000
+      },
+      "modalities": {
+        "input": [
+          "text",
+          "image"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "model": null,
+      "name": "anthropic--claude-4-sonnet",
+      "provider": "sap_ai_core",
+      "provider_model_id": null,
+      "release_date": "2025-05-22",
+      "tags": null
+    },
+    "anthropic--claude-4.5-sonnet": {
+      "aliases": [],
+      "capabilities": {
+        "chat": true,
+        "embeddings": false,
+        "json": {
+          "native": false,
+          "schema": false,
+          "strict": false
+        },
+        "reasoning": {
+          "enabled": true
+        },
+        "streaming": {
+          "tool_calls": true
+        },
+        "tools": {
+          "enabled": true
+        }
+      },
+      "cost": {
+        "cache_read": 0.3,
+        "cache_write": 3.75,
+        "input": 3,
+        "output": 15
+      },
+      "deprecated": false,
+      "extra": {
+        "attachment": true,
+        "open_weights": false,
+        "temperature": true
+      },
+      "family": null,
+      "id": "anthropic--claude-4.5-sonnet",
+      "knowledge": "2025-01-31",
+      "last_updated": "2025-09-29",
+      "lifecycle": null,
+      "limits": {
+        "context": 200000,
+        "output": 64000
+      },
+      "modalities": {
+        "input": [
+          "text",
+          "image"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "model": null,
+      "name": "anthropic--claude-4.5-sonnet",
+      "provider": "sap_ai_core",
+      "provider_model_id": null,
+      "release_date": "2025-09-29",
+      "tags": null
+    },
+    "gemini-2.5-flash": {
+      "aliases": [],
+      "capabilities": {
+        "chat": true,
+        "embeddings": false,
+        "json": {
+          "native": false,
+          "schema": false,
+          "strict": false
+        },
+        "reasoning": {
+          "enabled": true
+        },
+        "streaming": {
+          "tool_calls": true
+        },
+        "tools": {
+          "enabled": true
+        }
+      },
+      "cost": {
+        "cache_read": 0.075,
+        "input": 0.3,
+        "input_audio": 1,
+        "output": 2.5
+      },
+      "deprecated": false,
+      "extra": {
+        "attachment": true,
+        "open_weights": false,
+        "structured_output": true,
+        "temperature": true
+      },
+      "family": null,
+      "id": "gemini-2.5-flash",
+      "knowledge": "2025-01",
+      "last_updated": "2025-06-05",
+      "lifecycle": null,
+      "limits": {
+        "context": 1048576,
+        "output": 65536
+      },
+      "modalities": {
+        "input": [
+          "text",
+          "image",
+          "audio",
+          "video",
+          "pdf"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "model": null,
+      "name": "gemini-2.5-flash",
+      "provider": "sap_ai_core",
+      "provider_model_id": null,
+      "release_date": "2025-03-25",
+      "tags": null
+    },
+    "gemini-2.5-pro": {
+      "aliases": [],
+      "capabilities": {
+        "chat": true,
+        "embeddings": false,
+        "json": {
+          "native": false,
+          "schema": false,
+          "strict": false
+        },
+        "reasoning": {
+          "enabled": true
+        },
+        "streaming": {
+          "tool_calls": true
+        },
+        "tools": {
+          "enabled": true
+        }
+      },
+      "cost": {
+        "cache_read": 0.31,
+        "input": 1.25,
+        "output": 10
+      },
+      "deprecated": false,
+      "extra": {
+        "attachment": true,
+        "open_weights": false,
+        "structured_output": true,
+        "temperature": true
+      },
+      "family": null,
+      "id": "gemini-2.5-pro",
+      "knowledge": "2025-01",
+      "last_updated": "2025-06-05",
+      "lifecycle": null,
+      "limits": {
+        "context": 1048576,
+        "output": 65536
+      },
+      "modalities": {
+        "input": [
+          "text",
+          "image",
+          "audio",
+          "video",
+          "pdf"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "model": null,
+      "name": "gemini-2.5-pro",
+      "provider": "sap_ai_core",
+      "provider_model_id": null,
+      "release_date": "2025-03-25",
+      "tags": null
+    },
+    "gpt-5": {
+      "aliases": [],
+      "capabilities": {
+        "chat": true,
+        "embeddings": false,
+        "json": {
+          "native": false,
+          "schema": false,
+          "strict": false
+        },
+        "reasoning": {
+          "enabled": true
+        },
+        "streaming": {
+          "tool_calls": true
+        },
+        "tools": {
+          "enabled": true
+        }
+      },
+      "cost": {
+        "cache_read": 0.13,
+        "input": 1.25,
+        "output": 10
+      },
+      "deprecated": false,
+      "extra": {
+        "attachment": true,
+        "open_weights": false,
+        "structured_output": true,
+        "temperature": false
+      },
+      "family": null,
+      "id": "gpt-5",
+      "knowledge": "2024-09-30",
+      "last_updated": "2025-08-07",
+      "lifecycle": null,
+      "limits": {
+        "context": 400000,
+        "output": 128000
+      },
+      "modalities": {
+        "input": [
+          "text",
+          "image"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "model": null,
+      "name": "gpt-5",
+      "provider": "sap_ai_core",
+      "provider_model_id": null,
+      "release_date": "2025-08-07",
+      "tags": null
+    },
+    "gpt-5-mini": {
+      "aliases": [],
+      "capabilities": {
+        "chat": true,
+        "embeddings": false,
+        "json": {
+          "native": false,
+          "schema": false,
+          "strict": false
+        },
+        "reasoning": {
+          "enabled": true
+        },
+        "streaming": {
+          "tool_calls": true
+        },
+        "tools": {
+          "enabled": true
+        }
+      },
+      "cost": {
+        "cache_read": 0.03,
+        "input": 0.25,
+        "output": 2
+      },
+      "deprecated": false,
+      "extra": {
+        "attachment": true,
+        "open_weights": false,
+        "structured_output": true,
+        "temperature": false
+      },
+      "family": null,
+      "id": "gpt-5-mini",
+      "knowledge": "2024-05-30",
+      "last_updated": "2025-08-07",
+      "lifecycle": null,
+      "limits": {
+        "context": 400000,
+        "output": 128000
+      },
+      "modalities": {
+        "input": [
+          "text",
+          "image"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "model": null,
+      "name": "gpt-5-mini",
+      "provider": "sap_ai_core",
+      "provider_model_id": null,
+      "release_date": "2025-08-07",
+      "tags": null
+    },
+    "gpt-5-nano": {
+      "aliases": [],
+      "capabilities": {
+        "chat": true,
+        "embeddings": false,
+        "json": {
+          "native": false,
+          "schema": false,
+          "strict": false
+        },
+        "reasoning": {
+          "enabled": true
+        },
+        "streaming": {
+          "tool_calls": true
+        },
+        "tools": {
+          "enabled": true
+        }
+      },
+      "cost": {
+        "cache_read": 0.01,
+        "input": 0.05,
+        "output": 0.4
+      },
+      "deprecated": false,
+      "extra": {
+        "attachment": true,
+        "open_weights": false,
+        "structured_output": true,
+        "temperature": false
+      },
+      "family": null,
+      "id": "gpt-5-nano",
+      "knowledge": "2024-05-30",
+      "last_updated": "2025-08-07",
+      "lifecycle": null,
+      "limits": {
+        "context": 400000,
+        "output": 128000
+      },
+      "modalities": {
+        "input": [
+          "text",
+          "image"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "model": null,
+      "name": "gpt-5-nano",
+      "provider": "sap_ai_core",
+      "provider_model_id": null,
+      "release_date": "2025-08-07",
       "tags": null
     }
   },
