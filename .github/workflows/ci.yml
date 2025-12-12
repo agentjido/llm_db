@@ -1,3 +1,6 @@
+# Standardized CI workflow using central reusable workflows
+# See: https://github.com/jmanhype/github-actions (will transfer to agentjido/github-actions)
+
 name: CI
 
 on:
@@ -6,47 +9,14 @@ on:
   pull_request:
     branches: [main]
 
+permissions:
+  contents: read
+
 jobs:
+  lint:
+    name: Lint
+    uses: jmanhype/github-actions/.github/workflows/elixir-lint.yml@v1
+
   test:
-    name: Test (Elixir ${{ matrix.elixir }} / OTP ${{ matrix.otp }})
-    runs-on: ubuntu-latest
-    strategy:
-      matrix:
-        include:
-          - otp: "27"
-            elixir: "1.18"
-          - otp: "27"
-            elixir: "1.19"
-          - otp: "28"
-            elixir: "1.18"
-          - otp: "28"
-            elixir: "1.19"
-
-    steps:
-      - name: Checkout code
-        uses: actions/checkout@v4
-
-      - name: Set up Elixir
-        uses: erlef/setup-beam@v1
-        with:
-          elixir-version: ${{ matrix.elixir }}
-          otp-version: ${{ matrix.otp }}
-
-      - name: Restore dependencies cache
-        uses: actions/cache@v4
-        with:
-          path: |
-            deps
-            _build
-          key: ${{ runner.os }}-mix-${{ matrix.elixir }}-${{ matrix.otp }}-${{ hashFiles('**/mix.lock') }}
-          restore-keys: |
-            ${{ runner.os }}-mix-${{ matrix.elixir }}-${{ matrix.otp }}-
-
-      - name: Install dependencies
-        run: mix deps.get
-
-      - name: Run quality checks
-        run: mix quality
-
-      - name: Run tests
-        run: mix test
+    name: Test
+    uses: jmanhype/github-actions/.github/workflows/elixir-test.yml@v1

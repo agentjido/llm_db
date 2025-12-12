@@ -96,8 +96,8 @@ defmodule LLMDB.MixProject do
       quality: [
         "format --check-formatted",
         "compile --warnings-as-errors",
-        "dialyzer",
-        "credo --min-priority higher"
+        "credo --strict",
+        "dialyzer"
       ],
       q: ["quality"]
     ]

@@ -1,0 +1,208 @@
+# Contributing to LLM DB
+
+Thank you for your interest in contributing to LLM DB! This guide outlines the expectations and requirements for contributions.
+
+## Table of Contents
+
+- [Core Principles](#core-principles)
+- [Development Setup](#development-setup)
+- [Testing Requirements](#testing-requirements)
+- [Code Quality Standards](#code-quality-standards)
+- [Commit Message Convention](#commit-message-convention)
+- [Pull Request Process](#pull-request-process)
+- [Provider Data Contributions](#provider-data-contributions)
+- [Questions?](#questions)
+
+## Core Principles
+
+LLM DB is a model metadata catalog with fast, capability-aware lookups. We value:
+
+1. **Data Accuracy**: Provider data must be accurate and up-to-date
+2. **Quality Over Speed**: Code must pass all quality checks before review
+3. **Conventional Commits**: All commits must follow the conventional commits specification
+4. **Test Coverage**: New features require comprehensive tests
+
+## Development Setup
+
+```bash
+# Clone the repository
+git clone https://github.com/agentjido/llm_db.git
+cd llm_db
+
+# Install dependencies
+mix deps.get
+
+# Install git hooks (enforces conventional commits)
+mix git_hooks.install
+
+# Verify setup
+mix test
+mix quality
+```
+
+### Git Hooks
+
+We use [`git_hooks`](https://hex.pm/packages/git_hooks) to enforce commit message conventions:
+
+```bash
+mix git_hooks.install
+```
+
+This installs a `commit-msg` hook that validates your commit messages follow the conventional commits specification. See [Commit Message Convention](#commit-message-convention) for details.
+
+## Testing Requirements
+
+```bash
+# Run all tests
+mix test
+
+# Run tests with coverage
+mix test --cover
+
+# Run specific test file
+mix test test/llm_db/your_test.exs
+```
+
+## Code Quality Standards
+
+All contributions must pass these checks:
+
+### Formatting
+```bash
+mix format
+mix format --check-formatted  # CI check
+```
+
+### Compilation
+```bash
+mix compile --warnings-as-errors
+```
+
+### Static Analysis
+```bash
+mix dialyzer
+```
+
+### Linting
+```bash
+mix credo --strict
+```
+
+### Combined Check
+```bash
+mix quality  # Runs all of the above
+```
+
+## Commit Message Convention
+
+We use [Conventional Commits](https://www.conventionalcommits.org/) enforced by `git_ops`. All commit messages must follow this format:
+
+```
+<type>[optional scope]: <description>
+
+[optional body]
+
+[optional footer(s)]
+```
+
+### Types
+
+| Type | Description |
+|------|-------------|
+| `feat` | A new feature |
+| `fix` | A bug fix |
+| `docs` | Documentation only changes |
+| `style` | Changes that don't affect code meaning (formatting) |
+| `refactor` | Code change that neither fixes a bug nor adds a feature |
+| `perf` | Performance improvement |
+| `test` | Adding or correcting tests |
+| `chore` | Changes to build process or auxiliary tools |
+| `ci` | CI configuration changes |
+
+### Examples
+
+```bash
+# Feature
+git commit -m "feat(providers): add support for new LLM provider"
+
+# Bug fix
+git commit -m "fix(lookup): resolve capability filtering edge case"
+
+# Breaking change
+git commit -m "feat(api)!: change model metadata schema"
+```
+
+### Validation
+
+The `git_hooks` commit-msg hook will reject non-conforming commits:
+
+```bash
+# This will be rejected
+git commit -m "updated provider data"
+
+# This will pass
+git commit -m "feat(providers): add Claude 3.5 Sonnet model metadata"
+```
+
+## Pull Request Process
+
+1. **Create a Feature Branch**
+   ```bash
+   git checkout -b feat/your-feature-name
+   ```
+
+2. **Develop with Tests**
+   - Write tests first (TDD encouraged)
+   - Run quality checks frequently
+
+3. **Verify Everything Passes**
+   ```bash
+   mix test
+   mix quality
+   ```
+
+4. **Update Documentation**
+   - Add/update module docs
+   - Update README if needed
+   - Add CHANGELOG entry
+
+5. **Submit Pull Request**
+   - Use descriptive title following conventional commits
+   - Reference related issues
+   - Include test output
+
+### PR Checklist
+
+- [ ] All tests pass (`mix test`)
+- [ ] Quality checks pass (`mix quality`)
+- [ ] New tests added for new functionality
+- [ ] Documentation updated
+- [ ] CHANGELOG.md updated
+- [ ] Commit messages follow conventional commits
+
+## Provider Data Contributions
+
+When contributing provider data updates:
+
+1. **Update provider files** in `priv/llm_db/providers/`
+2. **Validate the data** runs without errors
+3. **Test lookups** work correctly with new data
+4. **Document changes** in the PR description
+
+### Provider Data Format
+
+See `guides/model-spec-formats.md` for the expected data format.
+
+## Questions?
+
+- **Documentation**: Check the guides/ directory
+- **Issues**: Open an issue for questions or bug reports
+- **Discussions**: Use GitHub Discussions for general questions
+
+## License
+
+By contributing to LLM DB, you agree that your contributions will be licensed under the MIT License.
+
+---
+
+Thank you for helping make LLM DB better!
