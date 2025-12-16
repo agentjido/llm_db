@@ -132,8 +132,15 @@ jobs:
             [ "$MOD_COUNT" -gt 5 ] && echo "- ... and $((MOD_COUNT - 5)) more" >> "$COMMIT_FILE"
           fi
           
-          # Output for PR title
+          # Output for PR title and commit message
           echo "commit_title=$COMMIT_TITLE" >> "$GITHUB_OUTPUT"
+          
+          # Output multiline commit message for the action
+          {
+            echo 'commit_message<<EOF'
+            cat "$COMMIT_FILE"
+            echo 'EOF'
+          } >> "$GITHUB_OUTPUT"
 
           # Build PR body
           echo "## Model Metadata Update" > "$OUTPUT_FILE"
@@ -192,7 +199,7 @@ jobs:
         uses: peter-evans/create-pull-request@v6
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
-          commit-message-path: "commit_message.txt"
+          commit-message: ${{ steps.summary.outputs.commit_message }}
           committer: "github-actions[bot] <github-actions[bot]@users.noreply.github.com>"
           author: "github-actions[bot] <github-actions[bot]@users.noreply.github.com>"
           title: "${{ steps.summary.outputs.commit_title }}"
