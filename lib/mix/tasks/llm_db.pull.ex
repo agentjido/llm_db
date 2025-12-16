@@ -70,6 +70,8 @@ defmodule Mix.Tasks.LlmDb.Pull do
 
   @impl Mix.Task
   def run(args) do
+    ensure_llm_db_project!()
+
     # Load .env before starting app
     load_dotenv()
 
@@ -260,6 +262,27 @@ defmodule Mix.Tasks.LlmDb.Pull do
     if File.exists?(env_path) do
       vars = Dotenvy.source!(env_path)
       System.put_env(vars)
+    end
+  end
+
+  defp ensure_llm_db_project! do
+    app = Mix.Project.config()[:app]
+
+    if app != :llm_db do
+      Mix.raise("""
+      mix llm_db.pull can only be run inside the llm_db project itself.
+
+      This task fetches upstream data and writes to priv/llm_db/upstream/. Running
+      it from a downstream application would write files into your project that
+      belong in the :llm_db package.
+
+      If you need to pull fresh data (maintainers only):
+
+          cd path/to/llm_db
+          mix llm_db.pull
+
+      For downstream applications, use the data shipped with :llm_db.
+      """)
     end
   end
 end

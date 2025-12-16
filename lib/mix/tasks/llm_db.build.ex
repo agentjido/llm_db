@@ -34,6 +34,8 @@ defmodule Mix.Tasks.LlmDb.Build do
 
   @impl Mix.Task
   def run(_args) do
+    ensure_llm_db_project!()
+
     Mix.Task.run("app.start")
 
     Mix.shell().info("Building snapshot from configured sources...\n")
@@ -182,5 +184,26 @@ defmodule Mix.Tasks.LlmDb.Build do
     # Ensure file ends with newline (Elixir convention)
     content = if String.ends_with?(formatted, "\n"), do: formatted, else: formatted <> "\n"
     File.write!(module_path, content)
+  end
+
+  defp ensure_llm_db_project! do
+    app = Mix.Project.config()[:app]
+
+    if app != :llm_db do
+      Mix.raise("""
+      mix llm_db.build can only be run inside the llm_db project itself.
+
+      This task generates lib/llm_db/generated/valid_providers.ex. Running it from
+      a downstream application would create a duplicate LLMDB.Generated.ValidProviders
+      module that conflicts with the one shipped in the :llm_db Hex package.
+
+      If you need to regenerate the snapshot (maintainers only):
+
+          cd path/to/llm_db
+          mix llm_db.build
+
+      For downstream applications, use the data and modules shipped with :llm_db.
+      """)
+    end
   end
 end
