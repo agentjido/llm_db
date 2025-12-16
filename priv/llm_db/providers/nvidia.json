@@ -20,6 +20,7 @@
       "deprecated": false,
       "extra": {
         "attachment": false,
+        "family": "flux",
         "open_weights": false,
         "temperature": true
       },
@@ -73,6 +74,7 @@
       "deprecated": false,
       "extra": {
         "attachment": false,
+        "family": "deepseek-v3",
         "open_weights": false,
         "temperature": true
       },
@@ -127,6 +129,7 @@
       "deprecated": false,
       "extra": {
         "attachment": false,
+        "family": "deepseek-v3",
         "open_weights": false,
         "temperature": true
       },
@@ -181,6 +184,7 @@
       "deprecated": false,
       "extra": {
         "attachment": true,
+        "family": "gemma-3",
         "open_weights": false,
         "temperature": true
       },
@@ -384,6 +388,7 @@
       "deprecated": false,
       "extra": {
         "attachment": true,
+        "family": "phi-4",
         "open_weights": false,
         "temperature": true
       },
@@ -440,6 +445,7 @@
       "deprecated": false,
       "extra": {
         "attachment": false,
+        "family": "minimax",
         "open_weights": true,
         "temperature": true
       },
@@ -465,6 +471,119 @@
       "provider": "nvidia",
       "provider_model_id": null,
       "release_date": "2025-10-27",
+      "tags": null
+    },
+    "mistralai/devstral-2-123b-instruct-2512": {
+      "aliases": [],
+      "capabilities": {
+        "chat": true,
+        "embeddings": false,
+        "json": {
+          "native": false,
+          "schema": false,
+          "strict": false
+        },
+        "reasoning": {
+          "enabled": true
+        },
+        "streaming": {
+          "tool_calls": true
+        },
+        "tools": {
+          "enabled": true
+        }
+      },
+      "cost": {
+        "input": 0,
+        "output": 0
+      },
+      "deprecated": false,
+      "extra": {
+        "attachment": true,
+        "family": "devstral",
+        "open_weights": true,
+        "structured_output": true,
+        "temperature": true
+      },
+      "family": null,
+      "id": "mistralai/devstral-2-123b-instruct-2512",
+      "knowledge": "2025-12",
+      "last_updated": "2025-12-09",
+      "lifecycle": null,
+      "limits": {
+        "context": 262144,
+        "output": 262144
+      },
+      "modalities": {
+        "input": [
+          "text"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "model": null,
+      "name": "Devstral-2-123B-Instruct-2512",
+      "provider": "nvidia",
+      "provider_model_id": null,
+      "release_date": "2025-12-08",
+      "tags": null
+    },
+    "mistralai/ministral-14b-instruct-2512": {
+      "aliases": [],
+      "capabilities": {
+        "chat": true,
+        "embeddings": false,
+        "json": {
+          "native": false,
+          "schema": false,
+          "strict": false
+        },
+        "reasoning": {
+          "enabled": false
+        },
+        "streaming": {
+          "tool_calls": true
+        },
+        "tools": {
+          "enabled": true
+        }
+      },
+      "cost": {
+        "input": 0,
+        "output": 0
+      },
+      "deprecated": false,
+      "extra": {
+        "attachment": true,
+        "family": "ministral",
+        "open_weights": true,
+        "structured_output": true,
+        "temperature": true
+      },
+      "family": null,
+      "id": "mistralai/ministral-14b-instruct-2512",
+      "knowledge": "2025-12",
+      "last_updated": "2025-12-08",
+      "lifecycle": null,
+      "limits": {
+        "context": 262144,
+        "output": 262144
+      },
+      "modalities": {
+        "input": [
+          "text",
+          "image"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "model": null,
+      "name": "Ministral 3 14B Instruct 2512",
+      "provider": "nvidia",
+      "provider_model_id": null,
+      "release_date": "2025-12-01",
       "tags": null
     },
     "mistralai/mistral-large-3-675b-instruct-2512": {
@@ -494,6 +613,7 @@
       "deprecated": false,
       "extra": {
         "attachment": true,
+        "family": "mistral-large",
         "open_weights": true,
         "structured_output": true,
         "temperature": true
@@ -550,6 +670,7 @@
       "deprecated": false,
       "extra": {
         "attachment": false,
+        "family": "kimi-k2",
         "open_weights": false,
         "temperature": true
       },
@@ -604,6 +725,7 @@
       "deprecated": false,
       "extra": {
         "attachment": false,
+        "family": "kimi-k2",
         "open_weights": true,
         "temperature": true
       },
@@ -629,6 +751,65 @@
       "provider": "nvidia",
       "provider_model_id": null,
       "release_date": "2025-09-05",
+      "tags": null
+    },
+    "moonshotai/kimi-k2-thinking": {
+      "aliases": [],
+      "capabilities": {
+        "chat": true,
+        "embeddings": false,
+        "json": {
+          "native": false,
+          "schema": false,
+          "strict": false
+        },
+        "reasoning": {
+          "enabled": true
+        },
+        "streaming": {
+          "tool_calls": true
+        },
+        "tools": {
+          "enabled": true
+        }
+      },
+      "cost": {
+        "cache_read": 0,
+        "cache_write": 0,
+        "input": 0,
+        "output": 0
+      },
+      "deprecated": false,
+      "extra": {
+        "attachment": false,
+        "family": "kimi-k2",
+        "interleaved": true,
+        "open_weights": true,
+        "structured_output": true,
+        "temperature": true
+      },
+      "family": null,
+      "id": "moonshotai/kimi-k2-thinking",
+      "knowledge": "2025-07",
+      "last_updated": "2025-12",
+      "lifecycle": null,
+      "limits": {
+        "context": 262144,
+        "output": 262144
+      },
+      "modalities": {
+        "input": [
+          "text"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "model": null,
+      "name": "Kimi K2 Thinking",
+      "provider": "nvidia",
+      "provider_model_id": null,
+      "release_date": "2025-11",
       "tags": null
     },
     "nemotron-nano-12b-v2-vl": {
@@ -867,6 +1048,7 @@
       "deprecated": false,
       "extra": {
         "attachment": false,
+        "family": "nemotron",
         "open_weights": false,
         "temperature": true
       },
@@ -923,6 +1105,7 @@
       "deprecated": false,
       "extra": {
         "attachment": false,
+        "family": "llama-3.1",
         "open_weights": false,
         "temperature": true
       },
@@ -960,6 +1143,7 @@
       "deprecated": false,
       "extra": {
         "attachment": false,
+        "family": "llama",
         "open_weights": false,
         "temperature": false
       },
@@ -997,6 +1181,7 @@
       "deprecated": false,
       "extra": {
         "attachment": false,
+        "family": "nemoretriever-ocr",
         "open_weights": false,
         "temperature": false
       },
@@ -1050,6 +1235,7 @@
       "deprecated": false,
       "extra": {
         "attachment": false,
+        "family": "nemotron",
         "open_weights": true,
         "temperature": true
       },
@@ -1087,6 +1273,7 @@
       "deprecated": false,
       "extra": {
         "attachment": false,
+        "family": "parakeet-tdt-0.6b",
         "open_weights": false,
         "temperature": false
       },
@@ -1144,6 +1331,7 @@
       "deprecated": false,
       "extra": {
         "attachment": true,
+        "family": "gpt-oss",
         "open_weights": false,
         "temperature": true
       },
@@ -1181,6 +1369,7 @@
       "deprecated": false,
       "extra": {
         "attachment": false,
+        "family": "whisper-large",
         "open_weights": true,
         "temperature": false
       },
@@ -1234,6 +1423,7 @@
       "deprecated": false,
       "extra": {
         "attachment": false,
+        "family": "qwen3",
         "open_weights": false,
         "temperature": true
       },
@@ -1288,6 +1478,7 @@
       "deprecated": false,
       "extra": {
         "attachment": false,
+        "family": "qwen3-coder",
         "open_weights": false,
         "temperature": true
       },
@@ -1342,6 +1533,7 @@
       "deprecated": false,
       "extra": {
         "attachment": false,
+        "family": "qwen3",
         "open_weights": false,
         "temperature": true
       },
@@ -1396,6 +1588,7 @@
       "deprecated": false,
       "extra": {
         "attachment": false,
+        "family": "qwen3",
         "open_weights": true,
         "temperature": true
       },

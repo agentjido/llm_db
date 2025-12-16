@@ -10,7 +10,114 @@
   "extra": null,
   "id": "poe",
   "models": {
-    "openAi/o1": {
+    "openai/gpt-image-1-mini": {
+      "aliases": [],
+      "capabilities": {
+        "chat": true,
+        "embeddings": false,
+        "json": {
+          "native": false,
+          "schema": false,
+          "strict": false
+        },
+        "reasoning": {
+          "enabled": false
+        },
+        "streaming": {
+          "tool_calls": true
+        },
+        "tools": {
+          "enabled": true
+        }
+      },
+      "cost": null,
+      "deprecated": false,
+      "extra": {
+        "attachment": true,
+        "family": "gpt-image",
+        "open_weights": false,
+        "temperature": false
+      },
+      "family": null,
+      "id": "openai/gpt-image-1-mini",
+      "knowledge": null,
+      "last_updated": "2025-08-26",
+      "lifecycle": null,
+      "limits": null,
+      "modalities": {
+        "input": [
+          "text",
+          "image"
+        ],
+        "output": [
+          "image"
+        ]
+      },
+      "model": null,
+      "name": "GPT-Image-1-Mini",
+      "provider": "poe",
+      "provider_model_id": null,
+      "release_date": "2025-08-26",
+      "tags": null
+    },
+    "openai/gpt-4.1-mini": {
+      "aliases": [],
+      "capabilities": {
+        "chat": true,
+        "embeddings": false,
+        "json": {
+          "native": false,
+          "schema": false,
+          "strict": false
+        },
+        "reasoning": {
+          "enabled": false
+        },
+        "streaming": {
+          "tool_calls": true
+        },
+        "tools": {
+          "enabled": true
+        }
+      },
+      "cost": {
+        "cache_read": 0.09,
+        "input": 0.36,
+        "output": 1.4
+      },
+      "deprecated": false,
+      "extra": {
+        "attachment": true,
+        "family": "gpt-4.1-mini",
+        "open_weights": false,
+        "temperature": false
+      },
+      "family": null,
+      "id": "openai/gpt-4.1-mini",
+      "knowledge": null,
+      "last_updated": "2025-04-15",
+      "lifecycle": null,
+      "limits": {
+        "context": 1047576,
+        "output": 32768
+      },
+      "modalities": {
+        "input": [
+          "text",
+          "image"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "model": null,
+      "name": "GPT-4.1-mini",
+      "provider": "poe",
+      "provider_model_id": null,
+      "release_date": "2025-04-15",
+      "tags": null
+    },
+    "openai/gpt-5-mini": {
       "aliases": [],
       "capabilities": {
         "chat": true,
@@ -31,23 +138,25 @@
         }
       },
       "cost": {
-        "input": 13,
-        "output": 54
+        "cache_read": 0.022,
+        "input": 0.22,
+        "output": 1.8
       },
       "deprecated": false,
       "extra": {
         "attachment": true,
+        "family": "gpt-5-mini",
         "open_weights": false,
         "temperature": false
       },
       "family": null,
-      "id": "openAi/o1",
+      "id": "openai/gpt-5-mini",
       "knowledge": null,
-      "last_updated": "2024-12-18",
+      "last_updated": "2025-06-25",
       "lifecycle": null,
       "limits": {
-        "context": 200000,
-        "output": 100000
+        "context": 400000,
+        "output": 128000
       },
       "modalities": {
         "input": [
@@ -59,10 +168,10 @@
         ]
       },
       "model": null,
-      "name": "o1",
+      "name": "GPT-5-mini",
       "provider": "poe",
       "provider_model_id": null,
-      "release_date": "2024-12-18",
+      "release_date": "2025-06-25",
       "tags": null
     },
     "topazlabs-co/topazlabs": {
@@ -89,6 +198,7 @@
       "deprecated": false,
       "extra": {
         "attachment": true,
+        "family": "topazlabs",
         "open_weights": false,
         "temperature": false
       },
@@ -115,60 +225,6 @@
       "release_date": "2024-12-03",
       "tags": null
     },
-    "openAi/gpt-4o-mini-search": {
-      "aliases": [],
-      "capabilities": {
-        "chat": true,
-        "embeddings": false,
-        "json": {
-          "native": false,
-          "schema": false,
-          "strict": false
-        },
-        "reasoning": {
-          "enabled": false
-        },
-        "streaming": {
-          "tool_calls": true
-        },
-        "tools": {
-          "enabled": true
-        }
-      },
-      "cost": {
-        "input": 0.14,
-        "output": 0.54
-      },
-      "deprecated": false,
-      "extra": {
-        "attachment": true,
-        "open_weights": false,
-        "temperature": false
-      },
-      "family": null,
-      "id": "openAi/gpt-4o-mini-search",
-      "knowledge": null,
-      "last_updated": "2025-03-11",
-      "lifecycle": null,
-      "limits": {
-        "context": 128000,
-        "output": 8192
-      },
-      "modalities": {
-        "input": [
-          "text"
-        ],
-        "output": [
-          "text"
-        ]
-      },
-      "model": null,
-      "name": "GPT-4o-mini-Search",
-      "provider": "poe",
-      "provider_model_id": null,
-      "release_date": "2025-03-11",
-      "tags": null
-    },
     "anthropic/claude-sonnet-4-reasoning": {
       "aliases": [],
       "capabilities": {
@@ -190,7 +246,7 @@
         }
       },
       "cost": {
-        "cache_read": 0.25,
+        "cache_read": 0.26,
         "cache_write": 3.2,
         "input": 2.6,
         "output": 13
@@ -198,6 +254,7 @@
       "deprecated": false,
       "extra": {
         "attachment": true,
+        "family": "claude-sonnet",
         "open_weights": false,
         "temperature": false
       },
@@ -213,7 +270,8 @@
       "modalities": {
         "input": [
           "text",
-          "image"
+          "image",
+          "pdf"
         ],
         "output": [
           "text"
@@ -226,7 +284,7 @@
       "release_date": "2025-05-21",
       "tags": null
     },
-    "openAi/gpt-3.5-turbo": {
+    "openai/gpt-4o-mini": {
       "aliases": [],
       "capabilities": {
         "chat": true,
@@ -247,23 +305,25 @@
         }
       },
       "cost": {
-        "input": 0.45,
-        "output": 1.3
+        "cache_read": 0.068,
+        "input": 0.14,
+        "output": 0.54
       },
       "deprecated": false,
       "extra": {
         "attachment": true,
+        "family": "gpt-4o-mini",
         "open_weights": false,
         "temperature": false
       },
       "family": null,
-      "id": "openAi/gpt-3.5-turbo",
+      "id": "openai/gpt-4o-mini",
       "knowledge": null,
-      "last_updated": "2023-09-13",
+      "last_updated": "2024-07-18",
       "lifecycle": null,
       "limits": {
-        "context": 16384,
-        "output": 2048
+        "context": 128000,
+        "output": 4096
       },
       "modalities": {
         "input": [
@@ -275,10 +335,10 @@
         ]
       },
       "model": null,
-      "name": "GPT-3.5-Turbo",
+      "name": "GPT-4o-mini",
       "provider": "poe",
       "provider_model_id": null,
-      "release_date": "2023-09-13",
+      "release_date": "2024-07-18",
       "tags": null
     },
     "openai/gpt-5.1-instant": {
@@ -309,6 +369,7 @@
       "deprecated": false,
       "extra": {
         "attachment": true,
+        "family": "gpt-5",
         "open_weights": false,
         "temperature": false
       },
@@ -335,62 +396,6 @@
       "provider": "poe",
       "provider_model_id": null,
       "release_date": "2025-11-12",
-      "tags": null
-    },
-    "openAi/gpt-4o-mini": {
-      "aliases": [],
-      "capabilities": {
-        "chat": true,
-        "embeddings": false,
-        "json": {
-          "native": false,
-          "schema": false,
-          "strict": false
-        },
-        "reasoning": {
-          "enabled": false
-        },
-        "streaming": {
-          "tool_calls": true
-        },
-        "tools": {
-          "enabled": true
-        }
-      },
-      "cost": {
-        "cache_read": 0.068,
-        "input": 0.14,
-        "output": 0.54
-      },
-      "deprecated": false,
-      "extra": {
-        "attachment": true,
-        "open_weights": false,
-        "temperature": false
-      },
-      "family": null,
-      "id": "openAi/gpt-4o-mini",
-      "knowledge": null,
-      "last_updated": "2024-07-18",
-      "lifecycle": null,
-      "limits": {
-        "context": 128000,
-        "output": 4096
-      },
-      "modalities": {
-        "input": [
-          "text",
-          "image"
-        ],
-        "output": [
-          "text"
-        ]
-      },
-      "model": null,
-      "name": "GPT-4o-mini",
-      "provider": "poe",
-      "provider_model_id": null,
-      "release_date": "2024-07-18",
       "tags": null
     },
     "google/gemini-2.0-flash": {
@@ -420,6 +425,7 @@
       "deprecated": false,
       "extra": {
         "attachment": true,
+        "family": "gemini-flash",
         "open_weights": false,
         "temperature": false
       },
@@ -478,6 +484,7 @@
       "deprecated": false,
       "extra": {
         "attachment": true,
+        "family": "grok-4",
         "open_weights": false,
         "temperature": false
       },
@@ -487,7 +494,7 @@
       "last_updated": "2025-09-16",
       "lifecycle": null,
       "limits": {
-        "context": 256000,
+        "context": 2000000,
         "output": 128000
       },
       "modalities": {
@@ -503,117 +510,6 @@
       "provider": "poe",
       "provider_model_id": null,
       "release_date": "2025-09-16",
-      "tags": null
-    },
-    "openAi/gpt-5-chat": {
-      "aliases": [],
-      "capabilities": {
-        "chat": true,
-        "embeddings": false,
-        "json": {
-          "native": false,
-          "schema": false,
-          "strict": false
-        },
-        "reasoning": {
-          "enabled": false
-        },
-        "streaming": {
-          "tool_calls": true
-        },
-        "tools": {
-          "enabled": true
-        }
-      },
-      "cost": {
-        "cache_read": 0.11,
-        "input": 1.1,
-        "output": 9
-      },
-      "deprecated": false,
-      "extra": {
-        "attachment": true,
-        "open_weights": false,
-        "temperature": false
-      },
-      "family": null,
-      "id": "openAi/gpt-5-chat",
-      "knowledge": null,
-      "last_updated": "2025-08-07",
-      "lifecycle": null,
-      "limits": {
-        "context": 128000,
-        "output": 16384
-      },
-      "modalities": {
-        "input": [
-          "text",
-          "image"
-        ],
-        "output": [
-          "text"
-        ]
-      },
-      "model": null,
-      "name": "GPT-5-Chat",
-      "provider": "poe",
-      "provider_model_id": null,
-      "release_date": "2025-08-07",
-      "tags": null
-    },
-    "openAi/o3-mini": {
-      "aliases": [],
-      "capabilities": {
-        "chat": true,
-        "embeddings": false,
-        "json": {
-          "native": false,
-          "schema": false,
-          "strict": false
-        },
-        "reasoning": {
-          "enabled": true
-        },
-        "streaming": {
-          "tool_calls": true
-        },
-        "tools": {
-          "enabled": true
-        }
-      },
-      "cost": {
-        "input": 0.99,
-        "output": 4
-      },
-      "deprecated": false,
-      "extra": {
-        "attachment": true,
-        "open_weights": false,
-        "temperature": false
-      },
-      "family": null,
-      "id": "openAi/o3-mini",
-      "knowledge": null,
-      "last_updated": "2025-01-31",
-      "lifecycle": null,
-      "limits": {
-        "context": 200000,
-        "output": 100000
-      },
-      "modalities": {
-        "input": [
-          "text",
-          "image"
-        ],
-        "output": [
-          "text"
-        ]
-      },
-      "model": null,
-      "name": "o3-mini",
-      "provider": "poe",
-      "provider_model_id": null,
-      "release_date": "2025-01-31",
       "tags": null
     },
     "google/imagen-3": {
@@ -640,6 +536,7 @@
       "deprecated": false,
       "extra": {
         "attachment": true,
+        "family": "imagen",
         "open_weights": false,
         "temperature": false
       },
@@ -690,6 +587,7 @@
       "deprecated": false,
       "extra": {
         "attachment": true,
+        "family": "elevenlabs-music",
         "open_weights": false,
         "temperature": false
       },
@@ -714,6 +612,120 @@
       "provider": "poe",
       "provider_model_id": null,
       "release_date": "2025-08-29",
+      "tags": null
+    },
+    "openai/gpt-4o-mini-search": {
+      "aliases": [],
+      "capabilities": {
+        "chat": true,
+        "embeddings": false,
+        "json": {
+          "native": false,
+          "schema": false,
+          "strict": false
+        },
+        "reasoning": {
+          "enabled": false
+        },
+        "streaming": {
+          "tool_calls": true
+        },
+        "tools": {
+          "enabled": true
+        }
+      },
+      "cost": {
+        "input": 0.14,
+        "output": 0.54
+      },
+      "deprecated": false,
+      "extra": {
+        "attachment": true,
+        "family": "gpt-4o-mini",
+        "open_weights": false,
+        "temperature": false
+      },
+      "family": null,
+      "id": "openai/gpt-4o-mini-search",
+      "knowledge": null,
+      "last_updated": "2025-03-11",
+      "lifecycle": null,
+      "limits": {
+        "context": 128000,
+        "output": 8192
+      },
+      "modalities": {
+        "input": [
+          "text"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "model": null,
+      "name": "GPT-4o-mini-Search",
+      "provider": "poe",
+      "provider_model_id": null,
+      "release_date": "2025-03-11",
+      "tags": null
+    },
+    "google/gemini-3-pro": {
+      "aliases": [],
+      "capabilities": {
+        "chat": true,
+        "embeddings": false,
+        "json": {
+          "native": false,
+          "schema": false,
+          "strict": false
+        },
+        "reasoning": {
+          "enabled": true
+        },
+        "streaming": {
+          "tool_calls": true
+        },
+        "tools": {
+          "enabled": true
+        }
+      },
+      "cost": {
+        "cache_read": 0.16,
+        "input": 1.6,
+        "output": 9.6
+      },
+      "deprecated": false,
+      "extra": {
+        "attachment": true,
+        "family": "gemini-pro",
+        "open_weights": false,
+        "temperature": false
+      },
+      "family": null,
+      "id": "google/gemini-3-pro",
+      "knowledge": null,
+      "last_updated": "2025-10-22",
+      "lifecycle": null,
+      "limits": {
+        "context": 1048576,
+        "output": 64000
+      },
+      "modalities": {
+        "input": [
+          "text",
+          "image",
+          "video",
+          "audio"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "model": null,
+      "name": "Gemini-3-Pro",
+      "provider": "poe",
+      "provider_model_id": null,
+      "release_date": "2025-10-22",
       "tags": null
     },
     "anthropic/claude-opus-4-search": {
@@ -745,6 +757,7 @@
       "deprecated": false,
       "extra": {
         "attachment": true,
+        "family": "claude-opus",
         "open_weights": false,
         "temperature": false
       },
@@ -760,7 +773,8 @@
       "modalities": {
         "input": [
           "text",
-          "image"
+          "image",
+          "pdf"
         ],
         "output": [
           "text"
@@ -773,7 +787,63 @@
       "release_date": "2025-06-20",
       "tags": null
     },
-    "openAi/gpt-4o": {
+    "openai/o3-mini": {
+      "aliases": [],
+      "capabilities": {
+        "chat": true,
+        "embeddings": false,
+        "json": {
+          "native": false,
+          "schema": false,
+          "strict": false
+        },
+        "reasoning": {
+          "enabled": true
+        },
+        "streaming": {
+          "tool_calls": true
+        },
+        "tools": {
+          "enabled": true
+        }
+      },
+      "cost": {
+        "input": 0.99,
+        "output": 4
+      },
+      "deprecated": false,
+      "extra": {
+        "attachment": true,
+        "family": "o3-mini",
+        "open_weights": false,
+        "temperature": false
+      },
+      "family": null,
+      "id": "openai/o3-mini",
+      "knowledge": null,
+      "last_updated": "2025-01-31",
+      "lifecycle": null,
+      "limits": {
+        "context": 200000,
+        "output": 100000
+      },
+      "modalities": {
+        "input": [
+          "text",
+          "image"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "model": null,
+      "name": "o3-mini",
+      "provider": "poe",
+      "provider_model_id": null,
+      "release_date": "2025-01-31",
+      "tags": null
+    },
+    "openai/dall-e-3": {
       "aliases": [],
       "capabilities": {
         "chat": true,
@@ -797,17 +867,68 @@
       "deprecated": false,
       "extra": {
         "attachment": true,
+        "family": "dall-e-3",
         "open_weights": false,
         "temperature": false
       },
       "family": null,
-      "id": "openAi/gpt-4o",
+      "id": "openai/dall-e-3",
       "knowledge": null,
-      "last_updated": "2024-05-13",
+      "last_updated": "2023-11-06",
       "lifecycle": null,
       "limits": {
-        "context": 128000,
-        "output": 8192
+        "context": 800
+      },
+      "modalities": {
+        "input": [
+          "text"
+        ],
+        "output": [
+          "image"
+        ]
+      },
+      "model": null,
+      "name": "DALL-E-3",
+      "provider": "poe",
+      "provider_model_id": null,
+      "release_date": "2023-11-06",
+      "tags": null
+    },
+    "openai/gpt-image-1": {
+      "aliases": [],
+      "capabilities": {
+        "chat": true,
+        "embeddings": false,
+        "json": {
+          "native": false,
+          "schema": false,
+          "strict": false
+        },
+        "reasoning": {
+          "enabled": false
+        },
+        "streaming": {
+          "tool_calls": true
+        },
+        "tools": {
+          "enabled": true
+        }
+      },
+      "cost": null,
+      "deprecated": false,
+      "extra": {
+        "attachment": true,
+        "family": "gpt-image",
+        "open_weights": false,
+        "temperature": false
+      },
+      "family": null,
+      "id": "openai/gpt-image-1",
+      "knowledge": null,
+      "last_updated": "2025-03-31",
+      "lifecycle": null,
+      "limits": {
+        "context": 128000
       },
       "modalities": {
         "input": [
@@ -815,14 +936,14 @@
           "image"
         ],
         "output": [
-          "text"
+          "image"
         ]
       },
       "model": null,
-      "name": "GPT-4o",
+      "name": "GPT-Image-1",
       "provider": "poe",
       "provider_model_id": null,
-      "release_date": "2024-05-13",
+      "release_date": "2025-03-31",
       "tags": null
     },
     "anthropic/claude-opus-4-reasoning": {
@@ -854,6 +975,7 @@
       "deprecated": false,
       "extra": {
         "attachment": true,
+        "family": "claude-opus",
         "open_weights": false,
         "temperature": false
       },
@@ -869,7 +991,8 @@
       "modalities": {
         "input": [
           "text",
-          "image"
+          "image",
+          "pdf"
         ],
         "output": [
           "text"
@@ -906,6 +1029,7 @@
       "deprecated": false,
       "extra": {
         "attachment": true,
+        "family": "runway-gen-4-turbo",
         "open_weights": false,
         "temperature": false
       },
@@ -961,6 +1085,7 @@
       "deprecated": false,
       "extra": {
         "attachment": true,
+        "family": "gpt-5-codex-mini",
         "open_weights": false,
         "temperature": false
       },
@@ -1012,6 +1137,7 @@
       "deprecated": false,
       "extra": {
         "attachment": true,
+        "family": "veo-3-fast",
         "open_weights": false,
         "temperature": false
       },
@@ -1062,6 +1188,7 @@
       "deprecated": false,
       "extra": {
         "attachment": true,
+        "family": "ideogram",
         "open_weights": false,
         "temperature": false
       },
@@ -1088,6 +1215,62 @@
       "release_date": "2025-02-27",
       "tags": null
     },
+    "openai/gpt-5.1-codex-max": {
+      "aliases": [],
+      "capabilities": {
+        "chat": true,
+        "embeddings": false,
+        "json": {
+          "native": false,
+          "schema": false,
+          "strict": false
+        },
+        "reasoning": {
+          "enabled": true
+        },
+        "streaming": {
+          "tool_calls": true
+        },
+        "tools": {
+          "enabled": true
+        }
+      },
+      "cost": {
+        "cache_read": 0.11,
+        "input": 1.1,
+        "output": 9
+      },
+      "deprecated": false,
+      "extra": {
+        "attachment": true,
+        "open_weights": false,
+        "temperature": false
+      },
+      "family": null,
+      "id": "openai/gpt-5.1-codex-max",
+      "knowledge": null,
+      "last_updated": "2025-12-08",
+      "lifecycle": null,
+      "limits": {
+        "context": 400000,
+        "output": 128000
+      },
+      "modalities": {
+        "input": [
+          "text",
+          "image"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "model": null,
+      "name": "gpt-5.1-codex-max",
+      "provider": "poe",
+      "provider_model_id": null,
+      "release_date": "2025-12-08",
+      "tags": null
+    },
     "anthropic/claude-haiku-4.5": {
       "aliases": [],
       "capabilities": {
@@ -1112,11 +1295,12 @@
         "cache_read": 0.085,
         "cache_write": 1.1,
         "input": 0.85,
-        "output": 4.2
+        "output": 4.3
       },
       "deprecated": false,
       "extra": {
         "attachment": true,
+        "family": "claude-haiku",
         "open_weights": false,
         "temperature": false
       },
@@ -1132,7 +1316,8 @@
       "modalities": {
         "input": [
           "text",
-          "image"
+          "image",
+          "pdf"
         ],
         "output": [
           "text"
@@ -1172,6 +1357,7 @@
       "deprecated": false,
       "extra": {
         "attachment": true,
+        "family": "gemini-flash-lite",
         "open_weights": false,
         "temperature": false
       },
@@ -1229,6 +1415,7 @@
       "deprecated": false,
       "extra": {
         "attachment": true,
+        "family": "grok-2",
         "open_weights": false,
         "temperature": false
       },
@@ -1256,61 +1443,6 @@
       "release_date": "2025-01-14",
       "tags": null
     },
-    "openAi/o3-mini-high": {
-      "aliases": [],
-      "capabilities": {
-        "chat": true,
-        "embeddings": false,
-        "json": {
-          "native": false,
-          "schema": false,
-          "strict": false
-        },
-        "reasoning": {
-          "enabled": true
-        },
-        "streaming": {
-          "tool_calls": true
-        },
-        "tools": {
-          "enabled": true
-        }
-      },
-      "cost": {
-        "input": 0.99,
-        "output": 4
-      },
-      "deprecated": false,
-      "extra": {
-        "attachment": true,
-        "open_weights": false,
-        "temperature": false
-      },
-      "family": null,
-      "id": "openAi/o3-mini-high",
-      "knowledge": null,
-      "last_updated": "2025-01-31",
-      "lifecycle": null,
-      "limits": {
-        "context": 200000,
-        "output": 100000
-      },
-      "modalities": {
-        "input": [
-          "text",
-          "image"
-        ],
-        "output": [
-          "text"
-        ]
-      },
-      "model": null,
-      "name": "o3-mini-high",
-      "provider": "poe",
-      "provider_model_id": null,
-      "release_date": "2025-01-31",
-      "tags": null
-    },
     "anthropic/claude-sonnet-4.5": {
       "aliases": [],
       "capabilities": {
@@ -1332,7 +1464,7 @@
         }
       },
       "cost": {
-        "cache_read": 0.25,
+        "cache_read": 0.26,
         "cache_write": 3.2,
         "input": 2.6,
         "output": 13
@@ -1340,6 +1472,7 @@
       "deprecated": false,
       "extra": {
         "attachment": true,
+        "family": "claude-sonnet",
         "open_weights": false,
         "temperature": false
       },
@@ -1355,7 +1488,8 @@
       "modalities": {
         "input": [
           "text",
-          "image"
+          "image",
+          "pdf"
         ],
         "output": [
           "text"
@@ -1392,6 +1526,7 @@
       "deprecated": false,
       "extra": {
         "attachment": true,
+        "family": "veo",
         "open_weights": false,
         "temperature": false
       },
@@ -1418,6 +1553,63 @@
       "release_date": "2025-10-15",
       "tags": null
     },
+    "openai/o3": {
+      "aliases": [],
+      "capabilities": {
+        "chat": true,
+        "embeddings": false,
+        "json": {
+          "native": false,
+          "schema": false,
+          "strict": false
+        },
+        "reasoning": {
+          "enabled": true
+        },
+        "streaming": {
+          "tool_calls": true
+        },
+        "tools": {
+          "enabled": true
+        }
+      },
+      "cost": {
+        "cache_read": 0.45,
+        "input": 1.8,
+        "output": 7.2
+      },
+      "deprecated": false,
+      "extra": {
+        "attachment": true,
+        "family": "o3",
+        "open_weights": false,
+        "temperature": false
+      },
+      "family": null,
+      "id": "openai/o3",
+      "knowledge": null,
+      "last_updated": "2025-04-16",
+      "lifecycle": null,
+      "limits": {
+        "context": 200000,
+        "output": 100000
+      },
+      "modalities": {
+        "input": [
+          "text",
+          "image"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "model": null,
+      "name": "o3",
+      "provider": "poe",
+      "provider_model_id": null,
+      "release_date": "2025-04-16",
+      "tags": null
+    },
     "novita/glm-4.6": {
       "aliases": [],
       "capabilities": {
@@ -1442,6 +1634,7 @@
       "deprecated": false,
       "extra": {
         "attachment": true,
+        "family": "glm-4.6",
         "open_weights": false,
         "temperature": false
       },
@@ -1464,61 +1657,6 @@
       "provider": "poe",
       "provider_model_id": null,
       "release_date": "2025-09-30",
-      "tags": null
-    },
-    "openAi/gpt-5-codex": {
-      "aliases": [],
-      "capabilities": {
-        "chat": true,
-        "embeddings": false,
-        "json": {
-          "native": false,
-          "schema": false,
-          "strict": false
-        },
-        "reasoning": {
-          "enabled": true
-        },
-        "streaming": {
-          "tool_calls": true
-        },
-        "tools": {
-          "enabled": true
-        }
-      },
-      "cost": {
-        "input": 1.1,
-        "output": 9
-      },
-      "deprecated": false,
-      "extra": {
-        "attachment": true,
-        "open_weights": false,
-        "temperature": false
-      },
-      "family": null,
-      "id": "openAi/gpt-5-codex",
-      "knowledge": null,
-      "last_updated": "2025-09-23",
-      "lifecycle": null,
-      "limits": {
-        "context": 400000,
-        "output": 128000
-      },
-      "modalities": {
-        "input": [
-          "text",
-          "image"
-        ],
-        "output": [
-          "text"
-        ]
-      },
-      "model": null,
-      "name": "GPT-5-Codex",
-      "provider": "poe",
-      "provider_model_id": null,
-      "release_date": "2025-09-23",
       "tags": null
     },
     "google/imagen-4-ultra": {
@@ -1545,6 +1683,7 @@
       "deprecated": false,
       "extra": {
         "attachment": true,
+        "family": "imagen-4-ultra",
         "open_weights": false,
         "temperature": false
       },
@@ -1595,6 +1734,7 @@
       "deprecated": false,
       "extra": {
         "attachment": true,
+        "family": "elevenlabs",
         "open_weights": false,
         "temperature": false
       },
@@ -1621,7 +1761,7 @@
       "release_date": "2025-06-05",
       "tags": null
     },
-    "openAi/gpt-4.1-mini": {
+    "openai/o1": {
       "aliases": [],
       "capabilities": {
         "chat": true,
@@ -1632,7 +1772,7 @@
           "strict": false
         },
         "reasoning": {
-          "enabled": false
+          "enabled": true
         },
         "streaming": {
           "tool_calls": true
@@ -1642,24 +1782,24 @@
         }
       },
       "cost": {
-        "cache_read": 0.09,
-        "input": 0.36,
-        "output": 1.4
+        "input": 14,
+        "output": 54
       },
       "deprecated": false,
       "extra": {
         "attachment": true,
+        "family": "o1",
         "open_weights": false,
         "temperature": false
       },
       "family": null,
-      "id": "openAi/gpt-4.1-mini",
+      "id": "openai/o1",
       "knowledge": null,
-      "last_updated": "2025-04-15",
+      "last_updated": "2024-12-18",
       "lifecycle": null,
       "limits": {
-        "context": 1047576,
-        "output": 32768
+        "context": 200000,
+        "output": 100000
       },
       "modalities": {
         "input": [
@@ -1671,10 +1811,10 @@
         ]
       },
       "model": null,
-      "name": "GPT-4.1-mini",
+      "name": "o1",
       "provider": "poe",
       "provider_model_id": null,
-      "release_date": "2025-04-15",
+      "release_date": "2024-12-18",
       "tags": null
     },
     "xai/grok-code-fast-1": {
@@ -1705,6 +1845,7 @@
       "deprecated": false,
       "extra": {
         "attachment": true,
+        "family": "grok",
         "open_weights": false,
         "temperature": false
       },
@@ -1757,6 +1898,7 @@
       "deprecated": false,
       "extra": {
         "attachment": true,
+        "family": "elevenlabs-v2.5-turbo",
         "open_weights": false,
         "temperature": false
       },
@@ -1783,62 +1925,6 @@
       "release_date": "2024-10-28",
       "tags": null
     },
-    "openAi/gpt-4.1-nano": {
-      "aliases": [],
-      "capabilities": {
-        "chat": true,
-        "embeddings": false,
-        "json": {
-          "native": false,
-          "schema": false,
-          "strict": false
-        },
-        "reasoning": {
-          "enabled": false
-        },
-        "streaming": {
-          "tool_calls": true
-        },
-        "tools": {
-          "enabled": true
-        }
-      },
-      "cost": {
-        "cache_read": 0.023,
-        "input": 0.09,
-        "output": 0.36
-      },
-      "deprecated": false,
-      "extra": {
-        "attachment": true,
-        "open_weights": false,
-        "temperature": false
-      },
-      "family": null,
-      "id": "openAi/gpt-4.1-nano",
-      "knowledge": null,
-      "last_updated": "2025-04-15",
-      "lifecycle": null,
-      "limits": {
-        "context": 1047576,
-        "output": 32768
-      },
-      "modalities": {
-        "input": [
-          "text",
-          "image"
-        ],
-        "output": [
-          "text"
-        ]
-      },
-      "model": null,
-      "name": "GPT-4.1-nano",
-      "provider": "poe",
-      "provider_model_id": null,
-      "release_date": "2025-04-15",
-      "tags": null
-    },
     "google/imagen-3-fast": {
       "aliases": [],
       "capabilities": {
@@ -1863,6 +1949,7 @@
       "deprecated": false,
       "extra": {
         "attachment": true,
+        "family": "imagen-3-fast",
         "open_weights": false,
         "temperature": false
       },
@@ -1889,6 +1976,62 @@
       "release_date": "2024-10-17",
       "tags": null
     },
+    "openai/gpt-4-classic": {
+      "aliases": [],
+      "capabilities": {
+        "chat": true,
+        "embeddings": false,
+        "json": {
+          "native": false,
+          "schema": false,
+          "strict": false
+        },
+        "reasoning": {
+          "enabled": false
+        },
+        "streaming": {
+          "tool_calls": true
+        },
+        "tools": {
+          "enabled": true
+        }
+      },
+      "cost": {
+        "input": 27,
+        "output": 54
+      },
+      "deprecated": false,
+      "extra": {
+        "attachment": true,
+        "family": "gpt-4",
+        "open_weights": false,
+        "temperature": false
+      },
+      "family": null,
+      "id": "openai/gpt-4-classic",
+      "knowledge": null,
+      "last_updated": "2024-03-25",
+      "lifecycle": null,
+      "limits": {
+        "context": 8192,
+        "output": 4096
+      },
+      "modalities": {
+        "input": [
+          "text",
+          "image"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "model": null,
+      "name": "GPT-4-Classic",
+      "provider": "poe",
+      "provider_model_id": null,
+      "release_date": "2024-03-25",
+      "tags": null
+    },
     "ideogramai/ideogram-v2a-turbo": {
       "aliases": [],
       "capabilities": {
@@ -1913,6 +2056,7 @@
       "deprecated": false,
       "extra": {
         "attachment": true,
+        "family": "ideogram",
         "open_weights": false,
         "temperature": false
       },
@@ -1939,6 +2083,175 @@
       "release_date": "2025-02-27",
       "tags": null
     },
+    "openai/gpt-4.1": {
+      "aliases": [],
+      "capabilities": {
+        "chat": true,
+        "embeddings": false,
+        "json": {
+          "native": false,
+          "schema": false,
+          "strict": false
+        },
+        "reasoning": {
+          "enabled": false
+        },
+        "streaming": {
+          "tool_calls": true
+        },
+        "tools": {
+          "enabled": true
+        }
+      },
+      "cost": {
+        "cache_read": 0.45,
+        "input": 1.8,
+        "output": 7.2
+      },
+      "deprecated": false,
+      "extra": {
+        "attachment": true,
+        "family": "gpt-4.1",
+        "open_weights": false,
+        "temperature": false
+      },
+      "family": null,
+      "id": "openai/gpt-4.1",
+      "knowledge": null,
+      "last_updated": "2025-04-14",
+      "lifecycle": null,
+      "limits": {
+        "context": 1047576,
+        "output": 32768
+      },
+      "modalities": {
+        "input": [
+          "text",
+          "image"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "model": null,
+      "name": "GPT-4.1",
+      "provider": "poe",
+      "provider_model_id": null,
+      "release_date": "2025-04-14",
+      "tags": null
+    },
+    "openai/o3-deep-research": {
+      "aliases": [],
+      "capabilities": {
+        "chat": true,
+        "embeddings": false,
+        "json": {
+          "native": false,
+          "schema": false,
+          "strict": false
+        },
+        "reasoning": {
+          "enabled": true
+        },
+        "streaming": {
+          "tool_calls": true
+        },
+        "tools": {
+          "enabled": true
+        }
+      },
+      "cost": {
+        "cache_read": 2.2,
+        "input": 9,
+        "output": 36
+      },
+      "deprecated": false,
+      "extra": {
+        "attachment": true,
+        "family": "o3",
+        "open_weights": false,
+        "temperature": false
+      },
+      "family": null,
+      "id": "openai/o3-deep-research",
+      "knowledge": null,
+      "last_updated": "2025-06-27",
+      "lifecycle": null,
+      "limits": {
+        "context": 200000,
+        "output": 100000
+      },
+      "modalities": {
+        "input": [
+          "text"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "model": null,
+      "name": "o3-deep-research",
+      "provider": "poe",
+      "provider_model_id": null,
+      "release_date": "2025-06-27",
+      "tags": null
+    },
+    "openai/gpt-5-pro": {
+      "aliases": [],
+      "capabilities": {
+        "chat": true,
+        "embeddings": false,
+        "json": {
+          "native": false,
+          "schema": false,
+          "strict": false
+        },
+        "reasoning": {
+          "enabled": true
+        },
+        "streaming": {
+          "tool_calls": true
+        },
+        "tools": {
+          "enabled": true
+        }
+      },
+      "cost": {
+        "input": 14,
+        "output": 110
+      },
+      "deprecated": false,
+      "extra": {
+        "attachment": true,
+        "family": "gpt-5-pro",
+        "open_weights": false,
+        "temperature": false
+      },
+      "family": null,
+      "id": "openai/gpt-5-pro",
+      "knowledge": null,
+      "last_updated": "2025-10-06",
+      "lifecycle": null,
+      "limits": {
+        "context": 400000,
+        "output": 128000
+      },
+      "modalities": {
+        "input": [
+          "text",
+          "image"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "model": null,
+      "name": "GPT-5-Pro",
+      "provider": "poe",
+      "provider_model_id": null,
+      "release_date": "2025-10-06",
+      "tags": null
+    },
     "lumalabs/dream-machine": {
       "aliases": [],
       "capabilities": {
@@ -1963,6 +2276,7 @@
       "deprecated": false,
       "extra": {
         "attachment": true,
+        "family": "dream-machine",
         "open_weights": false,
         "temperature": false
       },
@@ -2018,6 +2332,7 @@
       "deprecated": false,
       "extra": {
         "attachment": true,
+        "family": "grok-3",
         "open_weights": false,
         "temperature": false
       },
@@ -2068,11 +2383,12 @@
       },
       "cost": {
         "input": 0.21,
-        "output": 1.7
+        "output": 1.8
       },
       "deprecated": false,
       "extra": {
         "attachment": true,
+        "family": "nano-banana",
         "open_weights": false,
         "temperature": false
       },
@@ -2101,106 +2417,6 @@
       "release_date": "2025-08-21",
       "tags": null
     },
-    "openAi/gpt-image-1-mini": {
-      "aliases": [],
-      "capabilities": {
-        "chat": true,
-        "embeddings": false,
-        "json": {
-          "native": false,
-          "schema": false,
-          "strict": false
-        },
-        "reasoning": {
-          "enabled": false
-        },
-        "streaming": {
-          "tool_calls": true
-        },
-        "tools": {
-          "enabled": true
-        }
-      },
-      "cost": null,
-      "deprecated": false,
-      "extra": {
-        "attachment": true,
-        "open_weights": false,
-        "temperature": false
-      },
-      "family": null,
-      "id": "openAi/gpt-image-1-mini",
-      "knowledge": null,
-      "last_updated": "2025-08-26",
-      "lifecycle": null,
-      "limits": null,
-      "modalities": {
-        "input": [
-          "text",
-          "image"
-        ],
-        "output": [
-          "image"
-        ]
-      },
-      "model": null,
-      "name": "GPT-Image-1-Mini",
-      "provider": "poe",
-      "provider_model_id": null,
-      "release_date": "2025-08-26",
-      "tags": null
-    },
-    "openAi/gpt-image-1": {
-      "aliases": [],
-      "capabilities": {
-        "chat": true,
-        "embeddings": false,
-        "json": {
-          "native": false,
-          "schema": false,
-          "strict": false
-        },
-        "reasoning": {
-          "enabled": false
-        },
-        "streaming": {
-          "tool_calls": true
-        },
-        "tools": {
-          "enabled": true
-        }
-      },
-      "cost": null,
-      "deprecated": false,
-      "extra": {
-        "attachment": true,
-        "open_weights": false,
-        "temperature": false
-      },
-      "family": null,
-      "id": "openAi/gpt-image-1",
-      "knowledge": null,
-      "last_updated": "2025-03-31",
-      "lifecycle": null,
-      "limits": {
-        "context": 128000
-      },
-      "modalities": {
-        "input": [
-          "text",
-          "image"
-        ],
-        "output": [
-          "image"
-        ]
-      },
-      "model": null,
-      "name": "GPT-Image-1",
-      "provider": "poe",
-      "provider_model_id": null,
-      "release_date": "2025-03-31",
-      "tags": null
-    },
     "trytako/tako": {
       "aliases": [],
       "capabilities": {
@@ -2225,6 +2441,7 @@
       "deprecated": false,
       "extra": {
         "attachment": true,
+        "family": "tako",
         "open_weights": false,
         "temperature": false
       },
@@ -2251,118 +2468,7 @@
       "release_date": "2024-08-15",
       "tags": null
     },
-    "openAi/o1-pro": {
-      "aliases": [],
-      "capabilities": {
-        "chat": true,
-        "embeddings": false,
-        "json": {
-          "native": false,
-          "schema": false,
-          "strict": false
-        },
-        "reasoning": {
-          "enabled": true
-        },
-        "streaming": {
-          "tool_calls": true
-        },
-        "tools": {
-          "enabled": true
-        }
-      },
-      "cost": {
-        "input": 140,
-        "output": 540
-      },
-      "deprecated": false,
-      "extra": {
-        "attachment": true,
-        "open_weights": false,
-        "temperature": false
-      },
-      "family": null,
-      "id": "openAi/o1-pro",
-      "knowledge": null,
-      "last_updated": "2025-03-19",
-      "lifecycle": null,
-      "limits": {
-        "context": 200000,
-        "output": 100000
-      },
-      "modalities": {
-        "input": [
-          "text",
-          "image"
-        ],
-        "output": [
-          "text"
-        ]
-      },
-      "model": null,
-      "name": "o1-pro",
-      "provider": "poe",
-      "provider_model_id": null,
-      "release_date": "2025-03-19",
-      "tags": null
-    },
-    "openAi/o4-mini": {
-      "aliases": [],
-      "capabilities": {
-        "chat": true,
-        "embeddings": false,
-        "json": {
-          "native": false,
-          "schema": false,
-          "strict": false
-        },
-        "reasoning": {
-          "enabled": true
-        },
-        "streaming": {
-          "tool_calls": true
-        },
-        "tools": {
-          "enabled": true
-        }
-      },
-      "cost": {
-        "cache_read": 0.25,
-        "input": 0.99,
-        "output": 4
-      },
-      "deprecated": false,
-      "extra": {
-        "attachment": true,
-        "open_weights": false,
-        "temperature": false
-      },
-      "family": null,
-      "id": "openAi/o4-mini",
-      "knowledge": null,
-      "last_updated": "2025-04-16",
-      "lifecycle": null,
-      "limits": {
-        "context": 200000,
-        "output": 100000
-      },
-      "modalities": {
-        "input": [
-          "text",
-          "image"
-        ],
-        "output": [
-          "text"
-        ]
-      },
-      "model": null,
-      "name": "o4-mini",
-      "provider": "poe",
-      "provider_model_id": null,
-      "release_date": "2025-04-16",
-      "tags": null
-    },
-    "openAi/sora-2": {
+    "openai/sora-2-pro": {
       "aliases": [],
       "capabilities": {
         "chat": true,
@@ -2386,11 +2492,12 @@
       "deprecated": false,
       "extra": {
         "attachment": true,
+        "family": "sora-2-pro",
         "open_weights": false,
         "temperature": false
       },
       "family": null,
-      "id": "openAi/sora-2",
+      "id": "openai/sora-2-pro",
       "knowledge": null,
       "last_updated": "2025-10-06",
       "lifecycle": null,
@@ -2405,10 +2512,61 @@
         ]
       },
       "model": null,
-      "name": "Sora-2",
+      "name": "Sora-2-Pro",
       "provider": "poe",
       "provider_model_id": null,
       "release_date": "2025-10-06",
+      "tags": null
+    },
+    "novita/kimi-k2-thinking": {
+      "aliases": [],
+      "capabilities": {
+        "chat": true,
+        "embeddings": false,
+        "json": {
+          "native": false,
+          "schema": false,
+          "strict": false
+        },
+        "reasoning": {
+          "enabled": true
+        },
+        "streaming": {
+          "tool_calls": true
+        },
+        "tools": {
+          "enabled": true
+        }
+      },
+      "cost": null,
+      "deprecated": false,
+      "extra": {
+        "attachment": true,
+        "family": "kimi-k2",
+        "open_weights": false,
+        "temperature": false
+      },
+      "family": null,
+      "id": "novita/kimi-k2-thinking",
+      "knowledge": null,
+      "last_updated": "2025-11-07",
+      "lifecycle": null,
+      "limits": {
+        "context": 256000
+      },
+      "modalities": {
+        "input": [
+          "text"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "model": null,
+      "name": "kimi-k2-thinking",
+      "provider": "poe",
+      "provider_model_id": null,
+      "release_date": "2025-11-07",
       "tags": null
     },
     "xai/grok-4": {
@@ -2439,6 +2597,7 @@
       "deprecated": false,
       "extra": {
         "attachment": true,
+        "family": "grok-4",
         "open_weights": false,
         "temperature": false
       },
@@ -2467,7 +2626,7 @@
       "release_date": "2025-07-10",
       "tags": null
     },
-    "openAi/o3": {
+    "openai/gpt-5-codex": {
       "aliases": [],
       "capabilities": {
         "chat": true,
@@ -2488,75 +2647,20 @@
         }
       },
       "cost": {
-        "cache_read": 0.45,
-        "input": 1.8,
-        "output": 7.2
+        "input": 1.1,
+        "output": 9
       },
       "deprecated": false,
       "extra": {
         "attachment": true,
+        "family": "gpt-5-codex",
         "open_weights": false,
         "temperature": false
       },
       "family": null,
-      "id": "openAi/o3",
+      "id": "openai/gpt-5-codex",
       "knowledge": null,
-      "last_updated": "2025-04-16",
-      "lifecycle": null,
-      "limits": {
-        "context": 200000,
-        "output": 100000
-      },
-      "modalities": {
-        "input": [
-          "text",
-          "image"
-        ],
-        "output": [
-          "text"
-        ]
-      },
-      "model": null,
-      "name": "o3",
-      "provider": "poe",
-      "provider_model_id": null,
-      "release_date": "2025-04-16",
-      "tags": null
-    },
-    "openAi/gpt-5-pro": {
-      "aliases": [],
-      "capabilities": {
-        "chat": true,
-        "embeddings": false,
-        "json": {
-          "native": false,
-          "schema": false,
-          "strict": false
-        },
-        "reasoning": {
-          "enabled": true
-        },
-        "streaming": {
-          "tool_calls": true
-        },
-        "tools": {
-          "enabled": true
-        }
-      },
-      "cost": {
-        "input": 13,
-        "output": 110
-      },
-      "deprecated": false,
-      "extra": {
-        "attachment": true,
-        "open_weights": false,
-        "temperature": false
-      },
-      "family": null,
-      "id": "openAi/gpt-5-pro",
-      "knowledge": null,
-      "last_updated": "2025-10-06",
+      "last_updated": "2025-09-23",
       "lifecycle": null,
       "limits": {
         "context": 400000,
@@ -2572,13 +2676,13 @@
         ]
       },
       "model": null,
-      "name": "GPT-5-Pro",
+      "name": "GPT-5-Codex",
       "provider": "poe",
       "provider_model_id": null,
-      "release_date": "2025-10-06",
+      "release_date": "2025-09-23",
       "tags": null
     },
-    "openAi/gpt-4-turbo": {
+    "openai/gpt-4.1-nano": {
       "aliases": [],
       "capabilities": {
         "chat": true,
@@ -2599,23 +2703,25 @@
         }
       },
       "cost": {
-        "input": 9,
-        "output": 27
+        "cache_read": 0.022,
+        "input": 0.09,
+        "output": 0.36
       },
       "deprecated": false,
       "extra": {
         "attachment": true,
+        "family": "gpt-4.1-nano",
         "open_weights": false,
         "temperature": false
       },
       "family": null,
-      "id": "openAi/gpt-4-turbo",
+      "id": "openai/gpt-4.1-nano",
       "knowledge": null,
-      "last_updated": "2023-09-13",
+      "last_updated": "2025-04-15",
       "lifecycle": null,
       "limits": {
-        "context": 128000,
-        "output": 4096
+        "context": 1047576,
+        "output": 32768
       },
       "modalities": {
         "input": [
@@ -2627,10 +2733,123 @@
         ]
       },
       "model": null,
-      "name": "GPT-4-Turbo",
+      "name": "GPT-4.1-nano",
       "provider": "poe",
       "provider_model_id": null,
-      "release_date": "2023-09-13",
+      "release_date": "2025-04-15",
+      "tags": null
+    },
+    "openai/gpt-4o-aug": {
+      "aliases": [],
+      "capabilities": {
+        "chat": true,
+        "embeddings": false,
+        "json": {
+          "native": false,
+          "schema": false,
+          "strict": false
+        },
+        "reasoning": {
+          "enabled": false
+        },
+        "streaming": {
+          "tool_calls": true
+        },
+        "tools": {
+          "enabled": true
+        }
+      },
+      "cost": {
+        "cache_read": 1.1,
+        "input": 2.2,
+        "output": 9
+      },
+      "deprecated": false,
+      "extra": {
+        "attachment": true,
+        "family": "gpt-4o",
+        "open_weights": false,
+        "temperature": false
+      },
+      "family": null,
+      "id": "openai/gpt-4o-aug",
+      "knowledge": null,
+      "last_updated": "2024-11-21",
+      "lifecycle": null,
+      "limits": {
+        "context": 128000,
+        "output": 8192
+      },
+      "modalities": {
+        "input": [
+          "text",
+          "image"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "model": null,
+      "name": "GPT-4o-Aug",
+      "provider": "poe",
+      "provider_model_id": null,
+      "release_date": "2024-11-21",
+      "tags": null
+    },
+    "openai/gpt-5.2": {
+      "aliases": [],
+      "capabilities": {
+        "chat": true,
+        "embeddings": false,
+        "json": {
+          "native": false,
+          "schema": false,
+          "strict": false
+        },
+        "reasoning": {
+          "enabled": true
+        },
+        "streaming": {
+          "tool_calls": true
+        },
+        "tools": {
+          "enabled": true
+        }
+      },
+      "cost": {
+        "cache_read": 0.16,
+        "input": 1.6,
+        "output": 13
+      },
+      "deprecated": false,
+      "extra": {
+        "attachment": true,
+        "open_weights": false,
+        "temperature": false
+      },
+      "family": null,
+      "id": "openai/gpt-5.2",
+      "knowledge": null,
+      "last_updated": "2025-12-08",
+      "lifecycle": null,
+      "limits": {
+        "context": 400000,
+        "output": 128000
+      },
+      "modalities": {
+        "input": [
+          "text",
+          "image"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "model": null,
+      "name": "gpt-5.2",
+      "provider": "poe",
+      "provider_model_id": null,
+      "release_date": "2025-12-08",
       "tags": null
     },
     "google/veo-3.1-fast": {
@@ -2657,6 +2876,7 @@
       "deprecated": false,
       "extra": {
         "attachment": true,
+        "family": "veo-3.1-fast",
         "open_weights": false,
         "temperature": false
       },
@@ -2681,6 +2901,62 @@
       "provider": "poe",
       "provider_model_id": null,
       "release_date": "2025-10-15",
+      "tags": null
+    },
+    "openai/gpt-3.5-turbo-raw": {
+      "aliases": [],
+      "capabilities": {
+        "chat": true,
+        "embeddings": false,
+        "json": {
+          "native": false,
+          "schema": false,
+          "strict": false
+        },
+        "reasoning": {
+          "enabled": false
+        },
+        "streaming": {
+          "tool_calls": true
+        },
+        "tools": {
+          "enabled": true
+        }
+      },
+      "cost": {
+        "input": 0.45,
+        "output": 1.4
+      },
+      "deprecated": false,
+      "extra": {
+        "attachment": true,
+        "family": "gpt-3.5-turbo",
+        "open_weights": false,
+        "temperature": false
+      },
+      "family": null,
+      "id": "openai/gpt-3.5-turbo-raw",
+      "knowledge": null,
+      "last_updated": "2023-09-27",
+      "lifecycle": null,
+      "limits": {
+        "context": 4524,
+        "output": 2048
+      },
+      "modalities": {
+        "input": [
+          "text",
+          "image"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "model": null,
+      "name": "GPT-3.5-Turbo-Raw",
+      "provider": "poe",
+      "provider_model_id": null,
+      "release_date": "2023-09-27",
       "tags": null
     },
     "openai/gpt-5.1-codex": {
@@ -2711,6 +2987,7 @@
       "deprecated": false,
       "extra": {
         "attachment": true,
+        "family": "gpt-5-codex",
         "open_weights": false,
         "temperature": false
       },
@@ -2725,7 +3002,8 @@
       },
       "modalities": {
         "input": [
-          "text"
+          "text",
+          "image"
         ],
         "output": [
           "text"
@@ -2736,6 +3014,111 @@
       "provider": "poe",
       "provider_model_id": null,
       "release_date": "2025-11-12",
+      "tags": null
+    },
+    "poetools/claude-code": {
+      "aliases": [],
+      "capabilities": {
+        "chat": true,
+        "embeddings": false,
+        "json": {
+          "native": false,
+          "schema": false,
+          "strict": false
+        },
+        "reasoning": {
+          "enabled": true
+        },
+        "streaming": {
+          "tool_calls": true
+        },
+        "tools": {
+          "enabled": true
+        }
+      },
+      "cost": null,
+      "deprecated": false,
+      "extra": {
+        "attachment": true,
+        "open_weights": false,
+        "temperature": false
+      },
+      "family": null,
+      "id": "poetools/claude-code",
+      "knowledge": null,
+      "last_updated": "2025-11-27",
+      "lifecycle": null,
+      "limits": null,
+      "modalities": {
+        "input": [
+          "text"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "model": null,
+      "name": "claude-code",
+      "provider": "poe",
+      "provider_model_id": null,
+      "release_date": "2025-11-27",
+      "tags": null
+    },
+    "openai/gpt-5": {
+      "aliases": [],
+      "capabilities": {
+        "chat": true,
+        "embeddings": false,
+        "json": {
+          "native": false,
+          "schema": false,
+          "strict": false
+        },
+        "reasoning": {
+          "enabled": true
+        },
+        "streaming": {
+          "tool_calls": true
+        },
+        "tools": {
+          "enabled": true
+        }
+      },
+      "cost": {
+        "cache_read": 0.11,
+        "input": 1.1,
+        "output": 9
+      },
+      "deprecated": false,
+      "extra": {
+        "attachment": true,
+        "family": "gpt-5",
+        "open_weights": false,
+        "temperature": false
+      },
+      "family": null,
+      "id": "openai/gpt-5",
+      "knowledge": null,
+      "last_updated": "2025-08-05",
+      "lifecycle": null,
+      "limits": {
+        "context": 400000,
+        "output": 128000
+      },
+      "modalities": {
+        "input": [
+          "text",
+          "image"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "model": null,
+      "name": "GPT-5",
+      "provider": "poe",
+      "provider_model_id": null,
+      "release_date": "2025-08-05",
       "tags": null
     },
     "xai/grok-3-mini": {
@@ -2766,6 +3149,7 @@
       "deprecated": false,
       "extra": {
         "attachment": true,
+        "family": "grok-3",
         "open_weights": false,
         "temperature": false
       },
@@ -2822,6 +3206,7 @@
       "deprecated": false,
       "extra": {
         "attachment": true,
+        "family": "claude-opus",
         "open_weights": false,
         "temperature": false
       },
@@ -2837,7 +3222,8 @@
       "modalities": {
         "input": [
           "text",
-          "image"
+          "image",
+          "pdf"
         ],
         "output": [
           "text"
@@ -2871,7 +3257,7 @@
         }
       },
       "cost": {
-        "cache_read": 0.25,
+        "cache_read": 0.26,
         "cache_write": 3.2,
         "input": 2.6,
         "output": 13
@@ -2879,6 +3265,7 @@
       "deprecated": false,
       "extra": {
         "attachment": true,
+        "family": "claude-sonnet",
         "open_weights": false,
         "temperature": false
       },
@@ -2894,7 +3281,8 @@
       "modalities": {
         "input": [
           "text",
-          "image"
+          "image",
+          "pdf"
         ],
         "output": [
           "text"
@@ -2905,6 +3293,63 @@
       "provider": "poe",
       "provider_model_id": null,
       "release_date": "2024-06-05",
+      "tags": null
+    },
+    "openai/o4-mini": {
+      "aliases": [],
+      "capabilities": {
+        "chat": true,
+        "embeddings": false,
+        "json": {
+          "native": false,
+          "schema": false,
+          "strict": false
+        },
+        "reasoning": {
+          "enabled": true
+        },
+        "streaming": {
+          "tool_calls": true
+        },
+        "tools": {
+          "enabled": true
+        }
+      },
+      "cost": {
+        "cache_read": 0.25,
+        "input": 0.99,
+        "output": 4
+      },
+      "deprecated": false,
+      "extra": {
+        "attachment": true,
+        "family": "o4-mini",
+        "open_weights": false,
+        "temperature": false
+      },
+      "family": null,
+      "id": "openai/o4-mini",
+      "knowledge": null,
+      "last_updated": "2025-04-16",
+      "lifecycle": null,
+      "limits": {
+        "context": 200000,
+        "output": 100000
+      },
+      "modalities": {
+        "input": [
+          "text",
+          "image"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "model": null,
+      "name": "o4-mini",
+      "provider": "poe",
+      "provider_model_id": null,
+      "release_date": "2025-04-16",
       "tags": null
     },
     "anthropic/claude-sonnet-3.7": {
@@ -2928,7 +3373,7 @@
         }
       },
       "cost": {
-        "cache_read": 0.25,
+        "cache_read": 0.26,
         "cache_write": 3.2,
         "input": 2.6,
         "output": 13
@@ -2936,6 +3381,7 @@
       "deprecated": false,
       "extra": {
         "attachment": true,
+        "family": "claude-sonnet",
         "open_weights": false,
         "temperature": false
       },
@@ -2951,7 +3397,8 @@
       "modalities": {
         "input": [
           "text",
-          "image"
+          "image",
+          "pdf"
         ],
         "output": [
           "text"
@@ -2962,6 +3409,62 @@
       "provider": "poe",
       "provider_model_id": null,
       "release_date": "2025-02-19",
+      "tags": null
+    },
+    "openai/gpt-3.5-turbo": {
+      "aliases": [],
+      "capabilities": {
+        "chat": true,
+        "embeddings": false,
+        "json": {
+          "native": false,
+          "schema": false,
+          "strict": false
+        },
+        "reasoning": {
+          "enabled": false
+        },
+        "streaming": {
+          "tool_calls": true
+        },
+        "tools": {
+          "enabled": true
+        }
+      },
+      "cost": {
+        "input": 0.45,
+        "output": 1.4
+      },
+      "deprecated": false,
+      "extra": {
+        "attachment": true,
+        "family": "gpt-3.5-turbo",
+        "open_weights": false,
+        "temperature": false
+      },
+      "family": null,
+      "id": "openai/gpt-3.5-turbo",
+      "knowledge": null,
+      "last_updated": "2023-09-13",
+      "lifecycle": null,
+      "limits": {
+        "context": 16384,
+        "output": 2048
+      },
+      "modalities": {
+        "input": [
+          "text",
+          "image"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "model": null,
+      "name": "GPT-3.5-Turbo",
+      "provider": "poe",
+      "provider_model_id": null,
+      "release_date": "2023-09-13",
       "tags": null
     },
     "lumalabs/ray2": {
@@ -2988,6 +3491,7 @@
       "deprecated": false,
       "extra": {
         "attachment": true,
+        "family": "ray2",
         "open_weights": false,
         "temperature": false
       },
@@ -3013,6 +3517,63 @@
       "provider": "poe",
       "provider_model_id": null,
       "release_date": "2025-02-20",
+      "tags": null
+    },
+    "openai/gpt-5-chat": {
+      "aliases": [],
+      "capabilities": {
+        "chat": true,
+        "embeddings": false,
+        "json": {
+          "native": false,
+          "schema": false,
+          "strict": false
+        },
+        "reasoning": {
+          "enabled": false
+        },
+        "streaming": {
+          "tool_calls": true
+        },
+        "tools": {
+          "enabled": true
+        }
+      },
+      "cost": {
+        "cache_read": 0.11,
+        "input": 1.1,
+        "output": 9
+      },
+      "deprecated": false,
+      "extra": {
+        "attachment": true,
+        "family": "gpt-5-chat",
+        "open_weights": false,
+        "temperature": false
+      },
+      "family": null,
+      "id": "openai/gpt-5-chat",
+      "knowledge": null,
+      "last_updated": "2025-08-07",
+      "lifecycle": null,
+      "limits": {
+        "context": 128000,
+        "output": 16384
+      },
+      "modalities": {
+        "input": [
+          "text",
+          "image"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "model": null,
+      "name": "GPT-5-Chat",
+      "provider": "poe",
+      "provider_model_id": null,
+      "release_date": "2025-08-07",
       "tags": null
     },
     "anthropic/claude-haiku-3.5": {
@@ -3044,6 +3605,7 @@
       "deprecated": false,
       "extra": {
         "attachment": true,
+        "family": "claude-haiku",
         "open_weights": false,
         "temperature": false
       },
@@ -3059,7 +3621,8 @@
       "modalities": {
         "input": [
           "text",
-          "image"
+          "image",
+          "pdf"
         ],
         "output": [
           "text"
@@ -3093,7 +3656,7 @@
         }
       },
       "cost": {
-        "cache_read": 0.25,
+        "cache_read": 0.26,
         "cache_write": 3.2,
         "input": 2.6,
         "output": 13
@@ -3101,6 +3664,7 @@
       "deprecated": false,
       "extra": {
         "attachment": true,
+        "family": "claude-sonnet",
         "open_weights": false,
         "temperature": false
       },
@@ -3116,7 +3680,8 @@
       "modalities": {
         "input": [
           "text",
-          "image"
+          "image",
+          "pdf"
         ],
         "output": [
           "text"
@@ -3153,6 +3718,7 @@
       "deprecated": false,
       "extra": {
         "attachment": true,
+        "family": "ideogram",
         "open_weights": false,
         "temperature": false
       },
@@ -3208,6 +3774,7 @@
       "deprecated": false,
       "extra": {
         "attachment": true,
+        "family": "gpt-5",
         "open_weights": false,
         "temperature": false
       },
@@ -3264,6 +3831,7 @@
       "deprecated": false,
       "extra": {
         "attachment": true,
+        "family": "gemini-pro",
         "open_weights": false,
         "temperature": false
       },
@@ -3318,6 +3886,7 @@
       "deprecated": false,
       "extra": {
         "attachment": true,
+        "family": "imagen-4-fast",
         "open_weights": false,
         "temperature": false
       },
@@ -3367,11 +3936,12 @@
       "cost": {
         "cache_read": 0.052,
         "input": 0.21,
-        "output": 1.7
+        "output": 1.8
       },
       "deprecated": false,
       "extra": {
         "attachment": true,
+        "family": "gemini-flash",
         "open_weights": false,
         "temperature": false
       },
@@ -3423,7 +3993,7 @@
         }
       },
       "cost": {
-        "cache_read": 0.25,
+        "cache_read": 0.26,
         "cache_write": 3.2,
         "input": 2.6,
         "output": 13
@@ -3431,6 +4001,7 @@
       "deprecated": false,
       "extra": {
         "attachment": true,
+        "family": "claude-sonnet",
         "open_weights": false,
         "temperature": false
       },
@@ -3446,7 +4017,8 @@
       "modalities": {
         "input": [
           "text",
-          "image"
+          "image",
+          "pdf"
         ],
         "output": [
           "text"
@@ -3457,6 +4029,62 @@
       "provider": "poe",
       "provider_model_id": null,
       "release_date": "2025-05-15",
+      "tags": null
+    },
+    "google/nano-banana-pro": {
+      "aliases": [],
+      "capabilities": {
+        "chat": true,
+        "embeddings": false,
+        "json": {
+          "native": false,
+          "schema": false,
+          "strict": false
+        },
+        "reasoning": {
+          "enabled": false
+        },
+        "streaming": {
+          "tool_calls": true
+        },
+        "tools": {
+          "enabled": true
+        }
+      },
+      "cost": {
+        "cache_read": 0.16,
+        "input": 1.6,
+        "output": 9.6
+      },
+      "deprecated": false,
+      "extra": {
+        "attachment": true,
+        "family": "nano-banana-pro",
+        "open_weights": false,
+        "temperature": false
+      },
+      "family": null,
+      "id": "google/nano-banana-pro",
+      "knowledge": null,
+      "last_updated": "2025-11-19",
+      "lifecycle": null,
+      "limits": {
+        "context": 65536
+      },
+      "modalities": {
+        "input": [
+          "text",
+          "image"
+        ],
+        "output": [
+          "image"
+        ]
+      },
+      "model": null,
+      "name": "Nano-Banana-Pro",
+      "provider": "poe",
+      "provider_model_id": null,
+      "release_date": "2025-11-19",
       "tags": null
     },
     "anthropic/claude-haiku-3.5-search": {
@@ -3488,6 +4116,7 @@
       "deprecated": false,
       "extra": {
         "attachment": true,
+        "family": "claude-haiku",
         "open_weights": false,
         "temperature": false
       },
@@ -3503,7 +4132,8 @@
       "modalities": {
         "input": [
           "text",
-          "image"
+          "image",
+          "pdf"
         ],
         "output": [
           "text"
@@ -3516,7 +4146,7 @@
       "release_date": "2025-05-15",
       "tags": null
     },
-    "openAi/gpt-3.5-turbo-raw": {
+    "openai/chatgpt-4o-latest": {
       "aliases": [],
       "capabilities": {
         "chat": true,
@@ -3537,23 +4167,24 @@
         }
       },
       "cost": {
-        "input": 0.45,
-        "output": 1.3
+        "input": 4.5,
+        "output": 14
       },
       "deprecated": false,
       "extra": {
         "attachment": true,
+        "family": "chatgpt-4o",
         "open_weights": false,
         "temperature": false
       },
       "family": null,
-      "id": "openAi/gpt-3.5-turbo-raw",
+      "id": "openai/chatgpt-4o-latest",
       "knowledge": null,
-      "last_updated": "2023-09-27",
+      "last_updated": "2024-08-14",
       "lifecycle": null,
       "limits": {
-        "context": 4524,
-        "output": 2048
+        "context": 128000,
+        "output": 8192
       },
       "modalities": {
         "input": [
@@ -3565,10 +4196,122 @@
         ]
       },
       "model": null,
-      "name": "GPT-3.5-Turbo-Raw",
+      "name": "ChatGPT-4o-Latest",
       "provider": "poe",
       "provider_model_id": null,
-      "release_date": "2023-09-27",
+      "release_date": "2024-08-14",
+      "tags": null
+    },
+    "openai/o4-mini-deep-research": {
+      "aliases": [],
+      "capabilities": {
+        "chat": true,
+        "embeddings": false,
+        "json": {
+          "native": false,
+          "schema": false,
+          "strict": false
+        },
+        "reasoning": {
+          "enabled": true
+        },
+        "streaming": {
+          "tool_calls": true
+        },
+        "tools": {
+          "enabled": true
+        }
+      },
+      "cost": {
+        "cache_read": 0.45,
+        "input": 1.8,
+        "output": 7.2
+      },
+      "deprecated": false,
+      "extra": {
+        "attachment": true,
+        "family": "o4-mini",
+        "open_weights": false,
+        "temperature": false
+      },
+      "family": null,
+      "id": "openai/o4-mini-deep-research",
+      "knowledge": null,
+      "last_updated": "2025-06-27",
+      "lifecycle": null,
+      "limits": {
+        "context": 200000,
+        "output": 100000
+      },
+      "modalities": {
+        "input": [
+          "text"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "model": null,
+      "name": "o4-mini-deep-research",
+      "provider": "poe",
+      "provider_model_id": null,
+      "release_date": "2025-06-27",
+      "tags": null
+    },
+    "openai/gpt-4-turbo": {
+      "aliases": [],
+      "capabilities": {
+        "chat": true,
+        "embeddings": false,
+        "json": {
+          "native": false,
+          "schema": false,
+          "strict": false
+        },
+        "reasoning": {
+          "enabled": false
+        },
+        "streaming": {
+          "tool_calls": true
+        },
+        "tools": {
+          "enabled": true
+        }
+      },
+      "cost": {
+        "input": 9,
+        "output": 27
+      },
+      "deprecated": false,
+      "extra": {
+        "attachment": true,
+        "family": "gpt-4-turbo",
+        "open_weights": false,
+        "temperature": false
+      },
+      "family": null,
+      "id": "openai/gpt-4-turbo",
+      "knowledge": null,
+      "last_updated": "2023-09-13",
+      "lifecycle": null,
+      "limits": {
+        "context": 128000,
+        "output": 4096
+      },
+      "modalities": {
+        "input": [
+          "text",
+          "image"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "model": null,
+      "name": "GPT-4-Turbo",
+      "provider": "poe",
+      "provider_model_id": null,
+      "release_date": "2023-09-13",
       "tags": null
     },
     "google/veo-3": {
@@ -3595,6 +4338,7 @@
       "deprecated": false,
       "extra": {
         "attachment": true,
+        "family": "veo",
         "open_weights": false,
         "temperature": false
       },
@@ -3649,6 +4393,7 @@
       "deprecated": false,
       "extra": {
         "attachment": true,
+        "family": "grok-4",
         "open_weights": false,
         "temperature": false
       },
@@ -3658,7 +4403,7 @@
       "last_updated": "2025-09-16",
       "lifecycle": null,
       "limits": {
-        "context": 256000,
+        "context": 2000000,
         "output": 128000
       },
       "modalities": {
@@ -3676,7 +4421,7 @@
       "release_date": "2025-09-16",
       "tags": null
     },
-    "openAi/chatgpt-4o-latest": {
+    "google/gemini-deep-research": {
       "aliases": [],
       "capabilities": {
         "chat": true,
@@ -3687,7 +4432,7 @@
           "strict": false
         },
         "reasoning": {
-          "enabled": false
+          "enabled": true
         },
         "streaming": {
           "tool_calls": true
@@ -3697,8 +4442,8 @@
         }
       },
       "cost": {
-        "input": 4.5,
-        "output": 13
+        "input": 1.6,
+        "output": 9.6
       },
       "deprecated": false,
       "extra": {
@@ -3707,28 +4452,28 @@
         "temperature": false
       },
       "family": null,
-      "id": "openAi/chatgpt-4o-latest",
+      "id": "google/gemini-deep-research",
       "knowledge": null,
-      "last_updated": "2024-08-14",
+      "last_updated": "2025-12-11",
       "lifecycle": null,
       "limits": {
-        "context": 128000,
-        "output": 8192
+        "context": 1048576
       },
       "modalities": {
         "input": [
           "text",
-          "image"
+          "image",
+          "video"
         ],
         "output": [
           "text"
         ]
       },
       "model": null,
-      "name": "ChatGPT-4o-Latest",
+      "name": "gemini-deep-research",
       "provider": "poe",
       "provider_model_id": null,
-      "release_date": "2024-08-14",
+      "release_date": "2025-12-11",
       "tags": null
     },
     "google/veo-2": {
@@ -3755,6 +4500,7 @@
       "deprecated": false,
       "extra": {
         "attachment": true,
+        "family": "veo",
         "open_weights": false,
         "temperature": false
       },
@@ -3802,7 +4548,7 @@
         }
       },
       "cost": {
-        "cache_read": 0.25,
+        "cache_read": 0.26,
         "cache_write": 3.2,
         "input": 2.6,
         "output": 13
@@ -3810,6 +4556,7 @@
       "deprecated": false,
       "extra": {
         "attachment": true,
+        "family": "claude-sonnet",
         "open_weights": false,
         "temperature": false
       },
@@ -3825,7 +4572,8 @@
       "modalities": {
         "input": [
           "text",
-          "image"
+          "image",
+          "pdf"
         ],
         "output": [
           "text"
@@ -3836,166 +4584,6 @@
       "provider": "poe",
       "provider_model_id": null,
       "release_date": "2024-11-18",
-      "tags": null
-    },
-    "openAi/sora-2-pro": {
-      "aliases": [],
-      "capabilities": {
-        "chat": true,
-        "embeddings": false,
-        "json": {
-          "native": false,
-          "schema": false,
-          "strict": false
-        },
-        "reasoning": {
-          "enabled": false
-        },
-        "streaming": {
-          "tool_calls": true
-        },
-        "tools": {
-          "enabled": true
-        }
-      },
-      "cost": null,
-      "deprecated": false,
-      "extra": {
-        "attachment": true,
-        "open_weights": false,
-        "temperature": false
-      },
-      "family": null,
-      "id": "openAi/sora-2-pro",
-      "knowledge": null,
-      "last_updated": "2025-10-06",
-      "lifecycle": null,
-      "limits": null,
-      "modalities": {
-        "input": [
-          "text",
-          "image"
-        ],
-        "output": [
-          "video"
-        ]
-      },
-      "model": null,
-      "name": "Sora-2-Pro",
-      "provider": "poe",
-      "provider_model_id": null,
-      "release_date": "2025-10-06",
-      "tags": null
-    },
-    "openAi/o4-mini-deep-research": {
-      "aliases": [],
-      "capabilities": {
-        "chat": true,
-        "embeddings": false,
-        "json": {
-          "native": false,
-          "schema": false,
-          "strict": false
-        },
-        "reasoning": {
-          "enabled": true
-        },
-        "streaming": {
-          "tool_calls": true
-        },
-        "tools": {
-          "enabled": true
-        }
-      },
-      "cost": {
-        "cache_read": 0.45,
-        "input": 1.8,
-        "output": 7.2
-      },
-      "deprecated": false,
-      "extra": {
-        "attachment": true,
-        "open_weights": false,
-        "temperature": false
-      },
-      "family": null,
-      "id": "openAi/o4-mini-deep-research",
-      "knowledge": null,
-      "last_updated": "2025-06-27",
-      "lifecycle": null,
-      "limits": {
-        "context": 200000,
-        "output": 100000
-      },
-      "modalities": {
-        "input": [
-          "text"
-        ],
-        "output": [
-          "text"
-        ]
-      },
-      "model": null,
-      "name": "o4-mini-deep-research",
-      "provider": "poe",
-      "provider_model_id": null,
-      "release_date": "2025-06-27",
-      "tags": null
-    },
-    "openAi/gpt-4o-aug": {
-      "aliases": [],
-      "capabilities": {
-        "chat": true,
-        "embeddings": false,
-        "json": {
-          "native": false,
-          "schema": false,
-          "strict": false
-        },
-        "reasoning": {
-          "enabled": false
-        },
-        "streaming": {
-          "tool_calls": true
-        },
-        "tools": {
-          "enabled": true
-        }
-      },
-      "cost": {
-        "cache_read": 1.1,
-        "input": 2.3,
-        "output": 9
-      },
-      "deprecated": false,
-      "extra": {
-        "attachment": true,
-        "open_weights": false,
-        "temperature": false
-      },
-      "family": null,
-      "id": "openAi/gpt-4o-aug",
-      "knowledge": null,
-      "last_updated": "2024-11-21",
-      "lifecycle": null,
-      "limits": {
-        "context": 128000,
-        "output": 8192
-      },
-      "modalities": {
-        "input": [
-          "text",
-          "image"
-        ],
-        "output": [
-          "text"
-        ]
-      },
-      "model": null,
-      "name": "GPT-4o-Aug",
-      "provider": "poe",
-      "provider_model_id": null,
-      "release_date": "2024-11-21",
       "tags": null
     },
     "anthropic/claude-sonnet-3.7-reasoning": {
@@ -4019,7 +4607,7 @@
         }
       },
       "cost": {
-        "cache_read": 0.25,
+        "cache_read": 0.26,
         "cache_write": 3.2,
         "input": 2.6,
         "output": 13
@@ -4027,6 +4615,7 @@
       "deprecated": false,
       "extra": {
         "attachment": true,
+        "family": "claude-sonnet",
         "open_weights": false,
         "temperature": false
       },
@@ -4042,7 +4631,8 @@
       "modalities": {
         "input": [
           "text",
-          "image"
+          "image",
+          "pdf"
         ],
         "output": [
           "text"
@@ -4053,6 +4643,117 @@
       "provider": "poe",
       "provider_model_id": null,
       "release_date": "2025-02-19",
+      "tags": null
+    },
+    "openai/o3-pro": {
+      "aliases": [],
+      "capabilities": {
+        "chat": true,
+        "embeddings": false,
+        "json": {
+          "native": false,
+          "schema": false,
+          "strict": false
+        },
+        "reasoning": {
+          "enabled": true
+        },
+        "streaming": {
+          "tool_calls": true
+        },
+        "tools": {
+          "enabled": true
+        }
+      },
+      "cost": {
+        "input": 18,
+        "output": 72
+      },
+      "deprecated": false,
+      "extra": {
+        "attachment": true,
+        "family": "o3-pro",
+        "open_weights": false,
+        "temperature": false
+      },
+      "family": null,
+      "id": "openai/o3-pro",
+      "knowledge": null,
+      "last_updated": "2025-06-10",
+      "lifecycle": null,
+      "limits": {
+        "context": 200000,
+        "output": 100000
+      },
+      "modalities": {
+        "input": [
+          "text",
+          "image"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "model": null,
+      "name": "o3-pro",
+      "provider": "poe",
+      "provider_model_id": null,
+      "release_date": "2025-06-10",
+      "tags": null
+    },
+    "openai/gpt-5.2-pro": {
+      "aliases": [],
+      "capabilities": {
+        "chat": true,
+        "embeddings": false,
+        "json": {
+          "native": false,
+          "schema": false,
+          "strict": false
+        },
+        "reasoning": {
+          "enabled": true
+        },
+        "streaming": {
+          "tool_calls": true
+        },
+        "tools": {
+          "enabled": true
+        }
+      },
+      "cost": {
+        "input": 19,
+        "output": 150
+      },
+      "deprecated": false,
+      "extra": {
+        "attachment": true,
+        "open_weights": false,
+        "temperature": false
+      },
+      "family": null,
+      "id": "openai/gpt-5.2-pro",
+      "knowledge": null,
+      "last_updated": "2025-12-11",
+      "lifecycle": null,
+      "limits": {
+        "context": 400000,
+        "output": 128000
+      },
+      "modalities": {
+        "input": [
+          "text",
+          "image"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "model": null,
+      "name": "gpt-5.2-pro",
+      "provider": "poe",
+      "provider_model_id": null,
+      "release_date": "2025-12-11",
       "tags": null
     },
     "google/lyria": {
@@ -4079,6 +4780,7 @@
       "deprecated": false,
       "extra": {
         "attachment": true,
+        "family": "lyria",
         "open_weights": false,
         "temperature": false
       },
@@ -4103,61 +4805,7 @@
       "release_date": "2025-06-04",
       "tags": null
     },
-    "facebook/llama-3.1-405b": {
-      "aliases": [],
-      "capabilities": {
-        "chat": true,
-        "embeddings": false,
-        "json": {
-          "native": false,
-          "schema": false,
-          "strict": false
-        },
-        "reasoning": {
-          "enabled": false
-        },
-        "streaming": {
-          "tool_calls": true
-        },
-        "tools": {
-          "enabled": true
-        }
-      },
-      "cost": {
-        "input": 3,
-        "output": 3
-      },
-      "deprecated": false,
-      "extra": {
-        "attachment": true,
-        "open_weights": false,
-        "temperature": false
-      },
-      "family": null,
-      "id": "facebook/llama-3.1-405b",
-      "knowledge": null,
-      "last_updated": "2024-08-08",
-      "lifecycle": null,
-      "limits": {
-        "context": 8192
-      },
-      "modalities": {
-        "input": [
-          "text",
-          "image"
-        ],
-        "output": [
-          "text"
-        ]
-      },
-      "model": null,
-      "name": "Llama-3.1-405B",
-      "provider": "poe",
-      "provider_model_id": null,
-      "release_date": "2024-08-08",
-      "tags": null
-    },
-    "google/gemini-3.0-pro": {
+    "anthropic/claude-opus-4.5": {
       "aliases": [],
       "capabilities": {
         "chat": true,
@@ -4178,586 +4826,45 @@
         }
       },
       "cost": {
-        "cache_read": 0.16,
-        "input": 1.6,
-        "output": 9.6
+        "cache_read": 0.43,
+        "cache_write": 5.3,
+        "input": 4.3,
+        "output": 21
       },
       "deprecated": false,
       "extra": {
         "attachment": true,
+        "family": "claude-opus",
         "open_weights": false,
         "temperature": false
       },
       "family": null,
-      "id": "google/gemini-3.0-pro",
+      "id": "anthropic/claude-opus-4.5",
       "knowledge": null,
-      "last_updated": "2025-10-22",
+      "last_updated": "2025-11-21",
       "lifecycle": null,
       "limits": {
-        "context": 1048576,
+        "context": 196608,
         "output": 64000
       },
       "modalities": {
         "input": [
           "text",
           "image",
-          "video",
-          "audio"
+          "pdf"
         ],
         "output": [
           "text"
         ]
       },
       "model": null,
-      "name": "Gemini-3.0-Pro",
+      "name": "claude-opus-4.5",
       "provider": "poe",
       "provider_model_id": null,
-      "release_date": "2025-10-22",
+      "release_date": "2025-11-21",
       "tags": null
     },
-    "openAi/dall-e-3": {
-      "aliases": [],
-      "capabilities": {
-        "chat": true,
-        "embeddings": false,
-        "json": {
-          "native": false,
-          "schema": false,
-          "strict": false
-        },
-        "reasoning": {
-          "enabled": false
-        },
-        "streaming": {
-          "tool_calls": true
-        },
-        "tools": {
-          "enabled": true
-        }
-      },
-      "cost": null,
-      "deprecated": false,
-      "extra": {
-        "attachment": true,
-        "open_weights": false,
-        "temperature": false
-      },
-      "family": null,
-      "id": "openAi/dall-e-3",
-      "knowledge": null,
-      "last_updated": "2023-11-06",
-      "lifecycle": null,
-      "limits": {
-        "context": 800
-      },
-      "modalities": {
-        "input": [
-          "text"
-        ],
-        "output": [
-          "image"
-        ]
-      },
-      "model": null,
-      "name": "DALL-E-3",
-      "provider": "poe",
-      "provider_model_id": null,
-      "release_date": "2023-11-06",
-      "tags": null
-    },
-    "google/imagen-4": {
-      "aliases": [],
-      "capabilities": {
-        "chat": true,
-        "embeddings": false,
-        "json": {
-          "native": false,
-          "schema": false,
-          "strict": false
-        },
-        "reasoning": {
-          "enabled": false
-        },
-        "streaming": {
-          "tool_calls": true
-        },
-        "tools": {
-          "enabled": true
-        }
-      },
-      "cost": null,
-      "deprecated": false,
-      "extra": {
-        "attachment": true,
-        "open_weights": false,
-        "temperature": false
-      },
-      "family": null,
-      "id": "google/imagen-4",
-      "knowledge": null,
-      "last_updated": "2025-05-22",
-      "lifecycle": null,
-      "limits": {
-        "context": 480
-      },
-      "modalities": {
-        "input": [
-          "text"
-        ],
-        "output": [
-          "image"
-        ]
-      },
-      "model": null,
-      "name": "Imagen-4",
-      "provider": "poe",
-      "provider_model_id": null,
-      "release_date": "2025-05-22",
-      "tags": null
-    },
-    "openAi/gpt-5": {
-      "aliases": [],
-      "capabilities": {
-        "chat": true,
-        "embeddings": false,
-        "json": {
-          "native": false,
-          "schema": false,
-          "strict": false
-        },
-        "reasoning": {
-          "enabled": true
-        },
-        "streaming": {
-          "tool_calls": true
-        },
-        "tools": {
-          "enabled": true
-        }
-      },
-      "cost": {
-        "cache_read": 0.11,
-        "input": 1.1,
-        "output": 9
-      },
-      "deprecated": false,
-      "extra": {
-        "attachment": true,
-        "open_weights": false,
-        "temperature": false
-      },
-      "family": null,
-      "id": "openAi/gpt-5",
-      "knowledge": null,
-      "last_updated": "2025-08-05",
-      "lifecycle": null,
-      "limits": {
-        "context": 400000,
-        "output": 128000
-      },
-      "modalities": {
-        "input": [
-          "text",
-          "image"
-        ],
-        "output": [
-          "text"
-        ]
-      },
-      "model": null,
-      "name": "GPT-5",
-      "provider": "poe",
-      "provider_model_id": null,
-      "release_date": "2025-08-05",
-      "tags": null
-    },
-    "openAi/o3-deep-research": {
-      "aliases": [],
-      "capabilities": {
-        "chat": true,
-        "embeddings": false,
-        "json": {
-          "native": false,
-          "schema": false,
-          "strict": false
-        },
-        "reasoning": {
-          "enabled": true
-        },
-        "streaming": {
-          "tool_calls": true
-        },
-        "tools": {
-          "enabled": true
-        }
-      },
-      "cost": {
-        "cache_read": 2.3,
-        "input": 9,
-        "output": 36
-      },
-      "deprecated": false,
-      "extra": {
-        "attachment": true,
-        "open_weights": false,
-        "temperature": false
-      },
-      "family": null,
-      "id": "openAi/o3-deep-research",
-      "knowledge": null,
-      "last_updated": "2025-06-27",
-      "lifecycle": null,
-      "limits": {
-        "context": 200000,
-        "output": 100000
-      },
-      "modalities": {
-        "input": [
-          "text"
-        ],
-        "output": [
-          "text"
-        ]
-      },
-      "model": null,
-      "name": "o3-deep-research",
-      "provider": "poe",
-      "provider_model_id": null,
-      "release_date": "2025-06-27",
-      "tags": null
-    },
-    "facebook/llama-3.1-8b": {
-      "aliases": [],
-      "capabilities": {
-        "chat": true,
-        "embeddings": false,
-        "json": {
-          "native": false,
-          "schema": false,
-          "strict": false
-        },
-        "reasoning": {
-          "enabled": false
-        },
-        "streaming": {
-          "tool_calls": true
-        },
-        "tools": {
-          "enabled": true
-        }
-      },
-      "cost": {
-        "input": 0.2,
-        "output": 0.2
-      },
-      "deprecated": false,
-      "extra": {
-        "attachment": true,
-        "open_weights": false,
-        "temperature": false
-      },
-      "family": null,
-      "id": "facebook/llama-3.1-8b",
-      "knowledge": null,
-      "last_updated": "2024-08-08",
-      "lifecycle": null,
-      "limits": {
-        "context": 8192
-      },
-      "modalities": {
-        "input": [
-          "text",
-          "image"
-        ],
-        "output": [
-          "text"
-        ]
-      },
-      "model": null,
-      "name": "Llama-3.1-8B",
-      "provider": "poe",
-      "provider_model_id": null,
-      "release_date": "2024-08-08",
-      "tags": null
-    },
-    "openAi/gpt-5-nano": {
-      "aliases": [],
-      "capabilities": {
-        "chat": true,
-        "embeddings": false,
-        "json": {
-          "native": false,
-          "schema": false,
-          "strict": false
-        },
-        "reasoning": {
-          "enabled": true
-        },
-        "streaming": {
-          "tool_calls": true
-        },
-        "tools": {
-          "enabled": true
-        }
-      },
-      "cost": {
-        "cache_read": 0.0045,
-        "input": 0.045,
-        "output": 0.36
-      },
-      "deprecated": false,
-      "extra": {
-        "attachment": true,
-        "open_weights": false,
-        "temperature": false
-      },
-      "family": null,
-      "id": "openAi/gpt-5-nano",
-      "knowledge": null,
-      "last_updated": "2025-08-05",
-      "lifecycle": null,
-      "limits": {
-        "context": 400000,
-        "output": 128000
-      },
-      "modalities": {
-        "input": [
-          "text",
-          "image"
-        ],
-        "output": [
-          "text"
-        ]
-      },
-      "model": null,
-      "name": "GPT-5-nano",
-      "provider": "poe",
-      "provider_model_id": null,
-      "release_date": "2025-08-05",
-      "tags": null
-    },
-    "openAi/gpt-4o-search": {
-      "aliases": [],
-      "capabilities": {
-        "chat": true,
-        "embeddings": false,
-        "json": {
-          "native": false,
-          "schema": false,
-          "strict": false
-        },
-        "reasoning": {
-          "enabled": false
-        },
-        "streaming": {
-          "tool_calls": true
-        },
-        "tools": {
-          "enabled": true
-        }
-      },
-      "cost": {
-        "input": 2.3,
-        "output": 9
-      },
-      "deprecated": false,
-      "extra": {
-        "attachment": true,
-        "open_weights": false,
-        "temperature": false
-      },
-      "family": null,
-      "id": "openAi/gpt-4o-search",
-      "knowledge": null,
-      "last_updated": "2025-03-11",
-      "lifecycle": null,
-      "limits": {
-        "context": 128000,
-        "output": 8192
-      },
-      "modalities": {
-        "input": [
-          "text"
-        ],
-        "output": [
-          "text"
-        ]
-      },
-      "model": null,
-      "name": "GPT-4o-Search",
-      "provider": "poe",
-      "provider_model_id": null,
-      "release_date": "2025-03-11",
-      "tags": null
-    },
-    "anthropic/claude-sonnet-4": {
-      "aliases": [],
-      "capabilities": {
-        "chat": true,
-        "embeddings": false,
-        "json": {
-          "native": false,
-          "schema": false,
-          "strict": false
-        },
-        "reasoning": {
-          "enabled": true
-        },
-        "streaming": {
-          "tool_calls": true
-        },
-        "tools": {
-          "enabled": true
-        }
-      },
-      "cost": {
-        "cache_read": 0.25,
-        "cache_write": 3.2,
-        "input": 2.6,
-        "output": 13
-      },
-      "deprecated": false,
-      "extra": {
-        "attachment": true,
-        "open_weights": false,
-        "temperature": false
-      },
-      "family": null,
-      "id": "anthropic/claude-sonnet-4",
-      "knowledge": null,
-      "last_updated": "2025-05-21",
-      "lifecycle": null,
-      "limits": {
-        "context": 983040,
-        "output": 32768
-      },
-      "modalities": {
-        "input": [
-          "text",
-          "image"
-        ],
-        "output": [
-          "text"
-        ]
-      },
-      "model": null,
-      "name": "Claude Sonnet 4",
-      "provider": "poe",
-      "provider_model_id": null,
-      "release_date": "2025-05-21",
-      "tags": null
-    },
-    "openAi/gpt-5-mini": {
-      "aliases": [],
-      "capabilities": {
-        "chat": true,
-        "embeddings": false,
-        "json": {
-          "native": false,
-          "schema": false,
-          "strict": false
-        },
-        "reasoning": {
-          "enabled": true
-        },
-        "streaming": {
-          "tool_calls": true
-        },
-        "tools": {
-          "enabled": true
-        }
-      },
-      "cost": {
-        "cache_read": 0.022,
-        "input": 0.22,
-        "output": 1.8
-      },
-      "deprecated": false,
-      "extra": {
-        "attachment": true,
-        "open_weights": false,
-        "temperature": false
-      },
-      "family": null,
-      "id": "openAi/gpt-5-mini",
-      "knowledge": null,
-      "last_updated": "2025-06-25",
-      "lifecycle": null,
-      "limits": {
-        "context": 400000,
-        "output": 128000
-      },
-      "modalities": {
-        "input": [
-          "text",
-          "image"
-        ],
-        "output": [
-          "text"
-        ]
-      },
-      "model": null,
-      "name": "GPT-5-mini",
-      "provider": "poe",
-      "provider_model_id": null,
-      "release_date": "2025-06-25",
-      "tags": null
-    },
-    "facebook/llama-3.1-70b": {
-      "aliases": [],
-      "capabilities": {
-        "chat": true,
-        "embeddings": false,
-        "json": {
-          "native": false,
-          "schema": false,
-          "strict": false
-        },
-        "reasoning": {
-          "enabled": false
-        },
-        "streaming": {
-          "tool_calls": true
-        },
-        "tools": {
-          "enabled": true
-        }
-      },
-      "cost": {
-        "input": 0.9,
-        "output": 0.9
-      },
-      "deprecated": false,
-      "extra": {
-        "attachment": true,
-        "open_weights": false,
-        "temperature": false
-      },
-      "family": null,
-      "id": "facebook/llama-3.1-70b",
-      "knowledge": null,
-      "last_updated": "2024-08-08",
-      "lifecycle": null,
-      "limits": {
-        "context": 8192
-      },
-      "modalities": {
-        "input": [
-          "text",
-          "image"
-        ],
-        "output": [
-          "text"
-        ]
-      },
-      "model": null,
-      "name": "Llama-3.1-70B",
-      "provider": "poe",
-      "provider_model_id": null,
-      "release_date": "2024-08-08",
-      "tags": null
-    },
-    "openAi/gpt-4-classic-0314": {
+    "openai/gpt-4-classic-0314": {
       "aliases": [],
       "capabilities": {
         "chat": true,
@@ -4784,11 +4891,12 @@
       "deprecated": false,
       "extra": {
         "attachment": true,
+        "family": "gpt-4",
         "open_weights": false,
         "temperature": false
       },
       "family": null,
-      "id": "openAi/gpt-4-classic-0314",
+      "id": "openai/gpt-4-classic-0314",
       "knowledge": null,
       "last_updated": "2024-08-26",
       "lifecycle": null,
@@ -4810,6 +4918,331 @@
       "provider": "poe",
       "provider_model_id": null,
       "release_date": "2024-08-26",
+      "tags": null
+    },
+    "openai/gpt-4o": {
+      "aliases": [],
+      "capabilities": {
+        "chat": true,
+        "embeddings": false,
+        "json": {
+          "native": false,
+          "schema": false,
+          "strict": false
+        },
+        "reasoning": {
+          "enabled": false
+        },
+        "streaming": {
+          "tool_calls": true
+        },
+        "tools": {
+          "enabled": true
+        }
+      },
+      "cost": null,
+      "deprecated": false,
+      "extra": {
+        "attachment": true,
+        "family": "gpt-4o",
+        "open_weights": false,
+        "temperature": false
+      },
+      "family": null,
+      "id": "openai/gpt-4o",
+      "knowledge": null,
+      "last_updated": "2024-05-13",
+      "lifecycle": null,
+      "limits": {
+        "context": 128000,
+        "output": 8192
+      },
+      "modalities": {
+        "input": [
+          "text",
+          "image"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "model": null,
+      "name": "GPT-4o",
+      "provider": "poe",
+      "provider_model_id": null,
+      "release_date": "2024-05-13",
+      "tags": null
+    },
+    "openai/gpt-3.5-turbo-instruct": {
+      "aliases": [],
+      "capabilities": {
+        "chat": true,
+        "embeddings": false,
+        "json": {
+          "native": false,
+          "schema": false,
+          "strict": false
+        },
+        "reasoning": {
+          "enabled": false
+        },
+        "streaming": {
+          "tool_calls": true
+        },
+        "tools": {
+          "enabled": true
+        }
+      },
+      "cost": {
+        "input": 1.4,
+        "output": 1.8
+      },
+      "deprecated": false,
+      "extra": {
+        "attachment": true,
+        "family": "gpt-3.5-turbo",
+        "open_weights": false,
+        "temperature": false
+      },
+      "family": null,
+      "id": "openai/gpt-3.5-turbo-instruct",
+      "knowledge": null,
+      "last_updated": "2023-09-20",
+      "lifecycle": null,
+      "limits": {
+        "context": 3500,
+        "output": 1024
+      },
+      "modalities": {
+        "input": [
+          "text",
+          "image"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "model": null,
+      "name": "GPT-3.5-Turbo-Instruct",
+      "provider": "poe",
+      "provider_model_id": null,
+      "release_date": "2023-09-20",
+      "tags": null
+    },
+    "google/imagen-4": {
+      "aliases": [],
+      "capabilities": {
+        "chat": true,
+        "embeddings": false,
+        "json": {
+          "native": false,
+          "schema": false,
+          "strict": false
+        },
+        "reasoning": {
+          "enabled": false
+        },
+        "streaming": {
+          "tool_calls": true
+        },
+        "tools": {
+          "enabled": true
+        }
+      },
+      "cost": null,
+      "deprecated": false,
+      "extra": {
+        "attachment": true,
+        "family": "imagen",
+        "open_weights": false,
+        "temperature": false
+      },
+      "family": null,
+      "id": "google/imagen-4",
+      "knowledge": null,
+      "last_updated": "2025-05-22",
+      "lifecycle": null,
+      "limits": {
+        "context": 480
+      },
+      "modalities": {
+        "input": [
+          "text"
+        ],
+        "output": [
+          "image"
+        ]
+      },
+      "model": null,
+      "name": "Imagen-4",
+      "provider": "poe",
+      "provider_model_id": null,
+      "release_date": "2025-05-22",
+      "tags": null
+    },
+    "openai/sora-2": {
+      "aliases": [],
+      "capabilities": {
+        "chat": true,
+        "embeddings": false,
+        "json": {
+          "native": false,
+          "schema": false,
+          "strict": false
+        },
+        "reasoning": {
+          "enabled": false
+        },
+        "streaming": {
+          "tool_calls": true
+        },
+        "tools": {
+          "enabled": true
+        }
+      },
+      "cost": null,
+      "deprecated": false,
+      "extra": {
+        "attachment": true,
+        "family": "sora",
+        "open_weights": false,
+        "temperature": false
+      },
+      "family": null,
+      "id": "openai/sora-2",
+      "knowledge": null,
+      "last_updated": "2025-10-06",
+      "lifecycle": null,
+      "limits": null,
+      "modalities": {
+        "input": [
+          "text",
+          "image"
+        ],
+        "output": [
+          "video"
+        ]
+      },
+      "model": null,
+      "name": "Sora-2",
+      "provider": "poe",
+      "provider_model_id": null,
+      "release_date": "2025-10-06",
+      "tags": null
+    },
+    "openai/o1-pro": {
+      "aliases": [],
+      "capabilities": {
+        "chat": true,
+        "embeddings": false,
+        "json": {
+          "native": false,
+          "schema": false,
+          "strict": false
+        },
+        "reasoning": {
+          "enabled": true
+        },
+        "streaming": {
+          "tool_calls": true
+        },
+        "tools": {
+          "enabled": true
+        }
+      },
+      "cost": {
+        "input": 140,
+        "output": 540
+      },
+      "deprecated": false,
+      "extra": {
+        "attachment": true,
+        "family": "o1-pro",
+        "open_weights": false,
+        "temperature": false
+      },
+      "family": null,
+      "id": "openai/o1-pro",
+      "knowledge": null,
+      "last_updated": "2025-03-19",
+      "lifecycle": null,
+      "limits": {
+        "context": 200000,
+        "output": 100000
+      },
+      "modalities": {
+        "input": [
+          "text",
+          "image"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "model": null,
+      "name": "o1-pro",
+      "provider": "poe",
+      "provider_model_id": null,
+      "release_date": "2025-03-19",
+      "tags": null
+    },
+    "anthropic/claude-sonnet-4": {
+      "aliases": [],
+      "capabilities": {
+        "chat": true,
+        "embeddings": false,
+        "json": {
+          "native": false,
+          "schema": false,
+          "strict": false
+        },
+        "reasoning": {
+          "enabled": true
+        },
+        "streaming": {
+          "tool_calls": true
+        },
+        "tools": {
+          "enabled": true
+        }
+      },
+      "cost": {
+        "cache_read": 0.26,
+        "cache_write": 3.2,
+        "input": 2.6,
+        "output": 13
+      },
+      "deprecated": false,
+      "extra": {
+        "attachment": true,
+        "family": "claude-sonnet",
+        "open_weights": false,
+        "temperature": false
+      },
+      "family": null,
+      "id": "anthropic/claude-sonnet-4",
+      "knowledge": null,
+      "last_updated": "2025-05-21",
+      "lifecycle": null,
+      "limits": {
+        "context": 983040,
+        "output": 32768
+      },
+      "modalities": {
+        "input": [
+          "text",
+          "image",
+          "pdf"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "model": null,
+      "name": "Claude Sonnet 4",
+      "provider": "poe",
+      "provider_model_id": null,
+      "release_date": "2025-05-21",
       "tags": null
     },
     "stabilityai/stablediffusionxl": {
@@ -4836,6 +5269,7 @@
       "deprecated": false,
       "extra": {
         "attachment": true,
+        "family": "stablediffusionxl",
         "open_weights": false,
         "temperature": false
       },
@@ -4887,6 +5321,7 @@
       "deprecated": false,
       "extra": {
         "attachment": true,
+        "family": "ideogram",
         "open_weights": false,
         "temperature": false
       },
@@ -4914,62 +5349,6 @@
       "release_date": "2024-04-03",
       "tags": null
     },
-    "openAi/gpt-4.1": {
-      "aliases": [],
-      "capabilities": {
-        "chat": true,
-        "embeddings": false,
-        "json": {
-          "native": false,
-          "schema": false,
-          "strict": false
-        },
-        "reasoning": {
-          "enabled": false
-        },
-        "streaming": {
-          "tool_calls": true
-        },
-        "tools": {
-          "enabled": true
-        }
-      },
-      "cost": {
-        "cache_read": 0.45,
-        "input": 1.8,
-        "output": 7.2
-      },
-      "deprecated": false,
-      "extra": {
-        "attachment": true,
-        "open_weights": false,
-        "temperature": false
-      },
-      "family": null,
-      "id": "openAi/gpt-4.1",
-      "knowledge": null,
-      "last_updated": "2025-04-14",
-      "lifecycle": null,
-      "limits": {
-        "context": 1047576,
-        "output": 32768
-      },
-      "modalities": {
-        "input": [
-          "text",
-          "image"
-        ],
-        "output": [
-          "text"
-        ]
-      },
-      "model": null,
-      "name": "GPT-4.1",
-      "provider": "poe",
-      "provider_model_id": null,
-      "release_date": "2025-04-14",
-      "tags": null
-    },
     "runwayml/runway": {
       "aliases": [],
       "capabilities": {
@@ -4994,6 +5373,7 @@
       "deprecated": false,
       "extra": {
         "attachment": true,
+        "family": "runway",
         "open_weights": false,
         "temperature": false
       },
@@ -5050,6 +5430,7 @@
       "deprecated": false,
       "extra": {
         "attachment": true,
+        "family": "claude-opus",
         "open_weights": false,
         "temperature": false
       },
@@ -5065,7 +5446,8 @@
       "modalities": {
         "input": [
           "text",
-          "image"
+          "image",
+          "pdf"
         ],
         "output": [
           "text"
@@ -5107,6 +5489,7 @@
       "deprecated": false,
       "extra": {
         "attachment": true,
+        "family": "claude-haiku",
         "open_weights": false,
         "temperature": false
       },
@@ -5122,7 +5505,8 @@
       "modalities": {
         "input": [
           "text",
-          "image"
+          "image",
+          "pdf"
         ],
         "output": [
           "text"
@@ -5135,7 +5519,60 @@
       "release_date": "2024-03-09",
       "tags": null
     },
-    "openAi/gpt-3.5-turbo-instruct": {
+    "xai/grok-4.1-fast-non-reasoning": {
+      "aliases": [],
+      "capabilities": {
+        "chat": true,
+        "embeddings": false,
+        "json": {
+          "native": false,
+          "schema": false,
+          "strict": false
+        },
+        "reasoning": {
+          "enabled": false
+        },
+        "streaming": {
+          "tool_calls": true
+        },
+        "tools": {
+          "enabled": true
+        }
+      },
+      "cost": null,
+      "deprecated": false,
+      "extra": {
+        "attachment": true,
+        "family": "grok-4",
+        "open_weights": false,
+        "temperature": false
+      },
+      "family": null,
+      "id": "xai/grok-4.1-fast-non-reasoning",
+      "knowledge": null,
+      "last_updated": "2025-11-19",
+      "lifecycle": null,
+      "limits": {
+        "context": 2000000,
+        "output": 30000
+      },
+      "modalities": {
+        "input": [
+          "text",
+          "image"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "model": null,
+      "name": "Grok-4.1-Fast-Non-Reasoning",
+      "provider": "poe",
+      "provider_model_id": null,
+      "release_date": "2025-11-19",
+      "tags": null
+    },
+    "openai/gpt-5.2-instant": {
       "aliases": [],
       "capabilities": {
         "chat": true,
@@ -5156,8 +5593,9 @@
         }
       },
       "cost": {
-        "input": 1.3,
-        "output": 1.8
+        "cache_read": 0.16,
+        "input": 1.6,
+        "output": 13
       },
       "deprecated": false,
       "extra": {
@@ -5166,13 +5604,13 @@
         "temperature": false
       },
       "family": null,
-      "id": "openAi/gpt-3.5-turbo-instruct",
+      "id": "openai/gpt-5.2-instant",
       "knowledge": null,
-      "last_updated": "2023-09-20",
+      "last_updated": "2025-12-11",
       "lifecycle": null,
       "limits": {
-        "context": 3500,
-        "output": 1024
+        "context": 128000,
+        "output": 16384
       },
       "modalities": {
         "input": [
@@ -5184,13 +5622,13 @@
         ]
       },
       "model": null,
-      "name": "GPT-3.5-Turbo-Instruct",
+      "name": "gpt-5.2-instant",
       "provider": "poe",
       "provider_model_id": null,
-      "release_date": "2023-09-20",
+      "release_date": "2025-12-11",
       "tags": null
     },
-    "openAi/o3-pro": {
+    "openai/o3-mini-high": {
       "aliases": [],
       "capabilities": {
         "chat": true,
@@ -5211,19 +5649,20 @@
         }
       },
       "cost": {
-        "input": 18,
-        "output": 72
+        "input": 0.99,
+        "output": 4
       },
       "deprecated": false,
       "extra": {
         "attachment": true,
+        "family": "o3-mini",
         "open_weights": false,
         "temperature": false
       },
       "family": null,
-      "id": "openAi/o3-pro",
+      "id": "openai/o3-mini-high",
       "knowledge": null,
-      "last_updated": "2025-06-10",
+      "last_updated": "2025-01-31",
       "lifecycle": null,
       "limits": {
         "context": 200000,
@@ -5239,13 +5678,13 @@
         ]
       },
       "model": null,
-      "name": "o3-pro",
+      "name": "o3-mini-high",
       "provider": "poe",
       "provider_model_id": null,
-      "release_date": "2025-06-10",
+      "release_date": "2025-01-31",
       "tags": null
     },
-    "openAi/gpt-4-classic": {
+    "openai/gpt-4o-search": {
       "aliases": [],
       "capabilities": {
         "chat": true,
@@ -5266,23 +5705,80 @@
         }
       },
       "cost": {
-        "input": 27,
-        "output": 54
+        "input": 2.2,
+        "output": 9
       },
       "deprecated": false,
       "extra": {
         "attachment": true,
+        "family": "gpt-4o",
         "open_weights": false,
         "temperature": false
       },
       "family": null,
-      "id": "openAi/gpt-4-classic",
+      "id": "openai/gpt-4o-search",
       "knowledge": null,
-      "last_updated": "2024-03-25",
+      "last_updated": "2025-03-11",
       "lifecycle": null,
       "limits": {
-        "context": 8192,
-        "output": 4096
+        "context": 128000,
+        "output": 8192
+      },
+      "modalities": {
+        "input": [
+          "text"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "model": null,
+      "name": "GPT-4o-Search",
+      "provider": "poe",
+      "provider_model_id": null,
+      "release_date": "2025-03-11",
+      "tags": null
+    },
+    "openai/gpt-5-nano": {
+      "aliases": [],
+      "capabilities": {
+        "chat": true,
+        "embeddings": false,
+        "json": {
+          "native": false,
+          "schema": false,
+          "strict": false
+        },
+        "reasoning": {
+          "enabled": true
+        },
+        "streaming": {
+          "tool_calls": true
+        },
+        "tools": {
+          "enabled": true
+        }
+      },
+      "cost": {
+        "cache_read": 0.0045,
+        "input": 0.045,
+        "output": 0.36
+      },
+      "deprecated": false,
+      "extra": {
+        "attachment": true,
+        "family": "gpt-5-nano",
+        "open_weights": false,
+        "temperature": false
+      },
+      "family": null,
+      "id": "openai/gpt-5-nano",
+      "knowledge": null,
+      "last_updated": "2025-08-05",
+      "lifecycle": null,
+      "limits": {
+        "context": 400000,
+        "output": 128000
       },
       "modalities": {
         "input": [
@@ -5294,10 +5790,10 @@
         ]
       },
       "model": null,
-      "name": "GPT-4-Classic",
+      "name": "GPT-5-nano",
       "provider": "poe",
       "provider_model_id": null,
-      "release_date": "2024-03-25",
+      "release_date": "2025-08-05",
       "tags": null
     },
     "anthropic/claude-opus-4.1": {
@@ -5329,6 +5825,7 @@
       "deprecated": false,
       "extra": {
         "attachment": true,
+        "family": "claude-opus",
         "open_weights": false,
         "temperature": false
       },
@@ -5344,7 +5841,8 @@
       "modalities": {
         "input": [
           "text",
-          "image"
+          "image",
+          "pdf"
         ],
         "output": [
           "text"
@@ -5384,6 +5882,7 @@
       "deprecated": false,
       "extra": {
         "attachment": true,
+        "family": "gemini-flash-lite",
         "open_weights": false,
         "temperature": false
       },
@@ -5412,6 +5911,58 @@
       "provider": "poe",
       "provider_model_id": null,
       "release_date": "2025-06-19",
+      "tags": null
+    },
+    "xai/grok-4.1-fast-reasoning": {
+      "aliases": [],
+      "capabilities": {
+        "chat": true,
+        "embeddings": false,
+        "json": {
+          "native": false,
+          "schema": false,
+          "strict": false
+        },
+        "reasoning": {
+          "enabled": true
+        },
+        "streaming": {
+          "tool_calls": true
+        },
+        "tools": {
+          "enabled": true
+        }
+      },
+      "cost": null,
+      "deprecated": false,
+      "extra": {
+        "attachment": true,
+        "family": "grok-4",
+        "open_weights": false,
+        "temperature": false
+      },
+      "family": null,
+      "id": "xai/grok-4.1-fast-reasoning",
+      "knowledge": null,
+      "last_updated": "2025-11-19",
+      "lifecycle": null,
+      "limits": {
+        "context": 2000000,
+        "output": 30000
+      },
+      "modalities": {
+        "input": [
+          "text"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "model": null,
+      "name": "Grok-4.1-Fast-Reasoning",
+      "provider": "poe",
+      "provider_model_id": null,
+      "release_date": "2025-11-19",
       "tags": null
     }
   },

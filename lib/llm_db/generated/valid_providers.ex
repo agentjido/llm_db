@@ -50,6 +50,7 @@ defmodule LLMDB.Generated.ValidProviders do
     :google_vertex_anthropic,
     :groq,
     :gryphe,
+    :helicone,
     :huggingface,
     :"ibm-granite",
     :iflowcn,
