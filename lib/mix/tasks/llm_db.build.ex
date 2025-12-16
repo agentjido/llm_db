@@ -123,10 +123,14 @@ defmodule Mix.Tasks.LlmDb.Build do
         map
       end
 
-    Map.new(plain_map, fn
+    # Convert to sorted keyword list for deterministic JSON output
+    plain_map
+    |> Enum.map(fn
       {k, v} when is_atom(k) -> {Atom.to_string(k), map_with_string_keys(v)}
-      {k, v} -> {k, map_with_string_keys(v)}
+      {k, v} -> {to_string(k), map_with_string_keys(v)}
     end)
+    |> Enum.sort_by(fn {k, _v} -> k end)
+    |> Jason.OrderedObject.new()
   end
 
   defp map_with_string_keys(list) when is_list(list) do
