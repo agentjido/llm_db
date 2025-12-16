@@ -39,281 +39,6 @@
   "extra": null,
   "id": "google",
   "models": {
-    "gemini-flash-latest": {
-      "aliases": [],
-      "capabilities": {
-        "chat": true,
-        "embeddings": false,
-        "json": {
-          "native": false,
-          "schema": false,
-          "strict": false
-        },
-        "reasoning": {
-          "enabled": true
-        },
-        "streaming": {
-          "tool_calls": true
-        },
-        "tools": {
-          "enabled": true
-        }
-      },
-      "cost": {
-        "cache_read": 0.075,
-        "input": 0.3,
-        "input_audio": 1,
-        "output": 2.5
-      },
-      "deprecated": false,
-      "extra": {
-        "attachment": true,
-        "description": "Latest release of Gemini Flash",
-        "family": "gemini-flash",
-        "max_temperature": 2,
-        "open_weights": false,
-        "structured_output": true,
-        "supported_generation_methods": [
-          "generateContent",
-          "countTokens",
-          "createCachedContent",
-          "batchGenerateContent"
-        ],
-        "temperature": 1,
-        "thinking": true,
-        "top_k": 64,
-        "top_p": 0.95,
-        "version": "Gemini Flash Latest"
-      },
-      "family": null,
-      "id": "gemini-flash-latest",
-      "knowledge": "2025-01",
-      "last_updated": "2025-09-25",
-      "lifecycle": null,
-      "limits": {
-        "context": 1048576,
-        "output": 65536
-      },
-      "modalities": {
-        "input": [
-          "text",
-          "image",
-          "audio",
-          "video",
-          "pdf"
-        ],
-        "output": [
-          "text"
-        ]
-      },
-      "model": null,
-      "name": "Gemini Flash Latest",
-      "provider": "google",
-      "provider_model_id": null,
-      "release_date": "2025-09-25",
-      "tags": null
-    },
-    "imagen-4.0-generate-001": {
-      "aliases": [],
-      "capabilities": null,
-      "cost": null,
-      "deprecated": false,
-      "extra": {
-        "description": "Vertex served Imagen 4.0 model",
-        "supported_generation_methods": [
-          "predict"
-        ],
-        "version": "001"
-      },
-      "family": null,
-      "id": "imagen-4.0-generate-001",
-      "knowledge": null,
-      "last_updated": null,
-      "lifecycle": null,
-      "limits": {
-        "context": 480,
-        "output": 8192
-      },
-      "modalities": null,
-      "model": null,
-      "name": "Imagen 4",
-      "provider": "google",
-      "provider_model_id": null,
-      "release_date": null,
-      "tags": null
-    },
-    "gemini-2.0-flash-001": {
-      "aliases": [],
-      "capabilities": {
-        "chat": true,
-        "embeddings": false,
-        "json": {
-          "native": false,
-          "schema": false,
-          "strict": false
-        },
-        "reasoning": {
-          "enabled": false
-        },
-        "streaming": {
-          "text": true,
-          "tool_calls": false
-        },
-        "tools": {
-          "enabled": true
-        }
-      },
-      "cost": {
-        "image": 0.0258,
-        "input": 9.999999999999999e-5,
-        "output": 3.9999999999999996e-4,
-        "reasoning": 0.0,
-        "request": 0.0
-      },
-      "deprecated": false,
-      "extra": {
-        "description": "Stable version of Gemini 2.0 Flash, our fast and versatile multimodal model for scaling across diverse tasks, released in January of 2025.",
-        "hugging_face_id": "",
-        "max_temperature": 2,
-        "supported_generation_methods": [
-          "generateContent",
-          "countTokens",
-          "createCachedContent",
-          "batchGenerateContent"
-        ],
-        "temperature": 1,
-        "top_k": 40,
-        "top_p": 0.95,
-        "version": "2.0"
-      },
-      "family": null,
-      "id": "gemini-2.0-flash-001",
-      "knowledge": null,
-      "last_updated": null,
-      "lifecycle": null,
-      "limits": {
-        "context": 1048576,
-        "output": 8192
-      },
-      "modalities": {
-        "input": [
-          "text",
-          "image"
-        ],
-        "output": [
-          "text"
-        ]
-      },
-      "model": null,
-      "name": "Gemini 2.0 Flash 001",
-      "provider": "google",
-      "provider_model_id": null,
-      "release_date": "2025-02-05",
-      "tags": null
-    },
-    "gemini-2.5-flash-native-audio-preview-09-2025": {
-      "aliases": [],
-      "capabilities": null,
-      "cost": null,
-      "deprecated": false,
-      "extra": {
-        "description": "Gemini 2.5 Flash Native Audio Preview 09-2025",
-        "max_temperature": 2,
-        "supported_generation_methods": [
-          "countTokens",
-          "bidiGenerateContent"
-        ],
-        "temperature": 1,
-        "thinking": true,
-        "top_k": 64,
-        "top_p": 0.95,
-        "version": "gemini-2.5-flash-preview-native-audio-dialog-2025-05-19"
-      },
-      "family": null,
-      "id": "gemini-2.5-flash-native-audio-preview-09-2025",
-      "knowledge": null,
-      "last_updated": null,
-      "lifecycle": null,
-      "limits": {
-        "context": 131072,
-        "output": 8192
-      },
-      "modalities": null,
-      "model": null,
-      "name": "Gemini 2.5 Flash Native Audio Preview 09-2025",
-      "provider": "google",
-      "provider_model_id": null,
-      "release_date": null,
-      "tags": null
-    },
-    "gemma-3n-e2b-it": {
-      "aliases": [],
-      "capabilities": null,
-      "cost": null,
-      "deprecated": false,
-      "extra": {
-        "supported_generation_methods": [
-          "generateContent",
-          "countTokens"
-        ],
-        "temperature": 1,
-        "top_k": 64,
-        "top_p": 0.95,
-        "version": "001"
-      },
-      "family": null,
-      "id": "gemma-3n-e2b-it",
-      "knowledge": null,
-      "last_updated": null,
-      "lifecycle": null,
-      "limits": {
-        "context": 8192,
-        "output": 2048
-      },
-      "modalities": null,
-      "model": null,
-      "name": "Gemma 3n E2B",
-      "provider": "google",
-      "provider_model_id": null,
-      "release_date": null,
-      "tags": null
-    },
-    "gemini-2.0-flash-lite-preview-02-05": {
-      "aliases": [],
-      "capabilities": null,
-      "cost": null,
-      "deprecated": false,
-      "extra": {
-        "description": "Preview release (February 5th, 2025) of Gemini 2.0 Flash-Lite",
-        "max_temperature": 2,
-        "supported_generation_methods": [
-          "generateContent",
-          "countTokens",
-          "createCachedContent",
-          "batchGenerateContent"
-        ],
-        "temperature": 1,
-        "top_k": 40,
-        "top_p": 0.95,
-        "version": "preview-02-05"
-      },
-      "family": null,
-      "id": "gemini-2.0-flash-lite-preview-02-05",
-      "knowledge": null,
-      "last_updated": null,
-      "lifecycle": null,
-      "limits": {
-        "context": 1048576,
-        "output": 8192
-      },
-      "modalities": null,
-      "model": null,
-      "name": "Gemini 2.0 Flash-Lite Preview 02-05",
-      "provider": "google",
-      "provider_model_id": null,
-      "release_date": null,
-      "tags": null
-    },
     "aqa": {
       "aliases": [],
       "capabilities": null,
@@ -341,504 +66,6 @@
       "modalities": null,
       "model": null,
       "name": "Model that performs Attributed Question Answering.",
-      "provider": "google",
-      "provider_model_id": null,
-      "release_date": null,
-      "tags": null
-    },
-    "gemma-2-27b-it": {
-      "aliases": [],
-      "capabilities": null,
-      "cost": {
-        "image": 0.0,
-        "input": 6.5e-4,
-        "output": 6.5e-4,
-        "reasoning": 0.0,
-        "request": 0.0
-      },
-      "deprecated": false,
-      "extra": {
-        "hugging_face_id": "google/gemma-2-27b-it"
-      },
-      "family": null,
-      "id": "gemma-2-27b-it",
-      "knowledge": null,
-      "last_updated": null,
-      "lifecycle": null,
-      "limits": {
-        "context": 8192
-      },
-      "modalities": {
-        "input": [
-          "text"
-        ],
-        "output": [
-          "text"
-        ]
-      },
-      "model": null,
-      "name": "Google: Gemma 2 27B",
-      "provider": "google",
-      "provider_model_id": null,
-      "release_date": "2024-07-13",
-      "tags": null
-    },
-    "gemini-robotics-er-1.5-preview": {
-      "aliases": [],
-      "capabilities": null,
-      "cost": null,
-      "deprecated": false,
-      "extra": {
-        "description": "Gemini Robotics-ER 1.5 Preview",
-        "max_temperature": 2,
-        "supported_generation_methods": [
-          "generateContent",
-          "countTokens"
-        ],
-        "temperature": 1,
-        "thinking": true,
-        "top_k": 64,
-        "top_p": 0.95,
-        "version": "1.5-preview"
-      },
-      "family": null,
-      "id": "gemini-robotics-er-1.5-preview",
-      "knowledge": null,
-      "last_updated": null,
-      "lifecycle": null,
-      "limits": {
-        "context": 1048576,
-        "output": 65536
-      },
-      "modalities": null,
-      "model": null,
-      "name": "Gemini Robotics-ER 1.5 Preview",
-      "provider": "google",
-      "provider_model_id": null,
-      "release_date": null,
-      "tags": null
-    },
-    "imagen-4.0-fast-generate-001": {
-      "aliases": [],
-      "capabilities": null,
-      "cost": null,
-      "deprecated": false,
-      "extra": {
-        "description": "Vertex served Imagen 4.0 Fast model",
-        "supported_generation_methods": [
-          "predict"
-        ],
-        "version": "001"
-      },
-      "family": null,
-      "id": "imagen-4.0-fast-generate-001",
-      "knowledge": null,
-      "last_updated": null,
-      "lifecycle": null,
-      "limits": {
-        "context": 480,
-        "output": 8192
-      },
-      "modalities": null,
-      "model": null,
-      "name": "Imagen 4 Fast",
-      "provider": "google",
-      "provider_model_id": null,
-      "release_date": null,
-      "tags": null
-    },
-    "gemini-2.5-flash-preview-05-20": {
-      "aliases": [],
-      "capabilities": {
-        "chat": true,
-        "embeddings": false,
-        "json": {
-          "native": false,
-          "schema": false,
-          "strict": false
-        },
-        "reasoning": {
-          "enabled": true
-        },
-        "streaming": {
-          "tool_calls": true
-        },
-        "tools": {
-          "enabled": true
-        }
-      },
-      "cost": {
-        "cache_read": 0.0375,
-        "input": 0.15,
-        "output": 0.6
-      },
-      "deprecated": false,
-      "extra": {
-        "attachment": true,
-        "family": "gemini-flash",
-        "open_weights": false,
-        "structured_output": true,
-        "temperature": true
-      },
-      "family": null,
-      "id": "gemini-2.5-flash-preview-05-20",
-      "knowledge": "2025-01",
-      "last_updated": "2025-05-20",
-      "lifecycle": null,
-      "limits": {
-        "context": 1048576,
-        "output": 65536
-      },
-      "modalities": {
-        "input": [
-          "text",
-          "image",
-          "audio",
-          "video",
-          "pdf"
-        ],
-        "output": [
-          "text"
-        ]
-      },
-      "model": null,
-      "name": "Gemini 2.5 Flash Preview 05-20",
-      "provider": "google",
-      "provider_model_id": null,
-      "release_date": "2025-05-20",
-      "tags": null
-    },
-    "imagen-4.0-ultra-generate-preview-06-06": {
-      "aliases": [],
-      "capabilities": null,
-      "cost": null,
-      "deprecated": false,
-      "extra": {
-        "description": "Vertex served Imagen 4.0 ultra model",
-        "supported_generation_methods": [
-          "predict"
-        ],
-        "version": "01"
-      },
-      "family": null,
-      "id": "imagen-4.0-ultra-generate-preview-06-06",
-      "knowledge": null,
-      "last_updated": null,
-      "lifecycle": null,
-      "limits": {
-        "context": 480,
-        "output": 8192
-      },
-      "modalities": null,
-      "model": null,
-      "name": "Imagen 4 Ultra (Preview)",
-      "provider": "google",
-      "provider_model_id": null,
-      "release_date": null,
-      "tags": null
-    },
-    "gemma-3n-e4b-it:free": {
-      "aliases": [],
-      "capabilities": null,
-      "cost": {
-        "image": 0.0,
-        "input": 0.0,
-        "output": 0.0,
-        "reasoning": 0.0,
-        "request": 0.0
-      },
-      "deprecated": false,
-      "extra": {
-        "hugging_face_id": "google/gemma-3n-E4B-it"
-      },
-      "family": null,
-      "id": "gemma-3n-e4b-it:free",
-      "knowledge": null,
-      "last_updated": null,
-      "lifecycle": null,
-      "limits": {
-        "context": 8192,
-        "output": 2048
-      },
-      "modalities": {
-        "input": [
-          "text"
-        ],
-        "output": [
-          "text"
-        ]
-      },
-      "model": null,
-      "name": "Google: Gemma 3n 4B (free)",
-      "provider": "google",
-      "provider_model_id": null,
-      "release_date": "2025-05-20",
-      "tags": null
-    },
-    "gemma-3-1b-it": {
-      "aliases": [],
-      "capabilities": null,
-      "cost": null,
-      "deprecated": false,
-      "extra": {
-        "supported_generation_methods": [
-          "generateContent",
-          "countTokens"
-        ],
-        "temperature": 1,
-        "top_k": 64,
-        "top_p": 0.95,
-        "version": "001"
-      },
-      "family": null,
-      "id": "gemma-3-1b-it",
-      "knowledge": null,
-      "last_updated": null,
-      "lifecycle": null,
-      "limits": {
-        "context": 32768,
-        "output": 8192
-      },
-      "modalities": null,
-      "model": null,
-      "name": "Gemma 3 1B",
-      "provider": "google",
-      "provider_model_id": null,
-      "release_date": null,
-      "tags": null
-    },
-    "imagen-4.0-generate-preview-06-06": {
-      "aliases": [],
-      "capabilities": null,
-      "cost": null,
-      "deprecated": false,
-      "extra": {
-        "description": "Vertex served Imagen 4.0 model",
-        "supported_generation_methods": [
-          "predict"
-        ],
-        "version": "01"
-      },
-      "family": null,
-      "id": "imagen-4.0-generate-preview-06-06",
-      "knowledge": null,
-      "last_updated": null,
-      "lifecycle": null,
-      "limits": {
-        "context": 480,
-        "output": 8192
-      },
-      "modalities": null,
-      "model": null,
-      "name": "Imagen 4 (Preview)",
-      "provider": "google",
-      "provider_model_id": null,
-      "release_date": null,
-      "tags": null
-    },
-    "gemma-3n-e2b-it:free": {
-      "aliases": [],
-      "capabilities": null,
-      "cost": {
-        "image": 0.0,
-        "input": 0.0,
-        "output": 0.0,
-        "reasoning": 0.0,
-        "request": 0.0
-      },
-      "deprecated": false,
-      "extra": {
-        "hugging_face_id": "google/gemma-3n-E2B-it"
-      },
-      "family": null,
-      "id": "gemma-3n-e2b-it:free",
-      "knowledge": null,
-      "last_updated": null,
-      "lifecycle": null,
-      "limits": {
-        "context": 8192,
-        "output": 2048
-      },
-      "modalities": {
-        "input": [
-          "text"
-        ],
-        "output": [
-          "text"
-        ]
-      },
-      "model": null,
-      "name": "Google: Gemma 3n 2B (free)",
-      "provider": "google",
-      "provider_model_id": null,
-      "release_date": "2025-07-09",
-      "tags": null
-    },
-    "gemma-2-9b-it": {
-      "aliases": [],
-      "capabilities": null,
-      "cost": {
-        "image": 0.0,
-        "input": 2.9999999999999997e-5,
-        "output": 8.999999999999999e-5,
-        "reasoning": 0.0,
-        "request": 0.0
-      },
-      "deprecated": false,
-      "extra": {
-        "hugging_face_id": "google/gemma-2-9b-it"
-      },
-      "family": null,
-      "id": "gemma-2-9b-it",
-      "knowledge": null,
-      "last_updated": null,
-      "lifecycle": null,
-      "limits": {
-        "context": 8192
-      },
-      "modalities": {
-        "input": [
-          "text"
-        ],
-        "output": [
-          "text"
-        ]
-      },
-      "model": null,
-      "name": "Google: Gemma 2 9B",
-      "provider": "google",
-      "provider_model_id": null,
-      "release_date": "2024-06-28",
-      "tags": null
-    },
-    "veo-3.1-generate-preview": {
-      "aliases": [],
-      "capabilities": null,
-      "cost": null,
-      "deprecated": false,
-      "extra": {
-        "description": "Veo 3.1",
-        "supported_generation_methods": [
-          "predictLongRunning"
-        ],
-        "version": "3.1"
-      },
-      "family": null,
-      "id": "veo-3.1-generate-preview",
-      "knowledge": null,
-      "last_updated": null,
-      "lifecycle": null,
-      "limits": {
-        "context": 480,
-        "output": 8192
-      },
-      "modalities": null,
-      "model": null,
-      "name": "Veo 3.1",
-      "provider": "google",
-      "provider_model_id": null,
-      "release_date": null,
-      "tags": null
-    },
-    "gemma-3-4b-it:free": {
-      "aliases": [],
-      "capabilities": null,
-      "cost": {
-        "image": 0.0,
-        "input": 0.0,
-        "output": 0.0,
-        "reasoning": 0.0,
-        "request": 0.0
-      },
-      "deprecated": false,
-      "extra": {
-        "hugging_face_id": "google/gemma-3-4b-it"
-      },
-      "family": null,
-      "id": "gemma-3-4b-it:free",
-      "knowledge": null,
-      "last_updated": null,
-      "lifecycle": null,
-      "limits": {
-        "context": 32768,
-        "output": 8192
-      },
-      "modalities": {
-        "input": [
-          "text",
-          "image"
-        ],
-        "output": [
-          "text"
-        ]
-      },
-      "model": null,
-      "name": "Google: Gemma 3 4B (free)",
-      "provider": "google",
-      "provider_model_id": null,
-      "release_date": "2025-03-13",
-      "tags": null
-    },
-    "nano-banana-pro-preview": {
-      "aliases": [],
-      "capabilities": null,
-      "cost": null,
-      "deprecated": false,
-      "extra": {
-        "description": "Gemini 3 Pro Image Preview",
-        "max_temperature": 1,
-        "supported_generation_methods": [
-          "generateContent",
-          "countTokens",
-          "batchGenerateContent"
-        ],
-        "temperature": 1,
-        "thinking": true,
-        "top_k": 64,
-        "top_p": 0.95,
-        "version": "3.0"
-      },
-      "family": null,
-      "id": "nano-banana-pro-preview",
-      "knowledge": null,
-      "last_updated": null,
-      "lifecycle": null,
-      "limits": {
-        "context": 131072,
-        "output": 32768
-      },
-      "modalities": null,
-      "model": null,
-      "name": "Nano Banana Pro",
-      "provider": "google",
-      "provider_model_id": null,
-      "release_date": null,
-      "tags": null
-    },
-    "veo-3.1-fast-generate-preview": {
-      "aliases": [],
-      "capabilities": null,
-      "cost": null,
-      "deprecated": false,
-      "extra": {
-        "description": "Veo 3.1 fast",
-        "supported_generation_methods": [
-          "predictLongRunning"
-        ],
-        "version": "3.1"
-      },
-      "family": null,
-      "id": "veo-3.1-fast-generate-preview",
-      "knowledge": null,
-      "last_updated": null,
-      "lifecycle": null,
-      "limits": {
-        "context": 480,
-        "output": 8192
-      },
-      "modalities": null,
-      "model": null,
-      "name": "Veo 3.1 fast",
       "provider": "google",
       "provider_model_id": null,
       "release_date": null,
@@ -874,530 +101,6 @@
       "modalities": null,
       "model": null,
       "name": "Deep Research Pro Preview (Dec-12-2025)",
-      "provider": "google",
-      "provider_model_id": null,
-      "release_date": null,
-      "tags": null
-    },
-    "gemini-exp-1206": {
-      "aliases": [],
-      "capabilities": null,
-      "cost": null,
-      "deprecated": false,
-      "extra": {
-        "description": "Experimental release (March 25th, 2025) of Gemini 2.5 Pro",
-        "max_temperature": 2,
-        "supported_generation_methods": [
-          "generateContent",
-          "countTokens",
-          "createCachedContent",
-          "batchGenerateContent"
-        ],
-        "temperature": 1,
-        "thinking": true,
-        "top_k": 64,
-        "top_p": 0.95,
-        "version": "2.5-exp-03-25"
-      },
-      "family": null,
-      "id": "gemini-exp-1206",
-      "knowledge": null,
-      "last_updated": null,
-      "lifecycle": null,
-      "limits": {
-        "context": 1048576,
-        "output": 65536
-      },
-      "modalities": null,
-      "model": null,
-      "name": "Gemini Experimental 1206",
-      "provider": "google",
-      "provider_model_id": null,
-      "release_date": null,
-      "tags": null
-    },
-    "gemma-3-12b-it": {
-      "aliases": [],
-      "capabilities": null,
-      "cost": {
-        "image": 0.0,
-        "input": 2.9999999999999997e-5,
-        "output": 9.999999999999999e-5,
-        "reasoning": 0.0,
-        "request": 0.0
-      },
-      "deprecated": false,
-      "extra": {
-        "hugging_face_id": "google/gemma-3-12b-it",
-        "supported_generation_methods": [
-          "generateContent",
-          "countTokens"
-        ],
-        "temperature": 1,
-        "top_k": 64,
-        "top_p": 0.95,
-        "version": "001"
-      },
-      "family": null,
-      "id": "gemma-3-12b-it",
-      "knowledge": null,
-      "last_updated": null,
-      "lifecycle": null,
-      "limits": {
-        "context": 32768,
-        "output": 8192
-      },
-      "modalities": {
-        "input": [
-          "text",
-          "image"
-        ],
-        "output": [
-          "text"
-        ]
-      },
-      "model": null,
-      "name": "Gemma 3 12B",
-      "provider": "google",
-      "provider_model_id": null,
-      "release_date": "2025-03-13",
-      "tags": null
-    },
-    "gemini-2.5-flash-native-audio-latest": {
-      "aliases": [],
-      "capabilities": null,
-      "cost": null,
-      "deprecated": false,
-      "extra": {
-        "description": "Latest release of Gemini 2.5 Flash Native Audio",
-        "max_temperature": 2,
-        "supported_generation_methods": [
-          "countTokens",
-          "bidiGenerateContent"
-        ],
-        "temperature": 1,
-        "thinking": true,
-        "top_k": 64,
-        "top_p": 0.95,
-        "version": "Gemini 2.5 Flash Native Audio Latest"
-      },
-      "family": null,
-      "id": "gemini-2.5-flash-native-audio-latest",
-      "knowledge": null,
-      "last_updated": null,
-      "lifecycle": null,
-      "limits": {
-        "context": 131072,
-        "output": 8192
-      },
-      "modalities": null,
-      "model": null,
-      "name": "Gemini 2.5 Flash Native Audio Latest",
-      "provider": "google",
-      "provider_model_id": null,
-      "release_date": null,
-      "tags": null
-    },
-    "gemini-2.5-computer-use-preview-10-2025": {
-      "aliases": [],
-      "capabilities": null,
-      "cost": null,
-      "deprecated": false,
-      "extra": {
-        "description": "Gemini 2.5 Computer Use Preview 10-2025",
-        "max_temperature": 2,
-        "supported_generation_methods": [
-          "generateContent",
-          "countTokens"
-        ],
-        "temperature": 1,
-        "thinking": true,
-        "top_k": 64,
-        "top_p": 0.95,
-        "version": "Gemini 2.5 Computer Use Preview 10-2025"
-      },
-      "family": null,
-      "id": "gemini-2.5-computer-use-preview-10-2025",
-      "knowledge": null,
-      "last_updated": null,
-      "lifecycle": null,
-      "limits": {
-        "context": 131072,
-        "output": 65536
-      },
-      "modalities": null,
-      "model": null,
-      "name": "Gemini 2.5 Computer Use Preview 10-2025",
-      "provider": "google",
-      "provider_model_id": null,
-      "release_date": null,
-      "tags": null
-    },
-    "veo-3.0-fast-generate-001": {
-      "aliases": [],
-      "capabilities": null,
-      "cost": null,
-      "deprecated": false,
-      "extra": {
-        "description": "Veo 3 fast",
-        "supported_generation_methods": [
-          "predictLongRunning"
-        ],
-        "version": "3.0"
-      },
-      "family": null,
-      "id": "veo-3.0-fast-generate-001",
-      "knowledge": null,
-      "last_updated": null,
-      "lifecycle": null,
-      "limits": {
-        "context": 480,
-        "output": 8192
-      },
-      "modalities": null,
-      "model": null,
-      "name": "Veo 3 fast",
-      "provider": "google",
-      "provider_model_id": null,
-      "release_date": null,
-      "tags": null
-    },
-    "gemma-3n-e4b-it": {
-      "aliases": [],
-      "capabilities": null,
-      "cost": {
-        "image": 0.0,
-        "input": 2.0e-5,
-        "output": 4.0e-5,
-        "reasoning": 0.0,
-        "request": 0.0
-      },
-      "deprecated": false,
-      "extra": {
-        "hugging_face_id": "google/gemma-3n-E4B-it",
-        "supported_generation_methods": [
-          "generateContent",
-          "countTokens"
-        ],
-        "temperature": 1,
-        "top_k": 64,
-        "top_p": 0.95,
-        "version": "001"
-      },
-      "family": null,
-      "id": "gemma-3n-e4b-it",
-      "knowledge": null,
-      "last_updated": null,
-      "lifecycle": null,
-      "limits": {
-        "context": 8192,
-        "output": 2048
-      },
-      "modalities": {
-        "input": [
-          "text"
-        ],
-        "output": [
-          "text"
-        ]
-      },
-      "model": null,
-      "name": "Gemma 3n E4B",
-      "provider": "google",
-      "provider_model_id": null,
-      "release_date": "2025-05-20",
-      "tags": null
-    },
-    "gemini-2.5-pro-preview": {
-      "aliases": [],
-      "capabilities": {
-        "chat": true,
-        "embeddings": false,
-        "json": {
-          "native": false,
-          "schema": false,
-          "strict": false
-        },
-        "reasoning": {
-          "enabled": false
-        },
-        "streaming": {
-          "text": true,
-          "tool_calls": false
-        },
-        "tools": {
-          "enabled": true
-        }
-      },
-      "cost": {
-        "image": 5.159999999999999,
-        "input": 0.00125,
-        "output": 0.01,
-        "reasoning": 0.0,
-        "request": 0.0
-      },
-      "deprecated": false,
-      "extra": {
-        "hugging_face_id": ""
-      },
-      "family": null,
-      "id": "gemini-2.5-pro-preview",
-      "knowledge": null,
-      "last_updated": null,
-      "lifecycle": null,
-      "limits": {
-        "context": 1048576,
-        "output": 65536
-      },
-      "modalities": {
-        "input": [
-          "text",
-          "image"
-        ],
-        "output": [
-          "text"
-        ]
-      },
-      "model": null,
-      "name": "Google: Gemini 2.5 Pro Preview 06-05",
-      "provider": "google",
-      "provider_model_id": null,
-      "release_date": "2025-06-05",
-      "tags": null
-    },
-    "gemma-3-4b-it": {
-      "aliases": [],
-      "capabilities": null,
-      "cost": {
-        "image": 0.0,
-        "input": 1.703012e-5,
-        "output": 6.81536e-5,
-        "reasoning": 0.0,
-        "request": 0.0
-      },
-      "deprecated": false,
-      "extra": {
-        "hugging_face_id": "google/gemma-3-4b-it",
-        "supported_generation_methods": [
-          "generateContent",
-          "countTokens"
-        ],
-        "temperature": 1,
-        "top_k": 64,
-        "top_p": 0.95,
-        "version": "001"
-      },
-      "family": null,
-      "id": "gemma-3-4b-it",
-      "knowledge": null,
-      "last_updated": null,
-      "lifecycle": null,
-      "limits": {
-        "context": 32768,
-        "output": 8192
-      },
-      "modalities": {
-        "input": [
-          "text",
-          "image"
-        ],
-        "output": [
-          "text"
-        ]
-      },
-      "model": null,
-      "name": "Gemma 3 4B",
-      "provider": "google",
-      "provider_model_id": null,
-      "release_date": "2025-03-13",
-      "tags": null
-    },
-    "text-embedding-004": {
-      "aliases": [],
-      "capabilities": null,
-      "cost": null,
-      "deprecated": false,
-      "extra": {
-        "description": "Obtain a distributed representation of a text.",
-        "supported_generation_methods": [
-          "embedContent"
-        ],
-        "version": "004"
-      },
-      "family": null,
-      "id": "text-embedding-004",
-      "knowledge": null,
-      "last_updated": null,
-      "lifecycle": null,
-      "limits": {
-        "context": 2048,
-        "output": 1
-      },
-      "modalities": null,
-      "model": null,
-      "name": "Text Embedding 004",
-      "provider": "google",
-      "provider_model_id": null,
-      "release_date": null,
-      "tags": null
-    },
-    "gemini-embedding-001": {
-      "aliases": [],
-      "capabilities": {
-        "chat": true,
-        "embeddings": {
-          "default_dimensions": 3072,
-          "max_dimensions": 3072,
-          "min_dimensions": 3072
-        },
-        "json": {
-          "native": false,
-          "schema": false,
-          "strict": false
-        },
-        "reasoning": {
-          "enabled": false
-        },
-        "streaming": {
-          "text": true,
-          "tool_calls": false
-        },
-        "tools": {
-          "enabled": false,
-          "parallel": false,
-          "streaming": false,
-          "strict": false
-        }
-      },
-      "cost": {
-        "input": 1.0e-5,
-        "output": 0
-      },
-      "deprecated": false,
-      "extra": {
-        "attachment": false,
-        "description": "Obtain a distributed representation of a text.",
-        "family": "gemini",
-        "open_weights": false,
-        "reasoning": false,
-        "supported_generation_methods": [
-          "embedContent",
-          "countTextTokens",
-          "countTokens",
-          "asyncBatchEmbedContent"
-        ],
-        "temperature": false,
-        "tool_call": false,
-        "type": "embedding",
-        "version": "001"
-      },
-      "family": null,
-      "id": "gemini-embedding-001",
-      "knowledge": "2025-05",
-      "last_updated": "2024-03-07",
-      "lifecycle": null,
-      "limits": {
-        "context": 2048,
-        "output": 1
-      },
-      "modalities": {
-        "input": [
-          "text"
-        ],
-        "output": [
-          "text",
-          "embedding"
-        ]
-      },
-      "model": null,
-      "name": "Gemini Embedding 001",
-      "provider": "google",
-      "provider_model_id": "models/gemini-embedding-001",
-      "release_date": "2024-03-07",
-      "tags": null
-    },
-    "veo-3.0-generate-001": {
-      "aliases": [],
-      "capabilities": null,
-      "cost": null,
-      "deprecated": false,
-      "extra": {
-        "description": "Veo 3",
-        "supported_generation_methods": [
-          "predictLongRunning"
-        ],
-        "version": "3.0"
-      },
-      "family": null,
-      "id": "veo-3.0-generate-001",
-      "knowledge": null,
-      "last_updated": null,
-      "lifecycle": null,
-      "limits": {
-        "context": 480,
-        "output": 8192
-      },
-      "modalities": null,
-      "model": null,
-      "name": "Veo 3",
-      "provider": "google",
-      "provider_model_id": null,
-      "release_date": null,
-      "tags": null
-    },
-    "veo-2.0-generate-001": {
-      "aliases": [],
-      "capabilities": null,
-      "cost": null,
-      "deprecated": false,
-      "extra": {
-        "description": "Vertex served Veo 2 model. Access to this model requires billing to be enabled on the associated Google Cloud Platform account. Please visit https://console.cloud.google.com/billing to enable it.",
-        "supported_generation_methods": [
-          "predictLongRunning"
-        ],
-        "version": "2.0"
-      },
-      "family": null,
-      "id": "veo-2.0-generate-001",
-      "knowledge": null,
-      "last_updated": null,
-      "lifecycle": null,
-      "limits": {
-        "context": 480,
-        "output": 8192
-      },
-      "modalities": null,
-      "model": null,
-      "name": "Veo 2",
-      "provider": "google",
-      "provider_model_id": null,
-      "release_date": null,
-      "tags": null
-    },
-    "imagen-4.0-ultra-generate-001": {
-      "aliases": [],
-      "capabilities": null,
-      "cost": null,
-      "deprecated": false,
-      "extra": {
-        "description": "Vertex served Imagen 4.0 ultra model",
-        "supported_generation_methods": [
-          "predict"
-        ],
-        "version": "001"
-      },
-      "family": null,
-      "id": "imagen-4.0-ultra-generate-001",
-      "knowledge": null,
-      "last_updated": null,
-      "lifecycle": null,
-      "limits": {
-        "context": 480,
-        "output": 8192
-      },
-      "modalities": null,
-      "model": null,
-      "name": "Imagen 4 Ultra",
       "provider": "google",
       "provider_model_id": null,
       "release_date": null,
@@ -1470,6 +173,273 @@
       },
       "model": null,
       "name": "Gemini 2.0 Flash",
+      "provider": "google",
+      "provider_model_id": null,
+      "release_date": "2024-12-11",
+      "tags": null
+    },
+    "gemini-2.0-flash-001": {
+      "aliases": [],
+      "capabilities": {
+        "chat": true,
+        "embeddings": false,
+        "json": {
+          "native": false,
+          "schema": false,
+          "strict": false
+        },
+        "reasoning": {
+          "enabled": false
+        },
+        "streaming": {
+          "text": true,
+          "tool_calls": false
+        },
+        "tools": {
+          "enabled": true
+        }
+      },
+      "cost": {
+        "image": 0.0258,
+        "input": 9.999999999999999e-5,
+        "output": 3.9999999999999996e-4,
+        "reasoning": 0.0,
+        "request": 0.0
+      },
+      "deprecated": false,
+      "extra": {
+        "description": "Stable version of Gemini 2.0 Flash, our fast and versatile multimodal model for scaling across diverse tasks, released in January of 2025.",
+        "hugging_face_id": "",
+        "max_temperature": 2,
+        "supported_generation_methods": [
+          "generateContent",
+          "countTokens",
+          "createCachedContent",
+          "batchGenerateContent"
+        ],
+        "temperature": 1,
+        "top_k": 40,
+        "top_p": 0.95,
+        "version": "2.0"
+      },
+      "family": null,
+      "id": "gemini-2.0-flash-001",
+      "knowledge": null,
+      "last_updated": null,
+      "lifecycle": null,
+      "limits": {
+        "context": 1048576,
+        "output": 8192
+      },
+      "modalities": {
+        "input": [
+          "text",
+          "image"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "model": null,
+      "name": "Gemini 2.0 Flash 001",
+      "provider": "google",
+      "provider_model_id": null,
+      "release_date": "2025-02-05",
+      "tags": null
+    },
+    "gemini-2.0-flash-exp": {
+      "aliases": [],
+      "capabilities": null,
+      "cost": null,
+      "deprecated": false,
+      "extra": {
+        "description": "Gemini 2.0 Flash Experimental",
+        "max_temperature": 2,
+        "supported_generation_methods": [
+          "generateContent",
+          "countTokens",
+          "bidiGenerateContent"
+        ],
+        "temperature": 1,
+        "top_k": 40,
+        "top_p": 0.95,
+        "version": "2.0"
+      },
+      "family": null,
+      "id": "gemini-2.0-flash-exp",
+      "knowledge": null,
+      "last_updated": null,
+      "lifecycle": null,
+      "limits": {
+        "context": 1048576,
+        "output": 8192
+      },
+      "modalities": null,
+      "model": null,
+      "name": "Gemini 2.0 Flash Experimental",
+      "provider": "google",
+      "provider_model_id": null,
+      "release_date": null,
+      "tags": null
+    },
+    "gemini-2.0-flash-exp-image-generation": {
+      "aliases": [],
+      "capabilities": null,
+      "cost": null,
+      "deprecated": false,
+      "extra": {
+        "description": "Gemini 2.0 Flash (Image Generation) Experimental",
+        "max_temperature": 2,
+        "supported_generation_methods": [
+          "generateContent",
+          "countTokens",
+          "bidiGenerateContent"
+        ],
+        "temperature": 1,
+        "top_k": 40,
+        "top_p": 0.95,
+        "version": "2.0"
+      },
+      "family": null,
+      "id": "gemini-2.0-flash-exp-image-generation",
+      "knowledge": null,
+      "last_updated": null,
+      "lifecycle": null,
+      "limits": {
+        "context": 1048576,
+        "output": 8192
+      },
+      "modalities": null,
+      "model": null,
+      "name": "Gemini 2.0 Flash (Image Generation) Experimental",
+      "provider": "google",
+      "provider_model_id": null,
+      "release_date": null,
+      "tags": null
+    },
+    "gemini-2.0-flash-exp:free": {
+      "aliases": [],
+      "capabilities": {
+        "chat": true,
+        "embeddings": false,
+        "json": {
+          "native": false,
+          "schema": false,
+          "strict": false
+        },
+        "reasoning": {
+          "enabled": false
+        },
+        "streaming": {
+          "text": true,
+          "tool_calls": false
+        },
+        "tools": {
+          "enabled": true
+        }
+      },
+      "cost": {
+        "image": 0.0,
+        "input": 0.0,
+        "output": 0.0,
+        "reasoning": 0.0,
+        "request": 0.0
+      },
+      "deprecated": false,
+      "extra": {
+        "hugging_face_id": ""
+      },
+      "family": null,
+      "id": "gemini-2.0-flash-exp:free",
+      "knowledge": null,
+      "last_updated": null,
+      "lifecycle": null,
+      "limits": {
+        "context": 1048576,
+        "output": 8192
+      },
+      "modalities": {
+        "input": [
+          "text",
+          "image"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "model": null,
+      "name": "Google: Gemini 2.0 Flash Experimental (free)",
+      "provider": "google",
+      "provider_model_id": null,
+      "release_date": "2024-12-11",
+      "tags": null
+    },
+    "gemini-2.0-flash-lite": {
+      "aliases": [],
+      "capabilities": {
+        "chat": true,
+        "embeddings": false,
+        "json": {
+          "native": false,
+          "schema": false,
+          "strict": false
+        },
+        "reasoning": {
+          "enabled": false
+        },
+        "streaming": {
+          "tool_calls": true
+        },
+        "tools": {
+          "enabled": true
+        }
+      },
+      "cost": {
+        "input": 0.075,
+        "output": 0.3
+      },
+      "deprecated": false,
+      "extra": {
+        "attachment": true,
+        "description": "Gemini 2.0 Flash-Lite",
+        "family": "gemini-flash-lite",
+        "max_temperature": 2,
+        "open_weights": false,
+        "structured_output": true,
+        "supported_generation_methods": [
+          "generateContent",
+          "countTokens",
+          "createCachedContent",
+          "batchGenerateContent"
+        ],
+        "temperature": 1,
+        "top_k": 40,
+        "top_p": 0.95,
+        "version": "2.0"
+      },
+      "family": null,
+      "id": "gemini-2.0-flash-lite",
+      "knowledge": "2024-06",
+      "last_updated": "2024-12-11",
+      "lifecycle": null,
+      "limits": {
+        "context": 1048576,
+        "output": 8192
+      },
+      "modalities": {
+        "input": [
+          "text",
+          "image",
+          "audio",
+          "video",
+          "pdf"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "model": null,
+      "name": "Gemini 2.0 Flash-Lite",
       "provider": "google",
       "provider_model_id": null,
       "release_date": "2024-12-11",
@@ -1580,75 +550,72 @@
       "release_date": null,
       "tags": null
     },
-    "gemma-3-12b-it:free": {
-      "aliases": [],
-      "capabilities": null,
-      "cost": {
-        "image": 0.0,
-        "input": 0.0,
-        "output": 0.0,
-        "reasoning": 0.0,
-        "request": 0.0
-      },
-      "deprecated": false,
-      "extra": {
-        "hugging_face_id": "google/gemma-3-12b-it"
-      },
-      "family": null,
-      "id": "gemma-3-12b-it:free",
-      "knowledge": null,
-      "last_updated": null,
-      "lifecycle": null,
-      "limits": {
-        "context": 32768,
-        "output": 8192
-      },
-      "modalities": {
-        "input": [
-          "text",
-          "image"
-        ],
-        "output": [
-          "text"
-        ]
-      },
-      "model": null,
-      "name": "Google: Gemma 3 12B (free)",
-      "provider": "google",
-      "provider_model_id": null,
-      "release_date": "2025-03-13",
-      "tags": null
-    },
-    "gemini-2.5-flash-native-audio-preview-12-2025": {
+    "gemini-2.0-flash-lite-preview-02-05": {
       "aliases": [],
       "capabilities": null,
       "cost": null,
       "deprecated": false,
       "extra": {
-        "description": "Gemini 2.5 Flash Native Audio Preview 12-2025",
+        "description": "Preview release (February 5th, 2025) of Gemini 2.0 Flash-Lite",
         "max_temperature": 2,
         "supported_generation_methods": [
+          "generateContent",
           "countTokens",
-          "bidiGenerateContent"
+          "createCachedContent",
+          "batchGenerateContent"
+        ],
+        "temperature": 1,
+        "top_k": 40,
+        "top_p": 0.95,
+        "version": "preview-02-05"
+      },
+      "family": null,
+      "id": "gemini-2.0-flash-lite-preview-02-05",
+      "knowledge": null,
+      "last_updated": null,
+      "lifecycle": null,
+      "limits": {
+        "context": 1048576,
+        "output": 8192
+      },
+      "modalities": null,
+      "model": null,
+      "name": "Gemini 2.0 Flash-Lite Preview 02-05",
+      "provider": "google",
+      "provider_model_id": null,
+      "release_date": null,
+      "tags": null
+    },
+    "gemini-2.5-computer-use-preview-10-2025": {
+      "aliases": [],
+      "capabilities": null,
+      "cost": null,
+      "deprecated": false,
+      "extra": {
+        "description": "Gemini 2.5 Computer Use Preview 10-2025",
+        "max_temperature": 2,
+        "supported_generation_methods": [
+          "generateContent",
+          "countTokens"
         ],
         "temperature": 1,
         "thinking": true,
         "top_k": 64,
         "top_p": 0.95,
-        "version": "12-2025"
+        "version": "Gemini 2.5 Computer Use Preview 10-2025"
       },
       "family": null,
-      "id": "gemini-2.5-flash-native-audio-preview-12-2025",
+      "id": "gemini-2.5-computer-use-preview-10-2025",
       "knowledge": null,
       "last_updated": null,
       "lifecycle": null,
       "limits": {
         "context": 131072,
-        "output": 8192
+        "output": 65536
       },
       "modalities": null,
       "model": null,
-      "name": "Gemini 2.5 Flash Native Audio Preview 12-2025",
+      "name": "Gemini 2.5 Computer Use Preview 10-2025",
       "provider": "google",
       "provider_model_id": null,
       "release_date": null,
@@ -1733,7 +700,112 @@
       "release_date": "2025-06-17",
       "tags": null
     },
-    "gemini-3-pro-preview": {
+    "gemini-2.5-flash-native-audio-latest": {
+      "aliases": [],
+      "capabilities": null,
+      "cost": null,
+      "deprecated": false,
+      "extra": {
+        "description": "Latest release of Gemini 2.5 Flash Native Audio",
+        "max_temperature": 2,
+        "supported_generation_methods": [
+          "countTokens",
+          "bidiGenerateContent"
+        ],
+        "temperature": 1,
+        "thinking": true,
+        "top_k": 64,
+        "top_p": 0.95,
+        "version": "Gemini 2.5 Flash Native Audio Latest"
+      },
+      "family": null,
+      "id": "gemini-2.5-flash-native-audio-latest",
+      "knowledge": null,
+      "last_updated": null,
+      "lifecycle": null,
+      "limits": {
+        "context": 131072,
+        "output": 8192
+      },
+      "modalities": null,
+      "model": null,
+      "name": "Gemini 2.5 Flash Native Audio Latest",
+      "provider": "google",
+      "provider_model_id": null,
+      "release_date": null,
+      "tags": null
+    },
+    "gemini-2.5-flash-native-audio-preview-09-2025": {
+      "aliases": [],
+      "capabilities": null,
+      "cost": null,
+      "deprecated": false,
+      "extra": {
+        "description": "Gemini 2.5 Flash Native Audio Preview 09-2025",
+        "max_temperature": 2,
+        "supported_generation_methods": [
+          "countTokens",
+          "bidiGenerateContent"
+        ],
+        "temperature": 1,
+        "thinking": true,
+        "top_k": 64,
+        "top_p": 0.95,
+        "version": "gemini-2.5-flash-preview-native-audio-dialog-2025-05-19"
+      },
+      "family": null,
+      "id": "gemini-2.5-flash-native-audio-preview-09-2025",
+      "knowledge": null,
+      "last_updated": null,
+      "lifecycle": null,
+      "limits": {
+        "context": 131072,
+        "output": 8192
+      },
+      "modalities": null,
+      "model": null,
+      "name": "Gemini 2.5 Flash Native Audio Preview 09-2025",
+      "provider": "google",
+      "provider_model_id": null,
+      "release_date": null,
+      "tags": null
+    },
+    "gemini-2.5-flash-native-audio-preview-12-2025": {
+      "aliases": [],
+      "capabilities": null,
+      "cost": null,
+      "deprecated": false,
+      "extra": {
+        "description": "Gemini 2.5 Flash Native Audio Preview 12-2025",
+        "max_temperature": 2,
+        "supported_generation_methods": [
+          "countTokens",
+          "bidiGenerateContent"
+        ],
+        "temperature": 1,
+        "thinking": true,
+        "top_k": 64,
+        "top_p": 0.95,
+        "version": "12-2025"
+      },
+      "family": null,
+      "id": "gemini-2.5-flash-native-audio-preview-12-2025",
+      "knowledge": null,
+      "last_updated": null,
+      "lifecycle": null,
+      "limits": {
+        "context": 131072,
+        "output": 8192
+      },
+      "modalities": null,
+      "model": null,
+      "name": "Gemini 2.5 Flash Native Audio Preview 12-2025",
+      "provider": "google",
+      "provider_model_id": null,
+      "release_date": null,
+      "tags": null
+    },
+    "gemini-2.5-flash-preview-05-20": {
       "aliases": [],
       "capabilities": {
         "chat": true,
@@ -1744,49 +816,32 @@
           "strict": false
         },
         "reasoning": {
-          "enabled": false
+          "enabled": true
         },
         "streaming": {
-          "text": true,
-          "tool_calls": false
+          "tool_calls": true
         },
         "tools": {
           "enabled": true
         }
       },
       "cost": {
-        "cache_read": 0.2,
-        "image": 8.256,
-        "input": 0.002,
-        "output": 0.012,
-        "reasoning": 0.0,
-        "request": 0.0
+        "cache_read": 0.0375,
+        "input": 0.15,
+        "output": 0.6
       },
       "deprecated": false,
       "extra": {
         "attachment": true,
-        "description": "Gemini 3 Pro Preview",
-        "family": "gemini-pro",
-        "hugging_face_id": "",
-        "max_temperature": 2,
+        "family": "gemini-flash",
         "open_weights": false,
         "structured_output": true,
-        "supported_generation_methods": [
-          "generateContent",
-          "countTokens",
-          "createCachedContent",
-          "batchGenerateContent"
-        ],
-        "temperature": 1,
-        "thinking": true,
-        "top_k": 64,
-        "top_p": 0.95,
-        "version": "3-pro-preview-11-2025"
+        "temperature": true
       },
       "family": null,
-      "id": "gemini-3-pro-preview",
+      "id": "gemini-2.5-flash-preview-05-20",
       "knowledge": "2025-01",
-      "last_updated": "2025-11-18",
+      "last_updated": "2025-05-20",
       "lifecycle": null,
       "limits": {
         "context": 1048576,
@@ -1796,8 +851,8 @@
         "input": [
           "text",
           "image",
-          "video",
           "audio",
+          "video",
           "pdf"
         ],
         "output": [
@@ -1805,47 +860,10 @@
         ]
       },
       "model": null,
-      "name": "Gemini 3 Pro Preview",
+      "name": "Gemini 2.5 Flash Preview 05-20",
       "provider": "google",
       "provider_model_id": null,
-      "release_date": "2025-11-18",
-      "tags": null
-    },
-    "gemini-pro-latest": {
-      "aliases": [],
-      "capabilities": null,
-      "cost": null,
-      "deprecated": false,
-      "extra": {
-        "description": "Latest release of Gemini Pro",
-        "max_temperature": 2,
-        "supported_generation_methods": [
-          "generateContent",
-          "countTokens",
-          "createCachedContent",
-          "batchGenerateContent"
-        ],
-        "temperature": 1,
-        "thinking": true,
-        "top_k": 64,
-        "top_p": 0.95,
-        "version": "Gemini Pro Latest"
-      },
-      "family": null,
-      "id": "gemini-pro-latest",
-      "knowledge": null,
-      "last_updated": null,
-      "lifecycle": null,
-      "limits": {
-        "context": 1048576,
-        "output": 65536
-      },
-      "modalities": null,
-      "model": null,
-      "name": "Gemini Pro Latest",
-      "provider": "google",
-      "provider_model_id": null,
-      "release_date": null,
+      "release_date": "2025-05-20",
       "tags": null
     },
     "gemini-2.5-pro": {
@@ -1926,39 +944,61 @@
       "release_date": "2025-06-17",
       "tags": null
     },
-    "gemini-2.0-flash-exp-image-generation": {
+    "gemini-2.5-pro-preview": {
       "aliases": [],
-      "capabilities": null,
-      "cost": null,
+      "capabilities": {
+        "chat": true,
+        "embeddings": false,
+        "json": {
+          "native": false,
+          "schema": false,
+          "strict": false
+        },
+        "reasoning": {
+          "enabled": false
+        },
+        "streaming": {
+          "text": true,
+          "tool_calls": false
+        },
+        "tools": {
+          "enabled": true
+        }
+      },
+      "cost": {
+        "image": 5.159999999999999,
+        "input": 0.00125,
+        "output": 0.01,
+        "reasoning": 0.0,
+        "request": 0.0
+      },
       "deprecated": false,
       "extra": {
-        "description": "Gemini 2.0 Flash (Image Generation) Experimental",
-        "max_temperature": 2,
-        "supported_generation_methods": [
-          "generateContent",
-          "countTokens",
-          "bidiGenerateContent"
-        ],
-        "temperature": 1,
-        "top_k": 40,
-        "top_p": 0.95,
-        "version": "2.0"
+        "hugging_face_id": ""
       },
       "family": null,
-      "id": "gemini-2.0-flash-exp-image-generation",
+      "id": "gemini-2.5-pro-preview",
       "knowledge": null,
       "last_updated": null,
       "lifecycle": null,
       "limits": {
         "context": 1048576,
-        "output": 8192
+        "output": 65536
       },
-      "modalities": null,
+      "modalities": {
+        "input": [
+          "text",
+          "image"
+        ],
+        "output": [
+          "text"
+        ]
+      },
       "model": null,
-      "name": "Gemini 2.0 Flash (Image Generation) Experimental",
+      "name": "Google: Gemini 2.5 Pro Preview 06-05",
       "provider": "google",
       "provider_model_id": null,
-      "release_date": null,
+      "release_date": "2025-06-05",
       "tags": null
     },
     "gemini-3-pro-image-preview": {
@@ -1997,151 +1037,7 @@
       "release_date": null,
       "tags": null
     },
-    "gemini-2.0-flash-lite": {
-      "aliases": [],
-      "capabilities": {
-        "chat": true,
-        "embeddings": false,
-        "json": {
-          "native": false,
-          "schema": false,
-          "strict": false
-        },
-        "reasoning": {
-          "enabled": false
-        },
-        "streaming": {
-          "tool_calls": true
-        },
-        "tools": {
-          "enabled": true
-        }
-      },
-      "cost": {
-        "input": 0.075,
-        "output": 0.3
-      },
-      "deprecated": false,
-      "extra": {
-        "attachment": true,
-        "description": "Gemini 2.0 Flash-Lite",
-        "family": "gemini-flash-lite",
-        "max_temperature": 2,
-        "open_weights": false,
-        "structured_output": true,
-        "supported_generation_methods": [
-          "generateContent",
-          "countTokens",
-          "createCachedContent",
-          "batchGenerateContent"
-        ],
-        "temperature": 1,
-        "top_k": 40,
-        "top_p": 0.95,
-        "version": "2.0"
-      },
-      "family": null,
-      "id": "gemini-2.0-flash-lite",
-      "knowledge": "2024-06",
-      "last_updated": "2024-12-11",
-      "lifecycle": null,
-      "limits": {
-        "context": 1048576,
-        "output": 8192
-      },
-      "modalities": {
-        "input": [
-          "text",
-          "image",
-          "audio",
-          "video",
-          "pdf"
-        ],
-        "output": [
-          "text"
-        ]
-      },
-      "model": null,
-      "name": "Gemini 2.0 Flash-Lite",
-      "provider": "google",
-      "provider_model_id": null,
-      "release_date": "2024-12-11",
-      "tags": null
-    },
-    "gemini-2.0-flash-exp": {
-      "aliases": [],
-      "capabilities": null,
-      "cost": null,
-      "deprecated": false,
-      "extra": {
-        "description": "Gemini 2.0 Flash Experimental",
-        "max_temperature": 2,
-        "supported_generation_methods": [
-          "generateContent",
-          "countTokens",
-          "bidiGenerateContent"
-        ],
-        "temperature": 1,
-        "top_k": 40,
-        "top_p": 0.95,
-        "version": "2.0"
-      },
-      "family": null,
-      "id": "gemini-2.0-flash-exp",
-      "knowledge": null,
-      "last_updated": null,
-      "lifecycle": null,
-      "limits": {
-        "context": 1048576,
-        "output": 8192
-      },
-      "modalities": null,
-      "model": null,
-      "name": "Gemini 2.0 Flash Experimental",
-      "provider": "google",
-      "provider_model_id": null,
-      "release_date": null,
-      "tags": null
-    },
-    "gemma-3-27b-it:free": {
-      "aliases": [],
-      "capabilities": null,
-      "cost": {
-        "image": 0.0,
-        "input": 0.0,
-        "output": 0.0,
-        "reasoning": 0.0,
-        "request": 0.0
-      },
-      "deprecated": false,
-      "extra": {
-        "hugging_face_id": ""
-      },
-      "family": null,
-      "id": "gemma-3-27b-it:free",
-      "knowledge": null,
-      "last_updated": null,
-      "lifecycle": null,
-      "limits": {
-        "context": 131072
-      },
-      "modalities": {
-        "input": [
-          "text",
-          "image"
-        ],
-        "output": [
-          "text"
-        ]
-      },
-      "model": null,
-      "name": "Google: Gemma 3 27B (free)",
-      "provider": "google",
-      "provider_model_id": null,
-      "release_date": "2025-03-12",
-      "tags": null
-    },
-    "gemini-2.0-flash-exp:free": {
+    "gemini-3-pro-preview": {
       "aliases": [],
       "capabilities": {
         "chat": true,
@@ -2163,23 +1059,423 @@
         }
       },
       "cost": {
-        "image": 0.0,
-        "input": 0.0,
-        "output": 0.0,
+        "cache_read": 0.2,
+        "image": 8.256,
+        "input": 0.002,
+        "output": 0.012,
         "reasoning": 0.0,
         "request": 0.0
       },
       "deprecated": false,
       "extra": {
-        "hugging_face_id": ""
+        "attachment": true,
+        "description": "Gemini 3 Pro Preview",
+        "family": "gemini-pro",
+        "hugging_face_id": "",
+        "max_temperature": 2,
+        "open_weights": false,
+        "structured_output": true,
+        "supported_generation_methods": [
+          "generateContent",
+          "countTokens",
+          "createCachedContent",
+          "batchGenerateContent"
+        ],
+        "temperature": 1,
+        "thinking": true,
+        "top_k": 64,
+        "top_p": 0.95,
+        "version": "3-pro-preview-11-2025"
       },
       "family": null,
-      "id": "gemini-2.0-flash-exp:free",
+      "id": "gemini-3-pro-preview",
+      "knowledge": "2025-01",
+      "last_updated": "2025-11-18",
+      "lifecycle": null,
+      "limits": {
+        "context": 1048576,
+        "output": 65536
+      },
+      "modalities": {
+        "input": [
+          "text",
+          "image",
+          "video",
+          "audio",
+          "pdf"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "model": null,
+      "name": "Gemini 3 Pro Preview",
+      "provider": "google",
+      "provider_model_id": null,
+      "release_date": "2025-11-18",
+      "tags": null
+    },
+    "gemini-embedding-001": {
+      "aliases": [],
+      "capabilities": {
+        "chat": true,
+        "embeddings": {
+          "default_dimensions": 3072,
+          "max_dimensions": 3072,
+          "min_dimensions": 3072
+        },
+        "json": {
+          "native": false,
+          "schema": false,
+          "strict": false
+        },
+        "reasoning": {
+          "enabled": false
+        },
+        "streaming": {
+          "text": true,
+          "tool_calls": false
+        },
+        "tools": {
+          "enabled": false,
+          "parallel": false,
+          "streaming": false,
+          "strict": false
+        }
+      },
+      "cost": {
+        "input": 1.0e-5,
+        "output": 0
+      },
+      "deprecated": false,
+      "extra": {
+        "attachment": false,
+        "description": "Obtain a distributed representation of a text.",
+        "family": "gemini",
+        "open_weights": false,
+        "reasoning": false,
+        "supported_generation_methods": [
+          "embedContent",
+          "countTextTokens",
+          "countTokens",
+          "asyncBatchEmbedContent"
+        ],
+        "temperature": false,
+        "tool_call": false,
+        "type": "embedding",
+        "version": "001"
+      },
+      "family": null,
+      "id": "gemini-embedding-001",
+      "knowledge": "2025-05",
+      "last_updated": "2024-03-07",
+      "lifecycle": null,
+      "limits": {
+        "context": 2048,
+        "output": 1
+      },
+      "modalities": {
+        "input": [
+          "text"
+        ],
+        "output": [
+          "text",
+          "embedding"
+        ]
+      },
+      "model": null,
+      "name": "Gemini Embedding 001",
+      "provider": "google",
+      "provider_model_id": "models/gemini-embedding-001",
+      "release_date": "2024-03-07",
+      "tags": null
+    },
+    "gemini-exp-1206": {
+      "aliases": [],
+      "capabilities": null,
+      "cost": null,
+      "deprecated": false,
+      "extra": {
+        "description": "Experimental release (March 25th, 2025) of Gemini 2.5 Pro",
+        "max_temperature": 2,
+        "supported_generation_methods": [
+          "generateContent",
+          "countTokens",
+          "createCachedContent",
+          "batchGenerateContent"
+        ],
+        "temperature": 1,
+        "thinking": true,
+        "top_k": 64,
+        "top_p": 0.95,
+        "version": "2.5-exp-03-25"
+      },
+      "family": null,
+      "id": "gemini-exp-1206",
       "knowledge": null,
       "last_updated": null,
       "lifecycle": null,
       "limits": {
         "context": 1048576,
+        "output": 65536
+      },
+      "modalities": null,
+      "model": null,
+      "name": "Gemini Experimental 1206",
+      "provider": "google",
+      "provider_model_id": null,
+      "release_date": null,
+      "tags": null
+    },
+    "gemini-flash-latest": {
+      "aliases": [],
+      "capabilities": {
+        "chat": true,
+        "embeddings": false,
+        "json": {
+          "native": false,
+          "schema": false,
+          "strict": false
+        },
+        "reasoning": {
+          "enabled": true
+        },
+        "streaming": {
+          "tool_calls": true
+        },
+        "tools": {
+          "enabled": true
+        }
+      },
+      "cost": {
+        "cache_read": 0.075,
+        "input": 0.3,
+        "input_audio": 1,
+        "output": 2.5
+      },
+      "deprecated": false,
+      "extra": {
+        "attachment": true,
+        "description": "Latest release of Gemini Flash",
+        "family": "gemini-flash",
+        "max_temperature": 2,
+        "open_weights": false,
+        "structured_output": true,
+        "supported_generation_methods": [
+          "generateContent",
+          "countTokens",
+          "createCachedContent",
+          "batchGenerateContent"
+        ],
+        "temperature": 1,
+        "thinking": true,
+        "top_k": 64,
+        "top_p": 0.95,
+        "version": "Gemini Flash Latest"
+      },
+      "family": null,
+      "id": "gemini-flash-latest",
+      "knowledge": "2025-01",
+      "last_updated": "2025-09-25",
+      "lifecycle": null,
+      "limits": {
+        "context": 1048576,
+        "output": 65536
+      },
+      "modalities": {
+        "input": [
+          "text",
+          "image",
+          "audio",
+          "video",
+          "pdf"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "model": null,
+      "name": "Gemini Flash Latest",
+      "provider": "google",
+      "provider_model_id": null,
+      "release_date": "2025-09-25",
+      "tags": null
+    },
+    "gemini-pro-latest": {
+      "aliases": [],
+      "capabilities": null,
+      "cost": null,
+      "deprecated": false,
+      "extra": {
+        "description": "Latest release of Gemini Pro",
+        "max_temperature": 2,
+        "supported_generation_methods": [
+          "generateContent",
+          "countTokens",
+          "createCachedContent",
+          "batchGenerateContent"
+        ],
+        "temperature": 1,
+        "thinking": true,
+        "top_k": 64,
+        "top_p": 0.95,
+        "version": "Gemini Pro Latest"
+      },
+      "family": null,
+      "id": "gemini-pro-latest",
+      "knowledge": null,
+      "last_updated": null,
+      "lifecycle": null,
+      "limits": {
+        "context": 1048576,
+        "output": 65536
+      },
+      "modalities": null,
+      "model": null,
+      "name": "Gemini Pro Latest",
+      "provider": "google",
+      "provider_model_id": null,
+      "release_date": null,
+      "tags": null
+    },
+    "gemini-robotics-er-1.5-preview": {
+      "aliases": [],
+      "capabilities": null,
+      "cost": null,
+      "deprecated": false,
+      "extra": {
+        "description": "Gemini Robotics-ER 1.5 Preview",
+        "max_temperature": 2,
+        "supported_generation_methods": [
+          "generateContent",
+          "countTokens"
+        ],
+        "temperature": 1,
+        "thinking": true,
+        "top_k": 64,
+        "top_p": 0.95,
+        "version": "1.5-preview"
+      },
+      "family": null,
+      "id": "gemini-robotics-er-1.5-preview",
+      "knowledge": null,
+      "last_updated": null,
+      "lifecycle": null,
+      "limits": {
+        "context": 1048576,
+        "output": 65536
+      },
+      "modalities": null,
+      "model": null,
+      "name": "Gemini Robotics-ER 1.5 Preview",
+      "provider": "google",
+      "provider_model_id": null,
+      "release_date": null,
+      "tags": null
+    },
+    "gemma-2-27b-it": {
+      "aliases": [],
+      "capabilities": null,
+      "cost": {
+        "image": 0.0,
+        "input": 6.5e-4,
+        "output": 6.5e-4,
+        "reasoning": 0.0,
+        "request": 0.0
+      },
+      "deprecated": false,
+      "extra": {
+        "hugging_face_id": "google/gemma-2-27b-it"
+      },
+      "family": null,
+      "id": "gemma-2-27b-it",
+      "knowledge": null,
+      "last_updated": null,
+      "lifecycle": null,
+      "limits": {
+        "context": 8192
+      },
+      "modalities": {
+        "input": [
+          "text"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "model": null,
+      "name": "Google: Gemma 2 27B",
+      "provider": "google",
+      "provider_model_id": null,
+      "release_date": "2024-07-13",
+      "tags": null
+    },
+    "gemma-2-9b-it": {
+      "aliases": [],
+      "capabilities": null,
+      "cost": {
+        "image": 0.0,
+        "input": 2.9999999999999997e-5,
+        "output": 8.999999999999999e-5,
+        "reasoning": 0.0,
+        "request": 0.0
+      },
+      "deprecated": false,
+      "extra": {
+        "hugging_face_id": "google/gemma-2-9b-it"
+      },
+      "family": null,
+      "id": "gemma-2-9b-it",
+      "knowledge": null,
+      "last_updated": null,
+      "lifecycle": null,
+      "limits": {
+        "context": 8192
+      },
+      "modalities": {
+        "input": [
+          "text"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "model": null,
+      "name": "Google: Gemma 2 9B",
+      "provider": "google",
+      "provider_model_id": null,
+      "release_date": "2024-06-28",
+      "tags": null
+    },
+    "gemma-3-12b-it": {
+      "aliases": [],
+      "capabilities": null,
+      "cost": {
+        "image": 0.0,
+        "input": 2.9999999999999997e-5,
+        "output": 9.999999999999999e-5,
+        "reasoning": 0.0,
+        "request": 0.0
+      },
+      "deprecated": false,
+      "extra": {
+        "hugging_face_id": "google/gemma-3-12b-it",
+        "supported_generation_methods": [
+          "generateContent",
+          "countTokens"
+        ],
+        "temperature": 1,
+        "top_k": 64,
+        "top_p": 0.95,
+        "version": "001"
+      },
+      "family": null,
+      "id": "gemma-3-12b-it",
+      "knowledge": null,
+      "last_updated": null,
+      "lifecycle": null,
+      "limits": {
+        "context": 32768,
         "output": 8192
       },
       "modalities": {
@@ -2192,10 +1488,81 @@
         ]
       },
       "model": null,
-      "name": "Google: Gemini 2.0 Flash Experimental (free)",
+      "name": "Gemma 3 12B",
       "provider": "google",
       "provider_model_id": null,
-      "release_date": "2024-12-11",
+      "release_date": "2025-03-13",
+      "tags": null
+    },
+    "gemma-3-12b-it:free": {
+      "aliases": [],
+      "capabilities": null,
+      "cost": {
+        "image": 0.0,
+        "input": 0.0,
+        "output": 0.0,
+        "reasoning": 0.0,
+        "request": 0.0
+      },
+      "deprecated": false,
+      "extra": {
+        "hugging_face_id": "google/gemma-3-12b-it"
+      },
+      "family": null,
+      "id": "gemma-3-12b-it:free",
+      "knowledge": null,
+      "last_updated": null,
+      "lifecycle": null,
+      "limits": {
+        "context": 32768,
+        "output": 8192
+      },
+      "modalities": {
+        "input": [
+          "text",
+          "image"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "model": null,
+      "name": "Google: Gemma 3 12B (free)",
+      "provider": "google",
+      "provider_model_id": null,
+      "release_date": "2025-03-13",
+      "tags": null
+    },
+    "gemma-3-1b-it": {
+      "aliases": [],
+      "capabilities": null,
+      "cost": null,
+      "deprecated": false,
+      "extra": {
+        "supported_generation_methods": [
+          "generateContent",
+          "countTokens"
+        ],
+        "temperature": 1,
+        "top_k": 64,
+        "top_p": 0.95,
+        "version": "001"
+      },
+      "family": null,
+      "id": "gemma-3-1b-it",
+      "knowledge": null,
+      "last_updated": null,
+      "lifecycle": null,
+      "limits": {
+        "context": 32768,
+        "output": 8192
+      },
+      "modalities": null,
+      "model": null,
+      "name": "Gemma 3 1B",
+      "provider": "google",
+      "provider_model_id": null,
+      "release_date": null,
       "tags": null
     },
     "gemma-3-27b-it": {
@@ -2261,6 +1628,639 @@
       "provider": "google",
       "provider_model_id": null,
       "release_date": "2025-03-12",
+      "tags": null
+    },
+    "gemma-3-27b-it:free": {
+      "aliases": [],
+      "capabilities": null,
+      "cost": {
+        "image": 0.0,
+        "input": 0.0,
+        "output": 0.0,
+        "reasoning": 0.0,
+        "request": 0.0
+      },
+      "deprecated": false,
+      "extra": {
+        "hugging_face_id": ""
+      },
+      "family": null,
+      "id": "gemma-3-27b-it:free",
+      "knowledge": null,
+      "last_updated": null,
+      "lifecycle": null,
+      "limits": {
+        "context": 131072
+      },
+      "modalities": {
+        "input": [
+          "text",
+          "image"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "model": null,
+      "name": "Google: Gemma 3 27B (free)",
+      "provider": "google",
+      "provider_model_id": null,
+      "release_date": "2025-03-12",
+      "tags": null
+    },
+    "gemma-3-4b-it": {
+      "aliases": [],
+      "capabilities": null,
+      "cost": {
+        "image": 0.0,
+        "input": 1.703012e-5,
+        "output": 6.81536e-5,
+        "reasoning": 0.0,
+        "request": 0.0
+      },
+      "deprecated": false,
+      "extra": {
+        "hugging_face_id": "google/gemma-3-4b-it",
+        "supported_generation_methods": [
+          "generateContent",
+          "countTokens"
+        ],
+        "temperature": 1,
+        "top_k": 64,
+        "top_p": 0.95,
+        "version": "001"
+      },
+      "family": null,
+      "id": "gemma-3-4b-it",
+      "knowledge": null,
+      "last_updated": null,
+      "lifecycle": null,
+      "limits": {
+        "context": 32768,
+        "output": 8192
+      },
+      "modalities": {
+        "input": [
+          "text",
+          "image"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "model": null,
+      "name": "Gemma 3 4B",
+      "provider": "google",
+      "provider_model_id": null,
+      "release_date": "2025-03-13",
+      "tags": null
+    },
+    "gemma-3-4b-it:free": {
+      "aliases": [],
+      "capabilities": null,
+      "cost": {
+        "image": 0.0,
+        "input": 0.0,
+        "output": 0.0,
+        "reasoning": 0.0,
+        "request": 0.0
+      },
+      "deprecated": false,
+      "extra": {
+        "hugging_face_id": "google/gemma-3-4b-it"
+      },
+      "family": null,
+      "id": "gemma-3-4b-it:free",
+      "knowledge": null,
+      "last_updated": null,
+      "lifecycle": null,
+      "limits": {
+        "context": 32768,
+        "output": 8192
+      },
+      "modalities": {
+        "input": [
+          "text",
+          "image"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "model": null,
+      "name": "Google: Gemma 3 4B (free)",
+      "provider": "google",
+      "provider_model_id": null,
+      "release_date": "2025-03-13",
+      "tags": null
+    },
+    "gemma-3n-e2b-it": {
+      "aliases": [],
+      "capabilities": null,
+      "cost": null,
+      "deprecated": false,
+      "extra": {
+        "supported_generation_methods": [
+          "generateContent",
+          "countTokens"
+        ],
+        "temperature": 1,
+        "top_k": 64,
+        "top_p": 0.95,
+        "version": "001"
+      },
+      "family": null,
+      "id": "gemma-3n-e2b-it",
+      "knowledge": null,
+      "last_updated": null,
+      "lifecycle": null,
+      "limits": {
+        "context": 8192,
+        "output": 2048
+      },
+      "modalities": null,
+      "model": null,
+      "name": "Gemma 3n E2B",
+      "provider": "google",
+      "provider_model_id": null,
+      "release_date": null,
+      "tags": null
+    },
+    "gemma-3n-e2b-it:free": {
+      "aliases": [],
+      "capabilities": null,
+      "cost": {
+        "image": 0.0,
+        "input": 0.0,
+        "output": 0.0,
+        "reasoning": 0.0,
+        "request": 0.0
+      },
+      "deprecated": false,
+      "extra": {
+        "hugging_face_id": "google/gemma-3n-E2B-it"
+      },
+      "family": null,
+      "id": "gemma-3n-e2b-it:free",
+      "knowledge": null,
+      "last_updated": null,
+      "lifecycle": null,
+      "limits": {
+        "context": 8192,
+        "output": 2048
+      },
+      "modalities": {
+        "input": [
+          "text"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "model": null,
+      "name": "Google: Gemma 3n 2B (free)",
+      "provider": "google",
+      "provider_model_id": null,
+      "release_date": "2025-07-09",
+      "tags": null
+    },
+    "gemma-3n-e4b-it": {
+      "aliases": [],
+      "capabilities": null,
+      "cost": {
+        "image": 0.0,
+        "input": 2.0e-5,
+        "output": 4.0e-5,
+        "reasoning": 0.0,
+        "request": 0.0
+      },
+      "deprecated": false,
+      "extra": {
+        "hugging_face_id": "google/gemma-3n-E4B-it",
+        "supported_generation_methods": [
+          "generateContent",
+          "countTokens"
+        ],
+        "temperature": 1,
+        "top_k": 64,
+        "top_p": 0.95,
+        "version": "001"
+      },
+      "family": null,
+      "id": "gemma-3n-e4b-it",
+      "knowledge": null,
+      "last_updated": null,
+      "lifecycle": null,
+      "limits": {
+        "context": 8192,
+        "output": 2048
+      },
+      "modalities": {
+        "input": [
+          "text"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "model": null,
+      "name": "Gemma 3n E4B",
+      "provider": "google",
+      "provider_model_id": null,
+      "release_date": "2025-05-20",
+      "tags": null
+    },
+    "gemma-3n-e4b-it:free": {
+      "aliases": [],
+      "capabilities": null,
+      "cost": {
+        "image": 0.0,
+        "input": 0.0,
+        "output": 0.0,
+        "reasoning": 0.0,
+        "request": 0.0
+      },
+      "deprecated": false,
+      "extra": {
+        "hugging_face_id": "google/gemma-3n-E4B-it"
+      },
+      "family": null,
+      "id": "gemma-3n-e4b-it:free",
+      "knowledge": null,
+      "last_updated": null,
+      "lifecycle": null,
+      "limits": {
+        "context": 8192,
+        "output": 2048
+      },
+      "modalities": {
+        "input": [
+          "text"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "model": null,
+      "name": "Google: Gemma 3n 4B (free)",
+      "provider": "google",
+      "provider_model_id": null,
+      "release_date": "2025-05-20",
+      "tags": null
+    },
+    "imagen-4.0-fast-generate-001": {
+      "aliases": [],
+      "capabilities": null,
+      "cost": null,
+      "deprecated": false,
+      "extra": {
+        "description": "Vertex served Imagen 4.0 Fast model",
+        "supported_generation_methods": [
+          "predict"
+        ],
+        "version": "001"
+      },
+      "family": null,
+      "id": "imagen-4.0-fast-generate-001",
+      "knowledge": null,
+      "last_updated": null,
+      "lifecycle": null,
+      "limits": {
+        "context": 480,
+        "output": 8192
+      },
+      "modalities": null,
+      "model": null,
+      "name": "Imagen 4 Fast",
+      "provider": "google",
+      "provider_model_id": null,
+      "release_date": null,
+      "tags": null
+    },
+    "imagen-4.0-generate-001": {
+      "aliases": [],
+      "capabilities": null,
+      "cost": null,
+      "deprecated": false,
+      "extra": {
+        "description": "Vertex served Imagen 4.0 model",
+        "supported_generation_methods": [
+          "predict"
+        ],
+        "version": "001"
+      },
+      "family": null,
+      "id": "imagen-4.0-generate-001",
+      "knowledge": null,
+      "last_updated": null,
+      "lifecycle": null,
+      "limits": {
+        "context": 480,
+        "output": 8192
+      },
+      "modalities": null,
+      "model": null,
+      "name": "Imagen 4",
+      "provider": "google",
+      "provider_model_id": null,
+      "release_date": null,
+      "tags": null
+    },
+    "imagen-4.0-generate-preview-06-06": {
+      "aliases": [],
+      "capabilities": null,
+      "cost": null,
+      "deprecated": false,
+      "extra": {
+        "description": "Vertex served Imagen 4.0 model",
+        "supported_generation_methods": [
+          "predict"
+        ],
+        "version": "01"
+      },
+      "family": null,
+      "id": "imagen-4.0-generate-preview-06-06",
+      "knowledge": null,
+      "last_updated": null,
+      "lifecycle": null,
+      "limits": {
+        "context": 480,
+        "output": 8192
+      },
+      "modalities": null,
+      "model": null,
+      "name": "Imagen 4 (Preview)",
+      "provider": "google",
+      "provider_model_id": null,
+      "release_date": null,
+      "tags": null
+    },
+    "imagen-4.0-ultra-generate-001": {
+      "aliases": [],
+      "capabilities": null,
+      "cost": null,
+      "deprecated": false,
+      "extra": {
+        "description": "Vertex served Imagen 4.0 ultra model",
+        "supported_generation_methods": [
+          "predict"
+        ],
+        "version": "001"
+      },
+      "family": null,
+      "id": "imagen-4.0-ultra-generate-001",
+      "knowledge": null,
+      "last_updated": null,
+      "lifecycle": null,
+      "limits": {
+        "context": 480,
+        "output": 8192
+      },
+      "modalities": null,
+      "model": null,
+      "name": "Imagen 4 Ultra",
+      "provider": "google",
+      "provider_model_id": null,
+      "release_date": null,
+      "tags": null
+    },
+    "imagen-4.0-ultra-generate-preview-06-06": {
+      "aliases": [],
+      "capabilities": null,
+      "cost": null,
+      "deprecated": false,
+      "extra": {
+        "description": "Vertex served Imagen 4.0 ultra model",
+        "supported_generation_methods": [
+          "predict"
+        ],
+        "version": "01"
+      },
+      "family": null,
+      "id": "imagen-4.0-ultra-generate-preview-06-06",
+      "knowledge": null,
+      "last_updated": null,
+      "lifecycle": null,
+      "limits": {
+        "context": 480,
+        "output": 8192
+      },
+      "modalities": null,
+      "model": null,
+      "name": "Imagen 4 Ultra (Preview)",
+      "provider": "google",
+      "provider_model_id": null,
+      "release_date": null,
+      "tags": null
+    },
+    "nano-banana-pro-preview": {
+      "aliases": [],
+      "capabilities": null,
+      "cost": null,
+      "deprecated": false,
+      "extra": {
+        "description": "Gemini 3 Pro Image Preview",
+        "max_temperature": 1,
+        "supported_generation_methods": [
+          "generateContent",
+          "countTokens",
+          "batchGenerateContent"
+        ],
+        "temperature": 1,
+        "thinking": true,
+        "top_k": 64,
+        "top_p": 0.95,
+        "version": "3.0"
+      },
+      "family": null,
+      "id": "nano-banana-pro-preview",
+      "knowledge": null,
+      "last_updated": null,
+      "lifecycle": null,
+      "limits": {
+        "context": 131072,
+        "output": 32768
+      },
+      "modalities": null,
+      "model": null,
+      "name": "Nano Banana Pro",
+      "provider": "google",
+      "provider_model_id": null,
+      "release_date": null,
+      "tags": null
+    },
+    "text-embedding-004": {
+      "aliases": [],
+      "capabilities": null,
+      "cost": null,
+      "deprecated": false,
+      "extra": {
+        "description": "Obtain a distributed representation of a text.",
+        "supported_generation_methods": [
+          "embedContent"
+        ],
+        "version": "004"
+      },
+      "family": null,
+      "id": "text-embedding-004",
+      "knowledge": null,
+      "last_updated": null,
+      "lifecycle": null,
+      "limits": {
+        "context": 2048,
+        "output": 1
+      },
+      "modalities": null,
+      "model": null,
+      "name": "Text Embedding 004",
+      "provider": "google",
+      "provider_model_id": null,
+      "release_date": null,
+      "tags": null
+    },
+    "veo-2.0-generate-001": {
+      "aliases": [],
+      "capabilities": null,
+      "cost": null,
+      "deprecated": false,
+      "extra": {
+        "description": "Vertex served Veo 2 model. Access to this model requires billing to be enabled on the associated Google Cloud Platform account. Please visit https://console.cloud.google.com/billing to enable it.",
+        "supported_generation_methods": [
+          "predictLongRunning"
+        ],
+        "version": "2.0"
+      },
+      "family": null,
+      "id": "veo-2.0-generate-001",
+      "knowledge": null,
+      "last_updated": null,
+      "lifecycle": null,
+      "limits": {
+        "context": 480,
+        "output": 8192
+      },
+      "modalities": null,
+      "model": null,
+      "name": "Veo 2",
+      "provider": "google",
+      "provider_model_id": null,
+      "release_date": null,
+      "tags": null
+    },
+    "veo-3.0-fast-generate-001": {
+      "aliases": [],
+      "capabilities": null,
+      "cost": null,
+      "deprecated": false,
+      "extra": {
+        "description": "Veo 3 fast",
+        "supported_generation_methods": [
+          "predictLongRunning"
+        ],
+        "version": "3.0"
+      },
+      "family": null,
+      "id": "veo-3.0-fast-generate-001",
+      "knowledge": null,
+      "last_updated": null,
+      "lifecycle": null,
+      "limits": {
+        "context": 480,
+        "output": 8192
+      },
+      "modalities": null,
+      "model": null,
+      "name": "Veo 3 fast",
+      "provider": "google",
+      "provider_model_id": null,
+      "release_date": null,
+      "tags": null
+    },
+    "veo-3.0-generate-001": {
+      "aliases": [],
+      "capabilities": null,
+      "cost": null,
+      "deprecated": false,
+      "extra": {
+        "description": "Veo 3",
+        "supported_generation_methods": [
+          "predictLongRunning"
+        ],
+        "version": "3.0"
+      },
+      "family": null,
+      "id": "veo-3.0-generate-001",
+      "knowledge": null,
+      "last_updated": null,
+      "lifecycle": null,
+      "limits": {
+        "context": 480,
+        "output": 8192
+      },
+      "modalities": null,
+      "model": null,
+      "name": "Veo 3",
+      "provider": "google",
+      "provider_model_id": null,
+      "release_date": null,
+      "tags": null
+    },
+    "veo-3.1-fast-generate-preview": {
+      "aliases": [],
+      "capabilities": null,
+      "cost": null,
+      "deprecated": false,
+      "extra": {
+        "description": "Veo 3.1 fast",
+        "supported_generation_methods": [
+          "predictLongRunning"
+        ],
+        "version": "3.1"
+      },
+      "family": null,
+      "id": "veo-3.1-fast-generate-preview",
+      "knowledge": null,
+      "last_updated": null,
+      "lifecycle": null,
+      "limits": {
+        "context": 480,
+        "output": 8192
+      },
+      "modalities": null,
+      "model": null,
+      "name": "Veo 3.1 fast",
+      "provider": "google",
+      "provider_model_id": null,
+      "release_date": null,
+      "tags": null
+    },
+    "veo-3.1-generate-preview": {
+      "aliases": [],
+      "capabilities": null,
+      "cost": null,
+      "deprecated": false,
+      "extra": {
+        "description": "Veo 3.1",
+        "supported_generation_methods": [
+          "predictLongRunning"
+        ],
+        "version": "3.1"
+      },
+      "family": null,
+      "id": "veo-3.1-generate-preview",
+      "knowledge": null,
+      "last_updated": null,
+      "lifecycle": null,
+      "limits": {
+        "context": 480,
+        "output": 8192
+      },
+      "modalities": null,
+      "model": null,
+      "name": "Veo 3.1",
+      "provider": "google",
+      "provider_model_id": null,
+      "release_date": null,
       "tags": null
     }
   },

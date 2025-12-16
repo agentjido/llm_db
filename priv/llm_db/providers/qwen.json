@@ -8,46 +8,7 @@
   "extra": null,
   "id": "qwen",
   "models": {
-    "qwen-vl-plus": {
-      "aliases": [],
-      "capabilities": null,
-      "cost": {
-        "image": 0.2688,
-        "input": 2.1e-4,
-        "output": 6.3e-4,
-        "reasoning": 0.0,
-        "request": 0.0
-      },
-      "deprecated": false,
-      "extra": {
-        "hugging_face_id": ""
-      },
-      "family": null,
-      "id": "qwen-vl-plus",
-      "knowledge": null,
-      "last_updated": null,
-      "lifecycle": null,
-      "limits": {
-        "context": 7500,
-        "output": 1500
-      },
-      "modalities": {
-        "input": [
-          "text",
-          "image"
-        ],
-        "output": [
-          "text"
-        ]
-      },
-      "model": null,
-      "name": "Qwen: Qwen VL Plus",
-      "provider": "qwen",
-      "provider_model_id": null,
-      "release_date": "2025-02-05",
-      "tags": null
-    },
-    "qwen3-4b:free": {
+    "qwen-2.5-72b-instruct": {
       "aliases": [],
       "capabilities": {
         "chat": true,
@@ -70,54 +31,17 @@
       },
       "cost": {
         "image": 0.0,
-        "input": 0.0,
-        "output": 0.0,
+        "input": 7.000000000000001e-5,
+        "output": 2.6e-4,
         "reasoning": 0.0,
         "request": 0.0
       },
       "deprecated": false,
       "extra": {
-        "hugging_face_id": "Qwen/Qwen3-4B"
+        "hugging_face_id": "Qwen/Qwen2.5-72B-Instruct"
       },
       "family": null,
-      "id": "qwen3-4b:free",
-      "knowledge": null,
-      "last_updated": null,
-      "lifecycle": null,
-      "limits": {
-        "context": 40960
-      },
-      "modalities": {
-        "input": [
-          "text"
-        ],
-        "output": [
-          "text"
-        ]
-      },
-      "model": null,
-      "name": "Qwen: Qwen3 4B (free)",
-      "provider": "qwen",
-      "provider_model_id": null,
-      "release_date": "2025-04-30",
-      "tags": null
-    },
-    "qwen2.5-vl-72b-instruct": {
-      "aliases": [],
-      "capabilities": null,
-      "cost": {
-        "image": 0.0,
-        "input": 8.0e-5,
-        "output": 3.3e-4,
-        "reasoning": 0.0,
-        "request": 0.0
-      },
-      "deprecated": false,
-      "extra": {
-        "hugging_face_id": "Qwen/Qwen2.5-VL-72B-Instruct"
-      },
-      "family": null,
-      "id": "qwen2.5-vl-72b-instruct",
+      "id": "qwen-2.5-72b-instruct",
       "knowledge": null,
       "last_updated": null,
       "lifecycle": null,
@@ -127,63 +51,6 @@
       },
       "modalities": {
         "input": [
-          "text",
-          "image"
-        ],
-        "output": [
-          "text"
-        ]
-      },
-      "model": null,
-      "name": "Qwen: Qwen2.5 VL 72B Instruct",
-      "provider": "qwen",
-      "provider_model_id": null,
-      "release_date": "2025-02-01",
-      "tags": null
-    },
-    "qwen-plus-2025-07-28": {
-      "aliases": [],
-      "capabilities": {
-        "chat": true,
-        "embeddings": false,
-        "json": {
-          "native": false,
-          "schema": false,
-          "strict": false
-        },
-        "reasoning": {
-          "enabled": false
-        },
-        "streaming": {
-          "text": true,
-          "tool_calls": false
-        },
-        "tools": {
-          "enabled": true
-        }
-      },
-      "cost": {
-        "image": 0.0,
-        "input": 3.9999999999999996e-4,
-        "output": 0.0012,
-        "reasoning": 0.0,
-        "request": 0.0
-      },
-      "deprecated": false,
-      "extra": {
-        "hugging_face_id": ""
-      },
-      "family": null,
-      "id": "qwen-plus-2025-07-28",
-      "knowledge": null,
-      "last_updated": null,
-      "lifecycle": null,
-      "limits": {
-        "context": 1000000,
-        "output": 32768
-      },
-      "modalities": {
-        "input": [
           "text"
         ],
         "output": [
@@ -191,145 +58,15 @@
         ]
       },
       "model": null,
-      "name": "Qwen: Qwen Plus 0728",
+      "name": "Qwen2.5 72B Instruct",
       "provider": "qwen",
       "provider_model_id": null,
-      "release_date": "2025-09-08",
+      "release_date": "2024-09-19",
       "tags": null
     },
-    "qwen3-vl-30b-a3b-instruct": {
+    "qwen-2.5-72b-instruct:free": {
       "aliases": [],
-      "capabilities": {
-        "chat": true,
-        "embeddings": false,
-        "json": {
-          "native": false,
-          "schema": false,
-          "strict": false
-        },
-        "reasoning": {
-          "enabled": false
-        },
-        "streaming": {
-          "text": true,
-          "tool_calls": false
-        },
-        "tools": {
-          "enabled": true
-        }
-      },
-      "cost": {
-        "image": 0.0,
-        "input": 1.5e-4,
-        "output": 0.0006,
-        "reasoning": 0.0,
-        "request": 0.0
-      },
-      "deprecated": false,
-      "extra": {
-        "hugging_face_id": "Qwen/Qwen3-VL-30B-A3B-Instruct"
-      },
-      "family": null,
-      "id": "qwen3-vl-30b-a3b-instruct",
-      "knowledge": null,
-      "last_updated": null,
-      "lifecycle": null,
-      "limits": {
-        "context": 262144
-      },
-      "modalities": {
-        "input": [
-          "text",
-          "image"
-        ],
-        "output": [
-          "text"
-        ]
-      },
-      "model": null,
-      "name": "Qwen: Qwen3 VL 30B A3B Instruct",
-      "provider": "qwen",
-      "provider_model_id": null,
-      "release_date": "2025-10-06",
-      "tags": null
-    },
-    "qwen3-235b-a22b-thinking-2507": {
-      "aliases": [],
-      "capabilities": {
-        "chat": true,
-        "embeddings": false,
-        "json": {
-          "native": false,
-          "schema": false,
-          "strict": false
-        },
-        "reasoning": {
-          "enabled": false
-        },
-        "streaming": {
-          "text": true,
-          "tool_calls": false
-        },
-        "tools": {
-          "enabled": true
-        }
-      },
-      "cost": {
-        "image": 0.0,
-        "input": 1.1e-4,
-        "output": 0.0006,
-        "reasoning": 0.0,
-        "request": 0.0
-      },
-      "deprecated": false,
-      "extra": {
-        "hugging_face_id": "Qwen/Qwen3-235B-A22B-Thinking-2507"
-      },
-      "family": null,
-      "id": "qwen3-235b-a22b-thinking-2507",
-      "knowledge": null,
-      "last_updated": null,
-      "lifecycle": null,
-      "limits": {
-        "context": 262144,
-        "output": 262144
-      },
-      "modalities": {
-        "input": [
-          "text"
-        ],
-        "output": [
-          "text"
-        ]
-      },
-      "model": null,
-      "name": "Qwen: Qwen3 235B A22B Thinking 2507",
-      "provider": "qwen",
-      "provider_model_id": null,
-      "release_date": "2025-07-25",
-      "tags": null
-    },
-    "qwen3-coder:free": {
-      "aliases": [],
-      "capabilities": {
-        "chat": true,
-        "embeddings": false,
-        "json": {
-          "native": false,
-          "schema": false,
-          "strict": false
-        },
-        "reasoning": {
-          "enabled": false
-        },
-        "streaming": {
-          "text": true,
-          "tool_calls": false
-        },
-        "tools": {
-          "enabled": true
-        }
-      },
+      "capabilities": null,
       "cost": {
         "image": 0.0,
         "input": 0.0,
@@ -339,16 +76,15 @@
       },
       "deprecated": false,
       "extra": {
-        "hugging_face_id": "Qwen/Qwen3-Coder-480B-A35B-Instruct"
+        "hugging_face_id": "Qwen/Qwen2.5-72B-Instruct"
       },
       "family": null,
-      "id": "qwen3-coder:free",
+      "id": "qwen-2.5-72b-instruct:free",
       "knowledge": null,
       "last_updated": null,
       "lifecycle": null,
       "limits": {
-        "context": 262000,
-        "output": 262000
+        "context": 32768
       },
       "modalities": {
         "input": [
@@ -359,66 +95,10 @@
         ]
       },
       "model": null,
-      "name": "Qwen: Qwen3 Coder 480B A35B (free)",
+      "name": "Qwen2.5 72B Instruct (free)",
       "provider": "qwen",
       "provider_model_id": null,
-      "release_date": "2025-07-23",
-      "tags": null
-    },
-    "qwen3-30b-a3b-instruct-2507": {
-      "aliases": [],
-      "capabilities": {
-        "chat": true,
-        "embeddings": false,
-        "json": {
-          "native": false,
-          "schema": false,
-          "strict": false
-        },
-        "reasoning": {
-          "enabled": false
-        },
-        "streaming": {
-          "text": true,
-          "tool_calls": false
-        },
-        "tools": {
-          "enabled": true
-        }
-      },
-      "cost": {
-        "image": 0.0,
-        "input": 8.0e-5,
-        "output": 3.3e-4,
-        "reasoning": 0.0,
-        "request": 0.0
-      },
-      "deprecated": false,
-      "extra": {
-        "hugging_face_id": "Qwen/Qwen3-30B-A3B-Instruct-2507"
-      },
-      "family": null,
-      "id": "qwen3-30b-a3b-instruct-2507",
-      "knowledge": null,
-      "last_updated": null,
-      "lifecycle": null,
-      "limits": {
-        "context": 262144,
-        "output": 262144
-      },
-      "modalities": {
-        "input": [
-          "text"
-        ],
-        "output": [
-          "text"
-        ]
-      },
-      "model": null,
-      "name": "Qwen: Qwen3 30B A3B Instruct 2507",
-      "provider": "qwen",
-      "provider_model_id": null,
-      "release_date": "2025-07-29",
+      "release_date": "2024-09-19",
       "tags": null
     },
     "qwen-2.5-7b-instruct": {
@@ -476,193 +156,22 @@
       "release_date": "2024-10-16",
       "tags": null
     },
-    "qwen-vl-max": {
-      "aliases": [],
-      "capabilities": {
-        "chat": true,
-        "embeddings": false,
-        "json": {
-          "native": false,
-          "schema": false,
-          "strict": false
-        },
-        "reasoning": {
-          "enabled": false
-        },
-        "streaming": {
-          "text": true,
-          "tool_calls": false
-        },
-        "tools": {
-          "enabled": true
-        }
-      },
-      "cost": {
-        "image": 1.024,
-        "input": 7.999999999999999e-4,
-        "output": 0.0031999999999999997,
-        "reasoning": 0.0,
-        "request": 0.0
-      },
-      "deprecated": false,
-      "extra": {
-        "hugging_face_id": ""
-      },
-      "family": null,
-      "id": "qwen-vl-max",
-      "knowledge": null,
-      "last_updated": null,
-      "lifecycle": null,
-      "limits": {
-        "context": 131072,
-        "output": 8192
-      },
-      "modalities": {
-        "input": [
-          "text",
-          "image"
-        ],
-        "output": [
-          "text"
-        ]
-      },
-      "model": null,
-      "name": "Qwen: Qwen VL Max",
-      "provider": "qwen",
-      "provider_model_id": null,
-      "release_date": "2025-02-01",
-      "tags": null
-    },
-    "qwen2.5-vl-32b-instruct": {
+    "qwen-2.5-coder-32b-instruct": {
       "aliases": [],
       "capabilities": null,
       "cost": {
         "image": 0.0,
-        "input": 4.9999999999999996e-5,
-        "output": 2.2e-4,
+        "input": 4.0e-5,
+        "output": 1.6e-4,
         "reasoning": 0.0,
         "request": 0.0
       },
       "deprecated": false,
       "extra": {
-        "hugging_face_id": "Qwen/Qwen2.5-VL-32B-Instruct"
+        "hugging_face_id": "Qwen/Qwen2.5-Coder-32B-Instruct"
       },
       "family": null,
-      "id": "qwen2.5-vl-32b-instruct",
-      "knowledge": null,
-      "last_updated": null,
-      "lifecycle": null,
-      "limits": {
-        "context": 16384,
-        "output": 16384
-      },
-      "modalities": {
-        "input": [
-          "text",
-          "image"
-        ],
-        "output": [
-          "text"
-        ]
-      },
-      "model": null,
-      "name": "Qwen: Qwen2.5 VL 32B Instruct",
-      "provider": "qwen",
-      "provider_model_id": null,
-      "release_date": "2025-03-24",
-      "tags": null
-    },
-    "qwen3-vl-235b-a22b-instruct": {
-      "aliases": [],
-      "capabilities": {
-        "chat": true,
-        "embeddings": false,
-        "json": {
-          "native": false,
-          "schema": false,
-          "strict": false
-        },
-        "reasoning": {
-          "enabled": false
-        },
-        "streaming": {
-          "text": true,
-          "tool_calls": false
-        },
-        "tools": {
-          "enabled": true
-        }
-      },
-      "cost": {
-        "image": 0.0,
-        "input": 2.1e-4,
-        "output": 0.0019,
-        "reasoning": 0.0,
-        "request": 0.0
-      },
-      "deprecated": false,
-      "extra": {
-        "hugging_face_id": "Qwen/Qwen3-VL-235B-A22B-Instruct"
-      },
-      "family": null,
-      "id": "qwen3-vl-235b-a22b-instruct",
-      "knowledge": null,
-      "last_updated": null,
-      "lifecycle": null,
-      "limits": {
-        "context": 131072,
-        "output": 32768
-      },
-      "modalities": {
-        "input": [
-          "text",
-          "image"
-        ],
-        "output": [
-          "text"
-        ]
-      },
-      "model": null,
-      "name": "Qwen: Qwen3 VL 235B A22B Instruct",
-      "provider": "qwen",
-      "provider_model_id": null,
-      "release_date": "2025-09-23",
-      "tags": null
-    },
-    "qwen-2.5-72b-instruct": {
-      "aliases": [],
-      "capabilities": {
-        "chat": true,
-        "embeddings": false,
-        "json": {
-          "native": false,
-          "schema": false,
-          "strict": false
-        },
-        "reasoning": {
-          "enabled": false
-        },
-        "streaming": {
-          "text": true,
-          "tool_calls": false
-        },
-        "tools": {
-          "enabled": true
-        }
-      },
-      "cost": {
-        "image": 0.0,
-        "input": 7.000000000000001e-5,
-        "output": 2.6e-4,
-        "reasoning": 0.0,
-        "request": 0.0
-      },
-      "deprecated": false,
-      "extra": {
-        "hugging_face_id": "Qwen/Qwen2.5-72B-Instruct"
-      },
-      "family": null,
-      "id": "qwen-2.5-72b-instruct",
+      "id": "qwen-2.5-coder-32b-instruct",
       "knowledge": null,
       "last_updated": null,
       "lifecycle": null,
@@ -679,10 +188,47 @@
         ]
       },
       "model": null,
-      "name": "Qwen2.5 72B Instruct",
+      "name": "Qwen2.5 Coder 32B Instruct",
       "provider": "qwen",
       "provider_model_id": null,
-      "release_date": "2024-09-19",
+      "release_date": "2024-11-11",
+      "tags": null
+    },
+    "qwen-2.5-coder-32b-instruct:free": {
+      "aliases": [],
+      "capabilities": null,
+      "cost": {
+        "image": 0.0,
+        "input": 0.0,
+        "output": 0.0,
+        "reasoning": 0.0,
+        "request": 0.0
+      },
+      "deprecated": false,
+      "extra": {
+        "hugging_face_id": "Qwen/Qwen2.5-Coder-32B-Instruct"
+      },
+      "family": null,
+      "id": "qwen-2.5-coder-32b-instruct:free",
+      "knowledge": null,
+      "last_updated": null,
+      "lifecycle": null,
+      "limits": {
+        "context": 32768
+      },
+      "modalities": {
+        "input": [
+          "text"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "model": null,
+      "name": "Qwen2.5 Coder 32B Instruct (free)",
+      "provider": "qwen",
+      "provider_model_id": null,
+      "release_date": "2024-11-11",
       "tags": null
     },
     "qwen-2.5-vl-7b-instruct": {
@@ -779,7 +325,7 @@
       "release_date": "2025-02-01",
       "tags": null
     },
-    "qwen3-vl-235b-a22b-thinking": {
+    "qwen-plus": {
       "aliases": [],
       "capabilities": {
         "chat": true,
@@ -802,23 +348,247 @@
       },
       "cost": {
         "image": 0.0,
-        "input": 0.0003,
+        "input": 3.9999999999999996e-4,
         "output": 0.0012,
         "reasoning": 0.0,
         "request": 0.0
       },
       "deprecated": false,
       "extra": {
-        "hugging_face_id": "Qwen/Qwen3-VL-235B-A22B-Thinking"
+        "hugging_face_id": ""
       },
       "family": null,
-      "id": "qwen3-vl-235b-a22b-thinking",
+      "id": "qwen-plus",
       "knowledge": null,
       "last_updated": null,
       "lifecycle": null,
       "limits": {
-        "context": 262144,
-        "output": 262144
+        "context": 131072,
+        "output": 8192
+      },
+      "modalities": {
+        "input": [
+          "text"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "model": null,
+      "name": "Qwen: Qwen-Plus",
+      "provider": "qwen",
+      "provider_model_id": null,
+      "release_date": "2025-02-01",
+      "tags": null
+    },
+    "qwen-plus-2025-07-28": {
+      "aliases": [],
+      "capabilities": {
+        "chat": true,
+        "embeddings": false,
+        "json": {
+          "native": false,
+          "schema": false,
+          "strict": false
+        },
+        "reasoning": {
+          "enabled": false
+        },
+        "streaming": {
+          "text": true,
+          "tool_calls": false
+        },
+        "tools": {
+          "enabled": true
+        }
+      },
+      "cost": {
+        "image": 0.0,
+        "input": 3.9999999999999996e-4,
+        "output": 0.0012,
+        "reasoning": 0.0,
+        "request": 0.0
+      },
+      "deprecated": false,
+      "extra": {
+        "hugging_face_id": ""
+      },
+      "family": null,
+      "id": "qwen-plus-2025-07-28",
+      "knowledge": null,
+      "last_updated": null,
+      "lifecycle": null,
+      "limits": {
+        "context": 1000000,
+        "output": 32768
+      },
+      "modalities": {
+        "input": [
+          "text"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "model": null,
+      "name": "Qwen: Qwen Plus 0728",
+      "provider": "qwen",
+      "provider_model_id": null,
+      "release_date": "2025-09-08",
+      "tags": null
+    },
+    "qwen-plus-2025-07-28:thinking": {
+      "aliases": [],
+      "capabilities": {
+        "chat": true,
+        "embeddings": false,
+        "json": {
+          "native": false,
+          "schema": false,
+          "strict": false
+        },
+        "reasoning": {
+          "enabled": false
+        },
+        "streaming": {
+          "text": true,
+          "tool_calls": false
+        },
+        "tools": {
+          "enabled": true
+        }
+      },
+      "cost": {
+        "image": 0.0,
+        "input": 3.9999999999999996e-4,
+        "output": 0.004,
+        "reasoning": 0.0,
+        "request": 0.0
+      },
+      "deprecated": false,
+      "extra": {
+        "hugging_face_id": ""
+      },
+      "family": null,
+      "id": "qwen-plus-2025-07-28:thinking",
+      "knowledge": null,
+      "last_updated": null,
+      "lifecycle": null,
+      "limits": {
+        "context": 1000000,
+        "output": 32768
+      },
+      "modalities": {
+        "input": [
+          "text"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "model": null,
+      "name": "Qwen: Qwen Plus 0728 (thinking)",
+      "provider": "qwen",
+      "provider_model_id": null,
+      "release_date": "2025-09-08",
+      "tags": null
+    },
+    "qwen-turbo": {
+      "aliases": [],
+      "capabilities": {
+        "chat": true,
+        "embeddings": false,
+        "json": {
+          "native": false,
+          "schema": false,
+          "strict": false
+        },
+        "reasoning": {
+          "enabled": false
+        },
+        "streaming": {
+          "text": true,
+          "tool_calls": false
+        },
+        "tools": {
+          "enabled": true
+        }
+      },
+      "cost": {
+        "image": 0.0,
+        "input": 4.9999999999999996e-5,
+        "output": 1.9999999999999998e-4,
+        "reasoning": 0.0,
+        "request": 0.0
+      },
+      "deprecated": false,
+      "extra": {
+        "hugging_face_id": ""
+      },
+      "family": null,
+      "id": "qwen-turbo",
+      "knowledge": null,
+      "last_updated": null,
+      "lifecycle": null,
+      "limits": {
+        "context": 1000000,
+        "output": 8192
+      },
+      "modalities": {
+        "input": [
+          "text"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "model": null,
+      "name": "Qwen: Qwen-Turbo",
+      "provider": "qwen",
+      "provider_model_id": null,
+      "release_date": "2025-02-01",
+      "tags": null
+    },
+    "qwen-vl-max": {
+      "aliases": [],
+      "capabilities": {
+        "chat": true,
+        "embeddings": false,
+        "json": {
+          "native": false,
+          "schema": false,
+          "strict": false
+        },
+        "reasoning": {
+          "enabled": false
+        },
+        "streaming": {
+          "text": true,
+          "tool_calls": false
+        },
+        "tools": {
+          "enabled": true
+        }
+      },
+      "cost": {
+        "image": 1.024,
+        "input": 7.999999999999999e-4,
+        "output": 0.0031999999999999997,
+        "reasoning": 0.0,
+        "request": 0.0
+      },
+      "deprecated": false,
+      "extra": {
+        "hugging_face_id": ""
+      },
+      "family": null,
+      "id": "qwen-vl-max",
+      "knowledge": null,
+      "last_updated": null,
+      "lifecycle": null,
+      "limits": {
+        "context": 131072,
+        "output": 8192
       },
       "modalities": {
         "input": [
@@ -830,46 +600,67 @@
         ]
       },
       "model": null,
-      "name": "Qwen: Qwen3 VL 235B A22B Thinking",
+      "name": "Qwen: Qwen VL Max",
       "provider": "qwen",
       "provider_model_id": null,
-      "release_date": "2025-09-23",
+      "release_date": "2025-02-01",
       "tags": null
     },
-    "qwq-32b": {
+    "qwen-vl-plus": {
       "aliases": [],
-      "capabilities": {
-        "chat": true,
-        "embeddings": false,
-        "json": {
-          "native": false,
-          "schema": false,
-          "strict": false
-        },
-        "reasoning": {
-          "enabled": false
-        },
-        "streaming": {
-          "text": true,
-          "tool_calls": false
-        },
-        "tools": {
-          "enabled": true
-        }
-      },
+      "capabilities": null,
       "cost": {
-        "image": 0.0,
-        "input": 1.5e-4,
-        "output": 3.9999999999999996e-4,
+        "image": 0.2688,
+        "input": 2.1e-4,
+        "output": 6.3e-4,
         "reasoning": 0.0,
         "request": 0.0
       },
       "deprecated": false,
       "extra": {
-        "hugging_face_id": "Qwen/QwQ-32B"
+        "hugging_face_id": ""
       },
       "family": null,
-      "id": "qwq-32b",
+      "id": "qwen-vl-plus",
+      "knowledge": null,
+      "last_updated": null,
+      "lifecycle": null,
+      "limits": {
+        "context": 7500,
+        "output": 1500
+      },
+      "modalities": {
+        "input": [
+          "text",
+          "image"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "model": null,
+      "name": "Qwen: Qwen VL Plus",
+      "provider": "qwen",
+      "provider_model_id": null,
+      "release_date": "2025-02-05",
+      "tags": null
+    },
+    "qwen2.5-coder-7b-instruct": {
+      "aliases": [],
+      "capabilities": null,
+      "cost": {
+        "image": 0.0,
+        "input": 2.9999999999999997e-5,
+        "output": 8.999999999999999e-5,
+        "reasoning": 0.0,
+        "request": 0.0
+      },
+      "deprecated": false,
+      "extra": {
+        "hugging_face_id": "Qwen/Qwen2.5-Coder-7B-Instruct"
+      },
+      "family": null,
+      "id": "qwen2.5-coder-7b-instruct",
       "knowledge": null,
       "last_updated": null,
       "lifecycle": null,
@@ -885,10 +676,925 @@
         ]
       },
       "model": null,
-      "name": "Qwen: QwQ 32B",
+      "name": "Qwen: Qwen2.5 Coder 7B Instruct",
       "provider": "qwen",
       "provider_model_id": null,
-      "release_date": "2025-03-05",
+      "release_date": "2025-04-15",
+      "tags": null
+    },
+    "qwen2.5-vl-32b-instruct": {
+      "aliases": [],
+      "capabilities": null,
+      "cost": {
+        "image": 0.0,
+        "input": 4.9999999999999996e-5,
+        "output": 2.2e-4,
+        "reasoning": 0.0,
+        "request": 0.0
+      },
+      "deprecated": false,
+      "extra": {
+        "hugging_face_id": "Qwen/Qwen2.5-VL-32B-Instruct"
+      },
+      "family": null,
+      "id": "qwen2.5-vl-32b-instruct",
+      "knowledge": null,
+      "last_updated": null,
+      "lifecycle": null,
+      "limits": {
+        "context": 16384,
+        "output": 16384
+      },
+      "modalities": {
+        "input": [
+          "text",
+          "image"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "model": null,
+      "name": "Qwen: Qwen2.5 VL 32B Instruct",
+      "provider": "qwen",
+      "provider_model_id": null,
+      "release_date": "2025-03-24",
+      "tags": null
+    },
+    "qwen2.5-vl-32b-instruct:free": {
+      "aliases": [],
+      "capabilities": null,
+      "cost": {
+        "image": 0.0,
+        "input": 0.0,
+        "output": 0.0,
+        "reasoning": 0.0,
+        "request": 0.0
+      },
+      "deprecated": false,
+      "extra": {
+        "hugging_face_id": "Qwen/Qwen2.5-VL-32B-Instruct"
+      },
+      "family": null,
+      "id": "qwen2.5-vl-32b-instruct:free",
+      "knowledge": null,
+      "last_updated": null,
+      "lifecycle": null,
+      "limits": {
+        "context": 16384
+      },
+      "modalities": {
+        "input": [
+          "text",
+          "image"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "model": null,
+      "name": "Qwen: Qwen2.5 VL 32B Instruct (free)",
+      "provider": "qwen",
+      "provider_model_id": null,
+      "release_date": "2025-03-24",
+      "tags": null
+    },
+    "qwen2.5-vl-72b-instruct": {
+      "aliases": [],
+      "capabilities": null,
+      "cost": {
+        "image": 0.0,
+        "input": 8.0e-5,
+        "output": 3.3e-4,
+        "reasoning": 0.0,
+        "request": 0.0
+      },
+      "deprecated": false,
+      "extra": {
+        "hugging_face_id": "Qwen/Qwen2.5-VL-72B-Instruct"
+      },
+      "family": null,
+      "id": "qwen2.5-vl-72b-instruct",
+      "knowledge": null,
+      "last_updated": null,
+      "lifecycle": null,
+      "limits": {
+        "context": 32768,
+        "output": 32768
+      },
+      "modalities": {
+        "input": [
+          "text",
+          "image"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "model": null,
+      "name": "Qwen: Qwen2.5 VL 72B Instruct",
+      "provider": "qwen",
+      "provider_model_id": null,
+      "release_date": "2025-02-01",
+      "tags": null
+    },
+    "qwen3-14b": {
+      "aliases": [],
+      "capabilities": {
+        "chat": true,
+        "embeddings": false,
+        "json": {
+          "native": false,
+          "schema": false,
+          "strict": false
+        },
+        "reasoning": {
+          "enabled": false
+        },
+        "streaming": {
+          "text": true,
+          "tool_calls": false
+        },
+        "tools": {
+          "enabled": true
+        }
+      },
+      "cost": {
+        "image": 0.0,
+        "input": 4.9999999999999996e-5,
+        "output": 2.2e-4,
+        "reasoning": 0.0,
+        "request": 0.0
+      },
+      "deprecated": false,
+      "extra": {
+        "hugging_face_id": "Qwen/Qwen3-14B"
+      },
+      "family": null,
+      "id": "qwen3-14b",
+      "knowledge": null,
+      "last_updated": null,
+      "lifecycle": null,
+      "limits": {
+        "context": 40960,
+        "output": 40960
+      },
+      "modalities": {
+        "input": [
+          "text"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "model": null,
+      "name": "Qwen: Qwen3 14B",
+      "provider": "qwen",
+      "provider_model_id": null,
+      "release_date": "2025-04-28",
+      "tags": null
+    },
+    "qwen3-14b:free": {
+      "aliases": [],
+      "capabilities": null,
+      "cost": {
+        "image": 0.0,
+        "input": 0.0,
+        "output": 0.0,
+        "reasoning": 0.0,
+        "request": 0.0
+      },
+      "deprecated": false,
+      "extra": {
+        "hugging_face_id": "Qwen/Qwen3-14B"
+      },
+      "family": null,
+      "id": "qwen3-14b:free",
+      "knowledge": null,
+      "last_updated": null,
+      "lifecycle": null,
+      "limits": {
+        "context": 40960
+      },
+      "modalities": {
+        "input": [
+          "text"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "model": null,
+      "name": "Qwen: Qwen3 14B (free)",
+      "provider": "qwen",
+      "provider_model_id": null,
+      "release_date": "2025-04-28",
+      "tags": null
+    },
+    "qwen3-235b-a22b": {
+      "aliases": [],
+      "capabilities": {
+        "chat": true,
+        "embeddings": false,
+        "json": {
+          "native": false,
+          "schema": false,
+          "strict": false
+        },
+        "reasoning": {
+          "enabled": false
+        },
+        "streaming": {
+          "text": true,
+          "tool_calls": false
+        },
+        "tools": {
+          "enabled": true
+        }
+      },
+      "cost": {
+        "image": 0.0,
+        "input": 1.7999999999999998e-4,
+        "output": 5.4e-4,
+        "reasoning": 0.0,
+        "request": 0.0
+      },
+      "deprecated": false,
+      "extra": {
+        "hugging_face_id": "Qwen/Qwen3-235B-A22B"
+      },
+      "family": null,
+      "id": "qwen3-235b-a22b",
+      "knowledge": null,
+      "last_updated": null,
+      "lifecycle": null,
+      "limits": {
+        "context": 40960,
+        "output": 40960
+      },
+      "modalities": {
+        "input": [
+          "text"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "model": null,
+      "name": "Qwen: Qwen3 235B A22B",
+      "provider": "qwen",
+      "provider_model_id": null,
+      "release_date": "2025-04-28",
+      "tags": null
+    },
+    "qwen3-235b-a22b-2507": {
+      "aliases": [],
+      "capabilities": {
+        "chat": true,
+        "embeddings": false,
+        "json": {
+          "native": false,
+          "schema": false,
+          "strict": false
+        },
+        "reasoning": {
+          "enabled": false
+        },
+        "streaming": {
+          "text": true,
+          "tool_calls": false
+        },
+        "tools": {
+          "enabled": true
+        }
+      },
+      "cost": {
+        "image": 0.0,
+        "input": 8.0e-5,
+        "output": 5.5e-4,
+        "reasoning": 0.0,
+        "request": 0.0
+      },
+      "deprecated": false,
+      "extra": {
+        "hugging_face_id": "Qwen/Qwen3-235B-A22B-Instruct-2507"
+      },
+      "family": null,
+      "id": "qwen3-235b-a22b-2507",
+      "knowledge": null,
+      "last_updated": null,
+      "lifecycle": null,
+      "limits": {
+        "context": 262144,
+        "output": 262144
+      },
+      "modalities": {
+        "input": [
+          "text"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "model": null,
+      "name": "Qwen: Qwen3 235B A22B Instruct 2507",
+      "provider": "qwen",
+      "provider_model_id": null,
+      "release_date": "2025-07-21",
+      "tags": null
+    },
+    "qwen3-235b-a22b-thinking-2507": {
+      "aliases": [],
+      "capabilities": {
+        "chat": true,
+        "embeddings": false,
+        "json": {
+          "native": false,
+          "schema": false,
+          "strict": false
+        },
+        "reasoning": {
+          "enabled": false
+        },
+        "streaming": {
+          "text": true,
+          "tool_calls": false
+        },
+        "tools": {
+          "enabled": true
+        }
+      },
+      "cost": {
+        "image": 0.0,
+        "input": 1.1e-4,
+        "output": 0.0006,
+        "reasoning": 0.0,
+        "request": 0.0
+      },
+      "deprecated": false,
+      "extra": {
+        "hugging_face_id": "Qwen/Qwen3-235B-A22B-Thinking-2507"
+      },
+      "family": null,
+      "id": "qwen3-235b-a22b-thinking-2507",
+      "knowledge": null,
+      "last_updated": null,
+      "lifecycle": null,
+      "limits": {
+        "context": 262144,
+        "output": 262144
+      },
+      "modalities": {
+        "input": [
+          "text"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "model": null,
+      "name": "Qwen: Qwen3 235B A22B Thinking 2507",
+      "provider": "qwen",
+      "provider_model_id": null,
+      "release_date": "2025-07-25",
+      "tags": null
+    },
+    "qwen3-235b-a22b:free": {
+      "aliases": [],
+      "capabilities": {
+        "chat": true,
+        "embeddings": false,
+        "json": {
+          "native": false,
+          "schema": false,
+          "strict": false
+        },
+        "reasoning": {
+          "enabled": false
+        },
+        "streaming": {
+          "text": true,
+          "tool_calls": false
+        },
+        "tools": {
+          "enabled": true
+        }
+      },
+      "cost": {
+        "image": 0.0,
+        "input": 0.0,
+        "output": 0.0,
+        "reasoning": 0.0,
+        "request": 0.0
+      },
+      "deprecated": false,
+      "extra": {
+        "hugging_face_id": "Qwen/Qwen3-235B-A22B"
+      },
+      "family": null,
+      "id": "qwen3-235b-a22b:free",
+      "knowledge": null,
+      "last_updated": null,
+      "lifecycle": null,
+      "limits": {
+        "context": 40960
+      },
+      "modalities": {
+        "input": [
+          "text"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "model": null,
+      "name": "Qwen: Qwen3 235B A22B (free)",
+      "provider": "qwen",
+      "provider_model_id": null,
+      "release_date": "2025-04-28",
+      "tags": null
+    },
+    "qwen3-30b-a3b": {
+      "aliases": [],
+      "capabilities": {
+        "chat": true,
+        "embeddings": false,
+        "json": {
+          "native": false,
+          "schema": false,
+          "strict": false
+        },
+        "reasoning": {
+          "enabled": false
+        },
+        "streaming": {
+          "text": true,
+          "tool_calls": false
+        },
+        "tools": {
+          "enabled": true
+        }
+      },
+      "cost": {
+        "image": 0.0,
+        "input": 5.9999999999999995e-5,
+        "output": 2.2e-4,
+        "reasoning": 0.0,
+        "request": 0.0
+      },
+      "deprecated": false,
+      "extra": {
+        "hugging_face_id": "Qwen/Qwen3-30B-A3B"
+      },
+      "family": null,
+      "id": "qwen3-30b-a3b",
+      "knowledge": null,
+      "last_updated": null,
+      "lifecycle": null,
+      "limits": {
+        "context": 40960,
+        "output": 40960
+      },
+      "modalities": {
+        "input": [
+          "text"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "model": null,
+      "name": "Qwen: Qwen3 30B A3B",
+      "provider": "qwen",
+      "provider_model_id": null,
+      "release_date": "2025-04-28",
+      "tags": null
+    },
+    "qwen3-30b-a3b-instruct-2507": {
+      "aliases": [],
+      "capabilities": {
+        "chat": true,
+        "embeddings": false,
+        "json": {
+          "native": false,
+          "schema": false,
+          "strict": false
+        },
+        "reasoning": {
+          "enabled": false
+        },
+        "streaming": {
+          "text": true,
+          "tool_calls": false
+        },
+        "tools": {
+          "enabled": true
+        }
+      },
+      "cost": {
+        "image": 0.0,
+        "input": 8.0e-5,
+        "output": 3.3e-4,
+        "reasoning": 0.0,
+        "request": 0.0
+      },
+      "deprecated": false,
+      "extra": {
+        "hugging_face_id": "Qwen/Qwen3-30B-A3B-Instruct-2507"
+      },
+      "family": null,
+      "id": "qwen3-30b-a3b-instruct-2507",
+      "knowledge": null,
+      "last_updated": null,
+      "lifecycle": null,
+      "limits": {
+        "context": 262144,
+        "output": 262144
+      },
+      "modalities": {
+        "input": [
+          "text"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "model": null,
+      "name": "Qwen: Qwen3 30B A3B Instruct 2507",
+      "provider": "qwen",
+      "provider_model_id": null,
+      "release_date": "2025-07-29",
+      "tags": null
+    },
+    "qwen3-30b-a3b-thinking-2507": {
+      "aliases": [],
+      "capabilities": {
+        "chat": true,
+        "embeddings": false,
+        "json": {
+          "native": false,
+          "schema": false,
+          "strict": false
+        },
+        "reasoning": {
+          "enabled": false
+        },
+        "streaming": {
+          "text": true,
+          "tool_calls": false
+        },
+        "tools": {
+          "enabled": true
+        }
+      },
+      "cost": {
+        "image": 0.0,
+        "input": 5.1e-5,
+        "output": 3.3999999999999997e-4,
+        "reasoning": 0.0,
+        "request": 0.0
+      },
+      "deprecated": false,
+      "extra": {
+        "hugging_face_id": "Qwen/Qwen3-30B-A3B-Thinking-2507"
+      },
+      "family": null,
+      "id": "qwen3-30b-a3b-thinking-2507",
+      "knowledge": null,
+      "last_updated": null,
+      "lifecycle": null,
+      "limits": {
+        "context": 32768
+      },
+      "modalities": {
+        "input": [
+          "text"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "model": null,
+      "name": "Qwen: Qwen3 30B A3B Thinking 2507",
+      "provider": "qwen",
+      "provider_model_id": null,
+      "release_date": "2025-08-28",
+      "tags": null
+    },
+    "qwen3-30b-a3b:free": {
+      "aliases": [],
+      "capabilities": null,
+      "cost": {
+        "image": 0.0,
+        "input": 0.0,
+        "output": 0.0,
+        "reasoning": 0.0,
+        "request": 0.0
+      },
+      "deprecated": false,
+      "extra": {
+        "hugging_face_id": "Qwen/Qwen3-30B-A3B"
+      },
+      "family": null,
+      "id": "qwen3-30b-a3b:free",
+      "knowledge": null,
+      "last_updated": null,
+      "lifecycle": null,
+      "limits": {
+        "context": 40960
+      },
+      "modalities": {
+        "input": [
+          "text"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "model": null,
+      "name": "Qwen: Qwen3 30B A3B (free)",
+      "provider": "qwen",
+      "provider_model_id": null,
+      "release_date": "2025-04-28",
+      "tags": null
+    },
+    "qwen3-32b": {
+      "aliases": [],
+      "capabilities": {
+        "chat": true,
+        "embeddings": false,
+        "json": {
+          "native": false,
+          "schema": false,
+          "strict": false
+        },
+        "reasoning": {
+          "enabled": false
+        },
+        "streaming": {
+          "text": true,
+          "tool_calls": false
+        },
+        "tools": {
+          "enabled": true
+        }
+      },
+      "cost": {
+        "image": 0.0,
+        "input": 4.9999999999999996e-5,
+        "output": 1.9999999999999998e-4,
+        "reasoning": 0.0,
+        "request": 0.0
+      },
+      "deprecated": false,
+      "extra": {
+        "hugging_face_id": "Qwen/Qwen3-32B"
+      },
+      "family": null,
+      "id": "qwen3-32b",
+      "knowledge": null,
+      "last_updated": null,
+      "lifecycle": null,
+      "limits": {
+        "context": 40960,
+        "output": 40960
+      },
+      "modalities": {
+        "input": [
+          "text"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "model": null,
+      "name": "Qwen: Qwen3 32B",
+      "provider": "qwen",
+      "provider_model_id": null,
+      "release_date": "2025-04-28",
+      "tags": null
+    },
+    "qwen3-4b:free": {
+      "aliases": [],
+      "capabilities": {
+        "chat": true,
+        "embeddings": false,
+        "json": {
+          "native": false,
+          "schema": false,
+          "strict": false
+        },
+        "reasoning": {
+          "enabled": false
+        },
+        "streaming": {
+          "text": true,
+          "tool_calls": false
+        },
+        "tools": {
+          "enabled": true
+        }
+      },
+      "cost": {
+        "image": 0.0,
+        "input": 0.0,
+        "output": 0.0,
+        "reasoning": 0.0,
+        "request": 0.0
+      },
+      "deprecated": false,
+      "extra": {
+        "hugging_face_id": "Qwen/Qwen3-4B"
+      },
+      "family": null,
+      "id": "qwen3-4b:free",
+      "knowledge": null,
+      "last_updated": null,
+      "lifecycle": null,
+      "limits": {
+        "context": 40960
+      },
+      "modalities": {
+        "input": [
+          "text"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "model": null,
+      "name": "Qwen: Qwen3 4B (free)",
+      "provider": "qwen",
+      "provider_model_id": null,
+      "release_date": "2025-04-30",
+      "tags": null
+    },
+    "qwen3-8b": {
+      "aliases": [],
+      "capabilities": {
+        "chat": true,
+        "embeddings": false,
+        "json": {
+          "native": false,
+          "schema": false,
+          "strict": false
+        },
+        "reasoning": {
+          "enabled": false
+        },
+        "streaming": {
+          "text": true,
+          "tool_calls": false
+        },
+        "tools": {
+          "enabled": true
+        }
+      },
+      "cost": {
+        "image": 0.0,
+        "input": 3.5000000000000004e-5,
+        "output": 1.38e-4,
+        "reasoning": 0.0,
+        "request": 0.0
+      },
+      "deprecated": false,
+      "extra": {
+        "hugging_face_id": "Qwen/Qwen3-8B"
+      },
+      "family": null,
+      "id": "qwen3-8b",
+      "knowledge": null,
+      "last_updated": null,
+      "lifecycle": null,
+      "limits": {
+        "context": 128000,
+        "output": 20000
+      },
+      "modalities": {
+        "input": [
+          "text"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "model": null,
+      "name": "Qwen: Qwen3 8B",
+      "provider": "qwen",
+      "provider_model_id": null,
+      "release_date": "2025-04-28",
+      "tags": null
+    },
+    "qwen3-coder": {
+      "aliases": [],
+      "capabilities": {
+        "chat": true,
+        "embeddings": false,
+        "json": {
+          "native": false,
+          "schema": false,
+          "strict": false
+        },
+        "reasoning": {
+          "enabled": false
+        },
+        "streaming": {
+          "text": true,
+          "tool_calls": false
+        },
+        "tools": {
+          "enabled": true
+        }
+      },
+      "cost": {
+        "image": 0.0,
+        "input": 2.2e-4,
+        "output": 9.5e-4,
+        "reasoning": 0.0,
+        "request": 0.0
+      },
+      "deprecated": false,
+      "extra": {
+        "hugging_face_id": "Qwen/Qwen3-Coder-480B-A35B-Instruct"
+      },
+      "family": null,
+      "id": "qwen3-coder",
+      "knowledge": null,
+      "last_updated": null,
+      "lifecycle": null,
+      "limits": {
+        "context": 262144,
+        "output": 262144
+      },
+      "modalities": {
+        "input": [
+          "text"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "model": null,
+      "name": "Qwen: Qwen3 Coder 480B A35B",
+      "provider": "qwen",
+      "provider_model_id": null,
+      "release_date": "2025-07-23",
+      "tags": null
+    },
+    "qwen3-coder-30b-a3b-instruct": {
+      "aliases": [],
+      "capabilities": {
+        "chat": true,
+        "embeddings": false,
+        "json": {
+          "native": false,
+          "schema": false,
+          "strict": false
+        },
+        "reasoning": {
+          "enabled": false
+        },
+        "streaming": {
+          "text": true,
+          "tool_calls": false
+        },
+        "tools": {
+          "enabled": true
+        }
+      },
+      "cost": {
+        "image": 0.0,
+        "input": 5.9999999999999995e-5,
+        "output": 2.5e-4,
+        "reasoning": 0.0,
+        "request": 0.0
+      },
+      "deprecated": false,
+      "extra": {
+        "hugging_face_id": "Qwen/Qwen3-Coder-30B-A3B-Instruct"
+      },
+      "family": null,
+      "id": "qwen3-coder-30b-a3b-instruct",
+      "knowledge": null,
+      "last_updated": null,
+      "lifecycle": null,
+      "limits": {
+        "context": 262144,
+        "output": 262144
+      },
+      "modalities": {
+        "input": [
+          "text"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "model": null,
+      "name": "Qwen: Qwen3 Coder 30B A3B Instruct",
+      "provider": "qwen",
+      "provider_model_id": null,
+      "release_date": "2025-07-31",
       "tags": null
     },
     "qwen3-coder-flash": {
@@ -1003,6 +1709,513 @@
       "release_date": "2025-09-23",
       "tags": null
     },
+    "qwen3-coder:exacto": {
+      "aliases": [],
+      "capabilities": {
+        "chat": true,
+        "embeddings": false,
+        "json": {
+          "native": false,
+          "schema": false,
+          "strict": false
+        },
+        "reasoning": {
+          "enabled": false
+        },
+        "streaming": {
+          "text": true,
+          "tool_calls": false
+        },
+        "tools": {
+          "enabled": true
+        }
+      },
+      "cost": {
+        "image": 0.0,
+        "input": 3.8e-4,
+        "output": 0.00153,
+        "reasoning": 0.0,
+        "request": 0.0
+      },
+      "deprecated": false,
+      "extra": {
+        "hugging_face_id": "Qwen/Qwen3-Coder-480B-A35B-Instruct"
+      },
+      "family": null,
+      "id": "qwen3-coder:exacto",
+      "knowledge": null,
+      "last_updated": null,
+      "lifecycle": null,
+      "limits": {
+        "context": 262144,
+        "output": 262144
+      },
+      "modalities": {
+        "input": [
+          "text"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "model": null,
+      "name": "Qwen: Qwen3 Coder 480B A35B (exacto)",
+      "provider": "qwen",
+      "provider_model_id": null,
+      "release_date": "2025-07-23",
+      "tags": null
+    },
+    "qwen3-coder:free": {
+      "aliases": [],
+      "capabilities": {
+        "chat": true,
+        "embeddings": false,
+        "json": {
+          "native": false,
+          "schema": false,
+          "strict": false
+        },
+        "reasoning": {
+          "enabled": false
+        },
+        "streaming": {
+          "text": true,
+          "tool_calls": false
+        },
+        "tools": {
+          "enabled": true
+        }
+      },
+      "cost": {
+        "image": 0.0,
+        "input": 0.0,
+        "output": 0.0,
+        "reasoning": 0.0,
+        "request": 0.0
+      },
+      "deprecated": false,
+      "extra": {
+        "hugging_face_id": "Qwen/Qwen3-Coder-480B-A35B-Instruct"
+      },
+      "family": null,
+      "id": "qwen3-coder:free",
+      "knowledge": null,
+      "last_updated": null,
+      "lifecycle": null,
+      "limits": {
+        "context": 262000,
+        "output": 262000
+      },
+      "modalities": {
+        "input": [
+          "text"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "model": null,
+      "name": "Qwen: Qwen3 Coder 480B A35B (free)",
+      "provider": "qwen",
+      "provider_model_id": null,
+      "release_date": "2025-07-23",
+      "tags": null
+    },
+    "qwen3-max": {
+      "aliases": [],
+      "capabilities": {
+        "chat": true,
+        "embeddings": false,
+        "json": {
+          "native": false,
+          "schema": false,
+          "strict": false
+        },
+        "reasoning": {
+          "enabled": false
+        },
+        "streaming": {
+          "text": true,
+          "tool_calls": false
+        },
+        "tools": {
+          "enabled": true
+        }
+      },
+      "cost": {
+        "image": 0.0,
+        "input": 0.0012,
+        "output": 0.006,
+        "reasoning": 0.0,
+        "request": 0.0
+      },
+      "deprecated": false,
+      "extra": {
+        "hugging_face_id": ""
+      },
+      "family": null,
+      "id": "qwen3-max",
+      "knowledge": null,
+      "last_updated": null,
+      "lifecycle": null,
+      "limits": {
+        "context": 256000,
+        "output": 32768
+      },
+      "modalities": {
+        "input": [
+          "text"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "model": null,
+      "name": "Qwen: Qwen3 Max",
+      "provider": "qwen",
+      "provider_model_id": null,
+      "release_date": "2025-09-23",
+      "tags": null
+    },
+    "qwen3-next-80b-a3b-instruct": {
+      "aliases": [],
+      "capabilities": {
+        "chat": true,
+        "embeddings": false,
+        "json": {
+          "native": false,
+          "schema": false,
+          "strict": false
+        },
+        "reasoning": {
+          "enabled": false
+        },
+        "streaming": {
+          "text": true,
+          "tool_calls": false
+        },
+        "tools": {
+          "enabled": true
+        }
+      },
+      "cost": {
+        "image": 0.0,
+        "input": 9.999999999999999e-5,
+        "output": 7.999999999999999e-4,
+        "reasoning": 0.0,
+        "request": 0.0
+      },
+      "deprecated": false,
+      "extra": {
+        "hugging_face_id": "Qwen/Qwen3-Next-80B-A3B-Instruct"
+      },
+      "family": null,
+      "id": "qwen3-next-80b-a3b-instruct",
+      "knowledge": null,
+      "last_updated": null,
+      "lifecycle": null,
+      "limits": {
+        "context": 262144,
+        "output": 262144
+      },
+      "modalities": {
+        "input": [
+          "text"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "model": null,
+      "name": "Qwen: Qwen3 Next 80B A3B Instruct",
+      "provider": "qwen",
+      "provider_model_id": null,
+      "release_date": "2025-09-11",
+      "tags": null
+    },
+    "qwen3-next-80b-a3b-thinking": {
+      "aliases": [],
+      "capabilities": {
+        "chat": true,
+        "embeddings": false,
+        "json": {
+          "native": false,
+          "schema": false,
+          "strict": false
+        },
+        "reasoning": {
+          "enabled": false
+        },
+        "streaming": {
+          "text": true,
+          "tool_calls": false
+        },
+        "tools": {
+          "enabled": true
+        }
+      },
+      "cost": {
+        "image": 0.0,
+        "input": 1.5e-4,
+        "output": 0.0012,
+        "reasoning": 0.0,
+        "request": 0.0
+      },
+      "deprecated": false,
+      "extra": {
+        "hugging_face_id": "Qwen/Qwen3-Next-80B-A3B-Thinking"
+      },
+      "family": null,
+      "id": "qwen3-next-80b-a3b-thinking",
+      "knowledge": null,
+      "last_updated": null,
+      "lifecycle": null,
+      "limits": {
+        "context": 262144,
+        "output": 262144
+      },
+      "modalities": {
+        "input": [
+          "text"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "model": null,
+      "name": "Qwen: Qwen3 Next 80B A3B Thinking",
+      "provider": "qwen",
+      "provider_model_id": null,
+      "release_date": "2025-09-11",
+      "tags": null
+    },
+    "qwen3-vl-235b-a22b-instruct": {
+      "aliases": [],
+      "capabilities": {
+        "chat": true,
+        "embeddings": false,
+        "json": {
+          "native": false,
+          "schema": false,
+          "strict": false
+        },
+        "reasoning": {
+          "enabled": false
+        },
+        "streaming": {
+          "text": true,
+          "tool_calls": false
+        },
+        "tools": {
+          "enabled": true
+        }
+      },
+      "cost": {
+        "image": 0.0,
+        "input": 2.1e-4,
+        "output": 0.0019,
+        "reasoning": 0.0,
+        "request": 0.0
+      },
+      "deprecated": false,
+      "extra": {
+        "hugging_face_id": "Qwen/Qwen3-VL-235B-A22B-Instruct"
+      },
+      "family": null,
+      "id": "qwen3-vl-235b-a22b-instruct",
+      "knowledge": null,
+      "last_updated": null,
+      "lifecycle": null,
+      "limits": {
+        "context": 131072,
+        "output": 32768
+      },
+      "modalities": {
+        "input": [
+          "text",
+          "image"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "model": null,
+      "name": "Qwen: Qwen3 VL 235B A22B Instruct",
+      "provider": "qwen",
+      "provider_model_id": null,
+      "release_date": "2025-09-23",
+      "tags": null
+    },
+    "qwen3-vl-235b-a22b-thinking": {
+      "aliases": [],
+      "capabilities": {
+        "chat": true,
+        "embeddings": false,
+        "json": {
+          "native": false,
+          "schema": false,
+          "strict": false
+        },
+        "reasoning": {
+          "enabled": false
+        },
+        "streaming": {
+          "text": true,
+          "tool_calls": false
+        },
+        "tools": {
+          "enabled": true
+        }
+      },
+      "cost": {
+        "image": 0.0,
+        "input": 0.0003,
+        "output": 0.0012,
+        "reasoning": 0.0,
+        "request": 0.0
+      },
+      "deprecated": false,
+      "extra": {
+        "hugging_face_id": "Qwen/Qwen3-VL-235B-A22B-Thinking"
+      },
+      "family": null,
+      "id": "qwen3-vl-235b-a22b-thinking",
+      "knowledge": null,
+      "last_updated": null,
+      "lifecycle": null,
+      "limits": {
+        "context": 262144,
+        "output": 262144
+      },
+      "modalities": {
+        "input": [
+          "text",
+          "image"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "model": null,
+      "name": "Qwen: Qwen3 VL 235B A22B Thinking",
+      "provider": "qwen",
+      "provider_model_id": null,
+      "release_date": "2025-09-23",
+      "tags": null
+    },
+    "qwen3-vl-30b-a3b-instruct": {
+      "aliases": [],
+      "capabilities": {
+        "chat": true,
+        "embeddings": false,
+        "json": {
+          "native": false,
+          "schema": false,
+          "strict": false
+        },
+        "reasoning": {
+          "enabled": false
+        },
+        "streaming": {
+          "text": true,
+          "tool_calls": false
+        },
+        "tools": {
+          "enabled": true
+        }
+      },
+      "cost": {
+        "image": 0.0,
+        "input": 1.5e-4,
+        "output": 0.0006,
+        "reasoning": 0.0,
+        "request": 0.0
+      },
+      "deprecated": false,
+      "extra": {
+        "hugging_face_id": "Qwen/Qwen3-VL-30B-A3B-Instruct"
+      },
+      "family": null,
+      "id": "qwen3-vl-30b-a3b-instruct",
+      "knowledge": null,
+      "last_updated": null,
+      "lifecycle": null,
+      "limits": {
+        "context": 262144
+      },
+      "modalities": {
+        "input": [
+          "text",
+          "image"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "model": null,
+      "name": "Qwen: Qwen3 VL 30B A3B Instruct",
+      "provider": "qwen",
+      "provider_model_id": null,
+      "release_date": "2025-10-06",
+      "tags": null
+    },
+    "qwen3-vl-30b-a3b-thinking": {
+      "aliases": [],
+      "capabilities": {
+        "chat": true,
+        "embeddings": false,
+        "json": {
+          "native": false,
+          "schema": false,
+          "strict": false
+        },
+        "reasoning": {
+          "enabled": false
+        },
+        "streaming": {
+          "text": true,
+          "tool_calls": false
+        },
+        "tools": {
+          "enabled": true
+        }
+      },
+      "cost": {
+        "image": 0.0,
+        "input": 1.9999999999999998e-4,
+        "output": 0.001,
+        "reasoning": 0.0,
+        "request": 0.0
+      },
+      "deprecated": false,
+      "extra": {
+        "hugging_face_id": "Qwen/Qwen3-VL-30B-A3B-Thinking"
+      },
+      "family": null,
+      "id": "qwen3-vl-30b-a3b-thinking",
+      "knowledge": null,
+      "last_updated": null,
+      "lifecycle": null,
+      "limits": {
+        "context": 131072,
+        "output": 32768
+      },
+      "modalities": {
+        "input": [
+          "text",
+          "image"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "model": null,
+      "name": "Qwen: Qwen3 VL 30B A3B Thinking",
+      "provider": "qwen",
+      "provider_model_id": null,
+      "release_date": "2025-10-06",
+      "tags": null
+    },
     "qwen3-vl-8b-instruct": {
       "aliases": [],
       "capabilities": {
@@ -1058,640 +2271,6 @@
       "provider": "qwen",
       "provider_model_id": null,
       "release_date": "2025-10-14",
-      "tags": null
-    },
-    "qwen3-14b": {
-      "aliases": [],
-      "capabilities": {
-        "chat": true,
-        "embeddings": false,
-        "json": {
-          "native": false,
-          "schema": false,
-          "strict": false
-        },
-        "reasoning": {
-          "enabled": false
-        },
-        "streaming": {
-          "text": true,
-          "tool_calls": false
-        },
-        "tools": {
-          "enabled": true
-        }
-      },
-      "cost": {
-        "image": 0.0,
-        "input": 4.9999999999999996e-5,
-        "output": 2.2e-4,
-        "reasoning": 0.0,
-        "request": 0.0
-      },
-      "deprecated": false,
-      "extra": {
-        "hugging_face_id": "Qwen/Qwen3-14B"
-      },
-      "family": null,
-      "id": "qwen3-14b",
-      "knowledge": null,
-      "last_updated": null,
-      "lifecycle": null,
-      "limits": {
-        "context": 40960,
-        "output": 40960
-      },
-      "modalities": {
-        "input": [
-          "text"
-        ],
-        "output": [
-          "text"
-        ]
-      },
-      "model": null,
-      "name": "Qwen: Qwen3 14B",
-      "provider": "qwen",
-      "provider_model_id": null,
-      "release_date": "2025-04-28",
-      "tags": null
-    },
-    "qwen-turbo": {
-      "aliases": [],
-      "capabilities": {
-        "chat": true,
-        "embeddings": false,
-        "json": {
-          "native": false,
-          "schema": false,
-          "strict": false
-        },
-        "reasoning": {
-          "enabled": false
-        },
-        "streaming": {
-          "text": true,
-          "tool_calls": false
-        },
-        "tools": {
-          "enabled": true
-        }
-      },
-      "cost": {
-        "image": 0.0,
-        "input": 4.9999999999999996e-5,
-        "output": 1.9999999999999998e-4,
-        "reasoning": 0.0,
-        "request": 0.0
-      },
-      "deprecated": false,
-      "extra": {
-        "hugging_face_id": ""
-      },
-      "family": null,
-      "id": "qwen-turbo",
-      "knowledge": null,
-      "last_updated": null,
-      "lifecycle": null,
-      "limits": {
-        "context": 1000000,
-        "output": 8192
-      },
-      "modalities": {
-        "input": [
-          "text"
-        ],
-        "output": [
-          "text"
-        ]
-      },
-      "model": null,
-      "name": "Qwen: Qwen-Turbo",
-      "provider": "qwen",
-      "provider_model_id": null,
-      "release_date": "2025-02-01",
-      "tags": null
-    },
-    "qwen3-coder-30b-a3b-instruct": {
-      "aliases": [],
-      "capabilities": {
-        "chat": true,
-        "embeddings": false,
-        "json": {
-          "native": false,
-          "schema": false,
-          "strict": false
-        },
-        "reasoning": {
-          "enabled": false
-        },
-        "streaming": {
-          "text": true,
-          "tool_calls": false
-        },
-        "tools": {
-          "enabled": true
-        }
-      },
-      "cost": {
-        "image": 0.0,
-        "input": 5.9999999999999995e-5,
-        "output": 2.5e-4,
-        "reasoning": 0.0,
-        "request": 0.0
-      },
-      "deprecated": false,
-      "extra": {
-        "hugging_face_id": "Qwen/Qwen3-Coder-30B-A3B-Instruct"
-      },
-      "family": null,
-      "id": "qwen3-coder-30b-a3b-instruct",
-      "knowledge": null,
-      "last_updated": null,
-      "lifecycle": null,
-      "limits": {
-        "context": 262144,
-        "output": 262144
-      },
-      "modalities": {
-        "input": [
-          "text"
-        ],
-        "output": [
-          "text"
-        ]
-      },
-      "model": null,
-      "name": "Qwen: Qwen3 Coder 30B A3B Instruct",
-      "provider": "qwen",
-      "provider_model_id": null,
-      "release_date": "2025-07-31",
-      "tags": null
-    },
-    "qwen3-30b-a3b:free": {
-      "aliases": [],
-      "capabilities": null,
-      "cost": {
-        "image": 0.0,
-        "input": 0.0,
-        "output": 0.0,
-        "reasoning": 0.0,
-        "request": 0.0
-      },
-      "deprecated": false,
-      "extra": {
-        "hugging_face_id": "Qwen/Qwen3-30B-A3B"
-      },
-      "family": null,
-      "id": "qwen3-30b-a3b:free",
-      "knowledge": null,
-      "last_updated": null,
-      "lifecycle": null,
-      "limits": {
-        "context": 40960
-      },
-      "modalities": {
-        "input": [
-          "text"
-        ],
-        "output": [
-          "text"
-        ]
-      },
-      "model": null,
-      "name": "Qwen: Qwen3 30B A3B (free)",
-      "provider": "qwen",
-      "provider_model_id": null,
-      "release_date": "2025-04-28",
-      "tags": null
-    },
-    "qwen-plus-2025-07-28:thinking": {
-      "aliases": [],
-      "capabilities": {
-        "chat": true,
-        "embeddings": false,
-        "json": {
-          "native": false,
-          "schema": false,
-          "strict": false
-        },
-        "reasoning": {
-          "enabled": false
-        },
-        "streaming": {
-          "text": true,
-          "tool_calls": false
-        },
-        "tools": {
-          "enabled": true
-        }
-      },
-      "cost": {
-        "image": 0.0,
-        "input": 3.9999999999999996e-4,
-        "output": 0.004,
-        "reasoning": 0.0,
-        "request": 0.0
-      },
-      "deprecated": false,
-      "extra": {
-        "hugging_face_id": ""
-      },
-      "family": null,
-      "id": "qwen-plus-2025-07-28:thinking",
-      "knowledge": null,
-      "last_updated": null,
-      "lifecycle": null,
-      "limits": {
-        "context": 1000000,
-        "output": 32768
-      },
-      "modalities": {
-        "input": [
-          "text"
-        ],
-        "output": [
-          "text"
-        ]
-      },
-      "model": null,
-      "name": "Qwen: Qwen Plus 0728 (thinking)",
-      "provider": "qwen",
-      "provider_model_id": null,
-      "release_date": "2025-09-08",
-      "tags": null
-    },
-    "qwen-2.5-72b-instruct:free": {
-      "aliases": [],
-      "capabilities": null,
-      "cost": {
-        "image": 0.0,
-        "input": 0.0,
-        "output": 0.0,
-        "reasoning": 0.0,
-        "request": 0.0
-      },
-      "deprecated": false,
-      "extra": {
-        "hugging_face_id": "Qwen/Qwen2.5-72B-Instruct"
-      },
-      "family": null,
-      "id": "qwen-2.5-72b-instruct:free",
-      "knowledge": null,
-      "last_updated": null,
-      "lifecycle": null,
-      "limits": {
-        "context": 32768
-      },
-      "modalities": {
-        "input": [
-          "text"
-        ],
-        "output": [
-          "text"
-        ]
-      },
-      "model": null,
-      "name": "Qwen2.5 72B Instruct (free)",
-      "provider": "qwen",
-      "provider_model_id": null,
-      "release_date": "2024-09-19",
-      "tags": null
-    },
-    "qwen3-235b-a22b": {
-      "aliases": [],
-      "capabilities": {
-        "chat": true,
-        "embeddings": false,
-        "json": {
-          "native": false,
-          "schema": false,
-          "strict": false
-        },
-        "reasoning": {
-          "enabled": false
-        },
-        "streaming": {
-          "text": true,
-          "tool_calls": false
-        },
-        "tools": {
-          "enabled": true
-        }
-      },
-      "cost": {
-        "image": 0.0,
-        "input": 1.7999999999999998e-4,
-        "output": 5.4e-4,
-        "reasoning": 0.0,
-        "request": 0.0
-      },
-      "deprecated": false,
-      "extra": {
-        "hugging_face_id": "Qwen/Qwen3-235B-A22B"
-      },
-      "family": null,
-      "id": "qwen3-235b-a22b",
-      "knowledge": null,
-      "last_updated": null,
-      "lifecycle": null,
-      "limits": {
-        "context": 40960,
-        "output": 40960
-      },
-      "modalities": {
-        "input": [
-          "text"
-        ],
-        "output": [
-          "text"
-        ]
-      },
-      "model": null,
-      "name": "Qwen: Qwen3 235B A22B",
-      "provider": "qwen",
-      "provider_model_id": null,
-      "release_date": "2025-04-28",
-      "tags": null
-    },
-    "qwen2.5-vl-32b-instruct:free": {
-      "aliases": [],
-      "capabilities": null,
-      "cost": {
-        "image": 0.0,
-        "input": 0.0,
-        "output": 0.0,
-        "reasoning": 0.0,
-        "request": 0.0
-      },
-      "deprecated": false,
-      "extra": {
-        "hugging_face_id": "Qwen/Qwen2.5-VL-32B-Instruct"
-      },
-      "family": null,
-      "id": "qwen2.5-vl-32b-instruct:free",
-      "knowledge": null,
-      "last_updated": null,
-      "lifecycle": null,
-      "limits": {
-        "context": 16384
-      },
-      "modalities": {
-        "input": [
-          "text",
-          "image"
-        ],
-        "output": [
-          "text"
-        ]
-      },
-      "model": null,
-      "name": "Qwen: Qwen2.5 VL 32B Instruct (free)",
-      "provider": "qwen",
-      "provider_model_id": null,
-      "release_date": "2025-03-24",
-      "tags": null
-    },
-    "qwen3-30b-a3b": {
-      "aliases": [],
-      "capabilities": {
-        "chat": true,
-        "embeddings": false,
-        "json": {
-          "native": false,
-          "schema": false,
-          "strict": false
-        },
-        "reasoning": {
-          "enabled": false
-        },
-        "streaming": {
-          "text": true,
-          "tool_calls": false
-        },
-        "tools": {
-          "enabled": true
-        }
-      },
-      "cost": {
-        "image": 0.0,
-        "input": 5.9999999999999995e-5,
-        "output": 2.2e-4,
-        "reasoning": 0.0,
-        "request": 0.0
-      },
-      "deprecated": false,
-      "extra": {
-        "hugging_face_id": "Qwen/Qwen3-30B-A3B"
-      },
-      "family": null,
-      "id": "qwen3-30b-a3b",
-      "knowledge": null,
-      "last_updated": null,
-      "lifecycle": null,
-      "limits": {
-        "context": 40960,
-        "output": 40960
-      },
-      "modalities": {
-        "input": [
-          "text"
-        ],
-        "output": [
-          "text"
-        ]
-      },
-      "model": null,
-      "name": "Qwen: Qwen3 30B A3B",
-      "provider": "qwen",
-      "provider_model_id": null,
-      "release_date": "2025-04-28",
-      "tags": null
-    },
-    "qwen-2.5-coder-32b-instruct:free": {
-      "aliases": [],
-      "capabilities": null,
-      "cost": {
-        "image": 0.0,
-        "input": 0.0,
-        "output": 0.0,
-        "reasoning": 0.0,
-        "request": 0.0
-      },
-      "deprecated": false,
-      "extra": {
-        "hugging_face_id": "Qwen/Qwen2.5-Coder-32B-Instruct"
-      },
-      "family": null,
-      "id": "qwen-2.5-coder-32b-instruct:free",
-      "knowledge": null,
-      "last_updated": null,
-      "lifecycle": null,
-      "limits": {
-        "context": 32768
-      },
-      "modalities": {
-        "input": [
-          "text"
-        ],
-        "output": [
-          "text"
-        ]
-      },
-      "model": null,
-      "name": "Qwen2.5 Coder 32B Instruct (free)",
-      "provider": "qwen",
-      "provider_model_id": null,
-      "release_date": "2024-11-11",
-      "tags": null
-    },
-    "qwen3-8b": {
-      "aliases": [],
-      "capabilities": {
-        "chat": true,
-        "embeddings": false,
-        "json": {
-          "native": false,
-          "schema": false,
-          "strict": false
-        },
-        "reasoning": {
-          "enabled": false
-        },
-        "streaming": {
-          "text": true,
-          "tool_calls": false
-        },
-        "tools": {
-          "enabled": true
-        }
-      },
-      "cost": {
-        "image": 0.0,
-        "input": 3.5000000000000004e-5,
-        "output": 1.38e-4,
-        "reasoning": 0.0,
-        "request": 0.0
-      },
-      "deprecated": false,
-      "extra": {
-        "hugging_face_id": "Qwen/Qwen3-8B"
-      },
-      "family": null,
-      "id": "qwen3-8b",
-      "knowledge": null,
-      "last_updated": null,
-      "lifecycle": null,
-      "limits": {
-        "context": 128000,
-        "output": 20000
-      },
-      "modalities": {
-        "input": [
-          "text"
-        ],
-        "output": [
-          "text"
-        ]
-      },
-      "model": null,
-      "name": "Qwen: Qwen3 8B",
-      "provider": "qwen",
-      "provider_model_id": null,
-      "release_date": "2025-04-28",
-      "tags": null
-    },
-    "qwen2.5-coder-7b-instruct": {
-      "aliases": [],
-      "capabilities": null,
-      "cost": {
-        "image": 0.0,
-        "input": 2.9999999999999997e-5,
-        "output": 8.999999999999999e-5,
-        "reasoning": 0.0,
-        "request": 0.0
-      },
-      "deprecated": false,
-      "extra": {
-        "hugging_face_id": "Qwen/Qwen2.5-Coder-7B-Instruct"
-      },
-      "family": null,
-      "id": "qwen2.5-coder-7b-instruct",
-      "knowledge": null,
-      "last_updated": null,
-      "lifecycle": null,
-      "limits": {
-        "context": 32768
-      },
-      "modalities": {
-        "input": [
-          "text"
-        ],
-        "output": [
-          "text"
-        ]
-      },
-      "model": null,
-      "name": "Qwen: Qwen2.5 Coder 7B Instruct",
-      "provider": "qwen",
-      "provider_model_id": null,
-      "release_date": "2025-04-15",
-      "tags": null
-    },
-    "qwen3-coder": {
-      "aliases": [],
-      "capabilities": {
-        "chat": true,
-        "embeddings": false,
-        "json": {
-          "native": false,
-          "schema": false,
-          "strict": false
-        },
-        "reasoning": {
-          "enabled": false
-        },
-        "streaming": {
-          "text": true,
-          "tool_calls": false
-        },
-        "tools": {
-          "enabled": true
-        }
-      },
-      "cost": {
-        "image": 0.0,
-        "input": 2.2e-4,
-        "output": 9.5e-4,
-        "reasoning": 0.0,
-        "request": 0.0
-      },
-      "deprecated": false,
-      "extra": {
-        "hugging_face_id": "Qwen/Qwen3-Coder-480B-A35B-Instruct"
-      },
-      "family": null,
-      "id": "qwen3-coder",
-      "knowledge": null,
-      "last_updated": null,
-      "lifecycle": null,
-      "limits": {
-        "context": 262144,
-        "output": 262144
-      },
-      "modalities": {
-        "input": [
-          "text"
-        ],
-        "output": [
-          "text"
-        ]
-      },
-      "model": null,
-      "name": "Qwen: Qwen3 Coder 480B A35B",
-      "provider": "qwen",
-      "provider_model_id": null,
-      "release_date": "2025-07-23",
       "tags": null
     },
     "qwen3-vl-8b-thinking": {
@@ -1751,416 +2330,7 @@
       "release_date": "2025-10-14",
       "tags": null
     },
-    "qwen3-14b:free": {
-      "aliases": [],
-      "capabilities": null,
-      "cost": {
-        "image": 0.0,
-        "input": 0.0,
-        "output": 0.0,
-        "reasoning": 0.0,
-        "request": 0.0
-      },
-      "deprecated": false,
-      "extra": {
-        "hugging_face_id": "Qwen/Qwen3-14B"
-      },
-      "family": null,
-      "id": "qwen3-14b:free",
-      "knowledge": null,
-      "last_updated": null,
-      "lifecycle": null,
-      "limits": {
-        "context": 40960
-      },
-      "modalities": {
-        "input": [
-          "text"
-        ],
-        "output": [
-          "text"
-        ]
-      },
-      "model": null,
-      "name": "Qwen: Qwen3 14B (free)",
-      "provider": "qwen",
-      "provider_model_id": null,
-      "release_date": "2025-04-28",
-      "tags": null
-    },
-    "qwen3-next-80b-a3b-instruct": {
-      "aliases": [],
-      "capabilities": {
-        "chat": true,
-        "embeddings": false,
-        "json": {
-          "native": false,
-          "schema": false,
-          "strict": false
-        },
-        "reasoning": {
-          "enabled": false
-        },
-        "streaming": {
-          "text": true,
-          "tool_calls": false
-        },
-        "tools": {
-          "enabled": true
-        }
-      },
-      "cost": {
-        "image": 0.0,
-        "input": 9.999999999999999e-5,
-        "output": 7.999999999999999e-4,
-        "reasoning": 0.0,
-        "request": 0.0
-      },
-      "deprecated": false,
-      "extra": {
-        "hugging_face_id": "Qwen/Qwen3-Next-80B-A3B-Instruct"
-      },
-      "family": null,
-      "id": "qwen3-next-80b-a3b-instruct",
-      "knowledge": null,
-      "last_updated": null,
-      "lifecycle": null,
-      "limits": {
-        "context": 262144,
-        "output": 262144
-      },
-      "modalities": {
-        "input": [
-          "text"
-        ],
-        "output": [
-          "text"
-        ]
-      },
-      "model": null,
-      "name": "Qwen: Qwen3 Next 80B A3B Instruct",
-      "provider": "qwen",
-      "provider_model_id": null,
-      "release_date": "2025-09-11",
-      "tags": null
-    },
-    "qwen3-235b-a22b:free": {
-      "aliases": [],
-      "capabilities": {
-        "chat": true,
-        "embeddings": false,
-        "json": {
-          "native": false,
-          "schema": false,
-          "strict": false
-        },
-        "reasoning": {
-          "enabled": false
-        },
-        "streaming": {
-          "text": true,
-          "tool_calls": false
-        },
-        "tools": {
-          "enabled": true
-        }
-      },
-      "cost": {
-        "image": 0.0,
-        "input": 0.0,
-        "output": 0.0,
-        "reasoning": 0.0,
-        "request": 0.0
-      },
-      "deprecated": false,
-      "extra": {
-        "hugging_face_id": "Qwen/Qwen3-235B-A22B"
-      },
-      "family": null,
-      "id": "qwen3-235b-a22b:free",
-      "knowledge": null,
-      "last_updated": null,
-      "lifecycle": null,
-      "limits": {
-        "context": 40960
-      },
-      "modalities": {
-        "input": [
-          "text"
-        ],
-        "output": [
-          "text"
-        ]
-      },
-      "model": null,
-      "name": "Qwen: Qwen3 235B A22B (free)",
-      "provider": "qwen",
-      "provider_model_id": null,
-      "release_date": "2025-04-28",
-      "tags": null
-    },
-    "qwen3-235b-a22b-2507": {
-      "aliases": [],
-      "capabilities": {
-        "chat": true,
-        "embeddings": false,
-        "json": {
-          "native": false,
-          "schema": false,
-          "strict": false
-        },
-        "reasoning": {
-          "enabled": false
-        },
-        "streaming": {
-          "text": true,
-          "tool_calls": false
-        },
-        "tools": {
-          "enabled": true
-        }
-      },
-      "cost": {
-        "image": 0.0,
-        "input": 8.0e-5,
-        "output": 5.5e-4,
-        "reasoning": 0.0,
-        "request": 0.0
-      },
-      "deprecated": false,
-      "extra": {
-        "hugging_face_id": "Qwen/Qwen3-235B-A22B-Instruct-2507"
-      },
-      "family": null,
-      "id": "qwen3-235b-a22b-2507",
-      "knowledge": null,
-      "last_updated": null,
-      "lifecycle": null,
-      "limits": {
-        "context": 262144,
-        "output": 262144
-      },
-      "modalities": {
-        "input": [
-          "text"
-        ],
-        "output": [
-          "text"
-        ]
-      },
-      "model": null,
-      "name": "Qwen: Qwen3 235B A22B Instruct 2507",
-      "provider": "qwen",
-      "provider_model_id": null,
-      "release_date": "2025-07-21",
-      "tags": null
-    },
-    "qwen-2.5-coder-32b-instruct": {
-      "aliases": [],
-      "capabilities": null,
-      "cost": {
-        "image": 0.0,
-        "input": 4.0e-5,
-        "output": 1.6e-4,
-        "reasoning": 0.0,
-        "request": 0.0
-      },
-      "deprecated": false,
-      "extra": {
-        "hugging_face_id": "Qwen/Qwen2.5-Coder-32B-Instruct"
-      },
-      "family": null,
-      "id": "qwen-2.5-coder-32b-instruct",
-      "knowledge": null,
-      "last_updated": null,
-      "lifecycle": null,
-      "limits": {
-        "context": 32768,
-        "output": 32768
-      },
-      "modalities": {
-        "input": [
-          "text"
-        ],
-        "output": [
-          "text"
-        ]
-      },
-      "model": null,
-      "name": "Qwen2.5 Coder 32B Instruct",
-      "provider": "qwen",
-      "provider_model_id": null,
-      "release_date": "2024-11-11",
-      "tags": null
-    },
-    "qwen-plus": {
-      "aliases": [],
-      "capabilities": {
-        "chat": true,
-        "embeddings": false,
-        "json": {
-          "native": false,
-          "schema": false,
-          "strict": false
-        },
-        "reasoning": {
-          "enabled": false
-        },
-        "streaming": {
-          "text": true,
-          "tool_calls": false
-        },
-        "tools": {
-          "enabled": true
-        }
-      },
-      "cost": {
-        "image": 0.0,
-        "input": 3.9999999999999996e-4,
-        "output": 0.0012,
-        "reasoning": 0.0,
-        "request": 0.0
-      },
-      "deprecated": false,
-      "extra": {
-        "hugging_face_id": ""
-      },
-      "family": null,
-      "id": "qwen-plus",
-      "knowledge": null,
-      "last_updated": null,
-      "lifecycle": null,
-      "limits": {
-        "context": 131072,
-        "output": 8192
-      },
-      "modalities": {
-        "input": [
-          "text"
-        ],
-        "output": [
-          "text"
-        ]
-      },
-      "model": null,
-      "name": "Qwen: Qwen-Plus",
-      "provider": "qwen",
-      "provider_model_id": null,
-      "release_date": "2025-02-01",
-      "tags": null
-    },
-    "qwen3-30b-a3b-thinking-2507": {
-      "aliases": [],
-      "capabilities": {
-        "chat": true,
-        "embeddings": false,
-        "json": {
-          "native": false,
-          "schema": false,
-          "strict": false
-        },
-        "reasoning": {
-          "enabled": false
-        },
-        "streaming": {
-          "text": true,
-          "tool_calls": false
-        },
-        "tools": {
-          "enabled": true
-        }
-      },
-      "cost": {
-        "image": 0.0,
-        "input": 5.1e-5,
-        "output": 3.3999999999999997e-4,
-        "reasoning": 0.0,
-        "request": 0.0
-      },
-      "deprecated": false,
-      "extra": {
-        "hugging_face_id": "Qwen/Qwen3-30B-A3B-Thinking-2507"
-      },
-      "family": null,
-      "id": "qwen3-30b-a3b-thinking-2507",
-      "knowledge": null,
-      "last_updated": null,
-      "lifecycle": null,
-      "limits": {
-        "context": 32768
-      },
-      "modalities": {
-        "input": [
-          "text"
-        ],
-        "output": [
-          "text"
-        ]
-      },
-      "model": null,
-      "name": "Qwen: Qwen3 30B A3B Thinking 2507",
-      "provider": "qwen",
-      "provider_model_id": null,
-      "release_date": "2025-08-28",
-      "tags": null
-    },
-    "qwen3-coder:exacto": {
-      "aliases": [],
-      "capabilities": {
-        "chat": true,
-        "embeddings": false,
-        "json": {
-          "native": false,
-          "schema": false,
-          "strict": false
-        },
-        "reasoning": {
-          "enabled": false
-        },
-        "streaming": {
-          "text": true,
-          "tool_calls": false
-        },
-        "tools": {
-          "enabled": true
-        }
-      },
-      "cost": {
-        "image": 0.0,
-        "input": 3.8e-4,
-        "output": 0.00153,
-        "reasoning": 0.0,
-        "request": 0.0
-      },
-      "deprecated": false,
-      "extra": {
-        "hugging_face_id": "Qwen/Qwen3-Coder-480B-A35B-Instruct"
-      },
-      "family": null,
-      "id": "qwen3-coder:exacto",
-      "knowledge": null,
-      "last_updated": null,
-      "lifecycle": null,
-      "limits": {
-        "context": 262144,
-        "output": 262144
-      },
-      "modalities": {
-        "input": [
-          "text"
-        ],
-        "output": [
-          "text"
-        ]
-      },
-      "model": null,
-      "name": "Qwen: Qwen3 Coder 480B A35B (exacto)",
-      "provider": "qwen",
-      "provider_model_id": null,
-      "release_date": "2025-07-23",
-      "tags": null
-    },
-    "qwen3-next-80b-a3b-thinking": {
+    "qwq-32b": {
       "aliases": [],
       "capabilities": {
         "chat": true,
@@ -2184,22 +2354,21 @@
       "cost": {
         "image": 0.0,
         "input": 1.5e-4,
-        "output": 0.0012,
+        "output": 3.9999999999999996e-4,
         "reasoning": 0.0,
         "request": 0.0
       },
       "deprecated": false,
       "extra": {
-        "hugging_face_id": "Qwen/Qwen3-Next-80B-A3B-Thinking"
+        "hugging_face_id": "Qwen/QwQ-32B"
       },
       "family": null,
-      "id": "qwen3-next-80b-a3b-thinking",
+      "id": "qwq-32b",
       "knowledge": null,
       "last_updated": null,
       "lifecycle": null,
       "limits": {
-        "context": 262144,
-        "output": 262144
+        "context": 32768
       },
       "modalities": {
         "input": [
@@ -2210,179 +2379,10 @@
         ]
       },
       "model": null,
-      "name": "Qwen: Qwen3 Next 80B A3B Thinking",
+      "name": "Qwen: QwQ 32B",
       "provider": "qwen",
       "provider_model_id": null,
-      "release_date": "2025-09-11",
-      "tags": null
-    },
-    "qwen3-32b": {
-      "aliases": [],
-      "capabilities": {
-        "chat": true,
-        "embeddings": false,
-        "json": {
-          "native": false,
-          "schema": false,
-          "strict": false
-        },
-        "reasoning": {
-          "enabled": false
-        },
-        "streaming": {
-          "text": true,
-          "tool_calls": false
-        },
-        "tools": {
-          "enabled": true
-        }
-      },
-      "cost": {
-        "image": 0.0,
-        "input": 4.9999999999999996e-5,
-        "output": 1.9999999999999998e-4,
-        "reasoning": 0.0,
-        "request": 0.0
-      },
-      "deprecated": false,
-      "extra": {
-        "hugging_face_id": "Qwen/Qwen3-32B"
-      },
-      "family": null,
-      "id": "qwen3-32b",
-      "knowledge": null,
-      "last_updated": null,
-      "lifecycle": null,
-      "limits": {
-        "context": 40960,
-        "output": 40960
-      },
-      "modalities": {
-        "input": [
-          "text"
-        ],
-        "output": [
-          "text"
-        ]
-      },
-      "model": null,
-      "name": "Qwen: Qwen3 32B",
-      "provider": "qwen",
-      "provider_model_id": null,
-      "release_date": "2025-04-28",
-      "tags": null
-    },
-    "qwen3-max": {
-      "aliases": [],
-      "capabilities": {
-        "chat": true,
-        "embeddings": false,
-        "json": {
-          "native": false,
-          "schema": false,
-          "strict": false
-        },
-        "reasoning": {
-          "enabled": false
-        },
-        "streaming": {
-          "text": true,
-          "tool_calls": false
-        },
-        "tools": {
-          "enabled": true
-        }
-      },
-      "cost": {
-        "image": 0.0,
-        "input": 0.0012,
-        "output": 0.006,
-        "reasoning": 0.0,
-        "request": 0.0
-      },
-      "deprecated": false,
-      "extra": {
-        "hugging_face_id": ""
-      },
-      "family": null,
-      "id": "qwen3-max",
-      "knowledge": null,
-      "last_updated": null,
-      "lifecycle": null,
-      "limits": {
-        "context": 256000,
-        "output": 32768
-      },
-      "modalities": {
-        "input": [
-          "text"
-        ],
-        "output": [
-          "text"
-        ]
-      },
-      "model": null,
-      "name": "Qwen: Qwen3 Max",
-      "provider": "qwen",
-      "provider_model_id": null,
-      "release_date": "2025-09-23",
-      "tags": null
-    },
-    "qwen3-vl-30b-a3b-thinking": {
-      "aliases": [],
-      "capabilities": {
-        "chat": true,
-        "embeddings": false,
-        "json": {
-          "native": false,
-          "schema": false,
-          "strict": false
-        },
-        "reasoning": {
-          "enabled": false
-        },
-        "streaming": {
-          "text": true,
-          "tool_calls": false
-        },
-        "tools": {
-          "enabled": true
-        }
-      },
-      "cost": {
-        "image": 0.0,
-        "input": 1.9999999999999998e-4,
-        "output": 0.001,
-        "reasoning": 0.0,
-        "request": 0.0
-      },
-      "deprecated": false,
-      "extra": {
-        "hugging_face_id": "Qwen/Qwen3-VL-30B-A3B-Thinking"
-      },
-      "family": null,
-      "id": "qwen3-vl-30b-a3b-thinking",
-      "knowledge": null,
-      "last_updated": null,
-      "lifecycle": null,
-      "limits": {
-        "context": 131072,
-        "output": 32768
-      },
-      "modalities": {
-        "input": [
-          "text",
-          "image"
-        ],
-        "output": [
-          "text"
-        ]
-      },
-      "model": null,
-      "name": "Qwen: Qwen3 VL 30B A3B Thinking",
-      "provider": "qwen",
-      "provider_model_id": null,
-      "release_date": "2025-10-06",
+      "release_date": "2025-03-05",
       "tags": null
     }
   },

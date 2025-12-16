@@ -10,294 +10,6 @@
   "extra": null,
   "id": "vercel",
   "models": {
-    "xai/grok-3-mini-fast": {
-      "aliases": [],
-      "capabilities": {
-        "chat": true,
-        "embeddings": false,
-        "json": {
-          "native": false,
-          "schema": false,
-          "strict": false
-        },
-        "reasoning": {
-          "enabled": true
-        },
-        "streaming": {
-          "tool_calls": true
-        },
-        "tools": {
-          "enabled": true
-        }
-      },
-      "cost": {
-        "cache_read": 0.15,
-        "input": 0.6,
-        "output": 4,
-        "reasoning": 4
-      },
-      "deprecated": false,
-      "extra": {
-        "attachment": false,
-        "family": "grok-3",
-        "open_weights": false,
-        "temperature": true
-      },
-      "family": null,
-      "id": "xai/grok-3-mini-fast",
-      "knowledge": "2024-11",
-      "last_updated": "2025-02-17",
-      "lifecycle": null,
-      "limits": {
-        "context": 131072,
-        "output": 8192
-      },
-      "modalities": {
-        "input": [
-          "text"
-        ],
-        "output": [
-          "text"
-        ]
-      },
-      "model": null,
-      "name": "Grok 3 Mini Fast",
-      "provider": "vercel",
-      "provider_model_id": null,
-      "release_date": "2025-02-17",
-      "tags": null
-    },
-    "minimax/minimax-m2": {
-      "aliases": [],
-      "capabilities": {
-        "chat": true,
-        "embeddings": false,
-        "json": {
-          "native": false,
-          "schema": false,
-          "strict": false
-        },
-        "reasoning": {
-          "enabled": true
-        },
-        "streaming": {
-          "tool_calls": true
-        },
-        "tools": {
-          "enabled": true
-        }
-      },
-      "cost": {
-        "cache_read": 0.03,
-        "cache_write": 0.38,
-        "input": 0.3,
-        "output": 1.2
-      },
-      "deprecated": false,
-      "extra": {
-        "attachment": false,
-        "family": "minimax",
-        "open_weights": true,
-        "temperature": true
-      },
-      "family": null,
-      "id": "minimax/minimax-m2",
-      "knowledge": "2024-10",
-      "last_updated": "2025-10-27",
-      "lifecycle": null,
-      "limits": {
-        "context": 205000,
-        "output": 131072
-      },
-      "modalities": {
-        "input": [
-          "text"
-        ],
-        "output": [
-          "text"
-        ]
-      },
-      "model": null,
-      "name": "MiniMax M2",
-      "provider": "vercel",
-      "provider_model_id": null,
-      "release_date": "2025-10-27",
-      "tags": null
-    },
-    "amazon/nova-pro": {
-      "aliases": [],
-      "capabilities": {
-        "chat": true,
-        "embeddings": false,
-        "json": {
-          "native": false,
-          "schema": false,
-          "strict": false
-        },
-        "reasoning": {
-          "enabled": false
-        },
-        "streaming": {
-          "tool_calls": true
-        },
-        "tools": {
-          "enabled": true
-        }
-      },
-      "cost": {
-        "cache_read": 0.2,
-        "input": 0.8,
-        "output": 3.2
-      },
-      "deprecated": false,
-      "extra": {
-        "attachment": true,
-        "family": "nova-pro",
-        "open_weights": false,
-        "temperature": true
-      },
-      "family": null,
-      "id": "amazon/nova-pro",
-      "knowledge": "2024-10",
-      "last_updated": "2024-12-03",
-      "lifecycle": null,
-      "limits": {
-        "context": 300000,
-        "output": 8192
-      },
-      "modalities": {
-        "input": [
-          "text",
-          "image",
-          "video"
-        ],
-        "output": [
-          "text"
-        ]
-      },
-      "model": null,
-      "name": "Nova Pro",
-      "provider": "vercel",
-      "provider_model_id": null,
-      "release_date": "2024-12-03",
-      "tags": null
-    },
-    "openai/gpt-4.1-mini": {
-      "aliases": [],
-      "capabilities": {
-        "chat": true,
-        "embeddings": false,
-        "json": {
-          "native": false,
-          "schema": false,
-          "strict": false
-        },
-        "reasoning": {
-          "enabled": false
-        },
-        "streaming": {
-          "tool_calls": true
-        },
-        "tools": {
-          "enabled": true
-        }
-      },
-      "cost": {
-        "cache_read": 0.1,
-        "input": 0.4,
-        "output": 1.6
-      },
-      "deprecated": false,
-      "extra": {
-        "attachment": true,
-        "family": "gpt-4.1-mini",
-        "open_weights": false,
-        "structured_output": true,
-        "temperature": true
-      },
-      "family": null,
-      "id": "openai/gpt-4.1-mini",
-      "knowledge": "2024-04",
-      "last_updated": "2025-04-14",
-      "lifecycle": null,
-      "limits": {
-        "context": 1047576,
-        "output": 32768
-      },
-      "modalities": {
-        "input": [
-          "text",
-          "image"
-        ],
-        "output": [
-          "text"
-        ]
-      },
-      "model": null,
-      "name": "GPT-4.1 mini",
-      "provider": "vercel",
-      "provider_model_id": null,
-      "release_date": "2025-04-14",
-      "tags": null
-    },
-    "openai/gpt-5-mini": {
-      "aliases": [],
-      "capabilities": {
-        "chat": true,
-        "embeddings": false,
-        "json": {
-          "native": false,
-          "schema": false,
-          "strict": false
-        },
-        "reasoning": {
-          "enabled": true
-        },
-        "streaming": {
-          "tool_calls": true
-        },
-        "tools": {
-          "enabled": true
-        }
-      },
-      "cost": {
-        "cache_read": 0.03,
-        "input": 0.25,
-        "output": 2
-      },
-      "deprecated": false,
-      "extra": {
-        "attachment": true,
-        "family": "gpt-5-mini",
-        "open_weights": false,
-        "structured_output": true,
-        "temperature": false
-      },
-      "family": null,
-      "id": "openai/gpt-5-mini",
-      "knowledge": "2024-05-30",
-      "last_updated": "2025-08-07",
-      "lifecycle": null,
-      "limits": {
-        "context": 400000,
-        "output": 128000
-      },
-      "modalities": {
-        "input": [
-          "text",
-          "image"
-        ],
-        "output": [
-          "text"
-        ]
-      },
-      "model": null,
-      "name": "GPT-5 Mini",
-      "provider": "vercel",
-      "provider_model_id": null,
-      "release_date": "2025-08-07",
-      "tags": null
-    },
     "alibaba/qwen3-coder-plus": {
       "aliases": [],
       "capabilities": {
@@ -353,7 +65,117 @@
       "release_date": "2025-07-23",
       "tags": null
     },
-    "deepseek/deepseek-r1": {
+    "alibaba/qwen3-max": {
+      "aliases": [],
+      "capabilities": {
+        "chat": true,
+        "embeddings": false,
+        "json": {
+          "native": false,
+          "schema": false,
+          "strict": false
+        },
+        "reasoning": {
+          "enabled": false
+        },
+        "streaming": {
+          "tool_calls": true
+        },
+        "tools": {
+          "enabled": true
+        }
+      },
+      "cost": {
+        "input": 1.2,
+        "output": 6
+      },
+      "deprecated": false,
+      "extra": {
+        "attachment": false,
+        "family": "qwen3",
+        "open_weights": false,
+        "temperature": true
+      },
+      "family": null,
+      "id": "alibaba/qwen3-max",
+      "knowledge": "2025-04",
+      "last_updated": "2025-09-23",
+      "lifecycle": null,
+      "limits": {
+        "context": 262144,
+        "output": 32768
+      },
+      "modalities": {
+        "input": [
+          "text"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "model": null,
+      "name": "Qwen3 Max",
+      "provider": "vercel",
+      "provider_model_id": null,
+      "release_date": "2025-09-23",
+      "tags": null
+    },
+    "alibaba/qwen3-next-80b-a3b-instruct": {
+      "aliases": [],
+      "capabilities": {
+        "chat": true,
+        "embeddings": false,
+        "json": {
+          "native": false,
+          "schema": false,
+          "strict": false
+        },
+        "reasoning": {
+          "enabled": false
+        },
+        "streaming": {
+          "tool_calls": true
+        },
+        "tools": {
+          "enabled": true
+        }
+      },
+      "cost": {
+        "input": 0.5,
+        "output": 2
+      },
+      "deprecated": false,
+      "extra": {
+        "attachment": false,
+        "family": "qwen3",
+        "open_weights": true,
+        "temperature": true
+      },
+      "family": null,
+      "id": "alibaba/qwen3-next-80b-a3b-instruct",
+      "knowledge": "2025-04",
+      "last_updated": "2025-09-12",
+      "lifecycle": null,
+      "limits": {
+        "context": 131072,
+        "output": 32768
+      },
+      "modalities": {
+        "input": [
+          "text"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "model": null,
+      "name": "Qwen3 Next 80B A3B Instruct",
+      "provider": "vercel",
+      "provider_model_id": null,
+      "release_date": "2025-09-12",
+      "tags": null
+    },
+    "alibaba/qwen3-next-80b-a3b-thinking": {
       "aliases": [],
       "capabilities": {
         "chat": true,
@@ -374,23 +196,23 @@
         }
       },
       "cost": {
-        "input": 1.35,
-        "output": 5.4
+        "input": 0.5,
+        "output": 6
       },
       "deprecated": false,
       "extra": {
         "attachment": false,
-        "family": "deepseek-r1",
-        "open_weights": false,
+        "family": "qwen3",
+        "open_weights": true,
         "temperature": true
       },
       "family": null,
-      "id": "deepseek/deepseek-r1",
-      "knowledge": "2024-07",
-      "last_updated": "2025-05-29",
+      "id": "alibaba/qwen3-next-80b-a3b-thinking",
+      "knowledge": "2025-09",
+      "last_updated": "2025-09-12",
       "lifecycle": null,
       "limits": {
-        "context": 128000,
+        "context": 131072,
         "output": 32768
       },
       "modalities": {
@@ -402,10 +224,10 @@
         ]
       },
       "model": null,
-      "name": "DeepSeek-R1",
+      "name": "Qwen3 Next 80B A3B Thinking",
       "provider": "vercel",
       "provider_model_id": null,
-      "release_date": "2025-01-20",
+      "release_date": "2025-09-12",
       "tags": null
     },
     "alibaba/qwen3-vl-instruct": {
@@ -464,7 +286,7 @@
       "release_date": "2025-09-24",
       "tags": null
     },
-    "openai/gpt-4o-mini": {
+    "alibaba/qwen3-vl-thinking": {
       "aliases": [],
       "capabilities": {
         "chat": true,
@@ -475,7 +297,7 @@
           "strict": false
         },
         "reasoning": {
-          "enabled": false
+          "enabled": true
         },
         "streaming": {
           "tool_calls": true
@@ -485,26 +307,24 @@
         }
       },
       "cost": {
-        "cache_read": 0.08,
-        "input": 0.15,
-        "output": 0.6
+        "input": 0.7,
+        "output": 8.4
       },
       "deprecated": false,
       "extra": {
         "attachment": true,
-        "family": "gpt-4o-mini",
-        "open_weights": false,
-        "structured_output": true,
+        "family": "qwen3-vl",
+        "open_weights": true,
         "temperature": true
       },
       "family": null,
-      "id": "openai/gpt-4o-mini",
-      "knowledge": "2023-09",
-      "last_updated": "2024-07-18",
+      "id": "alibaba/qwen3-vl-thinking",
+      "knowledge": "2025-09",
+      "last_updated": "2025-09-24",
       "lifecycle": null,
       "limits": {
-        "context": 128000,
-        "output": 16384
+        "context": 131072,
+        "output": 129024
       },
       "modalities": {
         "input": [
@@ -516,10 +336,10 @@
         ]
       },
       "model": null,
-      "name": "GPT-4o mini",
+      "name": "Qwen3 VL Thinking",
       "provider": "vercel",
       "provider_model_id": null,
-      "release_date": "2024-07-18",
+      "release_date": "2025-09-24",
       "tags": null
     },
     "amazon/nova-lite": {
@@ -580,7 +400,357 @@
       "release_date": "2024-12-03",
       "tags": null
     },
-    "openai/gpt-oss-120b": {
+    "amazon/nova-micro": {
+      "aliases": [],
+      "capabilities": {
+        "chat": true,
+        "embeddings": false,
+        "json": {
+          "native": false,
+          "schema": false,
+          "strict": false
+        },
+        "reasoning": {
+          "enabled": false
+        },
+        "streaming": {
+          "tool_calls": true
+        },
+        "tools": {
+          "enabled": true
+        }
+      },
+      "cost": {
+        "cache_read": 0.00875,
+        "input": 0.035,
+        "output": 0.14
+      },
+      "deprecated": false,
+      "extra": {
+        "attachment": false,
+        "family": "nova-micro",
+        "open_weights": false,
+        "temperature": true
+      },
+      "family": null,
+      "id": "amazon/nova-micro",
+      "knowledge": "2024-10",
+      "last_updated": "2024-12-03",
+      "lifecycle": null,
+      "limits": {
+        "context": 128000,
+        "output": 8192
+      },
+      "modalities": {
+        "input": [
+          "text"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "model": null,
+      "name": "Nova Micro",
+      "provider": "vercel",
+      "provider_model_id": null,
+      "release_date": "2024-12-03",
+      "tags": null
+    },
+    "amazon/nova-pro": {
+      "aliases": [],
+      "capabilities": {
+        "chat": true,
+        "embeddings": false,
+        "json": {
+          "native": false,
+          "schema": false,
+          "strict": false
+        },
+        "reasoning": {
+          "enabled": false
+        },
+        "streaming": {
+          "tool_calls": true
+        },
+        "tools": {
+          "enabled": true
+        }
+      },
+      "cost": {
+        "cache_read": 0.2,
+        "input": 0.8,
+        "output": 3.2
+      },
+      "deprecated": false,
+      "extra": {
+        "attachment": true,
+        "family": "nova-pro",
+        "open_weights": false,
+        "temperature": true
+      },
+      "family": null,
+      "id": "amazon/nova-pro",
+      "knowledge": "2024-10",
+      "last_updated": "2024-12-03",
+      "lifecycle": null,
+      "limits": {
+        "context": 300000,
+        "output": 8192
+      },
+      "modalities": {
+        "input": [
+          "text",
+          "image",
+          "video"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "model": null,
+      "name": "Nova Pro",
+      "provider": "vercel",
+      "provider_model_id": null,
+      "release_date": "2024-12-03",
+      "tags": null
+    },
+    "anthropic/claude-3-haiku": {
+      "aliases": [],
+      "capabilities": {
+        "chat": true,
+        "embeddings": false,
+        "json": {
+          "native": false,
+          "schema": false,
+          "strict": false
+        },
+        "reasoning": {
+          "enabled": false
+        },
+        "streaming": {
+          "tool_calls": true
+        },
+        "tools": {
+          "enabled": true
+        }
+      },
+      "cost": {
+        "cache_read": 0.03,
+        "cache_write": 0.3,
+        "input": 0.25,
+        "output": 1.25
+      },
+      "deprecated": false,
+      "extra": {
+        "attachment": true,
+        "family": "claude-haiku",
+        "open_weights": false,
+        "temperature": true
+      },
+      "family": null,
+      "id": "anthropic/claude-3-haiku",
+      "knowledge": "2023-08-31",
+      "last_updated": "2024-03-13",
+      "lifecycle": null,
+      "limits": {
+        "context": 200000,
+        "output": 4096
+      },
+      "modalities": {
+        "input": [
+          "text",
+          "image",
+          "pdf"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "model": null,
+      "name": "Claude Haiku 3",
+      "provider": "vercel",
+      "provider_model_id": null,
+      "release_date": "2024-03-13",
+      "tags": null
+    },
+    "anthropic/claude-3-opus": {
+      "aliases": [],
+      "capabilities": {
+        "chat": true,
+        "embeddings": false,
+        "json": {
+          "native": false,
+          "schema": false,
+          "strict": false
+        },
+        "reasoning": {
+          "enabled": false
+        },
+        "streaming": {
+          "tool_calls": true
+        },
+        "tools": {
+          "enabled": true
+        }
+      },
+      "cost": {
+        "cache_read": 1.5,
+        "cache_write": 18.75,
+        "input": 15,
+        "output": 75
+      },
+      "deprecated": false,
+      "extra": {
+        "attachment": true,
+        "family": "claude-opus",
+        "open_weights": false,
+        "temperature": true
+      },
+      "family": null,
+      "id": "anthropic/claude-3-opus",
+      "knowledge": "2023-08-31",
+      "last_updated": "2024-02-29",
+      "lifecycle": null,
+      "limits": {
+        "context": 200000,
+        "output": 4096
+      },
+      "modalities": {
+        "input": [
+          "text",
+          "image",
+          "pdf"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "model": null,
+      "name": "Claude Opus 3",
+      "provider": "vercel",
+      "provider_model_id": null,
+      "release_date": "2024-02-29",
+      "tags": null
+    },
+    "anthropic/claude-3.5-haiku": {
+      "aliases": [],
+      "capabilities": {
+        "chat": true,
+        "embeddings": false,
+        "json": {
+          "native": false,
+          "schema": false,
+          "strict": false
+        },
+        "reasoning": {
+          "enabled": false
+        },
+        "streaming": {
+          "tool_calls": true
+        },
+        "tools": {
+          "enabled": true
+        }
+      },
+      "cost": {
+        "cache_read": 0.08,
+        "cache_write": 1,
+        "input": 0.8,
+        "output": 4
+      },
+      "deprecated": false,
+      "extra": {
+        "attachment": true,
+        "family": "claude-haiku",
+        "open_weights": false,
+        "temperature": true
+      },
+      "family": null,
+      "id": "anthropic/claude-3.5-haiku",
+      "knowledge": "2024-07-31",
+      "last_updated": "2024-10-22",
+      "lifecycle": null,
+      "limits": {
+        "context": 200000,
+        "output": 8192
+      },
+      "modalities": {
+        "input": [
+          "text",
+          "image",
+          "pdf"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "model": null,
+      "name": "Claude Haiku 3.5",
+      "provider": "vercel",
+      "provider_model_id": null,
+      "release_date": "2024-10-22",
+      "tags": null
+    },
+    "anthropic/claude-3.5-sonnet": {
+      "aliases": [],
+      "capabilities": {
+        "chat": true,
+        "embeddings": false,
+        "json": {
+          "native": false,
+          "schema": false,
+          "strict": false
+        },
+        "reasoning": {
+          "enabled": false
+        },
+        "streaming": {
+          "tool_calls": true
+        },
+        "tools": {
+          "enabled": true
+        }
+      },
+      "cost": {
+        "cache_read": 0.3,
+        "cache_write": 3.75,
+        "input": 3,
+        "output": 15
+      },
+      "deprecated": false,
+      "extra": {
+        "attachment": true,
+        "family": "claude-sonnet",
+        "open_weights": false,
+        "temperature": true
+      },
+      "family": null,
+      "id": "anthropic/claude-3.5-sonnet",
+      "knowledge": "2024-04-30",
+      "last_updated": "2024-10-22",
+      "lifecycle": null,
+      "limits": {
+        "context": 200000,
+        "output": 8192
+      },
+      "modalities": {
+        "input": [
+          "text",
+          "image",
+          "pdf"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "model": null,
+      "name": "Claude Sonnet 3.5 v2",
+      "provider": "vercel",
+      "provider_model_id": null,
+      "release_date": "2024-10-22",
+      "tags": null
+    },
+    "anthropic/claude-3.7-sonnet": {
       "aliases": [],
       "capabilities": {
         "chat": true,
@@ -601,23 +771,436 @@
         }
       },
       "cost": {
-        "input": 0.1,
-        "output": 0.5
+        "cache_read": 0.3,
+        "cache_write": 3.75,
+        "input": 3,
+        "output": 15
+      },
+      "deprecated": false,
+      "extra": {
+        "attachment": true,
+        "family": "claude-sonnet",
+        "open_weights": false,
+        "temperature": true
+      },
+      "family": null,
+      "id": "anthropic/claude-3.7-sonnet",
+      "knowledge": "2024-10-31",
+      "last_updated": "2025-02-19",
+      "lifecycle": null,
+      "limits": {
+        "context": 200000,
+        "output": 64000
+      },
+      "modalities": {
+        "input": [
+          "text",
+          "image",
+          "pdf"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "model": null,
+      "name": "Claude Sonnet 3.7",
+      "provider": "vercel",
+      "provider_model_id": null,
+      "release_date": "2025-02-19",
+      "tags": null
+    },
+    "anthropic/claude-4-1-opus": {
+      "aliases": [],
+      "capabilities": {
+        "chat": true,
+        "embeddings": false,
+        "json": {
+          "native": false,
+          "schema": false,
+          "strict": false
+        },
+        "reasoning": {
+          "enabled": true
+        },
+        "streaming": {
+          "tool_calls": true
+        },
+        "tools": {
+          "enabled": true
+        }
+      },
+      "cost": {
+        "cache_read": 1.5,
+        "cache_write": 18.75,
+        "input": 15,
+        "output": 75
+      },
+      "deprecated": false,
+      "extra": {
+        "attachment": true,
+        "family": "claude-opus",
+        "open_weights": false,
+        "temperature": true
+      },
+      "family": null,
+      "id": "anthropic/claude-4-1-opus",
+      "knowledge": "2025-03-31",
+      "last_updated": "2025-05-22",
+      "lifecycle": null,
+      "limits": {
+        "context": 200000,
+        "output": 32000
+      },
+      "modalities": {
+        "input": [
+          "text",
+          "image",
+          "pdf"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "model": null,
+      "name": "Claude Opus 4",
+      "provider": "vercel",
+      "provider_model_id": null,
+      "release_date": "2025-05-22",
+      "tags": null
+    },
+    "anthropic/claude-4-opus": {
+      "aliases": [],
+      "capabilities": {
+        "chat": true,
+        "embeddings": false,
+        "json": {
+          "native": false,
+          "schema": false,
+          "strict": false
+        },
+        "reasoning": {
+          "enabled": true
+        },
+        "streaming": {
+          "tool_calls": true
+        },
+        "tools": {
+          "enabled": true
+        }
+      },
+      "cost": {
+        "cache_read": 1.5,
+        "cache_write": 18.75,
+        "input": 15,
+        "output": 75
+      },
+      "deprecated": false,
+      "extra": {
+        "attachment": true,
+        "family": "claude-opus",
+        "open_weights": false,
+        "temperature": true
+      },
+      "family": null,
+      "id": "anthropic/claude-4-opus",
+      "knowledge": "2025-03-31",
+      "last_updated": "2025-05-22",
+      "lifecycle": null,
+      "limits": {
+        "context": 200000,
+        "output": 32000
+      },
+      "modalities": {
+        "input": [
+          "text",
+          "image",
+          "pdf"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "model": null,
+      "name": "Claude Opus 4",
+      "provider": "vercel",
+      "provider_model_id": null,
+      "release_date": "2025-05-22",
+      "tags": null
+    },
+    "anthropic/claude-4-sonnet": {
+      "aliases": [],
+      "capabilities": {
+        "chat": true,
+        "embeddings": false,
+        "json": {
+          "native": false,
+          "schema": false,
+          "strict": false
+        },
+        "reasoning": {
+          "enabled": true
+        },
+        "streaming": {
+          "tool_calls": true
+        },
+        "tools": {
+          "enabled": true
+        }
+      },
+      "cost": {
+        "cache_read": 0.3,
+        "cache_write": 3.75,
+        "input": 3,
+        "output": 15
+      },
+      "deprecated": false,
+      "extra": {
+        "attachment": true,
+        "family": "claude-sonnet",
+        "open_weights": false,
+        "temperature": true
+      },
+      "family": null,
+      "id": "anthropic/claude-4-sonnet",
+      "knowledge": "2025-03-31",
+      "last_updated": "2025-05-22",
+      "lifecycle": null,
+      "limits": {
+        "context": 200000,
+        "output": 64000
+      },
+      "modalities": {
+        "input": [
+          "text",
+          "image",
+          "pdf"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "model": null,
+      "name": "Claude Sonnet 4",
+      "provider": "vercel",
+      "provider_model_id": null,
+      "release_date": "2025-05-22",
+      "tags": null
+    },
+    "anthropic/claude-4.5-sonnet": {
+      "aliases": [],
+      "capabilities": {
+        "chat": true,
+        "embeddings": false,
+        "json": {
+          "native": false,
+          "schema": false,
+          "strict": false
+        },
+        "reasoning": {
+          "enabled": true
+        },
+        "streaming": {
+          "tool_calls": true
+        },
+        "tools": {
+          "enabled": true
+        }
+      },
+      "cost": {
+        "cache_read": 0.3,
+        "cache_write": 3.75,
+        "input": 3,
+        "output": 15
+      },
+      "deprecated": false,
+      "extra": {
+        "attachment": true,
+        "family": "claude-sonnet",
+        "open_weights": false,
+        "temperature": true
+      },
+      "family": null,
+      "id": "anthropic/claude-4.5-sonnet",
+      "knowledge": "2025-07-31",
+      "last_updated": "2025-09-29",
+      "lifecycle": null,
+      "limits": {
+        "context": 200000,
+        "output": 64000
+      },
+      "modalities": {
+        "input": [
+          "text",
+          "image",
+          "pdf"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "model": null,
+      "name": "Claude Sonnet 4.5",
+      "provider": "vercel",
+      "provider_model_id": null,
+      "release_date": "2025-09-29",
+      "tags": null
+    },
+    "anthropic/claude-haiku-4.5": {
+      "aliases": [],
+      "capabilities": {
+        "chat": true,
+        "embeddings": false,
+        "json": {
+          "native": false,
+          "schema": false,
+          "strict": false
+        },
+        "reasoning": {
+          "enabled": true
+        },
+        "streaming": {
+          "tool_calls": true
+        },
+        "tools": {
+          "enabled": true
+        }
+      },
+      "cost": {
+        "cache_read": 0.1,
+        "cache_write": 1.25,
+        "input": 1,
+        "output": 1.25
+      },
+      "deprecated": false,
+      "extra": {
+        "attachment": true,
+        "family": "claude-haiku",
+        "open_weights": false,
+        "temperature": true
+      },
+      "family": null,
+      "id": "anthropic/claude-haiku-4.5",
+      "knowledge": "2025-02-28",
+      "last_updated": "2025-10-15",
+      "lifecycle": null,
+      "limits": {
+        "context": 200000,
+        "output": 64000
+      },
+      "modalities": {
+        "input": [
+          "text",
+          "image",
+          "pdf"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "model": null,
+      "name": "Claude Haiku 4.5",
+      "provider": "vercel",
+      "provider_model_id": null,
+      "release_date": "2025-10-15",
+      "tags": null
+    },
+    "anthropic/claude-opus-4.5": {
+      "aliases": [],
+      "capabilities": {
+        "chat": true,
+        "embeddings": false,
+        "json": {
+          "native": false,
+          "schema": false,
+          "strict": false
+        },
+        "reasoning": {
+          "enabled": true
+        },
+        "streaming": {
+          "tool_calls": true
+        },
+        "tools": {
+          "enabled": true
+        }
+      },
+      "cost": {
+        "cache_read": 1.5,
+        "cache_write": 18.75,
+        "input": 5,
+        "output": 25
+      },
+      "deprecated": false,
+      "extra": {
+        "attachment": true,
+        "family": "claude-opus",
+        "open_weights": false,
+        "temperature": true
+      },
+      "family": null,
+      "id": "anthropic/claude-opus-4.5",
+      "knowledge": "2025-03-31",
+      "last_updated": "2025-11-24",
+      "lifecycle": null,
+      "limits": {
+        "context": 200000,
+        "output": 64000
+      },
+      "modalities": {
+        "input": [
+          "text",
+          "image",
+          "pdf"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "model": null,
+      "name": "Claude Opus 4.5",
+      "provider": "vercel",
+      "provider_model_id": null,
+      "release_date": "2025-11-24",
+      "tags": null
+    },
+    "deepseek/deepseek-r1": {
+      "aliases": [],
+      "capabilities": {
+        "chat": true,
+        "embeddings": false,
+        "json": {
+          "native": false,
+          "schema": false,
+          "strict": false
+        },
+        "reasoning": {
+          "enabled": true
+        },
+        "streaming": {
+          "tool_calls": true
+        },
+        "tools": {
+          "enabled": true
+        }
+      },
+      "cost": {
+        "input": 1.35,
+        "output": 5.4
       },
       "deprecated": false,
       "extra": {
         "attachment": false,
-        "family": "gpt-oss",
-        "open_weights": true,
+        "family": "deepseek-r1",
+        "open_weights": false,
         "temperature": true
       },
       "family": null,
-      "id": "openai/gpt-oss-120b",
-      "knowledge": null,
-      "last_updated": "2025-08-05",
+      "id": "deepseek/deepseek-r1",
+      "knowledge": "2024-07",
+      "last_updated": "2025-05-29",
       "lifecycle": null,
       "limits": {
-        "context": 131072,
+        "context": 128000,
         "output": 32768
       },
       "modalities": {
@@ -629,10 +1212,231 @@
         ]
       },
       "model": null,
-      "name": "GPT OSS 120B",
+      "name": "DeepSeek-R1",
       "provider": "vercel",
       "provider_model_id": null,
-      "release_date": "2025-08-05",
+      "release_date": "2025-01-20",
+      "tags": null
+    },
+    "deepseek/deepseek-r1-distill-llama-70b": {
+      "aliases": [],
+      "capabilities": {
+        "chat": true,
+        "embeddings": false,
+        "json": {
+          "native": false,
+          "schema": false,
+          "strict": false
+        },
+        "reasoning": {
+          "enabled": true
+        },
+        "streaming": {
+          "tool_calls": true
+        },
+        "tools": {
+          "enabled": true
+        }
+      },
+      "cost": {
+        "input": 0.75,
+        "output": 0.99
+      },
+      "deprecated": false,
+      "extra": {
+        "attachment": false,
+        "family": "deepseek-r1-distill-llama",
+        "open_weights": true,
+        "status": "deprecated",
+        "temperature": true
+      },
+      "family": null,
+      "id": "deepseek/deepseek-r1-distill-llama-70b",
+      "knowledge": "2024-07",
+      "last_updated": "2025-01-20",
+      "lifecycle": null,
+      "limits": {
+        "context": 131072,
+        "output": 8192
+      },
+      "modalities": {
+        "input": [
+          "text"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "model": null,
+      "name": "DeepSeek R1 Distill Llama 70B",
+      "provider": "vercel",
+      "provider_model_id": null,
+      "release_date": "2025-01-20",
+      "tags": null
+    },
+    "deepseek/deepseek-v3.1-terminus": {
+      "aliases": [],
+      "capabilities": {
+        "chat": true,
+        "embeddings": false,
+        "json": {
+          "native": false,
+          "schema": false,
+          "strict": false
+        },
+        "reasoning": {
+          "enabled": true
+        },
+        "streaming": {
+          "tool_calls": true
+        },
+        "tools": {
+          "enabled": true
+        }
+      },
+      "cost": {
+        "input": 0.27,
+        "output": 1
+      },
+      "deprecated": false,
+      "extra": {
+        "attachment": false,
+        "family": "deepseek-v3",
+        "open_weights": true,
+        "temperature": true
+      },
+      "family": null,
+      "id": "deepseek/deepseek-v3.1-terminus",
+      "knowledge": "2025-07",
+      "last_updated": "2025-09-22",
+      "lifecycle": null,
+      "limits": {
+        "context": 128000,
+        "output": 8192
+      },
+      "modalities": {
+        "input": [
+          "text"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "model": null,
+      "name": "DeepSeek V3.1 Terminus",
+      "provider": "vercel",
+      "provider_model_id": null,
+      "release_date": "2025-09-22",
+      "tags": null
+    },
+    "deepseek/deepseek-v3.2-exp": {
+      "aliases": [],
+      "capabilities": {
+        "chat": true,
+        "embeddings": false,
+        "json": {
+          "native": false,
+          "schema": false,
+          "strict": false
+        },
+        "reasoning": {
+          "enabled": false
+        },
+        "streaming": {
+          "tool_calls": true
+        },
+        "tools": {
+          "enabled": true
+        }
+      },
+      "cost": {
+        "input": 0.28,
+        "output": 0.42
+      },
+      "deprecated": false,
+      "extra": {
+        "attachment": false,
+        "family": "deepseek-v3",
+        "open_weights": false,
+        "temperature": true
+      },
+      "family": null,
+      "id": "deepseek/deepseek-v3.2-exp",
+      "knowledge": "2025-09",
+      "last_updated": "2025-09-29",
+      "lifecycle": null,
+      "limits": {
+        "context": 163840,
+        "output": 8192
+      },
+      "modalities": {
+        "input": [
+          "text"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "model": null,
+      "name": "DeepSeek V3.2 Exp",
+      "provider": "vercel",
+      "provider_model_id": null,
+      "release_date": "2025-09-29",
+      "tags": null
+    },
+    "deepseek/deepseek-v3.2-exp-thinking": {
+      "aliases": [],
+      "capabilities": {
+        "chat": true,
+        "embeddings": false,
+        "json": {
+          "native": false,
+          "schema": false,
+          "strict": false
+        },
+        "reasoning": {
+          "enabled": true
+        },
+        "streaming": {
+          "tool_calls": true
+        },
+        "tools": {
+          "enabled": true
+        }
+      },
+      "cost": {
+        "input": 0.28,
+        "output": 0.42
+      },
+      "deprecated": false,
+      "extra": {
+        "attachment": false,
+        "family": "deepseek-v3",
+        "open_weights": false,
+        "temperature": true
+      },
+      "family": null,
+      "id": "deepseek/deepseek-v3.2-exp-thinking",
+      "knowledge": "2025-09",
+      "last_updated": "2025-09-29",
+      "lifecycle": null,
+      "limits": {
+        "context": 163840,
+        "output": 8192
+      },
+      "modalities": {
+        "input": [
+          "text"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "model": null,
+      "name": "DeepSeek V3.2 Exp Thinking",
+      "provider": "vercel",
+      "provider_model_id": null,
+      "release_date": "2025-09-29",
       "tags": null
     },
     "google/gemini-2.0-flash": {
@@ -696,348 +1500,6 @@
       "release_date": "2024-12-11",
       "tags": null
     },
-    "xai/grok-4-fast-non-reasoning": {
-      "aliases": [],
-      "capabilities": {
-        "chat": true,
-        "embeddings": false,
-        "json": {
-          "native": false,
-          "schema": false,
-          "strict": false
-        },
-        "reasoning": {
-          "enabled": false
-        },
-        "streaming": {
-          "tool_calls": true
-        },
-        "tools": {
-          "enabled": true
-        }
-      },
-      "cost": {
-        "cache_read": 0.05,
-        "input": 0.2,
-        "output": 0.5
-      },
-      "deprecated": false,
-      "extra": {
-        "attachment": true,
-        "family": "grok",
-        "open_weights": false,
-        "temperature": true
-      },
-      "family": null,
-      "id": "xai/grok-4-fast-non-reasoning",
-      "knowledge": "2025-07",
-      "last_updated": "2025-09-19",
-      "lifecycle": null,
-      "limits": {
-        "context": 2000000,
-        "output": 30000
-      },
-      "modalities": {
-        "input": [
-          "text",
-          "image"
-        ],
-        "output": [
-          "text"
-        ]
-      },
-      "model": null,
-      "name": "Grok 4 Fast (Non-Reasoning)",
-      "provider": "vercel",
-      "provider_model_id": null,
-      "release_date": "2025-09-19",
-      "tags": null
-    },
-    "anthropic/claude-4-1-opus": {
-      "aliases": [],
-      "capabilities": {
-        "chat": true,
-        "embeddings": false,
-        "json": {
-          "native": false,
-          "schema": false,
-          "strict": false
-        },
-        "reasoning": {
-          "enabled": true
-        },
-        "streaming": {
-          "tool_calls": true
-        },
-        "tools": {
-          "enabled": true
-        }
-      },
-      "cost": {
-        "cache_read": 1.5,
-        "cache_write": 18.75,
-        "input": 15,
-        "output": 75
-      },
-      "deprecated": false,
-      "extra": {
-        "attachment": true,
-        "family": "claude-opus",
-        "open_weights": false,
-        "temperature": true
-      },
-      "family": null,
-      "id": "anthropic/claude-4-1-opus",
-      "knowledge": "2025-03-31",
-      "last_updated": "2025-05-22",
-      "lifecycle": null,
-      "limits": {
-        "context": 200000,
-        "output": 32000
-      },
-      "modalities": {
-        "input": [
-          "text",
-          "image",
-          "pdf"
-        ],
-        "output": [
-          "text"
-        ]
-      },
-      "model": null,
-      "name": "Claude Opus 4",
-      "provider": "vercel",
-      "provider_model_id": null,
-      "release_date": "2025-05-22",
-      "tags": null
-    },
-    "openai/o3-mini": {
-      "aliases": [],
-      "capabilities": {
-        "chat": true,
-        "embeddings": false,
-        "json": {
-          "native": false,
-          "schema": false,
-          "strict": false
-        },
-        "reasoning": {
-          "enabled": true
-        },
-        "streaming": {
-          "tool_calls": true
-        },
-        "tools": {
-          "enabled": true
-        }
-      },
-      "cost": {
-        "cache_read": 0.55,
-        "input": 1.1,
-        "output": 4.4
-      },
-      "deprecated": false,
-      "extra": {
-        "attachment": false,
-        "family": "o3-mini",
-        "open_weights": false,
-        "structured_output": true,
-        "temperature": false
-      },
-      "family": null,
-      "id": "openai/o3-mini",
-      "knowledge": "2024-05",
-      "last_updated": "2025-01-29",
-      "lifecycle": null,
-      "limits": {
-        "context": 200000,
-        "output": 100000
-      },
-      "modalities": {
-        "input": [
-          "text"
-        ],
-        "output": [
-          "text"
-        ]
-      },
-      "model": null,
-      "name": "o3-mini",
-      "provider": "vercel",
-      "provider_model_id": null,
-      "release_date": "2024-12-20",
-      "tags": null
-    },
-    "mistral/ministral-3b": {
-      "aliases": [],
-      "capabilities": {
-        "chat": true,
-        "embeddings": false,
-        "json": {
-          "native": false,
-          "schema": false,
-          "strict": false
-        },
-        "reasoning": {
-          "enabled": false
-        },
-        "streaming": {
-          "tool_calls": true
-        },
-        "tools": {
-          "enabled": true
-        }
-      },
-      "cost": {
-        "input": 0.04,
-        "output": 0.04
-      },
-      "deprecated": false,
-      "extra": {
-        "attachment": false,
-        "family": "ministral-3b",
-        "open_weights": true,
-        "temperature": true
-      },
-      "family": null,
-      "id": "mistral/ministral-3b",
-      "knowledge": "2024-10",
-      "last_updated": "2024-10-04",
-      "lifecycle": null,
-      "limits": {
-        "context": 128000,
-        "output": 128000
-      },
-      "modalities": {
-        "input": [
-          "text"
-        ],
-        "output": [
-          "text"
-        ]
-      },
-      "model": null,
-      "name": "Ministral 3B",
-      "provider": "vercel",
-      "provider_model_id": null,
-      "release_date": "2024-10-01",
-      "tags": null
-    },
-    "mistral/magistral-small": {
-      "aliases": [],
-      "capabilities": {
-        "chat": true,
-        "embeddings": false,
-        "json": {
-          "native": false,
-          "schema": false,
-          "strict": false
-        },
-        "reasoning": {
-          "enabled": true
-        },
-        "streaming": {
-          "tool_calls": true
-        },
-        "tools": {
-          "enabled": true
-        }
-      },
-      "cost": {
-        "input": 0.5,
-        "output": 1.5
-      },
-      "deprecated": false,
-      "extra": {
-        "attachment": false,
-        "family": "magistral-small",
-        "open_weights": true,
-        "temperature": true
-      },
-      "family": null,
-      "id": "mistral/magistral-small",
-      "knowledge": "2025-06",
-      "last_updated": "2025-03-17",
-      "lifecycle": null,
-      "limits": {
-        "context": 128000,
-        "output": 128000
-      },
-      "modalities": {
-        "input": [
-          "text"
-        ],
-        "output": [
-          "text"
-        ]
-      },
-      "model": null,
-      "name": "Magistral Small",
-      "provider": "vercel",
-      "provider_model_id": null,
-      "release_date": "2025-03-17",
-      "tags": null
-    },
-    "anthropic/claude-haiku-4.5": {
-      "aliases": [],
-      "capabilities": {
-        "chat": true,
-        "embeddings": false,
-        "json": {
-          "native": false,
-          "schema": false,
-          "strict": false
-        },
-        "reasoning": {
-          "enabled": true
-        },
-        "streaming": {
-          "tool_calls": true
-        },
-        "tools": {
-          "enabled": true
-        }
-      },
-      "cost": {
-        "cache_read": 0.1,
-        "cache_write": 1.25,
-        "input": 1,
-        "output": 1.25
-      },
-      "deprecated": false,
-      "extra": {
-        "attachment": true,
-        "family": "claude-haiku",
-        "open_weights": false,
-        "temperature": true
-      },
-      "family": null,
-      "id": "anthropic/claude-haiku-4.5",
-      "knowledge": "2025-02-28",
-      "last_updated": "2025-10-15",
-      "lifecycle": null,
-      "limits": {
-        "context": 200000,
-        "output": 64000
-      },
-      "modalities": {
-        "input": [
-          "text",
-          "image",
-          "pdf"
-        ],
-        "output": [
-          "text"
-        ]
-      },
-      "model": null,
-      "name": "Claude Haiku 4.5",
-      "provider": "vercel",
-      "provider_model_id": null,
-      "release_date": "2025-10-15",
-      "tags": null
-    },
     "google/gemini-2.0-flash-lite": {
       "aliases": [],
       "capabilities": {
@@ -1098,66 +1560,7 @@
       "release_date": "2024-12-11",
       "tags": null
     },
-    "perplexity/sonar-reasoning-pro": {
-      "aliases": [],
-      "capabilities": {
-        "chat": true,
-        "embeddings": false,
-        "json": {
-          "native": false,
-          "schema": false,
-          "strict": false
-        },
-        "reasoning": {
-          "enabled": true
-        },
-        "streaming": {
-          "text": true,
-          "tool_calls": false
-        },
-        "tools": {
-          "enabled": false,
-          "parallel": false,
-          "streaming": false,
-          "strict": false
-        }
-      },
-      "cost": {
-        "input": 2,
-        "output": 8
-      },
-      "deprecated": false,
-      "extra": {
-        "attachment": false,
-        "family": "sonar-reasoning",
-        "open_weights": false,
-        "temperature": true
-      },
-      "family": null,
-      "id": "perplexity/sonar-reasoning-pro",
-      "knowledge": "2025-09",
-      "last_updated": "2025-02-19",
-      "lifecycle": null,
-      "limits": {
-        "context": 127000,
-        "output": 8000
-      },
-      "modalities": {
-        "input": [
-          "text"
-        ],
-        "output": [
-          "text"
-        ]
-      },
-      "model": null,
-      "name": "Sonar Reasoning Pro",
-      "provider": "vercel",
-      "provider_model_id": null,
-      "release_date": "2025-02-19",
-      "tags": null
-    },
-    "vercel/v0-1.5-md": {
+    "google/gemini-2.5-flash": {
       "aliases": [],
       "capabilities": {
         "chat": true,
@@ -1178,312 +1581,34 @@
         }
       },
       "cost": {
-        "input": 3,
-        "output": 15
+        "cache_read": 0.075,
+        "input": 0.3,
+        "input_audio": 1,
+        "output": 2.5
       },
       "deprecated": false,
       "extra": {
         "attachment": true,
-        "family": "v0",
-        "open_weights": false,
-        "temperature": true
-      },
-      "family": null,
-      "id": "vercel/v0-1.5-md",
-      "knowledge": null,
-      "last_updated": "2025-06-09",
-      "lifecycle": null,
-      "limits": {
-        "context": 128000,
-        "output": 32000
-      },
-      "modalities": {
-        "input": [
-          "text",
-          "image"
-        ],
-        "output": [
-          "text"
-        ]
-      },
-      "model": null,
-      "name": "v0-1.5-md",
-      "provider": "vercel",
-      "provider_model_id": null,
-      "release_date": "2025-06-09",
-      "tags": null
-    },
-    "xai/grok-2": {
-      "aliases": [],
-      "capabilities": {
-        "chat": true,
-        "embeddings": false,
-        "json": {
-          "native": false,
-          "schema": false,
-          "strict": false
-        },
-        "reasoning": {
-          "enabled": false
-        },
-        "streaming": {
-          "tool_calls": true
-        },
-        "tools": {
-          "enabled": true
-        }
-      },
-      "cost": {
-        "cache_read": 2,
-        "input": 2,
-        "output": 10
-      },
-      "deprecated": false,
-      "extra": {
-        "attachment": false,
-        "family": "grok-2",
-        "open_weights": false,
-        "temperature": true
-      },
-      "family": null,
-      "id": "xai/grok-2",
-      "knowledge": "2024-08",
-      "last_updated": "2024-08-20",
-      "lifecycle": null,
-      "limits": {
-        "context": 131072,
-        "output": 8192
-      },
-      "modalities": {
-        "input": [
-          "text"
-        ],
-        "output": [
-          "text"
-        ]
-      },
-      "model": null,
-      "name": "Grok 2",
-      "provider": "vercel",
-      "provider_model_id": null,
-      "release_date": "2024-08-20",
-      "tags": null
-    },
-    "openai/o3": {
-      "aliases": [],
-      "capabilities": {
-        "chat": true,
-        "embeddings": false,
-        "json": {
-          "native": false,
-          "schema": false,
-          "strict": false
-        },
-        "reasoning": {
-          "enabled": true
-        },
-        "streaming": {
-          "tool_calls": true
-        },
-        "tools": {
-          "enabled": true
-        }
-      },
-      "cost": {
-        "cache_read": 0.5,
-        "input": 2,
-        "output": 8
-      },
-      "deprecated": false,
-      "extra": {
-        "attachment": true,
-        "family": "o3",
+        "family": "gemini-flash",
         "open_weights": false,
         "structured_output": true,
-        "temperature": false
-      },
-      "family": null,
-      "id": "openai/o3",
-      "knowledge": "2024-05",
-      "last_updated": "2025-04-16",
-      "lifecycle": null,
-      "limits": {
-        "context": 200000,
-        "output": 100000
-      },
-      "modalities": {
-        "input": [
-          "text",
-          "image"
-        ],
-        "output": [
-          "text"
-        ]
-      },
-      "model": null,
-      "name": "o3",
-      "provider": "vercel",
-      "provider_model_id": null,
-      "release_date": "2025-04-16",
-      "tags": null
-    },
-    "vercel/v0-1.0-md": {
-      "aliases": [],
-      "capabilities": {
-        "chat": true,
-        "embeddings": false,
-        "json": {
-          "native": false,
-          "schema": false,
-          "strict": false
-        },
-        "reasoning": {
-          "enabled": true
-        },
-        "streaming": {
-          "tool_calls": true
-        },
-        "tools": {
-          "enabled": true
-        }
-      },
-      "cost": {
-        "input": 3,
-        "output": 15
-      },
-      "deprecated": false,
-      "extra": {
-        "attachment": true,
-        "family": "v0",
-        "open_weights": false,
         "temperature": true
       },
       "family": null,
-      "id": "vercel/v0-1.0-md",
-      "knowledge": null,
-      "last_updated": "2025-05-22",
+      "id": "google/gemini-2.5-flash",
+      "knowledge": "2025-01",
+      "last_updated": "2025-06-05",
       "lifecycle": null,
       "limits": {
-        "context": 128000,
-        "output": 32000
-      },
-      "modalities": {
-        "input": [
-          "text",
-          "image"
-        ],
-        "output": [
-          "text"
-        ]
-      },
-      "model": null,
-      "name": "v0-1.0-md",
-      "provider": "vercel",
-      "provider_model_id": null,
-      "release_date": "2025-05-22",
-      "tags": null
-    },
-    "mistral/ministral-8b": {
-      "aliases": [],
-      "capabilities": {
-        "chat": true,
-        "embeddings": false,
-        "json": {
-          "native": false,
-          "schema": false,
-          "strict": false
-        },
-        "reasoning": {
-          "enabled": false
-        },
-        "streaming": {
-          "tool_calls": true
-        },
-        "tools": {
-          "enabled": true
-        }
-      },
-      "cost": {
-        "input": 0.1,
-        "output": 0.1
-      },
-      "deprecated": false,
-      "extra": {
-        "attachment": false,
-        "family": "ministral-8b",
-        "open_weights": true,
-        "temperature": true
-      },
-      "family": null,
-      "id": "mistral/ministral-8b",
-      "knowledge": "2024-10",
-      "last_updated": "2024-10-04",
-      "lifecycle": null,
-      "limits": {
-        "context": 128000,
-        "output": 128000
-      },
-      "modalities": {
-        "input": [
-          "text"
-        ],
-        "output": [
-          "text"
-        ]
-      },
-      "model": null,
-      "name": "Ministral 8B",
-      "provider": "vercel",
-      "provider_model_id": null,
-      "release_date": "2024-10-01",
-      "tags": null
-    },
-    "anthropic/claude-4-sonnet": {
-      "aliases": [],
-      "capabilities": {
-        "chat": true,
-        "embeddings": false,
-        "json": {
-          "native": false,
-          "schema": false,
-          "strict": false
-        },
-        "reasoning": {
-          "enabled": true
-        },
-        "streaming": {
-          "tool_calls": true
-        },
-        "tools": {
-          "enabled": true
-        }
-      },
-      "cost": {
-        "cache_read": 0.3,
-        "cache_write": 3.75,
-        "input": 3,
-        "output": 15
-      },
-      "deprecated": false,
-      "extra": {
-        "attachment": true,
-        "family": "claude-sonnet",
-        "open_weights": false,
-        "temperature": true
-      },
-      "family": null,
-      "id": "anthropic/claude-4-sonnet",
-      "knowledge": "2025-03-31",
-      "last_updated": "2025-05-22",
-      "lifecycle": null,
-      "limits": {
-        "context": 200000,
-        "output": 64000
+        "context": 1048576,
+        "output": 65536
       },
       "modalities": {
         "input": [
           "text",
           "image",
+          "audio",
+          "video",
           "pdf"
         ],
         "output": [
@@ -1491,68 +1616,13 @@
         ]
       },
       "model": null,
-      "name": "Claude Sonnet 4",
+      "name": "Gemini 2.5 Flash",
       "provider": "vercel",
       "provider_model_id": null,
-      "release_date": "2025-05-22",
+      "release_date": "2025-03-20",
       "tags": null
     },
-    "mistral/mixtral-8x22b-instruct": {
-      "aliases": [],
-      "capabilities": {
-        "chat": true,
-        "embeddings": false,
-        "json": {
-          "native": false,
-          "schema": false,
-          "strict": false
-        },
-        "reasoning": {
-          "enabled": false
-        },
-        "streaming": {
-          "tool_calls": true
-        },
-        "tools": {
-          "enabled": true
-        }
-      },
-      "cost": {
-        "input": 2,
-        "output": 6
-      },
-      "deprecated": false,
-      "extra": {
-        "attachment": false,
-        "family": "mixtral-8x22b",
-        "open_weights": true,
-        "temperature": true
-      },
-      "family": null,
-      "id": "mistral/mixtral-8x22b-instruct",
-      "knowledge": "2024-04",
-      "last_updated": "2024-04-17",
-      "lifecycle": null,
-      "limits": {
-        "context": 64000,
-        "output": 64000
-      },
-      "modalities": {
-        "input": [
-          "text"
-        ],
-        "output": [
-          "text"
-        ]
-      },
-      "model": null,
-      "name": "Mixtral 8x22B",
-      "provider": "vercel",
-      "provider_model_id": null,
-      "release_date": "2024-04-17",
-      "tags": null
-    },
-    "openai/o1": {
+    "google/gemini-2.5-flash-lite": {
       "aliases": [],
       "capabilities": {
         "chat": true,
@@ -1573,44 +1643,46 @@
         }
       },
       "cost": {
-        "cache_read": 7.5,
-        "input": 15,
-        "output": 60
+        "cache_read": 0.025,
+        "input": 0.1,
+        "output": 0.4
       },
       "deprecated": false,
       "extra": {
         "attachment": true,
-        "family": "o1",
+        "family": "gemini-flash-lite",
         "open_weights": false,
-        "structured_output": true,
-        "temperature": false
+        "temperature": true
       },
       "family": null,
-      "id": "openai/o1",
-      "knowledge": "2023-09",
-      "last_updated": "2024-12-05",
+      "id": "google/gemini-2.5-flash-lite",
+      "knowledge": "2025-01",
+      "last_updated": "2025-06-17",
       "lifecycle": null,
       "limits": {
-        "context": 200000,
-        "output": 100000
+        "context": 1048576,
+        "output": 65536
       },
       "modalities": {
         "input": [
           "text",
-          "image"
+          "image",
+          "audio",
+          "video",
+          "pdf"
         ],
         "output": [
           "text"
         ]
       },
       "model": null,
-      "name": "o1",
+      "name": "Gemini 2.5 Flash Lite",
       "provider": "vercel",
       "provider_model_id": null,
-      "release_date": "2024-12-05",
+      "release_date": "2025-06-17",
       "tags": null
     },
-    "xai/grok-code-fast-1": {
+    "google/gemini-2.5-flash-lite-preview-09-2025": {
       "aliases": [],
       "capabilities": {
         "chat": true,
@@ -1631,39 +1703,165 @@
         }
       },
       "cost": {
-        "cache_read": 0.02,
-        "input": 0.2,
-        "output": 1.5
+        "cache_read": 0.025,
+        "input": 0.1,
+        "output": 0.4
       },
       "deprecated": false,
       "extra": {
-        "attachment": false,
-        "family": "grok",
+        "attachment": true,
+        "family": "gemini-flash-lite",
         "open_weights": false,
         "temperature": true
       },
       "family": null,
-      "id": "xai/grok-code-fast-1",
-      "knowledge": "2023-10",
-      "last_updated": "2025-08-28",
+      "id": "google/gemini-2.5-flash-lite-preview-09-2025",
+      "knowledge": "2025-01",
+      "last_updated": "2025-09-25",
       "lifecycle": null,
       "limits": {
-        "context": 256000,
-        "output": 10000
+        "context": 1048576,
+        "output": 65536
       },
       "modalities": {
         "input": [
-          "text"
+          "text",
+          "image",
+          "audio",
+          "video",
+          "pdf"
         ],
         "output": [
           "text"
         ]
       },
       "model": null,
-      "name": "Grok Code Fast 1",
+      "name": "Gemini 2.5 Flash Lite Preview 09-25",
       "provider": "vercel",
       "provider_model_id": null,
-      "release_date": "2025-08-28",
+      "release_date": "2025-09-25",
+      "tags": null
+    },
+    "google/gemini-2.5-flash-preview-09-2025": {
+      "aliases": [],
+      "capabilities": {
+        "chat": true,
+        "embeddings": false,
+        "json": {
+          "native": false,
+          "schema": false,
+          "strict": false
+        },
+        "reasoning": {
+          "enabled": true
+        },
+        "streaming": {
+          "tool_calls": true
+        },
+        "tools": {
+          "enabled": true
+        }
+      },
+      "cost": {
+        "cache_read": 0.075,
+        "cache_write": 0.383,
+        "input": 0.3,
+        "output": 2.5
+      },
+      "deprecated": false,
+      "extra": {
+        "attachment": true,
+        "family": "gemini-flash",
+        "open_weights": false,
+        "temperature": true
+      },
+      "family": null,
+      "id": "google/gemini-2.5-flash-preview-09-2025",
+      "knowledge": "2025-01",
+      "last_updated": "2025-09-25",
+      "lifecycle": null,
+      "limits": {
+        "context": 1048576,
+        "output": 65536
+      },
+      "modalities": {
+        "input": [
+          "text",
+          "image",
+          "audio",
+          "video",
+          "pdf"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "model": null,
+      "name": "Gemini 2.5 Flash Preview 09-25",
+      "provider": "vercel",
+      "provider_model_id": null,
+      "release_date": "2025-09-25",
+      "tags": null
+    },
+    "google/gemini-2.5-pro": {
+      "aliases": [],
+      "capabilities": {
+        "chat": true,
+        "embeddings": false,
+        "json": {
+          "native": false,
+          "schema": false,
+          "strict": false
+        },
+        "reasoning": {
+          "enabled": true
+        },
+        "streaming": {
+          "tool_calls": true
+        },
+        "tools": {
+          "enabled": true
+        }
+      },
+      "cost": {
+        "cache_read": 0.31,
+        "input": 1.25,
+        "output": 10
+      },
+      "deprecated": false,
+      "extra": {
+        "attachment": true,
+        "family": "gemini-pro",
+        "open_weights": false,
+        "structured_output": true,
+        "temperature": true
+      },
+      "family": null,
+      "id": "google/gemini-2.5-pro",
+      "knowledge": "2025-01",
+      "last_updated": "2025-06-05",
+      "lifecycle": null,
+      "limits": {
+        "context": 1048576,
+        "output": 65536
+      },
+      "modalities": {
+        "input": [
+          "text",
+          "image",
+          "audio",
+          "video",
+          "pdf"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "model": null,
+      "name": "Gemini 2.5 Pro",
+      "provider": "vercel",
+      "provider_model_id": null,
+      "release_date": "2025-03-20",
       "tags": null
     },
     "google/gemini-3-pro-preview": {
@@ -1727,7 +1925,7 @@
       "release_date": "2025-11-18",
       "tags": null
     },
-    "openai/gpt-4.1": {
+    "meta/llama-3.3-70b": {
       "aliases": [],
       "capabilities": {
         "chat": true,
@@ -1748,26 +1946,79 @@
         }
       },
       "cost": {
-        "cache_read": 0.5,
-        "input": 2,
-        "output": 8
+        "input": 0,
+        "output": 0
       },
       "deprecated": false,
       "extra": {
         "attachment": true,
-        "family": "gpt-4.1",
-        "open_weights": false,
-        "structured_output": true,
+        "family": "llama-3.3",
+        "open_weights": true,
         "temperature": true
       },
       "family": null,
-      "id": "openai/gpt-4.1",
-      "knowledge": "2024-04",
-      "last_updated": "2025-04-14",
+      "id": "meta/llama-3.3-70b",
+      "knowledge": "2023-12",
+      "last_updated": "2024-12-06",
       "lifecycle": null,
       "limits": {
-        "context": 1047576,
-        "output": 32768
+        "context": 128000,
+        "output": 4096
+      },
+      "modalities": {
+        "input": [
+          "text"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "model": null,
+      "name": "Llama-3.3-70B-Instruct",
+      "provider": "vercel",
+      "provider_model_id": null,
+      "release_date": "2024-12-06",
+      "tags": null
+    },
+    "meta/llama-4-maverick": {
+      "aliases": [],
+      "capabilities": {
+        "chat": true,
+        "embeddings": false,
+        "json": {
+          "native": false,
+          "schema": false,
+          "strict": false
+        },
+        "reasoning": {
+          "enabled": false
+        },
+        "streaming": {
+          "tool_calls": true
+        },
+        "tools": {
+          "enabled": true
+        }
+      },
+      "cost": {
+        "input": 0,
+        "output": 0
+      },
+      "deprecated": false,
+      "extra": {
+        "attachment": true,
+        "family": "llama-4-maverick",
+        "open_weights": true,
+        "temperature": true
+      },
+      "family": null,
+      "id": "meta/llama-4-maverick",
+      "knowledge": "2024-08",
+      "last_updated": "2025-04-05",
+      "lifecycle": null,
+      "limits": {
+        "context": 128000,
+        "output": 4096
       },
       "modalities": {
         "input": [
@@ -1779,13 +2030,69 @@
         ]
       },
       "model": null,
-      "name": "GPT-4.1",
+      "name": "Llama-4-Maverick-17B-128E-Instruct-FP8",
       "provider": "vercel",
       "provider_model_id": null,
-      "release_date": "2025-04-14",
+      "release_date": "2025-04-05",
       "tags": null
     },
-    "openai/gpt-oss-20b": {
+    "meta/llama-4-scout": {
+      "aliases": [],
+      "capabilities": {
+        "chat": true,
+        "embeddings": false,
+        "json": {
+          "native": false,
+          "schema": false,
+          "strict": false
+        },
+        "reasoning": {
+          "enabled": false
+        },
+        "streaming": {
+          "tool_calls": true
+        },
+        "tools": {
+          "enabled": true
+        }
+      },
+      "cost": {
+        "input": 0,
+        "output": 0
+      },
+      "deprecated": false,
+      "extra": {
+        "attachment": true,
+        "family": "llama-4-scout",
+        "open_weights": true,
+        "temperature": true
+      },
+      "family": null,
+      "id": "meta/llama-4-scout",
+      "knowledge": "2024-08",
+      "last_updated": "2025-04-05",
+      "lifecycle": null,
+      "limits": {
+        "context": 128000,
+        "output": 4096
+      },
+      "modalities": {
+        "input": [
+          "text",
+          "image"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "model": null,
+      "name": "Llama-4-Scout-17B-16E-Instruct-FP8",
+      "provider": "vercel",
+      "provider_model_id": null,
+      "release_date": "2025-04-05",
+      "tags": null
+    },
+    "minimax/minimax-m2": {
       "aliases": [],
       "capabilities": {
         "chat": true,
@@ -1806,24 +2113,26 @@
         }
       },
       "cost": {
-        "input": 0.07,
-        "output": 0.3
+        "cache_read": 0.03,
+        "cache_write": 0.38,
+        "input": 0.3,
+        "output": 1.2
       },
       "deprecated": false,
       "extra": {
         "attachment": false,
-        "family": "gpt-oss",
+        "family": "minimax",
         "open_weights": true,
         "temperature": true
       },
       "family": null,
-      "id": "openai/gpt-oss-20b",
-      "knowledge": null,
-      "last_updated": "2025-08-05",
+      "id": "minimax/minimax-m2",
+      "knowledge": "2024-10",
+      "last_updated": "2025-10-27",
       "lifecycle": null,
       "limits": {
-        "context": 131072,
-        "output": 32768
+        "context": 205000,
+        "output": 131072
       },
       "modalities": {
         "input": [
@@ -1834,10 +2143,341 @@
         ]
       },
       "model": null,
-      "name": "GPT OSS 20B",
+      "name": "MiniMax M2",
       "provider": "vercel",
       "provider_model_id": null,
-      "release_date": "2025-08-05",
+      "release_date": "2025-10-27",
+      "tags": null
+    },
+    "mistral/codestral": {
+      "aliases": [],
+      "capabilities": {
+        "chat": true,
+        "embeddings": false,
+        "json": {
+          "native": false,
+          "schema": false,
+          "strict": false
+        },
+        "reasoning": {
+          "enabled": false
+        },
+        "streaming": {
+          "tool_calls": true
+        },
+        "tools": {
+          "enabled": true
+        }
+      },
+      "cost": {
+        "input": 0.3,
+        "output": 0.9
+      },
+      "deprecated": false,
+      "extra": {
+        "attachment": false,
+        "family": "codestral",
+        "open_weights": true,
+        "temperature": true
+      },
+      "family": null,
+      "id": "mistral/codestral",
+      "knowledge": "2024-10",
+      "last_updated": "2025-01-04",
+      "lifecycle": null,
+      "limits": {
+        "context": 256000,
+        "output": 4096
+      },
+      "modalities": {
+        "input": [
+          "text"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "model": null,
+      "name": "Codestral",
+      "provider": "vercel",
+      "provider_model_id": null,
+      "release_date": "2024-05-29",
+      "tags": null
+    },
+    "mistral/magistral-medium": {
+      "aliases": [],
+      "capabilities": {
+        "chat": true,
+        "embeddings": false,
+        "json": {
+          "native": false,
+          "schema": false,
+          "strict": false
+        },
+        "reasoning": {
+          "enabled": true
+        },
+        "streaming": {
+          "tool_calls": true
+        },
+        "tools": {
+          "enabled": true
+        }
+      },
+      "cost": {
+        "input": 2,
+        "output": 5
+      },
+      "deprecated": false,
+      "extra": {
+        "attachment": false,
+        "family": "magistral-medium",
+        "open_weights": true,
+        "temperature": true
+      },
+      "family": null,
+      "id": "mistral/magistral-medium",
+      "knowledge": "2025-06",
+      "last_updated": "2025-03-20",
+      "lifecycle": null,
+      "limits": {
+        "context": 128000,
+        "output": 16384
+      },
+      "modalities": {
+        "input": [
+          "text"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "model": null,
+      "name": "Magistral Medium",
+      "provider": "vercel",
+      "provider_model_id": null,
+      "release_date": "2025-03-17",
+      "tags": null
+    },
+    "mistral/magistral-small": {
+      "aliases": [],
+      "capabilities": {
+        "chat": true,
+        "embeddings": false,
+        "json": {
+          "native": false,
+          "schema": false,
+          "strict": false
+        },
+        "reasoning": {
+          "enabled": true
+        },
+        "streaming": {
+          "tool_calls": true
+        },
+        "tools": {
+          "enabled": true
+        }
+      },
+      "cost": {
+        "input": 0.5,
+        "output": 1.5
+      },
+      "deprecated": false,
+      "extra": {
+        "attachment": false,
+        "family": "magistral-small",
+        "open_weights": true,
+        "temperature": true
+      },
+      "family": null,
+      "id": "mistral/magistral-small",
+      "knowledge": "2025-06",
+      "last_updated": "2025-03-17",
+      "lifecycle": null,
+      "limits": {
+        "context": 128000,
+        "output": 128000
+      },
+      "modalities": {
+        "input": [
+          "text"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "model": null,
+      "name": "Magistral Small",
+      "provider": "vercel",
+      "provider_model_id": null,
+      "release_date": "2025-03-17",
+      "tags": null
+    },
+    "mistral/ministral-3b": {
+      "aliases": [],
+      "capabilities": {
+        "chat": true,
+        "embeddings": false,
+        "json": {
+          "native": false,
+          "schema": false,
+          "strict": false
+        },
+        "reasoning": {
+          "enabled": false
+        },
+        "streaming": {
+          "tool_calls": true
+        },
+        "tools": {
+          "enabled": true
+        }
+      },
+      "cost": {
+        "input": 0.04,
+        "output": 0.04
+      },
+      "deprecated": false,
+      "extra": {
+        "attachment": false,
+        "family": "ministral-3b",
+        "open_weights": true,
+        "temperature": true
+      },
+      "family": null,
+      "id": "mistral/ministral-3b",
+      "knowledge": "2024-10",
+      "last_updated": "2024-10-04",
+      "lifecycle": null,
+      "limits": {
+        "context": 128000,
+        "output": 128000
+      },
+      "modalities": {
+        "input": [
+          "text"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "model": null,
+      "name": "Ministral 3B",
+      "provider": "vercel",
+      "provider_model_id": null,
+      "release_date": "2024-10-01",
+      "tags": null
+    },
+    "mistral/ministral-8b": {
+      "aliases": [],
+      "capabilities": {
+        "chat": true,
+        "embeddings": false,
+        "json": {
+          "native": false,
+          "schema": false,
+          "strict": false
+        },
+        "reasoning": {
+          "enabled": false
+        },
+        "streaming": {
+          "tool_calls": true
+        },
+        "tools": {
+          "enabled": true
+        }
+      },
+      "cost": {
+        "input": 0.1,
+        "output": 0.1
+      },
+      "deprecated": false,
+      "extra": {
+        "attachment": false,
+        "family": "ministral-8b",
+        "open_weights": true,
+        "temperature": true
+      },
+      "family": null,
+      "id": "mistral/ministral-8b",
+      "knowledge": "2024-10",
+      "last_updated": "2024-10-04",
+      "lifecycle": null,
+      "limits": {
+        "context": 128000,
+        "output": 128000
+      },
+      "modalities": {
+        "input": [
+          "text"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "model": null,
+      "name": "Ministral 8B",
+      "provider": "vercel",
+      "provider_model_id": null,
+      "release_date": "2024-10-01",
+      "tags": null
+    },
+    "mistral/mistral-large": {
+      "aliases": [],
+      "capabilities": {
+        "chat": true,
+        "embeddings": false,
+        "json": {
+          "native": false,
+          "schema": false,
+          "strict": false
+        },
+        "reasoning": {
+          "enabled": false
+        },
+        "streaming": {
+          "tool_calls": true
+        },
+        "tools": {
+          "enabled": true
+        }
+      },
+      "cost": {
+        "input": 0.5,
+        "output": 1.5
+      },
+      "deprecated": false,
+      "extra": {
+        "attachment": true,
+        "family": "mistral-large",
+        "open_weights": true,
+        "temperature": true
+      },
+      "family": null,
+      "id": "mistral/mistral-large",
+      "knowledge": "2024-11",
+      "last_updated": "2025-12-02",
+      "lifecycle": null,
+      "limits": {
+        "context": 262144,
+        "output": 262144
+      },
+      "modalities": {
+        "input": [
+          "text",
+          "image"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "model": null,
+      "name": "Mistral Large",
+      "provider": "vercel",
+      "provider_model_id": null,
+      "release_date": "2024-11-01",
       "tags": null
     },
     "mistral/mistral-small": {
@@ -1896,45 +2536,7 @@
       "release_date": "2024-09-01",
       "tags": null
     },
-    "morph/morph-v3-large": {
-      "aliases": [],
-      "capabilities": null,
-      "cost": {
-        "input": 0.9,
-        "output": 1.9
-      },
-      "deprecated": false,
-      "extra": {
-        "attachment": false,
-        "family": "morph-v3-large",
-        "open_weights": false,
-        "temperature": false
-      },
-      "family": null,
-      "id": "morph/morph-v3-large",
-      "knowledge": null,
-      "last_updated": "2024-08-15",
-      "lifecycle": null,
-      "limits": {
-        "context": 32000,
-        "output": 32000
-      },
-      "modalities": {
-        "input": [
-          "text"
-        ],
-        "output": [
-          "text"
-        ]
-      },
-      "model": null,
-      "name": "Morph v3 Large",
-      "provider": "vercel",
-      "provider_model_id": null,
-      "release_date": "2024-08-15",
-      "tags": null
-    },
-    "xai/grok-3": {
+    "mistral/mixtral-8x22b-instruct": {
       "aliases": [],
       "capabilities": {
         "chat": true,
@@ -1955,251 +2557,23 @@
         }
       },
       "cost": {
-        "cache_read": 0.75,
-        "input": 3,
-        "output": 15
+        "input": 2,
+        "output": 6
       },
       "deprecated": false,
       "extra": {
         "attachment": false,
-        "family": "grok-3",
-        "open_weights": false,
-        "temperature": true
-      },
-      "family": null,
-      "id": "xai/grok-3",
-      "knowledge": "2024-11",
-      "last_updated": "2025-02-17",
-      "lifecycle": null,
-      "limits": {
-        "context": 131072,
-        "output": 8192
-      },
-      "modalities": {
-        "input": [
-          "text"
-        ],
-        "output": [
-          "text"
-        ]
-      },
-      "model": null,
-      "name": "Grok 3",
-      "provider": "vercel",
-      "provider_model_id": null,
-      "release_date": "2025-02-17",
-      "tags": null
-    },
-    "deepseek/deepseek-r1-distill-llama-70b": {
-      "aliases": [],
-      "capabilities": {
-        "chat": true,
-        "embeddings": false,
-        "json": {
-          "native": false,
-          "schema": false,
-          "strict": false
-        },
-        "reasoning": {
-          "enabled": true
-        },
-        "streaming": {
-          "tool_calls": true
-        },
-        "tools": {
-          "enabled": true
-        }
-      },
-      "cost": {
-        "input": 0.75,
-        "output": 0.99
-      },
-      "deprecated": false,
-      "extra": {
-        "attachment": false,
-        "family": "deepseek-r1-distill-llama",
-        "open_weights": true,
-        "status": "deprecated",
-        "temperature": true
-      },
-      "family": null,
-      "id": "deepseek/deepseek-r1-distill-llama-70b",
-      "knowledge": "2024-07",
-      "last_updated": "2025-01-20",
-      "lifecycle": null,
-      "limits": {
-        "context": 131072,
-        "output": 8192
-      },
-      "modalities": {
-        "input": [
-          "text"
-        ],
-        "output": [
-          "text"
-        ]
-      },
-      "model": null,
-      "name": "DeepSeek R1 Distill Llama 70B",
-      "provider": "vercel",
-      "provider_model_id": null,
-      "release_date": "2025-01-20",
-      "tags": null
-    },
-    "perplexity/sonar-reasoning": {
-      "aliases": [],
-      "capabilities": {
-        "chat": true,
-        "embeddings": false,
-        "json": {
-          "native": false,
-          "schema": false,
-          "strict": false
-        },
-        "reasoning": {
-          "enabled": true
-        },
-        "streaming": {
-          "text": true,
-          "tool_calls": false
-        },
-        "tools": {
-          "enabled": false,
-          "parallel": false,
-          "streaming": false,
-          "strict": false
-        }
-      },
-      "cost": {
-        "input": 1,
-        "output": 5
-      },
-      "deprecated": false,
-      "extra": {
-        "attachment": false,
-        "family": "sonar-reasoning",
-        "open_weights": false,
-        "temperature": true
-      },
-      "family": null,
-      "id": "perplexity/sonar-reasoning",
-      "knowledge": "2025-09",
-      "last_updated": "2025-02-19",
-      "lifecycle": null,
-      "limits": {
-        "context": 127000,
-        "output": 8000
-      },
-      "modalities": {
-        "input": [
-          "text"
-        ],
-        "output": [
-          "text"
-        ]
-      },
-      "model": null,
-      "name": "Sonar Reasoning",
-      "provider": "vercel",
-      "provider_model_id": null,
-      "release_date": "2025-02-19",
-      "tags": null
-    },
-    "zai/glm-4.5-air": {
-      "aliases": [],
-      "capabilities": {
-        "chat": true,
-        "embeddings": false,
-        "json": {
-          "native": false,
-          "schema": false,
-          "strict": false
-        },
-        "reasoning": {
-          "enabled": true
-        },
-        "streaming": {
-          "tool_calls": true
-        },
-        "tools": {
-          "enabled": true
-        }
-      },
-      "cost": {
-        "input": 0.2,
-        "output": 1.1
-      },
-      "deprecated": false,
-      "extra": {
-        "attachment": false,
-        "family": "glm-4.5-air",
+        "family": "mixtral-8x22b",
         "open_weights": true,
         "temperature": true
       },
       "family": null,
-      "id": "zai/glm-4.5-air",
-      "knowledge": "2025-04",
-      "last_updated": "2025-07-28",
+      "id": "mistral/mixtral-8x22b-instruct",
+      "knowledge": "2024-04",
+      "last_updated": "2024-04-17",
       "lifecycle": null,
       "limits": {
-        "context": 128000,
-        "output": 96000
-      },
-      "modalities": {
-        "input": [
-          "text"
-        ],
-        "output": [
-          "text"
-        ]
-      },
-      "model": null,
-      "name": "GLM 4.5 Air",
-      "provider": "vercel",
-      "provider_model_id": null,
-      "release_date": "2025-07-28",
-      "tags": null
-    },
-    "xai/grok-4": {
-      "aliases": [],
-      "capabilities": {
-        "chat": true,
-        "embeddings": false,
-        "json": {
-          "native": false,
-          "schema": false,
-          "strict": false
-        },
-        "reasoning": {
-          "enabled": true
-        },
-        "streaming": {
-          "tool_calls": true
-        },
-        "tools": {
-          "enabled": true
-        }
-      },
-      "cost": {
-        "cache_read": 0.75,
-        "input": 3,
-        "output": 15,
-        "reasoning": 15
-      },
-      "deprecated": false,
-      "extra": {
-        "attachment": false,
-        "family": "grok",
-        "open_weights": false,
-        "temperature": true
-      },
-      "family": null,
-      "id": "xai/grok-4",
-      "knowledge": "2025-07",
-      "last_updated": "2025-07-09",
-      "lifecycle": null,
-      "limits": {
-        "context": 256000,
+        "context": 64000,
         "output": 64000
       },
       "modalities": {
@@ -2211,13 +2585,13 @@
         ]
       },
       "model": null,
-      "name": "Grok 4",
+      "name": "Mixtral 8x22B",
       "provider": "vercel",
       "provider_model_id": null,
-      "release_date": "2025-07-09",
+      "release_date": "2024-04-17",
       "tags": null
     },
-    "openai/gpt-5-codex": {
+    "mistral/pixtral-12b": {
       "aliases": [],
       "capabilities": {
         "chat": true,
@@ -2228,7 +2602,7 @@
           "strict": false
         },
         "reasoning": {
-          "enabled": true
+          "enabled": false
         },
         "streaming": {
           "tool_calls": true
@@ -2238,25 +2612,23 @@
         }
       },
       "cost": {
-        "cache_read": 0.125,
-        "input": 1.25,
-        "output": 10
+        "input": 0.15,
+        "output": 0.15
       },
       "deprecated": false,
       "extra": {
-        "attachment": false,
-        "family": "gpt-5-codex",
-        "open_weights": false,
-        "structured_output": true,
-        "temperature": false
+        "attachment": true,
+        "family": "pixtral",
+        "open_weights": true,
+        "temperature": true
       },
       "family": null,
-      "id": "openai/gpt-5-codex",
-      "knowledge": "2024-09-30",
-      "last_updated": "2025-09-15",
+      "id": "mistral/pixtral-12b",
+      "knowledge": "2024-09",
+      "last_updated": "2024-09-01",
       "lifecycle": null,
       "limits": {
-        "context": 400000,
+        "context": 128000,
         "output": 128000
       },
       "modalities": {
@@ -2269,275 +2641,10 @@
         ]
       },
       "model": null,
-      "name": "GPT-5-Codex",
+      "name": "Pixtral 12B",
       "provider": "vercel",
       "provider_model_id": null,
-      "release_date": "2025-09-15",
-      "tags": null
-    },
-    "alibaba/qwen3-next-80b-a3b-thinking": {
-      "aliases": [],
-      "capabilities": {
-        "chat": true,
-        "embeddings": false,
-        "json": {
-          "native": false,
-          "schema": false,
-          "strict": false
-        },
-        "reasoning": {
-          "enabled": true
-        },
-        "streaming": {
-          "tool_calls": true
-        },
-        "tools": {
-          "enabled": true
-        }
-      },
-      "cost": {
-        "input": 0.5,
-        "output": 6
-      },
-      "deprecated": false,
-      "extra": {
-        "attachment": false,
-        "family": "qwen3",
-        "open_weights": true,
-        "temperature": true
-      },
-      "family": null,
-      "id": "alibaba/qwen3-next-80b-a3b-thinking",
-      "knowledge": "2025-09",
-      "last_updated": "2025-09-12",
-      "lifecycle": null,
-      "limits": {
-        "context": 131072,
-        "output": 32768
-      },
-      "modalities": {
-        "input": [
-          "text"
-        ],
-        "output": [
-          "text"
-        ]
-      },
-      "model": null,
-      "name": "Qwen3 Next 80B A3B Thinking",
-      "provider": "vercel",
-      "provider_model_id": null,
-      "release_date": "2025-09-12",
-      "tags": null
-    },
-    "openai/gpt-4.1-nano": {
-      "aliases": [],
-      "capabilities": {
-        "chat": true,
-        "embeddings": false,
-        "json": {
-          "native": false,
-          "schema": false,
-          "strict": false
-        },
-        "reasoning": {
-          "enabled": false
-        },
-        "streaming": {
-          "tool_calls": true
-        },
-        "tools": {
-          "enabled": true
-        }
-      },
-      "cost": {
-        "cache_read": 0.03,
-        "input": 0.1,
-        "output": 0.4
-      },
-      "deprecated": false,
-      "extra": {
-        "attachment": true,
-        "family": "gpt-4.1-nano",
-        "open_weights": false,
-        "structured_output": true,
-        "temperature": true
-      },
-      "family": null,
-      "id": "openai/gpt-4.1-nano",
-      "knowledge": "2024-04",
-      "last_updated": "2025-04-14",
-      "lifecycle": null,
-      "limits": {
-        "context": 1047576,
-        "output": 32768
-      },
-      "modalities": {
-        "input": [
-          "text",
-          "image"
-        ],
-        "output": [
-          "text"
-        ]
-      },
-      "model": null,
-      "name": "GPT-4.1 nano",
-      "provider": "vercel",
-      "provider_model_id": null,
-      "release_date": "2025-04-14",
-      "tags": null
-    },
-    "alibaba/qwen3-max": {
-      "aliases": [],
-      "capabilities": {
-        "chat": true,
-        "embeddings": false,
-        "json": {
-          "native": false,
-          "schema": false,
-          "strict": false
-        },
-        "reasoning": {
-          "enabled": false
-        },
-        "streaming": {
-          "tool_calls": true
-        },
-        "tools": {
-          "enabled": true
-        }
-      },
-      "cost": {
-        "input": 1.2,
-        "output": 6
-      },
-      "deprecated": false,
-      "extra": {
-        "attachment": false,
-        "family": "qwen3",
-        "open_weights": false,
-        "temperature": true
-      },
-      "family": null,
-      "id": "alibaba/qwen3-max",
-      "knowledge": "2025-04",
-      "last_updated": "2025-09-23",
-      "lifecycle": null,
-      "limits": {
-        "context": 262144,
-        "output": 32768
-      },
-      "modalities": {
-        "input": [
-          "text"
-        ],
-        "output": [
-          "text"
-        ]
-      },
-      "model": null,
-      "name": "Qwen3 Max",
-      "provider": "vercel",
-      "provider_model_id": null,
-      "release_date": "2025-09-23",
-      "tags": null
-    },
-    "morph/morph-v3-fast": {
-      "aliases": [],
-      "capabilities": null,
-      "cost": {
-        "input": 0.8,
-        "output": 1.2
-      },
-      "deprecated": false,
-      "extra": {
-        "attachment": false,
-        "family": "morph-v3-fast",
-        "open_weights": false,
-        "temperature": false
-      },
-      "family": null,
-      "id": "morph/morph-v3-fast",
-      "knowledge": null,
-      "last_updated": "2024-08-15",
-      "lifecycle": null,
-      "limits": {
-        "context": 16000,
-        "output": 16000
-      },
-      "modalities": {
-        "input": [
-          "text"
-        ],
-        "output": [
-          "text"
-        ]
-      },
-      "model": null,
-      "name": "Morph v3 Fast",
-      "provider": "vercel",
-      "provider_model_id": null,
-      "release_date": "2024-08-15",
-      "tags": null
-    },
-    "anthropic/claude-3.7-sonnet": {
-      "aliases": [],
-      "capabilities": {
-        "chat": true,
-        "embeddings": false,
-        "json": {
-          "native": false,
-          "schema": false,
-          "strict": false
-        },
-        "reasoning": {
-          "enabled": true
-        },
-        "streaming": {
-          "tool_calls": true
-        },
-        "tools": {
-          "enabled": true
-        }
-      },
-      "cost": {
-        "cache_read": 0.3,
-        "cache_write": 3.75,
-        "input": 3,
-        "output": 15
-      },
-      "deprecated": false,
-      "extra": {
-        "attachment": true,
-        "family": "claude-sonnet",
-        "open_weights": false,
-        "temperature": true
-      },
-      "family": null,
-      "id": "anthropic/claude-3.7-sonnet",
-      "knowledge": "2024-10-31",
-      "last_updated": "2025-02-19",
-      "lifecycle": null,
-      "limits": {
-        "context": 200000,
-        "output": 64000
-      },
-      "modalities": {
-        "input": [
-          "text",
-          "image",
-          "pdf"
-        ],
-        "output": [
-          "text"
-        ]
-      },
-      "model": null,
-      "name": "Claude Sonnet 3.7",
-      "provider": "vercel",
-      "provider_model_id": null,
-      "release_date": "2025-02-19",
+      "release_date": "2024-09-01",
       "tags": null
     },
     "mistral/pixtral-large": {
@@ -2652,686 +2759,80 @@
       "release_date": "2025-07-14",
       "tags": null
     },
-    "xai/grok-4-fast": {
-      "aliases": [],
-      "capabilities": {
-        "chat": true,
-        "embeddings": false,
-        "json": {
-          "native": false,
-          "schema": false,
-          "strict": false
-        },
-        "reasoning": {
-          "enabled": true
-        },
-        "streaming": {
-          "tool_calls": true
-        },
-        "tools": {
-          "enabled": true
-        }
-      },
-      "cost": {
-        "cache_read": 0.05,
-        "input": 0.2,
-        "output": 0.5
-      },
-      "deprecated": false,
-      "extra": {
-        "attachment": true,
-        "family": "grok",
-        "open_weights": false,
-        "temperature": true
-      },
-      "family": null,
-      "id": "xai/grok-4-fast",
-      "knowledge": "2025-07",
-      "last_updated": "2025-09-19",
-      "lifecycle": null,
-      "limits": {
-        "context": 2000000,
-        "output": 30000
-      },
-      "modalities": {
-        "input": [
-          "text",
-          "image"
-        ],
-        "output": [
-          "text"
-        ]
-      },
-      "model": null,
-      "name": "Grok 4 Fast",
-      "provider": "vercel",
-      "provider_model_id": null,
-      "release_date": "2025-09-19",
-      "tags": null
-    },
-    "perplexity/sonar": {
+    "morph/morph-v3-fast": {
       "aliases": [],
       "capabilities": null,
       "cost": {
-        "input": 1,
-        "output": 1
-      },
-      "deprecated": false,
-      "extra": {
-        "attachment": false,
-        "family": "sonar",
-        "open_weights": false,
-        "temperature": true
-      },
-      "family": null,
-      "id": "perplexity/sonar",
-      "knowledge": "2025-02",
-      "last_updated": "2025-02-19",
-      "lifecycle": null,
-      "limits": {
-        "context": 127000,
-        "output": 8000
-      },
-      "modalities": {
-        "input": [
-          "text",
-          "image"
-        ],
-        "output": [
-          "text"
-        ]
-      },
-      "model": null,
-      "name": "Sonar",
-      "provider": "vercel",
-      "provider_model_id": null,
-      "release_date": "2025-02-19",
-      "tags": null
-    },
-    "openai/gpt-5": {
-      "aliases": [],
-      "capabilities": {
-        "chat": true,
-        "embeddings": false,
-        "json": {
-          "native": false,
-          "schema": false,
-          "strict": false
-        },
-        "reasoning": {
-          "enabled": true
-        },
-        "streaming": {
-          "tool_calls": true
-        },
-        "tools": {
-          "enabled": true
-        }
-      },
-      "cost": {
-        "cache_read": 0.13,
-        "input": 1.25,
-        "output": 10
-      },
-      "deprecated": false,
-      "extra": {
-        "attachment": true,
-        "family": "gpt-5",
-        "open_weights": false,
-        "structured_output": true,
-        "temperature": false
-      },
-      "family": null,
-      "id": "openai/gpt-5",
-      "knowledge": "2024-09-30",
-      "last_updated": "2025-08-07",
-      "lifecycle": null,
-      "limits": {
-        "context": 400000,
-        "output": 128000
-      },
-      "modalities": {
-        "input": [
-          "text",
-          "image"
-        ],
-        "output": [
-          "text"
-        ]
-      },
-      "model": null,
-      "name": "GPT-5",
-      "provider": "vercel",
-      "provider_model_id": null,
-      "release_date": "2025-08-07",
-      "tags": null
-    },
-    "xai/grok-3-mini": {
-      "aliases": [],
-      "capabilities": {
-        "chat": true,
-        "embeddings": false,
-        "json": {
-          "native": false,
-          "schema": false,
-          "strict": false
-        },
-        "reasoning": {
-          "enabled": true
-        },
-        "streaming": {
-          "tool_calls": true
-        },
-        "tools": {
-          "enabled": true
-        }
-      },
-      "cost": {
-        "cache_read": 0.075,
-        "input": 0.3,
-        "output": 0.5,
-        "reasoning": 0.5
-      },
-      "deprecated": false,
-      "extra": {
-        "attachment": false,
-        "family": "grok-3",
-        "open_weights": false,
-        "temperature": true
-      },
-      "family": null,
-      "id": "xai/grok-3-mini",
-      "knowledge": "2024-11",
-      "last_updated": "2025-02-17",
-      "lifecycle": null,
-      "limits": {
-        "context": 131072,
-        "output": 8192
-      },
-      "modalities": {
-        "input": [
-          "text"
-        ],
-        "output": [
-          "text"
-        ]
-      },
-      "model": null,
-      "name": "Grok 3 Mini",
-      "provider": "vercel",
-      "provider_model_id": null,
-      "release_date": "2025-02-17",
-      "tags": null
-    },
-    "openai/o4-mini": {
-      "aliases": [],
-      "capabilities": {
-        "chat": true,
-        "embeddings": false,
-        "json": {
-          "native": false,
-          "schema": false,
-          "strict": false
-        },
-        "reasoning": {
-          "enabled": true
-        },
-        "streaming": {
-          "tool_calls": true
-        },
-        "tools": {
-          "enabled": true
-        }
-      },
-      "cost": {
-        "cache_read": 0.28,
-        "input": 1.1,
-        "output": 4.4
-      },
-      "deprecated": false,
-      "extra": {
-        "attachment": true,
-        "family": "o4-mini",
-        "open_weights": false,
-        "structured_output": true,
-        "temperature": false
-      },
-      "family": null,
-      "id": "openai/o4-mini",
-      "knowledge": "2024-05",
-      "last_updated": "2025-04-16",
-      "lifecycle": null,
-      "limits": {
-        "context": 200000,
-        "output": 100000
-      },
-      "modalities": {
-        "input": [
-          "text",
-          "image"
-        ],
-        "output": [
-          "text"
-        ]
-      },
-      "model": null,
-      "name": "o4-mini",
-      "provider": "vercel",
-      "provider_model_id": null,
-      "release_date": "2025-04-16",
-      "tags": null
-    },
-    "anthropic/claude-4.5-sonnet": {
-      "aliases": [],
-      "capabilities": {
-        "chat": true,
-        "embeddings": false,
-        "json": {
-          "native": false,
-          "schema": false,
-          "strict": false
-        },
-        "reasoning": {
-          "enabled": true
-        },
-        "streaming": {
-          "tool_calls": true
-        },
-        "tools": {
-          "enabled": true
-        }
-      },
-      "cost": {
-        "cache_read": 0.3,
-        "cache_write": 3.75,
-        "input": 3,
-        "output": 15
-      },
-      "deprecated": false,
-      "extra": {
-        "attachment": true,
-        "family": "claude-sonnet",
-        "open_weights": false,
-        "temperature": true
-      },
-      "family": null,
-      "id": "anthropic/claude-4.5-sonnet",
-      "knowledge": "2025-07-31",
-      "last_updated": "2025-09-29",
-      "lifecycle": null,
-      "limits": {
-        "context": 200000,
-        "output": 64000
-      },
-      "modalities": {
-        "input": [
-          "text",
-          "image",
-          "pdf"
-        ],
-        "output": [
-          "text"
-        ]
-      },
-      "model": null,
-      "name": "Claude Sonnet 4.5",
-      "provider": "vercel",
-      "provider_model_id": null,
-      "release_date": "2025-09-29",
-      "tags": null
-    },
-    "anthropic/claude-3.5-haiku": {
-      "aliases": [],
-      "capabilities": {
-        "chat": true,
-        "embeddings": false,
-        "json": {
-          "native": false,
-          "schema": false,
-          "strict": false
-        },
-        "reasoning": {
-          "enabled": false
-        },
-        "streaming": {
-          "tool_calls": true
-        },
-        "tools": {
-          "enabled": true
-        }
-      },
-      "cost": {
-        "cache_read": 0.08,
-        "cache_write": 1,
         "input": 0.8,
-        "output": 4
-      },
-      "deprecated": false,
-      "extra": {
-        "attachment": true,
-        "family": "claude-haiku",
-        "open_weights": false,
-        "temperature": true
-      },
-      "family": null,
-      "id": "anthropic/claude-3.5-haiku",
-      "knowledge": "2024-07-31",
-      "last_updated": "2024-10-22",
-      "lifecycle": null,
-      "limits": {
-        "context": 200000,
-        "output": 8192
-      },
-      "modalities": {
-        "input": [
-          "text",
-          "image",
-          "pdf"
-        ],
-        "output": [
-          "text"
-        ]
-      },
-      "model": null,
-      "name": "Claude Haiku 3.5",
-      "provider": "vercel",
-      "provider_model_id": null,
-      "release_date": "2024-10-22",
-      "tags": null
-    },
-    "google/gemini-2.5-pro": {
-      "aliases": [],
-      "capabilities": {
-        "chat": true,
-        "embeddings": false,
-        "json": {
-          "native": false,
-          "schema": false,
-          "strict": false
-        },
-        "reasoning": {
-          "enabled": true
-        },
-        "streaming": {
-          "tool_calls": true
-        },
-        "tools": {
-          "enabled": true
-        }
-      },
-      "cost": {
-        "cache_read": 0.31,
-        "input": 1.25,
-        "output": 10
-      },
-      "deprecated": false,
-      "extra": {
-        "attachment": true,
-        "family": "gemini-pro",
-        "open_weights": false,
-        "structured_output": true,
-        "temperature": true
-      },
-      "family": null,
-      "id": "google/gemini-2.5-pro",
-      "knowledge": "2025-01",
-      "last_updated": "2025-06-05",
-      "lifecycle": null,
-      "limits": {
-        "context": 1048576,
-        "output": 65536
-      },
-      "modalities": {
-        "input": [
-          "text",
-          "image",
-          "audio",
-          "video",
-          "pdf"
-        ],
-        "output": [
-          "text"
-        ]
-      },
-      "model": null,
-      "name": "Gemini 2.5 Pro",
-      "provider": "vercel",
-      "provider_model_id": null,
-      "release_date": "2025-03-20",
-      "tags": null
-    },
-    "deepseek/deepseek-v3.1-terminus": {
-      "aliases": [],
-      "capabilities": {
-        "chat": true,
-        "embeddings": false,
-        "json": {
-          "native": false,
-          "schema": false,
-          "strict": false
-        },
-        "reasoning": {
-          "enabled": true
-        },
-        "streaming": {
-          "tool_calls": true
-        },
-        "tools": {
-          "enabled": true
-        }
-      },
-      "cost": {
-        "input": 0.27,
-        "output": 1
+        "output": 1.2
       },
       "deprecated": false,
       "extra": {
         "attachment": false,
-        "family": "deepseek-v3",
-        "open_weights": true,
-        "temperature": true
-      },
-      "family": null,
-      "id": "deepseek/deepseek-v3.1-terminus",
-      "knowledge": "2025-07",
-      "last_updated": "2025-09-22",
-      "lifecycle": null,
-      "limits": {
-        "context": 128000,
-        "output": 8192
-      },
-      "modalities": {
-        "input": [
-          "text"
-        ],
-        "output": [
-          "text"
-        ]
-      },
-      "model": null,
-      "name": "DeepSeek V3.1 Terminus",
-      "provider": "vercel",
-      "provider_model_id": null,
-      "release_date": "2025-09-22",
-      "tags": null
-    },
-    "google/gemini-2.5-flash": {
-      "aliases": [],
-      "capabilities": {
-        "chat": true,
-        "embeddings": false,
-        "json": {
-          "native": false,
-          "schema": false,
-          "strict": false
-        },
-        "reasoning": {
-          "enabled": true
-        },
-        "streaming": {
-          "tool_calls": true
-        },
-        "tools": {
-          "enabled": true
-        }
-      },
-      "cost": {
-        "cache_read": 0.075,
-        "input": 0.3,
-        "input_audio": 1,
-        "output": 2.5
-      },
-      "deprecated": false,
-      "extra": {
-        "attachment": true,
-        "family": "gemini-flash",
+        "family": "morph-v3-fast",
         "open_weights": false,
-        "structured_output": true,
-        "temperature": true
+        "temperature": false
       },
       "family": null,
-      "id": "google/gemini-2.5-flash",
-      "knowledge": "2025-01",
-      "last_updated": "2025-06-05",
+      "id": "morph/morph-v3-fast",
+      "knowledge": null,
+      "last_updated": "2024-08-15",
       "lifecycle": null,
       "limits": {
-        "context": 1048576,
-        "output": 65536
+        "context": 16000,
+        "output": 16000
       },
       "modalities": {
         "input": [
-          "text",
-          "image",
-          "audio",
-          "video",
-          "pdf"
+          "text"
         ],
         "output": [
           "text"
         ]
       },
       "model": null,
-      "name": "Gemini 2.5 Flash",
+      "name": "Morph v3 Fast",
       "provider": "vercel",
       "provider_model_id": null,
-      "release_date": "2025-03-20",
+      "release_date": "2024-08-15",
       "tags": null
     },
-    "meta/llama-4-scout": {
+    "morph/morph-v3-large": {
       "aliases": [],
-      "capabilities": {
-        "chat": true,
-        "embeddings": false,
-        "json": {
-          "native": false,
-          "schema": false,
-          "strict": false
-        },
-        "reasoning": {
-          "enabled": false
-        },
-        "streaming": {
-          "tool_calls": true
-        },
-        "tools": {
-          "enabled": true
-        }
-      },
+      "capabilities": null,
       "cost": {
-        "input": 0,
-        "output": 0
+        "input": 0.9,
+        "output": 1.9
       },
       "deprecated": false,
       "extra": {
-        "attachment": true,
-        "family": "llama-4-scout",
-        "open_weights": true,
-        "temperature": true
-      },
-      "family": null,
-      "id": "meta/llama-4-scout",
-      "knowledge": "2024-08",
-      "last_updated": "2025-04-05",
-      "lifecycle": null,
-      "limits": {
-        "context": 128000,
-        "output": 4096
-      },
-      "modalities": {
-        "input": [
-          "text",
-          "image"
-        ],
-        "output": [
-          "text"
-        ]
-      },
-      "model": null,
-      "name": "Llama-4-Scout-17B-16E-Instruct-FP8",
-      "provider": "vercel",
-      "provider_model_id": null,
-      "release_date": "2025-04-05",
-      "tags": null
-    },
-    "google/gemini-2.5-flash-preview-09-2025": {
-      "aliases": [],
-      "capabilities": {
-        "chat": true,
-        "embeddings": false,
-        "json": {
-          "native": false,
-          "schema": false,
-          "strict": false
-        },
-        "reasoning": {
-          "enabled": true
-        },
-        "streaming": {
-          "tool_calls": true
-        },
-        "tools": {
-          "enabled": true
-        }
-      },
-      "cost": {
-        "cache_read": 0.075,
-        "cache_write": 0.383,
-        "input": 0.3,
-        "output": 2.5
-      },
-      "deprecated": false,
-      "extra": {
-        "attachment": true,
-        "family": "gemini-flash",
+        "attachment": false,
+        "family": "morph-v3-large",
         "open_weights": false,
-        "temperature": true
+        "temperature": false
       },
       "family": null,
-      "id": "google/gemini-2.5-flash-preview-09-2025",
-      "knowledge": "2025-01",
-      "last_updated": "2025-09-25",
+      "id": "morph/morph-v3-large",
+      "knowledge": null,
+      "last_updated": "2024-08-15",
       "lifecycle": null,
       "limits": {
-        "context": 1048576,
-        "output": 65536
+        "context": 32000,
+        "output": 32000
       },
       "modalities": {
         "input": [
-          "text",
-          "image",
-          "audio",
-          "video",
-          "pdf"
+          "text"
         ],
         "output": [
           "text"
         ]
       },
       "model": null,
-      "name": "Gemini 2.5 Flash Preview 09-25",
+      "name": "Morph v3 Large",
       "provider": "vercel",
       "provider_model_id": null,
-      "release_date": "2025-09-25",
+      "release_date": "2024-08-15",
       "tags": null
     },
     "openai/gpt-4-turbo": {
@@ -3391,7 +2892,7 @@
       "release_date": "2023-11-06",
       "tags": null
     },
-    "deepseek/deepseek-v3.2-exp": {
+    "openai/gpt-4.1": {
       "aliases": [],
       "capabilities": {
         "chat": true,
@@ -3412,304 +2913,26 @@
         }
       },
       "cost": {
-        "input": 0.28,
-        "output": 0.42
+        "cache_read": 0.5,
+        "input": 2,
+        "output": 8
       },
       "deprecated": false,
       "extra": {
-        "attachment": false,
-        "family": "deepseek-v3",
+        "attachment": true,
+        "family": "gpt-4.1",
         "open_weights": false,
+        "structured_output": true,
         "temperature": true
       },
       "family": null,
-      "id": "deepseek/deepseek-v3.2-exp",
-      "knowledge": "2025-09",
-      "last_updated": "2025-09-29",
+      "id": "openai/gpt-4.1",
+      "knowledge": "2024-04",
+      "last_updated": "2025-04-14",
       "lifecycle": null,
       "limits": {
-        "context": 163840,
-        "output": 8192
-      },
-      "modalities": {
-        "input": [
-          "text"
-        ],
-        "output": [
-          "text"
-        ]
-      },
-      "model": null,
-      "name": "DeepSeek V3.2 Exp",
-      "provider": "vercel",
-      "provider_model_id": null,
-      "release_date": "2025-09-29",
-      "tags": null
-    },
-    "xai/grok-3-fast": {
-      "aliases": [],
-      "capabilities": {
-        "chat": true,
-        "embeddings": false,
-        "json": {
-          "native": false,
-          "schema": false,
-          "strict": false
-        },
-        "reasoning": {
-          "enabled": false
-        },
-        "streaming": {
-          "tool_calls": true
-        },
-        "tools": {
-          "enabled": true
-        }
-      },
-      "cost": {
-        "cache_read": 1.25,
-        "input": 5,
-        "output": 25
-      },
-      "deprecated": false,
-      "extra": {
-        "attachment": false,
-        "family": "grok-3",
-        "open_weights": false,
-        "temperature": true
-      },
-      "family": null,
-      "id": "xai/grok-3-fast",
-      "knowledge": "2024-11",
-      "last_updated": "2025-02-17",
-      "lifecycle": null,
-      "limits": {
-        "context": 131072,
-        "output": 8192
-      },
-      "modalities": {
-        "input": [
-          "text"
-        ],
-        "output": [
-          "text"
-        ]
-      },
-      "model": null,
-      "name": "Grok 3 Fast",
-      "provider": "vercel",
-      "provider_model_id": null,
-      "release_date": "2025-02-17",
-      "tags": null
-    },
-    "zai/glm-4.6": {
-      "aliases": [],
-      "capabilities": {
-        "chat": true,
-        "embeddings": false,
-        "json": {
-          "native": false,
-          "schema": false,
-          "strict": false
-        },
-        "reasoning": {
-          "enabled": true
-        },
-        "streaming": {
-          "tool_calls": true
-        },
-        "tools": {
-          "enabled": true
-        }
-      },
-      "cost": {
-        "input": 0.6,
-        "output": 2.2
-      },
-      "deprecated": false,
-      "extra": {
-        "attachment": false,
-        "family": "glm-4.6",
-        "open_weights": true,
-        "temperature": true
-      },
-      "family": null,
-      "id": "zai/glm-4.6",
-      "knowledge": "2025-04",
-      "last_updated": "2025-09-30",
-      "lifecycle": null,
-      "limits": {
-        "context": 200000,
-        "output": 96000
-      },
-      "modalities": {
-        "input": [
-          "text"
-        ],
-        "output": [
-          "text"
-        ]
-      },
-      "model": null,
-      "name": "GLM 4.6",
-      "provider": "vercel",
-      "provider_model_id": null,
-      "release_date": "2025-09-30",
-      "tags": null
-    },
-    "alibaba/qwen3-next-80b-a3b-instruct": {
-      "aliases": [],
-      "capabilities": {
-        "chat": true,
-        "embeddings": false,
-        "json": {
-          "native": false,
-          "schema": false,
-          "strict": false
-        },
-        "reasoning": {
-          "enabled": false
-        },
-        "streaming": {
-          "tool_calls": true
-        },
-        "tools": {
-          "enabled": true
-        }
-      },
-      "cost": {
-        "input": 0.5,
-        "output": 2
-      },
-      "deprecated": false,
-      "extra": {
-        "attachment": false,
-        "family": "qwen3",
-        "open_weights": true,
-        "temperature": true
-      },
-      "family": null,
-      "id": "alibaba/qwen3-next-80b-a3b-instruct",
-      "knowledge": "2025-04",
-      "last_updated": "2025-09-12",
-      "lifecycle": null,
-      "limits": {
-        "context": 131072,
+        "context": 1047576,
         "output": 32768
-      },
-      "modalities": {
-        "input": [
-          "text"
-        ],
-        "output": [
-          "text"
-        ]
-      },
-      "model": null,
-      "name": "Qwen3 Next 80B A3B Instruct",
-      "provider": "vercel",
-      "provider_model_id": null,
-      "release_date": "2025-09-12",
-      "tags": null
-    },
-    "anthropic/claude-opus-4.5": {
-      "aliases": [],
-      "capabilities": {
-        "chat": true,
-        "embeddings": false,
-        "json": {
-          "native": false,
-          "schema": false,
-          "strict": false
-        },
-        "reasoning": {
-          "enabled": true
-        },
-        "streaming": {
-          "tool_calls": true
-        },
-        "tools": {
-          "enabled": true
-        }
-      },
-      "cost": {
-        "cache_read": 1.5,
-        "cache_write": 18.75,
-        "input": 5,
-        "output": 25
-      },
-      "deprecated": false,
-      "extra": {
-        "attachment": true,
-        "family": "claude-opus",
-        "open_weights": false,
-        "temperature": true
-      },
-      "family": null,
-      "id": "anthropic/claude-opus-4.5",
-      "knowledge": "2025-03-31",
-      "last_updated": "2025-11-24",
-      "lifecycle": null,
-      "limits": {
-        "context": 200000,
-        "output": 64000
-      },
-      "modalities": {
-        "input": [
-          "text",
-          "image",
-          "pdf"
-        ],
-        "output": [
-          "text"
-        ]
-      },
-      "model": null,
-      "name": "Claude Opus 4.5",
-      "provider": "vercel",
-      "provider_model_id": null,
-      "release_date": "2025-11-24",
-      "tags": null
-    },
-    "mistral/pixtral-12b": {
-      "aliases": [],
-      "capabilities": {
-        "chat": true,
-        "embeddings": false,
-        "json": {
-          "native": false,
-          "schema": false,
-          "strict": false
-        },
-        "reasoning": {
-          "enabled": false
-        },
-        "streaming": {
-          "tool_calls": true
-        },
-        "tools": {
-          "enabled": true
-        }
-      },
-      "cost": {
-        "input": 0.15,
-        "output": 0.15
-      },
-      "deprecated": false,
-      "extra": {
-        "attachment": true,
-        "family": "pixtral",
-        "open_weights": true,
-        "temperature": true
-      },
-      "family": null,
-      "id": "mistral/pixtral-12b",
-      "knowledge": "2024-09",
-      "last_updated": "2024-09-01",
-      "lifecycle": null,
-      "limits": {
-        "context": 128000,
-        "output": 128000
       },
       "modalities": {
         "input": [
@@ -3721,10 +2944,126 @@
         ]
       },
       "model": null,
-      "name": "Pixtral 12B",
+      "name": "GPT-4.1",
       "provider": "vercel",
       "provider_model_id": null,
-      "release_date": "2024-09-01",
+      "release_date": "2025-04-14",
+      "tags": null
+    },
+    "openai/gpt-4.1-mini": {
+      "aliases": [],
+      "capabilities": {
+        "chat": true,
+        "embeddings": false,
+        "json": {
+          "native": false,
+          "schema": false,
+          "strict": false
+        },
+        "reasoning": {
+          "enabled": false
+        },
+        "streaming": {
+          "tool_calls": true
+        },
+        "tools": {
+          "enabled": true
+        }
+      },
+      "cost": {
+        "cache_read": 0.1,
+        "input": 0.4,
+        "output": 1.6
+      },
+      "deprecated": false,
+      "extra": {
+        "attachment": true,
+        "family": "gpt-4.1-mini",
+        "open_weights": false,
+        "structured_output": true,
+        "temperature": true
+      },
+      "family": null,
+      "id": "openai/gpt-4.1-mini",
+      "knowledge": "2024-04",
+      "last_updated": "2025-04-14",
+      "lifecycle": null,
+      "limits": {
+        "context": 1047576,
+        "output": 32768
+      },
+      "modalities": {
+        "input": [
+          "text",
+          "image"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "model": null,
+      "name": "GPT-4.1 mini",
+      "provider": "vercel",
+      "provider_model_id": null,
+      "release_date": "2025-04-14",
+      "tags": null
+    },
+    "openai/gpt-4.1-nano": {
+      "aliases": [],
+      "capabilities": {
+        "chat": true,
+        "embeddings": false,
+        "json": {
+          "native": false,
+          "schema": false,
+          "strict": false
+        },
+        "reasoning": {
+          "enabled": false
+        },
+        "streaming": {
+          "tool_calls": true
+        },
+        "tools": {
+          "enabled": true
+        }
+      },
+      "cost": {
+        "cache_read": 0.03,
+        "input": 0.1,
+        "output": 0.4
+      },
+      "deprecated": false,
+      "extra": {
+        "attachment": true,
+        "family": "gpt-4.1-nano",
+        "open_weights": false,
+        "structured_output": true,
+        "temperature": true
+      },
+      "family": null,
+      "id": "openai/gpt-4.1-nano",
+      "knowledge": "2024-04",
+      "last_updated": "2025-04-14",
+      "lifecycle": null,
+      "limits": {
+        "context": 1047576,
+        "output": 32768
+      },
+      "modalities": {
+        "input": [
+          "text",
+          "image"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "model": null,
+      "name": "GPT-4.1 nano",
+      "provider": "vercel",
+      "provider_model_id": null,
+      "release_date": "2025-04-14",
       "tags": null
     },
     "openai/gpt-4o": {
@@ -3785,63 +3124,7 @@
       "release_date": "2024-05-13",
       "tags": null
     },
-    "zai/glm-4.5v": {
-      "aliases": [],
-      "capabilities": {
-        "chat": true,
-        "embeddings": false,
-        "json": {
-          "native": false,
-          "schema": false,
-          "strict": false
-        },
-        "reasoning": {
-          "enabled": true
-        },
-        "streaming": {
-          "tool_calls": true
-        },
-        "tools": {
-          "enabled": true
-        }
-      },
-      "cost": {
-        "input": 0.6,
-        "output": 1.8
-      },
-      "deprecated": false,
-      "extra": {
-        "attachment": true,
-        "family": "glm-4.5v",
-        "open_weights": true,
-        "temperature": true
-      },
-      "family": null,
-      "id": "zai/glm-4.5v",
-      "knowledge": "2025-08",
-      "last_updated": "2025-08-11",
-      "lifecycle": null,
-      "limits": {
-        "context": 66000,
-        "output": 16000
-      },
-      "modalities": {
-        "input": [
-          "text",
-          "image"
-        ],
-        "output": [
-          "text"
-        ]
-      },
-      "model": null,
-      "name": "GLM 4.5V",
-      "provider": "vercel",
-      "provider_model_id": null,
-      "release_date": "2025-08-11",
-      "tags": null
-    },
-    "amazon/nova-micro": {
+    "openai/gpt-4o-mini": {
       "aliases": [],
       "capabilities": {
         "chat": true,
@@ -3862,570 +3145,22 @@
         }
       },
       "cost": {
-        "cache_read": 0.00875,
-        "input": 0.035,
-        "output": 0.14
+        "cache_read": 0.08,
+        "input": 0.15,
+        "output": 0.6
       },
       "deprecated": false,
       "extra": {
-        "attachment": false,
-        "family": "nova-micro",
+        "attachment": true,
+        "family": "gpt-4o-mini",
         "open_weights": false,
+        "structured_output": true,
         "temperature": true
       },
       "family": null,
-      "id": "amazon/nova-micro",
-      "knowledge": "2024-10",
-      "last_updated": "2024-12-03",
-      "lifecycle": null,
-      "limits": {
-        "context": 128000,
-        "output": 8192
-      },
-      "modalities": {
-        "input": [
-          "text"
-        ],
-        "output": [
-          "text"
-        ]
-      },
-      "model": null,
-      "name": "Nova Micro",
-      "provider": "vercel",
-      "provider_model_id": null,
-      "release_date": "2024-12-03",
-      "tags": null
-    },
-    "anthropic/claude-4-opus": {
-      "aliases": [],
-      "capabilities": {
-        "chat": true,
-        "embeddings": false,
-        "json": {
-          "native": false,
-          "schema": false,
-          "strict": false
-        },
-        "reasoning": {
-          "enabled": true
-        },
-        "streaming": {
-          "tool_calls": true
-        },
-        "tools": {
-          "enabled": true
-        }
-      },
-      "cost": {
-        "cache_read": 1.5,
-        "cache_write": 18.75,
-        "input": 15,
-        "output": 75
-      },
-      "deprecated": false,
-      "extra": {
-        "attachment": true,
-        "family": "claude-opus",
-        "open_weights": false,
-        "temperature": true
-      },
-      "family": null,
-      "id": "anthropic/claude-4-opus",
-      "knowledge": "2025-03-31",
-      "last_updated": "2025-05-22",
-      "lifecycle": null,
-      "limits": {
-        "context": 200000,
-        "output": 32000
-      },
-      "modalities": {
-        "input": [
-          "text",
-          "image",
-          "pdf"
-        ],
-        "output": [
-          "text"
-        ]
-      },
-      "model": null,
-      "name": "Claude Opus 4",
-      "provider": "vercel",
-      "provider_model_id": null,
-      "release_date": "2025-05-22",
-      "tags": null
-    },
-    "google/gemini-2.5-flash-lite-preview-09-2025": {
-      "aliases": [],
-      "capabilities": {
-        "chat": true,
-        "embeddings": false,
-        "json": {
-          "native": false,
-          "schema": false,
-          "strict": false
-        },
-        "reasoning": {
-          "enabled": true
-        },
-        "streaming": {
-          "tool_calls": true
-        },
-        "tools": {
-          "enabled": true
-        }
-      },
-      "cost": {
-        "cache_read": 0.025,
-        "input": 0.1,
-        "output": 0.4
-      },
-      "deprecated": false,
-      "extra": {
-        "attachment": true,
-        "family": "gemini-flash-lite",
-        "open_weights": false,
-        "temperature": true
-      },
-      "family": null,
-      "id": "google/gemini-2.5-flash-lite-preview-09-2025",
-      "knowledge": "2025-01",
-      "last_updated": "2025-09-25",
-      "lifecycle": null,
-      "limits": {
-        "context": 1048576,
-        "output": 65536
-      },
-      "modalities": {
-        "input": [
-          "text",
-          "image",
-          "audio",
-          "video",
-          "pdf"
-        ],
-        "output": [
-          "text"
-        ]
-      },
-      "model": null,
-      "name": "Gemini 2.5 Flash Lite Preview 09-25",
-      "provider": "vercel",
-      "provider_model_id": null,
-      "release_date": "2025-09-25",
-      "tags": null
-    },
-    "mistral/mistral-large": {
-      "aliases": [],
-      "capabilities": {
-        "chat": true,
-        "embeddings": false,
-        "json": {
-          "native": false,
-          "schema": false,
-          "strict": false
-        },
-        "reasoning": {
-          "enabled": false
-        },
-        "streaming": {
-          "tool_calls": true
-        },
-        "tools": {
-          "enabled": true
-        }
-      },
-      "cost": {
-        "input": 0.5,
-        "output": 1.5
-      },
-      "deprecated": false,
-      "extra": {
-        "attachment": true,
-        "family": "mistral-large",
-        "open_weights": true,
-        "temperature": true
-      },
-      "family": null,
-      "id": "mistral/mistral-large",
-      "knowledge": "2024-11",
-      "last_updated": "2025-12-02",
-      "lifecycle": null,
-      "limits": {
-        "context": 262144,
-        "output": 262144
-      },
-      "modalities": {
-        "input": [
-          "text",
-          "image"
-        ],
-        "output": [
-          "text"
-        ]
-      },
-      "model": null,
-      "name": "Mistral Large",
-      "provider": "vercel",
-      "provider_model_id": null,
-      "release_date": "2024-11-01",
-      "tags": null
-    },
-    "mistral/codestral": {
-      "aliases": [],
-      "capabilities": {
-        "chat": true,
-        "embeddings": false,
-        "json": {
-          "native": false,
-          "schema": false,
-          "strict": false
-        },
-        "reasoning": {
-          "enabled": false
-        },
-        "streaming": {
-          "tool_calls": true
-        },
-        "tools": {
-          "enabled": true
-        }
-      },
-      "cost": {
-        "input": 0.3,
-        "output": 0.9
-      },
-      "deprecated": false,
-      "extra": {
-        "attachment": false,
-        "family": "codestral",
-        "open_weights": true,
-        "temperature": true
-      },
-      "family": null,
-      "id": "mistral/codestral",
-      "knowledge": "2024-10",
-      "last_updated": "2025-01-04",
-      "lifecycle": null,
-      "limits": {
-        "context": 256000,
-        "output": 4096
-      },
-      "modalities": {
-        "input": [
-          "text"
-        ],
-        "output": [
-          "text"
-        ]
-      },
-      "model": null,
-      "name": "Codestral",
-      "provider": "vercel",
-      "provider_model_id": null,
-      "release_date": "2024-05-29",
-      "tags": null
-    },
-    "perplexity/sonar-pro": {
-      "aliases": [],
-      "capabilities": null,
-      "cost": {
-        "input": 3,
-        "output": 15
-      },
-      "deprecated": false,
-      "extra": {
-        "attachment": false,
-        "family": "sonar-pro",
-        "open_weights": false,
-        "temperature": true
-      },
-      "family": null,
-      "id": "perplexity/sonar-pro",
-      "knowledge": "2025-09",
-      "last_updated": "2025-02-19",
-      "lifecycle": null,
-      "limits": {
-        "context": 200000,
-        "output": 8000
-      },
-      "modalities": {
-        "input": [
-          "text",
-          "image"
-        ],
-        "output": [
-          "text"
-        ]
-      },
-      "model": null,
-      "name": "Sonar Pro",
-      "provider": "vercel",
-      "provider_model_id": null,
-      "release_date": "2025-02-19",
-      "tags": null
-    },
-    "meta/llama-3.3-70b": {
-      "aliases": [],
-      "capabilities": {
-        "chat": true,
-        "embeddings": false,
-        "json": {
-          "native": false,
-          "schema": false,
-          "strict": false
-        },
-        "reasoning": {
-          "enabled": false
-        },
-        "streaming": {
-          "tool_calls": true
-        },
-        "tools": {
-          "enabled": true
-        }
-      },
-      "cost": {
-        "input": 0,
-        "output": 0
-      },
-      "deprecated": false,
-      "extra": {
-        "attachment": true,
-        "family": "llama-3.3",
-        "open_weights": true,
-        "temperature": true
-      },
-      "family": null,
-      "id": "meta/llama-3.3-70b",
-      "knowledge": "2023-12",
-      "last_updated": "2024-12-06",
-      "lifecycle": null,
-      "limits": {
-        "context": 128000,
-        "output": 4096
-      },
-      "modalities": {
-        "input": [
-          "text"
-        ],
-        "output": [
-          "text"
-        ]
-      },
-      "model": null,
-      "name": "Llama-3.3-70B-Instruct",
-      "provider": "vercel",
-      "provider_model_id": null,
-      "release_date": "2024-12-06",
-      "tags": null
-    },
-    "zai/glm-4.5": {
-      "aliases": [],
-      "capabilities": {
-        "chat": true,
-        "embeddings": false,
-        "json": {
-          "native": false,
-          "schema": false,
-          "strict": false
-        },
-        "reasoning": {
-          "enabled": true
-        },
-        "streaming": {
-          "tool_calls": true
-        },
-        "tools": {
-          "enabled": true
-        }
-      },
-      "cost": {
-        "input": 0.6,
-        "output": 2.2
-      },
-      "deprecated": false,
-      "extra": {
-        "attachment": false,
-        "family": "glm-4.5",
-        "open_weights": true,
-        "temperature": true
-      },
-      "family": null,
-      "id": "zai/glm-4.5",
-      "knowledge": "2025-07",
-      "last_updated": "2025-07-28",
-      "lifecycle": null,
-      "limits": {
-        "context": 128000,
-        "output": 96000
-      },
-      "modalities": {
-        "input": [
-          "text"
-        ],
-        "output": [
-          "text"
-        ]
-      },
-      "model": null,
-      "name": "GLM 4.5",
-      "provider": "vercel",
-      "provider_model_id": null,
-      "release_date": "2025-07-28",
-      "tags": null
-    },
-    "alibaba/qwen3-vl-thinking": {
-      "aliases": [],
-      "capabilities": {
-        "chat": true,
-        "embeddings": false,
-        "json": {
-          "native": false,
-          "schema": false,
-          "strict": false
-        },
-        "reasoning": {
-          "enabled": true
-        },
-        "streaming": {
-          "tool_calls": true
-        },
-        "tools": {
-          "enabled": true
-        }
-      },
-      "cost": {
-        "input": 0.7,
-        "output": 8.4
-      },
-      "deprecated": false,
-      "extra": {
-        "attachment": true,
-        "family": "qwen3-vl",
-        "open_weights": true,
-        "temperature": true
-      },
-      "family": null,
-      "id": "alibaba/qwen3-vl-thinking",
-      "knowledge": "2025-09",
-      "last_updated": "2025-09-24",
-      "lifecycle": null,
-      "limits": {
-        "context": 131072,
-        "output": 129024
-      },
-      "modalities": {
-        "input": [
-          "text",
-          "image"
-        ],
-        "output": [
-          "text"
-        ]
-      },
-      "model": null,
-      "name": "Qwen3 VL Thinking",
-      "provider": "vercel",
-      "provider_model_id": null,
-      "release_date": "2025-09-24",
-      "tags": null
-    },
-    "anthropic/claude-3.5-sonnet": {
-      "aliases": [],
-      "capabilities": {
-        "chat": true,
-        "embeddings": false,
-        "json": {
-          "native": false,
-          "schema": false,
-          "strict": false
-        },
-        "reasoning": {
-          "enabled": false
-        },
-        "streaming": {
-          "tool_calls": true
-        },
-        "tools": {
-          "enabled": true
-        }
-      },
-      "cost": {
-        "cache_read": 0.3,
-        "cache_write": 3.75,
-        "input": 3,
-        "output": 15
-      },
-      "deprecated": false,
-      "extra": {
-        "attachment": true,
-        "family": "claude-sonnet",
-        "open_weights": false,
-        "temperature": true
-      },
-      "family": null,
-      "id": "anthropic/claude-3.5-sonnet",
-      "knowledge": "2024-04-30",
-      "last_updated": "2024-10-22",
-      "lifecycle": null,
-      "limits": {
-        "context": 200000,
-        "output": 8192
-      },
-      "modalities": {
-        "input": [
-          "text",
-          "image",
-          "pdf"
-        ],
-        "output": [
-          "text"
-        ]
-      },
-      "model": null,
-      "name": "Claude Sonnet 3.5 v2",
-      "provider": "vercel",
-      "provider_model_id": null,
-      "release_date": "2024-10-22",
-      "tags": null
-    },
-    "mistral/magistral-medium": {
-      "aliases": [],
-      "capabilities": {
-        "chat": true,
-        "embeddings": false,
-        "json": {
-          "native": false,
-          "schema": false,
-          "strict": false
-        },
-        "reasoning": {
-          "enabled": true
-        },
-        "streaming": {
-          "tool_calls": true
-        },
-        "tools": {
-          "enabled": true
-        }
-      },
-      "cost": {
-        "input": 2,
-        "output": 5
-      },
-      "deprecated": false,
-      "extra": {
-        "attachment": false,
-        "family": "magistral-medium",
-        "open_weights": true,
-        "temperature": true
-      },
-      "family": null,
-      "id": "mistral/magistral-medium",
-      "knowledge": "2025-06",
-      "last_updated": "2025-03-20",
+      "id": "openai/gpt-4o-mini",
+      "knowledge": "2023-09",
+      "last_updated": "2024-07-18",
       "lifecycle": null,
       "limits": {
         "context": 128000,
@@ -4433,20 +3168,21 @@
       },
       "modalities": {
         "input": [
-          "text"
+          "text",
+          "image"
         ],
         "output": [
           "text"
         ]
       },
       "model": null,
-      "name": "Magistral Medium",
+      "name": "GPT-4o mini",
       "provider": "vercel",
       "provider_model_id": null,
-      "release_date": "2025-03-17",
+      "release_date": "2024-07-18",
       "tags": null
     },
-    "anthropic/claude-3-haiku": {
+    "openai/gpt-5": {
       "aliases": [],
       "capabilities": {
         "chat": true,
@@ -4457,7 +3193,123 @@
           "strict": false
         },
         "reasoning": {
-          "enabled": false
+          "enabled": true
+        },
+        "streaming": {
+          "tool_calls": true
+        },
+        "tools": {
+          "enabled": true
+        }
+      },
+      "cost": {
+        "cache_read": 0.13,
+        "input": 1.25,
+        "output": 10
+      },
+      "deprecated": false,
+      "extra": {
+        "attachment": true,
+        "family": "gpt-5",
+        "open_weights": false,
+        "structured_output": true,
+        "temperature": false
+      },
+      "family": null,
+      "id": "openai/gpt-5",
+      "knowledge": "2024-09-30",
+      "last_updated": "2025-08-07",
+      "lifecycle": null,
+      "limits": {
+        "context": 400000,
+        "output": 128000
+      },
+      "modalities": {
+        "input": [
+          "text",
+          "image"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "model": null,
+      "name": "GPT-5",
+      "provider": "vercel",
+      "provider_model_id": null,
+      "release_date": "2025-08-07",
+      "tags": null
+    },
+    "openai/gpt-5-codex": {
+      "aliases": [],
+      "capabilities": {
+        "chat": true,
+        "embeddings": false,
+        "json": {
+          "native": false,
+          "schema": false,
+          "strict": false
+        },
+        "reasoning": {
+          "enabled": true
+        },
+        "streaming": {
+          "tool_calls": true
+        },
+        "tools": {
+          "enabled": true
+        }
+      },
+      "cost": {
+        "cache_read": 0.125,
+        "input": 1.25,
+        "output": 10
+      },
+      "deprecated": false,
+      "extra": {
+        "attachment": false,
+        "family": "gpt-5-codex",
+        "open_weights": false,
+        "structured_output": true,
+        "temperature": false
+      },
+      "family": null,
+      "id": "openai/gpt-5-codex",
+      "knowledge": "2024-09-30",
+      "last_updated": "2025-09-15",
+      "lifecycle": null,
+      "limits": {
+        "context": 400000,
+        "output": 128000
+      },
+      "modalities": {
+        "input": [
+          "text",
+          "image"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "model": null,
+      "name": "GPT-5-Codex",
+      "provider": "vercel",
+      "provider_model_id": null,
+      "release_date": "2025-09-15",
+      "tags": null
+    },
+    "openai/gpt-5-mini": {
+      "aliases": [],
+      "capabilities": {
+        "chat": true,
+        "embeddings": false,
+        "json": {
+          "native": false,
+          "schema": false,
+          "strict": false
+        },
+        "reasoning": {
+          "enabled": true
         },
         "streaming": {
           "tool_calls": true
@@ -4468,138 +3320,25 @@
       },
       "cost": {
         "cache_read": 0.03,
-        "cache_write": 0.3,
         "input": 0.25,
-        "output": 1.25
+        "output": 2
       },
       "deprecated": false,
       "extra": {
         "attachment": true,
-        "family": "claude-haiku",
+        "family": "gpt-5-mini",
         "open_weights": false,
-        "temperature": true
+        "structured_output": true,
+        "temperature": false
       },
       "family": null,
-      "id": "anthropic/claude-3-haiku",
-      "knowledge": "2023-08-31",
-      "last_updated": "2024-03-13",
+      "id": "openai/gpt-5-mini",
+      "knowledge": "2024-05-30",
+      "last_updated": "2025-08-07",
       "lifecycle": null,
       "limits": {
-        "context": 200000,
-        "output": 4096
-      },
-      "modalities": {
-        "input": [
-          "text",
-          "image",
-          "pdf"
-        ],
-        "output": [
-          "text"
-        ]
-      },
-      "model": null,
-      "name": "Claude Haiku 3",
-      "provider": "vercel",
-      "provider_model_id": null,
-      "release_date": "2024-03-13",
-      "tags": null
-    },
-    "deepseek/deepseek-v3.2-exp-thinking": {
-      "aliases": [],
-      "capabilities": {
-        "chat": true,
-        "embeddings": false,
-        "json": {
-          "native": false,
-          "schema": false,
-          "strict": false
-        },
-        "reasoning": {
-          "enabled": true
-        },
-        "streaming": {
-          "tool_calls": true
-        },
-        "tools": {
-          "enabled": true
-        }
-      },
-      "cost": {
-        "input": 0.28,
-        "output": 0.42
-      },
-      "deprecated": false,
-      "extra": {
-        "attachment": false,
-        "family": "deepseek-v3",
-        "open_weights": false,
-        "temperature": true
-      },
-      "family": null,
-      "id": "deepseek/deepseek-v3.2-exp-thinking",
-      "knowledge": "2025-09",
-      "last_updated": "2025-09-29",
-      "lifecycle": null,
-      "limits": {
-        "context": 163840,
-        "output": 8192
-      },
-      "modalities": {
-        "input": [
-          "text"
-        ],
-        "output": [
-          "text"
-        ]
-      },
-      "model": null,
-      "name": "DeepSeek V3.2 Exp Thinking",
-      "provider": "vercel",
-      "provider_model_id": null,
-      "release_date": "2025-09-29",
-      "tags": null
-    },
-    "xai/grok-2-vision": {
-      "aliases": [],
-      "capabilities": {
-        "chat": true,
-        "embeddings": false,
-        "json": {
-          "native": false,
-          "schema": false,
-          "strict": false
-        },
-        "reasoning": {
-          "enabled": false
-        },
-        "streaming": {
-          "tool_calls": true
-        },
-        "tools": {
-          "enabled": true
-        }
-      },
-      "cost": {
-        "cache_read": 2,
-        "input": 2,
-        "output": 10
-      },
-      "deprecated": false,
-      "extra": {
-        "attachment": true,
-        "family": "grok-2",
-        "open_weights": false,
-        "temperature": true
-      },
-      "family": null,
-      "id": "xai/grok-2-vision",
-      "knowledge": "2024-08",
-      "last_updated": "2024-08-20",
-      "lifecycle": null,
-      "limits": {
-        "context": 8192,
-        "output": 4096
+        "context": 400000,
+        "output": 128000
       },
       "modalities": {
         "input": [
@@ -4611,66 +3350,10 @@
         ]
       },
       "model": null,
-      "name": "Grok 2 Vision",
+      "name": "GPT-5 Mini",
       "provider": "vercel",
       "provider_model_id": null,
-      "release_date": "2024-08-20",
-      "tags": null
-    },
-    "meta/llama-4-maverick": {
-      "aliases": [],
-      "capabilities": {
-        "chat": true,
-        "embeddings": false,
-        "json": {
-          "native": false,
-          "schema": false,
-          "strict": false
-        },
-        "reasoning": {
-          "enabled": false
-        },
-        "streaming": {
-          "tool_calls": true
-        },
-        "tools": {
-          "enabled": true
-        }
-      },
-      "cost": {
-        "input": 0,
-        "output": 0
-      },
-      "deprecated": false,
-      "extra": {
-        "attachment": true,
-        "family": "llama-4-maverick",
-        "open_weights": true,
-        "temperature": true
-      },
-      "family": null,
-      "id": "meta/llama-4-maverick",
-      "knowledge": "2024-08",
-      "last_updated": "2025-04-05",
-      "lifecycle": null,
-      "limits": {
-        "context": 128000,
-        "output": 4096
-      },
-      "modalities": {
-        "input": [
-          "text",
-          "image"
-        ],
-        "output": [
-          "text"
-        ]
-      },
-      "model": null,
-      "name": "Llama-4-Maverick-17B-128E-Instruct-FP8",
-      "provider": "vercel",
-      "provider_model_id": null,
-      "release_date": "2025-04-05",
+      "release_date": "2025-08-07",
       "tags": null
     },
     "openai/gpt-5-nano": {
@@ -4731,7 +3414,656 @@
       "release_date": "2025-08-07",
       "tags": null
     },
-    "anthropic/claude-3-opus": {
+    "openai/gpt-oss-120b": {
+      "aliases": [],
+      "capabilities": {
+        "chat": true,
+        "embeddings": false,
+        "json": {
+          "native": false,
+          "schema": false,
+          "strict": false
+        },
+        "reasoning": {
+          "enabled": true
+        },
+        "streaming": {
+          "tool_calls": true
+        },
+        "tools": {
+          "enabled": true
+        }
+      },
+      "cost": {
+        "input": 0.1,
+        "output": 0.5
+      },
+      "deprecated": false,
+      "extra": {
+        "attachment": false,
+        "family": "gpt-oss",
+        "open_weights": true,
+        "temperature": true
+      },
+      "family": null,
+      "id": "openai/gpt-oss-120b",
+      "knowledge": null,
+      "last_updated": "2025-08-05",
+      "lifecycle": null,
+      "limits": {
+        "context": 131072,
+        "output": 32768
+      },
+      "modalities": {
+        "input": [
+          "text"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "model": null,
+      "name": "GPT OSS 120B",
+      "provider": "vercel",
+      "provider_model_id": null,
+      "release_date": "2025-08-05",
+      "tags": null
+    },
+    "openai/gpt-oss-20b": {
+      "aliases": [],
+      "capabilities": {
+        "chat": true,
+        "embeddings": false,
+        "json": {
+          "native": false,
+          "schema": false,
+          "strict": false
+        },
+        "reasoning": {
+          "enabled": true
+        },
+        "streaming": {
+          "tool_calls": true
+        },
+        "tools": {
+          "enabled": true
+        }
+      },
+      "cost": {
+        "input": 0.07,
+        "output": 0.3
+      },
+      "deprecated": false,
+      "extra": {
+        "attachment": false,
+        "family": "gpt-oss",
+        "open_weights": true,
+        "temperature": true
+      },
+      "family": null,
+      "id": "openai/gpt-oss-20b",
+      "knowledge": null,
+      "last_updated": "2025-08-05",
+      "lifecycle": null,
+      "limits": {
+        "context": 131072,
+        "output": 32768
+      },
+      "modalities": {
+        "input": [
+          "text"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "model": null,
+      "name": "GPT OSS 20B",
+      "provider": "vercel",
+      "provider_model_id": null,
+      "release_date": "2025-08-05",
+      "tags": null
+    },
+    "openai/o1": {
+      "aliases": [],
+      "capabilities": {
+        "chat": true,
+        "embeddings": false,
+        "json": {
+          "native": false,
+          "schema": false,
+          "strict": false
+        },
+        "reasoning": {
+          "enabled": true
+        },
+        "streaming": {
+          "tool_calls": true
+        },
+        "tools": {
+          "enabled": true
+        }
+      },
+      "cost": {
+        "cache_read": 7.5,
+        "input": 15,
+        "output": 60
+      },
+      "deprecated": false,
+      "extra": {
+        "attachment": true,
+        "family": "o1",
+        "open_weights": false,
+        "structured_output": true,
+        "temperature": false
+      },
+      "family": null,
+      "id": "openai/o1",
+      "knowledge": "2023-09",
+      "last_updated": "2024-12-05",
+      "lifecycle": null,
+      "limits": {
+        "context": 200000,
+        "output": 100000
+      },
+      "modalities": {
+        "input": [
+          "text",
+          "image"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "model": null,
+      "name": "o1",
+      "provider": "vercel",
+      "provider_model_id": null,
+      "release_date": "2024-12-05",
+      "tags": null
+    },
+    "openai/o3": {
+      "aliases": [],
+      "capabilities": {
+        "chat": true,
+        "embeddings": false,
+        "json": {
+          "native": false,
+          "schema": false,
+          "strict": false
+        },
+        "reasoning": {
+          "enabled": true
+        },
+        "streaming": {
+          "tool_calls": true
+        },
+        "tools": {
+          "enabled": true
+        }
+      },
+      "cost": {
+        "cache_read": 0.5,
+        "input": 2,
+        "output": 8
+      },
+      "deprecated": false,
+      "extra": {
+        "attachment": true,
+        "family": "o3",
+        "open_weights": false,
+        "structured_output": true,
+        "temperature": false
+      },
+      "family": null,
+      "id": "openai/o3",
+      "knowledge": "2024-05",
+      "last_updated": "2025-04-16",
+      "lifecycle": null,
+      "limits": {
+        "context": 200000,
+        "output": 100000
+      },
+      "modalities": {
+        "input": [
+          "text",
+          "image"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "model": null,
+      "name": "o3",
+      "provider": "vercel",
+      "provider_model_id": null,
+      "release_date": "2025-04-16",
+      "tags": null
+    },
+    "openai/o3-mini": {
+      "aliases": [],
+      "capabilities": {
+        "chat": true,
+        "embeddings": false,
+        "json": {
+          "native": false,
+          "schema": false,
+          "strict": false
+        },
+        "reasoning": {
+          "enabled": true
+        },
+        "streaming": {
+          "tool_calls": true
+        },
+        "tools": {
+          "enabled": true
+        }
+      },
+      "cost": {
+        "cache_read": 0.55,
+        "input": 1.1,
+        "output": 4.4
+      },
+      "deprecated": false,
+      "extra": {
+        "attachment": false,
+        "family": "o3-mini",
+        "open_weights": false,
+        "structured_output": true,
+        "temperature": false
+      },
+      "family": null,
+      "id": "openai/o3-mini",
+      "knowledge": "2024-05",
+      "last_updated": "2025-01-29",
+      "lifecycle": null,
+      "limits": {
+        "context": 200000,
+        "output": 100000
+      },
+      "modalities": {
+        "input": [
+          "text"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "model": null,
+      "name": "o3-mini",
+      "provider": "vercel",
+      "provider_model_id": null,
+      "release_date": "2024-12-20",
+      "tags": null
+    },
+    "openai/o4-mini": {
+      "aliases": [],
+      "capabilities": {
+        "chat": true,
+        "embeddings": false,
+        "json": {
+          "native": false,
+          "schema": false,
+          "strict": false
+        },
+        "reasoning": {
+          "enabled": true
+        },
+        "streaming": {
+          "tool_calls": true
+        },
+        "tools": {
+          "enabled": true
+        }
+      },
+      "cost": {
+        "cache_read": 0.28,
+        "input": 1.1,
+        "output": 4.4
+      },
+      "deprecated": false,
+      "extra": {
+        "attachment": true,
+        "family": "o4-mini",
+        "open_weights": false,
+        "structured_output": true,
+        "temperature": false
+      },
+      "family": null,
+      "id": "openai/o4-mini",
+      "knowledge": "2024-05",
+      "last_updated": "2025-04-16",
+      "lifecycle": null,
+      "limits": {
+        "context": 200000,
+        "output": 100000
+      },
+      "modalities": {
+        "input": [
+          "text",
+          "image"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "model": null,
+      "name": "o4-mini",
+      "provider": "vercel",
+      "provider_model_id": null,
+      "release_date": "2025-04-16",
+      "tags": null
+    },
+    "perplexity/sonar": {
+      "aliases": [],
+      "capabilities": null,
+      "cost": {
+        "input": 1,
+        "output": 1
+      },
+      "deprecated": false,
+      "extra": {
+        "attachment": false,
+        "family": "sonar",
+        "open_weights": false,
+        "temperature": true
+      },
+      "family": null,
+      "id": "perplexity/sonar",
+      "knowledge": "2025-02",
+      "last_updated": "2025-02-19",
+      "lifecycle": null,
+      "limits": {
+        "context": 127000,
+        "output": 8000
+      },
+      "modalities": {
+        "input": [
+          "text",
+          "image"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "model": null,
+      "name": "Sonar",
+      "provider": "vercel",
+      "provider_model_id": null,
+      "release_date": "2025-02-19",
+      "tags": null
+    },
+    "perplexity/sonar-pro": {
+      "aliases": [],
+      "capabilities": null,
+      "cost": {
+        "input": 3,
+        "output": 15
+      },
+      "deprecated": false,
+      "extra": {
+        "attachment": false,
+        "family": "sonar-pro",
+        "open_weights": false,
+        "temperature": true
+      },
+      "family": null,
+      "id": "perplexity/sonar-pro",
+      "knowledge": "2025-09",
+      "last_updated": "2025-02-19",
+      "lifecycle": null,
+      "limits": {
+        "context": 200000,
+        "output": 8000
+      },
+      "modalities": {
+        "input": [
+          "text",
+          "image"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "model": null,
+      "name": "Sonar Pro",
+      "provider": "vercel",
+      "provider_model_id": null,
+      "release_date": "2025-02-19",
+      "tags": null
+    },
+    "perplexity/sonar-reasoning": {
+      "aliases": [],
+      "capabilities": {
+        "chat": true,
+        "embeddings": false,
+        "json": {
+          "native": false,
+          "schema": false,
+          "strict": false
+        },
+        "reasoning": {
+          "enabled": true
+        },
+        "streaming": {
+          "text": true,
+          "tool_calls": false
+        },
+        "tools": {
+          "enabled": false,
+          "parallel": false,
+          "streaming": false,
+          "strict": false
+        }
+      },
+      "cost": {
+        "input": 1,
+        "output": 5
+      },
+      "deprecated": false,
+      "extra": {
+        "attachment": false,
+        "family": "sonar-reasoning",
+        "open_weights": false,
+        "temperature": true
+      },
+      "family": null,
+      "id": "perplexity/sonar-reasoning",
+      "knowledge": "2025-09",
+      "last_updated": "2025-02-19",
+      "lifecycle": null,
+      "limits": {
+        "context": 127000,
+        "output": 8000
+      },
+      "modalities": {
+        "input": [
+          "text"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "model": null,
+      "name": "Sonar Reasoning",
+      "provider": "vercel",
+      "provider_model_id": null,
+      "release_date": "2025-02-19",
+      "tags": null
+    },
+    "perplexity/sonar-reasoning-pro": {
+      "aliases": [],
+      "capabilities": {
+        "chat": true,
+        "embeddings": false,
+        "json": {
+          "native": false,
+          "schema": false,
+          "strict": false
+        },
+        "reasoning": {
+          "enabled": true
+        },
+        "streaming": {
+          "text": true,
+          "tool_calls": false
+        },
+        "tools": {
+          "enabled": false,
+          "parallel": false,
+          "streaming": false,
+          "strict": false
+        }
+      },
+      "cost": {
+        "input": 2,
+        "output": 8
+      },
+      "deprecated": false,
+      "extra": {
+        "attachment": false,
+        "family": "sonar-reasoning",
+        "open_weights": false,
+        "temperature": true
+      },
+      "family": null,
+      "id": "perplexity/sonar-reasoning-pro",
+      "knowledge": "2025-09",
+      "last_updated": "2025-02-19",
+      "lifecycle": null,
+      "limits": {
+        "context": 127000,
+        "output": 8000
+      },
+      "modalities": {
+        "input": [
+          "text"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "model": null,
+      "name": "Sonar Reasoning Pro",
+      "provider": "vercel",
+      "provider_model_id": null,
+      "release_date": "2025-02-19",
+      "tags": null
+    },
+    "vercel/v0-1.0-md": {
+      "aliases": [],
+      "capabilities": {
+        "chat": true,
+        "embeddings": false,
+        "json": {
+          "native": false,
+          "schema": false,
+          "strict": false
+        },
+        "reasoning": {
+          "enabled": true
+        },
+        "streaming": {
+          "tool_calls": true
+        },
+        "tools": {
+          "enabled": true
+        }
+      },
+      "cost": {
+        "input": 3,
+        "output": 15
+      },
+      "deprecated": false,
+      "extra": {
+        "attachment": true,
+        "family": "v0",
+        "open_weights": false,
+        "temperature": true
+      },
+      "family": null,
+      "id": "vercel/v0-1.0-md",
+      "knowledge": null,
+      "last_updated": "2025-05-22",
+      "lifecycle": null,
+      "limits": {
+        "context": 128000,
+        "output": 32000
+      },
+      "modalities": {
+        "input": [
+          "text",
+          "image"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "model": null,
+      "name": "v0-1.0-md",
+      "provider": "vercel",
+      "provider_model_id": null,
+      "release_date": "2025-05-22",
+      "tags": null
+    },
+    "vercel/v0-1.5-md": {
+      "aliases": [],
+      "capabilities": {
+        "chat": true,
+        "embeddings": false,
+        "json": {
+          "native": false,
+          "schema": false,
+          "strict": false
+        },
+        "reasoning": {
+          "enabled": true
+        },
+        "streaming": {
+          "tool_calls": true
+        },
+        "tools": {
+          "enabled": true
+        }
+      },
+      "cost": {
+        "input": 3,
+        "output": 15
+      },
+      "deprecated": false,
+      "extra": {
+        "attachment": true,
+        "family": "v0",
+        "open_weights": false,
+        "temperature": true
+      },
+      "family": null,
+      "id": "vercel/v0-1.5-md",
+      "knowledge": null,
+      "last_updated": "2025-06-09",
+      "lifecycle": null,
+      "limits": {
+        "context": 128000,
+        "output": 32000
+      },
+      "modalities": {
+        "input": [
+          "text",
+          "image"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "model": null,
+      "name": "v0-1.5-md",
+      "provider": "vercel",
+      "provider_model_id": null,
+      "release_date": "2025-06-09",
+      "tags": null
+    },
+    "xai/grok-2": {
       "aliases": [],
       "capabilities": {
         "chat": true,
@@ -4752,45 +4084,211 @@
         }
       },
       "cost": {
-        "cache_read": 1.5,
-        "cache_write": 18.75,
-        "input": 15,
-        "output": 75
+        "cache_read": 2,
+        "input": 2,
+        "output": 10
       },
       "deprecated": false,
       "extra": {
-        "attachment": true,
-        "family": "claude-opus",
+        "attachment": false,
+        "family": "grok-2",
         "open_weights": false,
         "temperature": true
       },
       "family": null,
-      "id": "anthropic/claude-3-opus",
-      "knowledge": "2023-08-31",
-      "last_updated": "2024-02-29",
+      "id": "xai/grok-2",
+      "knowledge": "2024-08",
+      "last_updated": "2024-08-20",
       "lifecycle": null,
       "limits": {
-        "context": 200000,
-        "output": 4096
+        "context": 131072,
+        "output": 8192
       },
       "modalities": {
         "input": [
-          "text",
-          "image",
-          "pdf"
+          "text"
         ],
         "output": [
           "text"
         ]
       },
       "model": null,
-      "name": "Claude Opus 3",
+      "name": "Grok 2",
       "provider": "vercel",
       "provider_model_id": null,
-      "release_date": "2024-02-29",
+      "release_date": "2024-08-20",
       "tags": null
     },
-    "google/gemini-2.5-flash-lite": {
+    "xai/grok-2-vision": {
+      "aliases": [],
+      "capabilities": {
+        "chat": true,
+        "embeddings": false,
+        "json": {
+          "native": false,
+          "schema": false,
+          "strict": false
+        },
+        "reasoning": {
+          "enabled": false
+        },
+        "streaming": {
+          "tool_calls": true
+        },
+        "tools": {
+          "enabled": true
+        }
+      },
+      "cost": {
+        "cache_read": 2,
+        "input": 2,
+        "output": 10
+      },
+      "deprecated": false,
+      "extra": {
+        "attachment": true,
+        "family": "grok-2",
+        "open_weights": false,
+        "temperature": true
+      },
+      "family": null,
+      "id": "xai/grok-2-vision",
+      "knowledge": "2024-08",
+      "last_updated": "2024-08-20",
+      "lifecycle": null,
+      "limits": {
+        "context": 8192,
+        "output": 4096
+      },
+      "modalities": {
+        "input": [
+          "text",
+          "image"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "model": null,
+      "name": "Grok 2 Vision",
+      "provider": "vercel",
+      "provider_model_id": null,
+      "release_date": "2024-08-20",
+      "tags": null
+    },
+    "xai/grok-3": {
+      "aliases": [],
+      "capabilities": {
+        "chat": true,
+        "embeddings": false,
+        "json": {
+          "native": false,
+          "schema": false,
+          "strict": false
+        },
+        "reasoning": {
+          "enabled": false
+        },
+        "streaming": {
+          "tool_calls": true
+        },
+        "tools": {
+          "enabled": true
+        }
+      },
+      "cost": {
+        "cache_read": 0.75,
+        "input": 3,
+        "output": 15
+      },
+      "deprecated": false,
+      "extra": {
+        "attachment": false,
+        "family": "grok-3",
+        "open_weights": false,
+        "temperature": true
+      },
+      "family": null,
+      "id": "xai/grok-3",
+      "knowledge": "2024-11",
+      "last_updated": "2025-02-17",
+      "lifecycle": null,
+      "limits": {
+        "context": 131072,
+        "output": 8192
+      },
+      "modalities": {
+        "input": [
+          "text"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "model": null,
+      "name": "Grok 3",
+      "provider": "vercel",
+      "provider_model_id": null,
+      "release_date": "2025-02-17",
+      "tags": null
+    },
+    "xai/grok-3-fast": {
+      "aliases": [],
+      "capabilities": {
+        "chat": true,
+        "embeddings": false,
+        "json": {
+          "native": false,
+          "schema": false,
+          "strict": false
+        },
+        "reasoning": {
+          "enabled": false
+        },
+        "streaming": {
+          "tool_calls": true
+        },
+        "tools": {
+          "enabled": true
+        }
+      },
+      "cost": {
+        "cache_read": 1.25,
+        "input": 5,
+        "output": 25
+      },
+      "deprecated": false,
+      "extra": {
+        "attachment": false,
+        "family": "grok-3",
+        "open_weights": false,
+        "temperature": true
+      },
+      "family": null,
+      "id": "xai/grok-3-fast",
+      "knowledge": "2024-11",
+      "last_updated": "2025-02-17",
+      "lifecycle": null,
+      "limits": {
+        "context": 131072,
+        "output": 8192
+      },
+      "modalities": {
+        "input": [
+          "text"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "model": null,
+      "name": "Grok 3 Fast",
+      "provider": "vercel",
+      "provider_model_id": null,
+      "release_date": "2025-02-17",
+      "tags": null
+    },
+    "xai/grok-3-mini": {
       "aliases": [],
       "capabilities": {
         "chat": true,
@@ -4811,43 +4309,545 @@
         }
       },
       "cost": {
-        "cache_read": 0.025,
-        "input": 0.1,
-        "output": 0.4
+        "cache_read": 0.075,
+        "input": 0.3,
+        "output": 0.5,
+        "reasoning": 0.5
       },
       "deprecated": false,
       "extra": {
-        "attachment": true,
-        "family": "gemini-flash-lite",
+        "attachment": false,
+        "family": "grok-3",
         "open_weights": false,
         "temperature": true
       },
       "family": null,
-      "id": "google/gemini-2.5-flash-lite",
-      "knowledge": "2025-01",
-      "last_updated": "2025-06-17",
+      "id": "xai/grok-3-mini",
+      "knowledge": "2024-11",
+      "last_updated": "2025-02-17",
       "lifecycle": null,
       "limits": {
-        "context": 1048576,
-        "output": 65536
+        "context": 131072,
+        "output": 8192
       },
       "modalities": {
         "input": [
-          "text",
-          "image",
-          "audio",
-          "video",
-          "pdf"
+          "text"
         ],
         "output": [
           "text"
         ]
       },
       "model": null,
-      "name": "Gemini 2.5 Flash Lite",
+      "name": "Grok 3 Mini",
       "provider": "vercel",
       "provider_model_id": null,
-      "release_date": "2025-06-17",
+      "release_date": "2025-02-17",
+      "tags": null
+    },
+    "xai/grok-3-mini-fast": {
+      "aliases": [],
+      "capabilities": {
+        "chat": true,
+        "embeddings": false,
+        "json": {
+          "native": false,
+          "schema": false,
+          "strict": false
+        },
+        "reasoning": {
+          "enabled": true
+        },
+        "streaming": {
+          "tool_calls": true
+        },
+        "tools": {
+          "enabled": true
+        }
+      },
+      "cost": {
+        "cache_read": 0.15,
+        "input": 0.6,
+        "output": 4,
+        "reasoning": 4
+      },
+      "deprecated": false,
+      "extra": {
+        "attachment": false,
+        "family": "grok-3",
+        "open_weights": false,
+        "temperature": true
+      },
+      "family": null,
+      "id": "xai/grok-3-mini-fast",
+      "knowledge": "2024-11",
+      "last_updated": "2025-02-17",
+      "lifecycle": null,
+      "limits": {
+        "context": 131072,
+        "output": 8192
+      },
+      "modalities": {
+        "input": [
+          "text"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "model": null,
+      "name": "Grok 3 Mini Fast",
+      "provider": "vercel",
+      "provider_model_id": null,
+      "release_date": "2025-02-17",
+      "tags": null
+    },
+    "xai/grok-4": {
+      "aliases": [],
+      "capabilities": {
+        "chat": true,
+        "embeddings": false,
+        "json": {
+          "native": false,
+          "schema": false,
+          "strict": false
+        },
+        "reasoning": {
+          "enabled": true
+        },
+        "streaming": {
+          "tool_calls": true
+        },
+        "tools": {
+          "enabled": true
+        }
+      },
+      "cost": {
+        "cache_read": 0.75,
+        "input": 3,
+        "output": 15,
+        "reasoning": 15
+      },
+      "deprecated": false,
+      "extra": {
+        "attachment": false,
+        "family": "grok",
+        "open_weights": false,
+        "temperature": true
+      },
+      "family": null,
+      "id": "xai/grok-4",
+      "knowledge": "2025-07",
+      "last_updated": "2025-07-09",
+      "lifecycle": null,
+      "limits": {
+        "context": 256000,
+        "output": 64000
+      },
+      "modalities": {
+        "input": [
+          "text"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "model": null,
+      "name": "Grok 4",
+      "provider": "vercel",
+      "provider_model_id": null,
+      "release_date": "2025-07-09",
+      "tags": null
+    },
+    "xai/grok-4-fast": {
+      "aliases": [],
+      "capabilities": {
+        "chat": true,
+        "embeddings": false,
+        "json": {
+          "native": false,
+          "schema": false,
+          "strict": false
+        },
+        "reasoning": {
+          "enabled": true
+        },
+        "streaming": {
+          "tool_calls": true
+        },
+        "tools": {
+          "enabled": true
+        }
+      },
+      "cost": {
+        "cache_read": 0.05,
+        "input": 0.2,
+        "output": 0.5
+      },
+      "deprecated": false,
+      "extra": {
+        "attachment": true,
+        "family": "grok",
+        "open_weights": false,
+        "temperature": true
+      },
+      "family": null,
+      "id": "xai/grok-4-fast",
+      "knowledge": "2025-07",
+      "last_updated": "2025-09-19",
+      "lifecycle": null,
+      "limits": {
+        "context": 2000000,
+        "output": 30000
+      },
+      "modalities": {
+        "input": [
+          "text",
+          "image"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "model": null,
+      "name": "Grok 4 Fast",
+      "provider": "vercel",
+      "provider_model_id": null,
+      "release_date": "2025-09-19",
+      "tags": null
+    },
+    "xai/grok-4-fast-non-reasoning": {
+      "aliases": [],
+      "capabilities": {
+        "chat": true,
+        "embeddings": false,
+        "json": {
+          "native": false,
+          "schema": false,
+          "strict": false
+        },
+        "reasoning": {
+          "enabled": false
+        },
+        "streaming": {
+          "tool_calls": true
+        },
+        "tools": {
+          "enabled": true
+        }
+      },
+      "cost": {
+        "cache_read": 0.05,
+        "input": 0.2,
+        "output": 0.5
+      },
+      "deprecated": false,
+      "extra": {
+        "attachment": true,
+        "family": "grok",
+        "open_weights": false,
+        "temperature": true
+      },
+      "family": null,
+      "id": "xai/grok-4-fast-non-reasoning",
+      "knowledge": "2025-07",
+      "last_updated": "2025-09-19",
+      "lifecycle": null,
+      "limits": {
+        "context": 2000000,
+        "output": 30000
+      },
+      "modalities": {
+        "input": [
+          "text",
+          "image"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "model": null,
+      "name": "Grok 4 Fast (Non-Reasoning)",
+      "provider": "vercel",
+      "provider_model_id": null,
+      "release_date": "2025-09-19",
+      "tags": null
+    },
+    "xai/grok-code-fast-1": {
+      "aliases": [],
+      "capabilities": {
+        "chat": true,
+        "embeddings": false,
+        "json": {
+          "native": false,
+          "schema": false,
+          "strict": false
+        },
+        "reasoning": {
+          "enabled": true
+        },
+        "streaming": {
+          "tool_calls": true
+        },
+        "tools": {
+          "enabled": true
+        }
+      },
+      "cost": {
+        "cache_read": 0.02,
+        "input": 0.2,
+        "output": 1.5
+      },
+      "deprecated": false,
+      "extra": {
+        "attachment": false,
+        "family": "grok",
+        "open_weights": false,
+        "temperature": true
+      },
+      "family": null,
+      "id": "xai/grok-code-fast-1",
+      "knowledge": "2023-10",
+      "last_updated": "2025-08-28",
+      "lifecycle": null,
+      "limits": {
+        "context": 256000,
+        "output": 10000
+      },
+      "modalities": {
+        "input": [
+          "text"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "model": null,
+      "name": "Grok Code Fast 1",
+      "provider": "vercel",
+      "provider_model_id": null,
+      "release_date": "2025-08-28",
+      "tags": null
+    },
+    "zai/glm-4.5": {
+      "aliases": [],
+      "capabilities": {
+        "chat": true,
+        "embeddings": false,
+        "json": {
+          "native": false,
+          "schema": false,
+          "strict": false
+        },
+        "reasoning": {
+          "enabled": true
+        },
+        "streaming": {
+          "tool_calls": true
+        },
+        "tools": {
+          "enabled": true
+        }
+      },
+      "cost": {
+        "input": 0.6,
+        "output": 2.2
+      },
+      "deprecated": false,
+      "extra": {
+        "attachment": false,
+        "family": "glm-4.5",
+        "open_weights": true,
+        "temperature": true
+      },
+      "family": null,
+      "id": "zai/glm-4.5",
+      "knowledge": "2025-07",
+      "last_updated": "2025-07-28",
+      "lifecycle": null,
+      "limits": {
+        "context": 128000,
+        "output": 96000
+      },
+      "modalities": {
+        "input": [
+          "text"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "model": null,
+      "name": "GLM 4.5",
+      "provider": "vercel",
+      "provider_model_id": null,
+      "release_date": "2025-07-28",
+      "tags": null
+    },
+    "zai/glm-4.5-air": {
+      "aliases": [],
+      "capabilities": {
+        "chat": true,
+        "embeddings": false,
+        "json": {
+          "native": false,
+          "schema": false,
+          "strict": false
+        },
+        "reasoning": {
+          "enabled": true
+        },
+        "streaming": {
+          "tool_calls": true
+        },
+        "tools": {
+          "enabled": true
+        }
+      },
+      "cost": {
+        "input": 0.2,
+        "output": 1.1
+      },
+      "deprecated": false,
+      "extra": {
+        "attachment": false,
+        "family": "glm-4.5-air",
+        "open_weights": true,
+        "temperature": true
+      },
+      "family": null,
+      "id": "zai/glm-4.5-air",
+      "knowledge": "2025-04",
+      "last_updated": "2025-07-28",
+      "lifecycle": null,
+      "limits": {
+        "context": 128000,
+        "output": 96000
+      },
+      "modalities": {
+        "input": [
+          "text"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "model": null,
+      "name": "GLM 4.5 Air",
+      "provider": "vercel",
+      "provider_model_id": null,
+      "release_date": "2025-07-28",
+      "tags": null
+    },
+    "zai/glm-4.5v": {
+      "aliases": [],
+      "capabilities": {
+        "chat": true,
+        "embeddings": false,
+        "json": {
+          "native": false,
+          "schema": false,
+          "strict": false
+        },
+        "reasoning": {
+          "enabled": true
+        },
+        "streaming": {
+          "tool_calls": true
+        },
+        "tools": {
+          "enabled": true
+        }
+      },
+      "cost": {
+        "input": 0.6,
+        "output": 1.8
+      },
+      "deprecated": false,
+      "extra": {
+        "attachment": true,
+        "family": "glm-4.5v",
+        "open_weights": true,
+        "temperature": true
+      },
+      "family": null,
+      "id": "zai/glm-4.5v",
+      "knowledge": "2025-08",
+      "last_updated": "2025-08-11",
+      "lifecycle": null,
+      "limits": {
+        "context": 66000,
+        "output": 16000
+      },
+      "modalities": {
+        "input": [
+          "text",
+          "image"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "model": null,
+      "name": "GLM 4.5V",
+      "provider": "vercel",
+      "provider_model_id": null,
+      "release_date": "2025-08-11",
+      "tags": null
+    },
+    "zai/glm-4.6": {
+      "aliases": [],
+      "capabilities": {
+        "chat": true,
+        "embeddings": false,
+        "json": {
+          "native": false,
+          "schema": false,
+          "strict": false
+        },
+        "reasoning": {
+          "enabled": true
+        },
+        "streaming": {
+          "tool_calls": true
+        },
+        "tools": {
+          "enabled": true
+        }
+      },
+      "cost": {
+        "input": 0.6,
+        "output": 2.2
+      },
+      "deprecated": false,
+      "extra": {
+        "attachment": false,
+        "family": "glm-4.6",
+        "open_weights": true,
+        "temperature": true
+      },
+      "family": null,
+      "id": "zai/glm-4.6",
+      "knowledge": "2025-04",
+      "last_updated": "2025-09-30",
+      "lifecycle": null,
+      "limits": {
+        "context": 200000,
+        "output": 96000
+      },
+      "modalities": {
+        "input": [
+          "text"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "model": null,
+      "name": "GLM 4.6",
+      "provider": "vercel",
+      "provider_model_id": null,
+      "release_date": "2025-09-30",
       "tags": null
     }
   },

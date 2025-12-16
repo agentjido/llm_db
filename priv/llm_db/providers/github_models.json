@@ -10,7 +10,7 @@
   "extra": null,
   "id": "github_models",
   "models": {
-    "openai/gpt-4.1-mini": {
+    "ai21-labs/ai21-jamba-1.5-large": {
       "aliases": [],
       "capabilities": {
         "chat": true,
@@ -21,7 +21,7 @@
           "strict": false
         },
         "reasoning": {
-          "enabled": false
+          "enabled": true
         },
         "streaming": {
           "tool_calls": true
@@ -36,34 +36,418 @@
       },
       "deprecated": false,
       "extra": {
-        "attachment": true,
-        "family": "gpt-4.1-mini",
+        "attachment": false,
+        "family": "jamba-1.5-large",
         "open_weights": false,
         "temperature": true
       },
       "family": null,
-      "id": "openai/gpt-4.1-mini",
-      "knowledge": "2024-04",
-      "last_updated": "2025-04-14",
+      "id": "ai21-labs/ai21-jamba-1.5-large",
+      "knowledge": "2024-03",
+      "last_updated": "2024-08-29",
       "lifecycle": null,
       "limits": {
-        "context": 128000,
-        "output": 16384
+        "context": 256000,
+        "output": 4096
       },
       "modalities": {
         "input": [
-          "text",
-          "image"
+          "text"
         ],
         "output": [
           "text"
         ]
       },
       "model": null,
-      "name": "GPT-4.1-mini",
+      "name": "AI21 Jamba 1.5 Large",
       "provider": "github_models",
       "provider_model_id": null,
-      "release_date": "2025-04-14",
+      "release_date": "2024-08-29",
+      "tags": null
+    },
+    "ai21-labs/ai21-jamba-1.5-mini": {
+      "aliases": [],
+      "capabilities": {
+        "chat": true,
+        "embeddings": false,
+        "json": {
+          "native": false,
+          "schema": false,
+          "strict": false
+        },
+        "reasoning": {
+          "enabled": true
+        },
+        "streaming": {
+          "tool_calls": true
+        },
+        "tools": {
+          "enabled": true
+        }
+      },
+      "cost": {
+        "input": 0,
+        "output": 0
+      },
+      "deprecated": false,
+      "extra": {
+        "attachment": false,
+        "family": "jamba-1.5-mini",
+        "open_weights": false,
+        "temperature": true
+      },
+      "family": null,
+      "id": "ai21-labs/ai21-jamba-1.5-mini",
+      "knowledge": "2024-03",
+      "last_updated": "2024-08-29",
+      "lifecycle": null,
+      "limits": {
+        "context": 256000,
+        "output": 4096
+      },
+      "modalities": {
+        "input": [
+          "text"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "model": null,
+      "name": "AI21 Jamba 1.5 Mini",
+      "provider": "github_models",
+      "provider_model_id": null,
+      "release_date": "2024-08-29",
+      "tags": null
+    },
+    "cohere/cohere-command-a": {
+      "aliases": [],
+      "capabilities": {
+        "chat": true,
+        "embeddings": false,
+        "json": {
+          "native": false,
+          "schema": false,
+          "strict": false
+        },
+        "reasoning": {
+          "enabled": true
+        },
+        "streaming": {
+          "tool_calls": true
+        },
+        "tools": {
+          "enabled": true
+        }
+      },
+      "cost": {
+        "input": 0,
+        "output": 0
+      },
+      "deprecated": false,
+      "extra": {
+        "attachment": false,
+        "family": "command-a",
+        "open_weights": false,
+        "temperature": true
+      },
+      "family": null,
+      "id": "cohere/cohere-command-a",
+      "knowledge": "2024-03",
+      "last_updated": "2024-11-01",
+      "lifecycle": null,
+      "limits": {
+        "context": 128000,
+        "output": 4096
+      },
+      "modalities": {
+        "input": [
+          "text"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "model": null,
+      "name": "Cohere Command A",
+      "provider": "github_models",
+      "provider_model_id": null,
+      "release_date": "2024-11-01",
+      "tags": null
+    },
+    "cohere/cohere-command-r": {
+      "aliases": [],
+      "capabilities": {
+        "chat": true,
+        "embeddings": false,
+        "json": {
+          "native": false,
+          "schema": false,
+          "strict": false
+        },
+        "reasoning": {
+          "enabled": true
+        },
+        "streaming": {
+          "tool_calls": true
+        },
+        "tools": {
+          "enabled": true
+        }
+      },
+      "cost": {
+        "input": 0,
+        "output": 0
+      },
+      "deprecated": false,
+      "extra": {
+        "attachment": false,
+        "family": "command-r",
+        "open_weights": false,
+        "temperature": true
+      },
+      "family": null,
+      "id": "cohere/cohere-command-r",
+      "knowledge": "2024-03",
+      "last_updated": "2024-08-01",
+      "lifecycle": null,
+      "limits": {
+        "context": 128000,
+        "output": 4096
+      },
+      "modalities": {
+        "input": [
+          "text"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "model": null,
+      "name": "Cohere Command R",
+      "provider": "github_models",
+      "provider_model_id": null,
+      "release_date": "2024-03-11",
+      "tags": null
+    },
+    "cohere/cohere-command-r-08-2024": {
+      "aliases": [],
+      "capabilities": {
+        "chat": true,
+        "embeddings": false,
+        "json": {
+          "native": false,
+          "schema": false,
+          "strict": false
+        },
+        "reasoning": {
+          "enabled": true
+        },
+        "streaming": {
+          "tool_calls": true
+        },
+        "tools": {
+          "enabled": true
+        }
+      },
+      "cost": {
+        "input": 0,
+        "output": 0
+      },
+      "deprecated": false,
+      "extra": {
+        "attachment": false,
+        "family": "command-r",
+        "open_weights": false,
+        "temperature": true
+      },
+      "family": null,
+      "id": "cohere/cohere-command-r-08-2024",
+      "knowledge": "2024-03",
+      "last_updated": "2024-08-01",
+      "lifecycle": null,
+      "limits": {
+        "context": 128000,
+        "output": 4096
+      },
+      "modalities": {
+        "input": [
+          "text"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "model": null,
+      "name": "Cohere Command R 08-2024",
+      "provider": "github_models",
+      "provider_model_id": null,
+      "release_date": "2024-08-01",
+      "tags": null
+    },
+    "cohere/cohere-command-r-plus": {
+      "aliases": [],
+      "capabilities": {
+        "chat": true,
+        "embeddings": false,
+        "json": {
+          "native": false,
+          "schema": false,
+          "strict": false
+        },
+        "reasoning": {
+          "enabled": true
+        },
+        "streaming": {
+          "tool_calls": true
+        },
+        "tools": {
+          "enabled": true
+        }
+      },
+      "cost": {
+        "input": 0,
+        "output": 0
+      },
+      "deprecated": false,
+      "extra": {
+        "attachment": false,
+        "family": "command-r-plus",
+        "open_weights": false,
+        "temperature": true
+      },
+      "family": null,
+      "id": "cohere/cohere-command-r-plus",
+      "knowledge": "2024-03",
+      "last_updated": "2024-08-01",
+      "lifecycle": null,
+      "limits": {
+        "context": 128000,
+        "output": 4096
+      },
+      "modalities": {
+        "input": [
+          "text"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "model": null,
+      "name": "Cohere Command R+",
+      "provider": "github_models",
+      "provider_model_id": null,
+      "release_date": "2024-04-04",
+      "tags": null
+    },
+    "cohere/cohere-command-r-plus-08-2024": {
+      "aliases": [],
+      "capabilities": {
+        "chat": true,
+        "embeddings": false,
+        "json": {
+          "native": false,
+          "schema": false,
+          "strict": false
+        },
+        "reasoning": {
+          "enabled": true
+        },
+        "streaming": {
+          "tool_calls": true
+        },
+        "tools": {
+          "enabled": true
+        }
+      },
+      "cost": {
+        "input": 0,
+        "output": 0
+      },
+      "deprecated": false,
+      "extra": {
+        "attachment": false,
+        "family": "command-r-plus",
+        "open_weights": false,
+        "temperature": true
+      },
+      "family": null,
+      "id": "cohere/cohere-command-r-plus-08-2024",
+      "knowledge": "2024-03",
+      "last_updated": "2024-08-01",
+      "lifecycle": null,
+      "limits": {
+        "context": 128000,
+        "output": 4096
+      },
+      "modalities": {
+        "input": [
+          "text"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "model": null,
+      "name": "Cohere Command R+ 08-2024",
+      "provider": "github_models",
+      "provider_model_id": null,
+      "release_date": "2024-08-01",
+      "tags": null
+    },
+    "core42/jais-30b-chat": {
+      "aliases": [],
+      "capabilities": {
+        "chat": true,
+        "embeddings": false,
+        "json": {
+          "native": false,
+          "schema": false,
+          "strict": false
+        },
+        "reasoning": {
+          "enabled": true
+        },
+        "streaming": {
+          "tool_calls": true
+        },
+        "tools": {
+          "enabled": true
+        }
+      },
+      "cost": {
+        "input": 0,
+        "output": 0
+      },
+      "deprecated": false,
+      "extra": {
+        "attachment": false,
+        "family": "jais",
+        "open_weights": true,
+        "temperature": true
+      },
+      "family": null,
+      "id": "core42/jais-30b-chat",
+      "knowledge": "2023-03",
+      "last_updated": "2023-08-30",
+      "lifecycle": null,
+      "limits": {
+        "context": 8192,
+        "output": 2048
+      },
+      "modalities": {
+        "input": [
+          "text"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "model": null,
+      "name": "JAIS 30b Chat",
+      "provider": "github_models",
+      "provider_model_id": null,
+      "release_date": "2023-08-30",
       "tags": null
     },
     "deepseek/deepseek-r1": {
@@ -121,7 +505,7 @@
       "release_date": "2025-01-20",
       "tags": null
     },
-    "microsoft/phi-3-mini-128k-instruct": {
+    "deepseek/deepseek-r1-0528": {
       "aliases": [],
       "capabilities": {
         "chat": true,
@@ -148,18 +532,18 @@
       "deprecated": false,
       "extra": {
         "attachment": false,
-        "family": "phi-3",
+        "family": "deepseek-r1",
         "open_weights": true,
         "temperature": true
       },
       "family": null,
-      "id": "microsoft/phi-3-mini-128k-instruct",
-      "knowledge": "2023-10",
-      "last_updated": "2024-04-23",
+      "id": "deepseek/deepseek-r1-0528",
+      "knowledge": "2024-06",
+      "last_updated": "2025-05-28",
       "lifecycle": null,
       "limits": {
-        "context": 128000,
-        "output": 4096
+        "context": 65536,
+        "output": 8192
       },
       "modalities": {
         "input": [
@@ -170,10 +554,122 @@
         ]
       },
       "model": null,
-      "name": "Phi-3-mini instruct (128k)",
+      "name": "DeepSeek-R1-0528",
       "provider": "github_models",
       "provider_model_id": null,
-      "release_date": "2024-04-23",
+      "release_date": "2025-05-28",
+      "tags": null
+    },
+    "deepseek/deepseek-v3-0324": {
+      "aliases": [],
+      "capabilities": {
+        "chat": true,
+        "embeddings": false,
+        "json": {
+          "native": false,
+          "schema": false,
+          "strict": false
+        },
+        "reasoning": {
+          "enabled": true
+        },
+        "streaming": {
+          "tool_calls": true
+        },
+        "tools": {
+          "enabled": true
+        }
+      },
+      "cost": {
+        "input": 0,
+        "output": 0
+      },
+      "deprecated": false,
+      "extra": {
+        "attachment": false,
+        "family": "deepseek-v3",
+        "open_weights": true,
+        "temperature": true
+      },
+      "family": null,
+      "id": "deepseek/deepseek-v3-0324",
+      "knowledge": "2024-06",
+      "last_updated": "2025-03-24",
+      "lifecycle": null,
+      "limits": {
+        "context": 128000,
+        "output": 8192
+      },
+      "modalities": {
+        "input": [
+          "text"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "model": null,
+      "name": "DeepSeek-V3-0324",
+      "provider": "github_models",
+      "provider_model_id": null,
+      "release_date": "2025-03-24",
+      "tags": null
+    },
+    "meta/llama-3.2-11b-vision-instruct": {
+      "aliases": [],
+      "capabilities": {
+        "chat": true,
+        "embeddings": false,
+        "json": {
+          "native": false,
+          "schema": false,
+          "strict": false
+        },
+        "reasoning": {
+          "enabled": true
+        },
+        "streaming": {
+          "tool_calls": true
+        },
+        "tools": {
+          "enabled": true
+        }
+      },
+      "cost": {
+        "input": 0,
+        "output": 0
+      },
+      "deprecated": false,
+      "extra": {
+        "attachment": false,
+        "family": "llama-3.2",
+        "open_weights": true,
+        "temperature": true
+      },
+      "family": null,
+      "id": "meta/llama-3.2-11b-vision-instruct",
+      "knowledge": "2023-12",
+      "last_updated": "2024-09-25",
+      "lifecycle": null,
+      "limits": {
+        "context": 128000,
+        "output": 8192
+      },
+      "modalities": {
+        "input": [
+          "text",
+          "image",
+          "audio"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "model": null,
+      "name": "Llama-3.2-11B-Vision-Instruct",
+      "provider": "github_models",
+      "provider_model_id": null,
+      "release_date": "2024-09-25",
       "tags": null
     },
     "meta/llama-3.2-90b-vision-instruct": {
@@ -233,7 +729,7 @@
       "release_date": "2024-09-25",
       "tags": null
     },
-    "openai/gpt-4o-mini": {
+    "meta/llama-3.3-70b-instruct": {
       "aliases": [],
       "capabilities": {
         "chat": true,
@@ -244,7 +740,7 @@
           "strict": false
         },
         "reasoning": {
-          "enabled": false
+          "enabled": true
         },
         "streaming": {
           "tool_calls": true
@@ -259,35 +755,200 @@
       },
       "deprecated": false,
       "extra": {
-        "attachment": true,
-        "family": "gpt-4o-mini",
-        "open_weights": false,
+        "attachment": false,
+        "family": "llama-3.3",
+        "open_weights": true,
         "temperature": true
       },
       "family": null,
-      "id": "openai/gpt-4o-mini",
-      "knowledge": "2023-10",
-      "last_updated": "2024-07-18",
+      "id": "meta/llama-3.3-70b-instruct",
+      "knowledge": "2023-12",
+      "last_updated": "2024-12-06",
       "lifecycle": null,
       "limits": {
         "context": 128000,
-        "output": 16384
+        "output": 32768
       },
       "modalities": {
         "input": [
-          "text",
-          "image",
-          "audio"
+          "text"
         ],
         "output": [
           "text"
         ]
       },
       "model": null,
-      "name": "GPT-4o mini",
+      "name": "Llama-3.3-70B-Instruct",
       "provider": "github_models",
       "provider_model_id": null,
-      "release_date": "2024-07-18",
+      "release_date": "2024-12-06",
+      "tags": null
+    },
+    "meta/llama-4-maverick-17b-128e-instruct-fp8": {
+      "aliases": [],
+      "capabilities": {
+        "chat": true,
+        "embeddings": false,
+        "json": {
+          "native": false,
+          "schema": false,
+          "strict": false
+        },
+        "reasoning": {
+          "enabled": true
+        },
+        "streaming": {
+          "tool_calls": true
+        },
+        "tools": {
+          "enabled": true
+        }
+      },
+      "cost": {
+        "input": 0,
+        "output": 0
+      },
+      "deprecated": false,
+      "extra": {
+        "attachment": false,
+        "family": "llama-4-maverick",
+        "open_weights": true,
+        "temperature": true
+      },
+      "family": null,
+      "id": "meta/llama-4-maverick-17b-128e-instruct-fp8",
+      "knowledge": "2024-12",
+      "last_updated": "2025-01-31",
+      "lifecycle": null,
+      "limits": {
+        "context": 128000,
+        "output": 8192
+      },
+      "modalities": {
+        "input": [
+          "text",
+          "image"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "model": null,
+      "name": "Llama 4 Maverick 17B 128E Instruct FP8",
+      "provider": "github_models",
+      "provider_model_id": null,
+      "release_date": "2025-01-31",
+      "tags": null
+    },
+    "meta/llama-4-scout-17b-16e-instruct": {
+      "aliases": [],
+      "capabilities": {
+        "chat": true,
+        "embeddings": false,
+        "json": {
+          "native": false,
+          "schema": false,
+          "strict": false
+        },
+        "reasoning": {
+          "enabled": true
+        },
+        "streaming": {
+          "tool_calls": true
+        },
+        "tools": {
+          "enabled": true
+        }
+      },
+      "cost": {
+        "input": 0,
+        "output": 0
+      },
+      "deprecated": false,
+      "extra": {
+        "attachment": false,
+        "family": "llama-4-scout",
+        "open_weights": true,
+        "temperature": true
+      },
+      "family": null,
+      "id": "meta/llama-4-scout-17b-16e-instruct",
+      "knowledge": "2024-12",
+      "last_updated": "2025-01-31",
+      "lifecycle": null,
+      "limits": {
+        "context": 128000,
+        "output": 8192
+      },
+      "modalities": {
+        "input": [
+          "text",
+          "image"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "model": null,
+      "name": "Llama 4 Scout 17B 16E Instruct",
+      "provider": "github_models",
+      "provider_model_id": null,
+      "release_date": "2025-01-31",
+      "tags": null
+    },
+    "meta/meta-llama-3-70b-instruct": {
+      "aliases": [],
+      "capabilities": {
+        "chat": true,
+        "embeddings": false,
+        "json": {
+          "native": false,
+          "schema": false,
+          "strict": false
+        },
+        "reasoning": {
+          "enabled": true
+        },
+        "streaming": {
+          "tool_calls": true
+        },
+        "tools": {
+          "enabled": true
+        }
+      },
+      "cost": {
+        "input": 0,
+        "output": 0
+      },
+      "deprecated": false,
+      "extra": {
+        "attachment": false,
+        "family": "llama-3",
+        "open_weights": true,
+        "temperature": true
+      },
+      "family": null,
+      "id": "meta/meta-llama-3-70b-instruct",
+      "knowledge": "2023-12",
+      "last_updated": "2024-04-18",
+      "lifecycle": null,
+      "limits": {
+        "context": 8192,
+        "output": 2048
+      },
+      "modalities": {
+        "input": [
+          "text"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "model": null,
+      "name": "Meta-Llama-3-70B-Instruct",
+      "provider": "github_models",
+      "provider_model_id": null,
+      "release_date": "2024-04-18",
       "tags": null
     },
     "meta/meta-llama-3-8b-instruct": {
@@ -345,7 +1006,7 @@
       "release_date": "2024-04-18",
       "tags": null
     },
-    "mistral-ai/codestral-2501": {
+    "meta/meta-llama-3.1-405b-instruct": {
       "aliases": [],
       "capabilities": {
         "chat": true,
@@ -372,18 +1033,18 @@
       "deprecated": false,
       "extra": {
         "attachment": false,
-        "family": "codestral",
-        "open_weights": false,
+        "family": "llama-3.1",
+        "open_weights": true,
         "temperature": true
       },
       "family": null,
-      "id": "mistral-ai/codestral-2501",
-      "knowledge": "2024-03",
-      "last_updated": "2025-01-01",
+      "id": "meta/meta-llama-3.1-405b-instruct",
+      "knowledge": "2023-12",
+      "last_updated": "2024-07-23",
       "lifecycle": null,
       "limits": {
-        "context": 32000,
-        "output": 8192
+        "context": 128000,
+        "output": 32768
       },
       "modalities": {
         "input": [
@@ -394,13 +1055,13 @@
         ]
       },
       "model": null,
-      "name": "Codestral 25.01",
+      "name": "Meta-Llama-3.1-405B-Instruct",
       "provider": "github_models",
       "provider_model_id": null,
-      "release_date": "2025-01-01",
+      "release_date": "2024-07-23",
       "tags": null
     },
-    "openai/o3-mini": {
+    "meta/meta-llama-3.1-70b-instruct": {
       "aliases": [],
       "capabilities": {
         "chat": true,
@@ -414,14 +1075,10 @@
           "enabled": true
         },
         "streaming": {
-          "text": true,
-          "tool_calls": false
+          "tool_calls": true
         },
         "tools": {
-          "enabled": false,
-          "parallel": false,
-          "streaming": false,
-          "strict": false
+          "enabled": true
         }
       },
       "cost": {
@@ -431,18 +1088,18 @@
       "deprecated": false,
       "extra": {
         "attachment": false,
-        "family": "o3-mini",
-        "open_weights": false,
-        "temperature": false
+        "family": "llama-3.1",
+        "open_weights": true,
+        "temperature": true
       },
       "family": null,
-      "id": "openai/o3-mini",
-      "knowledge": "2024-04",
-      "last_updated": "2025-01-31",
+      "id": "meta/meta-llama-3.1-70b-instruct",
+      "knowledge": "2023-12",
+      "last_updated": "2024-07-23",
       "lifecycle": null,
       "limits": {
-        "context": 200000,
-        "output": 100000
+        "context": 128000,
+        "output": 32768
       },
       "modalities": {
         "input": [
@@ -453,10 +1110,781 @@
         ]
       },
       "model": null,
-      "name": "OpenAI o3-mini",
+      "name": "Meta-Llama-3.1-70B-Instruct",
       "provider": "github_models",
       "provider_model_id": null,
-      "release_date": "2025-01-31",
+      "release_date": "2024-07-23",
+      "tags": null
+    },
+    "meta/meta-llama-3.1-8b-instruct": {
+      "aliases": [],
+      "capabilities": {
+        "chat": true,
+        "embeddings": false,
+        "json": {
+          "native": false,
+          "schema": false,
+          "strict": false
+        },
+        "reasoning": {
+          "enabled": true
+        },
+        "streaming": {
+          "tool_calls": true
+        },
+        "tools": {
+          "enabled": true
+        }
+      },
+      "cost": {
+        "input": 0,
+        "output": 0
+      },
+      "deprecated": false,
+      "extra": {
+        "attachment": false,
+        "family": "llama-3.1",
+        "open_weights": true,
+        "temperature": true
+      },
+      "family": null,
+      "id": "meta/meta-llama-3.1-8b-instruct",
+      "knowledge": "2023-12",
+      "last_updated": "2024-07-23",
+      "lifecycle": null,
+      "limits": {
+        "context": 128000,
+        "output": 32768
+      },
+      "modalities": {
+        "input": [
+          "text"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "model": null,
+      "name": "Meta-Llama-3.1-8B-Instruct",
+      "provider": "github_models",
+      "provider_model_id": null,
+      "release_date": "2024-07-23",
+      "tags": null
+    },
+    "microsoft/mai-ds-r1": {
+      "aliases": [],
+      "capabilities": {
+        "chat": true,
+        "embeddings": false,
+        "json": {
+          "native": false,
+          "schema": false,
+          "strict": false
+        },
+        "reasoning": {
+          "enabled": true
+        },
+        "streaming": {
+          "tool_calls": true
+        },
+        "tools": {
+          "enabled": true
+        }
+      },
+      "cost": {
+        "input": 0,
+        "output": 0
+      },
+      "deprecated": false,
+      "extra": {
+        "attachment": false,
+        "family": "mai-ds-r1",
+        "open_weights": false,
+        "temperature": true
+      },
+      "family": null,
+      "id": "microsoft/mai-ds-r1",
+      "knowledge": "2024-06",
+      "last_updated": "2025-01-20",
+      "lifecycle": null,
+      "limits": {
+        "context": 65536,
+        "output": 8192
+      },
+      "modalities": {
+        "input": [
+          "text"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "model": null,
+      "name": "MAI-DS-R1",
+      "provider": "github_models",
+      "provider_model_id": null,
+      "release_date": "2025-01-20",
+      "tags": null
+    },
+    "microsoft/phi-3-medium-128k-instruct": {
+      "aliases": [],
+      "capabilities": {
+        "chat": true,
+        "embeddings": false,
+        "json": {
+          "native": false,
+          "schema": false,
+          "strict": false
+        },
+        "reasoning": {
+          "enabled": true
+        },
+        "streaming": {
+          "tool_calls": true
+        },
+        "tools": {
+          "enabled": true
+        }
+      },
+      "cost": {
+        "input": 0,
+        "output": 0
+      },
+      "deprecated": false,
+      "extra": {
+        "attachment": false,
+        "family": "phi-3",
+        "open_weights": true,
+        "temperature": true
+      },
+      "family": null,
+      "id": "microsoft/phi-3-medium-128k-instruct",
+      "knowledge": "2023-10",
+      "last_updated": "2024-04-23",
+      "lifecycle": null,
+      "limits": {
+        "context": 128000,
+        "output": 4096
+      },
+      "modalities": {
+        "input": [
+          "text"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "model": null,
+      "name": "Phi-3-medium instruct (128k)",
+      "provider": "github_models",
+      "provider_model_id": null,
+      "release_date": "2024-04-23",
+      "tags": null
+    },
+    "microsoft/phi-3-medium-4k-instruct": {
+      "aliases": [],
+      "capabilities": {
+        "chat": true,
+        "embeddings": false,
+        "json": {
+          "native": false,
+          "schema": false,
+          "strict": false
+        },
+        "reasoning": {
+          "enabled": true
+        },
+        "streaming": {
+          "tool_calls": true
+        },
+        "tools": {
+          "enabled": true
+        }
+      },
+      "cost": {
+        "input": 0,
+        "output": 0
+      },
+      "deprecated": false,
+      "extra": {
+        "attachment": false,
+        "family": "phi-3",
+        "open_weights": true,
+        "temperature": true
+      },
+      "family": null,
+      "id": "microsoft/phi-3-medium-4k-instruct",
+      "knowledge": "2023-10",
+      "last_updated": "2024-04-23",
+      "lifecycle": null,
+      "limits": {
+        "context": 4096,
+        "output": 1024
+      },
+      "modalities": {
+        "input": [
+          "text"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "model": null,
+      "name": "Phi-3-medium instruct (4k)",
+      "provider": "github_models",
+      "provider_model_id": null,
+      "release_date": "2024-04-23",
+      "tags": null
+    },
+    "microsoft/phi-3-mini-128k-instruct": {
+      "aliases": [],
+      "capabilities": {
+        "chat": true,
+        "embeddings": false,
+        "json": {
+          "native": false,
+          "schema": false,
+          "strict": false
+        },
+        "reasoning": {
+          "enabled": true
+        },
+        "streaming": {
+          "tool_calls": true
+        },
+        "tools": {
+          "enabled": true
+        }
+      },
+      "cost": {
+        "input": 0,
+        "output": 0
+      },
+      "deprecated": false,
+      "extra": {
+        "attachment": false,
+        "family": "phi-3",
+        "open_weights": true,
+        "temperature": true
+      },
+      "family": null,
+      "id": "microsoft/phi-3-mini-128k-instruct",
+      "knowledge": "2023-10",
+      "last_updated": "2024-04-23",
+      "lifecycle": null,
+      "limits": {
+        "context": 128000,
+        "output": 4096
+      },
+      "modalities": {
+        "input": [
+          "text"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "model": null,
+      "name": "Phi-3-mini instruct (128k)",
+      "provider": "github_models",
+      "provider_model_id": null,
+      "release_date": "2024-04-23",
+      "tags": null
+    },
+    "microsoft/phi-3-mini-4k-instruct": {
+      "aliases": [],
+      "capabilities": {
+        "chat": true,
+        "embeddings": false,
+        "json": {
+          "native": false,
+          "schema": false,
+          "strict": false
+        },
+        "reasoning": {
+          "enabled": true
+        },
+        "streaming": {
+          "tool_calls": true
+        },
+        "tools": {
+          "enabled": true
+        }
+      },
+      "cost": {
+        "input": 0,
+        "output": 0
+      },
+      "deprecated": false,
+      "extra": {
+        "attachment": false,
+        "family": "phi-3",
+        "open_weights": true,
+        "temperature": true
+      },
+      "family": null,
+      "id": "microsoft/phi-3-mini-4k-instruct",
+      "knowledge": "2023-10",
+      "last_updated": "2024-04-23",
+      "lifecycle": null,
+      "limits": {
+        "context": 4096,
+        "output": 1024
+      },
+      "modalities": {
+        "input": [
+          "text"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "model": null,
+      "name": "Phi-3-mini instruct (4k)",
+      "provider": "github_models",
+      "provider_model_id": null,
+      "release_date": "2024-04-23",
+      "tags": null
+    },
+    "microsoft/phi-3-small-128k-instruct": {
+      "aliases": [],
+      "capabilities": {
+        "chat": true,
+        "embeddings": false,
+        "json": {
+          "native": false,
+          "schema": false,
+          "strict": false
+        },
+        "reasoning": {
+          "enabled": true
+        },
+        "streaming": {
+          "tool_calls": true
+        },
+        "tools": {
+          "enabled": true
+        }
+      },
+      "cost": {
+        "input": 0,
+        "output": 0
+      },
+      "deprecated": false,
+      "extra": {
+        "attachment": false,
+        "family": "phi-3",
+        "open_weights": true,
+        "temperature": true
+      },
+      "family": null,
+      "id": "microsoft/phi-3-small-128k-instruct",
+      "knowledge": "2023-10",
+      "last_updated": "2024-04-23",
+      "lifecycle": null,
+      "limits": {
+        "context": 128000,
+        "output": 4096
+      },
+      "modalities": {
+        "input": [
+          "text"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "model": null,
+      "name": "Phi-3-small instruct (128k)",
+      "provider": "github_models",
+      "provider_model_id": null,
+      "release_date": "2024-04-23",
+      "tags": null
+    },
+    "microsoft/phi-3-small-8k-instruct": {
+      "aliases": [],
+      "capabilities": {
+        "chat": true,
+        "embeddings": false,
+        "json": {
+          "native": false,
+          "schema": false,
+          "strict": false
+        },
+        "reasoning": {
+          "enabled": true
+        },
+        "streaming": {
+          "tool_calls": true
+        },
+        "tools": {
+          "enabled": true
+        }
+      },
+      "cost": {
+        "input": 0,
+        "output": 0
+      },
+      "deprecated": false,
+      "extra": {
+        "attachment": false,
+        "family": "phi-3",
+        "open_weights": true,
+        "temperature": true
+      },
+      "family": null,
+      "id": "microsoft/phi-3-small-8k-instruct",
+      "knowledge": "2023-10",
+      "last_updated": "2024-04-23",
+      "lifecycle": null,
+      "limits": {
+        "context": 8192,
+        "output": 2048
+      },
+      "modalities": {
+        "input": [
+          "text"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "model": null,
+      "name": "Phi-3-small instruct (8k)",
+      "provider": "github_models",
+      "provider_model_id": null,
+      "release_date": "2024-04-23",
+      "tags": null
+    },
+    "microsoft/phi-3.5-mini-instruct": {
+      "aliases": [],
+      "capabilities": {
+        "chat": true,
+        "embeddings": false,
+        "json": {
+          "native": false,
+          "schema": false,
+          "strict": false
+        },
+        "reasoning": {
+          "enabled": true
+        },
+        "streaming": {
+          "tool_calls": true
+        },
+        "tools": {
+          "enabled": true
+        }
+      },
+      "cost": {
+        "input": 0,
+        "output": 0
+      },
+      "deprecated": false,
+      "extra": {
+        "attachment": false,
+        "family": "phi-3.5",
+        "open_weights": true,
+        "temperature": true
+      },
+      "family": null,
+      "id": "microsoft/phi-3.5-mini-instruct",
+      "knowledge": "2023-10",
+      "last_updated": "2024-08-20",
+      "lifecycle": null,
+      "limits": {
+        "context": 128000,
+        "output": 4096
+      },
+      "modalities": {
+        "input": [
+          "text"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "model": null,
+      "name": "Phi-3.5-mini instruct (128k)",
+      "provider": "github_models",
+      "provider_model_id": null,
+      "release_date": "2024-08-20",
+      "tags": null
+    },
+    "microsoft/phi-3.5-moe-instruct": {
+      "aliases": [],
+      "capabilities": {
+        "chat": true,
+        "embeddings": false,
+        "json": {
+          "native": false,
+          "schema": false,
+          "strict": false
+        },
+        "reasoning": {
+          "enabled": true
+        },
+        "streaming": {
+          "tool_calls": true
+        },
+        "tools": {
+          "enabled": true
+        }
+      },
+      "cost": {
+        "input": 0,
+        "output": 0
+      },
+      "deprecated": false,
+      "extra": {
+        "attachment": false,
+        "family": "phi-3.5",
+        "open_weights": true,
+        "temperature": true
+      },
+      "family": null,
+      "id": "microsoft/phi-3.5-moe-instruct",
+      "knowledge": "2023-10",
+      "last_updated": "2024-08-20",
+      "lifecycle": null,
+      "limits": {
+        "context": 128000,
+        "output": 4096
+      },
+      "modalities": {
+        "input": [
+          "text"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "model": null,
+      "name": "Phi-3.5-MoE instruct (128k)",
+      "provider": "github_models",
+      "provider_model_id": null,
+      "release_date": "2024-08-20",
+      "tags": null
+    },
+    "microsoft/phi-3.5-vision-instruct": {
+      "aliases": [],
+      "capabilities": {
+        "chat": true,
+        "embeddings": false,
+        "json": {
+          "native": false,
+          "schema": false,
+          "strict": false
+        },
+        "reasoning": {
+          "enabled": true
+        },
+        "streaming": {
+          "tool_calls": true
+        },
+        "tools": {
+          "enabled": true
+        }
+      },
+      "cost": {
+        "input": 0,
+        "output": 0
+      },
+      "deprecated": false,
+      "extra": {
+        "attachment": false,
+        "family": "phi-3.5",
+        "open_weights": true,
+        "temperature": true
+      },
+      "family": null,
+      "id": "microsoft/phi-3.5-vision-instruct",
+      "knowledge": "2023-10",
+      "last_updated": "2024-08-20",
+      "lifecycle": null,
+      "limits": {
+        "context": 128000,
+        "output": 4096
+      },
+      "modalities": {
+        "input": [
+          "text",
+          "image"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "model": null,
+      "name": "Phi-3.5-vision instruct (128k)",
+      "provider": "github_models",
+      "provider_model_id": null,
+      "release_date": "2024-08-20",
+      "tags": null
+    },
+    "microsoft/phi-4": {
+      "aliases": [],
+      "capabilities": {
+        "chat": true,
+        "embeddings": false,
+        "json": {
+          "native": false,
+          "schema": false,
+          "strict": false
+        },
+        "reasoning": {
+          "enabled": true
+        },
+        "streaming": {
+          "tool_calls": true
+        },
+        "tools": {
+          "enabled": true
+        }
+      },
+      "cost": {
+        "input": 0,
+        "output": 0
+      },
+      "deprecated": false,
+      "extra": {
+        "attachment": false,
+        "family": "phi-4",
+        "open_weights": true,
+        "temperature": true
+      },
+      "family": null,
+      "id": "microsoft/phi-4",
+      "knowledge": "2023-10",
+      "last_updated": "2024-12-11",
+      "lifecycle": null,
+      "limits": {
+        "context": 16000,
+        "output": 4096
+      },
+      "modalities": {
+        "input": [
+          "text"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "model": null,
+      "name": "Phi-4",
+      "provider": "github_models",
+      "provider_model_id": null,
+      "release_date": "2024-12-11",
+      "tags": null
+    },
+    "microsoft/phi-4-mini-instruct": {
+      "aliases": [],
+      "capabilities": {
+        "chat": true,
+        "embeddings": false,
+        "json": {
+          "native": false,
+          "schema": false,
+          "strict": false
+        },
+        "reasoning": {
+          "enabled": true
+        },
+        "streaming": {
+          "tool_calls": true
+        },
+        "tools": {
+          "enabled": true
+        }
+      },
+      "cost": {
+        "input": 0,
+        "output": 0
+      },
+      "deprecated": false,
+      "extra": {
+        "attachment": false,
+        "family": "phi-4",
+        "open_weights": true,
+        "temperature": true
+      },
+      "family": null,
+      "id": "microsoft/phi-4-mini-instruct",
+      "knowledge": "2023-10",
+      "last_updated": "2024-12-11",
+      "lifecycle": null,
+      "limits": {
+        "context": 128000,
+        "output": 4096
+      },
+      "modalities": {
+        "input": [
+          "text"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "model": null,
+      "name": "Phi-4-mini-instruct",
+      "provider": "github_models",
+      "provider_model_id": null,
+      "release_date": "2024-12-11",
+      "tags": null
+    },
+    "microsoft/phi-4-mini-reasoning": {
+      "aliases": [],
+      "capabilities": {
+        "chat": true,
+        "embeddings": false,
+        "json": {
+          "native": false,
+          "schema": false,
+          "strict": false
+        },
+        "reasoning": {
+          "enabled": true
+        },
+        "streaming": {
+          "tool_calls": true
+        },
+        "tools": {
+          "enabled": true
+        }
+      },
+      "cost": {
+        "input": 0,
+        "output": 0
+      },
+      "deprecated": false,
+      "extra": {
+        "attachment": false,
+        "family": "phi-4",
+        "open_weights": true,
+        "temperature": true
+      },
+      "family": null,
+      "id": "microsoft/phi-4-mini-reasoning",
+      "knowledge": "2023-10",
+      "last_updated": "2024-12-11",
+      "lifecycle": null,
+      "limits": {
+        "context": 128000,
+        "output": 4096
+      },
+      "modalities": {
+        "input": [
+          "text"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "model": null,
+      "name": "Phi-4-mini-reasoning",
+      "provider": "github_models",
+      "provider_model_id": null,
+      "release_date": "2024-12-11",
       "tags": null
     },
     "microsoft/phi-4-multimodal-instruct": {
@@ -516,6 +1944,337 @@
       "release_date": "2024-12-11",
       "tags": null
     },
+    "microsoft/phi-4-reasoning": {
+      "aliases": [],
+      "capabilities": {
+        "chat": true,
+        "embeddings": false,
+        "json": {
+          "native": false,
+          "schema": false,
+          "strict": false
+        },
+        "reasoning": {
+          "enabled": true
+        },
+        "streaming": {
+          "tool_calls": true
+        },
+        "tools": {
+          "enabled": true
+        }
+      },
+      "cost": {
+        "input": 0,
+        "output": 0
+      },
+      "deprecated": false,
+      "extra": {
+        "attachment": false,
+        "family": "phi-4",
+        "open_weights": true,
+        "temperature": true
+      },
+      "family": null,
+      "id": "microsoft/phi-4-reasoning",
+      "knowledge": "2023-10",
+      "last_updated": "2024-12-11",
+      "lifecycle": null,
+      "limits": {
+        "context": 128000,
+        "output": 4096
+      },
+      "modalities": {
+        "input": [
+          "text"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "model": null,
+      "name": "Phi-4-Reasoning",
+      "provider": "github_models",
+      "provider_model_id": null,
+      "release_date": "2024-12-11",
+      "tags": null
+    },
+    "mistral-ai/codestral-2501": {
+      "aliases": [],
+      "capabilities": {
+        "chat": true,
+        "embeddings": false,
+        "json": {
+          "native": false,
+          "schema": false,
+          "strict": false
+        },
+        "reasoning": {
+          "enabled": true
+        },
+        "streaming": {
+          "tool_calls": true
+        },
+        "tools": {
+          "enabled": true
+        }
+      },
+      "cost": {
+        "input": 0,
+        "output": 0
+      },
+      "deprecated": false,
+      "extra": {
+        "attachment": false,
+        "family": "codestral",
+        "open_weights": false,
+        "temperature": true
+      },
+      "family": null,
+      "id": "mistral-ai/codestral-2501",
+      "knowledge": "2024-03",
+      "last_updated": "2025-01-01",
+      "lifecycle": null,
+      "limits": {
+        "context": 32000,
+        "output": 8192
+      },
+      "modalities": {
+        "input": [
+          "text"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "model": null,
+      "name": "Codestral 25.01",
+      "provider": "github_models",
+      "provider_model_id": null,
+      "release_date": "2025-01-01",
+      "tags": null
+    },
+    "mistral-ai/ministral-3b": {
+      "aliases": [],
+      "capabilities": {
+        "chat": true,
+        "embeddings": false,
+        "json": {
+          "native": false,
+          "schema": false,
+          "strict": false
+        },
+        "reasoning": {
+          "enabled": true
+        },
+        "streaming": {
+          "tool_calls": true
+        },
+        "tools": {
+          "enabled": true
+        }
+      },
+      "cost": {
+        "input": 0,
+        "output": 0
+      },
+      "deprecated": false,
+      "extra": {
+        "attachment": false,
+        "family": "ministral-3b",
+        "open_weights": true,
+        "temperature": true
+      },
+      "family": null,
+      "id": "mistral-ai/ministral-3b",
+      "knowledge": "2024-03",
+      "last_updated": "2024-10-22",
+      "lifecycle": null,
+      "limits": {
+        "context": 128000,
+        "output": 8192
+      },
+      "modalities": {
+        "input": [
+          "text"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "model": null,
+      "name": "Ministral 3B",
+      "provider": "github_models",
+      "provider_model_id": null,
+      "release_date": "2024-10-22",
+      "tags": null
+    },
+    "mistral-ai/mistral-large-2411": {
+      "aliases": [],
+      "capabilities": {
+        "chat": true,
+        "embeddings": false,
+        "json": {
+          "native": false,
+          "schema": false,
+          "strict": false
+        },
+        "reasoning": {
+          "enabled": true
+        },
+        "streaming": {
+          "tool_calls": true
+        },
+        "tools": {
+          "enabled": true
+        }
+      },
+      "cost": {
+        "input": 0,
+        "output": 0
+      },
+      "deprecated": false,
+      "extra": {
+        "attachment": false,
+        "family": "mistral-large",
+        "open_weights": false,
+        "temperature": true
+      },
+      "family": null,
+      "id": "mistral-ai/mistral-large-2411",
+      "knowledge": "2024-09",
+      "last_updated": "2024-11-01",
+      "lifecycle": null,
+      "limits": {
+        "context": 128000,
+        "output": 32768
+      },
+      "modalities": {
+        "input": [
+          "text"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "model": null,
+      "name": "Mistral Large 24.11",
+      "provider": "github_models",
+      "provider_model_id": null,
+      "release_date": "2024-11-01",
+      "tags": null
+    },
+    "mistral-ai/mistral-medium-2505": {
+      "aliases": [],
+      "capabilities": {
+        "chat": true,
+        "embeddings": false,
+        "json": {
+          "native": false,
+          "schema": false,
+          "strict": false
+        },
+        "reasoning": {
+          "enabled": true
+        },
+        "streaming": {
+          "tool_calls": true
+        },
+        "tools": {
+          "enabled": true
+        }
+      },
+      "cost": {
+        "input": 0,
+        "output": 0
+      },
+      "deprecated": false,
+      "extra": {
+        "attachment": false,
+        "family": "mistral-medium",
+        "open_weights": false,
+        "temperature": true
+      },
+      "family": null,
+      "id": "mistral-ai/mistral-medium-2505",
+      "knowledge": "2024-09",
+      "last_updated": "2025-05-01",
+      "lifecycle": null,
+      "limits": {
+        "context": 128000,
+        "output": 32768
+      },
+      "modalities": {
+        "input": [
+          "text",
+          "image"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "model": null,
+      "name": "Mistral Medium 3 (25.05)",
+      "provider": "github_models",
+      "provider_model_id": null,
+      "release_date": "2025-05-01",
+      "tags": null
+    },
+    "mistral-ai/mistral-nemo": {
+      "aliases": [],
+      "capabilities": {
+        "chat": true,
+        "embeddings": false,
+        "json": {
+          "native": false,
+          "schema": false,
+          "strict": false
+        },
+        "reasoning": {
+          "enabled": true
+        },
+        "streaming": {
+          "tool_calls": true
+        },
+        "tools": {
+          "enabled": true
+        }
+      },
+      "cost": {
+        "input": 0,
+        "output": 0
+      },
+      "deprecated": false,
+      "extra": {
+        "attachment": false,
+        "family": "mistral-nemo",
+        "open_weights": true,
+        "temperature": true
+      },
+      "family": null,
+      "id": "mistral-ai/mistral-nemo",
+      "knowledge": "2024-03",
+      "last_updated": "2024-07-18",
+      "lifecycle": null,
+      "limits": {
+        "context": 128000,
+        "output": 8192
+      },
+      "modalities": {
+        "input": [
+          "text"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "model": null,
+      "name": "Mistral Nemo",
+      "provider": "github_models",
+      "provider_model_id": null,
+      "release_date": "2024-07-18",
+      "tags": null
+    },
     "mistral-ai/mistral-small-2503": {
       "aliases": [],
       "capabilities": {
@@ -572,7 +2331,7 @@
       "release_date": "2025-03-01",
       "tags": null
     },
-    "cohere/cohere-command-r-08-2024": {
+    "openai/gpt-4.1": {
       "aliases": [],
       "capabilities": {
         "chat": true,
@@ -583,7 +2342,7 @@
           "strict": false
         },
         "reasoning": {
-          "enabled": true
+          "enabled": false
         },
         "streaming": {
           "tool_calls": true
@@ -598,74 +2357,19 @@
       },
       "deprecated": false,
       "extra": {
-        "attachment": false,
-        "family": "command-r",
+        "attachment": true,
+        "family": "gpt-4.1",
         "open_weights": false,
         "temperature": true
       },
       "family": null,
-      "id": "cohere/cohere-command-r-08-2024",
-      "knowledge": "2024-03",
-      "last_updated": "2024-08-01",
+      "id": "openai/gpt-4.1",
+      "knowledge": "2024-04",
+      "last_updated": "2025-04-14",
       "lifecycle": null,
       "limits": {
         "context": 128000,
-        "output": 4096
-      },
-      "modalities": {
-        "input": [
-          "text"
-        ],
-        "output": [
-          "text"
-        ]
-      },
-      "model": null,
-      "name": "Cohere Command R 08-2024",
-      "provider": "github_models",
-      "provider_model_id": null,
-      "release_date": "2024-08-01",
-      "tags": null
-    },
-    "meta/llama-4-scout-17b-16e-instruct": {
-      "aliases": [],
-      "capabilities": {
-        "chat": true,
-        "embeddings": false,
-        "json": {
-          "native": false,
-          "schema": false,
-          "strict": false
-        },
-        "reasoning": {
-          "enabled": true
-        },
-        "streaming": {
-          "tool_calls": true
-        },
-        "tools": {
-          "enabled": true
-        }
-      },
-      "cost": {
-        "input": 0,
-        "output": 0
-      },
-      "deprecated": false,
-      "extra": {
-        "attachment": false,
-        "family": "llama-4-scout",
-        "open_weights": true,
-        "temperature": true
-      },
-      "family": null,
-      "id": "meta/llama-4-scout-17b-16e-instruct",
-      "knowledge": "2024-12",
-      "last_updated": "2025-01-31",
-      "lifecycle": null,
-      "limits": {
-        "context": 128000,
-        "output": 8192
+        "output": 16384
       },
       "modalities": {
         "input": [
@@ -677,13 +2381,13 @@
         ]
       },
       "model": null,
-      "name": "Llama 4 Scout 17B 16E Instruct",
+      "name": "GPT-4.1",
       "provider": "github_models",
       "provider_model_id": null,
-      "release_date": "2025-01-31",
+      "release_date": "2025-04-14",
       "tags": null
     },
-    "cohere/cohere-command-r-plus-08-2024": {
+    "openai/gpt-4.1-mini": {
       "aliases": [],
       "capabilities": {
         "chat": true,
@@ -694,7 +2398,7 @@
           "strict": false
         },
         "reasoning": {
-          "enabled": true
+          "enabled": false
         },
         "streaming": {
           "tool_calls": true
@@ -709,19 +2413,309 @@
       },
       "deprecated": false,
       "extra": {
-        "attachment": false,
-        "family": "command-r-plus",
+        "attachment": true,
+        "family": "gpt-4.1-mini",
         "open_weights": false,
         "temperature": true
       },
       "family": null,
-      "id": "cohere/cohere-command-r-plus-08-2024",
-      "knowledge": "2024-03",
-      "last_updated": "2024-08-01",
+      "id": "openai/gpt-4.1-mini",
+      "knowledge": "2024-04",
+      "last_updated": "2025-04-14",
       "lifecycle": null,
       "limits": {
         "context": 128000,
-        "output": 4096
+        "output": 16384
+      },
+      "modalities": {
+        "input": [
+          "text",
+          "image"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "model": null,
+      "name": "GPT-4.1-mini",
+      "provider": "github_models",
+      "provider_model_id": null,
+      "release_date": "2025-04-14",
+      "tags": null
+    },
+    "openai/gpt-4.1-nano": {
+      "aliases": [],
+      "capabilities": {
+        "chat": true,
+        "embeddings": false,
+        "json": {
+          "native": false,
+          "schema": false,
+          "strict": false
+        },
+        "reasoning": {
+          "enabled": false
+        },
+        "streaming": {
+          "tool_calls": true
+        },
+        "tools": {
+          "enabled": true
+        }
+      },
+      "cost": {
+        "input": 0,
+        "output": 0
+      },
+      "deprecated": false,
+      "extra": {
+        "attachment": true,
+        "family": "gpt-4.1-nano",
+        "open_weights": false,
+        "temperature": true
+      },
+      "family": null,
+      "id": "openai/gpt-4.1-nano",
+      "knowledge": "2024-04",
+      "last_updated": "2025-04-14",
+      "lifecycle": null,
+      "limits": {
+        "context": 128000,
+        "output": 16384
+      },
+      "modalities": {
+        "input": [
+          "text",
+          "image"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "model": null,
+      "name": "GPT-4.1-nano",
+      "provider": "github_models",
+      "provider_model_id": null,
+      "release_date": "2025-04-14",
+      "tags": null
+    },
+    "openai/gpt-4o": {
+      "aliases": [],
+      "capabilities": {
+        "chat": true,
+        "embeddings": false,
+        "json": {
+          "native": false,
+          "schema": false,
+          "strict": false
+        },
+        "reasoning": {
+          "enabled": false
+        },
+        "streaming": {
+          "tool_calls": true
+        },
+        "tools": {
+          "enabled": true
+        }
+      },
+      "cost": {
+        "input": 0,
+        "output": 0
+      },
+      "deprecated": false,
+      "extra": {
+        "attachment": true,
+        "family": "gpt-4o",
+        "open_weights": false,
+        "temperature": true
+      },
+      "family": null,
+      "id": "openai/gpt-4o",
+      "knowledge": "2023-10",
+      "last_updated": "2024-05-13",
+      "lifecycle": null,
+      "limits": {
+        "context": 128000,
+        "output": 16384
+      },
+      "modalities": {
+        "input": [
+          "text",
+          "image",
+          "audio"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "model": null,
+      "name": "GPT-4o",
+      "provider": "github_models",
+      "provider_model_id": null,
+      "release_date": "2024-05-13",
+      "tags": null
+    },
+    "openai/gpt-4o-mini": {
+      "aliases": [],
+      "capabilities": {
+        "chat": true,
+        "embeddings": false,
+        "json": {
+          "native": false,
+          "schema": false,
+          "strict": false
+        },
+        "reasoning": {
+          "enabled": false
+        },
+        "streaming": {
+          "tool_calls": true
+        },
+        "tools": {
+          "enabled": true
+        }
+      },
+      "cost": {
+        "input": 0,
+        "output": 0
+      },
+      "deprecated": false,
+      "extra": {
+        "attachment": true,
+        "family": "gpt-4o-mini",
+        "open_weights": false,
+        "temperature": true
+      },
+      "family": null,
+      "id": "openai/gpt-4o-mini",
+      "knowledge": "2023-10",
+      "last_updated": "2024-07-18",
+      "lifecycle": null,
+      "limits": {
+        "context": 128000,
+        "output": 16384
+      },
+      "modalities": {
+        "input": [
+          "text",
+          "image",
+          "audio"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "model": null,
+      "name": "GPT-4o mini",
+      "provider": "github_models",
+      "provider_model_id": null,
+      "release_date": "2024-07-18",
+      "tags": null
+    },
+    "openai/o1": {
+      "aliases": [],
+      "capabilities": {
+        "chat": true,
+        "embeddings": false,
+        "json": {
+          "native": false,
+          "schema": false,
+          "strict": false
+        },
+        "reasoning": {
+          "enabled": true
+        },
+        "streaming": {
+          "text": true,
+          "tool_calls": false
+        },
+        "tools": {
+          "enabled": false,
+          "parallel": false,
+          "streaming": false,
+          "strict": false
+        }
+      },
+      "cost": {
+        "input": 0,
+        "output": 0
+      },
+      "deprecated": false,
+      "extra": {
+        "attachment": false,
+        "family": "o1",
+        "open_weights": false,
+        "temperature": false
+      },
+      "family": null,
+      "id": "openai/o1",
+      "knowledge": "2023-10",
+      "last_updated": "2024-12-17",
+      "lifecycle": null,
+      "limits": {
+        "context": 200000,
+        "output": 100000
+      },
+      "modalities": {
+        "input": [
+          "text",
+          "image"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "model": null,
+      "name": "OpenAI o1",
+      "provider": "github_models",
+      "provider_model_id": null,
+      "release_date": "2024-09-12",
+      "tags": null
+    },
+    "openai/o1-mini": {
+      "aliases": [],
+      "capabilities": {
+        "chat": true,
+        "embeddings": false,
+        "json": {
+          "native": false,
+          "schema": false,
+          "strict": false
+        },
+        "reasoning": {
+          "enabled": true
+        },
+        "streaming": {
+          "text": true,
+          "tool_calls": false
+        },
+        "tools": {
+          "enabled": false,
+          "parallel": false,
+          "streaming": false,
+          "strict": false
+        }
+      },
+      "cost": {
+        "input": 0,
+        "output": 0
+      },
+      "deprecated": false,
+      "extra": {
+        "attachment": false,
+        "family": "o1-mini",
+        "open_weights": false,
+        "temperature": false
+      },
+      "family": null,
+      "id": "openai/o1-mini",
+      "knowledge": "2023-10",
+      "last_updated": "2024-12-17",
+      "lifecycle": null,
+      "limits": {
+        "context": 128000,
+        "output": 65536
       },
       "modalities": {
         "input": [
@@ -732,10 +2726,10 @@
         ]
       },
       "model": null,
-      "name": "Cohere Command R+ 08-2024",
+      "name": "OpenAI o1-mini",
       "provider": "github_models",
       "provider_model_id": null,
-      "release_date": "2024-08-01",
+      "release_date": "2024-09-12",
       "tags": null
     },
     "openai/o1-preview": {
@@ -857,227 +2851,7 @@
       "release_date": "2025-01-31",
       "tags": null
     },
-    "microsoft/phi-3-mini-4k-instruct": {
-      "aliases": [],
-      "capabilities": {
-        "chat": true,
-        "embeddings": false,
-        "json": {
-          "native": false,
-          "schema": false,
-          "strict": false
-        },
-        "reasoning": {
-          "enabled": true
-        },
-        "streaming": {
-          "tool_calls": true
-        },
-        "tools": {
-          "enabled": true
-        }
-      },
-      "cost": {
-        "input": 0,
-        "output": 0
-      },
-      "deprecated": false,
-      "extra": {
-        "attachment": false,
-        "family": "phi-3",
-        "open_weights": true,
-        "temperature": true
-      },
-      "family": null,
-      "id": "microsoft/phi-3-mini-4k-instruct",
-      "knowledge": "2023-10",
-      "last_updated": "2024-04-23",
-      "lifecycle": null,
-      "limits": {
-        "context": 4096,
-        "output": 1024
-      },
-      "modalities": {
-        "input": [
-          "text"
-        ],
-        "output": [
-          "text"
-        ]
-      },
-      "model": null,
-      "name": "Phi-3-mini instruct (4k)",
-      "provider": "github_models",
-      "provider_model_id": null,
-      "release_date": "2024-04-23",
-      "tags": null
-    },
-    "cohere/cohere-command-r-plus": {
-      "aliases": [],
-      "capabilities": {
-        "chat": true,
-        "embeddings": false,
-        "json": {
-          "native": false,
-          "schema": false,
-          "strict": false
-        },
-        "reasoning": {
-          "enabled": true
-        },
-        "streaming": {
-          "tool_calls": true
-        },
-        "tools": {
-          "enabled": true
-        }
-      },
-      "cost": {
-        "input": 0,
-        "output": 0
-      },
-      "deprecated": false,
-      "extra": {
-        "attachment": false,
-        "family": "command-r-plus",
-        "open_weights": false,
-        "temperature": true
-      },
-      "family": null,
-      "id": "cohere/cohere-command-r-plus",
-      "knowledge": "2024-03",
-      "last_updated": "2024-08-01",
-      "lifecycle": null,
-      "limits": {
-        "context": 128000,
-        "output": 4096
-      },
-      "modalities": {
-        "input": [
-          "text"
-        ],
-        "output": [
-          "text"
-        ]
-      },
-      "model": null,
-      "name": "Cohere Command R+",
-      "provider": "github_models",
-      "provider_model_id": null,
-      "release_date": "2024-04-04",
-      "tags": null
-    },
-    "microsoft/phi-3-small-8k-instruct": {
-      "aliases": [],
-      "capabilities": {
-        "chat": true,
-        "embeddings": false,
-        "json": {
-          "native": false,
-          "schema": false,
-          "strict": false
-        },
-        "reasoning": {
-          "enabled": true
-        },
-        "streaming": {
-          "tool_calls": true
-        },
-        "tools": {
-          "enabled": true
-        }
-      },
-      "cost": {
-        "input": 0,
-        "output": 0
-      },
-      "deprecated": false,
-      "extra": {
-        "attachment": false,
-        "family": "phi-3",
-        "open_weights": true,
-        "temperature": true
-      },
-      "family": null,
-      "id": "microsoft/phi-3-small-8k-instruct",
-      "knowledge": "2023-10",
-      "last_updated": "2024-04-23",
-      "lifecycle": null,
-      "limits": {
-        "context": 8192,
-        "output": 2048
-      },
-      "modalities": {
-        "input": [
-          "text"
-        ],
-        "output": [
-          "text"
-        ]
-      },
-      "model": null,
-      "name": "Phi-3-small instruct (8k)",
-      "provider": "github_models",
-      "provider_model_id": null,
-      "release_date": "2024-04-23",
-      "tags": null
-    },
-    "deepseek/deepseek-r1-0528": {
-      "aliases": [],
-      "capabilities": {
-        "chat": true,
-        "embeddings": false,
-        "json": {
-          "native": false,
-          "schema": false,
-          "strict": false
-        },
-        "reasoning": {
-          "enabled": true
-        },
-        "streaming": {
-          "tool_calls": true
-        },
-        "tools": {
-          "enabled": true
-        }
-      },
-      "cost": {
-        "input": 0,
-        "output": 0
-      },
-      "deprecated": false,
-      "extra": {
-        "attachment": false,
-        "family": "deepseek-r1",
-        "open_weights": true,
-        "temperature": true
-      },
-      "family": null,
-      "id": "deepseek/deepseek-r1-0528",
-      "knowledge": "2024-06",
-      "last_updated": "2025-05-28",
-      "lifecycle": null,
-      "limits": {
-        "context": 65536,
-        "output": 8192
-      },
-      "modalities": {
-        "input": [
-          "text"
-        ],
-        "output": [
-          "text"
-        ]
-      },
-      "model": null,
-      "name": "DeepSeek-R1-0528",
-      "provider": "github_models",
-      "provider_model_id": null,
-      "release_date": "2025-05-28",
-      "tags": null
-    },
-    "openai/o1": {
+    "openai/o3-mini": {
       "aliases": [],
       "capabilities": {
         "chat": true,
@@ -1108,14 +2882,14 @@
       "deprecated": false,
       "extra": {
         "attachment": false,
-        "family": "o1",
+        "family": "o3-mini",
         "open_weights": false,
         "temperature": false
       },
       "family": null,
-      "id": "openai/o1",
-      "knowledge": "2023-10",
-      "last_updated": "2024-12-17",
+      "id": "openai/o3-mini",
+      "knowledge": "2024-04",
+      "last_updated": "2025-01-31",
       "lifecycle": null,
       "limits": {
         "context": 200000,
@@ -1123,62 +2897,6 @@
       },
       "modalities": {
         "input": [
-          "text",
-          "image"
-        ],
-        "output": [
-          "text"
-        ]
-      },
-      "model": null,
-      "name": "OpenAI o1",
-      "provider": "github_models",
-      "provider_model_id": null,
-      "release_date": "2024-09-12",
-      "tags": null
-    },
-    "core42/jais-30b-chat": {
-      "aliases": [],
-      "capabilities": {
-        "chat": true,
-        "embeddings": false,
-        "json": {
-          "native": false,
-          "schema": false,
-          "strict": false
-        },
-        "reasoning": {
-          "enabled": true
-        },
-        "streaming": {
-          "tool_calls": true
-        },
-        "tools": {
-          "enabled": true
-        }
-      },
-      "cost": {
-        "input": 0,
-        "output": 0
-      },
-      "deprecated": false,
-      "extra": {
-        "attachment": false,
-        "family": "jais",
-        "open_weights": true,
-        "temperature": true
-      },
-      "family": null,
-      "id": "core42/jais-30b-chat",
-      "knowledge": "2023-03",
-      "last_updated": "2023-08-30",
-      "lifecycle": null,
-      "limits": {
-        "context": 8192,
-        "output": 2048
-      },
-      "modalities": {
-        "input": [
           "text"
         ],
         "output": [
@@ -1186,678 +2904,10 @@
         ]
       },
       "model": null,
-      "name": "JAIS 30b Chat",
-      "provider": "github_models",
-      "provider_model_id": null,
-      "release_date": "2023-08-30",
-      "tags": null
-    },
-    "meta/llama-4-maverick-17b-128e-instruct-fp8": {
-      "aliases": [],
-      "capabilities": {
-        "chat": true,
-        "embeddings": false,
-        "json": {
-          "native": false,
-          "schema": false,
-          "strict": false
-        },
-        "reasoning": {
-          "enabled": true
-        },
-        "streaming": {
-          "tool_calls": true
-        },
-        "tools": {
-          "enabled": true
-        }
-      },
-      "cost": {
-        "input": 0,
-        "output": 0
-      },
-      "deprecated": false,
-      "extra": {
-        "attachment": false,
-        "family": "llama-4-maverick",
-        "open_weights": true,
-        "temperature": true
-      },
-      "family": null,
-      "id": "meta/llama-4-maverick-17b-128e-instruct-fp8",
-      "knowledge": "2024-12",
-      "last_updated": "2025-01-31",
-      "lifecycle": null,
-      "limits": {
-        "context": 128000,
-        "output": 8192
-      },
-      "modalities": {
-        "input": [
-          "text",
-          "image"
-        ],
-        "output": [
-          "text"
-        ]
-      },
-      "model": null,
-      "name": "Llama 4 Maverick 17B 128E Instruct FP8",
+      "name": "OpenAI o3-mini",
       "provider": "github_models",
       "provider_model_id": null,
       "release_date": "2025-01-31",
-      "tags": null
-    },
-    "openai/o1-mini": {
-      "aliases": [],
-      "capabilities": {
-        "chat": true,
-        "embeddings": false,
-        "json": {
-          "native": false,
-          "schema": false,
-          "strict": false
-        },
-        "reasoning": {
-          "enabled": true
-        },
-        "streaming": {
-          "text": true,
-          "tool_calls": false
-        },
-        "tools": {
-          "enabled": false,
-          "parallel": false,
-          "streaming": false,
-          "strict": false
-        }
-      },
-      "cost": {
-        "input": 0,
-        "output": 0
-      },
-      "deprecated": false,
-      "extra": {
-        "attachment": false,
-        "family": "o1-mini",
-        "open_weights": false,
-        "temperature": false
-      },
-      "family": null,
-      "id": "openai/o1-mini",
-      "knowledge": "2023-10",
-      "last_updated": "2024-12-17",
-      "lifecycle": null,
-      "limits": {
-        "context": 128000,
-        "output": 65536
-      },
-      "modalities": {
-        "input": [
-          "text"
-        ],
-        "output": [
-          "text"
-        ]
-      },
-      "model": null,
-      "name": "OpenAI o1-mini",
-      "provider": "github_models",
-      "provider_model_id": null,
-      "release_date": "2024-09-12",
-      "tags": null
-    },
-    "cohere/cohere-command-a": {
-      "aliases": [],
-      "capabilities": {
-        "chat": true,
-        "embeddings": false,
-        "json": {
-          "native": false,
-          "schema": false,
-          "strict": false
-        },
-        "reasoning": {
-          "enabled": true
-        },
-        "streaming": {
-          "tool_calls": true
-        },
-        "tools": {
-          "enabled": true
-        }
-      },
-      "cost": {
-        "input": 0,
-        "output": 0
-      },
-      "deprecated": false,
-      "extra": {
-        "attachment": false,
-        "family": "command-a",
-        "open_weights": false,
-        "temperature": true
-      },
-      "family": null,
-      "id": "cohere/cohere-command-a",
-      "knowledge": "2024-03",
-      "last_updated": "2024-11-01",
-      "lifecycle": null,
-      "limits": {
-        "context": 128000,
-        "output": 4096
-      },
-      "modalities": {
-        "input": [
-          "text"
-        ],
-        "output": [
-          "text"
-        ]
-      },
-      "model": null,
-      "name": "Cohere Command A",
-      "provider": "github_models",
-      "provider_model_id": null,
-      "release_date": "2024-11-01",
-      "tags": null
-    },
-    "openai/gpt-4.1": {
-      "aliases": [],
-      "capabilities": {
-        "chat": true,
-        "embeddings": false,
-        "json": {
-          "native": false,
-          "schema": false,
-          "strict": false
-        },
-        "reasoning": {
-          "enabled": false
-        },
-        "streaming": {
-          "tool_calls": true
-        },
-        "tools": {
-          "enabled": true
-        }
-      },
-      "cost": {
-        "input": 0,
-        "output": 0
-      },
-      "deprecated": false,
-      "extra": {
-        "attachment": true,
-        "family": "gpt-4.1",
-        "open_weights": false,
-        "temperature": true
-      },
-      "family": null,
-      "id": "openai/gpt-4.1",
-      "knowledge": "2024-04",
-      "last_updated": "2025-04-14",
-      "lifecycle": null,
-      "limits": {
-        "context": 128000,
-        "output": 16384
-      },
-      "modalities": {
-        "input": [
-          "text",
-          "image"
-        ],
-        "output": [
-          "text"
-        ]
-      },
-      "model": null,
-      "name": "GPT-4.1",
-      "provider": "github_models",
-      "provider_model_id": null,
-      "release_date": "2025-04-14",
-      "tags": null
-    },
-    "cohere/cohere-command-r": {
-      "aliases": [],
-      "capabilities": {
-        "chat": true,
-        "embeddings": false,
-        "json": {
-          "native": false,
-          "schema": false,
-          "strict": false
-        },
-        "reasoning": {
-          "enabled": true
-        },
-        "streaming": {
-          "tool_calls": true
-        },
-        "tools": {
-          "enabled": true
-        }
-      },
-      "cost": {
-        "input": 0,
-        "output": 0
-      },
-      "deprecated": false,
-      "extra": {
-        "attachment": false,
-        "family": "command-r",
-        "open_weights": false,
-        "temperature": true
-      },
-      "family": null,
-      "id": "cohere/cohere-command-r",
-      "knowledge": "2024-03",
-      "last_updated": "2024-08-01",
-      "lifecycle": null,
-      "limits": {
-        "context": 128000,
-        "output": 4096
-      },
-      "modalities": {
-        "input": [
-          "text"
-        ],
-        "output": [
-          "text"
-        ]
-      },
-      "model": null,
-      "name": "Cohere Command R",
-      "provider": "github_models",
-      "provider_model_id": null,
-      "release_date": "2024-03-11",
-      "tags": null
-    },
-    "xai/grok-3": {
-      "aliases": [],
-      "capabilities": {
-        "chat": true,
-        "embeddings": false,
-        "json": {
-          "native": false,
-          "schema": false,
-          "strict": false
-        },
-        "reasoning": {
-          "enabled": true
-        },
-        "streaming": {
-          "tool_calls": true
-        },
-        "tools": {
-          "enabled": true
-        }
-      },
-      "cost": {
-        "input": 0,
-        "output": 0
-      },
-      "deprecated": false,
-      "extra": {
-        "attachment": false,
-        "family": "grok-3",
-        "open_weights": false,
-        "temperature": true
-      },
-      "family": null,
-      "id": "xai/grok-3",
-      "knowledge": "2024-10",
-      "last_updated": "2024-12-09",
-      "lifecycle": null,
-      "limits": {
-        "context": 128000,
-        "output": 8192
-      },
-      "modalities": {
-        "input": [
-          "text"
-        ],
-        "output": [
-          "text"
-        ]
-      },
-      "model": null,
-      "name": "Grok 3",
-      "provider": "github_models",
-      "provider_model_id": null,
-      "release_date": "2024-12-09",
-      "tags": null
-    },
-    "microsoft/phi-4-reasoning": {
-      "aliases": [],
-      "capabilities": {
-        "chat": true,
-        "embeddings": false,
-        "json": {
-          "native": false,
-          "schema": false,
-          "strict": false
-        },
-        "reasoning": {
-          "enabled": true
-        },
-        "streaming": {
-          "tool_calls": true
-        },
-        "tools": {
-          "enabled": true
-        }
-      },
-      "cost": {
-        "input": 0,
-        "output": 0
-      },
-      "deprecated": false,
-      "extra": {
-        "attachment": false,
-        "family": "phi-4",
-        "open_weights": true,
-        "temperature": true
-      },
-      "family": null,
-      "id": "microsoft/phi-4-reasoning",
-      "knowledge": "2023-10",
-      "last_updated": "2024-12-11",
-      "lifecycle": null,
-      "limits": {
-        "context": 128000,
-        "output": 4096
-      },
-      "modalities": {
-        "input": [
-          "text"
-        ],
-        "output": [
-          "text"
-        ]
-      },
-      "model": null,
-      "name": "Phi-4-Reasoning",
-      "provider": "github_models",
-      "provider_model_id": null,
-      "release_date": "2024-12-11",
-      "tags": null
-    },
-    "microsoft/phi-3.5-vision-instruct": {
-      "aliases": [],
-      "capabilities": {
-        "chat": true,
-        "embeddings": false,
-        "json": {
-          "native": false,
-          "schema": false,
-          "strict": false
-        },
-        "reasoning": {
-          "enabled": true
-        },
-        "streaming": {
-          "tool_calls": true
-        },
-        "tools": {
-          "enabled": true
-        }
-      },
-      "cost": {
-        "input": 0,
-        "output": 0
-      },
-      "deprecated": false,
-      "extra": {
-        "attachment": false,
-        "family": "phi-3.5",
-        "open_weights": true,
-        "temperature": true
-      },
-      "family": null,
-      "id": "microsoft/phi-3.5-vision-instruct",
-      "knowledge": "2023-10",
-      "last_updated": "2024-08-20",
-      "lifecycle": null,
-      "limits": {
-        "context": 128000,
-        "output": 4096
-      },
-      "modalities": {
-        "input": [
-          "text",
-          "image"
-        ],
-        "output": [
-          "text"
-        ]
-      },
-      "model": null,
-      "name": "Phi-3.5-vision instruct (128k)",
-      "provider": "github_models",
-      "provider_model_id": null,
-      "release_date": "2024-08-20",
-      "tags": null
-    },
-    "microsoft/phi-3-small-128k-instruct": {
-      "aliases": [],
-      "capabilities": {
-        "chat": true,
-        "embeddings": false,
-        "json": {
-          "native": false,
-          "schema": false,
-          "strict": false
-        },
-        "reasoning": {
-          "enabled": true
-        },
-        "streaming": {
-          "tool_calls": true
-        },
-        "tools": {
-          "enabled": true
-        }
-      },
-      "cost": {
-        "input": 0,
-        "output": 0
-      },
-      "deprecated": false,
-      "extra": {
-        "attachment": false,
-        "family": "phi-3",
-        "open_weights": true,
-        "temperature": true
-      },
-      "family": null,
-      "id": "microsoft/phi-3-small-128k-instruct",
-      "knowledge": "2023-10",
-      "last_updated": "2024-04-23",
-      "lifecycle": null,
-      "limits": {
-        "context": 128000,
-        "output": 4096
-      },
-      "modalities": {
-        "input": [
-          "text"
-        ],
-        "output": [
-          "text"
-        ]
-      },
-      "model": null,
-      "name": "Phi-3-small instruct (128k)",
-      "provider": "github_models",
-      "provider_model_id": null,
-      "release_date": "2024-04-23",
-      "tags": null
-    },
-    "openai/gpt-4.1-nano": {
-      "aliases": [],
-      "capabilities": {
-        "chat": true,
-        "embeddings": false,
-        "json": {
-          "native": false,
-          "schema": false,
-          "strict": false
-        },
-        "reasoning": {
-          "enabled": false
-        },
-        "streaming": {
-          "tool_calls": true
-        },
-        "tools": {
-          "enabled": true
-        }
-      },
-      "cost": {
-        "input": 0,
-        "output": 0
-      },
-      "deprecated": false,
-      "extra": {
-        "attachment": true,
-        "family": "gpt-4.1-nano",
-        "open_weights": false,
-        "temperature": true
-      },
-      "family": null,
-      "id": "openai/gpt-4.1-nano",
-      "knowledge": "2024-04",
-      "last_updated": "2025-04-14",
-      "lifecycle": null,
-      "limits": {
-        "context": 128000,
-        "output": 16384
-      },
-      "modalities": {
-        "input": [
-          "text",
-          "image"
-        ],
-        "output": [
-          "text"
-        ]
-      },
-      "model": null,
-      "name": "GPT-4.1-nano",
-      "provider": "github_models",
-      "provider_model_id": null,
-      "release_date": "2025-04-14",
-      "tags": null
-    },
-    "xai/grok-3-mini": {
-      "aliases": [],
-      "capabilities": {
-        "chat": true,
-        "embeddings": false,
-        "json": {
-          "native": false,
-          "schema": false,
-          "strict": false
-        },
-        "reasoning": {
-          "enabled": true
-        },
-        "streaming": {
-          "tool_calls": true
-        },
-        "tools": {
-          "enabled": true
-        }
-      },
-      "cost": {
-        "input": 0,
-        "output": 0
-      },
-      "deprecated": false,
-      "extra": {
-        "attachment": false,
-        "family": "grok-3",
-        "open_weights": false,
-        "temperature": true
-      },
-      "family": null,
-      "id": "xai/grok-3-mini",
-      "knowledge": "2024-10",
-      "last_updated": "2024-12-09",
-      "lifecycle": null,
-      "limits": {
-        "context": 128000,
-        "output": 8192
-      },
-      "modalities": {
-        "input": [
-          "text"
-        ],
-        "output": [
-          "text"
-        ]
-      },
-      "model": null,
-      "name": "Grok 3 Mini",
-      "provider": "github_models",
-      "provider_model_id": null,
-      "release_date": "2024-12-09",
-      "tags": null
-    },
-    "meta/meta-llama-3.1-70b-instruct": {
-      "aliases": [],
-      "capabilities": {
-        "chat": true,
-        "embeddings": false,
-        "json": {
-          "native": false,
-          "schema": false,
-          "strict": false
-        },
-        "reasoning": {
-          "enabled": true
-        },
-        "streaming": {
-          "tool_calls": true
-        },
-        "tools": {
-          "enabled": true
-        }
-      },
-      "cost": {
-        "input": 0,
-        "output": 0
-      },
-      "deprecated": false,
-      "extra": {
-        "attachment": false,
-        "family": "llama-3.1",
-        "open_weights": true,
-        "temperature": true
-      },
-      "family": null,
-      "id": "meta/meta-llama-3.1-70b-instruct",
-      "knowledge": "2023-12",
-      "last_updated": "2024-07-23",
-      "lifecycle": null,
-      "limits": {
-        "context": 128000,
-        "output": 32768
-      },
-      "modalities": {
-        "input": [
-          "text"
-        ],
-        "output": [
-          "text"
-        ]
-      },
-      "model": null,
-      "name": "Meta-Llama-3.1-70B-Instruct",
-      "provider": "github_models",
-      "provider_model_id": null,
-      "release_date": "2024-07-23",
       "tags": null
     },
     "openai/o4-mini": {
@@ -1920,7 +2970,7 @@
       "release_date": "2025-01-31",
       "tags": null
     },
-    "microsoft/phi-3.5-moe-instruct": {
+    "xai/grok-3": {
       "aliases": [],
       "capabilities": {
         "chat": true,
@@ -1947,511 +2997,14 @@
       "deprecated": false,
       "extra": {
         "attachment": false,
-        "family": "phi-3.5",
-        "open_weights": true,
-        "temperature": true
-      },
-      "family": null,
-      "id": "microsoft/phi-3.5-moe-instruct",
-      "knowledge": "2023-10",
-      "last_updated": "2024-08-20",
-      "lifecycle": null,
-      "limits": {
-        "context": 128000,
-        "output": 4096
-      },
-      "modalities": {
-        "input": [
-          "text"
-        ],
-        "output": [
-          "text"
-        ]
-      },
-      "model": null,
-      "name": "Phi-3.5-MoE instruct (128k)",
-      "provider": "github_models",
-      "provider_model_id": null,
-      "release_date": "2024-08-20",
-      "tags": null
-    },
-    "ai21-labs/ai21-jamba-1.5-mini": {
-      "aliases": [],
-      "capabilities": {
-        "chat": true,
-        "embeddings": false,
-        "json": {
-          "native": false,
-          "schema": false,
-          "strict": false
-        },
-        "reasoning": {
-          "enabled": true
-        },
-        "streaming": {
-          "tool_calls": true
-        },
-        "tools": {
-          "enabled": true
-        }
-      },
-      "cost": {
-        "input": 0,
-        "output": 0
-      },
-      "deprecated": false,
-      "extra": {
-        "attachment": false,
-        "family": "jamba-1.5-mini",
+        "family": "grok-3",
         "open_weights": false,
         "temperature": true
       },
       "family": null,
-      "id": "ai21-labs/ai21-jamba-1.5-mini",
-      "knowledge": "2024-03",
-      "last_updated": "2024-08-29",
-      "lifecycle": null,
-      "limits": {
-        "context": 256000,
-        "output": 4096
-      },
-      "modalities": {
-        "input": [
-          "text"
-        ],
-        "output": [
-          "text"
-        ]
-      },
-      "model": null,
-      "name": "AI21 Jamba 1.5 Mini",
-      "provider": "github_models",
-      "provider_model_id": null,
-      "release_date": "2024-08-29",
-      "tags": null
-    },
-    "meta/llama-3.3-70b-instruct": {
-      "aliases": [],
-      "capabilities": {
-        "chat": true,
-        "embeddings": false,
-        "json": {
-          "native": false,
-          "schema": false,
-          "strict": false
-        },
-        "reasoning": {
-          "enabled": true
-        },
-        "streaming": {
-          "tool_calls": true
-        },
-        "tools": {
-          "enabled": true
-        }
-      },
-      "cost": {
-        "input": 0,
-        "output": 0
-      },
-      "deprecated": false,
-      "extra": {
-        "attachment": false,
-        "family": "llama-3.3",
-        "open_weights": true,
-        "temperature": true
-      },
-      "family": null,
-      "id": "meta/llama-3.3-70b-instruct",
-      "knowledge": "2023-12",
-      "last_updated": "2024-12-06",
-      "lifecycle": null,
-      "limits": {
-        "context": 128000,
-        "output": 32768
-      },
-      "modalities": {
-        "input": [
-          "text"
-        ],
-        "output": [
-          "text"
-        ]
-      },
-      "model": null,
-      "name": "Llama-3.3-70B-Instruct",
-      "provider": "github_models",
-      "provider_model_id": null,
-      "release_date": "2024-12-06",
-      "tags": null
-    },
-    "microsoft/phi-3-medium-128k-instruct": {
-      "aliases": [],
-      "capabilities": {
-        "chat": true,
-        "embeddings": false,
-        "json": {
-          "native": false,
-          "schema": false,
-          "strict": false
-        },
-        "reasoning": {
-          "enabled": true
-        },
-        "streaming": {
-          "tool_calls": true
-        },
-        "tools": {
-          "enabled": true
-        }
-      },
-      "cost": {
-        "input": 0,
-        "output": 0
-      },
-      "deprecated": false,
-      "extra": {
-        "attachment": false,
-        "family": "phi-3",
-        "open_weights": true,
-        "temperature": true
-      },
-      "family": null,
-      "id": "microsoft/phi-3-medium-128k-instruct",
-      "knowledge": "2023-10",
-      "last_updated": "2024-04-23",
-      "lifecycle": null,
-      "limits": {
-        "context": 128000,
-        "output": 4096
-      },
-      "modalities": {
-        "input": [
-          "text"
-        ],
-        "output": [
-          "text"
-        ]
-      },
-      "model": null,
-      "name": "Phi-3-medium instruct (128k)",
-      "provider": "github_models",
-      "provider_model_id": null,
-      "release_date": "2024-04-23",
-      "tags": null
-    },
-    "microsoft/phi-3-medium-4k-instruct": {
-      "aliases": [],
-      "capabilities": {
-        "chat": true,
-        "embeddings": false,
-        "json": {
-          "native": false,
-          "schema": false,
-          "strict": false
-        },
-        "reasoning": {
-          "enabled": true
-        },
-        "streaming": {
-          "tool_calls": true
-        },
-        "tools": {
-          "enabled": true
-        }
-      },
-      "cost": {
-        "input": 0,
-        "output": 0
-      },
-      "deprecated": false,
-      "extra": {
-        "attachment": false,
-        "family": "phi-3",
-        "open_weights": true,
-        "temperature": true
-      },
-      "family": null,
-      "id": "microsoft/phi-3-medium-4k-instruct",
-      "knowledge": "2023-10",
-      "last_updated": "2024-04-23",
-      "lifecycle": null,
-      "limits": {
-        "context": 4096,
-        "output": 1024
-      },
-      "modalities": {
-        "input": [
-          "text"
-        ],
-        "output": [
-          "text"
-        ]
-      },
-      "model": null,
-      "name": "Phi-3-medium instruct (4k)",
-      "provider": "github_models",
-      "provider_model_id": null,
-      "release_date": "2024-04-23",
-      "tags": null
-    },
-    "mistral-ai/mistral-large-2411": {
-      "aliases": [],
-      "capabilities": {
-        "chat": true,
-        "embeddings": false,
-        "json": {
-          "native": false,
-          "schema": false,
-          "strict": false
-        },
-        "reasoning": {
-          "enabled": true
-        },
-        "streaming": {
-          "tool_calls": true
-        },
-        "tools": {
-          "enabled": true
-        }
-      },
-      "cost": {
-        "input": 0,
-        "output": 0
-      },
-      "deprecated": false,
-      "extra": {
-        "attachment": false,
-        "family": "mistral-large",
-        "open_weights": false,
-        "temperature": true
-      },
-      "family": null,
-      "id": "mistral-ai/mistral-large-2411",
-      "knowledge": "2024-09",
-      "last_updated": "2024-11-01",
-      "lifecycle": null,
-      "limits": {
-        "context": 128000,
-        "output": 32768
-      },
-      "modalities": {
-        "input": [
-          "text"
-        ],
-        "output": [
-          "text"
-        ]
-      },
-      "model": null,
-      "name": "Mistral Large 24.11",
-      "provider": "github_models",
-      "provider_model_id": null,
-      "release_date": "2024-11-01",
-      "tags": null
-    },
-    "meta/meta-llama-3.1-8b-instruct": {
-      "aliases": [],
-      "capabilities": {
-        "chat": true,
-        "embeddings": false,
-        "json": {
-          "native": false,
-          "schema": false,
-          "strict": false
-        },
-        "reasoning": {
-          "enabled": true
-        },
-        "streaming": {
-          "tool_calls": true
-        },
-        "tools": {
-          "enabled": true
-        }
-      },
-      "cost": {
-        "input": 0,
-        "output": 0
-      },
-      "deprecated": false,
-      "extra": {
-        "attachment": false,
-        "family": "llama-3.1",
-        "open_weights": true,
-        "temperature": true
-      },
-      "family": null,
-      "id": "meta/meta-llama-3.1-8b-instruct",
-      "knowledge": "2023-12",
-      "last_updated": "2024-07-23",
-      "lifecycle": null,
-      "limits": {
-        "context": 128000,
-        "output": 32768
-      },
-      "modalities": {
-        "input": [
-          "text"
-        ],
-        "output": [
-          "text"
-        ]
-      },
-      "model": null,
-      "name": "Meta-Llama-3.1-8B-Instruct",
-      "provider": "github_models",
-      "provider_model_id": null,
-      "release_date": "2024-07-23",
-      "tags": null
-    },
-    "openai/gpt-4o": {
-      "aliases": [],
-      "capabilities": {
-        "chat": true,
-        "embeddings": false,
-        "json": {
-          "native": false,
-          "schema": false,
-          "strict": false
-        },
-        "reasoning": {
-          "enabled": false
-        },
-        "streaming": {
-          "tool_calls": true
-        },
-        "tools": {
-          "enabled": true
-        }
-      },
-      "cost": {
-        "input": 0,
-        "output": 0
-      },
-      "deprecated": false,
-      "extra": {
-        "attachment": true,
-        "family": "gpt-4o",
-        "open_weights": false,
-        "temperature": true
-      },
-      "family": null,
-      "id": "openai/gpt-4o",
-      "knowledge": "2023-10",
-      "last_updated": "2024-05-13",
-      "lifecycle": null,
-      "limits": {
-        "context": 128000,
-        "output": 16384
-      },
-      "modalities": {
-        "input": [
-          "text",
-          "image",
-          "audio"
-        ],
-        "output": [
-          "text"
-        ]
-      },
-      "model": null,
-      "name": "GPT-4o",
-      "provider": "github_models",
-      "provider_model_id": null,
-      "release_date": "2024-05-13",
-      "tags": null
-    },
-    "microsoft/phi-4-mini-reasoning": {
-      "aliases": [],
-      "capabilities": {
-        "chat": true,
-        "embeddings": false,
-        "json": {
-          "native": false,
-          "schema": false,
-          "strict": false
-        },
-        "reasoning": {
-          "enabled": true
-        },
-        "streaming": {
-          "tool_calls": true
-        },
-        "tools": {
-          "enabled": true
-        }
-      },
-      "cost": {
-        "input": 0,
-        "output": 0
-      },
-      "deprecated": false,
-      "extra": {
-        "attachment": false,
-        "family": "phi-4",
-        "open_weights": true,
-        "temperature": true
-      },
-      "family": null,
-      "id": "microsoft/phi-4-mini-reasoning",
-      "knowledge": "2023-10",
-      "last_updated": "2024-12-11",
-      "lifecycle": null,
-      "limits": {
-        "context": 128000,
-        "output": 4096
-      },
-      "modalities": {
-        "input": [
-          "text"
-        ],
-        "output": [
-          "text"
-        ]
-      },
-      "model": null,
-      "name": "Phi-4-mini-reasoning",
-      "provider": "github_models",
-      "provider_model_id": null,
-      "release_date": "2024-12-11",
-      "tags": null
-    },
-    "mistral-ai/mistral-nemo": {
-      "aliases": [],
-      "capabilities": {
-        "chat": true,
-        "embeddings": false,
-        "json": {
-          "native": false,
-          "schema": false,
-          "strict": false
-        },
-        "reasoning": {
-          "enabled": true
-        },
-        "streaming": {
-          "tool_calls": true
-        },
-        "tools": {
-          "enabled": true
-        }
-      },
-      "cost": {
-        "input": 0,
-        "output": 0
-      },
-      "deprecated": false,
-      "extra": {
-        "attachment": false,
-        "family": "mistral-nemo",
-        "open_weights": true,
-        "temperature": true
-      },
-      "family": null,
-      "id": "mistral-ai/mistral-nemo",
-      "knowledge": "2024-03",
-      "last_updated": "2024-07-18",
+      "id": "xai/grok-3",
+      "knowledge": "2024-10",
+      "last_updated": "2024-12-09",
       "lifecycle": null,
       "limits": {
         "context": 128000,
@@ -2466,13 +3019,13 @@
         ]
       },
       "model": null,
-      "name": "Mistral Nemo",
+      "name": "Grok 3",
       "provider": "github_models",
       "provider_model_id": null,
-      "release_date": "2024-07-18",
+      "release_date": "2024-12-09",
       "tags": null
     },
-    "mistral-ai/mistral-medium-2505": {
+    "xai/grok-3-mini": {
       "aliases": [],
       "capabilities": {
         "chat": true,
@@ -2499,182 +3052,14 @@
       "deprecated": false,
       "extra": {
         "attachment": false,
-        "family": "mistral-medium",
+        "family": "grok-3",
         "open_weights": false,
         "temperature": true
       },
       "family": null,
-      "id": "mistral-ai/mistral-medium-2505",
-      "knowledge": "2024-09",
-      "last_updated": "2025-05-01",
-      "lifecycle": null,
-      "limits": {
-        "context": 128000,
-        "output": 32768
-      },
-      "modalities": {
-        "input": [
-          "text",
-          "image"
-        ],
-        "output": [
-          "text"
-        ]
-      },
-      "model": null,
-      "name": "Mistral Medium 3 (25.05)",
-      "provider": "github_models",
-      "provider_model_id": null,
-      "release_date": "2025-05-01",
-      "tags": null
-    },
-    "microsoft/phi-4": {
-      "aliases": [],
-      "capabilities": {
-        "chat": true,
-        "embeddings": false,
-        "json": {
-          "native": false,
-          "schema": false,
-          "strict": false
-        },
-        "reasoning": {
-          "enabled": true
-        },
-        "streaming": {
-          "tool_calls": true
-        },
-        "tools": {
-          "enabled": true
-        }
-      },
-      "cost": {
-        "input": 0,
-        "output": 0
-      },
-      "deprecated": false,
-      "extra": {
-        "attachment": false,
-        "family": "phi-4",
-        "open_weights": true,
-        "temperature": true
-      },
-      "family": null,
-      "id": "microsoft/phi-4",
-      "knowledge": "2023-10",
-      "last_updated": "2024-12-11",
-      "lifecycle": null,
-      "limits": {
-        "context": 16000,
-        "output": 4096
-      },
-      "modalities": {
-        "input": [
-          "text"
-        ],
-        "output": [
-          "text"
-        ]
-      },
-      "model": null,
-      "name": "Phi-4",
-      "provider": "github_models",
-      "provider_model_id": null,
-      "release_date": "2024-12-11",
-      "tags": null
-    },
-    "meta/llama-3.2-11b-vision-instruct": {
-      "aliases": [],
-      "capabilities": {
-        "chat": true,
-        "embeddings": false,
-        "json": {
-          "native": false,
-          "schema": false,
-          "strict": false
-        },
-        "reasoning": {
-          "enabled": true
-        },
-        "streaming": {
-          "tool_calls": true
-        },
-        "tools": {
-          "enabled": true
-        }
-      },
-      "cost": {
-        "input": 0,
-        "output": 0
-      },
-      "deprecated": false,
-      "extra": {
-        "attachment": false,
-        "family": "llama-3.2",
-        "open_weights": true,
-        "temperature": true
-      },
-      "family": null,
-      "id": "meta/llama-3.2-11b-vision-instruct",
-      "knowledge": "2023-12",
-      "last_updated": "2024-09-25",
-      "lifecycle": null,
-      "limits": {
-        "context": 128000,
-        "output": 8192
-      },
-      "modalities": {
-        "input": [
-          "text",
-          "image",
-          "audio"
-        ],
-        "output": [
-          "text"
-        ]
-      },
-      "model": null,
-      "name": "Llama-3.2-11B-Vision-Instruct",
-      "provider": "github_models",
-      "provider_model_id": null,
-      "release_date": "2024-09-25",
-      "tags": null
-    },
-    "deepseek/deepseek-v3-0324": {
-      "aliases": [],
-      "capabilities": {
-        "chat": true,
-        "embeddings": false,
-        "json": {
-          "native": false,
-          "schema": false,
-          "strict": false
-        },
-        "reasoning": {
-          "enabled": true
-        },
-        "streaming": {
-          "tool_calls": true
-        },
-        "tools": {
-          "enabled": true
-        }
-      },
-      "cost": {
-        "input": 0,
-        "output": 0
-      },
-      "deprecated": false,
-      "extra": {
-        "attachment": false,
-        "family": "deepseek-v3",
-        "open_weights": true,
-        "temperature": true
-      },
-      "family": null,
-      "id": "deepseek/deepseek-v3-0324",
-      "knowledge": "2024-06",
-      "last_updated": "2025-03-24",
+      "id": "xai/grok-3-mini",
+      "knowledge": "2024-10",
+      "last_updated": "2024-12-09",
       "lifecycle": null,
       "limits": {
         "context": 128000,
@@ -2689,395 +3074,10 @@
         ]
       },
       "model": null,
-      "name": "DeepSeek-V3-0324",
+      "name": "Grok 3 Mini",
       "provider": "github_models",
       "provider_model_id": null,
-      "release_date": "2025-03-24",
-      "tags": null
-    },
-    "ai21-labs/ai21-jamba-1.5-large": {
-      "aliases": [],
-      "capabilities": {
-        "chat": true,
-        "embeddings": false,
-        "json": {
-          "native": false,
-          "schema": false,
-          "strict": false
-        },
-        "reasoning": {
-          "enabled": true
-        },
-        "streaming": {
-          "tool_calls": true
-        },
-        "tools": {
-          "enabled": true
-        }
-      },
-      "cost": {
-        "input": 0,
-        "output": 0
-      },
-      "deprecated": false,
-      "extra": {
-        "attachment": false,
-        "family": "jamba-1.5-large",
-        "open_weights": false,
-        "temperature": true
-      },
-      "family": null,
-      "id": "ai21-labs/ai21-jamba-1.5-large",
-      "knowledge": "2024-03",
-      "last_updated": "2024-08-29",
-      "lifecycle": null,
-      "limits": {
-        "context": 256000,
-        "output": 4096
-      },
-      "modalities": {
-        "input": [
-          "text"
-        ],
-        "output": [
-          "text"
-        ]
-      },
-      "model": null,
-      "name": "AI21 Jamba 1.5 Large",
-      "provider": "github_models",
-      "provider_model_id": null,
-      "release_date": "2024-08-29",
-      "tags": null
-    },
-    "mistral-ai/ministral-3b": {
-      "aliases": [],
-      "capabilities": {
-        "chat": true,
-        "embeddings": false,
-        "json": {
-          "native": false,
-          "schema": false,
-          "strict": false
-        },
-        "reasoning": {
-          "enabled": true
-        },
-        "streaming": {
-          "tool_calls": true
-        },
-        "tools": {
-          "enabled": true
-        }
-      },
-      "cost": {
-        "input": 0,
-        "output": 0
-      },
-      "deprecated": false,
-      "extra": {
-        "attachment": false,
-        "family": "ministral-3b",
-        "open_weights": true,
-        "temperature": true
-      },
-      "family": null,
-      "id": "mistral-ai/ministral-3b",
-      "knowledge": "2024-03",
-      "last_updated": "2024-10-22",
-      "lifecycle": null,
-      "limits": {
-        "context": 128000,
-        "output": 8192
-      },
-      "modalities": {
-        "input": [
-          "text"
-        ],
-        "output": [
-          "text"
-        ]
-      },
-      "model": null,
-      "name": "Ministral 3B",
-      "provider": "github_models",
-      "provider_model_id": null,
-      "release_date": "2024-10-22",
-      "tags": null
-    },
-    "microsoft/phi-4-mini-instruct": {
-      "aliases": [],
-      "capabilities": {
-        "chat": true,
-        "embeddings": false,
-        "json": {
-          "native": false,
-          "schema": false,
-          "strict": false
-        },
-        "reasoning": {
-          "enabled": true
-        },
-        "streaming": {
-          "tool_calls": true
-        },
-        "tools": {
-          "enabled": true
-        }
-      },
-      "cost": {
-        "input": 0,
-        "output": 0
-      },
-      "deprecated": false,
-      "extra": {
-        "attachment": false,
-        "family": "phi-4",
-        "open_weights": true,
-        "temperature": true
-      },
-      "family": null,
-      "id": "microsoft/phi-4-mini-instruct",
-      "knowledge": "2023-10",
-      "last_updated": "2024-12-11",
-      "lifecycle": null,
-      "limits": {
-        "context": 128000,
-        "output": 4096
-      },
-      "modalities": {
-        "input": [
-          "text"
-        ],
-        "output": [
-          "text"
-        ]
-      },
-      "model": null,
-      "name": "Phi-4-mini-instruct",
-      "provider": "github_models",
-      "provider_model_id": null,
-      "release_date": "2024-12-11",
-      "tags": null
-    },
-    "microsoft/phi-3.5-mini-instruct": {
-      "aliases": [],
-      "capabilities": {
-        "chat": true,
-        "embeddings": false,
-        "json": {
-          "native": false,
-          "schema": false,
-          "strict": false
-        },
-        "reasoning": {
-          "enabled": true
-        },
-        "streaming": {
-          "tool_calls": true
-        },
-        "tools": {
-          "enabled": true
-        }
-      },
-      "cost": {
-        "input": 0,
-        "output": 0
-      },
-      "deprecated": false,
-      "extra": {
-        "attachment": false,
-        "family": "phi-3.5",
-        "open_weights": true,
-        "temperature": true
-      },
-      "family": null,
-      "id": "microsoft/phi-3.5-mini-instruct",
-      "knowledge": "2023-10",
-      "last_updated": "2024-08-20",
-      "lifecycle": null,
-      "limits": {
-        "context": 128000,
-        "output": 4096
-      },
-      "modalities": {
-        "input": [
-          "text"
-        ],
-        "output": [
-          "text"
-        ]
-      },
-      "model": null,
-      "name": "Phi-3.5-mini instruct (128k)",
-      "provider": "github_models",
-      "provider_model_id": null,
-      "release_date": "2024-08-20",
-      "tags": null
-    },
-    "microsoft/mai-ds-r1": {
-      "aliases": [],
-      "capabilities": {
-        "chat": true,
-        "embeddings": false,
-        "json": {
-          "native": false,
-          "schema": false,
-          "strict": false
-        },
-        "reasoning": {
-          "enabled": true
-        },
-        "streaming": {
-          "tool_calls": true
-        },
-        "tools": {
-          "enabled": true
-        }
-      },
-      "cost": {
-        "input": 0,
-        "output": 0
-      },
-      "deprecated": false,
-      "extra": {
-        "attachment": false,
-        "family": "mai-ds-r1",
-        "open_weights": false,
-        "temperature": true
-      },
-      "family": null,
-      "id": "microsoft/mai-ds-r1",
-      "knowledge": "2024-06",
-      "last_updated": "2025-01-20",
-      "lifecycle": null,
-      "limits": {
-        "context": 65536,
-        "output": 8192
-      },
-      "modalities": {
-        "input": [
-          "text"
-        ],
-        "output": [
-          "text"
-        ]
-      },
-      "model": null,
-      "name": "MAI-DS-R1",
-      "provider": "github_models",
-      "provider_model_id": null,
-      "release_date": "2025-01-20",
-      "tags": null
-    },
-    "meta/meta-llama-3.1-405b-instruct": {
-      "aliases": [],
-      "capabilities": {
-        "chat": true,
-        "embeddings": false,
-        "json": {
-          "native": false,
-          "schema": false,
-          "strict": false
-        },
-        "reasoning": {
-          "enabled": true
-        },
-        "streaming": {
-          "tool_calls": true
-        },
-        "tools": {
-          "enabled": true
-        }
-      },
-      "cost": {
-        "input": 0,
-        "output": 0
-      },
-      "deprecated": false,
-      "extra": {
-        "attachment": false,
-        "family": "llama-3.1",
-        "open_weights": true,
-        "temperature": true
-      },
-      "family": null,
-      "id": "meta/meta-llama-3.1-405b-instruct",
-      "knowledge": "2023-12",
-      "last_updated": "2024-07-23",
-      "lifecycle": null,
-      "limits": {
-        "context": 128000,
-        "output": 32768
-      },
-      "modalities": {
-        "input": [
-          "text"
-        ],
-        "output": [
-          "text"
-        ]
-      },
-      "model": null,
-      "name": "Meta-Llama-3.1-405B-Instruct",
-      "provider": "github_models",
-      "provider_model_id": null,
-      "release_date": "2024-07-23",
-      "tags": null
-    },
-    "meta/meta-llama-3-70b-instruct": {
-      "aliases": [],
-      "capabilities": {
-        "chat": true,
-        "embeddings": false,
-        "json": {
-          "native": false,
-          "schema": false,
-          "strict": false
-        },
-        "reasoning": {
-          "enabled": true
-        },
-        "streaming": {
-          "tool_calls": true
-        },
-        "tools": {
-          "enabled": true
-        }
-      },
-      "cost": {
-        "input": 0,
-        "output": 0
-      },
-      "deprecated": false,
-      "extra": {
-        "attachment": false,
-        "family": "llama-3",
-        "open_weights": true,
-        "temperature": true
-      },
-      "family": null,
-      "id": "meta/meta-llama-3-70b-instruct",
-      "knowledge": "2023-12",
-      "last_updated": "2024-04-18",
-      "lifecycle": null,
-      "limits": {
-        "context": 8192,
-        "output": 2048
-      },
-      "modalities": {
-        "input": [
-          "text"
-        ],
-        "output": [
-          "text"
-        ]
-      },
-      "model": null,
-      "name": "Meta-Llama-3-70B-Instruct",
-      "provider": "github_models",
-      "provider_model_id": null,
-      "release_date": "2024-04-18",
+      "release_date": "2024-12-09",
       "tags": null
     }
   },
