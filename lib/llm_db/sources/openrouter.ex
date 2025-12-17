@@ -176,7 +176,7 @@ defmodule LLMDB.Sources.OpenRouter do
   Main transformations:
   - Extract provider ID from model ID (e.g., "openai/gpt-4" → :openai)
   - Group models by provider
-  - Transform pricing strings to floats (per 1 token)
+  - Transform pricing strings to floats (per 1M tokens)
   - Map context_length → limits.context
   - Map top_provider.max_completion_tokens → limits.output
   - Extract modality information
