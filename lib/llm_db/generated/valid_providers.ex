@@ -96,6 +96,7 @@ defmodule LLMDB.Generated.ValidProviders do
     :sap_ai_core,
     :scaleway,
     :siliconflow,
+    :siliconflow_cn,
     :"stepfun-ai",
     :submodel,
     :switchpoint,
