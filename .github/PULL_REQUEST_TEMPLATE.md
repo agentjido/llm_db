@@ -1,42 +1,31 @@
-## Type of Change
-
-- [ ] Code (bug fix, feature, refactor)
-- [ ] Model metadata (TOML updates)
-- [ ] Documentation
-- [ ] CI/build
-
 ## Description
 
-<!-- Brief description of what changed and why -->
+Brief description of changes.
 
-## Changes Made
+## Type of Change
 
-<!-- List key changes -->
-- 
-- 
+- [ ] Bug fix (non-breaking change fixing an issue)
+- [ ] New feature (non-breaking change adding functionality)
+- [ ] Breaking change (fix or feature causing existing functionality to change)
+- [ ] Documentation update
+
+## Breaking Changes
+
+<!-- If this is a breaking change, describe the impact and migration path -->
 
 ## Testing
 
-<!-- How did you test this? -->
-- [ ] Tests added/updated
-- [ ] `mix test` passes
-- [ ] Manual testing (describe):
-
-## Metadata Changes Only
-
-<!-- If this is a metadata update, fill out: -->
-- **Provider(s)**: 
-- **Model(s)**: 
-- **Source**: <!-- Link to official docs/announcement -->
+- [ ] Tests pass (`mix test`)
+- [ ] Quality checks pass (`mix quality`)
 
 ## Checklist
 
-- [ ] Code formatted (`mix format`)
-- [ ] Tests pass locally
-- [ ] No compiler warnings
-- [ ] Updated relevant documentation
-- [ ] CHANGELOG.md updated (if user-facing)
+- [ ] My code follows the project's style guidelines
+- [ ] I have updated the documentation accordingly
+- [ ] I have added tests that prove my fix/feature works
+- [ ] All new and existing tests pass
+- [ ] My commits follow conventional commit format
 
-## Additional Notes
+## Related Issues
 
-<!-- Anything else reviewers should know -->
+Closes #

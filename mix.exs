@@ -82,8 +82,10 @@ defmodule LLMDB.MixProject do
       maintainers: ["Mike Hostetler"],
       links: %{
         "Changelog" => "https://hexdocs.pm/llm_db/changelog.html",
+        "Discord" => "https://agentjido.xyz/discord",
+        "Documentation" => "https://hexdocs.pm/llm_db",
         "GitHub" => @source_url,
-        "Agent Jido" => "https://agentjido.xyz"
+        "Website" => "https://agentjido.xyz"
       },
       files:
         ~w(config lib priv/llm_db/providers priv/llm_db/manifest.json mix.exs LICENSE README.md CHANGELOG.md AGENTS.md usage-rules.md .formatter.exs)
