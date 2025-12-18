@@ -12,23 +12,24 @@
   "extra": null,
   "id": "cloudflare_ai_gateway",
   "models": {
-    "workers-ai/llama-3-8b-instruct-awq": {
+    "anthropic/claude-3-haiku": {
       "aliases": [],
       "capabilities": null,
       "cost": {
         "input": 0,
-        "output": 0
+        "output": 1.25
       },
       "deprecated": false,
       "extra": {
         "attachment": false,
+        "family": "claude-haiku",
         "open_weights": false,
         "temperature": true
       },
       "family": null,
-      "id": "workers-ai/llama-3-8b-instruct-awq",
+      "id": "anthropic/claude-3-haiku",
       "knowledge": null,
-      "last_updated": "2025-04-03",
+      "last_updated": "2024-07-31",
       "lifecycle": null,
       "limits": {
         "context": 128000,
@@ -43,29 +44,30 @@
         ]
       },
       "model": null,
-      "name": "llama 3 8u instruct awq",
+      "name": "Claude 3 Haiku",
       "provider": "cloudflare_ai_gateway",
       "provider_model_id": null,
-      "release_date": "2025-04-03",
+      "release_date": "2024-07-31",
       "tags": null
     },
-    "workers-ai/granite-4.0-h-micro": {
+    "anthropic/claude-3-opus": {
       "aliases": [],
       "capabilities": null,
       "cost": {
-        "input": 0,
-        "output": 0
+        "input": 15,
+        "output": 75
       },
       "deprecated": false,
       "extra": {
         "attachment": false,
+        "family": "claude-opus",
         "open_weights": false,
         "temperature": true
       },
       "family": null,
-      "id": "workers-ai/granite-4.0-h-micro",
+      "id": "anthropic/claude-3-opus",
       "knowledge": null,
-      "last_updated": "2025-10-15",
+      "last_updated": "2024-07-31",
       "lifecycle": null,
       "limits": {
         "context": 128000,
@@ -80,124 +82,13 @@
         ]
       },
       "model": null,
-      "name": "granite 4.0 h micro",
+      "name": "Claude 3 Opus",
       "provider": "cloudflare_ai_gateway",
       "provider_model_id": null,
-      "release_date": "2025-10-15",
+      "release_date": "2024-07-31",
       "tags": null
     },
-    "openai/gpt-4o-mini": {
-      "aliases": [],
-      "capabilities": null,
-      "cost": {
-        "input": 0,
-        "output": 0
-      },
-      "deprecated": false,
-      "extra": {
-        "attachment": false,
-        "open_weights": false,
-        "temperature": true
-      },
-      "family": null,
-      "id": "openai/gpt-4o-mini",
-      "knowledge": null,
-      "last_updated": "2024-07-23",
-      "lifecycle": null,
-      "limits": {
-        "context": 128000,
-        "output": 16384
-      },
-      "modalities": {
-        "input": [
-          "text"
-        ],
-        "output": [
-          "text"
-        ]
-      },
-      "model": null,
-      "name": "gpt 4o mini",
-      "provider": "cloudflare_ai_gateway",
-      "provider_model_id": null,
-      "release_date": "2024-07-23",
-      "tags": null
-    },
-    "workers-ai/llama-3.3-70b-instruct-fp8-fast": {
-      "aliases": [],
-      "capabilities": null,
-      "cost": {
-        "input": 0,
-        "output": 2.25
-      },
-      "deprecated": false,
-      "extra": {
-        "attachment": false,
-        "open_weights": false,
-        "temperature": true
-      },
-      "family": null,
-      "id": "workers-ai/llama-3.3-70b-instruct-fp8-fast",
-      "knowledge": null,
-      "last_updated": "2025-04-03",
-      "lifecycle": null,
-      "limits": {
-        "context": 128000,
-        "output": 16384
-      },
-      "modalities": {
-        "input": [
-          "text"
-        ],
-        "output": [
-          "text"
-        ]
-      },
-      "model": null,
-      "name": "llama 3.3 70u instruct fp8 fast",
-      "provider": "cloudflare_ai_gateway",
-      "provider_model_id": null,
-      "release_date": "2025-04-03",
-      "tags": null
-    },
-    "workers-ai/aura-2-en": {
-      "aliases": [],
-      "capabilities": null,
-      "cost": {
-        "input": 0,
-        "output": 0
-      },
-      "deprecated": false,
-      "extra": {
-        "attachment": false,
-        "open_weights": false,
-        "temperature": true
-      },
-      "family": null,
-      "id": "workers-ai/aura-2-en",
-      "knowledge": null,
-      "last_updated": "2025-11-14",
-      "lifecycle": null,
-      "limits": {
-        "context": 128000,
-        "output": 16384
-      },
-      "modalities": {
-        "input": [
-          "text"
-        ],
-        "output": [
-          "text"
-        ]
-      },
-      "model": null,
-      "name": "aura 2 en",
-      "provider": "cloudflare_ai_gateway",
-      "provider_model_id": null,
-      "release_date": "2025-11-14",
-      "tags": null
-    },
-    "anthropic/claude-sonnet-4-5": {
+    "anthropic/claude-3-sonnet": {
       "aliases": [],
       "capabilities": null,
       "cost": {
@@ -207,13 +98,14 @@
       "deprecated": false,
       "extra": {
         "attachment": false,
+        "family": "claude-sonnet",
         "open_weights": false,
         "temperature": true
       },
       "family": null,
-      "id": "anthropic/claude-sonnet-4-5",
+      "id": "anthropic/claude-3-sonnet",
       "knowledge": null,
-      "last_updated": "2025-11-14",
+      "last_updated": "2024-07-31",
       "lifecycle": null,
       "limits": {
         "context": 128000,
@@ -228,66 +120,30 @@
         ]
       },
       "model": null,
-      "name": "claude sonnet 4 5",
+      "name": "Claude 3 Sonnet",
       "provider": "cloudflare_ai_gateway",
       "provider_model_id": null,
-      "release_date": "2025-11-14",
+      "release_date": "2024-07-31",
       "tags": null
     },
-    "openai/o3-mini": {
-      "aliases": [],
-      "capabilities": null,
-      "cost": {
-        "input": 1.1,
-        "output": 4.4
-      },
-      "deprecated": false,
-      "extra": {
-        "attachment": false,
-        "open_weights": false,
-        "temperature": true
-      },
-      "family": null,
-      "id": "openai/o3-mini",
-      "knowledge": null,
-      "last_updated": "2025-02-05",
-      "lifecycle": null,
-      "limits": {
-        "context": 128000,
-        "output": 16384
-      },
-      "modalities": {
-        "input": [
-          "text"
-        ],
-        "output": [
-          "text"
-        ]
-      },
-      "model": null,
-      "name": "o3 mini",
-      "provider": "cloudflare_ai_gateway",
-      "provider_model_id": null,
-      "release_date": "2025-02-05",
-      "tags": null
-    },
-    "workers-ai/llama-3-8b-instruct": {
+    "anthropic/claude-3.5-haiku": {
       "aliases": [],
       "capabilities": null,
       "cost": {
         "input": 0,
-        "output": 0
+        "output": 4
       },
       "deprecated": false,
       "extra": {
         "attachment": false,
+        "family": "claude-haiku",
         "open_weights": false,
         "temperature": true
       },
       "family": null,
-      "id": "workers-ai/llama-3-8b-instruct",
+      "id": "anthropic/claude-3.5-haiku",
       "knowledge": null,
-      "last_updated": "2025-04-03",
+      "last_updated": "2025-01-07",
       "lifecycle": null,
       "limits": {
         "context": 128000,
@@ -302,29 +158,30 @@
         ]
       },
       "model": null,
-      "name": "llama 3 8u instruct",
+      "name": "Claude 3.5 Haiku",
       "provider": "cloudflare_ai_gateway",
       "provider_model_id": null,
-      "release_date": "2025-04-03",
+      "release_date": "2025-01-07",
       "tags": null
     },
-    "workers-ai/llama-3.1-8b-instruct-awq": {
+    "anthropic/claude-3.5-sonnet": {
       "aliases": [],
       "capabilities": null,
       "cost": {
-        "input": 0,
-        "output": 0
+        "input": 6,
+        "output": 30
       },
       "deprecated": false,
       "extra": {
         "attachment": false,
+        "family": "claude-sonnet",
         "open_weights": false,
         "temperature": true
       },
       "family": null,
-      "id": "workers-ai/llama-3.1-8b-instruct-awq",
+      "id": "anthropic/claude-3.5-sonnet",
       "knowledge": null,
-      "last_updated": "2025-04-03",
+      "last_updated": "2024-07-31",
       "lifecycle": null,
       "limits": {
         "context": 128000,
@@ -339,10 +196,10 @@
         ]
       },
       "model": null,
-      "name": "llama 3.1 8u instruct awq",
+      "name": "Claude 3.5 Sonnet",
       "provider": "cloudflare_ai_gateway",
       "provider_model_id": null,
-      "release_date": "2025-04-03",
+      "release_date": "2024-07-31",
       "tags": null
     },
     "anthropic/claude-haiku-4.5": {
@@ -355,6 +212,7 @@
       "deprecated": false,
       "extra": {
         "attachment": false,
+        "family": "claude-haiku",
         "open_weights": false,
         "temperature": true
       },
@@ -376,29 +234,30 @@
         ]
       },
       "model": null,
-      "name": "claude haiku 4.5",
+      "name": "Claude Haiku 4.5",
       "provider": "cloudflare_ai_gateway",
       "provider_model_id": null,
       "release_date": "2025-11-14",
       "tags": null
     },
-    "workers-ai/m2m100-1.2b": {
+    "anthropic/claude-opus-4": {
       "aliases": [],
       "capabilities": null,
       "cost": {
-        "input": 0,
-        "output": 0
+        "input": 15,
+        "output": 75
       },
       "deprecated": false,
       "extra": {
         "attachment": false,
+        "family": "claude-opus",
         "open_weights": false,
         "temperature": true
       },
       "family": null,
-      "id": "workers-ai/m2m100-1.2b",
+      "id": "anthropic/claude-opus-4",
       "knowledge": null,
-      "last_updated": "2025-04-03",
+      "last_updated": "2025-05-22",
       "lifecycle": null,
       "limits": {
         "context": 128000,
@@ -413,29 +272,30 @@
         ]
       },
       "model": null,
-      "name": "m2m100 1.2b",
+      "name": "Claude Opus 4",
       "provider": "cloudflare_ai_gateway",
       "provider_model_id": null,
-      "release_date": "2025-04-03",
+      "release_date": "2025-05-22",
       "tags": null
     },
-    "workers-ai/qwen3-embedding-0.6b": {
+    "anthropic/claude-opus-4.1": {
       "aliases": [],
       "capabilities": null,
       "cost": {
-        "input": 0,
-        "output": 0
+        "input": 15,
+        "output": 75
       },
       "deprecated": false,
       "extra": {
         "attachment": false,
+        "family": "claude-opus",
         "open_weights": false,
         "temperature": true
       },
       "family": null,
-      "id": "workers-ai/qwen3-embedding-0.6b",
+      "id": "anthropic/claude-opus-4.1",
       "knowledge": null,
-      "last_updated": "2025-11-14",
+      "last_updated": "2025-08-05",
       "lifecycle": null,
       "limits": {
         "context": 128000,
@@ -450,10 +310,86 @@
         ]
       },
       "model": null,
-      "name": "qwen3 emuedding 0.6b",
+      "name": "Claude Opus 4.1",
       "provider": "cloudflare_ai_gateway",
       "provider_model_id": null,
-      "release_date": "2025-11-14",
+      "release_date": "2025-08-05",
+      "tags": null
+    },
+    "anthropic/claude-opus-4.5": {
+      "aliases": [],
+      "capabilities": null,
+      "cost": {
+        "input": 5,
+        "output": 25
+      },
+      "deprecated": false,
+      "extra": {
+        "attachment": false,
+        "family": "claude-opus",
+        "open_weights": false,
+        "temperature": true
+      },
+      "family": null,
+      "id": "anthropic/claude-opus-4.5",
+      "knowledge": null,
+      "last_updated": "2025-11-24",
+      "lifecycle": null,
+      "limits": {
+        "context": 128000,
+        "output": 16384
+      },
+      "modalities": {
+        "input": [
+          "text"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "model": null,
+      "name": "Claude Opus 4.5",
+      "provider": "cloudflare_ai_gateway",
+      "provider_model_id": null,
+      "release_date": "2025-11-24",
+      "tags": null
+    },
+    "anthropic/claude-sonnet-4": {
+      "aliases": [],
+      "capabilities": null,
+      "cost": {
+        "input": 3,
+        "output": 15
+      },
+      "deprecated": false,
+      "extra": {
+        "attachment": false,
+        "family": "claude-sonnet",
+        "open_weights": false,
+        "temperature": true
+      },
+      "family": null,
+      "id": "anthropic/claude-sonnet-4",
+      "knowledge": null,
+      "last_updated": "2025-05-22",
+      "lifecycle": null,
+      "limits": {
+        "context": 128000,
+        "output": 16384
+      },
+      "modalities": {
+        "input": [
+          "text"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "model": null,
+      "name": "Claude Sonnet 4",
+      "provider": "cloudflare_ai_gateway",
+      "provider_model_id": null,
+      "release_date": "2025-05-22",
       "tags": null
     },
     "anthropic/claude-sonnet-4.5": {
@@ -466,6 +402,7 @@
       "deprecated": false,
       "extra": {
         "attachment": false,
+        "family": "claude-sonnet",
         "open_weights": false,
         "temperature": true
       },
@@ -487,29 +424,68 @@
         ]
       },
       "model": null,
-      "name": "claude sonnet 4.5",
+      "name": "Claude Sonnet 4.5",
       "provider": "cloudflare_ai_gateway",
       "provider_model_id": null,
       "release_date": "2025-10-08",
       "tags": null
     },
-    "openai/o1-preview": {
+    "openai/gpt-3.5-turbo": {
       "aliases": [],
       "capabilities": null,
       "cost": {
-        "input": 15,
+        "input": 0,
+        "output": 1.5
+      },
+      "deprecated": false,
+      "extra": {
+        "attachment": false,
+        "family": "gpt-3.5-turbo",
+        "open_weights": false,
+        "temperature": true
+      },
+      "family": null,
+      "id": "openai/gpt-3.5-turbo",
+      "knowledge": null,
+      "last_updated": "2025-02-10",
+      "lifecycle": null,
+      "limits": {
+        "context": 128000,
+        "output": 16384
+      },
+      "modalities": {
+        "input": [
+          "text"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "model": null,
+      "name": "GPT-3.5 Turbo",
+      "provider": "cloudflare_ai_gateway",
+      "provider_model_id": null,
+      "release_date": "2025-02-10",
+      "tags": null
+    },
+    "openai/gpt-4": {
+      "aliases": [],
+      "capabilities": null,
+      "cost": {
+        "input": 30,
         "output": 60
       },
       "deprecated": false,
       "extra": {
         "attachment": false,
+        "family": "gpt-4",
         "open_weights": false,
         "temperature": true
       },
       "family": null,
-      "id": "openai/o1-preview",
+      "id": "openai/gpt-4",
       "knowledge": null,
-      "last_updated": "2024-09-12",
+      "last_updated": "2024-07-23",
       "lifecycle": null,
       "limits": {
         "context": 128000,
@@ -524,29 +500,30 @@
         ]
       },
       "model": null,
-      "name": "o1 preview",
+      "name": "GPT-4",
       "provider": "cloudflare_ai_gateway",
       "provider_model_id": null,
-      "release_date": "2024-09-12",
+      "release_date": "2024-07-23",
       "tags": null
     },
-    "openai/o3": {
+    "openai/gpt-4-turbo": {
       "aliases": [],
       "capabilities": null,
       "cost": {
-        "input": 2,
-        "output": 8
+        "input": 10,
+        "output": 30
       },
       "deprecated": false,
       "extra": {
         "attachment": false,
+        "family": "gpt-4-turbo",
         "open_weights": false,
         "temperature": true
       },
       "family": null,
-      "id": "openai/o3",
+      "id": "openai/gpt-4-turbo",
       "knowledge": null,
-      "last_updated": "2025-06-10",
+      "last_updated": "2024-07-23",
       "lifecycle": null,
       "limits": {
         "context": 128000,
@@ -561,29 +538,30 @@
         ]
       },
       "model": null,
-      "name": "o3",
+      "name": "GPT-4 Turbo",
       "provider": "cloudflare_ai_gateway",
       "provider_model_id": null,
-      "release_date": "2025-06-10",
+      "release_date": "2024-07-23",
       "tags": null
     },
-    "workers-ai/llama-2-7b-chat-fp16": {
+    "openai/gpt-4o": {
       "aliases": [],
       "capabilities": null,
       "cost": {
-        "input": 0,
-        "output": 6.67
+        "input": 2.5,
+        "output": 10
       },
       "deprecated": false,
       "extra": {
         "attachment": false,
+        "family": "gpt-4o",
         "open_weights": false,
         "temperature": true
       },
       "family": null,
-      "id": "workers-ai/llama-2-7b-chat-fp16",
+      "id": "openai/gpt-4o",
       "knowledge": null,
-      "last_updated": "2025-04-03",
+      "last_updated": "2025-02-10",
       "lifecycle": null,
       "limits": {
         "context": 128000,
@@ -598,13 +576,13 @@
         ]
       },
       "model": null,
-      "name": "llama 2 7u chat fp16",
+      "name": "GPT-4o",
       "provider": "cloudflare_ai_gateway",
       "provider_model_id": null,
-      "release_date": "2025-04-03",
+      "release_date": "2025-02-10",
       "tags": null
     },
-    "workers-ai/bart-large-cnn": {
+    "openai/gpt-4o-mini": {
       "aliases": [],
       "capabilities": null,
       "cost": {
@@ -614,13 +592,14 @@
       "deprecated": false,
       "extra": {
         "attachment": false,
+        "family": "gpt-4o-mini",
         "open_weights": false,
         "temperature": true
       },
       "family": null,
-      "id": "workers-ai/bart-large-cnn",
+      "id": "openai/gpt-4o-mini",
       "knowledge": null,
-      "last_updated": "2025-04-09",
+      "last_updated": "2024-07-23",
       "lifecycle": null,
       "limits": {
         "context": 128000,
@@ -635,10 +614,86 @@
         ]
       },
       "model": null,
-      "name": "uart large cnn",
+      "name": "GPT-4o mini",
       "provider": "cloudflare_ai_gateway",
       "provider_model_id": null,
-      "release_date": "2025-04-09",
+      "release_date": "2024-07-23",
+      "tags": null
+    },
+    "openai/gpt-5.1": {
+      "aliases": [],
+      "capabilities": null,
+      "cost": {
+        "input": 1.25,
+        "output": 10
+      },
+      "deprecated": false,
+      "extra": {
+        "attachment": false,
+        "family": "gpt-5",
+        "open_weights": false,
+        "temperature": true
+      },
+      "family": null,
+      "id": "openai/gpt-5.1",
+      "knowledge": null,
+      "last_updated": "2025-11-14",
+      "lifecycle": null,
+      "limits": {
+        "context": 128000,
+        "output": 16384
+      },
+      "modalities": {
+        "input": [
+          "text"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "model": null,
+      "name": "GPT-5.1",
+      "provider": "cloudflare_ai_gateway",
+      "provider_model_id": null,
+      "release_date": "2025-11-14",
+      "tags": null
+    },
+    "openai/gpt-5.1-codex": {
+      "aliases": [],
+      "capabilities": null,
+      "cost": {
+        "input": 1.25,
+        "output": 10
+      },
+      "deprecated": false,
+      "extra": {
+        "attachment": false,
+        "family": "gpt-5-codex",
+        "open_weights": false,
+        "temperature": true
+      },
+      "family": null,
+      "id": "openai/gpt-5.1-codex",
+      "knowledge": null,
+      "last_updated": "2025-11-14",
+      "lifecycle": null,
+      "limits": {
+        "context": 128000,
+        "output": 16384
+      },
+      "modalities": {
+        "input": [
+          "text"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "model": null,
+      "name": "GPT-5.1 Codex",
+      "provider": "cloudflare_ai_gateway",
+      "provider_model_id": null,
+      "release_date": "2025-11-14",
       "tags": null
     },
     "openai/o1": {
@@ -651,6 +706,7 @@
       "deprecated": false,
       "extra": {
         "attachment": false,
+        "family": "o1",
         "open_weights": false,
         "temperature": true
       },
@@ -688,6 +744,7 @@
       "deprecated": false,
       "extra": {
         "attachment": false,
+        "family": "o1-mini",
         "open_weights": false,
         "temperature": true
       },
@@ -715,23 +772,24 @@
       "release_date": "2025-02-10",
       "tags": null
     },
-    "workers-ai/gpt-oss-20b": {
+    "openai/o1-preview": {
       "aliases": [],
       "capabilities": null,
       "cost": {
-        "input": 0,
-        "output": 0
+        "input": 15,
+        "output": 60
       },
       "deprecated": false,
       "extra": {
         "attachment": false,
+        "family": "o1-preview",
         "open_weights": false,
         "temperature": true
       },
       "family": null,
-      "id": "workers-ai/gpt-oss-20b",
+      "id": "openai/o1-preview",
       "knowledge": null,
-      "last_updated": "2025-08-05",
+      "last_updated": "2024-09-12",
       "lifecycle": null,
       "limits": {
         "context": 128000,
@@ -746,29 +804,30 @@
         ]
       },
       "model": null,
-      "name": "gpt oss 20b",
+      "name": "o1 Preview",
       "provider": "cloudflare_ai_gateway",
       "provider_model_id": null,
-      "release_date": "2025-08-05",
+      "release_date": "2024-09-12",
       "tags": null
     },
-    "workers-ai/melotts": {
+    "openai/o3": {
       "aliases": [],
       "capabilities": null,
       "cost": {
-        "input": 0,
-        "output": 0
+        "input": 2,
+        "output": 8
       },
       "deprecated": false,
       "extra": {
         "attachment": false,
+        "family": "o3",
         "open_weights": false,
         "temperature": true
       },
       "family": null,
-      "id": "workers-ai/melotts",
+      "id": "openai/o3",
       "knowledge": null,
-      "last_updated": "2025-11-14",
+      "last_updated": "2025-06-10",
       "lifecycle": null,
       "limits": {
         "context": 128000,
@@ -783,29 +842,30 @@
         ]
       },
       "model": null,
-      "name": "melotts",
+      "name": "O3",
       "provider": "cloudflare_ai_gateway",
       "provider_model_id": null,
-      "release_date": "2025-11-14",
+      "release_date": "2025-06-10",
       "tags": null
     },
-    "workers-ai/plamo-embedding-1b": {
+    "openai/o3-mini": {
       "aliases": [],
       "capabilities": null,
       "cost": {
-        "input": 0,
-        "output": 0
+        "input": 1.1,
+        "output": 4.4
       },
       "deprecated": false,
       "extra": {
         "attachment": false,
+        "family": "o3-mini",
         "open_weights": false,
         "temperature": true
       },
       "family": null,
-      "id": "workers-ai/plamo-embedding-1b",
+      "id": "openai/o3-mini",
       "knowledge": null,
-      "last_updated": "2025-09-25",
+      "last_updated": "2025-02-05",
       "lifecycle": null,
       "limits": {
         "context": 128000,
@@ -820,29 +880,30 @@
         ]
       },
       "model": null,
-      "name": "plamo emuedding 1b",
+      "name": "o3 mini",
       "provider": "cloudflare_ai_gateway",
       "provider_model_id": null,
-      "release_date": "2025-09-25",
+      "release_date": "2025-02-05",
       "tags": null
     },
-    "workers-ai/whisper-large-v3-turbo": {
+    "openai/o3-pro": {
       "aliases": [],
       "capabilities": null,
       "cost": {
-        "input": 0,
-        "output": 0
+        "input": 20,
+        "output": 80
       },
       "deprecated": false,
       "extra": {
         "attachment": false,
+        "family": "o3-pro",
         "open_weights": false,
         "temperature": true
       },
       "family": null,
-      "id": "workers-ai/whisper-large-v3-turbo",
+      "id": "openai/o3-pro",
       "knowledge": null,
-      "last_updated": "2025-11-14",
+      "last_updated": "2025-06-11",
       "lifecycle": null,
       "limits": {
         "context": 128000,
@@ -857,343 +918,10 @@
         ]
       },
       "model": null,
-      "name": "whisper large v3 turuo",
+      "name": "O3 Pro",
       "provider": "cloudflare_ai_gateway",
       "provider_model_id": null,
-      "release_date": "2025-11-14",
-      "tags": null
-    },
-    "anthropic/claude-opus-4-5": {
-      "aliases": [],
-      "capabilities": null,
-      "cost": {
-        "input": 5,
-        "output": 25
-      },
-      "deprecated": false,
-      "extra": {
-        "attachment": false,
-        "open_weights": false,
-        "temperature": true
-      },
-      "family": null,
-      "id": "anthropic/claude-opus-4-5",
-      "knowledge": null,
-      "last_updated": "2025-11-24",
-      "lifecycle": null,
-      "limits": {
-        "context": 128000,
-        "output": 16384
-      },
-      "modalities": {
-        "input": [
-          "text"
-        ],
-        "output": [
-          "text"
-        ]
-      },
-      "model": null,
-      "name": "claude opus 4 5",
-      "provider": "cloudflare_ai_gateway",
-      "provider_model_id": null,
-      "release_date": "2025-11-24",
-      "tags": null
-    },
-    "workers-ai/indictrans2-en-indic-1B": {
-      "aliases": [],
-      "capabilities": null,
-      "cost": {
-        "input": 0,
-        "output": 0
-      },
-      "deprecated": false,
-      "extra": {
-        "attachment": false,
-        "open_weights": false,
-        "temperature": true
-      },
-      "family": null,
-      "id": "workers-ai/indictrans2-en-indic-1B",
-      "knowledge": null,
-      "last_updated": "2025-09-25",
-      "lifecycle": null,
-      "limits": {
-        "context": 128000,
-        "output": 16384
-      },
-      "modalities": {
-        "input": [
-          "text"
-        ],
-        "output": [
-          "text"
-        ]
-      },
-      "model": null,
-      "name": "indictrans2 en indic 1B",
-      "provider": "cloudflare_ai_gateway",
-      "provider_model_id": null,
-      "release_date": "2025-09-25",
-      "tags": null
-    },
-    "workers-ai/bge-large-en-v1.5": {
-      "aliases": [],
-      "capabilities": null,
-      "cost": {
-        "input": 0,
-        "output": 0
-      },
-      "deprecated": false,
-      "extra": {
-        "attachment": false,
-        "open_weights": false,
-        "temperature": true
-      },
-      "family": null,
-      "id": "workers-ai/bge-large-en-v1.5",
-      "knowledge": null,
-      "last_updated": "2025-04-03",
-      "lifecycle": null,
-      "limits": {
-        "context": 128000,
-        "output": 16384
-      },
-      "modalities": {
-        "input": [
-          "text"
-        ],
-        "output": [
-          "text"
-        ]
-      },
-      "model": null,
-      "name": "uge large en v1.5",
-      "provider": "cloudflare_ai_gateway",
-      "provider_model_id": null,
-      "release_date": "2025-04-03",
-      "tags": null
-    },
-    "workers-ai/mistral-small-3.1-24b-instruct": {
-      "aliases": [],
-      "capabilities": null,
-      "cost": {
-        "input": 0,
-        "output": 0
-      },
-      "deprecated": false,
-      "extra": {
-        "attachment": false,
-        "open_weights": false,
-        "temperature": true
-      },
-      "family": null,
-      "id": "workers-ai/mistral-small-3.1-24b-instruct",
-      "knowledge": null,
-      "last_updated": "2025-04-11",
-      "lifecycle": null,
-      "limits": {
-        "context": 128000,
-        "output": 16384
-      },
-      "modalities": {
-        "input": [
-          "text"
-        ],
-        "output": [
-          "text"
-        ]
-      },
-      "model": null,
-      "name": "mistral small 3.1 24u instruct",
-      "provider": "cloudflare_ai_gateway",
-      "provider_model_id": null,
-      "release_date": "2025-04-11",
-      "tags": null
-    },
-    "workers-ai/smart-turn-v2": {
-      "aliases": [],
-      "capabilities": null,
-      "cost": {
-        "input": 0,
-        "output": 0
-      },
-      "deprecated": false,
-      "extra": {
-        "attachment": false,
-        "open_weights": false,
-        "temperature": true
-      },
-      "family": null,
-      "id": "workers-ai/smart-turn-v2",
-      "knowledge": null,
-      "last_updated": "2025-11-14",
-      "lifecycle": null,
-      "limits": {
-        "context": 128000,
-        "output": 16384
-      },
-      "modalities": {
-        "input": [
-          "text"
-        ],
-        "output": [
-          "text"
-        ]
-      },
-      "model": null,
-      "name": "smart turn v2",
-      "provider": "cloudflare_ai_gateway",
-      "provider_model_id": null,
-      "release_date": "2025-11-14",
-      "tags": null
-    },
-    "replicate/meta/meta-llama-3.1-405b-instruct": {
-      "aliases": [],
-      "capabilities": null,
-      "cost": {
-        "input": 9.5,
-        "output": 9.5
-      },
-      "deprecated": false,
-      "extra": {
-        "attachment": false,
-        "open_weights": false,
-        "temperature": true
-      },
-      "family": null,
-      "id": "replicate/meta/meta-llama-3.1-405b-instruct",
-      "knowledge": null,
-      "last_updated": "2024-09-25",
-      "lifecycle": null,
-      "limits": {
-        "context": 128000,
-        "output": 16384
-      },
-      "modalities": {
-        "input": [
-          "text"
-        ],
-        "output": [
-          "text"
-        ]
-      },
-      "model": null,
-      "name": "meta llama 3.1 405u instruct",
-      "provider": "cloudflare_ai_gateway",
-      "provider_model_id": null,
-      "release_date": "2024-09-25",
-      "tags": null
-    },
-    "openai/gpt-5.1-codex": {
-      "aliases": [],
-      "capabilities": null,
-      "cost": {
-        "input": 1.25,
-        "output": 10
-      },
-      "deprecated": false,
-      "extra": {
-        "attachment": false,
-        "open_weights": false,
-        "temperature": true
-      },
-      "family": null,
-      "id": "openai/gpt-5.1-codex",
-      "knowledge": null,
-      "last_updated": "2025-11-14",
-      "lifecycle": null,
-      "limits": {
-        "context": 128000,
-        "output": 16384
-      },
-      "modalities": {
-        "input": [
-          "text"
-        ],
-        "output": [
-          "text"
-        ]
-      },
-      "model": null,
-      "name": "gpt 5.1 codex",
-      "provider": "cloudflare_ai_gateway",
-      "provider_model_id": null,
-      "release_date": "2025-11-14",
-      "tags": null
-    },
-    "anthropic/claude-haiku-4-5": {
-      "aliases": [],
-      "capabilities": null,
-      "cost": {
-        "input": 1,
-        "output": 5
-      },
-      "deprecated": false,
-      "extra": {
-        "attachment": false,
-        "open_weights": false,
-        "temperature": true
-      },
-      "family": null,
-      "id": "anthropic/claude-haiku-4-5",
-      "knowledge": null,
-      "last_updated": "2025-11-14",
-      "lifecycle": null,
-      "limits": {
-        "context": 128000,
-        "output": 16384
-      },
-      "modalities": {
-        "input": [
-          "text"
-        ],
-        "output": [
-          "text"
-        ]
-      },
-      "model": null,
-      "name": "claude haiku 4 5",
-      "provider": "cloudflare_ai_gateway",
-      "provider_model_id": null,
-      "release_date": "2025-11-14",
-      "tags": null
-    },
-    "workers-ai/aura-2-es": {
-      "aliases": [],
-      "capabilities": null,
-      "cost": {
-        "input": 0,
-        "output": 0
-      },
-      "deprecated": false,
-      "extra": {
-        "attachment": false,
-        "open_weights": false,
-        "temperature": true
-      },
-      "family": null,
-      "id": "workers-ai/aura-2-es",
-      "knowledge": null,
-      "last_updated": "2025-11-14",
-      "lifecycle": null,
-      "limits": {
-        "context": 128000,
-        "output": 16384
-      },
-      "modalities": {
-        "input": [
-          "text"
-        ],
-        "output": [
-          "text"
-        ]
-      },
-      "model": null,
-      "name": "aura 2 es",
-      "provider": "cloudflare_ai_gateway",
-      "provider_model_id": null,
-      "release_date": "2025-11-14",
+      "release_date": "2025-06-11",
       "tags": null
     },
     "openai/o4-mini": {
@@ -1206,6 +934,7 @@
       "deprecated": false,
       "extra": {
         "attachment": false,
+        "family": "o4-mini",
         "open_weights": false,
         "temperature": true
       },
@@ -1233,487 +962,6 @@
       "release_date": "2025-04-16",
       "tags": null
     },
-    "openai/gpt-3.5-turbo": {
-      "aliases": [],
-      "capabilities": null,
-      "cost": {
-        "input": 0,
-        "output": 1.5
-      },
-      "deprecated": false,
-      "extra": {
-        "attachment": false,
-        "open_weights": false,
-        "temperature": true
-      },
-      "family": null,
-      "id": "openai/gpt-3.5-turbo",
-      "knowledge": null,
-      "last_updated": "2025-02-10",
-      "lifecycle": null,
-      "limits": {
-        "context": 128000,
-        "output": 16384
-      },
-      "modalities": {
-        "input": [
-          "text"
-        ],
-        "output": [
-          "text"
-        ]
-      },
-      "model": null,
-      "name": "gpt 3.5 turuo",
-      "provider": "cloudflare_ai_gateway",
-      "provider_model_id": null,
-      "release_date": "2025-02-10",
-      "tags": null
-    },
-    "anthropic/claude-3.5-haiku": {
-      "aliases": [],
-      "capabilities": null,
-      "cost": {
-        "input": 0,
-        "output": 4
-      },
-      "deprecated": false,
-      "extra": {
-        "attachment": false,
-        "open_weights": false,
-        "temperature": true
-      },
-      "family": null,
-      "id": "anthropic/claude-3.5-haiku",
-      "knowledge": null,
-      "last_updated": "2025-01-07",
-      "lifecycle": null,
-      "limits": {
-        "context": 128000,
-        "output": 16384
-      },
-      "modalities": {
-        "input": [
-          "text"
-        ],
-        "output": [
-          "text"
-        ]
-      },
-      "model": null,
-      "name": "claude 3.5 haiku",
-      "provider": "cloudflare_ai_gateway",
-      "provider_model_id": null,
-      "release_date": "2025-01-07",
-      "tags": null
-    },
-    "openai/gpt-5.1": {
-      "aliases": [],
-      "capabilities": null,
-      "cost": {
-        "input": 1.25,
-        "output": 10
-      },
-      "deprecated": false,
-      "extra": {
-        "attachment": false,
-        "open_weights": false,
-        "temperature": true
-      },
-      "family": null,
-      "id": "openai/gpt-5.1",
-      "knowledge": null,
-      "last_updated": "2025-11-14",
-      "lifecycle": null,
-      "limits": {
-        "context": 128000,
-        "output": 16384
-      },
-      "modalities": {
-        "input": [
-          "text"
-        ],
-        "output": [
-          "text"
-        ]
-      },
-      "model": null,
-      "name": "gpt 5.1",
-      "provider": "cloudflare_ai_gateway",
-      "provider_model_id": null,
-      "release_date": "2025-11-14",
-      "tags": null
-    },
-    "workers-ai/qwen2.5-coder-32b-instruct": {
-      "aliases": [],
-      "capabilities": null,
-      "cost": {
-        "input": 0,
-        "output": 1
-      },
-      "deprecated": false,
-      "extra": {
-        "attachment": false,
-        "open_weights": false,
-        "temperature": true
-      },
-      "family": null,
-      "id": "workers-ai/qwen2.5-coder-32b-instruct",
-      "knowledge": null,
-      "last_updated": "2025-04-11",
-      "lifecycle": null,
-      "limits": {
-        "context": 128000,
-        "output": 16384
-      },
-      "modalities": {
-        "input": [
-          "text"
-        ],
-        "output": [
-          "text"
-        ]
-      },
-      "model": null,
-      "name": "qwen2.5 coder 32u instruct",
-      "provider": "cloudflare_ai_gateway",
-      "provider_model_id": null,
-      "release_date": "2025-04-11",
-      "tags": null
-    },
-    "workers-ai/gemma-3-12b-it": {
-      "aliases": [],
-      "capabilities": null,
-      "cost": {
-        "input": 0,
-        "output": 0
-      },
-      "deprecated": false,
-      "extra": {
-        "attachment": false,
-        "open_weights": false,
-        "temperature": true
-      },
-      "family": null,
-      "id": "workers-ai/gemma-3-12b-it",
-      "knowledge": null,
-      "last_updated": "2025-04-11",
-      "lifecycle": null,
-      "limits": {
-        "context": 128000,
-        "output": 16384
-      },
-      "modalities": {
-        "input": [
-          "text"
-        ],
-        "output": [
-          "text"
-        ]
-      },
-      "model": null,
-      "name": "gemma 3 12u it",
-      "provider": "cloudflare_ai_gateway",
-      "provider_model_id": null,
-      "release_date": "2025-04-11",
-      "tags": null
-    },
-    "anthropic/claude-3-5-haiku": {
-      "aliases": [],
-      "capabilities": null,
-      "cost": {
-        "input": 0,
-        "output": 4
-      },
-      "deprecated": false,
-      "extra": {
-        "attachment": false,
-        "open_weights": false,
-        "temperature": true
-      },
-      "family": null,
-      "id": "anthropic/claude-3-5-haiku",
-      "knowledge": null,
-      "last_updated": "2024-11-04",
-      "lifecycle": null,
-      "limits": {
-        "context": 128000,
-        "output": 16384
-      },
-      "modalities": {
-        "input": [
-          "text"
-        ],
-        "output": [
-          "text"
-        ]
-      },
-      "model": null,
-      "name": "claude 3 5 haiku",
-      "provider": "cloudflare_ai_gateway",
-      "provider_model_id": null,
-      "release_date": "2024-11-04",
-      "tags": null
-    },
-    "workers-ai/gpt-oss-120b": {
-      "aliases": [],
-      "capabilities": null,
-      "cost": {
-        "input": 0,
-        "output": 0
-      },
-      "deprecated": false,
-      "extra": {
-        "attachment": false,
-        "open_weights": false,
-        "temperature": true
-      },
-      "family": null,
-      "id": "workers-ai/gpt-oss-120b",
-      "knowledge": null,
-      "last_updated": "2025-08-05",
-      "lifecycle": null,
-      "limits": {
-        "context": 128000,
-        "output": 16384
-      },
-      "modalities": {
-        "input": [
-          "text"
-        ],
-        "output": [
-          "text"
-        ]
-      },
-      "model": null,
-      "name": "gpt oss 120b",
-      "provider": "cloudflare_ai_gateway",
-      "provider_model_id": null,
-      "release_date": "2025-08-05",
-      "tags": null
-    },
-    "workers-ai/qwen3-30b-a3b-fp8": {
-      "aliases": [],
-      "capabilities": null,
-      "cost": {
-        "input": 0,
-        "output": 0
-      },
-      "deprecated": false,
-      "extra": {
-        "attachment": false,
-        "open_weights": false,
-        "temperature": true
-      },
-      "family": null,
-      "id": "workers-ai/qwen3-30b-a3b-fp8",
-      "knowledge": null,
-      "last_updated": "2025-11-14",
-      "lifecycle": null,
-      "limits": {
-        "context": 128000,
-        "output": 16384
-      },
-      "modalities": {
-        "input": [
-          "text"
-        ],
-        "output": [
-          "text"
-        ]
-      },
-      "model": null,
-      "name": "qwen3 30u a3u fp8",
-      "provider": "cloudflare_ai_gateway",
-      "provider_model_id": null,
-      "release_date": "2025-11-14",
-      "tags": null
-    },
-    "openai/gpt-4-turbo": {
-      "aliases": [],
-      "capabilities": null,
-      "cost": {
-        "input": 10,
-        "output": 30
-      },
-      "deprecated": false,
-      "extra": {
-        "attachment": false,
-        "open_weights": false,
-        "temperature": true
-      },
-      "family": null,
-      "id": "openai/gpt-4-turbo",
-      "knowledge": null,
-      "last_updated": "2024-07-23",
-      "lifecycle": null,
-      "limits": {
-        "context": 128000,
-        "output": 16384
-      },
-      "modalities": {
-        "input": [
-          "text"
-        ],
-        "output": [
-          "text"
-        ]
-      },
-      "model": null,
-      "name": "gpt 4 turuo",
-      "provider": "cloudflare_ai_gateway",
-      "provider_model_id": null,
-      "release_date": "2024-07-23",
-      "tags": null
-    },
-    "workers-ai/aura-1": {
-      "aliases": [],
-      "capabilities": null,
-      "cost": {
-        "input": 0,
-        "output": 0
-      },
-      "deprecated": false,
-      "extra": {
-        "attachment": false,
-        "open_weights": false,
-        "temperature": true
-      },
-      "family": null,
-      "id": "workers-ai/aura-1",
-      "knowledge": null,
-      "last_updated": "2025-11-14",
-      "lifecycle": null,
-      "limits": {
-        "context": 128000,
-        "output": 16384
-      },
-      "modalities": {
-        "input": [
-          "text"
-        ],
-        "output": [
-          "text"
-        ]
-      },
-      "model": null,
-      "name": "aura 1",
-      "provider": "cloudflare_ai_gateway",
-      "provider_model_id": null,
-      "release_date": "2025-11-14",
-      "tags": null
-    },
-    "replicate/meta/meta-llama-3-8b-instruct": {
-      "aliases": [],
-      "capabilities": null,
-      "cost": {
-        "input": 0,
-        "output": 0
-      },
-      "deprecated": false,
-      "extra": {
-        "attachment": false,
-        "open_weights": false,
-        "temperature": true
-      },
-      "family": null,
-      "id": "replicate/meta/meta-llama-3-8b-instruct",
-      "knowledge": null,
-      "last_updated": "2025-02-05",
-      "lifecycle": null,
-      "limits": {
-        "context": 128000,
-        "output": 16384
-      },
-      "modalities": {
-        "input": [
-          "text"
-        ],
-        "output": [
-          "text"
-        ]
-      },
-      "model": null,
-      "name": "meta llama 3 8u instruct",
-      "provider": "cloudflare_ai_gateway",
-      "provider_model_id": null,
-      "release_date": "2025-02-05",
-      "tags": null
-    },
-    "workers-ai/bge-reranker-base": {
-      "aliases": [],
-      "capabilities": null,
-      "cost": {
-        "input": 0,
-        "output": 0
-      },
-      "deprecated": false,
-      "extra": {
-        "attachment": false,
-        "open_weights": false,
-        "temperature": true
-      },
-      "family": null,
-      "id": "workers-ai/bge-reranker-base",
-      "knowledge": null,
-      "last_updated": "2025-04-09",
-      "lifecycle": null,
-      "limits": {
-        "context": 128000,
-        "output": 16384
-      },
-      "modalities": {
-        "input": [
-          "text"
-        ],
-        "output": [
-          "text"
-        ]
-      },
-      "model": null,
-      "name": "uge reranker uase",
-      "provider": "cloudflare_ai_gateway",
-      "provider_model_id": null,
-      "release_date": "2025-04-09",
-      "tags": null
-    },
-    "workers-ai/llama-3.1-8b-instruct": {
-      "aliases": [],
-      "capabilities": null,
-      "cost": {
-        "input": 0,
-        "output": 0
-      },
-      "deprecated": false,
-      "extra": {
-        "attachment": false,
-        "open_weights": false,
-        "temperature": true
-      },
-      "family": null,
-      "id": "workers-ai/llama-3.1-8b-instruct",
-      "knowledge": null,
-      "last_updated": "2025-04-03",
-      "lifecycle": null,
-      "limits": {
-        "context": 128000,
-        "output": 16384
-      },
-      "modalities": {
-        "input": [
-          "text"
-        ],
-        "output": [
-          "text"
-        ]
-      },
-      "model": null,
-      "name": "llama 3.1 8u instruct",
-      "provider": "cloudflare_ai_gateway",
-      "provider_model_id": null,
-      "release_date": "2025-04-03",
-      "tags": null
-    },
     "replicate/deepseek-ai/deepseek-r1": {
       "aliases": [],
       "capabilities": null,
@@ -1724,6 +972,7 @@
       "deprecated": false,
       "extra": {
         "attachment": false,
+        "family": "deepseek-r1",
         "open_weights": false,
         "temperature": true
       },
@@ -1745,343 +994,10 @@
         ]
       },
       "model": null,
-      "name": "deepseek r1",
+      "name": "DeepSeek R1",
       "provider": "cloudflare_ai_gateway",
       "provider_model_id": null,
       "release_date": "2025-03-11",
-      "tags": null
-    },
-    "workers-ai/llama-4-scout-17b-16e-instruct": {
-      "aliases": [],
-      "capabilities": null,
-      "cost": {
-        "input": 0,
-        "output": 0
-      },
-      "deprecated": false,
-      "extra": {
-        "attachment": false,
-        "open_weights": false,
-        "temperature": true
-      },
-      "family": null,
-      "id": "workers-ai/llama-4-scout-17b-16e-instruct",
-      "knowledge": null,
-      "last_updated": "2025-04-16",
-      "lifecycle": null,
-      "limits": {
-        "context": 128000,
-        "output": 16384
-      },
-      "modalities": {
-        "input": [
-          "text"
-        ],
-        "output": [
-          "text"
-        ]
-      },
-      "model": null,
-      "name": "llama 4 scout 17u 16e instruct",
-      "provider": "cloudflare_ai_gateway",
-      "provider_model_id": null,
-      "release_date": "2025-04-16",
-      "tags": null
-    },
-    "openai/o3-pro": {
-      "aliases": [],
-      "capabilities": null,
-      "cost": {
-        "input": 20,
-        "output": 80
-      },
-      "deprecated": false,
-      "extra": {
-        "attachment": false,
-        "open_weights": false,
-        "temperature": true
-      },
-      "family": null,
-      "id": "openai/o3-pro",
-      "knowledge": null,
-      "last_updated": "2025-06-11",
-      "lifecycle": null,
-      "limits": {
-        "context": 128000,
-        "output": 16384
-      },
-      "modalities": {
-        "input": [
-          "text"
-        ],
-        "output": [
-          "text"
-        ]
-      },
-      "model": null,
-      "name": "o3 pro",
-      "provider": "cloudflare_ai_gateway",
-      "provider_model_id": null,
-      "release_date": "2025-06-11",
-      "tags": null
-    },
-    "workers-ai/whisper": {
-      "aliases": [],
-      "capabilities": null,
-      "cost": {
-        "input": 0,
-        "output": 0
-      },
-      "deprecated": false,
-      "extra": {
-        "attachment": false,
-        "open_weights": false,
-        "temperature": true
-      },
-      "family": null,
-      "id": "workers-ai/whisper",
-      "knowledge": null,
-      "last_updated": "2025-11-14",
-      "lifecycle": null,
-      "limits": {
-        "context": 128000,
-        "output": 16384
-      },
-      "modalities": {
-        "input": [
-          "text"
-        ],
-        "output": [
-          "text"
-        ]
-      },
-      "model": null,
-      "name": "whisper",
-      "provider": "cloudflare_ai_gateway",
-      "provider_model_id": null,
-      "release_date": "2025-11-14",
-      "tags": null
-    },
-    "workers-ai/bge-small-en-v1.5": {
-      "aliases": [],
-      "capabilities": null,
-      "cost": {
-        "input": 0,
-        "output": 0
-      },
-      "deprecated": false,
-      "extra": {
-        "attachment": false,
-        "open_weights": false,
-        "temperature": true
-      },
-      "family": null,
-      "id": "workers-ai/bge-small-en-v1.5",
-      "knowledge": null,
-      "last_updated": "2025-04-03",
-      "lifecycle": null,
-      "limits": {
-        "context": 128000,
-        "output": 16384
-      },
-      "modalities": {
-        "input": [
-          "text"
-        ],
-        "output": [
-          "text"
-        ]
-      },
-      "model": null,
-      "name": "uge small en v1.5",
-      "provider": "cloudflare_ai_gateway",
-      "provider_model_id": null,
-      "release_date": "2025-04-03",
-      "tags": null
-    },
-    "openai/gpt-4": {
-      "aliases": [],
-      "capabilities": null,
-      "cost": {
-        "input": 30,
-        "output": 60
-      },
-      "deprecated": false,
-      "extra": {
-        "attachment": false,
-        "open_weights": false,
-        "temperature": true
-      },
-      "family": null,
-      "id": "openai/gpt-4",
-      "knowledge": null,
-      "last_updated": "2024-07-23",
-      "lifecycle": null,
-      "limits": {
-        "context": 128000,
-        "output": 16384
-      },
-      "modalities": {
-        "input": [
-          "text"
-        ],
-        "output": [
-          "text"
-        ]
-      },
-      "model": null,
-      "name": "gpt 4",
-      "provider": "cloudflare_ai_gateway",
-      "provider_model_id": null,
-      "release_date": "2024-07-23",
-      "tags": null
-    },
-    "workers-ai/deepseek-r1-distill-qwen-32b": {
-      "aliases": [],
-      "capabilities": null,
-      "cost": {
-        "input": 0,
-        "output": 4.88
-      },
-      "deprecated": false,
-      "extra": {
-        "attachment": false,
-        "open_weights": false,
-        "temperature": true
-      },
-      "family": null,
-      "id": "workers-ai/deepseek-r1-distill-qwen-32b",
-      "knowledge": null,
-      "last_updated": "2025-04-03",
-      "lifecycle": null,
-      "limits": {
-        "context": 128000,
-        "output": 16384
-      },
-      "modalities": {
-        "input": [
-          "text"
-        ],
-        "output": [
-          "text"
-        ]
-      },
-      "model": null,
-      "name": "deepseek r1 distill qwen 32b",
-      "provider": "cloudflare_ai_gateway",
-      "provider_model_id": null,
-      "release_date": "2025-04-03",
-      "tags": null
-    },
-    "anthropic/claude-opus-4.5": {
-      "aliases": [],
-      "capabilities": null,
-      "cost": {
-        "input": 5,
-        "output": 25
-      },
-      "deprecated": false,
-      "extra": {
-        "attachment": false,
-        "open_weights": false,
-        "temperature": true
-      },
-      "family": null,
-      "id": "anthropic/claude-opus-4.5",
-      "knowledge": null,
-      "last_updated": "2025-11-24",
-      "lifecycle": null,
-      "limits": {
-        "context": 128000,
-        "output": 16384
-      },
-      "modalities": {
-        "input": [
-          "text"
-        ],
-        "output": [
-          "text"
-        ]
-      },
-      "model": null,
-      "name": "claude opus 4.5",
-      "provider": "cloudflare_ai_gateway",
-      "provider_model_id": null,
-      "release_date": "2025-11-24",
-      "tags": null
-    },
-    "workers-ai/llama-3.1-8b-instruct-fp8": {
-      "aliases": [],
-      "capabilities": null,
-      "cost": {
-        "input": 0,
-        "output": 0
-      },
-      "deprecated": false,
-      "extra": {
-        "attachment": false,
-        "open_weights": false,
-        "temperature": true
-      },
-      "family": null,
-      "id": "workers-ai/llama-3.1-8b-instruct-fp8",
-      "knowledge": null,
-      "last_updated": "2025-04-03",
-      "lifecycle": null,
-      "limits": {
-        "context": 128000,
-        "output": 16384
-      },
-      "modalities": {
-        "input": [
-          "text"
-        ],
-        "output": [
-          "text"
-        ]
-      },
-      "model": null,
-      "name": "llama 3.1 8u instruct fp8",
-      "provider": "cloudflare_ai_gateway",
-      "provider_model_id": null,
-      "release_date": "2025-04-03",
-      "tags": null
-    },
-    "openai/gpt-4o": {
-      "aliases": [],
-      "capabilities": null,
-      "cost": {
-        "input": 2.5,
-        "output": 10
-      },
-      "deprecated": false,
-      "extra": {
-        "attachment": false,
-        "open_weights": false,
-        "temperature": true
-      },
-      "family": null,
-      "id": "openai/gpt-4o",
-      "knowledge": null,
-      "last_updated": "2025-02-10",
-      "lifecycle": null,
-      "limits": {
-        "context": 128000,
-        "output": 16384
-      },
-      "modalities": {
-        "input": [
-          "text"
-        ],
-        "output": [
-          "text"
-        ]
-      },
-      "model": null,
-      "name": "gpt 4o",
-      "provider": "cloudflare_ai_gateway",
-      "provider_model_id": null,
-      "release_date": "2025-02-10",
       "tags": null
     },
     "replicate/meta/meta-llama-3-70b-instruct": {
@@ -2094,6 +1010,7 @@
       "deprecated": false,
       "extra": {
         "attachment": false,
+        "family": "llama-3",
         "open_weights": false,
         "temperature": true
       },
@@ -2115,27 +1032,522 @@
         ]
       },
       "model": null,
-      "name": "meta llama 3 70u instruct",
+      "name": "Llama 3 70B Instruct",
       "provider": "cloudflare_ai_gateway",
       "provider_model_id": null,
       "release_date": "2024-10-08",
       "tags": null
     },
-    "workers-ai/qwq-32b": {
+    "replicate/meta/meta-llama-3-8b-instruct": {
       "aliases": [],
       "capabilities": null,
       "cost": {
         "input": 0,
-        "output": 1
+        "output": 0
       },
       "deprecated": false,
       "extra": {
         "attachment": false,
+        "family": "llama-3",
         "open_weights": false,
         "temperature": true
       },
       "family": null,
-      "id": "workers-ai/qwq-32b",
+      "id": "replicate/meta/meta-llama-3-8b-instruct",
+      "knowledge": null,
+      "last_updated": "2025-02-05",
+      "lifecycle": null,
+      "limits": {
+        "context": 128000,
+        "output": 16384
+      },
+      "modalities": {
+        "input": [
+          "text"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "model": null,
+      "name": "Llama 3 8B Instruct",
+      "provider": "cloudflare_ai_gateway",
+      "provider_model_id": null,
+      "release_date": "2025-02-05",
+      "tags": null
+    },
+    "replicate/meta/meta-llama-3.1-405b-instruct": {
+      "aliases": [],
+      "capabilities": null,
+      "cost": {
+        "input": 9.5,
+        "output": 9.5
+      },
+      "deprecated": false,
+      "extra": {
+        "attachment": false,
+        "family": "llama-3.1",
+        "open_weights": false,
+        "temperature": true
+      },
+      "family": null,
+      "id": "replicate/meta/meta-llama-3.1-405b-instruct",
+      "knowledge": null,
+      "last_updated": "2024-09-25",
+      "lifecycle": null,
+      "limits": {
+        "context": 128000,
+        "output": 16384
+      },
+      "modalities": {
+        "input": [
+          "text"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "model": null,
+      "name": "Llama 3.1 405B Instruct",
+      "provider": "cloudflare_ai_gateway",
+      "provider_model_id": null,
+      "release_date": "2024-09-25",
+      "tags": null
+    },
+    "workers-ai/aura-1": {
+      "aliases": [],
+      "capabilities": null,
+      "cost": {
+        "input": 0,
+        "output": 0
+      },
+      "deprecated": false,
+      "extra": {
+        "attachment": false,
+        "family": "aura",
+        "open_weights": false,
+        "temperature": true
+      },
+      "family": null,
+      "id": "workers-ai/aura-1",
+      "knowledge": null,
+      "last_updated": "2025-11-14",
+      "lifecycle": null,
+      "limits": {
+        "context": 128000,
+        "output": 16384
+      },
+      "modalities": {
+        "input": [
+          "text"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "model": null,
+      "name": "Aura 1",
+      "provider": "cloudflare_ai_gateway",
+      "provider_model_id": null,
+      "release_date": "2025-11-14",
+      "tags": null
+    },
+    "workers-ai/aura-2-en": {
+      "aliases": [],
+      "capabilities": null,
+      "cost": {
+        "input": 0,
+        "output": 0
+      },
+      "deprecated": false,
+      "extra": {
+        "attachment": false,
+        "family": "aura-2-en",
+        "open_weights": false,
+        "temperature": true
+      },
+      "family": null,
+      "id": "workers-ai/aura-2-en",
+      "knowledge": null,
+      "last_updated": "2025-11-14",
+      "lifecycle": null,
+      "limits": {
+        "context": 128000,
+        "output": 16384
+      },
+      "modalities": {
+        "input": [
+          "text"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "model": null,
+      "name": "Aura 2 EN",
+      "provider": "cloudflare_ai_gateway",
+      "provider_model_id": null,
+      "release_date": "2025-11-14",
+      "tags": null
+    },
+    "workers-ai/aura-2-es": {
+      "aliases": [],
+      "capabilities": null,
+      "cost": {
+        "input": 0,
+        "output": 0
+      },
+      "deprecated": false,
+      "extra": {
+        "attachment": false,
+        "family": "aura-2-es",
+        "open_weights": false,
+        "temperature": true
+      },
+      "family": null,
+      "id": "workers-ai/aura-2-es",
+      "knowledge": null,
+      "last_updated": "2025-11-14",
+      "lifecycle": null,
+      "limits": {
+        "context": 128000,
+        "output": 16384
+      },
+      "modalities": {
+        "input": [
+          "text"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "model": null,
+      "name": "Aura 2 ES",
+      "provider": "cloudflare_ai_gateway",
+      "provider_model_id": null,
+      "release_date": "2025-11-14",
+      "tags": null
+    },
+    "workers-ai/bart-large-cnn": {
+      "aliases": [],
+      "capabilities": null,
+      "cost": {
+        "input": 0,
+        "output": 0
+      },
+      "deprecated": false,
+      "extra": {
+        "attachment": false,
+        "family": "bart-large-cnn",
+        "open_weights": false,
+        "temperature": true
+      },
+      "family": null,
+      "id": "workers-ai/bart-large-cnn",
+      "knowledge": null,
+      "last_updated": "2025-04-09",
+      "lifecycle": null,
+      "limits": {
+        "context": 128000,
+        "output": 16384
+      },
+      "modalities": {
+        "input": [
+          "text"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "model": null,
+      "name": "BART Large CNN",
+      "provider": "cloudflare_ai_gateway",
+      "provider_model_id": null,
+      "release_date": "2025-04-09",
+      "tags": null
+    },
+    "workers-ai/bge-base-en-v1.5": {
+      "aliases": [],
+      "capabilities": null,
+      "cost": {
+        "input": 67000,
+        "output": 0
+      },
+      "deprecated": false,
+      "extra": {
+        "attachment": false,
+        "family": "bge-base",
+        "open_weights": false,
+        "temperature": true
+      },
+      "family": null,
+      "id": "workers-ai/bge-base-en-v1.5",
+      "knowledge": null,
+      "last_updated": "2025-08-23",
+      "lifecycle": null,
+      "limits": {
+        "context": 128000,
+        "output": 16384
+      },
+      "modalities": {
+        "input": [
+          "text"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "model": null,
+      "name": "BGE Base EN V1.5",
+      "provider": "cloudflare_ai_gateway",
+      "provider_model_id": null,
+      "release_date": "2025-08-23",
+      "tags": null
+    },
+    "workers-ai/bge-large-en-v1.5": {
+      "aliases": [],
+      "capabilities": null,
+      "cost": {
+        "input": 200000,
+        "output": 0
+      },
+      "deprecated": false,
+      "extra": {
+        "attachment": false,
+        "family": "bge-large",
+        "open_weights": false,
+        "temperature": true
+      },
+      "family": null,
+      "id": "workers-ai/bge-large-en-v1.5",
+      "knowledge": null,
+      "last_updated": "2025-08-23",
+      "lifecycle": null,
+      "limits": {
+        "context": 128000,
+        "output": 16384
+      },
+      "modalities": {
+        "input": [
+          "text"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "model": null,
+      "name": "BGE Large EN V1.5",
+      "provider": "cloudflare_ai_gateway",
+      "provider_model_id": null,
+      "release_date": "2025-08-23",
+      "tags": null
+    },
+    "workers-ai/bge-m3": {
+      "aliases": [],
+      "capabilities": null,
+      "cost": {
+        "input": 12000,
+        "output": 0
+      },
+      "deprecated": false,
+      "extra": {
+        "attachment": false,
+        "family": "bge-m3",
+        "open_weights": false,
+        "temperature": true
+      },
+      "family": null,
+      "id": "workers-ai/bge-m3",
+      "knowledge": null,
+      "last_updated": "2025-08-23",
+      "lifecycle": null,
+      "limits": {
+        "context": 128000,
+        "output": 16384
+      },
+      "modalities": {
+        "input": [
+          "text"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "model": null,
+      "name": "BGE M3",
+      "provider": "cloudflare_ai_gateway",
+      "provider_model_id": null,
+      "release_date": "2025-08-23",
+      "tags": null
+    },
+    "workers-ai/bge-reranker-base": {
+      "aliases": [],
+      "capabilities": null,
+      "cost": {
+        "input": 0,
+        "output": 0
+      },
+      "deprecated": false,
+      "extra": {
+        "attachment": false,
+        "family": "bge-rerank",
+        "open_weights": false,
+        "temperature": true
+      },
+      "family": null,
+      "id": "workers-ai/bge-reranker-base",
+      "knowledge": null,
+      "last_updated": "2025-04-09",
+      "lifecycle": null,
+      "limits": {
+        "context": 128000,
+        "output": 16384
+      },
+      "modalities": {
+        "input": [
+          "text"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "model": null,
+      "name": "BGE Reranker Base",
+      "provider": "cloudflare_ai_gateway",
+      "provider_model_id": null,
+      "release_date": "2025-04-09",
+      "tags": null
+    },
+    "workers-ai/bge-small-en-v1.5": {
+      "aliases": [],
+      "capabilities": null,
+      "cost": {
+        "input": 20000,
+        "output": 0
+      },
+      "deprecated": false,
+      "extra": {
+        "attachment": false,
+        "family": "bge-small",
+        "open_weights": false,
+        "temperature": true
+      },
+      "family": null,
+      "id": "workers-ai/bge-small-en-v1.5",
+      "knowledge": null,
+      "last_updated": "2025-08-23",
+      "lifecycle": null,
+      "limits": {
+        "context": 128000,
+        "output": 16384
+      },
+      "modalities": {
+        "input": [
+          "text"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "model": null,
+      "name": "BGE Small EN V1.5",
+      "provider": "cloudflare_ai_gateway",
+      "provider_model_id": null,
+      "release_date": "2025-08-23",
+      "tags": null
+    },
+    "workers-ai/deepseek-r1-distill-qwen-32b": {
+      "aliases": [],
+      "capabilities": null,
+      "cost": {
+        "input": 500000,
+        "output": 4880000
+      },
+      "deprecated": false,
+      "extra": {
+        "attachment": false,
+        "family": "qwen",
+        "open_weights": false,
+        "temperature": true
+      },
+      "family": null,
+      "id": "workers-ai/deepseek-r1-distill-qwen-32b",
+      "knowledge": null,
+      "last_updated": "2025-08-23",
+      "lifecycle": null,
+      "limits": {
+        "context": 128000,
+        "output": 16384
+      },
+      "modalities": {
+        "input": [
+          "text"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "model": null,
+      "name": "DeepSeek R1 Distill Qwen 32B",
+      "provider": "cloudflare_ai_gateway",
+      "provider_model_id": null,
+      "release_date": "2025-08-23",
+      "tags": null
+    },
+    "workers-ai/distilbert-sst-2-int8": {
+      "aliases": [],
+      "capabilities": null,
+      "cost": {
+        "input": 26000,
+        "output": 0
+      },
+      "deprecated": false,
+      "extra": {
+        "attachment": false,
+        "family": "distilbert-sst",
+        "open_weights": false,
+        "temperature": true
+      },
+      "family": null,
+      "id": "workers-ai/distilbert-sst-2-int8",
+      "knowledge": null,
+      "last_updated": "2025-08-23",
+      "lifecycle": null,
+      "limits": {
+        "context": 128000,
+        "output": 16384
+      },
+      "modalities": {
+        "input": [
+          "text"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "model": null,
+      "name": "DistilBERT SST-2 INT8",
+      "provider": "cloudflare_ai_gateway",
+      "provider_model_id": null,
+      "release_date": "2025-08-23",
+      "tags": null
+    },
+    "workers-ai/gemma-3-12b-it": {
+      "aliases": [],
+      "capabilities": null,
+      "cost": {
+        "input": 0,
+        "output": 0
+      },
+      "deprecated": false,
+      "extra": {
+        "attachment": false,
+        "family": "gemma-3",
+        "open_weights": false,
+        "temperature": true
+      },
+      "family": null,
+      "id": "workers-ai/gemma-3-12b-it",
       "knowledge": null,
       "last_updated": "2025-04-11",
       "lifecycle": null,
@@ -2152,121 +1564,10 @@
         ]
       },
       "model": null,
-      "name": "qwq 32b",
+      "name": "Gemma 3 12B IT",
       "provider": "cloudflare_ai_gateway",
       "provider_model_id": null,
       "release_date": "2025-04-11",
-      "tags": null
-    },
-    "replicate/replicate-internal/llama-405b-instruct-vllm": {
-      "aliases": [],
-      "capabilities": null,
-      "cost": {
-        "input": 9.5,
-        "output": 9.5
-      },
-      "deprecated": false,
-      "extra": {
-        "attachment": false,
-        "open_weights": false,
-        "temperature": true
-      },
-      "family": null,
-      "id": "replicate/replicate-internal/llama-405b-instruct-vllm",
-      "knowledge": null,
-      "last_updated": "2024-08-27",
-      "lifecycle": null,
-      "limits": {
-        "context": 128000,
-        "output": 16384
-      },
-      "modalities": {
-        "input": [
-          "text"
-        ],
-        "output": [
-          "text"
-        ]
-      },
-      "model": null,
-      "name": "llama 405u instruct vllm",
-      "provider": "cloudflare_ai_gateway",
-      "provider_model_id": null,
-      "release_date": "2024-08-27",
-      "tags": null
-    },
-    "workers-ai/llama-3.2-3b-instruct": {
-      "aliases": [],
-      "capabilities": null,
-      "cost": {
-        "input": 0,
-        "output": 0
-      },
-      "deprecated": false,
-      "extra": {
-        "attachment": false,
-        "open_weights": false,
-        "temperature": true
-      },
-      "family": null,
-      "id": "workers-ai/llama-3.2-3b-instruct",
-      "knowledge": null,
-      "last_updated": "2025-04-03",
-      "lifecycle": null,
-      "limits": {
-        "context": 128000,
-        "output": 16384
-      },
-      "modalities": {
-        "input": [
-          "text"
-        ],
-        "output": [
-          "text"
-        ]
-      },
-      "model": null,
-      "name": "llama 3.2 3u instruct",
-      "provider": "cloudflare_ai_gateway",
-      "provider_model_id": null,
-      "release_date": "2025-04-03",
-      "tags": null
-    },
-    "anthropic/claude-3-sonnet": {
-      "aliases": [],
-      "capabilities": null,
-      "cost": {
-        "input": 3,
-        "output": 15
-      },
-      "deprecated": false,
-      "extra": {
-        "attachment": false,
-        "open_weights": false,
-        "temperature": true
-      },
-      "family": null,
-      "id": "anthropic/claude-3-sonnet",
-      "knowledge": null,
-      "last_updated": "2024-07-31",
-      "lifecycle": null,
-      "limits": {
-        "context": 128000,
-        "output": 16384
-      },
-      "modalities": {
-        "input": [
-          "text"
-        ],
-        "output": [
-          "text"
-        ]
-      },
-      "model": null,
-      "name": "claude 3 sonnet",
-      "provider": "cloudflare_ai_gateway",
-      "provider_model_id": null,
-      "release_date": "2024-07-31",
       "tags": null
     },
     "workers-ai/gemma-sea-lion-v4-27b-it": {
@@ -2279,6 +1580,7 @@
       "deprecated": false,
       "extra": {
         "attachment": false,
+        "family": "gemma",
         "open_weights": false,
         "temperature": true
       },
@@ -2300,13 +1602,13 @@
         ]
       },
       "model": null,
-      "name": "gemma sea lion v4 27u it",
+      "name": "Gemma SEA-LION V4 27B IT",
       "provider": "cloudflare_ai_gateway",
       "provider_model_id": null,
       "release_date": "2025-09-25",
       "tags": null
     },
-    "workers-ai/mistral-7b-instruct-v0.1": {
+    "workers-ai/gpt-oss-120b": {
       "aliases": [],
       "capabilities": null,
       "cost": {
@@ -2316,13 +1618,14 @@
       "deprecated": false,
       "extra": {
         "attachment": false,
+        "family": "gpt-oss",
         "open_weights": false,
         "temperature": true
       },
       "family": null,
-      "id": "workers-ai/mistral-7b-instruct-v0.1",
+      "id": "workers-ai/gpt-oss-120b",
       "knowledge": null,
-      "last_updated": "2025-04-03",
+      "last_updated": "2025-08-05",
       "lifecycle": null,
       "limits": {
         "context": 128000,
@@ -2337,29 +1640,410 @@
         ]
       },
       "model": null,
-      "name": "mistral 7u instruct v0.1",
+      "name": "GPT-OSS 120B",
       "provider": "cloudflare_ai_gateway",
       "provider_model_id": null,
-      "release_date": "2025-04-03",
+      "release_date": "2025-08-05",
+      "tags": null
+    },
+    "workers-ai/gpt-oss-20b": {
+      "aliases": [],
+      "capabilities": null,
+      "cost": {
+        "input": 0,
+        "output": 0
+      },
+      "deprecated": false,
+      "extra": {
+        "attachment": false,
+        "family": "gpt-oss",
+        "open_weights": false,
+        "temperature": true
+      },
+      "family": null,
+      "id": "workers-ai/gpt-oss-20b",
+      "knowledge": null,
+      "last_updated": "2025-08-05",
+      "lifecycle": null,
+      "limits": {
+        "context": 128000,
+        "output": 16384
+      },
+      "modalities": {
+        "input": [
+          "text"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "model": null,
+      "name": "GPT-OSS 20B",
+      "provider": "cloudflare_ai_gateway",
+      "provider_model_id": null,
+      "release_date": "2025-08-05",
+      "tags": null
+    },
+    "workers-ai/granite-4.0-h-micro": {
+      "aliases": [],
+      "capabilities": null,
+      "cost": {
+        "input": 0,
+        "output": 0
+      },
+      "deprecated": false,
+      "extra": {
+        "attachment": false,
+        "family": "granite",
+        "open_weights": false,
+        "temperature": true
+      },
+      "family": null,
+      "id": "workers-ai/granite-4.0-h-micro",
+      "knowledge": null,
+      "last_updated": "2025-10-15",
+      "lifecycle": null,
+      "limits": {
+        "context": 128000,
+        "output": 16384
+      },
+      "modalities": {
+        "input": [
+          "text"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "model": null,
+      "name": "Granite 4.0 H Micro",
+      "provider": "cloudflare_ai_gateway",
+      "provider_model_id": null,
+      "release_date": "2025-10-15",
+      "tags": null
+    },
+    "workers-ai/indictrans2-en-indic-1B": {
+      "aliases": [],
+      "capabilities": null,
+      "cost": {
+        "input": 0,
+        "output": 0
+      },
+      "deprecated": false,
+      "extra": {
+        "attachment": false,
+        "family": "indictrans2-en-indic",
+        "open_weights": false,
+        "temperature": true
+      },
+      "family": null,
+      "id": "workers-ai/indictrans2-en-indic-1B",
+      "knowledge": null,
+      "last_updated": "2025-09-25",
+      "lifecycle": null,
+      "limits": {
+        "context": 128000,
+        "output": 16384
+      },
+      "modalities": {
+        "input": [
+          "text"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "model": null,
+      "name": "IndicTrans2 EN-Indic 1B",
+      "provider": "cloudflare_ai_gateway",
+      "provider_model_id": null,
+      "release_date": "2025-09-25",
+      "tags": null
+    },
+    "workers-ai/llama-2-7b-chat-fp16": {
+      "aliases": [],
+      "capabilities": null,
+      "cost": {
+        "input": 560000,
+        "output": 6670000
+      },
+      "deprecated": false,
+      "extra": {
+        "attachment": false,
+        "family": "llama-2",
+        "open_weights": false,
+        "temperature": true
+      },
+      "family": null,
+      "id": "workers-ai/llama-2-7b-chat-fp16",
+      "knowledge": null,
+      "last_updated": "2025-08-23",
+      "lifecycle": null,
+      "limits": {
+        "context": 128000,
+        "output": 16384
+      },
+      "modalities": {
+        "input": [
+          "text"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "model": null,
+      "name": "Llama 2 7B Chat FP16",
+      "provider": "cloudflare_ai_gateway",
+      "provider_model_id": null,
+      "release_date": "2025-08-23",
+      "tags": null
+    },
+    "workers-ai/llama-3-8b-instruct": {
+      "aliases": [],
+      "capabilities": null,
+      "cost": {
+        "input": 280000,
+        "output": 830000
+      },
+      "deprecated": false,
+      "extra": {
+        "attachment": false,
+        "family": "llama-3",
+        "open_weights": false,
+        "temperature": true
+      },
+      "family": null,
+      "id": "workers-ai/llama-3-8b-instruct",
+      "knowledge": null,
+      "last_updated": "2025-08-23",
+      "lifecycle": null,
+      "limits": {
+        "context": 128000,
+        "output": 16384
+      },
+      "modalities": {
+        "input": [
+          "text"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "model": null,
+      "name": "Llama 3 8B Instruct",
+      "provider": "cloudflare_ai_gateway",
+      "provider_model_id": null,
+      "release_date": "2025-08-23",
+      "tags": null
+    },
+    "workers-ai/llama-3-8b-instruct-awq": {
+      "aliases": [],
+      "capabilities": null,
+      "cost": {
+        "input": 120000,
+        "output": 270000
+      },
+      "deprecated": false,
+      "extra": {
+        "attachment": false,
+        "family": "llama-3",
+        "open_weights": false,
+        "temperature": true
+      },
+      "family": null,
+      "id": "workers-ai/llama-3-8b-instruct-awq",
+      "knowledge": null,
+      "last_updated": "2025-08-23",
+      "lifecycle": null,
+      "limits": {
+        "context": 128000,
+        "output": 16384
+      },
+      "modalities": {
+        "input": [
+          "text"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "model": null,
+      "name": "Llama 3 8B Instruct AWQ",
+      "provider": "cloudflare_ai_gateway",
+      "provider_model_id": null,
+      "release_date": "2025-08-23",
+      "tags": null
+    },
+    "workers-ai/llama-3.1-8b-instruct": {
+      "aliases": [],
+      "capabilities": null,
+      "cost": {
+        "input": 280000,
+        "output": 830000
+      },
+      "deprecated": false,
+      "extra": {
+        "attachment": false,
+        "family": "llama-3.1",
+        "open_weights": false,
+        "temperature": true
+      },
+      "family": null,
+      "id": "workers-ai/llama-3.1-8b-instruct",
+      "knowledge": null,
+      "last_updated": "2025-08-23",
+      "lifecycle": null,
+      "limits": {
+        "context": 128000,
+        "output": 16384
+      },
+      "modalities": {
+        "input": [
+          "text"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "model": null,
+      "name": "Llama 3.1 8B Instruct",
+      "provider": "cloudflare_ai_gateway",
+      "provider_model_id": null,
+      "release_date": "2025-08-23",
+      "tags": null
+    },
+    "workers-ai/llama-3.1-8b-instruct-awq": {
+      "aliases": [],
+      "capabilities": null,
+      "cost": {
+        "input": 120000,
+        "output": 270000
+      },
+      "deprecated": false,
+      "extra": {
+        "attachment": false,
+        "family": "llama-3.1",
+        "open_weights": false,
+        "temperature": true
+      },
+      "family": null,
+      "id": "workers-ai/llama-3.1-8b-instruct-awq",
+      "knowledge": null,
+      "last_updated": "2025-08-23",
+      "lifecycle": null,
+      "limits": {
+        "context": 128000,
+        "output": 16384
+      },
+      "modalities": {
+        "input": [
+          "text"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "model": null,
+      "name": "Llama 3.1 8B Instruct AWQ",
+      "provider": "cloudflare_ai_gateway",
+      "provider_model_id": null,
+      "release_date": "2025-08-23",
+      "tags": null
+    },
+    "workers-ai/llama-3.1-8b-instruct-fp8": {
+      "aliases": [],
+      "capabilities": null,
+      "cost": {
+        "input": 150000,
+        "output": 290000
+      },
+      "deprecated": false,
+      "extra": {
+        "attachment": false,
+        "family": "llama-3.1",
+        "open_weights": false,
+        "temperature": true
+      },
+      "family": null,
+      "id": "workers-ai/llama-3.1-8b-instruct-fp8",
+      "knowledge": null,
+      "last_updated": "2025-08-23",
+      "lifecycle": null,
+      "limits": {
+        "context": 128000,
+        "output": 16384
+      },
+      "modalities": {
+        "input": [
+          "text"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "model": null,
+      "name": "Llama 3.1 8B Instruct FP8",
+      "provider": "cloudflare_ai_gateway",
+      "provider_model_id": null,
+      "release_date": "2025-08-23",
+      "tags": null
+    },
+    "workers-ai/llama-3.2-11b-vision-instruct": {
+      "aliases": [],
+      "capabilities": null,
+      "cost": {
+        "input": 49000,
+        "output": 680000
+      },
+      "deprecated": false,
+      "extra": {
+        "attachment": false,
+        "family": "llama-3.2",
+        "open_weights": false,
+        "temperature": true
+      },
+      "family": null,
+      "id": "workers-ai/llama-3.2-11b-vision-instruct",
+      "knowledge": null,
+      "last_updated": "2025-08-23",
+      "lifecycle": null,
+      "limits": {
+        "context": 128000,
+        "output": 16384
+      },
+      "modalities": {
+        "input": [
+          "text"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "model": null,
+      "name": "Llama 3.2 11B Vision Instruct",
+      "provider": "cloudflare_ai_gateway",
+      "provider_model_id": null,
+      "release_date": "2025-08-23",
       "tags": null
     },
     "workers-ai/llama-3.2-1b-instruct": {
       "aliases": [],
       "capabilities": null,
       "cost": {
-        "input": 0,
-        "output": 0
+        "input": 27000,
+        "output": 200000
       },
       "deprecated": false,
       "extra": {
         "attachment": false,
+        "family": "llama-3.2",
         "open_weights": false,
         "temperature": true
       },
       "family": null,
       "id": "workers-ai/llama-3.2-1b-instruct",
       "knowledge": null,
-      "last_updated": "2025-04-03",
+      "last_updated": "2025-08-23",
       "lifecycle": null,
       "limits": {
         "context": 128000,
@@ -2374,29 +2058,30 @@
         ]
       },
       "model": null,
-      "name": "llama 3.2 1u instruct",
+      "name": "Llama 3.2 1B Instruct",
       "provider": "cloudflare_ai_gateway",
       "provider_model_id": null,
-      "release_date": "2025-04-03",
+      "release_date": "2025-08-23",
       "tags": null
     },
-    "anthropic/claude-sonnet-4": {
+    "workers-ai/llama-3.2-3b-instruct": {
       "aliases": [],
       "capabilities": null,
       "cost": {
-        "input": 3,
-        "output": 15
+        "input": 51000,
+        "output": 340000
       },
       "deprecated": false,
       "extra": {
         "attachment": false,
+        "family": "llama-3.2",
         "open_weights": false,
         "temperature": true
       },
       "family": null,
-      "id": "anthropic/claude-sonnet-4",
+      "id": "workers-ai/llama-3.2-3b-instruct",
       "knowledge": null,
-      "last_updated": "2025-05-22",
+      "last_updated": "2025-08-23",
       "lifecycle": null,
       "limits": {
         "context": 128000,
@@ -2411,13 +2096,51 @@
         ]
       },
       "model": null,
-      "name": "claude sonnet 4",
+      "name": "Llama 3.2 3B Instruct",
       "provider": "cloudflare_ai_gateway",
       "provider_model_id": null,
-      "release_date": "2025-05-22",
+      "release_date": "2025-08-23",
       "tags": null
     },
-    "workers-ai/bge-base-en-v1.5": {
+    "workers-ai/llama-3.3-70b-instruct-fp8-fast": {
+      "aliases": [],
+      "capabilities": null,
+      "cost": {
+        "input": 290000,
+        "output": 2250000
+      },
+      "deprecated": false,
+      "extra": {
+        "attachment": false,
+        "family": "llama-3.3",
+        "open_weights": false,
+        "temperature": true
+      },
+      "family": null,
+      "id": "workers-ai/llama-3.3-70b-instruct-fp8-fast",
+      "knowledge": null,
+      "last_updated": "2025-08-23",
+      "lifecycle": null,
+      "limits": {
+        "context": 128000,
+        "output": 16384
+      },
+      "modalities": {
+        "input": [
+          "text"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "model": null,
+      "name": "Llama 3.3 70B Instruct FP8 Fast",
+      "provider": "cloudflare_ai_gateway",
+      "provider_model_id": null,
+      "release_date": "2025-08-23",
+      "tags": null
+    },
+    "workers-ai/llama-4-scout-17b-16e-instruct": {
       "aliases": [],
       "capabilities": null,
       "cost": {
@@ -2427,13 +2150,14 @@
       "deprecated": false,
       "extra": {
         "attachment": false,
+        "family": "llama-4-scout",
         "open_weights": false,
         "temperature": true
       },
       "family": null,
-      "id": "workers-ai/bge-base-en-v1.5",
+      "id": "workers-ai/llama-4-scout-17b-16e-instruct",
       "knowledge": null,
-      "last_updated": "2025-04-03",
+      "last_updated": "2025-04-16",
       "lifecycle": null,
       "limits": {
         "context": 128000,
@@ -2448,27 +2172,104 @@
         ]
       },
       "model": null,
-      "name": "uge uase en v1.5",
+      "name": "Llama 4 Scout 17B 16E Instruct",
       "provider": "cloudflare_ai_gateway",
       "provider_model_id": null,
-      "release_date": "2025-04-03",
+      "release_date": "2025-04-16",
       "tags": null
     },
-    "anthropic/claude-opus-4-1": {
+    "workers-ai/llama-guard-3-8b": {
       "aliases": [],
       "capabilities": null,
       "cost": {
-        "input": 15,
-        "output": 75
+        "input": 480000,
+        "output": 30000
       },
       "deprecated": false,
       "extra": {
         "attachment": false,
+        "family": "llama",
         "open_weights": false,
         "temperature": true
       },
       "family": null,
-      "id": "anthropic/claude-opus-4-1",
+      "id": "workers-ai/llama-guard-3-8b",
+      "knowledge": null,
+      "last_updated": "2025-08-23",
+      "lifecycle": null,
+      "limits": {
+        "context": 128000,
+        "output": 16384
+      },
+      "modalities": {
+        "input": [
+          "text"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "model": null,
+      "name": "Llama Guard 3 8B",
+      "provider": "cloudflare_ai_gateway",
+      "provider_model_id": null,
+      "release_date": "2025-08-23",
+      "tags": null
+    },
+    "workers-ai/m2m100-1.2b": {
+      "aliases": [],
+      "capabilities": null,
+      "cost": {
+        "input": 340000,
+        "output": 340000
+      },
+      "deprecated": false,
+      "extra": {
+        "attachment": false,
+        "family": "m2m100-1.2b",
+        "open_weights": false,
+        "temperature": true
+      },
+      "family": null,
+      "id": "workers-ai/m2m100-1.2b",
+      "knowledge": null,
+      "last_updated": "2025-08-23",
+      "lifecycle": null,
+      "limits": {
+        "context": 128000,
+        "output": 16384
+      },
+      "modalities": {
+        "input": [
+          "text"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "model": null,
+      "name": "M2M100 1.2B",
+      "provider": "cloudflare_ai_gateway",
+      "provider_model_id": null,
+      "release_date": "2025-08-23",
+      "tags": null
+    },
+    "workers-ai/melotts": {
+      "aliases": [],
+      "capabilities": null,
+      "cost": {
+        "input": 0,
+        "output": 0
+      },
+      "deprecated": false,
+      "extra": {
+        "attachment": false,
+        "family": "melotts",
+        "open_weights": false,
+        "temperature": true
+      },
+      "family": null,
+      "id": "workers-ai/melotts",
       "knowledge": null,
       "last_updated": "2025-11-14",
       "lifecycle": null,
@@ -2485,29 +2286,30 @@
         ]
       },
       "model": null,
-      "name": "claude opus 4 1",
+      "name": "MeloTTS",
       "provider": "cloudflare_ai_gateway",
       "provider_model_id": null,
       "release_date": "2025-11-14",
       "tags": null
     },
-    "anthropic/claude-3.5-sonnet": {
+    "workers-ai/mistral-7b-instruct-v0.1": {
       "aliases": [],
       "capabilities": null,
       "cost": {
-        "input": 3,
-        "output": 15
+        "input": 110000,
+        "output": 190000
       },
       "deprecated": false,
       "extra": {
         "attachment": false,
+        "family": "mistral-7b",
         "open_weights": false,
         "temperature": true
       },
       "family": null,
-      "id": "anthropic/claude-3.5-sonnet",
+      "id": "workers-ai/mistral-7b-instruct-v0.1",
       "knowledge": null,
-      "last_updated": "2024-07-31",
+      "last_updated": "2025-08-23",
       "lifecycle": null,
       "limits": {
         "context": 128000,
@@ -2522,13 +2324,13 @@
         ]
       },
       "model": null,
-      "name": "claude 3.5 sonnet",
+      "name": "Mistral 7B Instruct V0.1",
       "provider": "cloudflare_ai_gateway",
       "provider_model_id": null,
-      "release_date": "2024-07-31",
+      "release_date": "2025-08-23",
       "tags": null
     },
-    "workers-ai/llama-guard-3-8b": {
+    "workers-ai/mistral-small-3.1-24b-instruct": {
       "aliases": [],
       "capabilities": null,
       "cost": {
@@ -2538,13 +2340,14 @@
       "deprecated": false,
       "extra": {
         "attachment": false,
+        "family": "mistral-small",
         "open_weights": false,
         "temperature": true
       },
       "family": null,
-      "id": "workers-ai/llama-guard-3-8b",
+      "id": "workers-ai/mistral-small-3.1-24b-instruct",
       "knowledge": null,
-      "last_updated": "2025-04-03",
+      "last_updated": "2025-04-11",
       "lifecycle": null,
       "limits": {
         "context": 128000,
@@ -2559,158 +2362,10 @@
         ]
       },
       "model": null,
-      "name": "llama guard 3 8b",
+      "name": "Mistral Small 3.1 24B Instruct",
       "provider": "cloudflare_ai_gateway",
       "provider_model_id": null,
-      "release_date": "2025-04-03",
-      "tags": null
-    },
-    "workers-ai/distilbert-sst-2-int8": {
-      "aliases": [],
-      "capabilities": null,
-      "cost": {
-        "input": 0,
-        "output": 0
-      },
-      "deprecated": false,
-      "extra": {
-        "attachment": false,
-        "open_weights": false,
-        "temperature": true
-      },
-      "family": null,
-      "id": "workers-ai/distilbert-sst-2-int8",
-      "knowledge": null,
-      "last_updated": "2025-04-03",
-      "lifecycle": null,
-      "limits": {
-        "context": 128000,
-        "output": 16384
-      },
-      "modalities": {
-        "input": [
-          "text"
-        ],
-        "output": [
-          "text"
-        ]
-      },
-      "model": null,
-      "name": "distiluert sst 2 int8",
-      "provider": "cloudflare_ai_gateway",
-      "provider_model_id": null,
-      "release_date": "2025-04-03",
-      "tags": null
-    },
-    "anthropic/claude-opus-4": {
-      "aliases": [],
-      "capabilities": null,
-      "cost": {
-        "input": 15,
-        "output": 75
-      },
-      "deprecated": false,
-      "extra": {
-        "attachment": false,
-        "open_weights": false,
-        "temperature": true
-      },
-      "family": null,
-      "id": "anthropic/claude-opus-4",
-      "knowledge": null,
-      "last_updated": "2025-05-22",
-      "lifecycle": null,
-      "limits": {
-        "context": 128000,
-        "output": 16384
-      },
-      "modalities": {
-        "input": [
-          "text"
-        ],
-        "output": [
-          "text"
-        ]
-      },
-      "model": null,
-      "name": "claude opus 4",
-      "provider": "cloudflare_ai_gateway",
-      "provider_model_id": null,
-      "release_date": "2025-05-22",
-      "tags": null
-    },
-    "anthropic/claude-3-haiku": {
-      "aliases": [],
-      "capabilities": null,
-      "cost": {
-        "input": 0,
-        "output": 1.25
-      },
-      "deprecated": false,
-      "extra": {
-        "attachment": false,
-        "open_weights": false,
-        "temperature": true
-      },
-      "family": null,
-      "id": "anthropic/claude-3-haiku",
-      "knowledge": null,
-      "last_updated": "2024-07-31",
-      "lifecycle": null,
-      "limits": {
-        "context": 128000,
-        "output": 16384
-      },
-      "modalities": {
-        "input": [
-          "text"
-        ],
-        "output": [
-          "text"
-        ]
-      },
-      "model": null,
-      "name": "claude 3 haiku",
-      "provider": "cloudflare_ai_gateway",
-      "provider_model_id": null,
-      "release_date": "2024-07-31",
-      "tags": null
-    },
-    "workers-ai/llama-3.2-11b-vision-instruct": {
-      "aliases": [],
-      "capabilities": null,
-      "cost": {
-        "input": 0,
-        "output": 0
-      },
-      "deprecated": false,
-      "extra": {
-        "attachment": false,
-        "open_weights": false,
-        "temperature": true
-      },
-      "family": null,
-      "id": "workers-ai/llama-3.2-11b-vision-instruct",
-      "knowledge": null,
-      "last_updated": "2025-04-03",
-      "lifecycle": null,
-      "limits": {
-        "context": 128000,
-        "output": 16384
-      },
-      "modalities": {
-        "input": [
-          "text"
-        ],
-        "output": [
-          "text"
-        ]
-      },
-      "model": null,
-      "name": "llama 3.2 11u vision instruct",
-      "provider": "cloudflare_ai_gateway",
-      "provider_model_id": null,
-      "release_date": "2025-04-03",
+      "release_date": "2025-04-11",
       "tags": null
     },
     "workers-ai/nova-3": {
@@ -2723,6 +2378,7 @@
       "deprecated": false,
       "extra": {
         "attachment": false,
+        "family": "nova",
         "open_weights": false,
         "temperature": true
       },
@@ -2744,13 +2400,13 @@
         ]
       },
       "model": null,
-      "name": "nova 3",
+      "name": "Nova 3",
       "provider": "cloudflare_ai_gateway",
       "provider_model_id": null,
       "release_date": "2025-11-14",
       "tags": null
     },
-    "workers-ai/bge-m3": {
+    "workers-ai/plamo-embedding-1b": {
       "aliases": [],
       "capabilities": null,
       "cost": {
@@ -2760,13 +2416,14 @@
       "deprecated": false,
       "extra": {
         "attachment": false,
+        "family": "embedding",
         "open_weights": false,
         "temperature": true
       },
       "family": null,
-      "id": "workers-ai/bge-m3",
+      "id": "workers-ai/plamo-embedding-1b",
       "knowledge": null,
-      "last_updated": "2025-04-03",
+      "last_updated": "2025-09-25",
       "lifecycle": null,
       "limits": {
         "context": 128000,
@@ -2781,29 +2438,30 @@
         ]
       },
       "model": null,
-      "name": "uge m3",
+      "name": "PLaMo Embedding 1B",
       "provider": "cloudflare_ai_gateway",
       "provider_model_id": null,
-      "release_date": "2025-04-03",
+      "release_date": "2025-09-25",
       "tags": null
     },
-    "anthropic/claude-opus-4.1": {
+    "workers-ai/qwen2.5-coder-32b-instruct": {
       "aliases": [],
       "capabilities": null,
       "cost": {
-        "input": 15,
-        "output": 75
+        "input": 0,
+        "output": 1
       },
       "deprecated": false,
       "extra": {
         "attachment": false,
+        "family": "qwen2.5-coder",
         "open_weights": false,
         "temperature": true
       },
       "family": null,
-      "id": "anthropic/claude-opus-4.1",
+      "id": "workers-ai/qwen2.5-coder-32b-instruct",
       "knowledge": null,
-      "last_updated": "2025-08-05",
+      "last_updated": "2025-04-11",
       "lifecycle": null,
       "limits": {
         "context": 128000,
@@ -2818,29 +2476,30 @@
         ]
       },
       "model": null,
-      "name": "claude opus 4.1",
+      "name": "Qwen 2.5 Coder 32B Instruct",
       "provider": "cloudflare_ai_gateway",
       "provider_model_id": null,
-      "release_date": "2025-08-05",
+      "release_date": "2025-04-11",
       "tags": null
     },
-    "anthropic/claude-3-opus": {
+    "workers-ai/qwen3-30b-a3b-fp8": {
       "aliases": [],
       "capabilities": null,
       "cost": {
-        "input": 15,
-        "output": 75
+        "input": 0,
+        "output": 0
       },
       "deprecated": false,
       "extra": {
         "attachment": false,
+        "family": "qwen3",
         "open_weights": false,
         "temperature": true
       },
       "family": null,
-      "id": "anthropic/claude-3-opus",
+      "id": "workers-ai/qwen3-30b-a3b-fp8",
       "knowledge": null,
-      "last_updated": "2024-07-31",
+      "last_updated": "2025-11-14",
       "lifecycle": null,
       "limits": {
         "context": 128000,
@@ -2855,10 +2514,200 @@
         ]
       },
       "model": null,
-      "name": "claude 3 opus",
+      "name": "Qwen3 30B A3B FP8",
       "provider": "cloudflare_ai_gateway",
       "provider_model_id": null,
-      "release_date": "2024-07-31",
+      "release_date": "2025-11-14",
+      "tags": null
+    },
+    "workers-ai/qwen3-embedding-0.6b": {
+      "aliases": [],
+      "capabilities": null,
+      "cost": {
+        "input": 0,
+        "output": 0
+      },
+      "deprecated": false,
+      "extra": {
+        "attachment": false,
+        "family": "qwen3",
+        "open_weights": false,
+        "temperature": true
+      },
+      "family": null,
+      "id": "workers-ai/qwen3-embedding-0.6b",
+      "knowledge": null,
+      "last_updated": "2025-11-14",
+      "lifecycle": null,
+      "limits": {
+        "context": 128000,
+        "output": 16384
+      },
+      "modalities": {
+        "input": [
+          "text"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "model": null,
+      "name": "Qwen3 Embedding 0.6B",
+      "provider": "cloudflare_ai_gateway",
+      "provider_model_id": null,
+      "release_date": "2025-11-14",
+      "tags": null
+    },
+    "workers-ai/qwq-32b": {
+      "aliases": [],
+      "capabilities": null,
+      "cost": {
+        "input": 0,
+        "output": 1
+      },
+      "deprecated": false,
+      "extra": {
+        "attachment": false,
+        "family": "qwq",
+        "open_weights": false,
+        "temperature": true
+      },
+      "family": null,
+      "id": "workers-ai/qwq-32b",
+      "knowledge": null,
+      "last_updated": "2025-04-11",
+      "lifecycle": null,
+      "limits": {
+        "context": 128000,
+        "output": 16384
+      },
+      "modalities": {
+        "input": [
+          "text"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "model": null,
+      "name": "QwQ 32B",
+      "provider": "cloudflare_ai_gateway",
+      "provider_model_id": null,
+      "release_date": "2025-04-11",
+      "tags": null
+    },
+    "workers-ai/smart-turn-v2": {
+      "aliases": [],
+      "capabilities": null,
+      "cost": {
+        "input": 0,
+        "output": 0
+      },
+      "deprecated": false,
+      "extra": {
+        "attachment": false,
+        "family": "smart-turn",
+        "open_weights": false,
+        "temperature": true
+      },
+      "family": null,
+      "id": "workers-ai/smart-turn-v2",
+      "knowledge": null,
+      "last_updated": "2025-11-14",
+      "lifecycle": null,
+      "limits": {
+        "context": 128000,
+        "output": 16384
+      },
+      "modalities": {
+        "input": [
+          "text"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "model": null,
+      "name": "Smart Turn V2",
+      "provider": "cloudflare_ai_gateway",
+      "provider_model_id": null,
+      "release_date": "2025-11-14",
+      "tags": null
+    },
+    "workers-ai/whisper": {
+      "aliases": [],
+      "capabilities": null,
+      "cost": {
+        "input": 0,
+        "output": 0
+      },
+      "deprecated": false,
+      "extra": {
+        "attachment": false,
+        "family": "whisper",
+        "open_weights": false,
+        "temperature": true
+      },
+      "family": null,
+      "id": "workers-ai/whisper",
+      "knowledge": null,
+      "last_updated": "2025-11-14",
+      "lifecycle": null,
+      "limits": {
+        "context": 128000,
+        "output": 16384
+      },
+      "modalities": {
+        "input": [
+          "text"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "model": null,
+      "name": "Whisper",
+      "provider": "cloudflare_ai_gateway",
+      "provider_model_id": null,
+      "release_date": "2025-11-14",
+      "tags": null
+    },
+    "workers-ai/whisper-large-v3-turbo": {
+      "aliases": [],
+      "capabilities": null,
+      "cost": {
+        "input": 0,
+        "output": 0
+      },
+      "deprecated": false,
+      "extra": {
+        "attachment": false,
+        "family": "whisper-large",
+        "open_weights": false,
+        "temperature": true
+      },
+      "family": null,
+      "id": "workers-ai/whisper-large-v3-turbo",
+      "knowledge": null,
+      "last_updated": "2025-11-14",
+      "lifecycle": null,
+      "limits": {
+        "context": 128000,
+        "output": 16384
+      },
+      "modalities": {
+        "input": [
+          "text"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "model": null,
+      "name": "Whisper Large V3 Turbo",
+      "provider": "cloudflare_ai_gateway",
+      "provider_model_id": null,
+      "release_date": "2025-11-14",
       "tags": null
     }
   },

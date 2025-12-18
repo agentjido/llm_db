@@ -170,8 +170,8 @@ defmodule LLMDB.Sources.OpenRouterTest do
       assert model[:description] == "GPT-4 by OpenAI"
       assert model[:limits][:context] == 128_000
       assert model[:limits][:output] == 16_384
-      assert_in_delta model[:cost][:input], 0.03, 0.001
-      assert_in_delta model[:cost][:output], 0.06, 0.001
+      assert_in_delta model[:cost][:input], 30.0, 0.001
+      assert_in_delta model[:cost][:output], 60.0, 0.001
       assert model[:modalities][:input] == [:text]
       assert model[:modalities][:output] == [:text]
       assert model[:capabilities][:tools][:enabled] == true

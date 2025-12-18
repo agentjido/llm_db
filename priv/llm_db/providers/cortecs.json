@@ -37,6 +37,7 @@
       "deprecated": false,
       "extra": {
         "attachment": true,
+        "family": "claude-sonnet",
         "open_weights": false,
         "temperature": true
       },
@@ -52,7 +53,8 @@
       "modalities": {
         "input": [
           "text",
-          "image"
+          "image",
+          "pdf"
         ],
         "output": [
           "text"
@@ -92,6 +94,7 @@
       "deprecated": false,
       "extra": {
         "attachment": false,
+        "family": "claude-sonnet",
         "open_weights": false,
         "temperature": true
       },
@@ -107,7 +110,8 @@
       "modalities": {
         "input": [
           "text",
-          "image"
+          "image",
+          "pdf"
         ],
         "output": [
           "text"
@@ -147,6 +151,7 @@
       "deprecated": false,
       "extra": {
         "attachment": false,
+        "family": "deepseek-v3",
         "open_weights": true,
         "temperature": true
       },
@@ -172,6 +177,115 @@
       "provider": "cortecs",
       "provider_model_id": null,
       "release_date": "2025-03-24",
+      "tags": null
+    },
+    "devstral-2512": {
+      "aliases": [],
+      "capabilities": {
+        "chat": true,
+        "embeddings": false,
+        "json": {
+          "native": false,
+          "schema": false,
+          "strict": false
+        },
+        "reasoning": {
+          "enabled": false
+        },
+        "streaming": {
+          "tool_calls": true
+        },
+        "tools": {
+          "enabled": true
+        }
+      },
+      "cost": {
+        "input": 0,
+        "output": 0
+      },
+      "deprecated": false,
+      "extra": {
+        "attachment": false,
+        "open_weights": true,
+        "temperature": true
+      },
+      "family": null,
+      "id": "devstral-2512",
+      "knowledge": "2025-12",
+      "last_updated": "2025-12-09",
+      "lifecycle": null,
+      "limits": {
+        "context": 262000,
+        "output": 262000
+      },
+      "modalities": {
+        "input": [
+          "text"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "model": null,
+      "name": "Devstral 2 2512",
+      "provider": "cortecs",
+      "provider_model_id": null,
+      "release_date": "2025-12-09",
+      "tags": null
+    },
+    "devstral-small-2512": {
+      "aliases": [],
+      "capabilities": {
+        "chat": true,
+        "embeddings": false,
+        "json": {
+          "native": false,
+          "schema": false,
+          "strict": false
+        },
+        "reasoning": {
+          "enabled": false
+        },
+        "streaming": {
+          "tool_calls": true
+        },
+        "tools": {
+          "enabled": true
+        }
+      },
+      "cost": {
+        "input": 0,
+        "output": 0
+      },
+      "deprecated": false,
+      "extra": {
+        "attachment": false,
+        "open_weights": true,
+        "temperature": true
+      },
+      "family": null,
+      "id": "devstral-small-2512",
+      "knowledge": "2025-12",
+      "last_updated": "2025-12-09",
+      "lifecycle": null,
+      "limits": {
+        "context": 262000,
+        "output": 262000
+      },
+      "modalities": {
+        "input": [
+          "text",
+          "image"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "model": null,
+      "name": "Devstral Small 2 2512",
+      "provider": "cortecs",
+      "provider_model_id": null,
+      "release_date": "2025-12-09",
       "tags": null
     },
     "gemini-2.5-pro": {
@@ -201,6 +315,7 @@
       "deprecated": false,
       "extra": {
         "attachment": false,
+        "family": "gemini-pro",
         "open_weights": false,
         "temperature": true
       },
@@ -256,6 +371,7 @@
       "deprecated": false,
       "extra": {
         "attachment": false,
+        "family": "gpt-4.1",
         "open_weights": false,
         "temperature": true
       },
@@ -311,6 +427,7 @@
       "deprecated": false,
       "extra": {
         "attachment": false,
+        "family": "gpt-oss",
         "open_weights": true,
         "temperature": true
       },
@@ -336,6 +453,60 @@
       "provider": "cortecs",
       "provider_model_id": null,
       "release_date": "2025-08-05",
+      "tags": null
+    },
+    "intellect-3": {
+      "aliases": [],
+      "capabilities": {
+        "chat": true,
+        "embeddings": false,
+        "json": {
+          "native": false,
+          "schema": false,
+          "strict": false
+        },
+        "reasoning": {
+          "enabled": true
+        },
+        "streaming": {
+          "tool_calls": true
+        },
+        "tools": {
+          "enabled": true
+        }
+      },
+      "cost": {
+        "input": 0.219,
+        "output": 1.202
+      },
+      "deprecated": false,
+      "extra": {
+        "attachment": true,
+        "open_weights": true,
+        "temperature": true
+      },
+      "family": null,
+      "id": "intellect-3",
+      "knowledge": "2025-11",
+      "last_updated": "2025-11-26",
+      "lifecycle": null,
+      "limits": {
+        "context": 128000,
+        "output": 128000
+      },
+      "modalities": {
+        "input": [
+          "text"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "model": null,
+      "name": "INTELLECT 3",
+      "provider": "cortecs",
+      "provider_model_id": null,
+      "release_date": "2025-11-26",
       "tags": null
     },
     "kimi-k2-instruct": {
@@ -365,6 +536,7 @@
       "deprecated": false,
       "extra": {
         "attachment": false,
+        "family": "kimi-k2",
         "open_weights": true,
         "temperature": true
       },
@@ -390,6 +562,63 @@
       "provider": "cortecs",
       "provider_model_id": null,
       "release_date": "2025-07-11",
+      "tags": null
+    },
+    "kimi-k2-thinking": {
+      "aliases": [],
+      "capabilities": {
+        "chat": true,
+        "embeddings": false,
+        "json": {
+          "native": false,
+          "schema": false,
+          "strict": false
+        },
+        "reasoning": {
+          "enabled": true
+        },
+        "streaming": {
+          "tool_calls": true
+        },
+        "tools": {
+          "enabled": true
+        }
+      },
+      "cost": {
+        "input": 0.656,
+        "output": 2.731
+      },
+      "deprecated": false,
+      "extra": {
+        "attachment": true,
+        "interleaved": {
+          "field": "reasoning_content"
+        },
+        "open_weights": true,
+        "temperature": true
+      },
+      "family": null,
+      "id": "kimi-k2-thinking",
+      "knowledge": "2025-12",
+      "last_updated": "2025-12-08",
+      "lifecycle": null,
+      "limits": {
+        "context": 262000,
+        "output": 262000
+      },
+      "modalities": {
+        "input": [
+          "text"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "model": null,
+      "name": "Kimi K2 Thinking",
+      "provider": "cortecs",
+      "provider_model_id": null,
+      "release_date": "2025-12-08",
       "tags": null
     },
     "llama-3.1-405b-instruct": {
@@ -419,6 +648,7 @@
       "deprecated": false,
       "extra": {
         "attachment": false,
+        "family": "llama-3.1",
         "open_weights": true,
         "temperature": true
       },
@@ -473,6 +703,7 @@
       "deprecated": false,
       "extra": {
         "attachment": false,
+        "family": "nova-pro",
         "open_weights": false,
         "temperature": true
       },
@@ -528,6 +759,7 @@
       "deprecated": false,
       "extra": {
         "attachment": false,
+        "family": "qwen3",
         "open_weights": true,
         "temperature": true
       },
@@ -582,6 +814,7 @@
       "deprecated": false,
       "extra": {
         "attachment": false,
+        "family": "qwen3-coder",
         "open_weights": true,
         "temperature": true
       },
@@ -607,6 +840,60 @@
       "provider": "cortecs",
       "provider_model_id": null,
       "release_date": "2025-07-25",
+      "tags": null
+    },
+    "qwen3-next-80b-a3b-thinking": {
+      "aliases": [],
+      "capabilities": {
+        "chat": true,
+        "embeddings": false,
+        "json": {
+          "native": false,
+          "schema": false,
+          "strict": false
+        },
+        "reasoning": {
+          "enabled": true
+        },
+        "streaming": {
+          "tool_calls": true
+        },
+        "tools": {
+          "enabled": true
+        }
+      },
+      "cost": {
+        "input": 0.164,
+        "output": 1.311
+      },
+      "deprecated": false,
+      "extra": {
+        "attachment": false,
+        "open_weights": true,
+        "temperature": true
+      },
+      "family": null,
+      "id": "qwen3-next-80b-a3b-thinking",
+      "knowledge": "2025-04",
+      "last_updated": "2025-09-11",
+      "lifecycle": null,
+      "limits": {
+        "context": 128000,
+        "output": 128000
+      },
+      "modalities": {
+        "input": [
+          "text"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "model": null,
+      "name": "Qwen3 Next 80B A3B Thinking",
+      "provider": "cortecs",
+      "provider_model_id": null,
+      "release_date": "2025-09-11",
       "tags": null
     }
   },

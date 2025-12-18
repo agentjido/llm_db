@@ -176,7 +176,7 @@ defmodule LLMDB.Sources.OpenRouter do
   Main transformations:
   - Extract provider ID from model ID (e.g., "openai/gpt-4" → :openai)
   - Group models by provider
-  - Transform pricing strings to floats (per 1K tokens)
+  - Transform pricing strings to floats (per 1M tokens)
   - Map context_length → limits.context
   - Map top_provider.max_completion_tokens → limits.output
   - Extract modality information
@@ -364,13 +364,13 @@ defmodule LLMDB.Sources.OpenRouter do
 
   defp put_cost_if_present(map, key, value) when is_binary(value) do
     case Float.parse(value) do
-      {float_val, _} -> Map.put(map, key, float_val * 1000)
+      {float_val, _} -> Map.put(map, key, Float.round(float_val * 1_000_000, 6))
       :error -> map
     end
   end
 
   defp put_cost_if_present(map, key, value) when is_number(value) do
-    Map.put(map, key, value * 1000)
+    Map.put(map, key, Float.round(value * 1_000_000, 6))
   end
 
   defp put_cost_if_present(map, _key, _value), do: map

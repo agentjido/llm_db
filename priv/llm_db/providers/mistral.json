@@ -37,6 +37,7 @@
       "deprecated": false,
       "extra": {
         "attachment": false,
+        "family": "codestral",
         "open_weights": true,
         "temperature": true
       },
@@ -91,6 +92,7 @@
       "deprecated": false,
       "extra": {
         "attachment": false,
+        "family": "devstral-medium",
         "open_weights": true,
         "temperature": true
       },
@@ -116,6 +118,61 @@
       "provider": "mistral",
       "provider_model_id": null,
       "release_date": "2025-07-10",
+      "tags": null
+    },
+    "devstral-medium-latest": {
+      "aliases": [],
+      "capabilities": {
+        "chat": true,
+        "embeddings": false,
+        "json": {
+          "native": false,
+          "schema": false,
+          "strict": false
+        },
+        "reasoning": {
+          "enabled": false
+        },
+        "streaming": {
+          "tool_calls": true
+        },
+        "tools": {
+          "enabled": true
+        }
+      },
+      "cost": {
+        "input": 0.4,
+        "output": 2
+      },
+      "deprecated": false,
+      "extra": {
+        "attachment": false,
+        "family": "devstral-medium",
+        "open_weights": true,
+        "temperature": true
+      },
+      "family": null,
+      "id": "devstral-medium-latest",
+      "knowledge": "2025-12",
+      "last_updated": "2025-12-02",
+      "lifecycle": null,
+      "limits": {
+        "context": 262144,
+        "output": 262144
+      },
+      "modalities": {
+        "input": [
+          "text"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "model": null,
+      "name": "Devstral 2",
+      "provider": "mistral",
+      "provider_model_id": null,
+      "release_date": "2025-12-02",
       "tags": null
     },
     "devstral-small-2505": {
@@ -145,6 +202,7 @@
       "deprecated": false,
       "extra": {
         "attachment": false,
+        "family": "devstral-small",
         "open_weights": true,
         "temperature": true
       },
@@ -199,6 +257,7 @@
       "deprecated": false,
       "extra": {
         "attachment": false,
+        "family": "devstral-small",
         "open_weights": true,
         "temperature": true
       },
@@ -224,6 +283,62 @@
       "provider": "mistral",
       "provider_model_id": null,
       "release_date": "2025-07-10",
+      "tags": null
+    },
+    "labs-devstral-small-2512": {
+      "aliases": [],
+      "capabilities": {
+        "chat": true,
+        "embeddings": false,
+        "json": {
+          "native": false,
+          "schema": false,
+          "strict": false
+        },
+        "reasoning": {
+          "enabled": false
+        },
+        "streaming": {
+          "tool_calls": true
+        },
+        "tools": {
+          "enabled": true
+        }
+      },
+      "cost": {
+        "input": 0.1,
+        "output": 0.3
+      },
+      "deprecated": false,
+      "extra": {
+        "attachment": false,
+        "family": "devstral-small",
+        "open_weights": true,
+        "temperature": true
+      },
+      "family": null,
+      "id": "labs-devstral-small-2512",
+      "knowledge": "2025-12",
+      "last_updated": "2025-12-09",
+      "lifecycle": null,
+      "limits": {
+        "context": 256000,
+        "output": 256000
+      },
+      "modalities": {
+        "input": [
+          "text",
+          "image"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "model": null,
+      "name": "Devstral Small 2",
+      "provider": "mistral",
+      "provider_model_id": null,
+      "release_date": "2025-12-09",
       "tags": null
     },
     "magistral-medium-latest": {
@@ -253,6 +368,7 @@
       "deprecated": false,
       "extra": {
         "attachment": false,
+        "family": "magistral-medium",
         "open_weights": true,
         "temperature": true
       },
@@ -307,6 +423,7 @@
       "deprecated": false,
       "extra": {
         "attachment": false,
+        "family": "magistral-small",
         "open_weights": true,
         "temperature": true
       },
@@ -361,6 +478,7 @@
       "deprecated": false,
       "extra": {
         "attachment": false,
+        "family": "ministral-3b",
         "open_weights": true,
         "temperature": true
       },
@@ -415,6 +533,7 @@
       "deprecated": false,
       "extra": {
         "attachment": false,
+        "family": "ministral-8b",
         "open_weights": true,
         "temperature": true
       },
@@ -442,7 +561,45 @@
       "release_date": "2024-10-01",
       "tags": null
     },
-    "mistral-large-latest": {
+    "mistral-embed": {
+      "aliases": [],
+      "capabilities": null,
+      "cost": {
+        "input": 0.1,
+        "output": 0
+      },
+      "deprecated": false,
+      "extra": {
+        "attachment": false,
+        "family": "mistral-embed",
+        "open_weights": false,
+        "temperature": false
+      },
+      "family": null,
+      "id": "mistral-embed",
+      "knowledge": null,
+      "last_updated": "2023-12-11",
+      "lifecycle": null,
+      "limits": {
+        "context": 8000,
+        "output": 3072
+      },
+      "modalities": {
+        "input": [
+          "text"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "model": null,
+      "name": "Mistral Embed",
+      "provider": "mistral",
+      "provider_model_id": null,
+      "release_date": "2023-12-11",
+      "tags": null
+    },
+    "mistral-large-2411": {
       "aliases": [],
       "capabilities": {
         "chat": true,
@@ -469,11 +626,12 @@
       "deprecated": false,
       "extra": {
         "attachment": false,
+        "family": "mistral-large",
         "open_weights": true,
         "temperature": true
       },
       "family": null,
-      "id": "mistral-large-latest",
+      "id": "mistral-large-2411",
       "knowledge": "2024-11",
       "last_updated": "2024-11-04",
       "lifecycle": null,
@@ -484,6 +642,118 @@
       "modalities": {
         "input": [
           "text"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "model": null,
+      "name": "Mistral Large 2.1",
+      "provider": "mistral",
+      "provider_model_id": null,
+      "release_date": "2024-11-01",
+      "tags": null
+    },
+    "mistral-large-2512": {
+      "aliases": [],
+      "capabilities": {
+        "chat": true,
+        "embeddings": false,
+        "json": {
+          "native": false,
+          "schema": false,
+          "strict": false
+        },
+        "reasoning": {
+          "enabled": false
+        },
+        "streaming": {
+          "tool_calls": true
+        },
+        "tools": {
+          "enabled": true
+        }
+      },
+      "cost": {
+        "input": 0.5,
+        "output": 1.5
+      },
+      "deprecated": false,
+      "extra": {
+        "attachment": true,
+        "family": "mistral-large",
+        "open_weights": true,
+        "temperature": true
+      },
+      "family": null,
+      "id": "mistral-large-2512",
+      "knowledge": "2024-11",
+      "last_updated": "2025-12-02",
+      "lifecycle": null,
+      "limits": {
+        "context": 262144,
+        "output": 262144
+      },
+      "modalities": {
+        "input": [
+          "text",
+          "image"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "model": null,
+      "name": "Mistral Large 3",
+      "provider": "mistral",
+      "provider_model_id": null,
+      "release_date": "2024-11-01",
+      "tags": null
+    },
+    "mistral-large-latest": {
+      "aliases": [],
+      "capabilities": {
+        "chat": true,
+        "embeddings": false,
+        "json": {
+          "native": false,
+          "schema": false,
+          "strict": false
+        },
+        "reasoning": {
+          "enabled": false
+        },
+        "streaming": {
+          "tool_calls": true
+        },
+        "tools": {
+          "enabled": true
+        }
+      },
+      "cost": {
+        "input": 0.5,
+        "output": 1.5
+      },
+      "deprecated": false,
+      "extra": {
+        "attachment": true,
+        "family": "mistral-large",
+        "open_weights": true,
+        "temperature": true
+      },
+      "family": null,
+      "id": "mistral-large-latest",
+      "knowledge": "2024-11",
+      "last_updated": "2025-12-02",
+      "lifecycle": null,
+      "limits": {
+        "context": 262144,
+        "output": 262144
+      },
+      "modalities": {
+        "input": [
+          "text",
+          "image"
         ],
         "output": [
           "text"
@@ -523,6 +793,7 @@
       "deprecated": false,
       "extra": {
         "attachment": true,
+        "family": "mistral-medium",
         "open_weights": false,
         "temperature": true
       },
@@ -578,6 +849,7 @@
       "deprecated": false,
       "extra": {
         "attachment": true,
+        "family": "mistral-medium",
         "open_weights": false,
         "temperature": true
       },
@@ -633,6 +905,7 @@
       "deprecated": false,
       "extra": {
         "attachment": false,
+        "family": "mistral-medium",
         "open_weights": true,
         "temperature": true
       },
@@ -688,6 +961,7 @@
       "deprecated": false,
       "extra": {
         "attachment": false,
+        "family": "mistral-nemo",
         "open_weights": true,
         "temperature": true
       },
@@ -713,6 +987,62 @@
       "provider": "mistral",
       "provider_model_id": null,
       "release_date": "2024-07-01",
+      "tags": null
+    },
+    "mistral-small-2506": {
+      "aliases": [],
+      "capabilities": {
+        "chat": true,
+        "embeddings": false,
+        "json": {
+          "native": false,
+          "schema": false,
+          "strict": false
+        },
+        "reasoning": {
+          "enabled": false
+        },
+        "streaming": {
+          "tool_calls": true
+        },
+        "tools": {
+          "enabled": true
+        }
+      },
+      "cost": {
+        "input": 0.1,
+        "output": 0.3
+      },
+      "deprecated": false,
+      "extra": {
+        "attachment": false,
+        "family": "mistral-small",
+        "open_weights": true,
+        "temperature": true
+      },
+      "family": null,
+      "id": "mistral-small-2506",
+      "knowledge": "2025-03",
+      "last_updated": "2025-06-20",
+      "lifecycle": null,
+      "limits": {
+        "context": 128000,
+        "output": 16384
+      },
+      "modalities": {
+        "input": [
+          "text",
+          "image"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "model": null,
+      "name": "Mistral Small 3.2",
+      "provider": "mistral",
+      "provider_model_id": null,
+      "release_date": "2025-06-20",
       "tags": null
     },
     "mistral-small-latest": {
@@ -742,6 +1072,7 @@
       "deprecated": false,
       "extra": {
         "attachment": false,
+        "family": "mistral-small",
         "open_weights": true,
         "temperature": true
       },
@@ -797,6 +1128,7 @@
       "deprecated": false,
       "extra": {
         "attachment": false,
+        "family": "mistral-7b",
         "open_weights": true,
         "temperature": true
       },
@@ -851,6 +1183,7 @@
       "deprecated": false,
       "extra": {
         "attachment": false,
+        "family": "mixtral-8x22b",
         "open_weights": true,
         "temperature": true
       },
@@ -905,6 +1238,7 @@
       "deprecated": false,
       "extra": {
         "attachment": false,
+        "family": "mixtral-8x7b",
         "open_weights": true,
         "temperature": true
       },
@@ -959,6 +1293,7 @@
       "deprecated": false,
       "extra": {
         "attachment": true,
+        "family": "pixtral",
         "open_weights": true,
         "temperature": true
       },
@@ -1014,6 +1349,7 @@
       "deprecated": false,
       "extra": {
         "attachment": true,
+        "family": "pixtral-large",
         "open_weights": true,
         "temperature": true
       },
