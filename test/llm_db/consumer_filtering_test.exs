@@ -8,8 +8,9 @@ defmodule LLMDB.ConsumerFilteringTest do
     original_config = Application.get_all_env(:llm_db)
 
     on_exit(fn ->
-      # Clear filter config
+      # Clear test config
       Application.delete_env(:llm_db, :filter)
+      Application.delete_env(:llm_db, :custom)
 
       # Restore original config
       Application.put_all_env(llm_db: original_config)
@@ -207,6 +208,36 @@ defmodule LLMDB.ConsumerFilteringTest do
       assert {:ok, _} = LLMDB.model(:anthropic, "claude-3-haiku-20240307")
       assert {:error, :not_found} = LLMDB.model(:anthropic, "claude-3-haiku-legacy")
       assert {:error, :not_found} = LLMDB.model(:anthropic, "claude-3-opus-20240229")
+    end
+  end
+
+  describe "consumer use case: custom providers via app config" do
+    test "loads custom provider and models from app env config" do
+      Application.put_env(:llm_db, :custom, %{
+        local_llm: [
+          name: "Local LLM Server",
+          base_url: "http://localhost:8080/v1",
+          models: %{
+            "llama-3-8b" => %{capabilities: %{chat: true}},
+            "mistral-7b" => %{capabilities: %{chat: true}}
+          }
+        ]
+      })
+
+      {:ok, _snapshot} = LLMDB.load()
+
+      # Custom provider should be available
+      assert {:ok, provider} = LLMDB.provider(:local_llm)
+      assert provider.name == "Local LLM Server"
+      assert provider.base_url == "http://localhost:8080/v1"
+
+      # Custom models should be available
+      assert {:ok, model} = LLMDB.model(:local_llm, "llama-3-8b")
+      assert model.capabilities.chat == true
+      assert {:ok, _} = LLMDB.model(:local_llm, "mistral-7b")
+
+      local_models = LLMDB.models(:local_llm)
+      assert length(local_models) == 2
     end
   end
 

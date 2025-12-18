@@ -86,7 +86,7 @@ defmodule LLMDB.Runtime do
     allow = normalize_allow(Keyword.get(opts, :allow, base.allow))
     deny = normalize_deny(Keyword.get(opts, :deny, base.deny))
     prefer = Keyword.get(opts, :prefer, base.prefer) || []
-    custom = normalize_custom(Keyword.get(opts, :custom, %{}))
+    custom = normalize_custom(Keyword.get(opts, :custom, base.custom))
     provider_ids = Keyword.get(opts, :provider_ids)
 
     # Compile filters (deferred if provider_ids not provided)
