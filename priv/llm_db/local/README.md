@@ -103,6 +103,17 @@ tool_calls = false                  # Optional: tool call streaming
 [extra]
 deployment_id = "prod-001"
 custom_metadata = "value"
+
+# Wire Protocol Selection (for API client libraries)
+[extra.wire]
+protocol = "openai_responses"    # openai_chat | openai_responses | anthropic
+
+# Parameter Constraints (for API client libraries)
+[extra.constraints]
+token_limit_key = "max_completion_tokens"  # max_tokens | max_completion_tokens
+temperature = "unsupported"                # any | unsupported | fixed_1
+reasoning_effort = "supported"             # unsupported | supported | required
+min_output_tokens = 16                     # integer minimum for output tokens
 ```
 
 ## Field Mapping Reference
@@ -151,6 +162,47 @@ See the example files in this directory:
 - `openai/` - OpenAI provider with GPT-4o models
 - `anthropic/` - Anthropic provider with Claude 3.5 Sonnet
 - `custom/` - Custom provider template
+
+## Wire Protocol & Constraints (API Client Integration)
+
+These `extra.*` fields enable metadata-driven API clients like ReqLlmNext to handle
+model-specific requirements without hardcoded model-name heuristics.
+
+### Wire Protocol
+
+Use `extra.wire.protocol` to specify which API format a model uses:
+
+| Value | Description |
+|-------|-------------|
+| `openai_chat` | Standard OpenAI Chat Completions API (default for OpenAI) |
+| `openai_responses` | OpenAI Responses API (o-series, GPT-5) |
+| `anthropic` | Anthropic Messages API (default for Anthropic) |
+
+When absent, clients should use provider defaults.
+
+### Constraints
+
+Use `extra.constraints.*` to specify parameter handling requirements:
+
+| Field | Values | Description |
+|-------|--------|-------------|
+| `token_limit_key` | `max_tokens`, `max_completion_tokens` | Which key to use for output tokens |
+| `temperature` | `any`, `unsupported`, `fixed_1` | Temperature parameter support |
+| `reasoning_effort` | `unsupported`, `supported`, `required` | Reasoning effort parameter handling |
+| `min_output_tokens` | integer | Minimum output tokens floor |
+
+Example for a reasoning model:
+```toml
+id = "o3-mini"
+
+[extra.wire]
+protocol = "openai_responses"
+
+[extra.constraints]
+token_limit_key = "max_completion_tokens"
+temperature = "unsupported"
+reasoning_effort = "supported"
+```
 
 ## Notes
 

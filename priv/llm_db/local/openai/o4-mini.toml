@@ -1,4 +1,9 @@
 id = "o4-mini"
 
-[extra]
-api = "responses"
+[extra.wire]
+protocol = "openai_responses"
+
+[extra.constraints]
+token_limit_key = "max_completion_tokens"
+temperature = "unsupported"
+reasoning_effort = "supported"

@@ -9,5 +9,10 @@ enabled = false
 [capabilities.json]
 schema = false
 
-[extra]
-api = "responses"
+[extra.wire]
+protocol = "openai_responses"
+
+[extra.constraints]
+token_limit_key = "max_completion_tokens"
+temperature = "any"
+reasoning_effort = "unsupported"

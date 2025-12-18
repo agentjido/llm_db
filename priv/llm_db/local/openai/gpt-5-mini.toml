@@ -3,5 +3,10 @@ id = "gpt-5-mini"
 [capabilities.json]
 schema = true
 
-[extra]
-api = "responses"
+[extra.wire]
+protocol = "openai_responses"
+
+[extra.constraints]
+token_limit_key = "max_completion_tokens"
+temperature = "unsupported"
+reasoning_effort = "required"
