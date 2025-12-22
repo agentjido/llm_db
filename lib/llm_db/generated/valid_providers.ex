@@ -115,6 +115,7 @@ defmodule LLMDB.Generated.ValidProviders do
     :wandb,
     :"x-ai",
     :xai,
+    :xiaomi,
     :"z-ai",
     :zai,
     :zai_coder,

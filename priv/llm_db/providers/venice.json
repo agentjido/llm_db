@@ -39,16 +39,17 @@
         "attachment": true,
         "family": "claude-opus",
         "open_weights": false,
+        "structured_output": true,
         "temperature": true
       },
       "family": null,
       "id": "claude-opus-45",
       "knowledge": "2025-03",
-      "last_updated": "2025-12-05",
+      "last_updated": "2025-12-18",
       "lifecycle": null,
       "limits": {
         "context": 202752,
-        "output": 8192
+        "output": 50688
       },
       "modalities": {
         "input": [
@@ -64,12 +65,33 @@
       "name": "Claude Opus 4.5",
       "provider": "venice",
       "provider_model_id": null,
-      "release_date": "2025-12-05",
+      "release_date": "2025-12-18",
       "tags": null
     },
     "deepseek-v3.2": {
       "aliases": [],
-      "capabilities": null,
+      "capabilities": {
+        "chat": true,
+        "embeddings": false,
+        "json": {
+          "native": false,
+          "schema": false,
+          "strict": false
+        },
+        "reasoning": {
+          "enabled": true
+        },
+        "streaming": {
+          "text": true,
+          "tool_calls": false
+        },
+        "tools": {
+          "enabled": false,
+          "parallel": false,
+          "streaming": false,
+          "strict": false
+        }
+      },
       "cost": {
         "input": 0.4,
         "output": 1
@@ -84,11 +106,11 @@
       "family": null,
       "id": "deepseek-v3.2",
       "knowledge": "2025-10",
-      "last_updated": "2025-10-05",
+      "last_updated": "2025-12-18",
       "lifecycle": null,
       "limits": {
         "context": 163840,
-        "output": 8192
+        "output": 40960
       },
       "modalities": {
         "input": [
@@ -102,7 +124,126 @@
       "name": "DeepSeek V3.2",
       "provider": "venice",
       "provider_model_id": null,
-      "release_date": "2025-10-05",
+      "release_date": "2025-12-07",
+      "tags": null
+    },
+    "devstral-2-2512": {
+      "aliases": [],
+      "capabilities": {
+        "chat": true,
+        "embeddings": false,
+        "json": {
+          "native": false,
+          "schema": false,
+          "strict": false
+        },
+        "reasoning": {
+          "enabled": false
+        },
+        "streaming": {
+          "tool_calls": true
+        },
+        "tools": {
+          "enabled": true
+        }
+      },
+      "cost": {
+        "input": 0.25,
+        "output": 0.25
+      },
+      "deprecated": false,
+      "extra": {
+        "attachment": false,
+        "family": "devstral",
+        "open_weights": true,
+        "structured_output": true,
+        "temperature": true
+      },
+      "family": null,
+      "id": "devstral-2-2512",
+      "knowledge": null,
+      "last_updated": "2025-12-18",
+      "lifecycle": null,
+      "limits": {
+        "context": 262144,
+        "output": 65536
+      },
+      "modalities": {
+        "input": [
+          "text"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "model": null,
+      "name": "Devstral 2",
+      "provider": "venice",
+      "provider_model_id": null,
+      "release_date": "2025-12-18",
+      "tags": null
+    },
+    "gemini-3-flash-preview": {
+      "aliases": [],
+      "capabilities": {
+        "chat": true,
+        "embeddings": false,
+        "json": {
+          "native": false,
+          "schema": false,
+          "strict": false
+        },
+        "reasoning": {
+          "enabled": true
+        },
+        "streaming": {
+          "tool_calls": true
+        },
+        "tools": {
+          "enabled": true
+        }
+      },
+      "cost": {
+        "input": 0.7,
+        "output": 3.75
+      },
+      "deprecated": false,
+      "extra": {
+        "attachment": true,
+        "family": "gemini-flash",
+        "interleaved": {
+          "field": "reasoning_details"
+        },
+        "open_weights": false,
+        "structured_output": true,
+        "temperature": true
+      },
+      "family": null,
+      "id": "gemini-3-flash-preview",
+      "knowledge": "2025-01",
+      "last_updated": "2025-12-18",
+      "lifecycle": null,
+      "limits": {
+        "context": 262144,
+        "output": 65536
+      },
+      "modalities": {
+        "input": [
+          "text",
+          "image",
+          "audio",
+          "video",
+          "pdf"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "model": null,
+      "name": "Gemini 3 Flash Preview",
+      "provider": "venice",
+      "provider_model_id": null,
+      "release_date": "2025-12-18",
       "tags": null
     },
     "gemini-3-pro-preview": {
@@ -134,20 +275,24 @@
         "attachment": true,
         "family": "gemini-pro",
         "open_weights": false,
+        "structured_output": true,
         "temperature": true
       },
       "family": null,
       "id": "gemini-3-pro-preview",
       "knowledge": "2024-04",
-      "last_updated": "2025-11-18",
+      "last_updated": "2025-12-18",
       "lifecycle": null,
       "limits": {
         "context": 202752,
-        "output": 8192
+        "output": 50688
       },
       "modalities": {
         "input": [
-          "text"
+          "text",
+          "image",
+          "audio",
+          "video"
         ],
         "output": [
           "text"
@@ -157,7 +302,7 @@
       "name": "Gemini 3 Pro Preview",
       "provider": "venice",
       "provider_model_id": null,
-      "release_date": "2025-11-18",
+      "release_date": "2024-06-07",
       "tags": null
     },
     "google-gemma-3-27b-it": {
@@ -189,16 +334,17 @@
         "attachment": true,
         "family": "gemma-3",
         "open_weights": true,
+        "structured_output": true,
         "temperature": true
       },
       "family": null,
       "id": "google-gemma-3-27b-it",
       "knowledge": "2025-07",
-      "last_updated": "2025-07-27",
+      "last_updated": "2025-12-18",
       "lifecycle": null,
       "limits": {
         "context": 202752,
-        "output": 8192
+        "output": 50688
       },
       "modalities": {
         "input": [
@@ -213,7 +359,7 @@
       "name": "Google Gemma 3 27B Instruct",
       "provider": "venice",
       "provider_model_id": null,
-      "release_date": "2025-07-27",
+      "release_date": "2024-04-01",
       "tags": null
     },
     "grok-41-fast": {
@@ -245,16 +391,17 @@
         "attachment": true,
         "family": "grok",
         "open_weights": false,
+        "structured_output": true,
         "temperature": true
       },
       "family": null,
       "id": "grok-41-fast",
       "knowledge": "2025-07",
-      "last_updated": "2025-11-19",
+      "last_updated": "2025-12-18",
       "lifecycle": null,
       "limits": {
         "context": 262144,
-        "output": 8192
+        "output": 65536
       },
       "modalities": {
         "input": [
@@ -269,7 +416,7 @@
       "name": "Grok 4.1 Fast",
       "provider": "venice",
       "provider_model_id": null,
-      "release_date": "2025-11-19",
+      "release_date": "2025-04-29",
       "tags": null
     },
     "hermes-3-llama-3.1-405b": {
@@ -289,11 +436,11 @@
       "family": null,
       "id": "hermes-3-llama-3.1-405b",
       "knowledge": "2024-04",
-      "last_updated": "2024-04-15",
+      "last_updated": "2025-12-18",
       "lifecycle": null,
       "limits": {
         "context": 131072,
-        "output": 8192
+        "output": 32768
       },
       "modalities": {
         "input": [
@@ -307,7 +454,7 @@
       "name": "Hermes 3 Llama 3.1 405b",
       "provider": "venice",
       "provider_model_id": null,
-      "release_date": "2024-04-15",
+      "release_date": "2024-04-01",
       "tags": null
     },
     "kimi-k2-thinking": {
@@ -339,16 +486,17 @@
         "attachment": false,
         "family": "kimi-k2",
         "open_weights": true,
+        "structured_output": true,
         "temperature": true
       },
       "family": null,
       "id": "kimi-k2-thinking",
       "knowledge": "2024-04",
-      "last_updated": "2025-09-05",
+      "last_updated": "2025-12-18",
       "lifecycle": null,
       "limits": {
         "context": 262144,
-        "output": 8192
+        "output": 65536
       },
       "modalities": {
         "input": [
@@ -362,7 +510,7 @@
       "name": "Kimi K2 Thinking",
       "provider": "venice",
       "provider_model_id": null,
-      "release_date": "2025-09-05",
+      "release_date": "2024-06-07",
       "tags": null
     },
     "llama-3.2-3b": {
@@ -394,16 +542,17 @@
         "attachment": false,
         "family": "llama-3.2",
         "open_weights": true,
+        "structured_output": true,
         "temperature": true
       },
       "family": null,
       "id": "llama-3.2-3b",
       "knowledge": "2023-12",
-      "last_updated": "2025-05-23",
+      "last_updated": "2025-12-18",
       "lifecycle": null,
       "limits": {
         "context": 131072,
-        "output": 8192
+        "output": 32768
       },
       "modalities": {
         "input": [
@@ -417,7 +566,7 @@
       "name": "Llama 3.2 3B",
       "provider": "venice",
       "provider_model_id": null,
-      "release_date": "2025-05-23",
+      "release_date": "2024-10-03",
       "tags": null
     },
     "llama-3.3-70b": {
@@ -454,11 +603,11 @@
       "family": null,
       "id": "llama-3.3-70b",
       "knowledge": "2023-12",
-      "last_updated": "2025-06-09",
+      "last_updated": "2025-12-18",
       "lifecycle": null,
       "limits": {
-        "context": 65536,
-        "output": 8192
+        "context": 131072,
+        "output": 32768
       },
       "modalities": {
         "input": [
@@ -472,7 +621,7 @@
       "name": "Llama 3.3 70B",
       "provider": "venice",
       "provider_model_id": null,
-      "release_date": "2025-06-09",
+      "release_date": "2024-12-09",
       "tags": null
     },
     "mistral-31-24b": {
@@ -504,16 +653,17 @@
         "attachment": true,
         "family": "mistral",
         "open_weights": true,
+        "structured_output": true,
         "temperature": true
       },
       "family": null,
       "id": "mistral-31-24b",
       "knowledge": "2023-10",
-      "last_updated": "2025-12-09",
+      "last_updated": "2025-12-18",
       "lifecycle": null,
       "limits": {
         "context": 131072,
-        "output": 8192
+        "output": 32768
       },
       "modalities": {
         "input": [
@@ -528,7 +678,7 @@
       "name": "Venice Medium",
       "provider": "venice",
       "provider_model_id": null,
-      "release_date": "2025-07-15",
+      "release_date": "2025-03-18",
       "tags": null
     },
     "openai-gpt-52": {
@@ -552,30 +702,29 @@
         }
       },
       "cost": {
-        "cache_read": 0.175,
         "input": 2.19,
         "output": 17.5
       },
       "deprecated": false,
       "extra": {
-        "attachment": true,
+        "attachment": false,
         "family": "gpt-5",
         "open_weights": false,
-        "temperature": false
+        "structured_output": true,
+        "temperature": true
       },
       "family": null,
       "id": "openai-gpt-52",
       "knowledge": "2025-08-31",
-      "last_updated": "2025-12-11",
+      "last_updated": "2025-12-18",
       "lifecycle": null,
       "limits": {
-        "context": 200000,
-        "output": 128000
+        "context": 262144,
+        "output": 65536
       },
       "modalities": {
         "input": [
-          "text",
-          "image"
+          "text"
         ],
         "output": [
           "text"
@@ -585,7 +734,7 @@
       "name": "GPT-5.2",
       "provider": "venice",
       "provider_model_id": null,
-      "release_date": "2025-12-11",
+      "release_date": "2025-12-18",
       "tags": null
     },
     "openai-gpt-oss-120b": {
@@ -622,11 +771,11 @@
       "family": null,
       "id": "openai-gpt-oss-120b",
       "knowledge": "2025-07",
-      "last_updated": "2025-07-27",
+      "last_updated": "2025-12-18",
       "lifecycle": null,
       "limits": {
         "context": 131072,
-        "output": 8192
+        "output": 32768
       },
       "modalities": {
         "input": [
@@ -640,62 +789,7 @@
       "name": "OpenAI GPT OSS 120B",
       "provider": "venice",
       "provider_model_id": null,
-      "release_date": "2025-07-27",
-      "tags": null
-    },
-    "qwen3-235b": {
-      "aliases": [],
-      "capabilities": {
-        "chat": true,
-        "embeddings": false,
-        "json": {
-          "native": false,
-          "schema": false,
-          "strict": false
-        },
-        "reasoning": {
-          "enabled": true
-        },
-        "streaming": {
-          "tool_calls": true
-        },
-        "tools": {
-          "enabled": true
-        }
-      },
-      "cost": {
-        "input": 0.45,
-        "output": 3.5
-      },
-      "deprecated": false,
-      "extra": {
-        "attachment": false,
-        "family": "qwen3",
-        "open_weights": true,
-        "temperature": true
-      },
-      "family": null,
-      "id": "qwen3-235b",
-      "knowledge": "2024-10",
-      "last_updated": "2025-12-09",
-      "lifecycle": null,
-      "limits": {
-        "context": 131072,
-        "output": 8192
-      },
-      "modalities": {
-        "input": [
-          "text"
-        ],
-        "output": [
-          "text"
-        ]
-      },
-      "model": null,
-      "name": "Venice Large 1.1",
-      "provider": "venice",
-      "provider_model_id": null,
-      "release_date": "2025-07-27",
+      "release_date": "2024-04-01",
       "tags": null
     },
     "qwen3-235b-a22b-instruct-2507": {
@@ -727,16 +821,17 @@
         "attachment": false,
         "family": "qwen3",
         "open_weights": true,
+        "structured_output": true,
         "temperature": true
       },
       "family": null,
       "id": "qwen3-235b-a22b-instruct-2507",
       "knowledge": "2025-07",
-      "last_updated": "2025-07-27",
+      "last_updated": "2025-12-18",
       "lifecycle": null,
       "limits": {
         "context": 131072,
-        "output": 8192
+        "output": 32768
       },
       "modalities": {
         "input": [
@@ -750,7 +845,7 @@
       "name": "Qwen 3 235B A22B Instruct 2507",
       "provider": "venice",
       "provider_model_id": null,
-      "release_date": "2025-07-27",
+      "release_date": "2025-04-29",
       "tags": null
     },
     "qwen3-235b-a22b-thinking-2507": {
@@ -782,16 +877,17 @@
         "attachment": false,
         "family": "qwen3",
         "open_weights": true,
+        "structured_output": true,
         "temperature": true
       },
       "family": null,
       "id": "qwen3-235b-a22b-thinking-2507",
       "knowledge": "2025-07",
-      "last_updated": "2025-07-27",
+      "last_updated": "2025-12-18",
       "lifecycle": null,
       "limits": {
         "context": 131072,
-        "output": 8192
+        "output": 32768
       },
       "modalities": {
         "input": [
@@ -805,7 +901,7 @@
       "name": "Qwen 3 235B A22B Thinking 2507",
       "provider": "venice",
       "provider_model_id": null,
-      "release_date": "2025-07-27",
+      "release_date": "2025-04-29",
       "tags": null
     },
     "qwen3-4b": {
@@ -837,12 +933,13 @@
         "attachment": false,
         "family": "qwen3",
         "open_weights": true,
+        "structured_output": true,
         "temperature": true
       },
       "family": null,
       "id": "qwen3-4b",
       "knowledge": "2024-07",
-      "last_updated": "2025-12-09",
+      "last_updated": "2025-12-18",
       "lifecycle": null,
       "limits": {
         "context": 32768,
@@ -860,7 +957,7 @@
       "name": "Venice Small",
       "provider": "venice",
       "provider_model_id": null,
-      "release_date": "2025-07-27",
+      "release_date": "2025-04-29",
       "tags": null
     },
     "qwen3-coder-480b-a35b-instruct": {
@@ -892,16 +989,17 @@
         "attachment": false,
         "family": "qwen3-coder",
         "open_weights": true,
+        "structured_output": true,
         "temperature": true
       },
       "family": null,
       "id": "qwen3-coder-480b-a35b-instruct",
       "knowledge": "2025-07",
-      "last_updated": "2025-07-27",
+      "last_updated": "2025-12-18",
       "lifecycle": null,
       "limits": {
         "context": 262144,
-        "output": 8192
+        "output": 65536
       },
       "modalities": {
         "input": [
@@ -915,7 +1013,7 @@
       "name": "Qwen 3 Coder 480b",
       "provider": "venice",
       "provider_model_id": null,
-      "release_date": "2025-07-27",
+      "release_date": "2025-04-29",
       "tags": null
     },
     "qwen3-next-80b": {
@@ -947,16 +1045,17 @@
         "attachment": false,
         "family": "qwen3",
         "open_weights": true,
+        "structured_output": true,
         "temperature": true
       },
       "family": null,
       "id": "qwen3-next-80b",
       "knowledge": "2025-07",
-      "last_updated": "2025-07-27",
+      "last_updated": "2025-12-18",
       "lifecycle": null,
       "limits": {
         "context": 262144,
-        "output": 8192
+        "output": 65536
       },
       "modalities": {
         "input": [
@@ -970,7 +1069,7 @@
       "name": "Qwen 3 Next 80b",
       "provider": "venice",
       "provider_model_id": null,
-      "release_date": "2025-07-27",
+      "release_date": "2025-04-29",
       "tags": null
     },
     "venice-uncensored": {
@@ -985,12 +1084,13 @@
         "attachment": false,
         "family": "venice-uncensored",
         "open_weights": true,
+        "structured_output": true,
         "temperature": true
       },
       "family": null,
       "id": "venice-uncensored",
       "knowledge": "2023-10",
-      "last_updated": "2025-12-09",
+      "last_updated": "2025-12-18",
       "lifecycle": null,
       "limits": {
         "context": 32768,
@@ -1008,7 +1108,7 @@
       "name": "Venice Uncensored 1.1",
       "provider": "venice",
       "provider_model_id": null,
-      "release_date": "2025-07-15",
+      "release_date": "2025-03-18",
       "tags": null
     },
     "zai-org-glm-4.6": {
@@ -1040,16 +1140,17 @@
         "attachment": false,
         "family": "glm-4.6",
         "open_weights": true,
+        "structured_output": true,
         "temperature": true
       },
       "family": null,
       "id": "zai-org-glm-4.6",
       "knowledge": "2024-04",
-      "last_updated": "2025-09-30",
+      "last_updated": "2025-12-18",
       "lifecycle": null,
       "limits": {
         "context": 202752,
-        "output": 8192
+        "output": 50688
       },
       "modalities": {
         "input": [
@@ -1063,7 +1164,64 @@
       "name": "GLM 4.6",
       "provider": "venice",
       "provider_model_id": null,
-      "release_date": "2025-09-30",
+      "release_date": "2024-04-01",
+      "tags": null
+    },
+    "zai-org-glm-4.6v": {
+      "aliases": [],
+      "capabilities": {
+        "chat": true,
+        "embeddings": false,
+        "json": {
+          "native": false,
+          "schema": false,
+          "strict": false
+        },
+        "reasoning": {
+          "enabled": false
+        },
+        "streaming": {
+          "tool_calls": true
+        },
+        "tools": {
+          "enabled": true
+        }
+      },
+      "cost": {
+        "input": 0.39,
+        "output": 1.13
+      },
+      "deprecated": false,
+      "extra": {
+        "attachment": true,
+        "family": "glm-4.6",
+        "open_weights": true,
+        "structured_output": true,
+        "temperature": true
+      },
+      "family": null,
+      "id": "zai-org-glm-4.6v",
+      "knowledge": null,
+      "last_updated": "2025-12-18",
+      "lifecycle": null,
+      "limits": {
+        "context": 131072,
+        "output": 32768
+      },
+      "modalities": {
+        "input": [
+          "text",
+          "image"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "model": null,
+      "name": "GLM 4.6V",
+      "provider": "venice",
+      "provider_model_id": null,
+      "release_date": "2024-12-10",
       "tags": null
     }
   },

@@ -10,6 +10,64 @@
   "extra": null,
   "id": "deepinfra",
   "models": {
+    "MiniMaxAI/MiniMax-M2": {
+      "aliases": [],
+      "capabilities": {
+        "chat": true,
+        "embeddings": false,
+        "json": {
+          "native": false,
+          "schema": false,
+          "strict": false
+        },
+        "reasoning": {
+          "enabled": true
+        },
+        "streaming": {
+          "tool_calls": true
+        },
+        "tools": {
+          "enabled": true
+        }
+      },
+      "cost": {
+        "input": 0.254,
+        "output": 1.02
+      },
+      "deprecated": false,
+      "extra": {
+        "attachment": false,
+        "family": "minimax",
+        "interleaved": {
+          "field": "reasoning_content"
+        },
+        "open_weights": true,
+        "temperature": true
+      },
+      "family": null,
+      "id": "MiniMaxAI/MiniMax-M2",
+      "knowledge": "2024-10",
+      "last_updated": "2025-11-13",
+      "lifecycle": null,
+      "limits": {
+        "context": 262144,
+        "output": 32768
+      },
+      "modalities": {
+        "input": [
+          "text"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "model": null,
+      "name": "MiniMax M2",
+      "provider": "deepinfra",
+      "provider_model_id": null,
+      "release_date": "2025-11-13",
+      "tags": null
+    },
     "Qwen/Qwen3-Coder-480B-A35B-Instruct": {
       "aliases": [],
       "capabilities": {
@@ -173,6 +231,64 @@
       "provider": "deepinfra",
       "provider_model_id": null,
       "release_date": "2025-07-11",
+      "tags": null
+    },
+    "moonshotai/Kimi-K2-Thinking": {
+      "aliases": [],
+      "capabilities": {
+        "chat": true,
+        "embeddings": false,
+        "json": {
+          "native": false,
+          "schema": false,
+          "strict": false
+        },
+        "reasoning": {
+          "enabled": true
+        },
+        "streaming": {
+          "tool_calls": true
+        },
+        "tools": {
+          "enabled": true
+        }
+      },
+      "cost": {
+        "input": 0.47,
+        "output": 2
+      },
+      "deprecated": false,
+      "extra": {
+        "attachment": false,
+        "family": "kimi-k2",
+        "interleaved": {
+          "field": "reasoning_content"
+        },
+        "open_weights": true,
+        "temperature": true
+      },
+      "family": null,
+      "id": "moonshotai/Kimi-K2-Thinking",
+      "knowledge": "2024-10",
+      "last_updated": "2025-11-07",
+      "lifecycle": null,
+      "limits": {
+        "context": 131072,
+        "output": 32768
+      },
+      "modalities": {
+        "input": [
+          "text"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "model": null,
+      "name": "Kimi K2 Thinking",
+      "provider": "deepinfra",
+      "provider_model_id": null,
+      "release_date": "2025-11-06",
       "tags": null
     },
     "openai/gpt-oss-120b": {
