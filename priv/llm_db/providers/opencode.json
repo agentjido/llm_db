@@ -132,65 +132,6 @@
       "release_date": "2025-01-01",
       "tags": null
     },
-    "alpha-minimax-m2": {
-      "aliases": [],
-      "capabilities": {
-        "chat": true,
-        "embeddings": false,
-        "json": {
-          "native": false,
-          "schema": false,
-          "strict": false
-        },
-        "reasoning": {
-          "enabled": true
-        },
-        "streaming": {
-          "tool_calls": true
-        },
-        "tools": {
-          "enabled": true
-        }
-      },
-      "cost": {
-        "input": 0.3,
-        "output": 1.2
-      },
-      "deprecated": false,
-      "extra": {
-        "attachment": false,
-        "family": "minimax",
-        "open_weights": true,
-        "provider": {
-          "npm": "@ai-sdk/anthropic"
-        },
-        "status": "alpha",
-        "temperature": true
-      },
-      "family": null,
-      "id": "alpha-minimax-m2",
-      "knowledge": "2024-10",
-      "last_updated": "2025-10-27",
-      "lifecycle": null,
-      "limits": {
-        "context": 204800,
-        "output": 131072
-      },
-      "modalities": {
-        "input": [
-          "text"
-        ],
-        "output": [
-          "text"
-        ]
-      },
-      "model": null,
-      "name": "MiniMax M2 (alpha)",
-      "provider": "opencode",
-      "provider_model_id": null,
-      "release_date": "2025-10-27",
-      "tags": null
-    },
     "big-pickle": {
       "aliases": [],
       "capabilities": {
@@ -1378,7 +1319,6 @@
           "field": "reasoning_content"
         },
         "open_weights": true,
-        "status": "deprecated",
         "temperature": true
       },
       "family": null,
@@ -1403,6 +1343,67 @@
       "provider": "opencode",
       "provider_model_id": null,
       "release_date": "2025-09-05",
+      "tags": null
+    },
+    "minimax-m2.1": {
+      "aliases": [],
+      "capabilities": {
+        "chat": true,
+        "embeddings": false,
+        "json": {
+          "native": false,
+          "schema": false,
+          "strict": false
+        },
+        "reasoning": {
+          "enabled": true
+        },
+        "streaming": {
+          "tool_calls": true
+        },
+        "tools": {
+          "enabled": true
+        }
+      },
+      "cost": {
+        "cache_read": 0,
+        "cache_write": 0,
+        "input": 0,
+        "output": 0
+      },
+      "deprecated": false,
+      "extra": {
+        "attachment": false,
+        "family": "minimax",
+        "open_weights": false,
+        "provider": {
+          "npm": "@ai-sdk/anthropic"
+        },
+        "status": "deprecated",
+        "temperature": true
+      },
+      "family": null,
+      "id": "minimax-m2.1",
+      "knowledge": "2025-01",
+      "last_updated": "2025-12-20",
+      "lifecycle": null,
+      "limits": {
+        "context": 204800,
+        "output": 131072
+      },
+      "modalities": {
+        "input": [
+          "text"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "model": null,
+      "name": "MiniMax M2.1",
+      "provider": "opencode",
+      "provider_model_id": null,
+      "release_date": "2025-12-20",
       "tags": null
     },
     "qwen3-coder": {
