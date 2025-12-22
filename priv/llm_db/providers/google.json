@@ -26,8 +26,6 @@
     "gemini-2.5-flash-lite-preview-09-2025",
     "gemini-2.5-flash-preview-09-2025",
     "gemini-flash-lite-latest",
-    "gemini-2.5-flash-lite",
-    "gemini-2.5-flash-image",
     "gemini-2.5-flash-image-preview",
     "gemini-2.5-flash-preview-tts",
     "gemini-2.5-pro-preview-tts",
@@ -698,6 +696,160 @@
       "provider": "google",
       "provider_model_id": null,
       "release_date": "2025-06-17",
+      "tags": null
+    },
+    "gemini-2.5-flash-image": {
+      "aliases": [],
+      "capabilities": {
+        "chat": true,
+        "embeddings": false,
+        "json": {
+          "native": false,
+          "schema": false,
+          "strict": false
+        },
+        "reasoning": {
+          "enabled": true
+        },
+        "streaming": {
+          "text": true,
+          "tool_calls": false
+        },
+        "tools": {
+          "enabled": false,
+          "parallel": false,
+          "streaming": false,
+          "strict": false
+        }
+      },
+      "cost": {
+        "cache_read": 0.075,
+        "image": 1238.0,
+        "input": 0.3,
+        "output": 2.5,
+        "reasoning": 0.0,
+        "request": 0.0
+      },
+      "deprecated": false,
+      "extra": {
+        "attachment": true,
+        "description": "Gemini 2.5 Flash Preview Image",
+        "family": "gemini-flash-image",
+        "hugging_face_id": "",
+        "max_temperature": 1,
+        "open_weights": false,
+        "supported_generation_methods": [
+          "generateContent",
+          "countTokens",
+          "batchGenerateContent"
+        ],
+        "temperature": 1,
+        "top_k": 64,
+        "top_p": 0.95,
+        "version": "2.0"
+      },
+      "family": null,
+      "id": "gemini-2.5-flash-image",
+      "knowledge": "2025-06",
+      "last_updated": "2025-08-26",
+      "lifecycle": null,
+      "limits": {
+        "context": 32768,
+        "output": 32768
+      },
+      "modalities": {
+        "input": [
+          "text",
+          "image"
+        ],
+        "output": [
+          "text",
+          "image"
+        ]
+      },
+      "model": null,
+      "name": "Nano Banana",
+      "provider": "google",
+      "provider_model_id": null,
+      "release_date": "2025-10-07",
+      "tags": null
+    },
+    "gemini-2.5-flash-lite": {
+      "aliases": [],
+      "capabilities": {
+        "chat": true,
+        "embeddings": false,
+        "json": {
+          "native": false,
+          "schema": false,
+          "strict": false
+        },
+        "reasoning": {
+          "enabled": false
+        },
+        "streaming": {
+          "text": true,
+          "tool_calls": false
+        },
+        "tools": {
+          "enabled": true
+        }
+      },
+      "cost": {
+        "cache_read": 0.025,
+        "image": 0.0,
+        "input": 0.1,
+        "output": 0.4,
+        "reasoning": 0.0,
+        "request": 0.0
+      },
+      "deprecated": false,
+      "extra": {
+        "attachment": true,
+        "description": "Stable version of Gemini 2.5 Flash-Lite, released in July of 2025",
+        "family": "gemini-flash-lite",
+        "hugging_face_id": "",
+        "max_temperature": 2,
+        "open_weights": false,
+        "structured_output": true,
+        "supported_generation_methods": [
+          "generateContent",
+          "countTokens",
+          "createCachedContent",
+          "batchGenerateContent"
+        ],
+        "temperature": 1,
+        "thinking": true,
+        "top_k": 64,
+        "top_p": 0.95,
+        "version": "001"
+      },
+      "family": null,
+      "id": "gemini-2.5-flash-lite",
+      "knowledge": "2025-01",
+      "last_updated": "2025-06-17",
+      "lifecycle": null,
+      "limits": {
+        "context": 1048576,
+        "output": 65536
+      },
+      "modalities": {
+        "input": [
+          "text",
+          "image",
+          "audio",
+          "video",
+          "pdf"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "model": null,
+      "name": "Gemini 2.5 Flash-Lite",
+      "provider": "google",
+      "provider_model_id": null,
+      "release_date": "2025-07-22",
       "tags": null
     },
     "gemini-2.5-flash-native-audio-latest": {
