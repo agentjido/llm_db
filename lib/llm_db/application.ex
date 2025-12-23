@@ -36,7 +36,7 @@ defmodule LLMDB.Application do
   defp load_dotenv do
     env_path = Path.join(File.cwd!(), ".env")
 
-    if File.exists?(env_path) do
+    if File.exists?(env_path) and not File.dir?(env_path) do
       vars = Dotenvy.source!(env_path)
       System.put_env(vars)
     end
