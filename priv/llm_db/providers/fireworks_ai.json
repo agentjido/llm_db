@@ -175,6 +175,65 @@
       "release_date": "2025-08-21",
       "tags": null
     },
+    "accounts/fireworks/models/deepseek-v3p2": {
+      "aliases": [],
+      "capabilities": {
+        "chat": true,
+        "embeddings": false,
+        "json": {
+          "native": false,
+          "schema": false,
+          "strict": false
+        },
+        "reasoning": {
+          "enabled": true
+        },
+        "streaming": {
+          "tool_calls": true
+        },
+        "tools": {
+          "enabled": true
+        }
+      },
+      "cost": {
+        "cache_read": 0.28,
+        "input": 0.56,
+        "output": 1.68
+      },
+      "deprecated": false,
+      "extra": {
+        "attachment": false,
+        "family": "deepseek-v3",
+        "interleaved": {
+          "field": "reasoning_content"
+        },
+        "open_weights": true,
+        "temperature": true
+      },
+      "family": null,
+      "id": "accounts/fireworks/models/deepseek-v3p2",
+      "knowledge": "2025-09",
+      "last_updated": "2025-12-01",
+      "lifecycle": null,
+      "limits": {
+        "context": 160000,
+        "output": 160000
+      },
+      "modalities": {
+        "input": [
+          "text"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "model": null,
+      "name": "DeepSeek V3.2",
+      "provider": "fireworks_ai",
+      "provider_model_id": null,
+      "release_date": "2025-12-01",
+      "tags": null
+    },
     "accounts/fireworks/models/glm-4p5": {
       "aliases": [],
       "capabilities": {
@@ -203,6 +262,9 @@
       "extra": {
         "attachment": false,
         "family": "glm-4",
+        "interleaved": {
+          "field": "reasoning_content"
+        },
         "open_weights": true,
         "temperature": true
       },
@@ -283,6 +345,124 @@
       "provider": "fireworks_ai",
       "provider_model_id": null,
       "release_date": "2025-08-01",
+      "tags": null
+    },
+    "accounts/fireworks/models/glm-4p6": {
+      "aliases": [],
+      "capabilities": {
+        "chat": true,
+        "embeddings": false,
+        "json": {
+          "native": false,
+          "schema": false,
+          "strict": false
+        },
+        "reasoning": {
+          "enabled": true
+        },
+        "streaming": {
+          "tool_calls": true
+        },
+        "tools": {
+          "enabled": true
+        }
+      },
+      "cost": {
+        "cache_read": 0.28,
+        "input": 0.55,
+        "output": 2.19
+      },
+      "deprecated": false,
+      "extra": {
+        "attachment": false,
+        "family": "glm-4",
+        "interleaved": {
+          "field": "reasoning_content"
+        },
+        "open_weights": true,
+        "temperature": true
+      },
+      "family": null,
+      "id": "accounts/fireworks/models/glm-4p6",
+      "knowledge": "2025-04",
+      "last_updated": "2025-10-01",
+      "lifecycle": null,
+      "limits": {
+        "context": 198000,
+        "output": 198000
+      },
+      "modalities": {
+        "input": [
+          "text"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "model": null,
+      "name": "GLM 4.6",
+      "provider": "fireworks_ai",
+      "provider_model_id": null,
+      "release_date": "2025-10-01",
+      "tags": null
+    },
+    "accounts/fireworks/models/glm-4p7": {
+      "aliases": [],
+      "capabilities": {
+        "chat": true,
+        "embeddings": false,
+        "json": {
+          "native": false,
+          "schema": false,
+          "strict": false
+        },
+        "reasoning": {
+          "enabled": true
+        },
+        "streaming": {
+          "tool_calls": true
+        },
+        "tools": {
+          "enabled": true
+        }
+      },
+      "cost": {
+        "cache_read": 0.3,
+        "input": 0.6,
+        "output": 2.2
+      },
+      "deprecated": false,
+      "extra": {
+        "attachment": false,
+        "family": "glm-4",
+        "interleaved": {
+          "field": "reasoning_content"
+        },
+        "open_weights": true,
+        "temperature": true
+      },
+      "family": null,
+      "id": "accounts/fireworks/models/glm-4p7",
+      "knowledge": "2025-04",
+      "last_updated": "2025-12-22",
+      "lifecycle": null,
+      "limits": {
+        "context": 198000,
+        "output": 198000
+      },
+      "modalities": {
+        "input": [
+          "text"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "model": null,
+      "name": "GLM 4.7",
+      "provider": "fireworks_ai",
+      "provider_model_id": null,
+      "release_date": "2025-12-22",
       "tags": null
     },
     "accounts/fireworks/models/gpt-oss-120b": {
@@ -478,6 +658,9 @@
       "extra": {
         "attachment": false,
         "family": "kimi-k2",
+        "interleaved": {
+          "field": "reasoning_content"
+        },
         "open_weights": true,
         "temperature": true
       },
@@ -488,7 +671,7 @@
       "lifecycle": null,
       "limits": {
         "context": 256000,
-        "output": 16384
+        "output": 256000
       },
       "modalities": {
         "input": [
@@ -533,6 +716,9 @@
       "extra": {
         "attachment": false,
         "family": "minimax",
+        "interleaved": {
+          "field": "reasoning_content"
+        },
         "open_weights": true,
         "temperature": true
       },
@@ -543,7 +729,7 @@
       "lifecycle": null,
       "limits": {
         "context": 128000,
-        "output": 16384
+        "output": 128000
       },
       "modalities": {
         "input": [

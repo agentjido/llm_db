@@ -43,6 +43,7 @@ defmodule LLMDB.Generated.ValidProviders do
     :eleutherai,
     :fastrouter,
     :fireworks_ai,
+    :friendli,
     :github_copilot,
     :github_models,
     :google,

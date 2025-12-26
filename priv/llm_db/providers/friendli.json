@@ -2,15 +2,15 @@
   "alias_of": null,
   "base_url": null,
   "config_schema": null,
-  "doc": "https://deepinfra.com/models",
+  "doc": "https://friendli.ai/docs/guides/serverless_endpoints/introduction",
   "env": [
-    "DEEPINFRA_API_KEY"
+    "FRIENDLI_TOKEN"
   ],
   "exclude_models": null,
   "extra": null,
-  "id": "deepinfra",
+  "id": "friendli",
   "models": {
-    "MiniMaxAI/MiniMax-M2": {
+    "LGAI-EXAONE-EXAONE-4.0.1-32B": {
       "aliases": [],
       "capabilities": {
         "chat": true,
@@ -31,192 +31,25 @@
         }
       },
       "cost": {
-        "input": 0.254,
-        "output": 1.02
+        "input": 0.6,
+        "output": 1
       },
       "deprecated": false,
       "extra": {
         "attachment": false,
-        "family": "minimax",
-        "interleaved": {
-          "field": "reasoning_content"
-        },
+        "family": "exaone",
         "open_weights": true,
+        "structured_output": true,
         "temperature": true
       },
       "family": null,
-      "id": "MiniMaxAI/MiniMax-M2",
-      "knowledge": "2024-10",
-      "last_updated": "2025-11-13",
-      "lifecycle": null,
-      "limits": {
-        "context": 262144,
-        "output": 32768
-      },
-      "modalities": {
-        "input": [
-          "text"
-        ],
-        "output": [
-          "text"
-        ]
-      },
-      "model": null,
-      "name": "MiniMax M2",
-      "provider": "deepinfra",
-      "provider_model_id": null,
-      "release_date": "2025-11-13",
-      "tags": null
-    },
-    "Qwen/Qwen3-Coder-480B-A35B-Instruct": {
-      "aliases": [],
-      "capabilities": {
-        "chat": true,
-        "embeddings": false,
-        "json": {
-          "native": false,
-          "schema": false,
-          "strict": false
-        },
-        "reasoning": {
-          "enabled": false
-        },
-        "streaming": {
-          "tool_calls": true
-        },
-        "tools": {
-          "enabled": true
-        }
-      },
-      "cost": {
-        "input": 0.4,
-        "output": 1.6
-      },
-      "deprecated": false,
-      "extra": {
-        "attachment": false,
-        "family": "qwen3-coder",
-        "open_weights": true,
-        "temperature": true
-      },
-      "family": null,
-      "id": "Qwen/Qwen3-Coder-480B-A35B-Instruct",
-      "knowledge": "2025-04",
-      "last_updated": "2025-07-23",
-      "lifecycle": null,
-      "limits": {
-        "context": 262144,
-        "output": 66536
-      },
-      "modalities": {
-        "input": [
-          "text"
-        ],
-        "output": [
-          "text"
-        ]
-      },
-      "model": null,
-      "name": "Qwen3 Coder 480B A35B Instruct",
-      "provider": "deepinfra",
-      "provider_model_id": null,
-      "release_date": "2025-07-23",
-      "tags": null
-    },
-    "Qwen/Qwen3-Coder-480B-A35B-Instruct-Turbo": {
-      "aliases": [],
-      "capabilities": {
-        "chat": true,
-        "embeddings": false,
-        "json": {
-          "native": false,
-          "schema": false,
-          "strict": false
-        },
-        "reasoning": {
-          "enabled": false
-        },
-        "streaming": {
-          "tool_calls": true
-        },
-        "tools": {
-          "enabled": true
-        }
-      },
-      "cost": {
-        "input": 0.3,
-        "output": 1.2
-      },
-      "deprecated": false,
-      "extra": {
-        "attachment": false,
-        "family": "qwen3-coder",
-        "open_weights": true,
-        "temperature": true
-      },
-      "family": null,
-      "id": "Qwen/Qwen3-Coder-480B-A35B-Instruct-Turbo",
-      "knowledge": "2025-04",
-      "last_updated": "2025-07-23",
-      "lifecycle": null,
-      "limits": {
-        "context": 262144,
-        "output": 66536
-      },
-      "modalities": {
-        "input": [
-          "text"
-        ],
-        "output": [
-          "text"
-        ]
-      },
-      "model": null,
-      "name": "Qwen3 Coder 480B A35B Instruct Turbo",
-      "provider": "deepinfra",
-      "provider_model_id": null,
-      "release_date": "2025-07-23",
-      "tags": null
-    },
-    "moonshotai/Kimi-K2-Instruct": {
-      "aliases": [],
-      "capabilities": {
-        "chat": true,
-        "embeddings": false,
-        "json": {
-          "native": false,
-          "schema": false,
-          "strict": false
-        },
-        "reasoning": {
-          "enabled": false
-        },
-        "streaming": {
-          "tool_calls": true
-        },
-        "tools": {
-          "enabled": true
-        }
-      },
-      "cost": {
-        "input": 0.5,
-        "output": 2
-      },
-      "deprecated": false,
-      "extra": {
-        "attachment": false,
-        "family": "kimi-k2",
-        "open_weights": true,
-        "temperature": true
-      },
-      "family": null,
-      "id": "moonshotai/Kimi-K2-Instruct",
-      "knowledge": "2024-10",
-      "last_updated": "2025-07-11",
+      "id": "LGAI-EXAONE-EXAONE-4.0.1-32B",
+      "knowledge": null,
+      "last_updated": "2025-12-23",
       "lifecycle": null,
       "limits": {
         "context": 131072,
-        "output": 32768
+        "output": 131072
       },
       "modalities": {
         "input": [
@@ -227,13 +60,285 @@
         ]
       },
       "model": null,
-      "name": "Kimi K2",
-      "provider": "deepinfra",
+      "name": "EXAONE 4.0.1 32B",
+      "provider": "friendli",
+      "provider_model_id": null,
+      "release_date": "2025-07-31",
+      "tags": null
+    },
+    "Qwen-Qwen3-235B-A22B-Instruct-2507": {
+      "aliases": [],
+      "capabilities": {
+        "chat": true,
+        "embeddings": false,
+        "json": {
+          "native": false,
+          "schema": false,
+          "strict": false
+        },
+        "reasoning": {
+          "enabled": false
+        },
+        "streaming": {
+          "tool_calls": true
+        },
+        "tools": {
+          "enabled": true
+        }
+      },
+      "cost": {
+        "input": 0.2,
+        "output": 0.8
+      },
+      "deprecated": false,
+      "extra": {
+        "attachment": false,
+        "family": "qwen3",
+        "open_weights": true,
+        "structured_output": true,
+        "temperature": true
+      },
+      "family": null,
+      "id": "Qwen-Qwen3-235B-A22B-Instruct-2507",
+      "knowledge": null,
+      "last_updated": "2025-12-23",
+      "lifecycle": null,
+      "limits": {
+        "context": 131072,
+        "output": 131072
+      },
+      "modalities": {
+        "input": [
+          "text"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "model": null,
+      "name": "Qwen3 235B A22B Instruct 2507",
+      "provider": "friendli",
+      "provider_model_id": null,
+      "release_date": "2025-07-29",
+      "tags": null
+    },
+    "Qwen-Qwen3-235B-A22B-Thinking-2507": {
+      "aliases": [],
+      "capabilities": {
+        "chat": true,
+        "embeddings": false,
+        "json": {
+          "native": false,
+          "schema": false,
+          "strict": false
+        },
+        "reasoning": {
+          "enabled": true
+        },
+        "streaming": {
+          "tool_calls": true
+        },
+        "tools": {
+          "enabled": true
+        }
+      },
+      "cost": null,
+      "deprecated": false,
+      "extra": {
+        "attachment": false,
+        "family": "qwen3",
+        "open_weights": true,
+        "structured_output": true,
+        "temperature": true
+      },
+      "family": null,
+      "id": "Qwen-Qwen3-235B-A22B-Thinking-2507",
+      "knowledge": null,
+      "last_updated": "2025-12-23",
+      "lifecycle": null,
+      "limits": {
+        "context": 131072,
+        "output": 131072
+      },
+      "modalities": {
+        "input": [
+          "text"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "model": null,
+      "name": "Qwen3 235B A22B Thinking 2507",
+      "provider": "friendli",
+      "provider_model_id": null,
+      "release_date": "2025-07-29",
+      "tags": null
+    },
+    "Qwen-Qwen3-30B-A3B": {
+      "aliases": [],
+      "capabilities": {
+        "chat": true,
+        "embeddings": false,
+        "json": {
+          "native": false,
+          "schema": false,
+          "strict": false
+        },
+        "reasoning": {
+          "enabled": true
+        },
+        "streaming": {
+          "tool_calls": true
+        },
+        "tools": {
+          "enabled": true
+        }
+      },
+      "cost": null,
+      "deprecated": false,
+      "extra": {
+        "attachment": false,
+        "family": "qwen3",
+        "open_weights": true,
+        "structured_output": true,
+        "temperature": true
+      },
+      "family": null,
+      "id": "Qwen-Qwen3-30B-A3B",
+      "knowledge": null,
+      "last_updated": "2025-12-23",
+      "lifecycle": null,
+      "limits": {
+        "context": 131072,
+        "output": 8000
+      },
+      "modalities": {
+        "input": [
+          "text"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "model": null,
+      "name": "Qwen3 30B A3B",
+      "provider": "friendli",
+      "provider_model_id": null,
+      "release_date": "2025-06-16",
+      "tags": null
+    },
+    "Qwen-Qwen3-32B": {
+      "aliases": [],
+      "capabilities": {
+        "chat": true,
+        "embeddings": false,
+        "json": {
+          "native": false,
+          "schema": false,
+          "strict": false
+        },
+        "reasoning": {
+          "enabled": true
+        },
+        "streaming": {
+          "tool_calls": true
+        },
+        "tools": {
+          "enabled": true
+        }
+      },
+      "cost": null,
+      "deprecated": false,
+      "extra": {
+        "attachment": false,
+        "family": "qwen3",
+        "open_weights": true,
+        "structured_output": true,
+        "temperature": true
+      },
+      "family": null,
+      "id": "Qwen-Qwen3-32B",
+      "knowledge": null,
+      "last_updated": "2025-12-23",
+      "lifecycle": null,
+      "limits": {
+        "context": 131072,
+        "output": 8000
+      },
+      "modalities": {
+        "input": [
+          "text"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "model": null,
+      "name": "Qwen3 32B",
+      "provider": "friendli",
+      "provider_model_id": null,
+      "release_date": "2025-06-16",
+      "tags": null
+    },
+    "deepseek-ai-DeepSeek-R1-0528": {
+      "aliases": [],
+      "capabilities": {
+        "chat": true,
+        "embeddings": false,
+        "json": {
+          "native": false,
+          "schema": false,
+          "strict": false
+        },
+        "reasoning": {
+          "enabled": true
+        },
+        "streaming": {
+          "text": true,
+          "tool_calls": false
+        },
+        "tools": {
+          "enabled": false,
+          "parallel": false,
+          "streaming": false,
+          "strict": false
+        }
+      },
+      "cost": null,
+      "deprecated": false,
+      "extra": {
+        "attachment": false,
+        "family": "deepseek-r1",
+        "open_weights": true,
+        "structured_output": true,
+        "temperature": true
+      },
+      "family": null,
+      "id": "deepseek-ai-DeepSeek-R1-0528",
+      "knowledge": null,
+      "last_updated": "2025-12-23",
+      "lifecycle": null,
+      "limits": {
+        "context": 163840,
+        "output": 163840
+      },
+      "modalities": {
+        "input": [
+          "text"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "model": null,
+      "name": "DeepSeek R1 0528",
+      "provider": "friendli",
       "provider_model_id": null,
       "release_date": "2025-07-11",
       "tags": null
     },
-    "moonshotai/Kimi-K2-Thinking": {
+    "meta-llama-3.1-8b-instruct": {
       "aliases": [],
       "capabilities": {
         "chat": true,
@@ -244,7 +349,7 @@
           "strict": false
         },
         "reasoning": {
-          "enabled": true
+          "enabled": false
         },
         "streaming": {
           "tool_calls": true
@@ -254,82 +359,25 @@
         }
       },
       "cost": {
-        "input": 0.47,
-        "output": 2
+        "input": 0.1,
+        "output": 0.1
       },
       "deprecated": false,
       "extra": {
         "attachment": false,
-        "family": "kimi-k2",
-        "interleaved": {
-          "field": "reasoning_content"
-        },
+        "family": "llama-3.1",
         "open_weights": true,
+        "structured_output": true,
         "temperature": true
       },
       "family": null,
-      "id": "moonshotai/Kimi-K2-Thinking",
-      "knowledge": "2024-10",
-      "last_updated": "2025-11-07",
-      "lifecycle": null,
-      "limits": {
-        "context": 131072,
-        "output": 32768
-      },
-      "modalities": {
-        "input": [
-          "text"
-        ],
-        "output": [
-          "text"
-        ]
-      },
-      "model": null,
-      "name": "Kimi K2 Thinking",
-      "provider": "deepinfra",
-      "provider_model_id": null,
-      "release_date": "2025-11-06",
-      "tags": null
-    },
-    "openai/gpt-oss-120b": {
-      "aliases": [],
-      "capabilities": {
-        "chat": true,
-        "embeddings": false,
-        "json": {
-          "native": false,
-          "schema": false,
-          "strict": false
-        },
-        "reasoning": {
-          "enabled": true
-        },
-        "streaming": {
-          "tool_calls": true
-        },
-        "tools": {
-          "enabled": true
-        }
-      },
-      "cost": {
-        "input": 0.05,
-        "output": 0.24
-      },
-      "deprecated": false,
-      "extra": {
-        "attachment": false,
-        "family": "gpt-oss",
-        "open_weights": true,
-        "temperature": true
-      },
-      "family": null,
-      "id": "openai/gpt-oss-120b",
+      "id": "meta-llama-3.1-8b-instruct",
       "knowledge": null,
-      "last_updated": "2025-08-05",
+      "last_updated": "2025-12-23",
       "lifecycle": null,
       "limits": {
         "context": 131072,
-        "output": 16384
+        "output": 8000
       },
       "modalities": {
         "input": [
@@ -340,68 +388,13 @@
         ]
       },
       "model": null,
-      "name": "GPT OSS 120B",
-      "provider": "deepinfra",
+      "name": "Llama 3.1 8B Instruct",
+      "provider": "friendli",
       "provider_model_id": null,
-      "release_date": "2025-08-05",
+      "release_date": "2024-08-01",
       "tags": null
     },
-    "openai/gpt-oss-20b": {
-      "aliases": [],
-      "capabilities": {
-        "chat": true,
-        "embeddings": false,
-        "json": {
-          "native": false,
-          "schema": false,
-          "strict": false
-        },
-        "reasoning": {
-          "enabled": true
-        },
-        "streaming": {
-          "tool_calls": true
-        },
-        "tools": {
-          "enabled": true
-        }
-      },
-      "cost": {
-        "input": 0.03,
-        "output": 0.14
-      },
-      "deprecated": false,
-      "extra": {
-        "attachment": false,
-        "family": "gpt-oss",
-        "open_weights": true,
-        "temperature": true
-      },
-      "family": null,
-      "id": "openai/gpt-oss-20b",
-      "knowledge": null,
-      "last_updated": "2025-08-05",
-      "lifecycle": null,
-      "limits": {
-        "context": 131072,
-        "output": 16384
-      },
-      "modalities": {
-        "input": [
-          "text"
-        ],
-        "output": [
-          "text"
-        ]
-      },
-      "model": null,
-      "name": "GPT OSS 20B",
-      "provider": "deepinfra",
-      "provider_model_id": null,
-      "release_date": "2025-08-05",
-      "tags": null
-    },
-    "zai-org/GLM-4.5": {
+    "meta-llama-3.3-70b-instruct": {
       "aliases": [],
       "capabilities": {
         "chat": true,
@@ -423,24 +416,24 @@
       },
       "cost": {
         "input": 0.6,
-        "output": 2.2
+        "output": 0.6
       },
       "deprecated": false,
       "extra": {
         "attachment": false,
-        "family": "glm-4.5",
+        "family": "llama-3.3",
         "open_weights": true,
-        "status": "deprecated",
+        "structured_output": true,
         "temperature": true
       },
       "family": null,
-      "id": "zai-org/GLM-4.5",
-      "knowledge": "2025-04",
-      "last_updated": "2025-07-28",
+      "id": "meta-llama-3.3-70b-instruct",
+      "knowledge": null,
+      "last_updated": "2025-12-23",
       "lifecycle": null,
       "limits": {
         "context": 131072,
-        "output": 98304
+        "output": 131072
       },
       "modalities": {
         "input": [
@@ -451,13 +444,127 @@
         ]
       },
       "model": null,
-      "name": "GLM-4.5",
-      "provider": "deepinfra",
+      "name": "Llama 3.3 70B Instruct",
+      "provider": "friendli",
       "provider_model_id": null,
-      "release_date": "2025-07-28",
+      "release_date": "2024-08-01",
       "tags": null
     },
-    "zai-org/GLM-4.7": {
+    "meta-llama-Llama-4-Maverick-17B-128E-Instruct": {
+      "aliases": [],
+      "capabilities": {
+        "chat": true,
+        "embeddings": false,
+        "json": {
+          "native": false,
+          "schema": false,
+          "strict": false
+        },
+        "reasoning": {
+          "enabled": true
+        },
+        "streaming": {
+          "text": true,
+          "tool_calls": false
+        },
+        "tools": {
+          "enabled": false,
+          "parallel": false,
+          "streaming": false,
+          "strict": false
+        }
+      },
+      "cost": null,
+      "deprecated": false,
+      "extra": {
+        "attachment": false,
+        "family": "llama-4",
+        "open_weights": true,
+        "structured_output": true,
+        "temperature": true
+      },
+      "family": null,
+      "id": "meta-llama-Llama-4-Maverick-17B-128E-Instruct",
+      "knowledge": null,
+      "last_updated": "2025-12-23",
+      "lifecycle": null,
+      "limits": {
+        "context": 131072,
+        "output": 8000
+      },
+      "modalities": {
+        "input": [
+          "text"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "model": null,
+      "name": "Llama 4 Maverick 17B 128E Instruct",
+      "provider": "friendli",
+      "provider_model_id": null,
+      "release_date": "2025-06-16",
+      "tags": null
+    },
+    "meta-llama-Llama-4-Scout-17B-16E-Instruct": {
+      "aliases": [],
+      "capabilities": {
+        "chat": true,
+        "embeddings": false,
+        "json": {
+          "native": false,
+          "schema": false,
+          "strict": false
+        },
+        "reasoning": {
+          "enabled": true
+        },
+        "streaming": {
+          "text": true,
+          "tool_calls": false
+        },
+        "tools": {
+          "enabled": false,
+          "parallel": false,
+          "streaming": false,
+          "strict": false
+        }
+      },
+      "cost": null,
+      "deprecated": false,
+      "extra": {
+        "attachment": false,
+        "family": "llama-4",
+        "open_weights": true,
+        "structured_output": true,
+        "temperature": true
+      },
+      "family": null,
+      "id": "meta-llama-Llama-4-Scout-17B-16E-Instruct",
+      "knowledge": null,
+      "last_updated": "2025-12-23",
+      "lifecycle": null,
+      "limits": {
+        "context": 131072,
+        "output": 8000
+      },
+      "modalities": {
+        "input": [
+          "text"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "model": null,
+      "name": "Llama 4 Scout 17B 16E Instruct",
+      "provider": "friendli",
+      "provider_model_id": null,
+      "release_date": "2025-06-16",
+      "tags": null
+    },
+    "zai-org-GLM-4.6": {
       "aliases": [],
       "capabilities": {
         "chat": true,
@@ -477,29 +584,23 @@
           "enabled": true
         }
       },
-      "cost": {
-        "cache_read": 0.08,
-        "input": 0.43,
-        "output": 1.75
-      },
+      "cost": null,
       "deprecated": false,
       "extra": {
         "attachment": false,
-        "family": "glm-4.7",
-        "interleaved": {
-          "field": "reasoning_content"
-        },
+        "family": "glm-4",
         "open_weights": true,
+        "structured_output": true,
         "temperature": true
       },
       "family": null,
-      "id": "zai-org/GLM-4.7",
-      "knowledge": "2025-04",
-      "last_updated": "2025-12-22",
+      "id": "zai-org-GLM-4.6",
+      "knowledge": null,
+      "last_updated": "2025-12-23",
       "lifecycle": null,
       "limits": {
-        "context": 202752,
-        "output": 16384
+        "context": 131072,
+        "output": 131072
       },
       "modalities": {
         "input": [
@@ -510,12 +611,12 @@
         ]
       },
       "model": null,
-      "name": "GLM-4.7",
-      "provider": "deepinfra",
+      "name": "GLM 4.6",
+      "provider": "friendli",
       "provider_model_id": null,
-      "release_date": "2025-12-22",
+      "release_date": "2025-10-31",
       "tags": null
     }
   },
-  "name": "Deep Infra"
+  "name": "Friendli"
 }
