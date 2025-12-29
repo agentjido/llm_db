@@ -77,6 +77,7 @@ defmodule LLMDB.Generated.ValidProviders do
     :moonshotai,
     :moonshotai_cn,
     :morph,
+    :nano_gpt,
     :nebius,
     :neversleep,
     :nousresearch,
