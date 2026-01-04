@@ -155,17 +155,18 @@ defmodule LLMDB.Sources.OpenRouterTest do
       {:ok, data} = OpenRouter.load(%{url: test_url})
 
       assert is_map(data)
-      assert Map.has_key?(data, "openai")
+      assert Map.has_key?(data, "openrouter")
 
-      provider = data["openai"]
-      assert provider[:id] == :openai
-      assert provider[:name] == "OpenAI"
+      provider = data["openrouter"]
+      assert provider[:id] == :openrouter
+      assert provider[:name] == "OpenRouter"
       assert is_list(provider[:models])
       assert length(provider[:models]) == 1
 
       model = hd(provider[:models])
-      assert model[:id] == "gpt-4"
-      assert model[:provider] == :openai
+      # Full OpenRouter model ID is preserved (including the "/")
+      assert model[:id] == "openai/gpt-4"
+      assert model[:provider] == :openrouter
       assert model[:name] == "GPT-4"
       assert model[:description] == "GPT-4 by OpenAI"
       assert model[:limits][:context] == 128_000
@@ -178,7 +179,7 @@ defmodule LLMDB.Sources.OpenRouterTest do
       assert model[:release_date] == "2023-01-01"
     end
 
-    test "groups models by provider correctly" do
+    test "keeps all models under :openrouter with full IDs" do
       test_url = "https://test.openrouter.ai/api/v1/models"
 
       cache_data = %{
@@ -194,6 +195,10 @@ defmodule LLMDB.Sources.OpenRouterTest do
           %{
             "id" => "anthropic/claude-3-5-sonnet",
             "name" => "Claude 3.5 Sonnet"
+          },
+          %{
+            "id" => "perplexity/sonar-pro",
+            "name" => "Perplexity: Sonar Pro"
           }
         ]
       }
@@ -206,15 +211,25 @@ defmodule LLMDB.Sources.OpenRouterTest do
 
       {:ok, data} = OpenRouter.load(%{url: test_url})
 
-      assert map_size(data) == 2
-      assert Map.has_key?(data, "openai")
-      assert Map.has_key?(data, "anthropic")
+      # Only :openrouter provider - no splitting by upstream provider
+      assert map_size(data) == 1
+      assert Map.has_key?(data, "openrouter")
+      refute Map.has_key?(data, "openai")
+      refute Map.has_key?(data, "anthropic")
+      refute Map.has_key?(data, "perplexity")
 
-      assert length(data["openai"][:models]) == 2
-      assert length(data["anthropic"][:models]) == 1
+      openrouter_models = data["openrouter"][:models]
+      assert length(openrouter_models) == 4
 
-      assert Enum.all?(data["openai"][:models], fn m -> m[:provider] == :openai end)
-      assert Enum.all?(data["anthropic"][:models], fn m -> m[:provider] == :anthropic end)
+      # All models have :openrouter as provider and keep full IDs
+      assert Enum.all?(openrouter_models, fn m -> m[:provider] == :openrouter end)
+
+      # Model IDs include the "/" - they are not split
+      model_ids = Enum.map(openrouter_models, & &1[:id])
+      assert "openai/gpt-4" in model_ids
+      assert "openai/gpt-3.5-turbo" in model_ids
+      assert "anthropic/claude-3-5-sonnet" in model_ids
+      assert "perplexity/sonar-pro" in model_ids
     end
 
     test "handles models without provider prefix" do
@@ -266,7 +281,8 @@ defmodule LLMDB.Sources.OpenRouterTest do
 
       {:ok, data} = OpenRouter.load(%{url: test_url})
 
-      model = hd(data["openai"][:models])
+      model = hd(data["openrouter"][:models])
+      assert model[:id] == "openai/gpt-4-vision"
       assert model[:modalities][:input] == [:text, :image]
       assert model[:modalities][:output] == [:text]
     end
@@ -301,21 +317,25 @@ defmodule LLMDB.Sources.OpenRouterTest do
 
       result = OpenRouter.transform(input)
 
-      assert Map.has_key?(result, "test")
-      provider = result["test"]
-      assert provider[:id] == :test
+      # All models go under :openrouter with full IDs preserved
+      assert Map.has_key?(result, "openrouter")
+      provider = result["openrouter"]
+      assert provider[:id] == :openrouter
       assert length(provider[:models]) == 1
 
       model = hd(provider[:models])
-      assert model[:id] == "model-1"
-      assert model[:provider] == :test
+      # ID keeps the "/" - it's part of the model ID, not a provider delimiter
+      assert model[:id] == "test/model-1"
+      assert model[:provider] == :openrouter
       assert model[:name] == "Test Model 1"
     end
 
     test "handles empty data array" do
       input = %{"data" => []}
       result = OpenRouter.transform(input)
-      assert result == %{}
+      # Even with no models, we get the openrouter provider
+      assert Map.has_key?(result, "openrouter")
+      assert result["openrouter"][:models] == []
     end
   end
 
@@ -338,11 +358,12 @@ defmodule LLMDB.Sources.OpenRouterTest do
       assert {:ok, _} = OpenRouter.pull(%{url: test_url, req_opts: [plug: plug]})
 
       assert {:ok, data} = OpenRouter.load(%{url: test_url})
-      assert Map.has_key?(data, "test")
-      assert data["test"][:name] == "Test"
-      assert length(data["test"][:models]) == 1
-      assert hd(data["test"][:models])[:provider] == :test
-      assert hd(data["test"][:models])[:limits][:context] == 4096
+      assert Map.has_key?(data, "openrouter")
+      assert data["openrouter"][:name] == "OpenRouter"
+      assert length(data["openrouter"][:models]) == 1
+      assert hd(data["openrouter"][:models])[:id] == "test/model-1"
+      assert hd(data["openrouter"][:models])[:provider] == :openrouter
+      assert hd(data["openrouter"][:models])[:limits][:context] == 4096
     end
   end
 end
