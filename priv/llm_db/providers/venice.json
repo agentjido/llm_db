@@ -46,7 +46,7 @@
       "family": null,
       "id": "claude-opus-45",
       "knowledge": "2025-03",
-      "last_updated": "2025-12-23",
+      "last_updated": "2025-12-29",
       "lifecycle": null,
       "limits": {
         "context": 202752,
@@ -66,7 +66,7 @@
       "name": "Claude Opus 4.5",
       "provider": "venice",
       "provider_model_id": null,
-      "release_date": "2024-12-05",
+      "release_date": "2025-12-06",
       "tags": null
     },
     "deepseek-v3.2": {
@@ -108,7 +108,7 @@
       "family": null,
       "id": "deepseek-v3.2",
       "knowledge": "2025-10",
-      "last_updated": "2025-12-23",
+      "last_updated": "2025-12-29",
       "lifecycle": null,
       "limits": {
         "context": 163840,
@@ -126,7 +126,7 @@
       "name": "DeepSeek V3.2",
       "provider": "venice",
       "provider_model_id": null,
-      "release_date": "2025-12-07",
+      "release_date": "2025-12-04",
       "tags": null
     },
     "gemini-3-flash-preview": {
@@ -150,6 +150,7 @@
         }
       },
       "cost": {
+        "cache_read": 0.07,
         "input": 0.7,
         "output": 3.75
       },
@@ -167,7 +168,7 @@
       "family": null,
       "id": "gemini-3-flash-preview",
       "knowledge": "2025-01",
-      "last_updated": "2025-12-23",
+      "last_updated": "2025-12-30",
       "lifecycle": null,
       "limits": {
         "context": 262144,
@@ -189,7 +190,7 @@
       "name": "Gemini 3 Flash Preview",
       "provider": "venice",
       "provider_model_id": null,
-      "release_date": "2025-12-13",
+      "release_date": "2025-12-19",
       "tags": null
     },
     "gemini-3-pro-preview": {
@@ -228,7 +229,7 @@
       "family": null,
       "id": "gemini-3-pro-preview",
       "knowledge": "2024-04",
-      "last_updated": "2025-12-23",
+      "last_updated": "2025-12-29",
       "lifecycle": null,
       "limits": {
         "context": 202752,
@@ -249,7 +250,7 @@
       "name": "Gemini 3 Pro Preview",
       "provider": "venice",
       "provider_model_id": null,
-      "release_date": "2024-06-07",
+      "release_date": "2025-12-02",
       "tags": null
     },
     "google-gemma-3-27b-it": {
@@ -287,7 +288,7 @@
       "family": null,
       "id": "google-gemma-3-27b-it",
       "knowledge": "2025-07",
-      "last_updated": "2025-12-18",
+      "last_updated": "2025-12-29",
       "lifecycle": null,
       "limits": {
         "context": 202752,
@@ -306,7 +307,7 @@
       "name": "Google Gemma 3 27B Instruct",
       "provider": "venice",
       "provider_model_id": null,
-      "release_date": "2024-04-01",
+      "release_date": "2025-11-04",
       "tags": null
     },
     "grok-41-fast": {
@@ -345,7 +346,7 @@
       "family": null,
       "id": "grok-41-fast",
       "knowledge": "2025-07",
-      "last_updated": "2025-12-23",
+      "last_updated": "2025-12-29",
       "lifecycle": null,
       "limits": {
         "context": 262144,
@@ -364,7 +365,64 @@
       "name": "Grok 4.1 Fast",
       "provider": "venice",
       "provider_model_id": null,
-      "release_date": "2025-04-29",
+      "release_date": "2025-12-01",
+      "tags": null
+    },
+    "grok-code-fast-1": {
+      "aliases": [],
+      "capabilities": {
+        "chat": true,
+        "embeddings": false,
+        "json": {
+          "native": false,
+          "schema": false,
+          "strict": false
+        },
+        "reasoning": {
+          "enabled": true
+        },
+        "streaming": {
+          "tool_calls": true
+        },
+        "tools": {
+          "enabled": true
+        }
+      },
+      "cost": {
+        "cache_read": 0.03,
+        "input": 0.25,
+        "output": 1.87
+      },
+      "deprecated": false,
+      "extra": {
+        "attachment": false,
+        "family": "grok",
+        "open_weights": false,
+        "structured_output": true,
+        "temperature": true
+      },
+      "family": null,
+      "id": "grok-code-fast-1",
+      "knowledge": null,
+      "last_updated": "2026-01-02",
+      "lifecycle": null,
+      "limits": {
+        "context": 262144,
+        "output": 65536
+      },
+      "modalities": {
+        "input": [
+          "text"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "model": null,
+      "name": "Grok Code Fast 1",
+      "provider": "venice",
+      "provider_model_id": null,
+      "release_date": "2025-12-01",
       "tags": null
     },
     "hermes-3-llama-3.1-405b": {
@@ -384,7 +442,7 @@
       "family": null,
       "id": "hermes-3-llama-3.1-405b",
       "knowledge": "2024-04",
-      "last_updated": "2025-12-18",
+      "last_updated": "2025-12-29",
       "lifecycle": null,
       "limits": {
         "context": 131072,
@@ -402,7 +460,7 @@
       "name": "Hermes 3 Llama 3.1 405b",
       "provider": "venice",
       "provider_model_id": null,
-      "release_date": "2024-04-01",
+      "release_date": "2025-09-25",
       "tags": null
     },
     "kimi-k2-thinking": {
@@ -426,7 +484,7 @@
         }
       },
       "cost": {
-        "cache_read": 0.1875,
+        "cache_read": 0.375,
         "input": 0.75,
         "output": 3.2
       },
@@ -441,7 +499,7 @@
       "family": null,
       "id": "kimi-k2-thinking",
       "knowledge": "2024-04",
-      "last_updated": "2025-12-24",
+      "last_updated": "2025-12-30",
       "lifecycle": null,
       "limits": {
         "context": 262144,
@@ -459,7 +517,7 @@
       "name": "Kimi K2 Thinking",
       "provider": "venice",
       "provider_model_id": null,
-      "release_date": "2024-06-07",
+      "release_date": "2025-12-10",
       "tags": null
     },
     "llama-3.2-3b": {
@@ -552,7 +610,7 @@
       "family": null,
       "id": "llama-3.3-70b",
       "knowledge": "2023-12",
-      "last_updated": "2025-12-18",
+      "last_updated": "2025-12-29",
       "lifecycle": null,
       "limits": {
         "context": 131072,
@@ -570,7 +628,67 @@
       "name": "Llama 3.3 70B",
       "provider": "venice",
       "provider_model_id": null,
-      "release_date": "2024-12-09",
+      "release_date": "2025-04-06",
+      "tags": null
+    },
+    "minimax-m21": {
+      "aliases": [],
+      "capabilities": {
+        "chat": true,
+        "embeddings": false,
+        "json": {
+          "native": false,
+          "schema": false,
+          "strict": false
+        },
+        "reasoning": {
+          "enabled": true
+        },
+        "streaming": {
+          "tool_calls": true
+        },
+        "tools": {
+          "enabled": true
+        }
+      },
+      "cost": {
+        "cache_read": 0.04,
+        "input": 0.4,
+        "output": 1.6
+      },
+      "deprecated": false,
+      "extra": {
+        "attachment": false,
+        "family": "minimax",
+        "interleaved": {
+          "field": "reasoning_content"
+        },
+        "open_weights": false,
+        "structured_output": true,
+        "temperature": true
+      },
+      "family": null,
+      "id": "minimax-m21",
+      "knowledge": null,
+      "last_updated": "2026-01-02",
+      "lifecycle": null,
+      "limits": {
+        "context": 202752,
+        "output": 50688
+      },
+      "modalities": {
+        "input": [
+          "text"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "model": null,
+      "name": "MiniMax M2.1",
+      "provider": "venice",
+      "provider_model_id": null,
+      "release_date": "2025-12-01",
       "tags": null
     },
     "mistral-31-24b": {
@@ -666,7 +784,7 @@
       "family": null,
       "id": "openai-gpt-52",
       "knowledge": "2025-08-31",
-      "last_updated": "2025-12-23",
+      "last_updated": "2025-12-29",
       "lifecycle": null,
       "limits": {
         "context": 262144,
@@ -684,7 +802,7 @@
       "name": "GPT-5.2",
       "provider": "venice",
       "provider_model_id": null,
-      "release_date": "2024-12-11",
+      "release_date": "2025-12-13",
       "tags": null
     },
     "openai-gpt-oss-120b": {
@@ -721,7 +839,7 @@
       "family": null,
       "id": "openai-gpt-oss-120b",
       "knowledge": "2025-07",
-      "last_updated": "2025-12-18",
+      "last_updated": "2025-12-29",
       "lifecycle": null,
       "limits": {
         "context": 131072,
@@ -739,7 +857,7 @@
       "name": "OpenAI GPT OSS 120B",
       "provider": "venice",
       "provider_model_id": null,
-      "release_date": "2024-04-01",
+      "release_date": "2025-11-06",
       "tags": null
     },
     "qwen3-235b-a22b-instruct-2507": {
@@ -1096,7 +1214,7 @@
       "family": null,
       "id": "zai-org-glm-4.6",
       "knowledge": "2024-04",
-      "last_updated": "2025-12-18",
+      "last_updated": "2025-12-29",
       "lifecycle": null,
       "limits": {
         "context": 202752,
@@ -1114,7 +1232,7 @@
       "name": "GLM 4.6",
       "provider": "venice",
       "provider_model_id": null,
-      "release_date": "2024-04-01",
+      "release_date": "2025-10-18",
       "tags": null
     },
     "zai-org-glm-4.6v": {
@@ -1152,7 +1270,7 @@
       "family": null,
       "id": "zai-org-glm-4.6v",
       "knowledge": null,
-      "last_updated": "2025-12-18",
+      "last_updated": "2025-12-29",
       "lifecycle": null,
       "limits": {
         "context": 131072,
@@ -1171,7 +1289,7 @@
       "name": "GLM 4.6V",
       "provider": "venice",
       "provider_model_id": null,
-      "release_date": "2024-12-10",
+      "release_date": "2025-12-11",
       "tags": null
     },
     "zai-org-glm-4.7": {
@@ -1209,7 +1327,7 @@
       "family": null,
       "id": "zai-org-glm-4.7",
       "knowledge": "2025-04",
-      "last_updated": "2025-12-24",
+      "last_updated": "2025-12-29",
       "lifecycle": null,
       "limits": {
         "context": 131072,
@@ -1227,7 +1345,7 @@
       "name": "GLM 4.7",
       "provider": "venice",
       "provider_model_id": null,
-      "release_date": "2024-04-01",
+      "release_date": "2025-12-24",
       "tags": null
     }
   },

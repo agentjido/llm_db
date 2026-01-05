@@ -31,20 +31,29 @@
         }
       },
       "cost": {
-        "input": 0,
-        "output": 0
+        "cache_read": 0,
+        "cache_write": 0,
+        "input": 0.1,
+        "input_audio": 0,
+        "output": 0.39,
+        "output_audio": 0,
+        "reasoning": 0.585
       },
       "deprecated": false,
       "extra": {
         "attachment": false,
-        "family": "yi",
+        "family": "alibaba-nlp",
+        "interleaved": {
+          "field": "reasoning_content"
+        },
         "open_weights": true,
+        "structured_output": true,
         "temperature": true
       },
       "family": null,
       "id": "Alibaba-NLP/Tongyi-DeepResearch-30B-A3B",
       "knowledge": null,
-      "last_updated": "2025-11-08",
+      "last_updated": "2025-12-29",
       "lifecycle": null,
       "limits": {
         "context": 131072,
@@ -62,7 +71,7 @@
       "name": "Tongyi DeepResearch 30B A3B",
       "provider": "chutes",
       "provider_model_id": null,
-      "release_date": "2025-11-08",
+      "release_date": "2025-12-29",
       "tags": null
     },
     "ArliAI/QwQ-32B-ArliAI-RpR-v1": {
@@ -90,20 +99,29 @@
         }
       },
       "cost": {
+        "cache_read": 0,
+        "cache_write": 0,
         "input": 0.03,
-        "output": 0.11
+        "input_audio": 0,
+        "output": 0.11,
+        "output_audio": 0,
+        "reasoning": 0.165
       },
       "deprecated": false,
       "extra": {
         "attachment": false,
-        "family": "qwq",
+        "family": "arliai",
+        "interleaved": {
+          "field": "reasoning_content"
+        },
         "open_weights": true,
+        "structured_output": true,
         "temperature": true
       },
       "family": null,
       "id": "ArliAI/QwQ-32B-ArliAI-RpR-v1",
       "knowledge": null,
-      "last_updated": "2025-11-08",
+      "last_updated": "2025-12-29",
       "lifecycle": null,
       "limits": {
         "context": 32768,
@@ -118,10 +136,10 @@
         ]
       },
       "model": null,
-      "name": "QwQ 32B ArliAI RpR V1",
+      "name": "QwQ 32B ArliAI RpR v1",
       "provider": "chutes",
       "provider_model_id": null,
-      "release_date": "2025-11-08",
+      "release_date": "2025-12-29",
       "tags": null
     },
     "MiniMaxAI/MiniMax-M2": {
@@ -145,20 +163,29 @@
         }
       },
       "cost": {
+        "cache_read": 0,
+        "cache_write": 0,
         "input": 0.26,
-        "output": 1.02
+        "input_audio": 0,
+        "output": 1.02,
+        "output_audio": 0,
+        "reasoning": 1.53
       },
       "deprecated": false,
       "extra": {
         "attachment": false,
-        "family": "minimax",
+        "family": "minimaxai",
+        "interleaved": {
+          "field": "reasoning_content"
+        },
         "open_weights": true,
+        "structured_output": true,
         "temperature": true
       },
       "family": null,
       "id": "MiniMaxAI/MiniMax-M2",
-      "knowledge": "2024-10",
-      "last_updated": "2025-11-08",
+      "knowledge": null,
+      "last_updated": "2025-12-29",
       "lifecycle": null,
       "limits": {
         "context": 196608,
@@ -176,7 +203,71 @@
       "name": "MiniMax M2",
       "provider": "chutes",
       "provider_model_id": null,
-      "release_date": "2025-10-27",
+      "release_date": "2025-12-29",
+      "tags": null
+    },
+    "MiniMaxAI/MiniMax-M2.1-TEE": {
+      "aliases": [],
+      "capabilities": {
+        "chat": true,
+        "embeddings": false,
+        "json": {
+          "native": false,
+          "schema": false,
+          "strict": false
+        },
+        "reasoning": {
+          "enabled": true
+        },
+        "streaming": {
+          "tool_calls": true
+        },
+        "tools": {
+          "enabled": true
+        }
+      },
+      "cost": {
+        "cache_read": 0,
+        "cache_write": 0,
+        "input": 0.3,
+        "input_audio": 0,
+        "output": 1.2,
+        "output_audio": 0,
+        "reasoning": 1.7999999999999998
+      },
+      "deprecated": false,
+      "extra": {
+        "attachment": false,
+        "family": "minimaxai",
+        "interleaved": {
+          "field": "reasoning_content"
+        },
+        "open_weights": true,
+        "structured_output": true,
+        "temperature": true
+      },
+      "family": null,
+      "id": "MiniMaxAI/MiniMax-M2.1-TEE",
+      "knowledge": null,
+      "last_updated": "2025-12-29",
+      "lifecycle": null,
+      "limits": {
+        "context": 196608,
+        "output": 65536
+      },
+      "modalities": {
+        "input": [
+          "text"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "model": null,
+      "name": "MiniMax M2.1 TEE",
+      "provider": "chutes",
+      "provider_model_id": null,
+      "release_date": "2025-12-29",
       "tags": null
     },
     "NousResearch/DeepHermes-3-Mistral-24B-Preview": {
@@ -200,20 +291,25 @@
         }
       },
       "cost": {
-        "input": 0.05,
-        "output": 0.2
+        "cache_read": 0,
+        "cache_write": 0,
+        "input": 0.02,
+        "input_audio": 0,
+        "output": 0.1,
+        "output_audio": 0
       },
       "deprecated": false,
       "extra": {
         "attachment": false,
-        "family": "mistral",
+        "family": "nousresearch",
         "open_weights": true,
+        "structured_output": true,
         "temperature": true
       },
       "family": null,
       "id": "NousResearch/DeepHermes-3-Mistral-24B-Preview",
       "knowledge": null,
-      "last_updated": "2025-12-03",
+      "last_updated": "2025-12-29",
       "lifecycle": null,
       "limits": {
         "context": 32768,
@@ -231,7 +327,7 @@
       "name": "DeepHermes 3 Mistral 24B Preview",
       "provider": "chutes",
       "provider_model_id": null,
-      "release_date": "2025-11-08",
+      "release_date": "2025-12-29",
       "tags": null
     },
     "NousResearch/Hermes-4-14B": {
@@ -255,20 +351,29 @@
         }
       },
       "cost": {
+        "cache_read": 0,
+        "cache_write": 0,
         "input": 0.01,
-        "output": 0.05
+        "input_audio": 0,
+        "output": 0.05,
+        "output_audio": 0,
+        "reasoning": 0.07500000000000001
       },
       "deprecated": false,
       "extra": {
         "attachment": false,
-        "family": "hermes",
+        "family": "nousresearch",
+        "interleaved": {
+          "field": "reasoning_content"
+        },
         "open_weights": true,
+        "structured_output": true,
         "temperature": true
       },
       "family": null,
       "id": "NousResearch/Hermes-4-14B",
       "knowledge": null,
-      "last_updated": "2025-12-03",
+      "last_updated": "2025-12-29",
       "lifecycle": null,
       "limits": {
         "context": 40960,
@@ -286,7 +391,7 @@
       "name": "Hermes 4 14B",
       "provider": "chutes",
       "provider_model_id": null,
-      "release_date": "2025-11-08",
+      "release_date": "2025-12-29",
       "tags": null
     },
     "NousResearch/Hermes-4-405B-FP8": {
@@ -310,20 +415,29 @@
         }
       },
       "cost": {
+        "cache_read": 0,
+        "cache_write": 0,
         "input": 0.3,
-        "output": 1.2
+        "input_audio": 0,
+        "output": 1.2,
+        "output_audio": 0,
+        "reasoning": 1.7999999999999998
       },
       "deprecated": false,
       "extra": {
         "attachment": false,
-        "family": "hermes",
+        "family": "nousresearch",
+        "interleaved": {
+          "field": "reasoning_content"
+        },
         "open_weights": true,
+        "structured_output": true,
         "temperature": true
       },
       "family": null,
       "id": "NousResearch/Hermes-4-405B-FP8",
       "knowledge": null,
-      "last_updated": "2025-11-08",
+      "last_updated": "2025-12-29",
       "lifecycle": null,
       "limits": {
         "context": 131072,
@@ -341,7 +455,50 @@
       "name": "Hermes 4 405B FP8",
       "provider": "chutes",
       "provider_model_id": null,
-      "release_date": "2025-11-08",
+      "release_date": "2025-12-29",
+      "tags": null
+    },
+    "NousResearch/Hermes-4-405B-FP8-TEE": {
+      "aliases": [],
+      "capabilities": null,
+      "cost": {
+        "cache_read": 0,
+        "cache_write": 0,
+        "input": 0.3,
+        "input_audio": 0,
+        "output": 1.2,
+        "output_audio": 0
+      },
+      "deprecated": false,
+      "extra": {
+        "attachment": false,
+        "family": "nousresearch",
+        "open_weights": true,
+        "structured_output": false,
+        "temperature": true
+      },
+      "family": null,
+      "id": "NousResearch/Hermes-4-405B-FP8-TEE",
+      "knowledge": null,
+      "last_updated": "2025-12-29",
+      "lifecycle": null,
+      "limits": {
+        "context": 40960,
+        "output": 40960
+      },
+      "modalities": {
+        "input": [
+          "text"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "model": null,
+      "name": "Hermes 4 405B FP8 TEE",
+      "provider": "chutes",
+      "provider_model_id": null,
+      "release_date": "2025-12-29",
       "tags": null
     },
     "NousResearch/Hermes-4-70B": {
@@ -365,20 +522,29 @@
         }
       },
       "cost": {
+        "cache_read": 0,
+        "cache_write": 0,
         "input": 0.11,
-        "output": 0.38
+        "input_audio": 0,
+        "output": 0.38,
+        "output_audio": 0,
+        "reasoning": 0.5700000000000001
       },
       "deprecated": false,
       "extra": {
         "attachment": false,
-        "family": "hermes",
+        "family": "nousresearch",
+        "interleaved": {
+          "field": "reasoning_content"
+        },
         "open_weights": true,
+        "structured_output": true,
         "temperature": true
       },
       "family": null,
       "id": "NousResearch/Hermes-4-70B",
       "knowledge": null,
-      "last_updated": "2025-11-08",
+      "last_updated": "2025-12-29",
       "lifecycle": null,
       "limits": {
         "context": 131072,
@@ -396,31 +562,36 @@
       "name": "Hermes 4 70B",
       "provider": "chutes",
       "provider_model_id": null,
-      "release_date": "2025-11-08",
+      "release_date": "2025-12-29",
       "tags": null
     },
     "NousResearch/Hermes-4.3-36B": {
       "aliases": [],
       "capabilities": null,
       "cost": {
-        "input": 0.15,
-        "output": 0.6
+        "cache_read": 0,
+        "cache_write": 0,
+        "input": 0.1,
+        "input_audio": 0,
+        "output": 0.39,
+        "output_audio": 0
       },
       "deprecated": false,
       "extra": {
         "attachment": false,
-        "family": "hermes",
+        "family": "nousresearch",
         "open_weights": true,
+        "structured_output": false,
         "temperature": true
       },
       "family": null,
       "id": "NousResearch/Hermes-4.3-36B",
       "knowledge": null,
-      "last_updated": "2025-12-11",
+      "last_updated": "2025-12-29",
       "lifecycle": null,
       "limits": {
-        "context": 32768,
-        "output": 8192
+        "context": 40960,
+        "output": 40960
       },
       "modalities": {
         "input": [
@@ -434,27 +605,32 @@
       "name": "Hermes 4.3 36B",
       "provider": "chutes",
       "provider_model_id": null,
-      "release_date": "2025-12-11",
+      "release_date": "2025-12-29",
       "tags": null
     },
     "OpenGVLab/InternVL3-78B": {
       "aliases": [],
       "capabilities": null,
       "cost": {
+        "cache_read": 0,
+        "cache_write": 0,
         "input": 0.1,
-        "output": 0.39
+        "input_audio": 0,
+        "output": 0.39,
+        "output_audio": 0
       },
       "deprecated": false,
       "extra": {
         "attachment": false,
-        "family": "internvl",
+        "family": "opengvlab",
         "open_weights": true,
+        "structured_output": true,
         "temperature": true
       },
       "family": null,
       "id": "OpenGVLab/InternVL3-78B",
       "knowledge": null,
-      "last_updated": "2025-12-11",
+      "last_updated": "2025-12-29",
       "lifecycle": null,
       "limits": {
         "context": 32768,
@@ -473,7 +649,7 @@
       "name": "InternVL3 78B",
       "provider": "chutes",
       "provider_model_id": null,
-      "release_date": "2025-11-08",
+      "release_date": "2025-12-29",
       "tags": null
     },
     "Qwen/Qwen2.5-72B-Instruct": {
@@ -497,20 +673,25 @@
         }
       },
       "cost": {
-        "input": 0.07,
-        "output": 0.26
+        "cache_read": 0,
+        "cache_write": 0,
+        "input": 0.13,
+        "input_audio": 0,
+        "output": 0.52,
+        "output_audio": 0
       },
       "deprecated": false,
       "extra": {
         "attachment": false,
-        "family": "qwen2.5",
+        "family": "qwen",
         "open_weights": true,
+        "structured_output": true,
         "temperature": true
       },
       "family": null,
       "id": "Qwen/Qwen2.5-72B-Instruct",
       "knowledge": null,
-      "last_updated": "2025-11-08",
+      "last_updated": "2025-12-29",
       "lifecycle": null,
       "limits": {
         "context": 32768,
@@ -528,27 +709,32 @@
       "name": "Qwen2.5 72B Instruct",
       "provider": "chutes",
       "provider_model_id": null,
-      "release_date": "2025-11-08",
+      "release_date": "2025-12-29",
       "tags": null
     },
     "Qwen/Qwen2.5-Coder-32B-Instruct": {
       "aliases": [],
       "capabilities": null,
       "cost": {
+        "cache_read": 0,
+        "cache_write": 0,
         "input": 0.03,
-        "output": 0.11
+        "input_audio": 0,
+        "output": 0.11,
+        "output_audio": 0
       },
       "deprecated": false,
       "extra": {
         "attachment": false,
-        "family": "qwen2.5-coder",
+        "family": "qwen",
         "open_weights": true,
+        "structured_output": true,
         "temperature": true
       },
       "family": null,
       "id": "Qwen/Qwen2.5-Coder-32B-Instruct",
       "knowledge": null,
-      "last_updated": "2025-12-03",
+      "last_updated": "2025-12-29",
       "lifecycle": null,
       "limits": {
         "context": 32768,
@@ -566,27 +752,32 @@
       "name": "Qwen2.5 Coder 32B Instruct",
       "provider": "chutes",
       "provider_model_id": null,
-      "release_date": "2025-11-08",
+      "release_date": "2025-12-29",
       "tags": null
     },
     "Qwen/Qwen2.5-VL-32B-Instruct": {
       "aliases": [],
       "capabilities": null,
       "cost": {
+        "cache_read": 0,
+        "cache_write": 0,
         "input": 0.05,
-        "output": 0.22
+        "input_audio": 0,
+        "output": 0.22,
+        "output_audio": 0
       },
       "deprecated": false,
       "extra": {
         "attachment": false,
-        "family": "qwen2.5-vl",
+        "family": "qwen",
         "open_weights": true,
+        "structured_output": true,
         "temperature": true
       },
       "family": null,
       "id": "Qwen/Qwen2.5-VL-32B-Instruct",
       "knowledge": null,
-      "last_updated": "2025-11-08",
+      "last_updated": "2025-12-29",
       "lifecycle": null,
       "limits": {
         "context": 16384,
@@ -605,27 +796,32 @@
       "name": "Qwen2.5 VL 32B Instruct",
       "provider": "chutes",
       "provider_model_id": null,
-      "release_date": "2025-11-08",
+      "release_date": "2025-12-29",
       "tags": null
     },
     "Qwen/Qwen2.5-VL-72B-Instruct": {
       "aliases": [],
       "capabilities": null,
       "cost": {
-        "input": 0.03,
-        "output": 0.13
+        "cache_read": 0,
+        "cache_write": 0,
+        "input": 0.07,
+        "input_audio": 0,
+        "output": 0.26,
+        "output_audio": 0
       },
       "deprecated": false,
       "extra": {
         "attachment": false,
-        "family": "qwen2.5-vl",
+        "family": "qwen",
         "open_weights": true,
+        "structured_output": true,
         "temperature": true
       },
       "family": null,
       "id": "Qwen/Qwen2.5-VL-72B-Instruct",
       "knowledge": null,
-      "last_updated": "2025-12-03",
+      "last_updated": "2025-12-29",
       "lifecycle": null,
       "limits": {
         "context": 32768,
@@ -644,7 +840,50 @@
       "name": "Qwen2.5 VL 72B Instruct",
       "provider": "chutes",
       "provider_model_id": null,
-      "release_date": "2025-11-08",
+      "release_date": "2025-12-29",
+      "tags": null
+    },
+    "Qwen/Qwen2.5-VL-72B-Instruct-TEE": {
+      "aliases": [],
+      "capabilities": null,
+      "cost": {
+        "cache_read": 0,
+        "cache_write": 0,
+        "input": 0.15,
+        "input_audio": 0,
+        "output": 0.6,
+        "output_audio": 0
+      },
+      "deprecated": false,
+      "extra": {
+        "attachment": false,
+        "family": "qwen",
+        "open_weights": true,
+        "structured_output": false,
+        "temperature": true
+      },
+      "family": null,
+      "id": "Qwen/Qwen2.5-VL-72B-Instruct-TEE",
+      "knowledge": null,
+      "last_updated": "2025-12-29",
+      "lifecycle": null,
+      "limits": {
+        "context": 40960,
+        "output": 40960
+      },
+      "modalities": {
+        "input": [
+          "text"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "model": null,
+      "name": "Qwen2.5 VL 72B Instruct TEE",
+      "provider": "chutes",
+      "provider_model_id": null,
+      "release_date": "2025-12-29",
       "tags": null
     },
     "Qwen/Qwen3-14B": {
@@ -668,20 +907,29 @@
         }
       },
       "cost": {
+        "cache_read": 0,
+        "cache_write": 0,
         "input": 0.05,
-        "output": 0.22
+        "input_audio": 0,
+        "output": 0.22,
+        "output_audio": 0,
+        "reasoning": 0.33
       },
       "deprecated": false,
       "extra": {
         "attachment": false,
-        "family": "qwen3",
+        "family": "qwen",
+        "interleaved": {
+          "field": "reasoning_content"
+        },
         "open_weights": true,
+        "structured_output": true,
         "temperature": true
       },
       "family": null,
       "id": "Qwen/Qwen3-14B",
       "knowledge": null,
-      "last_updated": "2025-11-08",
+      "last_updated": "2025-12-29",
       "lifecycle": null,
       "limits": {
         "context": 40960,
@@ -699,7 +947,7 @@
       "name": "Qwen3 14B",
       "provider": "chutes",
       "provider_model_id": null,
-      "release_date": "2025-11-08",
+      "release_date": "2025-12-29",
       "tags": null
     },
     "Qwen/Qwen3-235B-A22B": {
@@ -723,20 +971,29 @@
         }
       },
       "cost": {
+        "cache_read": 0,
+        "cache_write": 0,
         "input": 0.3,
-        "output": 1.2
+        "input_audio": 0,
+        "output": 1.2,
+        "output_audio": 0,
+        "reasoning": 1.7999999999999998
       },
       "deprecated": false,
       "extra": {
         "attachment": false,
-        "family": "qwen3",
+        "family": "qwen",
+        "interleaved": {
+          "field": "reasoning_content"
+        },
         "open_weights": true,
+        "structured_output": true,
         "temperature": true
       },
       "family": null,
       "id": "Qwen/Qwen3-235B-A22B",
       "knowledge": null,
-      "last_updated": "2025-11-08",
+      "last_updated": "2025-12-29",
       "lifecycle": null,
       "limits": {
         "context": 40960,
@@ -754,7 +1011,7 @@
       "name": "Qwen3 235B A22B",
       "provider": "chutes",
       "provider_model_id": null,
-      "release_date": "2025-11-08",
+      "release_date": "2025-12-29",
       "tags": null
     },
     "Qwen/Qwen3-235B-A22B-Instruct-2507": {
@@ -778,20 +1035,25 @@
         }
       },
       "cost": {
+        "cache_read": 0,
+        "cache_write": 0,
         "input": 0.08,
-        "output": 0.55
+        "input_audio": 0,
+        "output": 0.55,
+        "output_audio": 0
       },
       "deprecated": false,
       "extra": {
         "attachment": false,
-        "family": "qwen3",
+        "family": "qwen",
         "open_weights": true,
+        "structured_output": true,
         "temperature": true
       },
       "family": null,
       "id": "Qwen/Qwen3-235B-A22B-Instruct-2507",
-      "knowledge": "2025-04",
-      "last_updated": "2025-11-08",
+      "knowledge": null,
+      "last_updated": "2025-12-29",
       "lifecycle": null,
       "limits": {
         "context": 262144,
@@ -809,7 +1071,67 @@
       "name": "Qwen3 235B A22B Instruct 2507",
       "provider": "chutes",
       "provider_model_id": null,
-      "release_date": "2025-04-28",
+      "release_date": "2025-12-29",
+      "tags": null
+    },
+    "Qwen/Qwen3-235B-A22B-Instruct-2507-TEE": {
+      "aliases": [],
+      "capabilities": {
+        "chat": true,
+        "embeddings": false,
+        "json": {
+          "native": false,
+          "schema": false,
+          "strict": false
+        },
+        "reasoning": {
+          "enabled": false
+        },
+        "streaming": {
+          "tool_calls": true
+        },
+        "tools": {
+          "enabled": true
+        }
+      },
+      "cost": {
+        "cache_read": 0,
+        "cache_write": 0,
+        "input": 0.08,
+        "input_audio": 0,
+        "output": 0.55,
+        "output_audio": 0
+      },
+      "deprecated": false,
+      "extra": {
+        "attachment": false,
+        "family": "qwen",
+        "open_weights": true,
+        "structured_output": true,
+        "temperature": true
+      },
+      "family": null,
+      "id": "Qwen/Qwen3-235B-A22B-Instruct-2507-TEE",
+      "knowledge": null,
+      "last_updated": "2025-12-29",
+      "lifecycle": null,
+      "limits": {
+        "context": 262144,
+        "output": 65536
+      },
+      "modalities": {
+        "input": [
+          "text"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "model": null,
+      "name": "Qwen3 235B A22B Instruct 2507 TEE",
+      "provider": "chutes",
+      "provider_model_id": null,
+      "release_date": "2025-12-29",
       "tags": null
     },
     "Qwen/Qwen3-235B-A22B-Thinking-2507": {
@@ -833,20 +1155,29 @@
         }
       },
       "cost": {
+        "cache_read": 0,
+        "cache_write": 0,
         "input": 0.11,
-        "output": 0.6
+        "input_audio": 0,
+        "output": 0.6,
+        "output_audio": 0,
+        "reasoning": 0.8999999999999999
       },
       "deprecated": false,
       "extra": {
         "attachment": false,
-        "family": "qwen3",
+        "family": "qwen",
+        "interleaved": {
+          "field": "reasoning_content"
+        },
         "open_weights": true,
+        "structured_output": true,
         "temperature": true
       },
       "family": null,
       "id": "Qwen/Qwen3-235B-A22B-Thinking-2507",
-      "knowledge": "2025-04",
-      "last_updated": "2025-11-08",
+      "knowledge": null,
+      "last_updated": "2025-12-29",
       "lifecycle": null,
       "limits": {
         "context": 262144,
@@ -861,10 +1192,10 @@
         ]
       },
       "model": null,
-      "name": "Qwen3-235B-A22B-Thinking-2507",
+      "name": "Qwen3 235B A22B Thinking 2507",
       "provider": "chutes",
       "provider_model_id": null,
-      "release_date": "2025-07-25",
+      "release_date": "2025-12-29",
       "tags": null
     },
     "Qwen/Qwen3-30B-A3B": {
@@ -888,20 +1219,29 @@
         }
       },
       "cost": {
+        "cache_read": 0,
+        "cache_write": 0,
         "input": 0.06,
-        "output": 0.22
+        "input_audio": 0,
+        "output": 0.22,
+        "output_audio": 0,
+        "reasoning": 0.33
       },
       "deprecated": false,
       "extra": {
         "attachment": false,
-        "family": "qwen3",
+        "family": "qwen",
+        "interleaved": {
+          "field": "reasoning_content"
+        },
         "open_weights": true,
+        "structured_output": true,
         "temperature": true
       },
       "family": null,
       "id": "Qwen/Qwen3-30B-A3B",
-      "knowledge": "2025-04",
-      "last_updated": "2025-11-08",
+      "knowledge": null,
+      "last_updated": "2025-12-29",
       "lifecycle": null,
       "limits": {
         "context": 40960,
@@ -919,7 +1259,7 @@
       "name": "Qwen3 30B A3B",
       "provider": "chutes",
       "provider_model_id": null,
-      "release_date": "2025-04-28",
+      "release_date": "2025-12-29",
       "tags": null
     },
     "Qwen/Qwen3-30B-A3B-Instruct-2507": {
@@ -943,20 +1283,25 @@
         }
       },
       "cost": {
+        "cache_read": 0,
+        "cache_write": 0,
         "input": 0.08,
-        "output": 0.33
+        "input_audio": 0,
+        "output": 0.33,
+        "output_audio": 0
       },
       "deprecated": false,
       "extra": {
         "attachment": false,
-        "family": "qwen3",
+        "family": "qwen",
         "open_weights": true,
+        "structured_output": true,
         "temperature": true
       },
       "family": null,
       "id": "Qwen/Qwen3-30B-A3B-Instruct-2507",
-      "knowledge": "2025-04",
-      "last_updated": "2025-11-08",
+      "knowledge": null,
+      "last_updated": "2025-12-29",
       "lifecycle": null,
       "limits": {
         "context": 262144,
@@ -974,7 +1319,7 @@
       "name": "Qwen3 30B A3B Instruct 2507",
       "provider": "chutes",
       "provider_model_id": null,
-      "release_date": "2025-07-25",
+      "release_date": "2025-12-29",
       "tags": null
     },
     "Qwen/Qwen3-32B": {
@@ -998,20 +1343,29 @@
         }
       },
       "cost": {
+        "cache_read": 0,
+        "cache_write": 0,
         "input": 0.08,
-        "output": 0.24
+        "input_audio": 0,
+        "output": 0.24,
+        "output_audio": 0,
+        "reasoning": 0.36
       },
       "deprecated": false,
       "extra": {
         "attachment": false,
-        "family": "qwen3",
+        "family": "qwen",
+        "interleaved": {
+          "field": "reasoning_content"
+        },
         "open_weights": true,
+        "structured_output": true,
         "temperature": true
       },
       "family": null,
       "id": "Qwen/Qwen3-32B",
       "knowledge": null,
-      "last_updated": "2025-12-03",
+      "last_updated": "2025-12-29",
       "lifecycle": null,
       "limits": {
         "context": 40960,
@@ -1029,10 +1383,10 @@
       "name": "Qwen3 32B",
       "provider": "chutes",
       "provider_model_id": null,
-      "release_date": "2025-11-08",
+      "release_date": "2025-12-29",
       "tags": null
     },
-    "Qwen/Qwen3-Coder-30B-A3B-Instruct": {
+    "Qwen/Qwen3-Coder-480B-A35B-Instruct-FP8-TEE": {
       "aliases": [],
       "capabilities": {
         "chat": true,
@@ -1053,75 +1407,25 @@
         }
       },
       "cost": {
-        "input": 0.06,
-        "output": 0.25
-      },
-      "deprecated": false,
-      "extra": {
-        "attachment": false,
-        "family": "qwen3-coder",
-        "open_weights": true,
-        "temperature": true
-      },
-      "family": null,
-      "id": "Qwen/Qwen3-Coder-30B-A3B-Instruct",
-      "knowledge": "2025-04",
-      "last_updated": "2025-11-08",
-      "lifecycle": null,
-      "limits": {
-        "context": 262144,
-        "output": 262144
-      },
-      "modalities": {
-        "input": [
-          "text"
-        ],
-        "output": [
-          "text"
-        ]
-      },
-      "model": null,
-      "name": "Qwen3 Coder 30B A3B Instruct",
-      "provider": "chutes",
-      "provider_model_id": null,
-      "release_date": "2025-07-25",
-      "tags": null
-    },
-    "Qwen/Qwen3-Coder-480B-A35B-Instruct-FP8": {
-      "aliases": [],
-      "capabilities": {
-        "chat": true,
-        "embeddings": false,
-        "json": {
-          "native": false,
-          "schema": false,
-          "strict": false
-        },
-        "reasoning": {
-          "enabled": false
-        },
-        "streaming": {
-          "tool_calls": true
-        },
-        "tools": {
-          "enabled": true
-        }
-      },
-      "cost": {
+        "cache_read": 0,
+        "cache_write": 0,
         "input": 0.22,
-        "output": 0.95
+        "input_audio": 0,
+        "output": 0.95,
+        "output_audio": 0
       },
       "deprecated": false,
       "extra": {
         "attachment": false,
-        "family": "qwen3-coder",
-        "open_weights": false,
+        "family": "qwen",
+        "open_weights": true,
+        "structured_output": true,
         "temperature": true
       },
       "family": null,
-      "id": "Qwen/Qwen3-Coder-480B-A35B-Instruct-FP8",
+      "id": "Qwen/Qwen3-Coder-480B-A35B-Instruct-FP8-TEE",
       "knowledge": null,
-      "last_updated": "2025-11-08",
+      "last_updated": "2025-12-29",
       "lifecycle": null,
       "limits": {
         "context": 262144,
@@ -1136,10 +1440,10 @@
         ]
       },
       "model": null,
-      "name": "Qwen3 Coder 480B A35B Instruct (FP8)",
+      "name": "Qwen3 Coder 480B A35B Instruct FP8 TEE",
       "provider": "chutes",
       "provider_model_id": null,
-      "release_date": "2025-08-01",
+      "release_date": "2025-12-29",
       "tags": null
     },
     "Qwen/Qwen3-Next-80B-A3B-Instruct": {
@@ -1163,20 +1467,25 @@
         }
       },
       "cost": {
+        "cache_read": 0,
+        "cache_write": 0,
         "input": 0.1,
-        "output": 0.8
+        "input_audio": 0,
+        "output": 0.8,
+        "output_audio": 0
       },
       "deprecated": false,
       "extra": {
         "attachment": false,
-        "family": "qwen3",
+        "family": "qwen",
         "open_weights": true,
+        "structured_output": true,
         "temperature": true
       },
       "family": null,
       "id": "Qwen/Qwen3-Next-80B-A3B-Instruct",
-      "knowledge": "2025-04",
-      "last_updated": "2025-09-11",
+      "knowledge": null,
+      "last_updated": "2025-12-29",
       "lifecycle": null,
       "limits": {
         "context": 262144,
@@ -1194,7 +1503,7 @@
       "name": "Qwen3 Next 80B A3B Instruct",
       "provider": "chutes",
       "provider_model_id": null,
-      "release_date": "2025-09-11",
+      "release_date": "2025-12-29",
       "tags": null
     },
     "Qwen/Qwen3-VL-235B-A22B-Instruct": {
@@ -1218,20 +1527,25 @@
         }
       },
       "cost": {
+        "cache_read": 0,
+        "cache_write": 0,
         "input": 0.3,
-        "output": 1.2
+        "input_audio": 0,
+        "output": 1.2,
+        "output_audio": 0
       },
       "deprecated": false,
       "extra": {
         "attachment": false,
-        "family": "qwen3-vl",
+        "family": "qwen",
         "open_weights": true,
+        "structured_output": false,
         "temperature": true
       },
       "family": null,
       "id": "Qwen/Qwen3-VL-235B-A22B-Instruct",
       "knowledge": null,
-      "last_updated": "2025-11-08",
+      "last_updated": "2025-12-29",
       "lifecycle": null,
       "limits": {
         "context": 262144,
@@ -1250,7 +1564,7 @@
       "name": "Qwen3 VL 235B A22B Instruct",
       "provider": "chutes",
       "provider_model_id": null,
-      "release_date": "2025-11-08",
+      "release_date": "2025-12-29",
       "tags": null
     },
     "Qwen/Qwen3-VL-235B-A22B-Thinking": {
@@ -1274,20 +1588,29 @@
         }
       },
       "cost": {
+        "cache_read": 0,
+        "cache_write": 0,
         "input": 0.3,
-        "output": 1.2
+        "input_audio": 0,
+        "output": 1.2,
+        "output_audio": 0,
+        "reasoning": 1.7999999999999998
       },
       "deprecated": false,
       "extra": {
         "attachment": false,
-        "family": "qwen3-vl",
+        "family": "qwen",
+        "interleaved": {
+          "field": "reasoning_content"
+        },
         "open_weights": true,
+        "structured_output": true,
         "temperature": true
       },
       "family": null,
       "id": "Qwen/Qwen3-VL-235B-A22B-Thinking",
       "knowledge": null,
-      "last_updated": "2025-11-08",
+      "last_updated": "2025-12-29",
       "lifecycle": null,
       "limits": {
         "context": 262144,
@@ -1306,7 +1629,93 @@
       "name": "Qwen3 VL 235B A22B Thinking",
       "provider": "chutes",
       "provider_model_id": null,
-      "release_date": "2025-11-08",
+      "release_date": "2025-12-29",
+      "tags": null
+    },
+    "Qwen/Qwen3Guard-Gen-0.6B": {
+      "aliases": [],
+      "capabilities": null,
+      "cost": {
+        "cache_read": 0,
+        "cache_write": 0,
+        "input": 0.01,
+        "input_audio": 0,
+        "output": 0.01,
+        "output_audio": 0
+      },
+      "deprecated": false,
+      "extra": {
+        "attachment": false,
+        "family": "qwen",
+        "open_weights": true,
+        "structured_output": false,
+        "temperature": true
+      },
+      "family": null,
+      "id": "Qwen/Qwen3Guard-Gen-0.6B",
+      "knowledge": null,
+      "last_updated": "2025-12-29",
+      "lifecycle": null,
+      "limits": {
+        "context": 40960,
+        "output": 40960
+      },
+      "modalities": {
+        "input": [
+          "text"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "model": null,
+      "name": "Qwen3Guard Gen 0.6B",
+      "provider": "chutes",
+      "provider_model_id": null,
+      "release_date": "2025-12-29",
+      "tags": null
+    },
+    "XiaomiMiMo/MiMo-V2-Flash": {
+      "aliases": [],
+      "capabilities": null,
+      "cost": {
+        "cache_read": 0,
+        "cache_write": 0,
+        "input": 0.17,
+        "input_audio": 0,
+        "output": 0.65,
+        "output_audio": 0
+      },
+      "deprecated": false,
+      "extra": {
+        "attachment": false,
+        "family": "xiaomimimo",
+        "open_weights": true,
+        "structured_output": false,
+        "temperature": true
+      },
+      "family": null,
+      "id": "XiaomiMiMo/MiMo-V2-Flash",
+      "knowledge": null,
+      "last_updated": "2025-12-29",
+      "lifecycle": null,
+      "limits": {
+        "context": 40960,
+        "output": 40960
+      },
+      "modalities": {
+        "input": [
+          "text"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "model": null,
+      "name": "MiMo V2 Flash",
+      "provider": "chutes",
+      "provider_model_id": null,
+      "release_date": "2025-12-29",
       "tags": null
     },
     "chutesai/Mistral-Small-3.1-24B-Instruct-2503": {
@@ -1330,20 +1739,25 @@
         }
       },
       "cost": {
+        "cache_read": 0,
+        "cache_write": 0,
         "input": 0.03,
-        "output": 0.11
+        "input_audio": 0,
+        "output": 0.11,
+        "output_audio": 0
       },
       "deprecated": false,
       "extra": {
         "attachment": false,
-        "family": "mistral-small",
+        "family": "chutesai",
         "open_weights": true,
+        "structured_output": true,
         "temperature": true
       },
       "family": null,
       "id": "chutesai/Mistral-Small-3.1-24B-Instruct-2503",
       "knowledge": null,
-      "last_updated": "2025-12-03",
+      "last_updated": "2025-12-29",
       "lifecycle": null,
       "limits": {
         "context": 131072,
@@ -1362,7 +1776,7 @@
       "name": "Mistral Small 3.1 24B Instruct 2503",
       "provider": "chutes",
       "provider_model_id": null,
-      "release_date": "2025-11-08",
+      "release_date": "2025-12-29",
       "tags": null
     },
     "chutesai/Mistral-Small-3.2-24B-Instruct-2506": {
@@ -1386,20 +1800,25 @@
         }
       },
       "cost": {
+        "cache_read": 0,
+        "cache_write": 0,
         "input": 0.06,
-        "output": 0.18
+        "input_audio": 0,
+        "output": 0.18,
+        "output_audio": 0
       },
       "deprecated": false,
       "extra": {
         "attachment": false,
-        "family": "mistral-small",
+        "family": "chutesai",
         "open_weights": true,
+        "structured_output": true,
         "temperature": true
       },
       "family": null,
       "id": "chutesai/Mistral-Small-3.2-24B-Instruct-2506",
       "knowledge": null,
-      "last_updated": "2025-11-08",
+      "last_updated": "2025-12-29",
       "lifecycle": null,
       "limits": {
         "context": 131072,
@@ -1415,72 +1834,13 @@
         ]
       },
       "model": null,
-      "name": "Mistral Small 3.2 24B Instruct (2506)",
+      "name": "Mistral Small 3.2 24B Instruct 2506",
       "provider": "chutes",
       "provider_model_id": null,
-      "release_date": "2025-06-20",
+      "release_date": "2025-12-29",
       "tags": null
     },
-    "deepseek-ai/DeepSeek-R1": {
-      "aliases": [],
-      "capabilities": {
-        "chat": true,
-        "embeddings": false,
-        "json": {
-          "native": false,
-          "schema": false,
-          "strict": false
-        },
-        "reasoning": {
-          "enabled": true
-        },
-        "streaming": {
-          "text": true,
-          "tool_calls": false
-        },
-        "tools": {
-          "enabled": false,
-          "parallel": false,
-          "streaming": false,
-          "strict": false
-        }
-      },
-      "cost": {
-        "input": 0.3,
-        "output": 1.2
-      },
-      "deprecated": false,
-      "extra": {
-        "attachment": false,
-        "family": "deepseek-r1",
-        "open_weights": true,
-        "temperature": true
-      },
-      "family": null,
-      "id": "deepseek-ai/DeepSeek-R1",
-      "knowledge": null,
-      "last_updated": "2025-11-08",
-      "lifecycle": null,
-      "limits": {
-        "context": 163840,
-        "output": 163840
-      },
-      "modalities": {
-        "input": [
-          "text"
-        ],
-        "output": [
-          "text"
-        ]
-      },
-      "model": null,
-      "name": "DeepSeek R1",
-      "provider": "chutes",
-      "provider_model_id": null,
-      "release_date": "2025-11-08",
-      "tags": null
-    },
-    "deepseek-ai/DeepSeek-R1-0528": {
+    "deepseek-ai/DeepSeek-R1-0528-TEE": {
       "aliases": [],
       "capabilities": {
         "chat": true,
@@ -1501,20 +1861,29 @@
         }
       },
       "cost": {
+        "cache_read": 0,
+        "cache_write": 0,
         "input": 0.4,
-        "output": 1.75
+        "input_audio": 0,
+        "output": 1.75,
+        "output_audio": 0,
+        "reasoning": 2.625
       },
       "deprecated": false,
       "extra": {
         "attachment": false,
-        "family": "deepseek-r1",
-        "open_weights": false,
+        "family": "deepseek-ai",
+        "interleaved": {
+          "field": "reasoning_content"
+        },
+        "open_weights": true,
+        "structured_output": true,
         "temperature": true
       },
       "family": null,
-      "id": "deepseek-ai/DeepSeek-R1-0528",
+      "id": "deepseek-ai/DeepSeek-R1-0528-TEE",
       "knowledge": null,
-      "last_updated": "2025-11-08",
+      "last_updated": "2025-12-29",
       "lifecycle": null,
       "limits": {
         "context": 163840,
@@ -1529,69 +1898,10 @@
         ]
       },
       "model": null,
-      "name": "DeepSeek R1 (0528)",
+      "name": "DeepSeek R1 0528 TEE",
       "provider": "chutes",
       "provider_model_id": null,
-      "release_date": "2025-08-01",
-      "tags": null
-    },
-    "deepseek-ai/DeepSeek-R1-0528-Qwen3-8B": {
-      "aliases": [],
-      "capabilities": {
-        "chat": true,
-        "embeddings": false,
-        "json": {
-          "native": false,
-          "schema": false,
-          "strict": false
-        },
-        "reasoning": {
-          "enabled": true
-        },
-        "streaming": {
-          "text": true,
-          "tool_calls": false
-        },
-        "tools": {
-          "enabled": false,
-          "parallel": false,
-          "streaming": false,
-          "strict": false
-        }
-      },
-      "cost": {
-        "input": 0.02,
-        "output": 0.1
-      },
-      "deprecated": false,
-      "extra": {
-        "attachment": false,
-        "family": "qwen3",
-        "open_weights": true,
-        "temperature": true
-      },
-      "family": null,
-      "id": "deepseek-ai/DeepSeek-R1-0528-Qwen3-8B",
-      "knowledge": "2025-05",
-      "last_updated": "2025-11-08",
-      "lifecycle": null,
-      "limits": {
-        "context": 32768,
-        "output": 32768
-      },
-      "modalities": {
-        "input": [
-          "text"
-        ],
-        "output": [
-          "text"
-        ]
-      },
-      "model": null,
-      "name": "DeepSeek R1 0528 Qwen3 8B",
-      "provider": "chutes",
-      "provider_model_id": null,
-      "release_date": "2025-05-29",
+      "release_date": "2025-12-29",
       "tags": null
     },
     "deepseek-ai/DeepSeek-R1-Distill-Llama-70B": {
@@ -1615,20 +1925,29 @@
         }
       },
       "cost": {
+        "cache_read": 0,
+        "cache_write": 0,
         "input": 0.03,
-        "output": 0.13
+        "input_audio": 0,
+        "output": 0.11,
+        "output_audio": 0,
+        "reasoning": 0.165
       },
       "deprecated": false,
       "extra": {
         "attachment": false,
-        "family": "deepseek-r1-distill-llama",
+        "family": "deepseek-ai",
+        "interleaved": {
+          "field": "reasoning_content"
+        },
         "open_weights": true,
+        "structured_output": true,
         "temperature": true
       },
       "family": null,
       "id": "deepseek-ai/DeepSeek-R1-Distill-Llama-70B",
-      "knowledge": "2024-10",
-      "last_updated": "2025-11-08",
+      "knowledge": null,
+      "last_updated": "2025-12-29",
       "lifecycle": null,
       "limits": {
         "context": 131072,
@@ -1646,27 +1965,100 @@
       "name": "DeepSeek R1 Distill Llama 70B",
       "provider": "chutes",
       "provider_model_id": null,
-      "release_date": "2025-01-23",
+      "release_date": "2025-12-29",
+      "tags": null
+    },
+    "deepseek-ai/DeepSeek-R1-TEE": {
+      "aliases": [],
+      "capabilities": {
+        "chat": true,
+        "embeddings": false,
+        "json": {
+          "native": false,
+          "schema": false,
+          "strict": false
+        },
+        "reasoning": {
+          "enabled": true
+        },
+        "streaming": {
+          "text": true,
+          "tool_calls": false
+        },
+        "tools": {
+          "enabled": false,
+          "parallel": false,
+          "streaming": false,
+          "strict": false
+        }
+      },
+      "cost": {
+        "cache_read": 0,
+        "cache_write": 0,
+        "input": 0.3,
+        "input_audio": 0,
+        "output": 1.2,
+        "output_audio": 0,
+        "reasoning": 1.7999999999999998
+      },
+      "deprecated": false,
+      "extra": {
+        "attachment": false,
+        "family": "deepseek-ai",
+        "interleaved": {
+          "field": "reasoning_content"
+        },
+        "open_weights": true,
+        "structured_output": true,
+        "temperature": true
+      },
+      "family": null,
+      "id": "deepseek-ai/DeepSeek-R1-TEE",
+      "knowledge": null,
+      "last_updated": "2025-12-29",
+      "lifecycle": null,
+      "limits": {
+        "context": 163840,
+        "output": 163840
+      },
+      "modalities": {
+        "input": [
+          "text"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "model": null,
+      "name": "DeepSeek R1 TEE",
+      "provider": "chutes",
+      "provider_model_id": null,
+      "release_date": "2025-12-29",
       "tags": null
     },
     "deepseek-ai/DeepSeek-V3": {
       "aliases": [],
       "capabilities": null,
       "cost": {
+        "cache_read": 0,
+        "cache_write": 0,
         "input": 0.3,
-        "output": 1.2
+        "input_audio": 0,
+        "output": 1.2,
+        "output_audio": 0
       },
       "deprecated": false,
       "extra": {
         "attachment": false,
-        "family": "deepseek-v3",
+        "family": "deepseek-ai",
         "open_weights": true,
+        "structured_output": true,
         "temperature": true
       },
       "family": null,
       "id": "deepseek-ai/DeepSeek-V3",
       "knowledge": null,
-      "last_updated": "2025-11-08",
+      "last_updated": "2025-12-29",
       "lifecycle": null,
       "limits": {
         "context": 163840,
@@ -1684,31 +2076,53 @@
       "name": "DeepSeek V3",
       "provider": "chutes",
       "provider_model_id": null,
-      "release_date": "2025-11-08",
+      "release_date": "2025-12-29",
       "tags": null
     },
-    "deepseek-ai/DeepSeek-V3-0324": {
+    "deepseek-ai/DeepSeek-V3-0324-TEE": {
       "aliases": [],
-      "capabilities": null,
+      "capabilities": {
+        "chat": true,
+        "embeddings": false,
+        "json": {
+          "native": false,
+          "schema": false,
+          "strict": false
+        },
+        "reasoning": {
+          "enabled": false
+        },
+        "streaming": {
+          "tool_calls": true
+        },
+        "tools": {
+          "enabled": true
+        }
+      },
       "cost": {
+        "cache_read": 0,
+        "cache_write": 0,
         "input": 0.24,
-        "output": 0.84
+        "input_audio": 0,
+        "output": 0.84,
+        "output_audio": 0
       },
       "deprecated": false,
       "extra": {
         "attachment": false,
-        "family": "deepseek-v3",
-        "open_weights": false,
+        "family": "deepseek-ai",
+        "open_weights": true,
+        "structured_output": true,
         "temperature": true
       },
       "family": null,
-      "id": "deepseek-ai/DeepSeek-V3-0324",
+      "id": "deepseek-ai/DeepSeek-V3-0324-TEE",
       "knowledge": null,
-      "last_updated": "2025-11-08",
+      "last_updated": "2025-12-29",
       "lifecycle": null,
       "limits": {
         "context": 163840,
-        "output": 163840
+        "output": 65536
       },
       "modalities": {
         "input": [
@@ -1719,10 +2133,10 @@
         ]
       },
       "model": null,
-      "name": "DeepSeek V3 (0324)",
+      "name": "DeepSeek V3 0324 TEE",
       "provider": "chutes",
       "provider_model_id": null,
-      "release_date": "2025-08-01",
+      "release_date": "2025-12-29",
       "tags": null
     },
     "deepseek-ai/DeepSeek-V3.1": {
@@ -1746,24 +2160,33 @@
         }
       },
       "cost": {
+        "cache_read": 0,
+        "cache_write": 0,
         "input": 0.2,
-        "output": 0.8
+        "input_audio": 0,
+        "output": 0.8,
+        "output_audio": 0,
+        "reasoning": 1.2000000000000002
       },
       "deprecated": false,
       "extra": {
         "attachment": false,
-        "family": "deepseek-v3",
-        "open_weights": false,
+        "family": "deepseek-ai",
+        "interleaved": {
+          "field": "reasoning_content"
+        },
+        "open_weights": true,
+        "structured_output": true,
         "temperature": true
       },
       "family": null,
       "id": "deepseek-ai/DeepSeek-V3.1",
       "knowledge": null,
-      "last_updated": "2025-11-08",
+      "last_updated": "2025-12-29",
       "lifecycle": null,
       "limits": {
         "context": 163840,
-        "output": 163840
+        "output": 65536
       },
       "modalities": {
         "input": [
@@ -1777,10 +2200,10 @@
       "name": "DeepSeek V3.1",
       "provider": "chutes",
       "provider_model_id": null,
-      "release_date": "2025-08-21",
+      "release_date": "2025-12-29",
       "tags": null
     },
-    "deepseek-ai/DeepSeek-V3.1-Terminus": {
+    "deepseek-ai/DeepSeek-V3.1-TEE": {
       "aliases": [],
       "capabilities": {
         "chat": true,
@@ -1801,24 +2224,97 @@
         }
       },
       "cost": {
+        "cache_read": 0,
+        "cache_write": 0,
+        "input": 0.2,
+        "input_audio": 0,
+        "output": 0.8,
+        "output_audio": 0,
+        "reasoning": 1.2000000000000002
+      },
+      "deprecated": false,
+      "extra": {
+        "attachment": false,
+        "family": "deepseek-ai",
+        "interleaved": {
+          "field": "reasoning_content"
+        },
+        "open_weights": true,
+        "structured_output": true,
+        "temperature": true
+      },
+      "family": null,
+      "id": "deepseek-ai/DeepSeek-V3.1-TEE",
+      "knowledge": null,
+      "last_updated": "2025-12-29",
+      "lifecycle": null,
+      "limits": {
+        "context": 163840,
+        "output": 65536
+      },
+      "modalities": {
+        "input": [
+          "text"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "model": null,
+      "name": "DeepSeek V3.1 TEE",
+      "provider": "chutes",
+      "provider_model_id": null,
+      "release_date": "2025-12-29",
+      "tags": null
+    },
+    "deepseek-ai/DeepSeek-V3.1-Terminus-TEE": {
+      "aliases": [],
+      "capabilities": {
+        "chat": true,
+        "embeddings": false,
+        "json": {
+          "native": false,
+          "schema": false,
+          "strict": false
+        },
+        "reasoning": {
+          "enabled": true
+        },
+        "streaming": {
+          "tool_calls": true
+        },
+        "tools": {
+          "enabled": true
+        }
+      },
+      "cost": {
+        "cache_read": 0,
+        "cache_write": 0,
         "input": 0.23,
-        "output": 0.9
+        "input_audio": 0,
+        "output": 0.9,
+        "output_audio": 0,
+        "reasoning": 1.35
       },
       "deprecated": false,
       "extra": {
         "attachment": false,
-        "family": "deepseek-v3",
+        "family": "deepseek-ai",
+        "interleaved": {
+          "field": "reasoning_content"
+        },
         "open_weights": true,
+        "structured_output": true,
         "temperature": true
       },
       "family": null,
-      "id": "deepseek-ai/DeepSeek-V3.1-Terminus",
-      "knowledge": "2025-07",
-      "last_updated": "2025-11-08",
+      "id": "deepseek-ai/DeepSeek-V3.1-Terminus-TEE",
+      "knowledge": null,
+      "last_updated": "2025-12-29",
       "lifecycle": null,
       "limits": {
         "context": 163840,
-        "output": 163840
+        "output": 65536
       },
       "modalities": {
         "input": [
@@ -1829,65 +2325,10 @@
         ]
       },
       "model": null,
-      "name": "DeepSeek V3.1 Terminus",
+      "name": "DeepSeek V3.1 Terminus TEE",
       "provider": "chutes",
       "provider_model_id": null,
-      "release_date": "2025-09-22",
-      "tags": null
-    },
-    "deepseek-ai/DeepSeek-V3.2": {
-      "aliases": [],
-      "capabilities": {
-        "chat": true,
-        "embeddings": false,
-        "json": {
-          "native": false,
-          "schema": false,
-          "strict": false
-        },
-        "reasoning": {
-          "enabled": true
-        },
-        "streaming": {
-          "tool_calls": true
-        },
-        "tools": {
-          "enabled": true
-        }
-      },
-      "cost": {
-        "input": 0.27,
-        "output": 0.41
-      },
-      "deprecated": false,
-      "extra": {
-        "attachment": false,
-        "family": "deepseek-v3",
-        "open_weights": true,
-        "temperature": true
-      },
-      "family": null,
-      "id": "deepseek-ai/DeepSeek-V3.2",
-      "knowledge": "2025-12",
-      "last_updated": "2025-12-11",
-      "lifecycle": null,
-      "limits": {
-        "context": 163840,
-        "output": 16384
-      },
-      "modalities": {
-        "input": [
-          "text"
-        ],
-        "output": [
-          "text"
-        ]
-      },
-      "model": null,
-      "name": "DeepSeek V3.2",
-      "provider": "chutes",
-      "provider_model_id": null,
-      "release_date": "2025-12-01",
+      "release_date": "2025-12-29",
       "tags": null
     },
     "deepseek-ai/DeepSeek-V3.2-Speciale-TEE": {
@@ -1915,20 +2356,29 @@
         }
       },
       "cost": {
+        "cache_read": 0,
+        "cache_write": 0,
         "input": 0.27,
-        "output": 0.41
+        "input_audio": 0,
+        "output": 0.41,
+        "output_audio": 0,
+        "reasoning": 0.615
       },
       "deprecated": false,
       "extra": {
         "attachment": false,
-        "family": "deepseek-v3",
+        "family": "deepseek-ai",
+        "interleaved": {
+          "field": "reasoning_content"
+        },
         "open_weights": true,
+        "structured_output": true,
         "temperature": true
       },
       "family": null,
       "id": "deepseek-ai/DeepSeek-V3.2-Speciale-TEE",
       "knowledge": null,
-      "last_updated": "2025-12-11",
+      "last_updated": "2025-12-29",
       "lifecycle": null,
       "limits": {
         "context": 163840,
@@ -1946,7 +2396,71 @@
       "name": "DeepSeek V3.2 Speciale TEE",
       "provider": "chutes",
       "provider_model_id": null,
-      "release_date": "2025-12-11",
+      "release_date": "2025-12-29",
+      "tags": null
+    },
+    "deepseek-ai/DeepSeek-V3.2-TEE": {
+      "aliases": [],
+      "capabilities": {
+        "chat": true,
+        "embeddings": false,
+        "json": {
+          "native": false,
+          "schema": false,
+          "strict": false
+        },
+        "reasoning": {
+          "enabled": true
+        },
+        "streaming": {
+          "tool_calls": true
+        },
+        "tools": {
+          "enabled": true
+        }
+      },
+      "cost": {
+        "cache_read": 0,
+        "cache_write": 0,
+        "input": 0.27,
+        "input_audio": 0,
+        "output": 0.41,
+        "output_audio": 0,
+        "reasoning": 0.615
+      },
+      "deprecated": false,
+      "extra": {
+        "attachment": false,
+        "family": "deepseek-ai",
+        "interleaved": {
+          "field": "reasoning_content"
+        },
+        "open_weights": true,
+        "structured_output": true,
+        "temperature": true
+      },
+      "family": null,
+      "id": "deepseek-ai/DeepSeek-V3.2-TEE",
+      "knowledge": null,
+      "last_updated": "2025-12-29",
+      "lifecycle": null,
+      "limits": {
+        "context": 163840,
+        "output": 16384
+      },
+      "modalities": {
+        "input": [
+          "text"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "model": null,
+      "name": "DeepSeek V3.2 TEE",
+      "provider": "chutes",
+      "provider_model_id": null,
+      "release_date": "2025-12-29",
       "tags": null
     },
     "mistralai/Devstral-2-123B-Instruct-2512": {
@@ -1970,20 +2484,25 @@
         }
       },
       "cost": {
-        "input": 0.15,
-        "output": 0.6
+        "cache_read": 0,
+        "cache_write": 0,
+        "input": 0.05,
+        "input_audio": 0,
+        "output": 0.22,
+        "output_audio": 0
       },
       "deprecated": false,
       "extra": {
         "attachment": false,
-        "family": "devstral",
+        "family": "mistralai",
         "open_weights": true,
+        "structured_output": true,
         "temperature": true
       },
       "family": null,
       "id": "mistralai/Devstral-2-123B-Instruct-2512",
       "knowledge": null,
-      "last_updated": "2025-12-11",
+      "last_updated": "2025-12-29",
       "lifecycle": null,
       "limits": {
         "context": 262144,
@@ -2001,7 +2520,7 @@
       "name": "Devstral 2 123B Instruct 2512",
       "provider": "chutes",
       "provider_model_id": null,
-      "release_date": "2025-12-11",
+      "release_date": "2025-12-29",
       "tags": null
     },
     "moonshotai/Kimi-K2-Instruct-0905": {
@@ -2025,20 +2544,25 @@
         }
       },
       "cost": {
+        "cache_read": 0,
+        "cache_write": 0,
         "input": 0.39,
-        "output": 1.9
+        "input_audio": 0,
+        "output": 1.9,
+        "output_audio": 0
       },
       "deprecated": false,
       "extra": {
         "attachment": false,
-        "family": "kimi-k2",
-        "open_weights": false,
+        "family": "moonshotai",
+        "open_weights": true,
+        "structured_output": true,
         "temperature": true
       },
       "family": null,
       "id": "moonshotai/Kimi-K2-Instruct-0905",
       "knowledge": null,
-      "last_updated": "2025-11-08",
+      "last_updated": "2025-12-29",
       "lifecycle": null,
       "limits": {
         "context": 262144,
@@ -2056,10 +2580,10 @@
       "name": "Kimi K2 Instruct 0905",
       "provider": "chutes",
       "provider_model_id": null,
-      "release_date": "2024-09-05",
+      "release_date": "2025-12-29",
       "tags": null
     },
-    "moonshotai/Kimi-K2-Thinking": {
+    "moonshotai/Kimi-K2-Thinking-TEE": {
       "aliases": [],
       "capabilities": {
         "chat": true,
@@ -2080,24 +2604,33 @@
         }
       },
       "cost": {
-        "input": 0.45,
-        "output": 2.35
+        "cache_read": 0,
+        "cache_write": 0,
+        "input": 0.4,
+        "input_audio": 0,
+        "output": 1.75,
+        "output_audio": 0,
+        "reasoning": 2.625
       },
       "deprecated": false,
       "extra": {
         "attachment": false,
-        "family": "kimi-k2",
+        "family": "moonshotai",
+        "interleaved": {
+          "field": "reasoning_content"
+        },
         "open_weights": true,
+        "structured_output": true,
         "temperature": true
       },
       "family": null,
-      "id": "moonshotai/Kimi-K2-Thinking",
+      "id": "moonshotai/Kimi-K2-Thinking-TEE",
       "knowledge": null,
-      "last_updated": "2025-12-03",
+      "last_updated": "2025-12-29",
       "lifecycle": null,
       "limits": {
         "context": 262144,
-        "output": 16384
+        "output": 65535
       },
       "modalities": {
         "input": [
@@ -2108,13 +2641,73 @@
         ]
       },
       "model": null,
-      "name": "Kimi K2 Thinking",
+      "name": "Kimi K2 Thinking TEE",
       "provider": "chutes",
       "provider_model_id": null,
-      "release_date": "2025-11-08",
+      "release_date": "2025-12-29",
       "tags": null
     },
-    "openai/gpt-oss-120b": {
+    "nvidia/NVIDIA-Nemotron-3-Nano-30B-A3B-BF16": {
+      "aliases": [],
+      "capabilities": {
+        "chat": true,
+        "embeddings": false,
+        "json": {
+          "native": false,
+          "schema": false,
+          "strict": false
+        },
+        "reasoning": {
+          "enabled": false
+        },
+        "streaming": {
+          "tool_calls": true
+        },
+        "tools": {
+          "enabled": true
+        }
+      },
+      "cost": {
+        "cache_read": 0,
+        "cache_write": 0,
+        "input": 0.06,
+        "input_audio": 0,
+        "output": 0.24,
+        "output_audio": 0
+      },
+      "deprecated": false,
+      "extra": {
+        "attachment": false,
+        "family": "nvidia",
+        "open_weights": true,
+        "structured_output": true,
+        "temperature": true
+      },
+      "family": null,
+      "id": "nvidia/NVIDIA-Nemotron-3-Nano-30B-A3B-BF16",
+      "knowledge": null,
+      "last_updated": "2025-12-29",
+      "lifecycle": null,
+      "limits": {
+        "context": 262144,
+        "output": 262144
+      },
+      "modalities": {
+        "input": [
+          "text"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "model": null,
+      "name": "NVIDIA Nemotron 3 Nano 30B A3B BF16",
+      "provider": "chutes",
+      "provider_model_id": null,
+      "release_date": "2025-12-29",
+      "tags": null
+    },
+    "openai/gpt-oss-120b-TEE": {
       "aliases": [],
       "capabilities": {
         "chat": true,
@@ -2135,24 +2728,33 @@
         }
       },
       "cost": {
+        "cache_read": 0,
+        "cache_write": 0,
         "input": 0.04,
-        "output": 0.4
+        "input_audio": 0,
+        "output": 0.25,
+        "output_audio": 0,
+        "reasoning": 0.375
       },
       "deprecated": false,
       "extra": {
         "attachment": false,
-        "family": "gpt-oss",
+        "family": "openai",
+        "interleaved": {
+          "field": "reasoning_content"
+        },
         "open_weights": true,
+        "structured_output": true,
         "temperature": true
       },
       "family": null,
-      "id": "openai/gpt-oss-120b",
+      "id": "openai/gpt-oss-120b-TEE",
       "knowledge": null,
-      "last_updated": "2025-11-08",
+      "last_updated": "2025-12-29",
       "lifecycle": null,
       "limits": {
         "context": 131072,
-        "output": 131072
+        "output": 65536
       },
       "modalities": {
         "input": [
@@ -2163,10 +2765,10 @@
         ]
       },
       "model": null,
-      "name": "GPT OSS 120B",
+      "name": "gpt oss 120b TEE",
       "provider": "chutes",
       "provider_model_id": null,
-      "release_date": "2025-08-05",
+      "release_date": "2025-12-29",
       "tags": null
     },
     "openai/gpt-oss-20b": {
@@ -2190,20 +2792,29 @@
         }
       },
       "cost": {
-        "input": 0,
-        "output": 0
+        "cache_read": 0,
+        "cache_write": 0,
+        "input": 0.02,
+        "input_audio": 0,
+        "output": 0.1,
+        "output_audio": 0,
+        "reasoning": 0.15000000000000002
       },
       "deprecated": false,
       "extra": {
         "attachment": false,
-        "family": "gpt-oss",
+        "family": "openai",
+        "interleaved": {
+          "field": "reasoning_content"
+        },
         "open_weights": true,
+        "structured_output": true,
         "temperature": true
       },
       "family": null,
       "id": "openai/gpt-oss-20b",
       "knowledge": null,
-      "last_updated": "2025-11-08",
+      "last_updated": "2025-12-29",
       "lifecycle": null,
       "limits": {
         "context": 131072,
@@ -2218,30 +2829,35 @@
         ]
       },
       "model": null,
-      "name": "Gpt Oss 20b",
+      "name": "gpt oss 20b",
       "provider": "chutes",
       "provider_model_id": null,
-      "release_date": "2025-11-08",
+      "release_date": "2025-12-29",
       "tags": null
     },
     "rednote-hilab/dots.ocr": {
       "aliases": [],
       "capabilities": null,
       "cost": {
+        "cache_read": 0,
+        "cache_write": 0,
         "input": 0.01,
-        "output": 0.01
+        "input_audio": 0,
+        "output": 0.01,
+        "output_audio": 0
       },
       "deprecated": false,
       "extra": {
         "attachment": false,
-        "family": "dots.ocr",
+        "family": "rednote-hilab",
         "open_weights": true,
+        "structured_output": true,
         "temperature": true
       },
       "family": null,
       "id": "rednote-hilab/dots.ocr",
       "knowledge": null,
-      "last_updated": "2025-11-08",
+      "last_updated": "2025-12-29",
       "lifecycle": null,
       "limits": {
         "context": 131072,
@@ -2257,10 +2873,10 @@
         ]
       },
       "model": null,
-      "name": "Dots.Ocr",
+      "name": "dots.ocr",
       "provider": "chutes",
       "provider_model_id": null,
-      "release_date": "2025-11-08",
+      "release_date": "2025-12-29",
       "tags": null
     },
     "tngtech/DeepSeek-R1T-Chimera": {
@@ -2288,20 +2904,29 @@
         }
       },
       "cost": {
+        "cache_read": 0,
+        "cache_write": 0,
         "input": 0.3,
-        "output": 1.2
+        "input_audio": 0,
+        "output": 1.2,
+        "output_audio": 0,
+        "reasoning": 1.7999999999999998
       },
       "deprecated": false,
       "extra": {
         "attachment": false,
-        "family": "deepseek-r1",
+        "family": "tngtech",
+        "interleaved": {
+          "field": "reasoning_content"
+        },
         "open_weights": true,
+        "structured_output": true,
         "temperature": true
       },
       "family": null,
       "id": "tngtech/DeepSeek-R1T-Chimera",
-      "knowledge": "2025-04",
-      "last_updated": "2025-11-08",
+      "knowledge": null,
+      "last_updated": "2025-12-29",
       "lifecycle": null,
       "limits": {
         "context": 163840,
@@ -2319,7 +2944,7 @@
       "name": "DeepSeek R1T Chimera",
       "provider": "chutes",
       "provider_model_id": null,
-      "release_date": "2025-04-26",
+      "release_date": "2025-12-29",
       "tags": null
     },
     "tngtech/DeepSeek-TNG-R1T2-Chimera": {
@@ -2343,20 +2968,29 @@
         }
       },
       "cost": {
+        "cache_read": 0,
+        "cache_write": 0,
         "input": 0.3,
-        "output": 1.2
+        "input_audio": 0,
+        "output": 1.2,
+        "output_audio": 0,
+        "reasoning": 1.7999999999999998
       },
       "deprecated": false,
       "extra": {
         "attachment": false,
-        "family": "deepseek-r1",
+        "family": "tngtech",
+        "interleaved": {
+          "field": "reasoning_content"
+        },
         "open_weights": true,
+        "structured_output": true,
         "temperature": true
       },
       "family": null,
       "id": "tngtech/DeepSeek-TNG-R1T2-Chimera",
-      "knowledge": "2025-07",
-      "last_updated": "2025-11-08",
+      "knowledge": null,
+      "last_updated": "2025-12-29",
       "lifecycle": null,
       "limits": {
         "context": 163840,
@@ -2374,7 +3008,7 @@
       "name": "DeepSeek TNG R1T2 Chimera",
       "provider": "chutes",
       "provider_model_id": null,
-      "release_date": "2025-07-08",
+      "release_date": "2025-12-29",
       "tags": null
     },
     "tngtech/TNG-R1T-Chimera-TEE": {
@@ -2398,24 +3032,33 @@
         }
       },
       "cost": {
+        "cache_read": 0,
+        "cache_write": 0,
         "input": 0.3,
-        "output": 1.2
+        "input_audio": 0,
+        "output": 1.2,
+        "output_audio": 0,
+        "reasoning": 1.7999999999999998
       },
       "deprecated": false,
       "extra": {
         "attachment": false,
-        "family": "tng-r1t-chimera-tee",
+        "family": "tngtech",
+        "interleaved": {
+          "field": "reasoning_content"
+        },
         "open_weights": true,
+        "structured_output": true,
         "temperature": true
       },
       "family": null,
       "id": "tngtech/TNG-R1T-Chimera-TEE",
       "knowledge": null,
-      "last_updated": "2025-12-11",
+      "last_updated": "2025-12-29",
       "lifecycle": null,
       "limits": {
         "context": 163840,
-        "output": 163840
+        "output": 65536
       },
       "modalities": {
         "input": [
@@ -2429,27 +3072,32 @@
       "name": "TNG R1T Chimera TEE",
       "provider": "chutes",
       "provider_model_id": null,
-      "release_date": "2025-12-11",
+      "release_date": "2025-12-29",
       "tags": null
     },
     "unsloth/Mistral-Nemo-Instruct-2407": {
       "aliases": [],
       "capabilities": null,
       "cost": {
+        "cache_read": 0,
+        "cache_write": 0,
         "input": 0.02,
-        "output": 0.04
+        "input_audio": 0,
+        "output": 0.04,
+        "output_audio": 0
       },
       "deprecated": false,
       "extra": {
         "attachment": false,
-        "family": "mistral-nemo",
+        "family": "unsloth",
         "open_weights": true,
+        "structured_output": true,
         "temperature": true
       },
       "family": null,
       "id": "unsloth/Mistral-Nemo-Instruct-2407",
       "knowledge": null,
-      "last_updated": "2025-12-03",
+      "last_updated": "2025-12-29",
       "lifecycle": null,
       "limits": {
         "context": 131072,
@@ -2467,7 +3115,7 @@
       "name": "Mistral Nemo Instruct 2407",
       "provider": "chutes",
       "provider_model_id": null,
-      "release_date": "2025-11-08",
+      "release_date": "2025-12-29",
       "tags": null
     },
     "unsloth/Mistral-Small-24B-Instruct-2501": {
@@ -2491,20 +3139,25 @@
         }
       },
       "cost": {
+        "cache_read": 0,
+        "cache_write": 0,
         "input": 0.03,
-        "output": 0.11
+        "input_audio": 0,
+        "output": 0.11,
+        "output_audio": 0
       },
       "deprecated": false,
       "extra": {
         "attachment": false,
-        "family": "mistral-small",
+        "family": "unsloth",
         "open_weights": true,
+        "structured_output": true,
         "temperature": true
       },
       "family": null,
       "id": "unsloth/Mistral-Small-24B-Instruct-2501",
       "knowledge": null,
-      "last_updated": "2025-12-11",
+      "last_updated": "2025-12-29",
       "lifecycle": null,
       "limits": {
         "context": 32768,
@@ -2523,27 +3176,32 @@
       "name": "Mistral Small 24B Instruct 2501",
       "provider": "chutes",
       "provider_model_id": null,
-      "release_date": "2025-11-08",
+      "release_date": "2025-12-29",
       "tags": null
     },
     "unsloth/gemma-3-12b-it": {
       "aliases": [],
       "capabilities": null,
       "cost": {
+        "cache_read": 0,
+        "cache_write": 0,
         "input": 0.03,
-        "output": 0.1
+        "input_audio": 0,
+        "output": 0.1,
+        "output_audio": 0
       },
       "deprecated": false,
       "extra": {
         "attachment": false,
-        "family": "gemma-3",
+        "family": "unsloth",
         "open_weights": true,
+        "structured_output": false,
         "temperature": true
       },
       "family": null,
       "id": "unsloth/gemma-3-12b-it",
       "knowledge": null,
-      "last_updated": "2025-11-08",
+      "last_updated": "2025-12-29",
       "lifecycle": null,
       "limits": {
         "context": 131072,
@@ -2559,10 +3217,10 @@
         ]
       },
       "model": null,
-      "name": "Gemma 3 12b It",
+      "name": "gemma 3 12b it",
       "provider": "chutes",
       "provider_model_id": null,
-      "release_date": "2025-11-08",
+      "release_date": "2025-12-29",
       "tags": null
     },
     "unsloth/gemma-3-27b-it": {
@@ -2586,20 +3244,25 @@
         }
       },
       "cost": {
+        "cache_read": 0,
+        "cache_write": 0,
         "input": 0.04,
-        "output": 0.15
+        "input_audio": 0,
+        "output": 0.15,
+        "output_audio": 0
       },
       "deprecated": false,
       "extra": {
         "attachment": false,
-        "family": "gemma-3",
+        "family": "unsloth",
         "open_weights": true,
+        "structured_output": true,
         "temperature": true
       },
       "family": null,
       "id": "unsloth/gemma-3-27b-it",
       "knowledge": null,
-      "last_updated": "2025-12-11",
+      "last_updated": "2025-12-29",
       "lifecycle": null,
       "limits": {
         "context": 96000,
@@ -2615,30 +3278,35 @@
         ]
       },
       "model": null,
-      "name": "Gemma 3 27b It",
+      "name": "gemma 3 27b it",
       "provider": "chutes",
       "provider_model_id": null,
-      "release_date": "2025-11-08",
+      "release_date": "2025-12-29",
       "tags": null
     },
     "unsloth/gemma-3-4b-it": {
       "aliases": [],
       "capabilities": null,
       "cost": {
-        "input": 0,
-        "output": 0
+        "cache_read": 0,
+        "cache_write": 0,
+        "input": 0.01,
+        "input_audio": 0,
+        "output": 0.03,
+        "output_audio": 0
       },
       "deprecated": false,
       "extra": {
         "attachment": false,
-        "family": "gemma-3",
+        "family": "unsloth",
         "open_weights": true,
+        "structured_output": true,
         "temperature": true
       },
       "family": null,
       "id": "unsloth/gemma-3-4b-it",
       "knowledge": null,
-      "last_updated": "2025-11-08",
+      "last_updated": "2025-12-29",
       "lifecycle": null,
       "limits": {
         "context": 96000,
@@ -2654,65 +3322,10 @@
         ]
       },
       "model": null,
-      "name": "Gemma 3 4b It",
+      "name": "gemma 3 4b it",
       "provider": "chutes",
       "provider_model_id": null,
-      "release_date": "2025-11-08",
-      "tags": null
-    },
-    "zai-org/GLM-4.5": {
-      "aliases": [],
-      "capabilities": {
-        "chat": true,
-        "embeddings": false,
-        "json": {
-          "native": false,
-          "schema": false,
-          "strict": false
-        },
-        "reasoning": {
-          "enabled": true
-        },
-        "streaming": {
-          "tool_calls": true
-        },
-        "tools": {
-          "enabled": true
-        }
-      },
-      "cost": {
-        "input": 0.35,
-        "output": 1.55
-      },
-      "deprecated": false,
-      "extra": {
-        "attachment": false,
-        "family": "glm-4.5",
-        "open_weights": true,
-        "temperature": true
-      },
-      "family": null,
-      "id": "zai-org/GLM-4.5",
-      "knowledge": "2025-04",
-      "last_updated": "2025-10-30",
-      "lifecycle": null,
-      "limits": {
-        "context": 131072,
-        "output": 131072
-      },
-      "modalities": {
-        "input": [
-          "text"
-        ],
-        "output": [
-          "text"
-        ]
-      },
-      "model": null,
-      "name": "GLM 4.5",
-      "provider": "chutes",
-      "provider_model_id": null,
-      "release_date": "2025-10-30",
+      "release_date": "2025-12-29",
       "tags": null
     },
     "zai-org/GLM-4.5-Air": {
@@ -2736,20 +3349,29 @@
         }
       },
       "cost": {
-        "input": 0,
-        "output": 0
+        "cache_read": 0,
+        "cache_write": 0,
+        "input": 0.05,
+        "input_audio": 0,
+        "output": 0.22,
+        "output_audio": 0,
+        "reasoning": 0.33
       },
       "deprecated": false,
       "extra": {
         "attachment": false,
-        "family": "glm-4.5-air",
+        "family": "zai-org",
+        "interleaved": {
+          "field": "reasoning_content"
+        },
         "open_weights": true,
+        "structured_output": true,
         "temperature": true
       },
       "family": null,
       "id": "zai-org/GLM-4.5-Air",
-      "knowledge": "2025-04",
-      "last_updated": "2025-11-08",
+      "knowledge": null,
+      "last_updated": "2025-12-29",
       "lifecycle": null,
       "limits": {
         "context": 131072,
@@ -2767,10 +3389,10 @@
       "name": "GLM 4.5 Air",
       "provider": "chutes",
       "provider_model_id": null,
-      "release_date": "2025-07-28",
+      "release_date": "2025-12-29",
       "tags": null
     },
-    "zai-org/GLM-4.6": {
+    "zai-org/GLM-4.5-TEE": {
       "aliases": [],
       "capabilities": {
         "chat": true,
@@ -2791,24 +3413,33 @@
         }
       },
       "cost": {
-        "input": 0.4,
-        "output": 1.75
+        "cache_read": 0,
+        "cache_write": 0,
+        "input": 0.35,
+        "input_audio": 0,
+        "output": 1.55,
+        "output_audio": 0,
+        "reasoning": 2.325
       },
       "deprecated": false,
       "extra": {
         "attachment": false,
-        "family": "glm-4.6",
+        "family": "zai-org",
+        "interleaved": {
+          "field": "reasoning_content"
+        },
         "open_weights": true,
+        "structured_output": true,
         "temperature": true
       },
       "family": null,
-      "id": "zai-org/GLM-4.6",
-      "knowledge": "2025-04",
-      "last_updated": "2025-11-08",
+      "id": "zai-org/GLM-4.5-TEE",
+      "knowledge": null,
+      "last_updated": "2025-12-29",
       "lifecycle": null,
       "limits": {
-        "context": 202752,
-        "output": 202752
+        "context": 131072,
+        "output": 65536
       },
       "modalities": {
         "input": [
@@ -2819,34 +3450,60 @@
         ]
       },
       "model": null,
-      "name": "GLM 4.6",
+      "name": "GLM 4.5 TEE",
       "provider": "chutes",
       "provider_model_id": null,
-      "release_date": "2025-10-30",
+      "release_date": "2025-12-29",
       "tags": null
     },
     "zai-org/GLM-4.6-TEE": {
       "aliases": [],
-      "capabilities": null,
+      "capabilities": {
+        "chat": true,
+        "embeddings": false,
+        "json": {
+          "native": false,
+          "schema": false,
+          "strict": false
+        },
+        "reasoning": {
+          "enabled": true
+        },
+        "streaming": {
+          "tool_calls": true
+        },
+        "tools": {
+          "enabled": true
+        }
+      },
       "cost": {
-        "input": 0.3,
-        "output": 1.2
+        "cache_read": 0,
+        "cache_write": 0,
+        "input": 0.4,
+        "input_audio": 0,
+        "output": 1.75,
+        "output_audio": 0,
+        "reasoning": 2.625
       },
       "deprecated": false,
       "extra": {
         "attachment": false,
-        "family": "glm-4.6",
+        "family": "zai-org",
+        "interleaved": {
+          "field": "reasoning_content"
+        },
         "open_weights": true,
+        "structured_output": true,
         "temperature": true
       },
       "family": null,
       "id": "zai-org/GLM-4.6-TEE",
       "knowledge": null,
-      "last_updated": "2025-12-11",
+      "last_updated": "2025-12-29",
       "lifecycle": null,
       "limits": {
-        "context": 32768,
-        "output": 8192
+        "context": 202752,
+        "output": 65536
       },
       "modalities": {
         "input": [
@@ -2860,7 +3517,7 @@
       "name": "GLM 4.6 TEE",
       "provider": "chutes",
       "provider_model_id": null,
-      "release_date": "2025-12-11",
+      "release_date": "2025-12-29",
       "tags": null
     },
     "zai-org/GLM-4.6V": {
@@ -2884,20 +3541,29 @@
         }
       },
       "cost": {
+        "cache_read": 0,
+        "cache_write": 0,
         "input": 0.3,
-        "output": 0.9
+        "input_audio": 0,
+        "output": 0.9,
+        "output_audio": 0,
+        "reasoning": 1.35
       },
       "deprecated": false,
       "extra": {
         "attachment": false,
-        "family": "glm-4.6v",
+        "family": "zai-org",
+        "interleaved": {
+          "field": "reasoning_content"
+        },
         "open_weights": true,
+        "structured_output": true,
         "temperature": true
       },
       "family": null,
       "id": "zai-org/GLM-4.6V",
       "knowledge": null,
-      "last_updated": "2025-12-11",
+      "last_updated": "2025-12-29",
       "lifecycle": null,
       "limits": {
         "context": 131072,
@@ -2916,7 +3582,71 @@
       "name": "GLM 4.6V",
       "provider": "chutes",
       "provider_model_id": null,
-      "release_date": "2025-12-11",
+      "release_date": "2025-12-29",
+      "tags": null
+    },
+    "zai-org/GLM-4.7-TEE": {
+      "aliases": [],
+      "capabilities": {
+        "chat": true,
+        "embeddings": false,
+        "json": {
+          "native": false,
+          "schema": false,
+          "strict": false
+        },
+        "reasoning": {
+          "enabled": true
+        },
+        "streaming": {
+          "tool_calls": true
+        },
+        "tools": {
+          "enabled": true
+        }
+      },
+      "cost": {
+        "cache_read": 0,
+        "cache_write": 0,
+        "input": 0.4,
+        "input_audio": 0,
+        "output": 1.5,
+        "output_audio": 0,
+        "reasoning": 2.25
+      },
+      "deprecated": false,
+      "extra": {
+        "attachment": false,
+        "family": "zai-org",
+        "interleaved": {
+          "field": "reasoning_content"
+        },
+        "open_weights": true,
+        "structured_output": true,
+        "temperature": true
+      },
+      "family": null,
+      "id": "zai-org/GLM-4.7-TEE",
+      "knowledge": null,
+      "last_updated": "2025-12-29",
+      "lifecycle": null,
+      "limits": {
+        "context": 202752,
+        "output": 65535
+      },
+      "modalities": {
+        "input": [
+          "text"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "model": null,
+      "name": "GLM 4.7 TEE",
+      "provider": "chutes",
+      "provider_model_id": null,
+      "release_date": "2025-12-29",
       "tags": null
     }
   },

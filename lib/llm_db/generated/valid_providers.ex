@@ -10,6 +10,7 @@ defmodule LLMDB.Generated.ValidProviders do
   """
 
   @providers [
+    :abacus,
     :ai21,
     :aihubmix,
     :"aion-labs",
@@ -77,6 +78,7 @@ defmodule LLMDB.Generated.ValidProviders do
     :moonshotai,
     :moonshotai_cn,
     :morph,
+    :nano_gpt,
     :nebius,
     :neversleep,
     :nousresearch,

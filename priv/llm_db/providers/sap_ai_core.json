@@ -90,6 +90,8 @@
         }
       },
       "cost": {
+        "cache_read": 1.5,
+        "cache_write": 18.75,
         "input": 15,
         "output": 75
       },
@@ -147,6 +149,8 @@
         }
       },
       "cost": {
+        "cache_read": 0.3,
+        "cache_write": 0.3,
         "input": 3,
         "output": 15
       },
@@ -417,6 +421,65 @@
       "provider": "sap_ai_core",
       "provider_model_id": null,
       "release_date": "2025-05-22",
+      "tags": null
+    },
+    "anthropic--claude-4.5-haiku": {
+      "aliases": [],
+      "capabilities": {
+        "chat": true,
+        "embeddings": false,
+        "json": {
+          "native": false,
+          "schema": false,
+          "strict": false
+        },
+        "reasoning": {
+          "enabled": true
+        },
+        "streaming": {
+          "tool_calls": true
+        },
+        "tools": {
+          "enabled": true
+        }
+      },
+      "cost": {
+        "cache_read": 0.1,
+        "cache_write": 1.25,
+        "input": 1,
+        "output": 5
+      },
+      "deprecated": false,
+      "extra": {
+        "attachment": true,
+        "family": "claude-haiku",
+        "open_weights": false,
+        "temperature": true
+      },
+      "family": null,
+      "id": "anthropic--claude-4.5-haiku",
+      "knowledge": "2025-02-28",
+      "last_updated": "2025-10-01",
+      "lifecycle": null,
+      "limits": {
+        "context": 200000,
+        "output": 64000
+      },
+      "modalities": {
+        "input": [
+          "text",
+          "image",
+          "pdf"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "model": null,
+      "name": "anthropic--claude-4.5-haiku",
+      "provider": "sap_ai_core",
+      "provider_model_id": null,
+      "release_date": "2025-10-01",
       "tags": null
     },
     "anthropic--claude-4.5-sonnet": {

@@ -2,15 +2,15 @@
   "alias_of": null,
   "base_url": null,
   "config_schema": null,
-  "doc": "https://fireworks.ai/docs/",
+  "doc": "https://docs.nano-gpt.com",
   "env": [
-    "FIREWORKS_API_KEY"
+    "NANO_GPT_API_KEY"
   ],
   "exclude_models": null,
   "extra": null,
-  "id": "fireworks_ai",
+  "id": "nano_gpt",
   "models": {
-    "accounts/fireworks/models/deepseek-r1-0528": {
+    "deepseek/deepseek-r1": {
       "aliases": [],
       "capabilities": {
         "chat": true,
@@ -31,79 +31,25 @@
         }
       },
       "cost": {
-        "input": 3,
-        "output": 8
+        "input": 1,
+        "output": 2
       },
       "deprecated": false,
       "extra": {
         "attachment": false,
-        "family": "deepseek-r1",
+        "family": "deepseek",
         "open_weights": true,
+        "structured_output": true,
         "temperature": true
       },
       "family": null,
-      "id": "accounts/fireworks/models/deepseek-r1-0528",
-      "knowledge": "2025-05",
-      "last_updated": "2025-05-28",
-      "lifecycle": null,
-      "limits": {
-        "context": 160000,
-        "output": 16384
-      },
-      "modalities": {
-        "input": [
-          "text"
-        ],
-        "output": [
-          "text"
-        ]
-      },
-      "model": null,
-      "name": "Deepseek R1 05/28",
-      "provider": "fireworks_ai",
-      "provider_model_id": null,
-      "release_date": "2025-05-28",
-      "tags": null
-    },
-    "accounts/fireworks/models/deepseek-v3-0324": {
-      "aliases": [],
-      "capabilities": {
-        "chat": true,
-        "embeddings": false,
-        "json": {
-          "native": false,
-          "schema": false,
-          "strict": false
-        },
-        "reasoning": {
-          "enabled": false
-        },
-        "streaming": {
-          "tool_calls": true
-        },
-        "tools": {
-          "enabled": true
-        }
-      },
-      "cost": {
-        "input": 0.9,
-        "output": 0.9
-      },
-      "deprecated": false,
-      "extra": {
-        "attachment": false,
-        "family": "deepseek-v3",
-        "open_weights": true,
-        "temperature": true
-      },
-      "family": null,
-      "id": "accounts/fireworks/models/deepseek-v3-0324",
+      "id": "deepseek/deepseek-r1",
       "knowledge": "2024-10",
-      "last_updated": "2025-03-24",
+      "last_updated": "2025-12-24",
       "lifecycle": null,
       "limits": {
-        "context": 160000,
-        "output": 16384
+        "context": 128000,
+        "output": 8192
       },
       "modalities": {
         "input": [
@@ -114,13 +60,13 @@
         ]
       },
       "model": null,
-      "name": "Deepseek V3 03-24",
-      "provider": "fireworks_ai",
+      "name": "Deepseek R1",
+      "provider": "nano_gpt",
       "provider_model_id": null,
-      "release_date": "2025-03-24",
+      "release_date": "2025-01-20",
       "tags": null
     },
-    "accounts/fireworks/models/deepseek-v3p1": {
+    "deepseek/deepseek-v3.2:thinking": {
       "aliases": [],
       "capabilities": {
         "chat": true,
@@ -141,83 +87,28 @@
         }
       },
       "cost": {
-        "input": 0.56,
-        "output": 1.68
+        "input": 1,
+        "output": 2
       },
       "deprecated": false,
       "extra": {
         "attachment": false,
-        "family": "deepseek-v3",
-        "open_weights": true,
-        "temperature": true
-      },
-      "family": null,
-      "id": "accounts/fireworks/models/deepseek-v3p1",
-      "knowledge": "2025-07",
-      "last_updated": "2025-08-21",
-      "lifecycle": null,
-      "limits": {
-        "context": 163840,
-        "output": 163840
-      },
-      "modalities": {
-        "input": [
-          "text"
-        ],
-        "output": [
-          "text"
-        ]
-      },
-      "model": null,
-      "name": "DeepSeek V3.1",
-      "provider": "fireworks_ai",
-      "provider_model_id": null,
-      "release_date": "2025-08-21",
-      "tags": null
-    },
-    "accounts/fireworks/models/deepseek-v3p2": {
-      "aliases": [],
-      "capabilities": {
-        "chat": true,
-        "embeddings": false,
-        "json": {
-          "native": false,
-          "schema": false,
-          "strict": false
-        },
-        "reasoning": {
-          "enabled": true
-        },
-        "streaming": {
-          "tool_calls": true
-        },
-        "tools": {
-          "enabled": true
-        }
-      },
-      "cost": {
-        "cache_read": 0.28,
-        "input": 0.56,
-        "output": 1.68
-      },
-      "deprecated": false,
-      "extra": {
-        "attachment": false,
-        "family": "deepseek-v3",
+        "family": "deepseek",
         "interleaved": {
           "field": "reasoning_content"
         },
         "open_weights": true,
+        "structured_output": true,
         "temperature": true
       },
       "family": null,
-      "id": "accounts/fireworks/models/deepseek-v3p2",
-      "knowledge": "2025-09",
-      "last_updated": "2025-12-01",
+      "id": "deepseek/deepseek-v3.2:thinking",
+      "knowledge": null,
+      "last_updated": "2025-12-24",
       "lifecycle": null,
       "limits": {
-        "context": 160000,
-        "output": 160000
+        "context": 128000,
+        "output": 8192
       },
       "modalities": {
         "input": [
@@ -228,354 +119,13 @@
         ]
       },
       "model": null,
-      "name": "DeepSeek V3.2",
-      "provider": "fireworks_ai",
+      "name": "Deepseek V3.2 Thinking",
+      "provider": "nano_gpt",
       "provider_model_id": null,
       "release_date": "2025-12-01",
       "tags": null
     },
-    "accounts/fireworks/models/glm-4p5": {
-      "aliases": [],
-      "capabilities": {
-        "chat": true,
-        "embeddings": false,
-        "json": {
-          "native": false,
-          "schema": false,
-          "strict": false
-        },
-        "reasoning": {
-          "enabled": true
-        },
-        "streaming": {
-          "tool_calls": true
-        },
-        "tools": {
-          "enabled": true
-        }
-      },
-      "cost": {
-        "input": 0.55,
-        "output": 2.19
-      },
-      "deprecated": false,
-      "extra": {
-        "attachment": false,
-        "family": "glm-4",
-        "interleaved": {
-          "field": "reasoning_content"
-        },
-        "open_weights": true,
-        "temperature": true
-      },
-      "family": null,
-      "id": "accounts/fireworks/models/glm-4p5",
-      "knowledge": "2025-04",
-      "last_updated": "2025-07-29",
-      "lifecycle": null,
-      "limits": {
-        "context": 131072,
-        "output": 131072
-      },
-      "modalities": {
-        "input": [
-          "text"
-        ],
-        "output": [
-          "text"
-        ]
-      },
-      "model": null,
-      "name": "GLM 4.5",
-      "provider": "fireworks_ai",
-      "provider_model_id": null,
-      "release_date": "2025-07-29",
-      "tags": null
-    },
-    "accounts/fireworks/models/glm-4p5-air": {
-      "aliases": [],
-      "capabilities": {
-        "chat": true,
-        "embeddings": false,
-        "json": {
-          "native": false,
-          "schema": false,
-          "strict": false
-        },
-        "reasoning": {
-          "enabled": true
-        },
-        "streaming": {
-          "tool_calls": true
-        },
-        "tools": {
-          "enabled": true
-        }
-      },
-      "cost": {
-        "input": 0.22,
-        "output": 0.88
-      },
-      "deprecated": false,
-      "extra": {
-        "attachment": false,
-        "family": "glm-4-air",
-        "open_weights": true,
-        "temperature": true
-      },
-      "family": null,
-      "id": "accounts/fireworks/models/glm-4p5-air",
-      "knowledge": "2025-04",
-      "last_updated": "2025-08-01",
-      "lifecycle": null,
-      "limits": {
-        "context": 131072,
-        "output": 131072
-      },
-      "modalities": {
-        "input": [
-          "text"
-        ],
-        "output": [
-          "text"
-        ]
-      },
-      "model": null,
-      "name": "GLM 4.5 Air",
-      "provider": "fireworks_ai",
-      "provider_model_id": null,
-      "release_date": "2025-08-01",
-      "tags": null
-    },
-    "accounts/fireworks/models/glm-4p6": {
-      "aliases": [],
-      "capabilities": {
-        "chat": true,
-        "embeddings": false,
-        "json": {
-          "native": false,
-          "schema": false,
-          "strict": false
-        },
-        "reasoning": {
-          "enabled": true
-        },
-        "streaming": {
-          "tool_calls": true
-        },
-        "tools": {
-          "enabled": true
-        }
-      },
-      "cost": {
-        "cache_read": 0.28,
-        "input": 0.55,
-        "output": 2.19
-      },
-      "deprecated": false,
-      "extra": {
-        "attachment": false,
-        "family": "glm-4",
-        "interleaved": {
-          "field": "reasoning_content"
-        },
-        "open_weights": true,
-        "temperature": true
-      },
-      "family": null,
-      "id": "accounts/fireworks/models/glm-4p6",
-      "knowledge": "2025-04",
-      "last_updated": "2025-10-01",
-      "lifecycle": null,
-      "limits": {
-        "context": 198000,
-        "output": 198000
-      },
-      "modalities": {
-        "input": [
-          "text"
-        ],
-        "output": [
-          "text"
-        ]
-      },
-      "model": null,
-      "name": "GLM 4.6",
-      "provider": "fireworks_ai",
-      "provider_model_id": null,
-      "release_date": "2025-10-01",
-      "tags": null
-    },
-    "accounts/fireworks/models/glm-4p7": {
-      "aliases": [],
-      "capabilities": {
-        "chat": true,
-        "embeddings": false,
-        "json": {
-          "native": false,
-          "schema": false,
-          "strict": false
-        },
-        "reasoning": {
-          "enabled": true
-        },
-        "streaming": {
-          "tool_calls": true
-        },
-        "tools": {
-          "enabled": true
-        }
-      },
-      "cost": {
-        "cache_read": 0.3,
-        "input": 0.6,
-        "output": 2.2
-      },
-      "deprecated": false,
-      "extra": {
-        "attachment": false,
-        "family": "glm-4",
-        "interleaved": {
-          "field": "reasoning_content"
-        },
-        "open_weights": true,
-        "temperature": true
-      },
-      "family": null,
-      "id": "accounts/fireworks/models/glm-4p7",
-      "knowledge": "2025-04",
-      "last_updated": "2025-12-22",
-      "lifecycle": null,
-      "limits": {
-        "context": 198000,
-        "output": 198000
-      },
-      "modalities": {
-        "input": [
-          "text"
-        ],
-        "output": [
-          "text"
-        ]
-      },
-      "model": null,
-      "name": "GLM 4.7",
-      "provider": "fireworks_ai",
-      "provider_model_id": null,
-      "release_date": "2025-12-22",
-      "tags": null
-    },
-    "accounts/fireworks/models/gpt-oss-120b": {
-      "aliases": [],
-      "capabilities": {
-        "chat": true,
-        "embeddings": false,
-        "json": {
-          "native": false,
-          "schema": false,
-          "strict": false
-        },
-        "reasoning": {
-          "enabled": true
-        },
-        "streaming": {
-          "tool_calls": true
-        },
-        "tools": {
-          "enabled": true
-        }
-      },
-      "cost": {
-        "input": 0.15,
-        "output": 0.6
-      },
-      "deprecated": false,
-      "extra": {
-        "attachment": false,
-        "family": "gpt-oss",
-        "open_weights": true,
-        "temperature": true
-      },
-      "family": null,
-      "id": "accounts/fireworks/models/gpt-oss-120b",
-      "knowledge": null,
-      "last_updated": "2025-08-05",
-      "lifecycle": null,
-      "limits": {
-        "context": 131072,
-        "output": 32768
-      },
-      "modalities": {
-        "input": [
-          "text"
-        ],
-        "output": [
-          "text"
-        ]
-      },
-      "model": null,
-      "name": "GPT OSS 120B",
-      "provider": "fireworks_ai",
-      "provider_model_id": null,
-      "release_date": "2025-08-05",
-      "tags": null
-    },
-    "accounts/fireworks/models/gpt-oss-20b": {
-      "aliases": [],
-      "capabilities": {
-        "chat": true,
-        "embeddings": false,
-        "json": {
-          "native": false,
-          "schema": false,
-          "strict": false
-        },
-        "reasoning": {
-          "enabled": true
-        },
-        "streaming": {
-          "tool_calls": true
-        },
-        "tools": {
-          "enabled": true
-        }
-      },
-      "cost": {
-        "input": 0.05,
-        "output": 0.2
-      },
-      "deprecated": false,
-      "extra": {
-        "attachment": false,
-        "family": "gpt-oss",
-        "open_weights": true,
-        "temperature": true
-      },
-      "family": null,
-      "id": "accounts/fireworks/models/gpt-oss-20b",
-      "knowledge": null,
-      "last_updated": "2025-08-05",
-      "lifecycle": null,
-      "limits": {
-        "context": 131072,
-        "output": 32768
-      },
-      "modalities": {
-        "input": [
-          "text"
-        ],
-        "output": [
-          "text"
-        ]
-      },
-      "model": null,
-      "name": "GPT OSS 20B",
-      "provider": "fireworks_ai",
-      "provider_model_id": null,
-      "release_date": "2025-08-05",
-      "tags": null
-    },
-    "accounts/fireworks/models/kimi-k2-instruct": {
+    "meta-llama/llama-3.3-70b-instruct": {
       "aliases": [],
       "capabilities": {
         "chat": true,
@@ -597,23 +147,24 @@
       },
       "cost": {
         "input": 1,
-        "output": 3
+        "output": 2
       },
       "deprecated": false,
       "extra": {
         "attachment": false,
-        "family": "kimi-k2",
+        "family": "llama",
         "open_weights": true,
+        "structured_output": true,
         "temperature": true
       },
       "family": null,
-      "id": "accounts/fireworks/models/kimi-k2-instruct",
-      "knowledge": "2024-10",
-      "last_updated": "2025-07-11",
+      "id": "meta-llama/llama-3.3-70b-instruct",
+      "knowledge": "2023-12",
+      "last_updated": "2025-12-24",
       "lifecycle": null,
       "limits": {
         "context": 128000,
-        "output": 16384
+        "output": 8192
       },
       "modalities": {
         "input": [
@@ -624,244 +175,13 @@
         ]
       },
       "model": null,
-      "name": "Kimi K2 Instruct",
-      "provider": "fireworks_ai",
+      "name": "Llama 3.3 70b Instruct",
+      "provider": "nano_gpt",
       "provider_model_id": null,
-      "release_date": "2025-07-11",
+      "release_date": "2024-12-06",
       "tags": null
     },
-    "accounts/fireworks/models/kimi-k2-thinking": {
-      "aliases": [],
-      "capabilities": {
-        "chat": true,
-        "embeddings": false,
-        "json": {
-          "native": false,
-          "schema": false,
-          "strict": false
-        },
-        "reasoning": {
-          "enabled": true
-        },
-        "streaming": {
-          "tool_calls": true
-        },
-        "tools": {
-          "enabled": true
-        }
-      },
-      "cost": {
-        "input": 0.6,
-        "output": 2.5
-      },
-      "deprecated": false,
-      "extra": {
-        "attachment": false,
-        "family": "kimi-k2",
-        "interleaved": {
-          "field": "reasoning_content"
-        },
-        "open_weights": true,
-        "temperature": true
-      },
-      "family": null,
-      "id": "accounts/fireworks/models/kimi-k2-thinking",
-      "knowledge": null,
-      "last_updated": "2025-11-06",
-      "lifecycle": null,
-      "limits": {
-        "context": 256000,
-        "output": 256000
-      },
-      "modalities": {
-        "input": [
-          "text"
-        ],
-        "output": [
-          "text"
-        ]
-      },
-      "model": null,
-      "name": "Kimi K2 Thinking",
-      "provider": "fireworks_ai",
-      "provider_model_id": null,
-      "release_date": "2025-11-06",
-      "tags": null
-    },
-    "accounts/fireworks/models/minimax-m2": {
-      "aliases": [],
-      "capabilities": {
-        "chat": true,
-        "embeddings": false,
-        "json": {
-          "native": false,
-          "schema": false,
-          "strict": false
-        },
-        "reasoning": {
-          "enabled": true
-        },
-        "streaming": {
-          "tool_calls": true
-        },
-        "tools": {
-          "enabled": true
-        }
-      },
-      "cost": {
-        "cache_read": 0.15,
-        "input": 0.3,
-        "output": 1.2
-      },
-      "deprecated": false,
-      "extra": {
-        "attachment": false,
-        "family": "minimax",
-        "interleaved": {
-          "field": "reasoning_content"
-        },
-        "open_weights": true,
-        "temperature": true
-      },
-      "family": null,
-      "id": "accounts/fireworks/models/minimax-m2",
-      "knowledge": "2024-11",
-      "last_updated": "2025-10-27",
-      "lifecycle": null,
-      "limits": {
-        "context": 192000,
-        "output": 192000
-      },
-      "modalities": {
-        "input": [
-          "text"
-        ],
-        "output": [
-          "text"
-        ]
-      },
-      "model": null,
-      "name": "MiniMax-M2",
-      "provider": "fireworks_ai",
-      "provider_model_id": null,
-      "release_date": "2025-10-27",
-      "tags": null
-    },
-    "accounts/fireworks/models/minimax-m2p1": {
-      "aliases": [],
-      "capabilities": {
-        "chat": true,
-        "embeddings": false,
-        "json": {
-          "native": false,
-          "schema": false,
-          "strict": false
-        },
-        "reasoning": {
-          "enabled": true
-        },
-        "streaming": {
-          "tool_calls": true
-        },
-        "tools": {
-          "enabled": true
-        }
-      },
-      "cost": {
-        "cache_read": 0.15,
-        "input": 0.3,
-        "output": 1.2
-      },
-      "deprecated": false,
-      "extra": {
-        "attachment": false,
-        "family": "minimax",
-        "interleaved": {
-          "field": "reasoning_content"
-        },
-        "open_weights": true,
-        "temperature": true
-      },
-      "family": null,
-      "id": "accounts/fireworks/models/minimax-m2p1",
-      "knowledge": null,
-      "last_updated": "2025-12-23",
-      "lifecycle": null,
-      "limits": {
-        "context": 200000,
-        "output": 200000
-      },
-      "modalities": {
-        "input": [
-          "text"
-        ],
-        "output": [
-          "text"
-        ]
-      },
-      "model": null,
-      "name": "MiniMax-M2.1",
-      "provider": "fireworks_ai",
-      "provider_model_id": null,
-      "release_date": "2025-12-23",
-      "tags": null
-    },
-    "accounts/fireworks/models/qwen3-235b-a22b": {
-      "aliases": [],
-      "capabilities": {
-        "chat": true,
-        "embeddings": false,
-        "json": {
-          "native": false,
-          "schema": false,
-          "strict": false
-        },
-        "reasoning": {
-          "enabled": true
-        },
-        "streaming": {
-          "tool_calls": true
-        },
-        "tools": {
-          "enabled": true
-        }
-      },
-      "cost": {
-        "input": 0.22,
-        "output": 0.88
-      },
-      "deprecated": false,
-      "extra": {
-        "attachment": false,
-        "family": "qwen3",
-        "open_weights": true,
-        "temperature": true
-      },
-      "family": null,
-      "id": "accounts/fireworks/models/qwen3-235b-a22b",
-      "knowledge": "2025-04",
-      "last_updated": "2025-04-29",
-      "lifecycle": null,
-      "limits": {
-        "context": 128000,
-        "output": 16384
-      },
-      "modalities": {
-        "input": [
-          "text"
-        ],
-        "output": [
-          "text"
-        ]
-      },
-      "model": null,
-      "name": "Qwen3 235B-A22B",
-      "provider": "fireworks_ai",
-      "provider_model_id": null,
-      "release_date": "2025-04-29",
-      "tags": null
-    },
-    "accounts/fireworks/models/qwen3-coder-480b-a35b-instruct": {
+    "meta-llama/llama-4-maverick": {
       "aliases": [],
       "capabilities": {
         "chat": true,
@@ -882,24 +202,25 @@
         }
       },
       "cost": {
-        "input": 0.45,
-        "output": 1.8
+        "input": 1,
+        "output": 2
       },
       "deprecated": false,
       "extra": {
         "attachment": false,
-        "family": "qwen3-coder",
+        "family": "llama",
         "open_weights": true,
+        "structured_output": true,
         "temperature": true
       },
       "family": null,
-      "id": "accounts/fireworks/models/qwen3-coder-480b-a35b-instruct",
-      "knowledge": null,
-      "last_updated": "2025-07-22",
+      "id": "meta-llama/llama-4-maverick",
+      "knowledge": "2025-01",
+      "last_updated": "2025-12-24",
       "lifecycle": null,
       "limits": {
-        "context": 256000,
-        "output": 32768
+        "context": 128000,
+        "output": 8192
       },
       "modalities": {
         "input": [
@@ -910,12 +231,976 @@
         ]
       },
       "model": null,
-      "name": "Qwen3 Coder 480B A35B Instruct",
-      "provider": "fireworks_ai",
+      "name": "Llama 4 Maverick",
+      "provider": "nano_gpt",
       "provider_model_id": null,
-      "release_date": "2025-07-22",
+      "release_date": "2025-04-05",
+      "tags": null
+    },
+    "minimax/minimax-m2.1": {
+      "aliases": [],
+      "capabilities": {
+        "chat": true,
+        "embeddings": false,
+        "json": {
+          "native": false,
+          "schema": false,
+          "strict": false
+        },
+        "reasoning": {
+          "enabled": false
+        },
+        "streaming": {
+          "tool_calls": true
+        },
+        "tools": {
+          "enabled": true
+        }
+      },
+      "cost": {
+        "input": 1,
+        "output": 2
+      },
+      "deprecated": false,
+      "extra": {
+        "attachment": false,
+        "family": "minimax",
+        "interleaved": {
+          "field": "reasoning_content"
+        },
+        "open_weights": false,
+        "structured_output": true,
+        "temperature": true
+      },
+      "family": null,
+      "id": "minimax/minimax-m2.1",
+      "knowledge": null,
+      "last_updated": "2025-12-24",
+      "lifecycle": null,
+      "limits": {
+        "context": 128000,
+        "output": 8192
+      },
+      "modalities": {
+        "input": [
+          "text"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "model": null,
+      "name": "Minimax M2.1",
+      "provider": "nano_gpt",
+      "provider_model_id": null,
+      "release_date": "2025-12-23",
+      "tags": null
+    },
+    "mistralai/devstral-2-123b-instruct-2512": {
+      "aliases": [],
+      "capabilities": {
+        "chat": true,
+        "embeddings": false,
+        "json": {
+          "native": false,
+          "schema": false,
+          "strict": false
+        },
+        "reasoning": {
+          "enabled": false
+        },
+        "streaming": {
+          "tool_calls": true
+        },
+        "tools": {
+          "enabled": true
+        }
+      },
+      "cost": {
+        "input": 1,
+        "output": 2
+      },
+      "deprecated": false,
+      "extra": {
+        "attachment": false,
+        "family": "mistral",
+        "open_weights": true,
+        "structured_output": true,
+        "temperature": true
+      },
+      "family": null,
+      "id": "mistralai/devstral-2-123b-instruct-2512",
+      "knowledge": null,
+      "last_updated": "2025-12-24",
+      "lifecycle": null,
+      "limits": {
+        "context": 131072,
+        "output": 8192
+      },
+      "modalities": {
+        "input": [
+          "text"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "model": null,
+      "name": "Devstral 2 123b Instruct 2512",
+      "provider": "nano_gpt",
+      "provider_model_id": null,
+      "release_date": "2025-12-11",
+      "tags": null
+    },
+    "mistralai/ministral-14b-instruct-2512": {
+      "aliases": [],
+      "capabilities": {
+        "chat": true,
+        "embeddings": false,
+        "json": {
+          "native": false,
+          "schema": false,
+          "strict": false
+        },
+        "reasoning": {
+          "enabled": false
+        },
+        "streaming": {
+          "tool_calls": true
+        },
+        "tools": {
+          "enabled": true
+        }
+      },
+      "cost": {
+        "input": 1,
+        "output": 2
+      },
+      "deprecated": false,
+      "extra": {
+        "attachment": false,
+        "family": "mistral",
+        "open_weights": true,
+        "structured_output": true,
+        "temperature": true
+      },
+      "family": null,
+      "id": "mistralai/ministral-14b-instruct-2512",
+      "knowledge": "2025-12",
+      "last_updated": "2025-12-24",
+      "lifecycle": null,
+      "limits": {
+        "context": 131072,
+        "output": 8192
+      },
+      "modalities": {
+        "input": [
+          "text"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "model": null,
+      "name": "Ministral 14b Instruct 2512",
+      "provider": "nano_gpt",
+      "provider_model_id": null,
+      "release_date": "2025-12-01",
+      "tags": null
+    },
+    "mistralai/mistral-large-3-675b-instruct-2512": {
+      "aliases": [],
+      "capabilities": {
+        "chat": true,
+        "embeddings": false,
+        "json": {
+          "native": false,
+          "schema": false,
+          "strict": false
+        },
+        "reasoning": {
+          "enabled": false
+        },
+        "streaming": {
+          "tool_calls": true
+        },
+        "tools": {
+          "enabled": true
+        }
+      },
+      "cost": {
+        "input": 1,
+        "output": 2
+      },
+      "deprecated": false,
+      "extra": {
+        "attachment": false,
+        "family": "mistral",
+        "open_weights": true,
+        "structured_output": true,
+        "temperature": true
+      },
+      "family": null,
+      "id": "mistralai/mistral-large-3-675b-instruct-2512",
+      "knowledge": "2025-01",
+      "last_updated": "2025-12-24",
+      "lifecycle": null,
+      "limits": {
+        "context": 131072,
+        "output": 8192
+      },
+      "modalities": {
+        "input": [
+          "text"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "model": null,
+      "name": "Mistral Large 3 675b Instruct 2512",
+      "provider": "nano_gpt",
+      "provider_model_id": null,
+      "release_date": "2025-12-02",
+      "tags": null
+    },
+    "moonshotai/kimi-k2-instruct": {
+      "aliases": [],
+      "capabilities": {
+        "chat": true,
+        "embeddings": false,
+        "json": {
+          "native": false,
+          "schema": false,
+          "strict": false
+        },
+        "reasoning": {
+          "enabled": false
+        },
+        "streaming": {
+          "tool_calls": true
+        },
+        "tools": {
+          "enabled": true
+        }
+      },
+      "cost": {
+        "input": 1,
+        "output": 2
+      },
+      "deprecated": false,
+      "extra": {
+        "attachment": false,
+        "family": "kimi",
+        "interleaved": {
+          "field": "reasoning_content"
+        },
+        "open_weights": false,
+        "structured_output": true,
+        "temperature": true
+      },
+      "family": null,
+      "id": "moonshotai/kimi-k2-instruct",
+      "knowledge": "2024-10",
+      "last_updated": "2025-12-24",
+      "lifecycle": null,
+      "limits": {
+        "context": 131072,
+        "output": 8192
+      },
+      "modalities": {
+        "input": [
+          "text"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "model": null,
+      "name": "Kimi K2 Instruct",
+      "provider": "nano_gpt",
+      "provider_model_id": null,
+      "release_date": "2024-07-18",
+      "tags": null
+    },
+    "moonshotai/kimi-k2-thinking": {
+      "aliases": [],
+      "capabilities": {
+        "chat": true,
+        "embeddings": false,
+        "json": {
+          "native": false,
+          "schema": false,
+          "strict": false
+        },
+        "reasoning": {
+          "enabled": true
+        },
+        "streaming": {
+          "tool_calls": true
+        },
+        "tools": {
+          "enabled": true
+        }
+      },
+      "cost": {
+        "input": 1,
+        "output": 2
+      },
+      "deprecated": false,
+      "extra": {
+        "attachment": false,
+        "family": "kimi",
+        "open_weights": false,
+        "structured_output": true,
+        "temperature": true
+      },
+      "family": null,
+      "id": "moonshotai/kimi-k2-thinking",
+      "knowledge": "2024-08",
+      "last_updated": "2025-12-24",
+      "lifecycle": null,
+      "limits": {
+        "context": 32768,
+        "output": 8192
+      },
+      "modalities": {
+        "input": [
+          "text"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "model": null,
+      "name": "Kimi K2 Thinking",
+      "provider": "nano_gpt",
+      "provider_model_id": null,
+      "release_date": "2024-11-01",
+      "tags": null
+    },
+    "nousresearch/hermes-4-405b:thinking": {
+      "aliases": [],
+      "capabilities": {
+        "chat": true,
+        "embeddings": false,
+        "json": {
+          "native": false,
+          "schema": false,
+          "strict": false
+        },
+        "reasoning": {
+          "enabled": true
+        },
+        "streaming": {
+          "tool_calls": true
+        },
+        "tools": {
+          "enabled": true
+        }
+      },
+      "cost": {
+        "input": 1,
+        "output": 2
+      },
+      "deprecated": false,
+      "extra": {
+        "attachment": false,
+        "family": "hermes",
+        "open_weights": true,
+        "structured_output": true,
+        "temperature": true
+      },
+      "family": null,
+      "id": "nousresearch/hermes-4-405b:thinking",
+      "knowledge": null,
+      "last_updated": "2025-12-24",
+      "lifecycle": null,
+      "limits": {
+        "context": 128000,
+        "output": 8192
+      },
+      "modalities": {
+        "input": [
+          "text"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "model": null,
+      "name": "Hermes 4 405b Thinking",
+      "provider": "nano_gpt",
+      "provider_model_id": null,
+      "release_date": "2024-08-13",
+      "tags": null
+    },
+    "nvidia/llama-3_3-nemotron-super-49b-v1_5": {
+      "aliases": [],
+      "capabilities": {
+        "chat": true,
+        "embeddings": false,
+        "json": {
+          "native": false,
+          "schema": false,
+          "strict": false
+        },
+        "reasoning": {
+          "enabled": false
+        },
+        "streaming": {
+          "tool_calls": true
+        },
+        "tools": {
+          "enabled": true
+        }
+      },
+      "cost": {
+        "input": 1,
+        "output": 2
+      },
+      "deprecated": false,
+      "extra": {
+        "attachment": false,
+        "family": "llama",
+        "open_weights": true,
+        "structured_output": true,
+        "temperature": true
+      },
+      "family": null,
+      "id": "nvidia/llama-3_3-nemotron-super-49b-v1_5",
+      "knowledge": null,
+      "last_updated": "2025-12-24",
+      "lifecycle": null,
+      "limits": {
+        "context": 128000,
+        "output": 8192
+      },
+      "modalities": {
+        "input": [
+          "text"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "model": null,
+      "name": "Llama 3 3 Nemotron Super 49B V1 5",
+      "provider": "nano_gpt",
+      "provider_model_id": null,
+      "release_date": "2025-08-08",
+      "tags": null
+    },
+    "openai/gpt-oss-120b": {
+      "aliases": [],
+      "capabilities": {
+        "chat": true,
+        "embeddings": false,
+        "json": {
+          "native": false,
+          "schema": false,
+          "strict": false
+        },
+        "reasoning": {
+          "enabled": false
+        },
+        "streaming": {
+          "tool_calls": true
+        },
+        "tools": {
+          "enabled": true
+        }
+      },
+      "cost": {
+        "input": 1,
+        "output": 2
+      },
+      "deprecated": false,
+      "extra": {
+        "attachment": false,
+        "family": "gpt",
+        "open_weights": false,
+        "structured_output": true,
+        "temperature": true
+      },
+      "family": null,
+      "id": "openai/gpt-oss-120b",
+      "knowledge": "2024-10",
+      "last_updated": "2025-12-24",
+      "lifecycle": null,
+      "limits": {
+        "context": 128000,
+        "output": 8192
+      },
+      "modalities": {
+        "input": [
+          "text"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "model": null,
+      "name": "GPT Oss 120b",
+      "provider": "nano_gpt",
+      "provider_model_id": null,
+      "release_date": "2025-06-23",
+      "tags": null
+    },
+    "qwen/qwen3-235b-a22b-thinking-2507": {
+      "aliases": [],
+      "capabilities": {
+        "chat": true,
+        "embeddings": false,
+        "json": {
+          "native": false,
+          "schema": false,
+          "strict": false
+        },
+        "reasoning": {
+          "enabled": true
+        },
+        "streaming": {
+          "tool_calls": true
+        },
+        "tools": {
+          "enabled": true
+        }
+      },
+      "cost": {
+        "input": 1,
+        "output": 2
+      },
+      "deprecated": false,
+      "extra": {
+        "attachment": false,
+        "family": "qwen",
+        "open_weights": true,
+        "structured_output": true,
+        "temperature": true
+      },
+      "family": null,
+      "id": "qwen/qwen3-235b-a22b-thinking-2507",
+      "knowledge": "2024-12",
+      "last_updated": "2025-12-24",
+      "lifecycle": null,
+      "limits": {
+        "context": 262144,
+        "output": 8192
+      },
+      "modalities": {
+        "input": [
+          "text"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "model": null,
+      "name": "Qwen3 235B A22B Thinking 2507",
+      "provider": "nano_gpt",
+      "provider_model_id": null,
+      "release_date": "2025-07-01",
+      "tags": null
+    },
+    "qwen/qwen3-coder": {
+      "aliases": [],
+      "capabilities": {
+        "chat": true,
+        "embeddings": false,
+        "json": {
+          "native": false,
+          "schema": false,
+          "strict": false
+        },
+        "reasoning": {
+          "enabled": false
+        },
+        "streaming": {
+          "tool_calls": true
+        },
+        "tools": {
+          "enabled": true
+        }
+      },
+      "cost": {
+        "input": 1,
+        "output": 2
+      },
+      "deprecated": false,
+      "extra": {
+        "attachment": false,
+        "family": "qwen",
+        "open_weights": true,
+        "structured_output": true,
+        "temperature": true
+      },
+      "family": null,
+      "id": "qwen/qwen3-coder",
+      "knowledge": "2024-12",
+      "last_updated": "2025-12-24",
+      "lifecycle": null,
+      "limits": {
+        "context": 106000,
+        "output": 8192
+      },
+      "modalities": {
+        "input": [
+          "text"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "model": null,
+      "name": "Qwen3 Coder",
+      "provider": "nano_gpt",
+      "provider_model_id": null,
+      "release_date": "2025-01-15",
+      "tags": null
+    },
+    "z-ai/glm-4.6": {
+      "aliases": [],
+      "capabilities": {
+        "chat": true,
+        "embeddings": false,
+        "json": {
+          "native": false,
+          "schema": false,
+          "strict": false
+        },
+        "reasoning": {
+          "enabled": false
+        },
+        "streaming": {
+          "tool_calls": true
+        },
+        "tools": {
+          "enabled": true
+        }
+      },
+      "cost": {
+        "input": 1,
+        "output": 2
+      },
+      "deprecated": false,
+      "extra": {
+        "attachment": false,
+        "family": "glm",
+        "open_weights": true,
+        "structured_output": true,
+        "temperature": true
+      },
+      "family": null,
+      "id": "z-ai/glm-4.6",
+      "knowledge": "2024-10",
+      "last_updated": "2025-12-24",
+      "lifecycle": null,
+      "limits": {
+        "context": 200000,
+        "output": 8192
+      },
+      "modalities": {
+        "input": [
+          "text"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "model": null,
+      "name": "GLM 4.6",
+      "provider": "nano_gpt",
+      "provider_model_id": null,
+      "release_date": "2024-11-15",
+      "tags": null
+    },
+    "z-ai/glm-4.6:thinking": {
+      "aliases": [],
+      "capabilities": {
+        "chat": true,
+        "embeddings": false,
+        "json": {
+          "native": false,
+          "schema": false,
+          "strict": false
+        },
+        "reasoning": {
+          "enabled": true
+        },
+        "streaming": {
+          "tool_calls": true
+        },
+        "tools": {
+          "enabled": true
+        }
+      },
+      "cost": {
+        "input": 1,
+        "output": 2
+      },
+      "deprecated": false,
+      "extra": {
+        "attachment": false,
+        "family": "glm",
+        "open_weights": true,
+        "structured_output": true,
+        "temperature": true
+      },
+      "family": null,
+      "id": "z-ai/glm-4.6:thinking",
+      "knowledge": null,
+      "last_updated": "2025-12-24",
+      "lifecycle": null,
+      "limits": {
+        "context": 128000,
+        "output": 8192
+      },
+      "modalities": {
+        "input": [
+          "text"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "model": null,
+      "name": "GLM 4.6 Thinking",
+      "provider": "nano_gpt",
+      "provider_model_id": null,
+      "release_date": "2025-04-07",
+      "tags": null
+    },
+    "zai-org/glm-4.5-air": {
+      "aliases": [],
+      "capabilities": {
+        "chat": true,
+        "embeddings": false,
+        "json": {
+          "native": false,
+          "schema": false,
+          "strict": false
+        },
+        "reasoning": {
+          "enabled": false
+        },
+        "streaming": {
+          "tool_calls": true
+        },
+        "tools": {
+          "enabled": true
+        }
+      },
+      "cost": {
+        "input": 1,
+        "output": 2
+      },
+      "deprecated": false,
+      "extra": {
+        "attachment": false,
+        "family": "glm",
+        "open_weights": true,
+        "structured_output": true,
+        "temperature": true
+      },
+      "family": null,
+      "id": "zai-org/glm-4.5-air",
+      "knowledge": "2025-04",
+      "last_updated": "2025-12-24",
+      "lifecycle": null,
+      "limits": {
+        "context": 128000,
+        "output": 8192
+      },
+      "modalities": {
+        "input": [
+          "text"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "model": null,
+      "name": "GLM 4.5 Air",
+      "provider": "nano_gpt",
+      "provider_model_id": null,
+      "release_date": "2025-07-28",
+      "tags": null
+    },
+    "zai-org/glm-4.5-air:thinking": {
+      "aliases": [],
+      "capabilities": {
+        "chat": true,
+        "embeddings": false,
+        "json": {
+          "native": false,
+          "schema": false,
+          "strict": false
+        },
+        "reasoning": {
+          "enabled": true
+        },
+        "streaming": {
+          "tool_calls": true
+        },
+        "tools": {
+          "enabled": true
+        }
+      },
+      "cost": {
+        "input": 1,
+        "output": 2
+      },
+      "deprecated": false,
+      "extra": {
+        "attachment": false,
+        "family": "glm",
+        "open_weights": true,
+        "structured_output": true,
+        "temperature": true
+      },
+      "family": null,
+      "id": "zai-org/glm-4.5-air:thinking",
+      "knowledge": null,
+      "last_updated": "2025-12-24",
+      "lifecycle": null,
+      "limits": {
+        "context": 128000,
+        "output": 8192
+      },
+      "modalities": {
+        "input": [
+          "text"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "model": null,
+      "name": "GLM 4.5 Air Thinking",
+      "provider": "nano_gpt",
+      "provider_model_id": null,
+      "release_date": "2025-04-07",
+      "tags": null
+    },
+    "zai-org/glm-4.7": {
+      "aliases": [],
+      "capabilities": {
+        "chat": true,
+        "embeddings": false,
+        "json": {
+          "native": false,
+          "schema": false,
+          "strict": false
+        },
+        "reasoning": {
+          "enabled": false
+        },
+        "streaming": {
+          "tool_calls": true
+        },
+        "tools": {
+          "enabled": true
+        }
+      },
+      "cost": {
+        "input": 1,
+        "output": 2
+      },
+      "deprecated": false,
+      "extra": {
+        "attachment": false,
+        "family": "glm",
+        "interleaved": {
+          "field": "reasoning_content"
+        },
+        "open_weights": true,
+        "structured_output": true,
+        "temperature": true
+      },
+      "family": null,
+      "id": "zai-org/glm-4.7",
+      "knowledge": "2025-04",
+      "last_updated": "2025-12-24",
+      "lifecycle": null,
+      "limits": {
+        "context": 204800,
+        "output": 8192
+      },
+      "modalities": {
+        "input": [
+          "text"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "model": null,
+      "name": "GLM 4.7",
+      "provider": "nano_gpt",
+      "provider_model_id": null,
+      "release_date": "2025-12-22",
+      "tags": null
+    },
+    "zai-org/glm-4.7:thinking": {
+      "aliases": [],
+      "capabilities": {
+        "chat": true,
+        "embeddings": false,
+        "json": {
+          "native": false,
+          "schema": false,
+          "strict": false
+        },
+        "reasoning": {
+          "enabled": true
+        },
+        "streaming": {
+          "tool_calls": true
+        },
+        "tools": {
+          "enabled": true
+        }
+      },
+      "cost": {
+        "input": 1,
+        "output": 2
+      },
+      "deprecated": false,
+      "extra": {
+        "attachment": false,
+        "family": "glm",
+        "interleaved": {
+          "field": "reasoning_content"
+        },
+        "open_weights": true,
+        "structured_output": true,
+        "temperature": true
+      },
+      "family": null,
+      "id": "zai-org/glm-4.7:thinking",
+      "knowledge": null,
+      "last_updated": "2025-12-24",
+      "lifecycle": null,
+      "limits": {
+        "context": 128000,
+        "output": 8192
+      },
+      "modalities": {
+        "input": [
+          "text"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "model": null,
+      "name": "GLM 4.7 Thinking",
+      "provider": "nano_gpt",
+      "provider_model_id": null,
+      "release_date": "2025-04-07",
       "tags": null
     }
   },
-  "name": "Fireworks AI"
+  "name": "NanoGPT"
 }
