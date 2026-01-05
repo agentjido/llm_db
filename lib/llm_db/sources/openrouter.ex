@@ -156,16 +156,22 @@ defmodule LLMDB.Sources.OpenRouter do
 
   ```elixir
   %{
-    "openai" => %{
-      id: :openai,
-      name: "OpenAI",
+    "openrouter" => %{
+      id: :openrouter,
+      name: "OpenRouter",
       models: [
         %{
-          id: "gpt-4",
-          provider: :openai,
+          id: "openai/gpt-4",
+          provider: :openrouter,
           name: "GPT-4",
           limits: %{context: 128000, output: 16384},
           cost: %{input: 0.03, output: 0.06},
+          ...
+        },
+        %{
+          id: "perplexity/sonar-pro",
+          provider: :openrouter,
+          name: "Perplexity: Sonar Pro",
           ...
         }
       ]
@@ -174,31 +180,36 @@ defmodule LLMDB.Sources.OpenRouter do
   ```
 
   Main transformations:
-  - Extract provider ID from model ID (e.g., "openai/gpt-4" → :openai)
-  - Group models by provider
+  - Keep model IDs exactly as provided by OpenRouter (e.g., `perplexity/sonar-pro`)
+  - All models registered under `:openrouter` provider only
   - Transform pricing strings to floats (per 1M tokens)
   - Map context_length → limits.context
   - Map top_provider.max_completion_tokens → limits.output
   - Extract modality information
+
+  ## Provider Separation
+
+  OpenRouter models are distinct from native provider models. For example:
+  - `openrouter:perplexity/sonar-pro` - accessed via OpenRouter API
+  - `perplexity:sonar-pro` - accessed via native Perplexity API (from Perplexity source)
+
+  These are separate entries with potentially different pricing, limits, and capabilities.
+  Model IDs may contain `/` which is part of the ID string, not a provider delimiter.
   """
   def transform(content) when is_map(content) do
     models = Map.get(content, "data", [])
 
-    models
-    |> Enum.map(&transform_model/1)
-    |> Enum.group_by(fn model -> model.provider end)
-    |> Enum.map(fn {provider_id, models} ->
-      provider_str = to_string(provider_id)
+    canonical_models =
+      models
+      |> Enum.map(&transform_model/1)
 
-      provider = %{
-        id: provider_id,
-        name: provider_name(provider_id),
-        models: models
+    %{
+      "openrouter" => %{
+        id: :openrouter,
+        name: "OpenRouter",
+        models: canonical_models
       }
-
-      {provider_str, provider}
-    end)
-    |> Enum.into(%{})
+    }
   end
 
   # Private helpers
@@ -280,12 +291,14 @@ defmodule LLMDB.Sources.OpenRouter do
   ]
 
   defp transform_model(model) do
-    {provider_id, model_id} = parse_model_id(model["id"])
+    # Keep the full OpenRouter model ID (including any "/")
+    # All models are registered under :openrouter provider
+    model_id = model["id"]
 
     canonical =
       %{
         id: model_id,
-        provider: provider_id,
+        provider: :openrouter,
         name: model["name"]
       }
       |> put_if_present(:description, model["description"])
@@ -299,13 +312,6 @@ defmodule LLMDB.Sources.OpenRouter do
     canonical
   end
 
-  defp parse_model_id(id) when is_binary(id) do
-    case String.split(id, "/", parts: 2) do
-      [provider, model] -> {String.to_atom(provider), model}
-      [model] -> {:openrouter, model}
-    end
-  end
-
   defp parse_timestamp(nil), do: nil
 
   defp parse_timestamp(ts) when is_integer(ts) do
@@ -315,15 +321,6 @@ defmodule LLMDB.Sources.OpenRouter do
   end
 
   defp parse_timestamp(_), do: nil
-
-  defp provider_name(:openai), do: "OpenAI"
-  defp provider_name(:anthropic), do: "Anthropic"
-  defp provider_name(:google), do: "Google"
-  defp provider_name(:meta), do: "Meta"
-  defp provider_name(:mistral), do: "Mistral"
-  defp provider_name(:cohere), do: "Cohere"
-  defp provider_name(:openrouter), do: "OpenRouter"
-  defp provider_name(other), do: String.capitalize(to_string(other))
 
   defp map_limits(model, source) do
     limits =
