@@ -65,7 +65,8 @@ defmodule Mix.Tasks.LlmDb.Pull do
     "anthropic" => LLMDB.Sources.Anthropic,
     "google" => LLMDB.Sources.Google,
     "xai" => LLMDB.Sources.XAI,
-    "models_dev" => LLMDB.Sources.ModelsDev
+    "models_dev" => LLMDB.Sources.ModelsDev,
+    "zenmux" => LLMDB.Sources.Zenmux
   }
 
   @impl Mix.Task

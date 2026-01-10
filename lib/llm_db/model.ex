@@ -46,6 +46,10 @@ defmodule LLMDB.Model do
                  strict: Zoi.boolean() |> Zoi.nullish()
                })
 
+  @caching_schema Zoi.object(%{
+                    type: Zoi.enum([:implicit, :explicit]) |> Zoi.nullish()
+                  })
+
   @streaming_schema Zoi.object(%{
                       text: Zoi.boolean() |> Zoi.nullish(),
                       tool_calls: Zoi.boolean() |> Zoi.nullish()
@@ -80,6 +84,7 @@ defmodule LLMDB.Model do
                          json:
                            @json_schema
                            |> Zoi.default(%{native: false, schema: false, strict: false}),
+                         caching: @caching_schema |> Zoi.nullish(),
                          streaming:
                            @streaming_schema |> Zoi.default(%{text: true, tool_calls: false})
                        })
