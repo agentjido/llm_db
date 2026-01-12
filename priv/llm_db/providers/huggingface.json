@@ -10,7 +10,7 @@
   "extra": null,
   "id": "huggingface",
   "models": {
-    "MiniMaxAI/MiniMax-M2": {
+    "MiniMaxAI/MiniMax-M2.1": {
       "aliases": [],
       "capabilities": {
         "chat": true,
@@ -38,17 +38,20 @@
       "extra": {
         "attachment": false,
         "family": "minimax",
+        "interleaved": {
+          "field": "reasoning_details"
+        },
         "open_weights": true,
         "temperature": true
       },
       "family": null,
-      "id": "MiniMaxAI/MiniMax-M2",
+      "id": "MiniMaxAI/MiniMax-M2.1",
       "knowledge": "2025-10",
-      "last_updated": "2025-10-27",
+      "last_updated": "2025-12-23",
       "lifecycle": null,
       "limits": {
         "context": 204800,
-        "output": 204800
+        "output": 131072
       },
       "modalities": {
         "input": [
@@ -59,10 +62,10 @@
         ]
       },
       "model": null,
-      "name": "MiniMax-M2",
+      "name": "MiniMax-M2.1",
       "provider": "huggingface",
       "provider_model_id": null,
-      "release_date": "2025-10-27",
+      "release_date": "2025-12-23",
       "tags": null
     },
     "Qwen/Qwen3-235B-A22B-Thinking-2507": {
@@ -361,6 +364,61 @@
       "release_date": "2025-09-11",
       "tags": null
     },
+    "XiaomiMiMo/MiMo-V2-Flash": {
+      "aliases": [],
+      "capabilities": {
+        "chat": true,
+        "embeddings": false,
+        "json": {
+          "native": false,
+          "schema": false,
+          "strict": false
+        },
+        "reasoning": {
+          "enabled": true
+        },
+        "streaming": {
+          "tool_calls": true
+        },
+        "tools": {
+          "enabled": true
+        }
+      },
+      "cost": {
+        "input": 0.1,
+        "output": 0.3
+      },
+      "deprecated": false,
+      "extra": {
+        "attachment": false,
+        "family": "mimo",
+        "open_weights": true,
+        "temperature": true
+      },
+      "family": null,
+      "id": "XiaomiMiMo/MiMo-V2-Flash",
+      "knowledge": "2024-12",
+      "last_updated": "2025-12-16",
+      "lifecycle": null,
+      "limits": {
+        "context": 262144,
+        "output": 4096
+      },
+      "modalities": {
+        "input": [
+          "text"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "model": null,
+      "name": "MiMo-V2-Flash",
+      "provider": "huggingface",
+      "provider_model_id": null,
+      "release_date": "2025-12-16",
+      "tags": null
+    },
     "deepseek-ai/DeepSeek-R1-0528": {
       "aliases": [],
       "capabilities": {
@@ -416,7 +474,7 @@
       "release_date": "2025-05-28",
       "tags": null
     },
-    "deepseek-ai/Deepseek-V3-0324": {
+    "deepseek-ai/DeepSeek-V3.2": {
       "aliases": [],
       "capabilities": {
         "chat": true,
@@ -427,7 +485,7 @@
           "strict": false
         },
         "reasoning": {
-          "enabled": false
+          "enabled": true
         },
         "streaming": {
           "tool_calls": true
@@ -437,8 +495,8 @@
         }
       },
       "cost": {
-        "input": 1.25,
-        "output": 1.25
+        "input": 0.28,
+        "output": 0.4
       },
       "deprecated": false,
       "extra": {
@@ -448,13 +506,13 @@
         "temperature": true
       },
       "family": null,
-      "id": "deepseek-ai/Deepseek-V3-0324",
-      "knowledge": "2024-10",
-      "last_updated": "2025-03-24",
+      "id": "deepseek-ai/DeepSeek-V3.2",
+      "knowledge": "2024-07",
+      "last_updated": "2025-12-01",
       "lifecycle": null,
       "limits": {
-        "context": 16384,
-        "output": 8192
+        "context": 163840,
+        "output": 65536
       },
       "modalities": {
         "input": [
@@ -465,10 +523,10 @@
         ]
       },
       "model": null,
-      "name": "DeepSeek-V3-0324",
+      "name": "DeepSeek-V3.2",
       "provider": "huggingface",
       "provider_model_id": null,
-      "release_date": "2025-03-24",
+      "release_date": "2025-12-01",
       "tags": null
     },
     "moonshotai/Kimi-K2-Instruct": {
@@ -581,7 +639,7 @@
       "release_date": "2025-09-04",
       "tags": null
     },
-    "zai-org/GLM-4.5": {
+    "moonshotai/Kimi-K2-Thinking": {
       "aliases": [],
       "capabilities": {
         "chat": true,
@@ -602,24 +660,28 @@
         }
       },
       "cost": {
+        "cache_read": 0.15,
         "input": 0.6,
-        "output": 2.2
+        "output": 2.5
       },
       "deprecated": false,
       "extra": {
         "attachment": false,
-        "family": "glm-4.5",
+        "family": "kimi-k2",
+        "interleaved": {
+          "field": "reasoning_details"
+        },
         "open_weights": true,
         "temperature": true
       },
       "family": null,
-      "id": "zai-org/GLM-4.5",
-      "knowledge": "2025-04",
-      "last_updated": "2025-07-28",
+      "id": "moonshotai/Kimi-K2-Thinking",
+      "knowledge": "2024-08",
+      "last_updated": "2025-11-06",
       "lifecycle": null,
       "limits": {
-        "context": 131072,
-        "output": 98304
+        "context": 262144,
+        "output": 262144
       },
       "modalities": {
         "input": [
@@ -630,68 +692,13 @@
         ]
       },
       "model": null,
-      "name": "GLM-4.5",
+      "name": "Kimi-K2-Thinking",
       "provider": "huggingface",
       "provider_model_id": null,
-      "release_date": "2025-07-28",
+      "release_date": "2025-11-06",
       "tags": null
     },
-    "zai-org/GLM-4.5-Air": {
-      "aliases": [],
-      "capabilities": {
-        "chat": true,
-        "embeddings": false,
-        "json": {
-          "native": false,
-          "schema": false,
-          "strict": false
-        },
-        "reasoning": {
-          "enabled": true
-        },
-        "streaming": {
-          "tool_calls": true
-        },
-        "tools": {
-          "enabled": true
-        }
-      },
-      "cost": {
-        "input": 0.2,
-        "output": 1.1
-      },
-      "deprecated": false,
-      "extra": {
-        "attachment": false,
-        "family": "glm-4.5-air",
-        "open_weights": true,
-        "temperature": true
-      },
-      "family": null,
-      "id": "zai-org/GLM-4.5-Air",
-      "knowledge": "2025-04",
-      "last_updated": "2025-07-28",
-      "lifecycle": null,
-      "limits": {
-        "context": 128000,
-        "output": 96000
-      },
-      "modalities": {
-        "input": [
-          "text"
-        ],
-        "output": [
-          "text"
-        ]
-      },
-      "model": null,
-      "name": "GLM-4.5-Air",
-      "provider": "huggingface",
-      "provider_model_id": null,
-      "release_date": "2025-07-28",
-      "tags": null
-    },
-    "zai-org/GLM-4.6": {
+    "zai-org/GLM-4.7": {
       "aliases": [],
       "capabilities": {
         "chat": true,
@@ -719,18 +726,21 @@
       "deprecated": false,
       "extra": {
         "attachment": false,
-        "family": "glm-4.6",
+        "family": "glm-4.7",
+        "interleaved": {
+          "field": "reasoning_details"
+        },
         "open_weights": true,
         "temperature": true
       },
       "family": null,
-      "id": "zai-org/GLM-4.6",
+      "id": "zai-org/GLM-4.7",
       "knowledge": "2025-04",
-      "last_updated": "2025-09-30",
+      "last_updated": "2025-12-22",
       "lifecycle": null,
       "limits": {
-        "context": 200000,
-        "output": 128000
+        "context": 204800,
+        "output": 131072
       },
       "modalities": {
         "input": [
@@ -741,10 +751,10 @@
         ]
       },
       "model": null,
-      "name": "GLM-4.6",
+      "name": "GLM-4.7",
       "provider": "huggingface",
       "provider_model_id": null,
-      "release_date": "2025-09-30",
+      "release_date": "2025-12-22",
       "tags": null
     }
   },
