@@ -47,7 +47,7 @@ defmodule LLMDB.Model do
                })
 
   @caching_schema Zoi.object(%{
-                    type: Zoi.enum([:implicit, :explicit]) |> Zoi.nullish()
+                    type: Zoi.enum(["implicit", "explicit"]) |> Zoi.nullish()
                   })
 
   @streaming_schema Zoi.object(%{
