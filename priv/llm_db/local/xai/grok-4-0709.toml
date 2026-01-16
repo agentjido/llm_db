@@ -1,0 +1,31 @@
+id = "grok-4-0709"
+name = "Grok 4"
+provider_model_id = "grok-4-0709"
+knowledge = "2025-07"
+release_date = "2025-07-09"
+last_updated = "2025-07-09"
+
+[limits]
+context = 256000
+output = 16384
+
+[cost]
+input = 3
+output = 15
+cache_read = 0.75
+reasoning = 15
+
+[modalities]
+input = ["text", "image"]
+output = ["text"]
+
+[capabilities.reasoning]
+enabled = true
+
+[capabilities.tools]
+enabled = true
+
+[extra]
+attachment = true
+open_weights = false
+temperature = true
