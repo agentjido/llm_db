@@ -150,7 +150,7 @@
       },
       "cost": {
         "cache_read": 0.3,
-        "cache_write": 0.3,
+        "cache_write": 3.75,
         "input": 3,
         "output": 15
       },
@@ -482,6 +482,65 @@
       "release_date": "2025-10-01",
       "tags": null
     },
+    "anthropic--claude-4.5-opus": {
+      "aliases": [],
+      "capabilities": {
+        "chat": true,
+        "embeddings": false,
+        "json": {
+          "native": false,
+          "schema": false,
+          "strict": false
+        },
+        "reasoning": {
+          "enabled": true
+        },
+        "streaming": {
+          "tool_calls": true
+        },
+        "tools": {
+          "enabled": true
+        }
+      },
+      "cost": {
+        "cache_read": 0.5,
+        "cache_write": 6.25,
+        "input": 5,
+        "output": 25
+      },
+      "deprecated": false,
+      "extra": {
+        "attachment": true,
+        "family": "claude-opus",
+        "open_weights": false,
+        "temperature": true
+      },
+      "family": null,
+      "id": "anthropic--claude-4.5-opus",
+      "knowledge": "2025-04-30",
+      "last_updated": "2025-11-24",
+      "lifecycle": null,
+      "limits": {
+        "context": 200000,
+        "output": 64000
+      },
+      "modalities": {
+        "input": [
+          "text",
+          "image",
+          "pdf"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "model": null,
+      "name": "anthropic--claude-4.5-opus",
+      "provider": "sap_ai_core",
+      "provider_model_id": null,
+      "release_date": "2025-11-24",
+      "tags": null
+    },
     "anthropic--claude-4.5-sonnet": {
       "aliases": [],
       "capabilities": {
@@ -562,7 +621,7 @@
         }
       },
       "cost": {
-        "cache_read": 0.075,
+        "cache_read": 0.03,
         "input": 0.3,
         "input_audio": 1,
         "output": 2.5
@@ -624,7 +683,7 @@
         }
       },
       "cost": {
-        "cache_read": 0.31,
+        "cache_read": 0.125,
         "input": 1.25,
         "output": 10
       },
@@ -692,7 +751,7 @@
       "deprecated": false,
       "extra": {
         "attachment": true,
-        "family": "gpt-5",
+        "family": "gpt",
         "open_weights": false,
         "structured_output": true,
         "temperature": false
@@ -743,14 +802,14 @@
         }
       },
       "cost": {
-        "cache_read": 0.03,
+        "cache_read": 0.025,
         "input": 0.25,
         "output": 2
       },
       "deprecated": false,
       "extra": {
         "attachment": true,
-        "family": "gpt-5-mini",
+        "family": "gpt-mini",
         "open_weights": false,
         "structured_output": true,
         "temperature": false
@@ -808,7 +867,7 @@
       "deprecated": false,
       "extra": {
         "attachment": true,
-        "family": "gpt-5-nano",
+        "family": "gpt-nano",
         "open_weights": false,
         "structured_output": true,
         "temperature": false

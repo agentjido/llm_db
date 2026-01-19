@@ -788,7 +788,7 @@
       "deprecated": false,
       "extra": {
         "attachment": true,
-        "family": "gpt-4.1",
+        "family": "gpt",
         "open_weights": false,
         "temperature": true
       },
@@ -844,7 +844,7 @@
       "deprecated": false,
       "extra": {
         "attachment": true,
-        "family": "gpt-4o",
+        "family": "gpt",
         "open_weights": false,
         "temperature": true
       },
@@ -900,7 +900,7 @@
       "deprecated": false,
       "extra": {
         "attachment": true,
-        "family": "gpt-5",
+        "family": "gpt",
         "open_weights": false,
         "temperature": true
       },
@@ -956,7 +956,7 @@
       "deprecated": false,
       "extra": {
         "attachment": false,
-        "family": "gpt-5-codex",
+        "family": "gpt-codex",
         "open_weights": false,
         "temperature": false
       },
@@ -1012,7 +1012,7 @@
       "deprecated": false,
       "extra": {
         "attachment": true,
-        "family": "gpt-5-mini",
+        "family": "gpt-mini",
         "open_weights": false,
         "temperature": true
       },
@@ -1068,7 +1068,7 @@
       "deprecated": false,
       "extra": {
         "attachment": true,
-        "family": "gpt-5",
+        "family": "gpt",
         "open_weights": false,
         "temperature": false
       },
@@ -1124,7 +1124,7 @@
       "deprecated": false,
       "extra": {
         "attachment": false,
-        "family": "gpt-5-codex",
+        "family": "gpt-codex",
         "open_weights": false,
         "temperature": false
       },
@@ -1180,7 +1180,7 @@
       "deprecated": false,
       "extra": {
         "attachment": true,
-        "family": "gpt-5-codex-max",
+        "family": "gpt-codex",
         "open_weights": false,
         "temperature": false
       },
@@ -1236,7 +1236,7 @@
       "deprecated": false,
       "extra": {
         "attachment": false,
-        "family": "gpt-5-codex-mini",
+        "family": "gpt-codex",
         "open_weights": false,
         "temperature": false
       },
@@ -1292,7 +1292,7 @@
       "deprecated": false,
       "extra": {
         "attachment": true,
-        "family": "gpt-5",
+        "family": "gpt",
         "open_weights": false,
         "temperature": false
       },
@@ -1316,6 +1316,62 @@
       },
       "model": null,
       "name": "GPT-5.2",
+      "provider": "github_copilot",
+      "provider_model_id": null,
+      "release_date": "2025-12-11",
+      "tags": null
+    },
+    "gpt-5.2-codex": {
+      "aliases": [],
+      "capabilities": {
+        "chat": true,
+        "embeddings": false,
+        "json": {
+          "native": false,
+          "schema": false,
+          "strict": false
+        },
+        "reasoning": {
+          "enabled": true
+        },
+        "streaming": {
+          "tool_calls": true
+        },
+        "tools": {
+          "enabled": true
+        }
+      },
+      "cost": {
+        "input": 0,
+        "output": 0
+      },
+      "deprecated": false,
+      "extra": {
+        "attachment": false,
+        "family": "gpt-codex",
+        "open_weights": false,
+        "temperature": false
+      },
+      "family": null,
+      "id": "gpt-5.2-codex",
+      "knowledge": "2025-08-31",
+      "last_updated": "2025-12-11",
+      "lifecycle": null,
+      "limits": {
+        "context": 272000,
+        "output": 128000
+      },
+      "modalities": {
+        "input": [
+          "text",
+          "image"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "model": null,
+      "name": "GPT-5.2-Codex",
       "provider": "github_copilot",
       "provider_model_id": null,
       "release_date": "2025-12-11",
@@ -1403,7 +1459,7 @@
       "deprecated": false,
       "extra": {
         "attachment": true,
-        "family": "o3",
+        "family": "o",
         "open_weights": false,
         "status": "deprecated",
         "temperature": false
@@ -1464,7 +1520,7 @@
       "deprecated": false,
       "extra": {
         "attachment": false,
-        "family": "o3-mini",
+        "family": "o-mini",
         "open_weights": false,
         "status": "deprecated",
         "temperature": false
@@ -1524,7 +1580,7 @@
       "deprecated": false,
       "extra": {
         "attachment": false,
-        "family": "o4-mini",
+        "family": "o-mini",
         "open_weights": false,
         "status": "deprecated",
         "temperature": false
@@ -1551,62 +1607,6 @@
       "provider": "github_copilot",
       "provider_model_id": null,
       "release_date": "2025-04-16",
-      "tags": null
-    },
-    "oswe-vscode-prime": {
-      "aliases": [],
-      "capabilities": {
-        "chat": true,
-        "embeddings": false,
-        "json": {
-          "native": false,
-          "schema": false,
-          "strict": false
-        },
-        "reasoning": {
-          "enabled": true
-        },
-        "streaming": {
-          "tool_calls": true
-        },
-        "tools": {
-          "enabled": true
-        }
-      },
-      "cost": {
-        "input": 0,
-        "output": 0
-      },
-      "deprecated": false,
-      "extra": {
-        "attachment": true,
-        "family": "oswe-vscode-prime",
-        "open_weights": false,
-        "temperature": true
-      },
-      "family": null,
-      "id": "oswe-vscode-prime",
-      "knowledge": "2024-10",
-      "last_updated": "2025-11-10",
-      "lifecycle": null,
-      "limits": {
-        "context": 200000,
-        "output": 64000
-      },
-      "modalities": {
-        "input": [
-          "text",
-          "image"
-        ],
-        "output": [
-          "text"
-        ]
-      },
-      "model": null,
-      "name": "Raptor Mini (Preview)",
-      "provider": "github_copilot",
-      "provider_model_id": null,
-      "release_date": "2025-11-10",
       "tags": null
     }
   },

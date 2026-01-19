@@ -2,15 +2,16 @@
   "alias_of": null,
   "base_url": null,
   "config_schema": null,
-  "doc": "https://api.vultrinference.com/",
+  "doc": "https://docs.privatemode.ai/api/overview",
   "env": [
-    "VULTR_API_KEY"
+    "PRIVATEMODE_API_KEY",
+    "PRIVATEMODE_ENDPOINT"
   ],
   "exclude_models": null,
   "extra": null,
-  "id": "vultr",
+  "id": "privatemode_ai",
   "models": {
-    "deepseek-r1-distill-llama-70b": {
+    "gemma-3-27b": {
       "aliases": [],
       "capabilities": {
         "chat": true,
@@ -21,7 +22,7 @@
           "strict": false
         },
         "reasoning": {
-          "enabled": true
+          "enabled": false
         },
         "streaming": {
           "tool_calls": true
@@ -31,93 +32,40 @@
         }
       },
       "cost": {
-        "input": 0.2,
-        "output": 0.2
+        "input": 0,
+        "output": 0
       },
       "deprecated": false,
       "extra": {
-        "attachment": false,
-        "family": "deepseek-thinking",
+        "attachment": true,
+        "family": "gemma",
         "open_weights": true,
+        "structured_output": true,
         "temperature": true
       },
       "family": null,
-      "id": "deepseek-r1-distill-llama-70b",
-      "knowledge": "2024-10",
-      "last_updated": "2025-01-20",
+      "id": "gemma-3-27b",
+      "knowledge": "2024-08",
+      "last_updated": "2025-03-12",
       "lifecycle": null,
       "limits": {
-        "context": 121808,
+        "context": 128000,
         "output": 8192
       },
       "modalities": {
         "input": [
-          "text"
+          "text",
+          "image"
         ],
         "output": [
           "text"
         ]
       },
       "model": null,
-      "name": "DeepSeek R1 Distill Llama 70B",
-      "provider": "vultr",
+      "name": "Gemma 3 27B",
+      "provider": "privatemode_ai",
       "provider_model_id": null,
-      "release_date": "2025-01-20",
-      "tags": null
-    },
-    "deepseek-r1-distill-qwen-32b": {
-      "aliases": [],
-      "capabilities": {
-        "chat": true,
-        "embeddings": false,
-        "json": {
-          "native": false,
-          "schema": false,
-          "strict": false
-        },
-        "reasoning": {
-          "enabled": true
-        },
-        "streaming": {
-          "tool_calls": true
-        },
-        "tools": {
-          "enabled": true
-        }
-      },
-      "cost": {
-        "input": 0.2,
-        "output": 0.2
-      },
-      "deprecated": false,
-      "extra": {
-        "attachment": false,
-        "family": "qwen",
-        "open_weights": true,
-        "temperature": true
-      },
-      "family": null,
-      "id": "deepseek-r1-distill-qwen-32b",
-      "knowledge": "2024-10",
-      "last_updated": "2025-01-20",
-      "lifecycle": null,
-      "limits": {
-        "context": 121808,
-        "output": 8192
-      },
-      "modalities": {
-        "input": [
-          "text"
-        ],
-        "output": [
-          "text"
-        ]
-      },
-      "model": null,
-      "name": "DeepSeek R1 Distill Qwen 32B",
-      "provider": "vultr",
-      "provider_model_id": null,
-      "release_date": "2025-01-20",
+      "release_date": "2025-03-12",
       "tags": null
     },
     "gpt-oss-120b": {
@@ -131,7 +79,7 @@
           "strict": false
         },
         "reasoning": {
-          "enabled": false
+          "enabled": true
         },
         "streaming": {
           "tool_calls": true
@@ -141,24 +89,25 @@
         }
       },
       "cost": {
-        "input": 0.2,
-        "output": 0.2
+        "input": 0,
+        "output": 0
       },
       "deprecated": false,
       "extra": {
         "attachment": false,
         "family": "gpt-oss",
         "open_weights": true,
+        "structured_output": true,
         "temperature": true
       },
       "family": null,
       "id": "gpt-oss-120b",
-      "knowledge": "2024-10",
-      "last_updated": "2025-06-23",
+      "knowledge": "2025-08",
+      "last_updated": "2025-08-14",
       "lifecycle": null,
       "limits": {
-        "context": 121808,
-        "output": 8192
+        "context": 128000,
+        "output": 128000
       },
       "modalities": {
         "input": [
@@ -169,13 +118,13 @@
         ]
       },
       "model": null,
-      "name": "GPT OSS 120B",
-      "provider": "vultr",
+      "name": "gpt-oss-120b",
+      "provider": "privatemode_ai",
       "provider_model_id": null,
-      "release_date": "2025-06-23",
+      "release_date": "2025-08-04",
       "tags": null
     },
-    "kimi-k2-instruct": {
+    "qwen3-coder-30b-a3b": {
       "aliases": [],
       "capabilities": {
         "chat": true,
@@ -196,79 +145,25 @@
         }
       },
       "cost": {
-        "input": 0.2,
-        "output": 0.2
-      },
-      "deprecated": false,
-      "extra": {
-        "attachment": false,
-        "family": "kimi",
-        "open_weights": true,
-        "temperature": true
-      },
-      "family": null,
-      "id": "kimi-k2-instruct",
-      "knowledge": "2024-10",
-      "last_updated": "2024-07-18",
-      "lifecycle": null,
-      "limits": {
-        "context": 58904,
-        "output": 4096
-      },
-      "modalities": {
-        "input": [
-          "text"
-        ],
-        "output": [
-          "text"
-        ]
-      },
-      "model": null,
-      "name": "Kimi K2 Instruct",
-      "provider": "vultr",
-      "provider_model_id": null,
-      "release_date": "2024-07-18",
-      "tags": null
-    },
-    "qwen2.5-coder-32b-instruct": {
-      "aliases": [],
-      "capabilities": {
-        "chat": true,
-        "embeddings": false,
-        "json": {
-          "native": false,
-          "schema": false,
-          "strict": false
-        },
-        "reasoning": {
-          "enabled": false
-        },
-        "streaming": {
-          "tool_calls": true
-        },
-        "tools": {
-          "enabled": true
-        }
-      },
-      "cost": {
-        "input": 0.2,
-        "output": 0.2
+        "input": 0,
+        "output": 0
       },
       "deprecated": false,
       "extra": {
         "attachment": false,
         "family": "qwen",
         "open_weights": true,
+        "structured_output": true,
         "temperature": true
       },
       "family": null,
-      "id": "qwen2.5-coder-32b-instruct",
-      "knowledge": "2024-10",
-      "last_updated": "2024-11-06",
+      "id": "qwen3-coder-30b-a3b",
+      "knowledge": "2025-04",
+      "last_updated": "2025-04",
       "lifecycle": null,
       "limits": {
-        "context": 12952,
-        "output": 2048
+        "context": 128000,
+        "output": 32768
       },
       "modalities": {
         "input": [
@@ -279,12 +174,89 @@
         ]
       },
       "model": null,
-      "name": "Qwen2.5 Coder 32B Instruct",
-      "provider": "vultr",
+      "name": "Qwen3-Coder 30B-A3B",
+      "provider": "privatemode_ai",
       "provider_model_id": null,
-      "release_date": "2024-11-06",
+      "release_date": "2025-04",
+      "tags": null
+    },
+    "qwen3-embedding-4b": {
+      "aliases": [],
+      "capabilities": null,
+      "cost": {
+        "input": 0,
+        "output": 0
+      },
+      "deprecated": false,
+      "extra": {
+        "attachment": false,
+        "family": "qwen",
+        "open_weights": true,
+        "structured_output": false,
+        "temperature": true
+      },
+      "family": null,
+      "id": "qwen3-embedding-4b",
+      "knowledge": "2025-06",
+      "last_updated": "2025-06-06",
+      "lifecycle": null,
+      "limits": {
+        "context": 32000,
+        "output": 2560
+      },
+      "modalities": {
+        "input": [
+          "text"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "model": null,
+      "name": "Qwen3-Embedding 4B",
+      "provider": "privatemode_ai",
+      "provider_model_id": null,
+      "release_date": "2025-06-06",
+      "tags": null
+    },
+    "whisper-large-v3": {
+      "aliases": [],
+      "capabilities": null,
+      "cost": {
+        "input": 0,
+        "output": 0
+      },
+      "deprecated": false,
+      "extra": {
+        "attachment": true,
+        "family": "whisper",
+        "open_weights": true,
+        "structured_output": false,
+        "temperature": true
+      },
+      "family": null,
+      "id": "whisper-large-v3",
+      "knowledge": "2023-09",
+      "last_updated": "2023-09-01",
+      "lifecycle": null,
+      "limits": {
+        "output": 4096
+      },
+      "modalities": {
+        "input": [
+          "audio"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "model": null,
+      "name": "Whisper large-v3",
+      "provider": "privatemode_ai",
+      "provider_model_id": null,
+      "release_date": "2023-09-01",
       "tags": null
     }
   },
-  "name": "Vultr"
+  "name": "Privatemode AI"
 }

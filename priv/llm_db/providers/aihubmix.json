@@ -37,7 +37,7 @@
       "deprecated": false,
       "extra": {
         "attachment": false,
-        "family": "kimi-k2",
+        "family": "kimi",
         "open_weights": true,
         "temperature": true
       },
@@ -328,6 +328,7 @@
       "deprecated": false,
       "extra": {
         "attachment": false,
+        "family": "glm",
         "interleaved": {
           "field": "reasoning_details"
         },
@@ -352,10 +353,68 @@
         ]
       },
       "model": null,
-      "name": "Coding GLM-4.7 Free",
+      "name": "Coding GLM 4.7 Free",
       "provider": "aihubmix",
       "provider_model_id": null,
       "release_date": "2025-12-22",
+      "tags": null
+    },
+    "coding-minimax-m2.1-free": {
+      "aliases": [],
+      "capabilities": {
+        "chat": true,
+        "embeddings": false,
+        "json": {
+          "native": false,
+          "schema": false,
+          "strict": false
+        },
+        "reasoning": {
+          "enabled": true
+        },
+        "streaming": {
+          "tool_calls": true
+        },
+        "tools": {
+          "enabled": true
+        }
+      },
+      "cost": {
+        "input": 0,
+        "output": 0
+      },
+      "deprecated": false,
+      "extra": {
+        "attachment": false,
+        "family": "minimax",
+        "interleaved": {
+          "field": "reasoning_details"
+        },
+        "open_weights": true,
+        "temperature": true
+      },
+      "family": null,
+      "id": "coding-minimax-m2.1-free",
+      "knowledge": null,
+      "last_updated": "2025-12-23",
+      "lifecycle": null,
+      "limits": {
+        "context": 204800,
+        "output": 131072
+      },
+      "modalities": {
+        "input": [
+          "text"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "model": null,
+      "name": "Coding MiniMax M2.1 Free",
+      "provider": "aihubmix",
+      "provider_model_id": null,
+      "release_date": "2025-12-23",
       "tags": null
     },
     "deepseek-v3.2": {
@@ -385,7 +444,7 @@
       "deprecated": false,
       "extra": {
         "attachment": false,
-        "family": "deepseek-v3",
+        "family": "deepseek",
         "open_weights": true,
         "temperature": true
       },
@@ -408,6 +467,98 @@
       },
       "model": null,
       "name": "DeepSeek-V3.2",
+      "provider": "aihubmix",
+      "provider_model_id": null,
+      "release_date": "2025-12-01",
+      "tags": null
+    },
+    "deepseek-v3.2-fast": {
+      "aliases": [],
+      "capabilities": null,
+      "cost": {
+        "input": 1.1,
+        "output": 3.29
+      },
+      "deprecated": false,
+      "extra": {
+        "attachment": false,
+        "family": "deepseek",
+        "open_weights": true
+      },
+      "family": null,
+      "id": "deepseek-v3.2-fast",
+      "knowledge": "2024-07",
+      "last_updated": "2025-12-01",
+      "lifecycle": null,
+      "limits": {
+        "context": 128000,
+        "output": 128000
+      },
+      "modalities": {
+        "input": [
+          "text"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "model": null,
+      "name": "DeepSeek-V3.2-Fast",
+      "provider": "aihubmix",
+      "provider_model_id": null,
+      "release_date": "2025-12-01",
+      "tags": null
+    },
+    "deepseek-v3.2-speciale": {
+      "aliases": [],
+      "capabilities": {
+        "chat": true,
+        "embeddings": false,
+        "json": {
+          "native": false,
+          "schema": false,
+          "strict": false
+        },
+        "reasoning": {
+          "enabled": true
+        },
+        "streaming": {
+          "tool_calls": true
+        },
+        "tools": {
+          "enabled": true
+        }
+      },
+      "cost": {
+        "input": 0.58,
+        "output": 1.68
+      },
+      "deprecated": false,
+      "extra": {
+        "attachment": false,
+        "family": "deepseek",
+        "open_weights": true,
+        "temperature": true
+      },
+      "family": null,
+      "id": "deepseek-v3.2-speciale",
+      "knowledge": "2024-07",
+      "last_updated": "2025-12-01",
+      "lifecycle": null,
+      "limits": {
+        "context": 128000,
+        "output": 128000
+      },
+      "modalities": {
+        "input": [
+          "text"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "model": null,
+      "name": "DeepSeek V3.2 Speciale",
       "provider": "aihubmix",
       "provider_model_id": null,
       "release_date": "2025-12-01",
@@ -440,7 +591,7 @@
       "deprecated": false,
       "extra": {
         "attachment": false,
-        "family": "deepseek-v3",
+        "family": "deepseek",
         "open_weights": true,
         "temperature": true
       },
@@ -673,7 +824,7 @@
       "deprecated": false,
       "extra": {
         "attachment": false,
-        "family": "glm-4.7",
+        "family": "glm",
         "interleaved": {
           "field": "reasoning_details"
         },
@@ -732,7 +883,7 @@
       "deprecated": false,
       "extra": {
         "attachment": true,
-        "family": "gpt-4.1",
+        "family": "gpt",
         "open_weights": false,
         "temperature": true
       },
@@ -789,7 +940,7 @@
       "deprecated": false,
       "extra": {
         "attachment": true,
-        "family": "gpt-4.1-mini",
+        "family": "gpt-mini",
         "open_weights": false,
         "temperature": true
       },
@@ -846,7 +997,7 @@
       "deprecated": false,
       "extra": {
         "attachment": true,
-        "family": "gpt-4.1-nano",
+        "family": "gpt-nano",
         "open_weights": false,
         "temperature": true
       },
@@ -903,7 +1054,7 @@
       "deprecated": false,
       "extra": {
         "attachment": true,
-        "family": "gpt-4o",
+        "family": "gpt",
         "open_weights": false,
         "temperature": true
       },
@@ -930,63 +1081,6 @@
       "provider": "aihubmix",
       "provider_model_id": null,
       "release_date": "2024-05-13",
-      "tags": null
-    },
-    "gpt-4o-2024-11-20": {
-      "aliases": [],
-      "capabilities": {
-        "chat": true,
-        "embeddings": false,
-        "json": {
-          "native": false,
-          "schema": false,
-          "strict": false
-        },
-        "reasoning": {
-          "enabled": false
-        },
-        "streaming": {
-          "tool_calls": true
-        },
-        "tools": {
-          "enabled": true
-        }
-      },
-      "cost": {
-        "cache_read": 1.25,
-        "input": 2.5,
-        "output": 10
-      },
-      "deprecated": false,
-      "extra": {
-        "attachment": true,
-        "family": "gpt-4o",
-        "open_weights": false,
-        "temperature": true
-      },
-      "family": null,
-      "id": "gpt-4o-2024-11-20",
-      "knowledge": "2023-09",
-      "last_updated": "2024-11-20",
-      "lifecycle": null,
-      "limits": {
-        "context": 128000,
-        "output": 16384
-      },
-      "modalities": {
-        "input": [
-          "text",
-          "image"
-        ],
-        "output": [
-          "text"
-        ]
-      },
-      "model": null,
-      "name": "GPT-4o (2024-11-20)",
-      "provider": "aihubmix",
-      "provider_model_id": null,
-      "release_date": "2024-11-20",
       "tags": null
     },
     "gpt-5": {
@@ -1017,7 +1111,7 @@
       "deprecated": false,
       "extra": {
         "attachment": true,
-        "family": "gpt-5",
+        "family": "gpt",
         "open_weights": false,
         "temperature": true
       },
@@ -1074,7 +1168,7 @@
       "deprecated": false,
       "extra": {
         "attachment": false,
-        "family": "gpt-5-codex",
+        "family": "gpt-codex",
         "open_weights": false,
         "temperature": false
       },
@@ -1131,7 +1225,7 @@
       "deprecated": false,
       "extra": {
         "attachment": true,
-        "family": "gpt-5-mini",
+        "family": "gpt-mini",
         "open_weights": false,
         "temperature": true
       },
@@ -1188,7 +1282,7 @@
       "deprecated": false,
       "extra": {
         "attachment": true,
-        "family": "gpt-5-nano",
+        "family": "gpt-nano",
         "open_weights": false,
         "temperature": true
       },
@@ -1245,7 +1339,7 @@
       "deprecated": false,
       "extra": {
         "attachment": true,
-        "family": "gpt-5-pro",
+        "family": "gpt-pro",
         "open_weights": false,
         "temperature": true
       },
@@ -1302,7 +1396,7 @@
       "deprecated": false,
       "extra": {
         "attachment": true,
-        "family": "gpt-5",
+        "family": "gpt",
         "open_weights": false,
         "temperature": true
       },
@@ -1359,7 +1453,7 @@
       "deprecated": false,
       "extra": {
         "attachment": true,
-        "family": "gpt-5-codex",
+        "family": "gpt-codex",
         "open_weights": false,
         "temperature": true
       },
@@ -1473,7 +1567,7 @@
       "deprecated": false,
       "extra": {
         "attachment": true,
-        "family": "gpt-5-codex-mini",
+        "family": "gpt-codex",
         "open_weights": false,
         "temperature": true
       },
@@ -1530,7 +1624,7 @@
       "deprecated": false,
       "extra": {
         "attachment": true,
-        "family": "gpt-5",
+        "family": "gpt",
         "open_weights": false,
         "temperature": false
       },
@@ -1617,64 +1711,6 @@
       "release_date": "2025-12-23",
       "tags": null
     },
-    "minimax-m2.1-free": {
-      "aliases": [],
-      "capabilities": {
-        "chat": true,
-        "embeddings": false,
-        "json": {
-          "native": false,
-          "schema": false,
-          "strict": false
-        },
-        "reasoning": {
-          "enabled": true
-        },
-        "streaming": {
-          "tool_calls": true
-        },
-        "tools": {
-          "enabled": true
-        }
-      },
-      "cost": {
-        "input": 0,
-        "output": 0
-      },
-      "deprecated": false,
-      "extra": {
-        "attachment": false,
-        "family": "minimax",
-        "interleaved": {
-          "field": "reasoning_details"
-        },
-        "open_weights": true,
-        "temperature": true
-      },
-      "family": null,
-      "id": "minimax-m2.1-free",
-      "knowledge": null,
-      "last_updated": "2025-12-23",
-      "lifecycle": null,
-      "limits": {
-        "context": 204800,
-        "output": 131072
-      },
-      "modalities": {
-        "input": [
-          "text"
-        ],
-        "output": [
-          "text"
-        ]
-      },
-      "model": null,
-      "name": "MiniMax M2.1 Free",
-      "provider": "aihubmix",
-      "provider_model_id": null,
-      "release_date": "2025-12-23",
-      "tags": null
-    },
     "o4-mini": {
       "aliases": [],
       "capabilities": {
@@ -1707,7 +1743,7 @@
       "deprecated": false,
       "extra": {
         "attachment": false,
-        "family": "o4-mini",
+        "family": "o-mini",
         "open_weights": false,
         "temperature": false
       },
@@ -1762,7 +1798,7 @@
       "deprecated": false,
       "extra": {
         "attachment": false,
-        "family": "qwen3",
+        "family": "qwen",
         "open_weights": true,
         "temperature": true
       },
@@ -1817,7 +1853,7 @@
       "deprecated": false,
       "extra": {
         "attachment": false,
-        "family": "qwen3",
+        "family": "qwen",
         "open_weights": true,
         "temperature": true
       },
@@ -1872,7 +1908,7 @@
       "deprecated": false,
       "extra": {
         "attachment": false,
-        "family": "qwen3-coder",
+        "family": "qwen",
         "open_weights": false,
         "temperature": true
       },
