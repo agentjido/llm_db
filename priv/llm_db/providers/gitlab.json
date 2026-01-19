@@ -2,15 +2,15 @@
   "alias_of": null,
   "base_url": null,
   "config_schema": null,
-  "doc": "https://lmstudio.ai/models",
+  "doc": "https://docs.gitlab.com/user/duo_agent_platform/",
   "env": [
-    "LMSTUDIO_API_KEY"
+    "GITLAB_TOKEN"
   ],
   "exclude_models": null,
   "extra": null,
-  "id": "lmstudio",
+  "id": "gitlab",
   "models": {
-    "openai/gpt-oss-20b": {
+    "duo-chat-haiku-4-5": {
       "aliases": [],
       "capabilities": {
         "chat": true,
@@ -21,7 +21,7 @@
           "strict": false
         },
         "reasoning": {
-          "enabled": true
+          "enabled": false
         },
         "streaming": {
           "tool_calls": true
@@ -31,24 +31,26 @@
         }
       },
       "cost": {
+        "cache_read": 0,
+        "cache_write": 0,
         "input": 0,
         "output": 0
       },
       "deprecated": false,
       "extra": {
         "attachment": false,
-        "family": "gpt-oss",
-        "open_weights": true,
+        "family": "claude-haiku",
+        "open_weights": false,
         "temperature": true
       },
       "family": null,
-      "id": "openai/gpt-oss-20b",
+      "id": "duo-chat-haiku-4-5",
       "knowledge": null,
-      "last_updated": "2025-08-05",
+      "last_updated": "2026-01-08",
       "lifecycle": null,
       "limits": {
-        "context": 131072,
-        "output": 32768
+        "context": 200000,
+        "output": 4096
       },
       "modalities": {
         "input": [
@@ -59,13 +61,13 @@
         ]
       },
       "model": null,
-      "name": "GPT OSS 20B",
-      "provider": "lmstudio",
+      "name": "Agentic Chat (Claude Haiku 4.5)",
+      "provider": "gitlab",
       "provider_model_id": null,
-      "release_date": "2025-08-05",
+      "release_date": "2026-01-08",
       "tags": null
     },
-    "qwen/qwen3-30b-a3b-2507": {
+    "duo-chat-opus-4-5": {
       "aliases": [],
       "capabilities": {
         "chat": true,
@@ -86,24 +88,26 @@
         }
       },
       "cost": {
+        "cache_read": 0,
+        "cache_write": 0,
         "input": 0,
         "output": 0
       },
       "deprecated": false,
       "extra": {
         "attachment": false,
-        "family": "qwen",
-        "open_weights": true,
+        "family": "claude-opus",
+        "open_weights": false,
         "temperature": true
       },
       "family": null,
-      "id": "qwen/qwen3-30b-a3b-2507",
-      "knowledge": "2025-04",
-      "last_updated": "2025-07-30",
+      "id": "duo-chat-opus-4-5",
+      "knowledge": null,
+      "last_updated": "2026-01-08",
       "lifecycle": null,
       "limits": {
-        "context": 262144,
-        "output": 16384
+        "context": 200000,
+        "output": 4096
       },
       "modalities": {
         "input": [
@@ -114,13 +118,13 @@
         ]
       },
       "model": null,
-      "name": "Qwen3 30B A3B 2507",
-      "provider": "lmstudio",
+      "name": "Agentic Chat (Claude Opus 4.5)",
+      "provider": "gitlab",
       "provider_model_id": null,
-      "release_date": "2025-07-30",
+      "release_date": "2026-01-08",
       "tags": null
     },
-    "qwen/qwen3-coder-30b": {
+    "duo-chat-sonnet-4-5": {
       "aliases": [],
       "capabilities": {
         "chat": true,
@@ -141,24 +145,26 @@
         }
       },
       "cost": {
+        "cache_read": 0,
+        "cache_write": 0,
         "input": 0,
         "output": 0
       },
       "deprecated": false,
       "extra": {
         "attachment": false,
-        "family": "qwen",
-        "open_weights": true,
+        "family": "claude-sonnet",
+        "open_weights": false,
         "temperature": true
       },
       "family": null,
-      "id": "qwen/qwen3-coder-30b",
-      "knowledge": "2025-04",
-      "last_updated": "2025-07-23",
+      "id": "duo-chat-sonnet-4-5",
+      "knowledge": null,
+      "last_updated": "2026-01-08",
       "lifecycle": null,
       "limits": {
-        "context": 262144,
-        "output": 65536
+        "context": 200000,
+        "output": 4096
       },
       "modalities": {
         "input": [
@@ -169,12 +175,12 @@
         ]
       },
       "model": null,
-      "name": "Qwen3 Coder 30B",
-      "provider": "lmstudio",
+      "name": "Agentic Chat (Claude Sonnet 4.5)",
+      "provider": "gitlab",
       "provider_model_id": null,
-      "release_date": "2025-07-23",
+      "release_date": "2026-01-08",
       "tags": null
     }
   },
-  "name": "LMStudio"
+  "name": "GitLab Duo"
 }

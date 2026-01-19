@@ -32,6 +32,7 @@
       },
       "cost": {
         "cache_read": 0.6,
+        "cache_write": 7.5,
         "input": 6,
         "output": 30
       },
@@ -46,7 +47,7 @@
       "family": null,
       "id": "claude-opus-45",
       "knowledge": "2025-03",
-      "last_updated": "2025-12-29",
+      "last_updated": "2026-01-08",
       "lifecycle": null,
       "limits": {
         "context": 202752,
@@ -67,6 +68,65 @@
       "provider": "venice",
       "provider_model_id": null,
       "release_date": "2025-12-06",
+      "tags": null
+    },
+    "claude-sonnet-45": {
+      "aliases": [],
+      "capabilities": {
+        "chat": true,
+        "embeddings": false,
+        "json": {
+          "native": false,
+          "schema": false,
+          "strict": false
+        },
+        "reasoning": {
+          "enabled": true
+        },
+        "streaming": {
+          "tool_calls": true
+        },
+        "tools": {
+          "enabled": true
+        }
+      },
+      "cost": {
+        "cache_read": 0.375,
+        "cache_write": 4.69,
+        "input": 3.75,
+        "output": 18.75
+      },
+      "deprecated": false,
+      "extra": {
+        "attachment": true,
+        "family": "claude-sonnet",
+        "open_weights": false,
+        "structured_output": true,
+        "temperature": true
+      },
+      "family": null,
+      "id": "claude-sonnet-45",
+      "knowledge": "2025-09",
+      "last_updated": "2026-01-15",
+      "lifecycle": null,
+      "limits": {
+        "context": 202752,
+        "output": 50688
+      },
+      "modalities": {
+        "input": [
+          "text",
+          "image"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "model": null,
+      "name": "Claude Sonnet 4.5",
+      "provider": "venice",
+      "provider_model_id": null,
+      "release_date": "2025-01-15",
       "tags": null
     },
     "deepseek-v3.2": {
@@ -101,7 +161,7 @@
       "deprecated": false,
       "extra": {
         "attachment": false,
-        "family": "deepseek-v3",
+        "family": "deepseek",
         "open_weights": true,
         "temperature": true
       },
@@ -280,7 +340,7 @@
       "deprecated": false,
       "extra": {
         "attachment": true,
-        "family": "gemma-3",
+        "family": "gemma",
         "open_weights": true,
         "structured_output": true,
         "temperature": true
@@ -435,14 +495,14 @@
       "deprecated": false,
       "extra": {
         "attachment": false,
-        "family": "llama-3.1",
+        "family": "hermes",
         "open_weights": true,
         "temperature": true
       },
       "family": null,
       "id": "hermes-3-llama-3.1-405b",
       "knowledge": "2024-04",
-      "last_updated": "2025-12-29",
+      "last_updated": "2026-01-15",
       "lifecycle": null,
       "limits": {
         "context": 131072,
@@ -491,7 +551,7 @@
       "deprecated": false,
       "extra": {
         "attachment": false,
-        "family": "kimi-k2",
+        "family": "kimi-thinking",
         "open_weights": true,
         "structured_output": true,
         "temperature": true
@@ -547,15 +607,14 @@
       "deprecated": false,
       "extra": {
         "attachment": false,
-        "family": "llama-3.2",
+        "family": "llama",
         "open_weights": true,
-        "structured_output": true,
         "temperature": true
       },
       "family": null,
       "id": "llama-3.2-3b",
       "knowledge": "2023-12",
-      "last_updated": "2025-12-18",
+      "last_updated": "2026-01-13",
       "lifecycle": null,
       "limits": {
         "context": 131072,
@@ -603,7 +662,7 @@
       "deprecated": false,
       "extra": {
         "attachment": false,
-        "family": "llama-3.3",
+        "family": "llama",
         "open_weights": true,
         "temperature": true
       },
@@ -776,7 +835,7 @@
       "deprecated": false,
       "extra": {
         "attachment": false,
-        "family": "gpt-5",
+        "family": "gpt",
         "open_weights": false,
         "structured_output": true,
         "temperature": true
@@ -803,6 +862,64 @@
       "provider": "venice",
       "provider_model_id": null,
       "release_date": "2025-12-13",
+      "tags": null
+    },
+    "openai-gpt-52-codex": {
+      "aliases": [],
+      "capabilities": {
+        "chat": true,
+        "embeddings": false,
+        "json": {
+          "native": false,
+          "schema": false,
+          "strict": false
+        },
+        "reasoning": {
+          "enabled": true
+        },
+        "streaming": {
+          "tool_calls": true
+        },
+        "tools": {
+          "enabled": true
+        }
+      },
+      "cost": {
+        "cache_read": 0.219,
+        "input": 2.19,
+        "output": 17.5
+      },
+      "deprecated": false,
+      "extra": {
+        "attachment": true,
+        "family": "gpt-codex",
+        "open_weights": false,
+        "structured_output": true,
+        "temperature": true
+      },
+      "family": null,
+      "id": "openai-gpt-52-codex",
+      "knowledge": "2025-08",
+      "last_updated": "2026-01-15",
+      "lifecycle": null,
+      "limits": {
+        "context": 262144,
+        "output": 65536
+      },
+      "modalities": {
+        "input": [
+          "text",
+          "image"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "model": null,
+      "name": "GPT-5.2 Codex",
+      "provider": "venice",
+      "provider_model_id": null,
+      "release_date": "2025-01-15",
       "tags": null
     },
     "openai-gpt-oss-120b": {
@@ -832,7 +949,7 @@
       "deprecated": false,
       "extra": {
         "attachment": false,
-        "family": "openai-gpt-oss",
+        "family": "gpt-oss",
         "open_weights": true,
         "temperature": true
       },
@@ -887,7 +1004,7 @@
       "deprecated": false,
       "extra": {
         "attachment": false,
-        "family": "qwen3",
+        "family": "qwen",
         "open_weights": true,
         "structured_output": true,
         "temperature": true
@@ -943,7 +1060,7 @@
       "deprecated": false,
       "extra": {
         "attachment": false,
-        "family": "qwen3",
+        "family": "qwen",
         "open_weights": true,
         "structured_output": true,
         "temperature": true
@@ -999,7 +1116,7 @@
       "deprecated": false,
       "extra": {
         "attachment": false,
-        "family": "qwen3",
+        "family": "qwen",
         "open_weights": true,
         "structured_output": true,
         "temperature": true
@@ -1055,7 +1172,7 @@
       "deprecated": false,
       "extra": {
         "attachment": false,
-        "family": "qwen3-coder",
+        "family": "qwen",
         "open_weights": true,
         "structured_output": true,
         "temperature": true
@@ -1111,7 +1228,7 @@
       "deprecated": false,
       "extra": {
         "attachment": false,
-        "family": "qwen3",
+        "family": "qwen",
         "open_weights": true,
         "structured_output": true,
         "temperature": true
@@ -1150,7 +1267,7 @@
       "deprecated": false,
       "extra": {
         "attachment": false,
-        "family": "venice-uncensored",
+        "family": "venice",
         "open_weights": true,
         "structured_output": true,
         "temperature": true
@@ -1177,62 +1294,6 @@
       "provider": "venice",
       "provider_model_id": null,
       "release_date": "2025-03-18",
-      "tags": null
-    },
-    "zai-org-glm-4.6": {
-      "aliases": [],
-      "capabilities": {
-        "chat": true,
-        "embeddings": false,
-        "json": {
-          "native": false,
-          "schema": false,
-          "strict": false
-        },
-        "reasoning": {
-          "enabled": false
-        },
-        "streaming": {
-          "tool_calls": true
-        },
-        "tools": {
-          "enabled": true
-        }
-      },
-      "cost": {
-        "input": 0.85,
-        "output": 2.75
-      },
-      "deprecated": false,
-      "extra": {
-        "attachment": false,
-        "family": "glm-4.6",
-        "open_weights": true,
-        "structured_output": true,
-        "temperature": true
-      },
-      "family": null,
-      "id": "zai-org-glm-4.6",
-      "knowledge": "2024-04",
-      "last_updated": "2025-12-29",
-      "lifecycle": null,
-      "limits": {
-        "context": 202752,
-        "output": 50688
-      },
-      "modalities": {
-        "input": [
-          "text"
-        ],
-        "output": [
-          "text"
-        ]
-      },
-      "model": null,
-      "name": "GLM 4.6",
-      "provider": "venice",
-      "provider_model_id": null,
-      "release_date": "2025-10-18",
       "tags": null
     },
     "zai-org-glm-4.6v": {
@@ -1262,7 +1323,10 @@
       "deprecated": false,
       "extra": {
         "attachment": true,
-        "family": "glm-4.6",
+        "family": "glmv",
+        "interleaved": {
+          "field": "reasoning_details"
+        },
         "open_weights": true,
         "structured_output": true,
         "temperature": true
@@ -1270,7 +1334,7 @@
       "family": null,
       "id": "zai-org-glm-4.6v",
       "knowledge": null,
-      "last_updated": "2025-12-29",
+      "last_updated": "2026-01-15",
       "lifecycle": null,
       "limits": {
         "context": 131072,
@@ -1319,7 +1383,7 @@
       "deprecated": false,
       "extra": {
         "attachment": false,
-        "family": "glm-4.7",
+        "family": "glm",
         "interleaved": {
           "field": "reasoning_details"
         },
