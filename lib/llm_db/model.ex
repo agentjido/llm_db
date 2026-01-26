@@ -100,6 +100,7 @@ defmodule LLMDB.Model do
              :release_date,
              :last_updated,
              :knowledge,
+             :base_url,
              :limits,
              :cost,
              :modalities,
@@ -123,6 +124,7 @@ defmodule LLMDB.Model do
               release_date: Zoi.string() |> Zoi.nullish(),
               last_updated: Zoi.string() |> Zoi.nullish(),
               knowledge: Zoi.string() |> Zoi.nullish(),
+              base_url: Zoi.string() |> Zoi.nullish(),
               limits: @limits_schema |> Zoi.nullish(),
               cost: @cost_schema |> Zoi.nullish(),
               modalities:
