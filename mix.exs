@@ -1,7 +1,7 @@
 defmodule LLMDB.MixProject do
   use Mix.Project
 
-  @version "2026.1.1"
+  @version "2026.1.2"
   @source_url "https://github.com/agentjido/llm_db"
   @description "LLM model metadata catalog with fast, capability-aware lookups."
 
