@@ -32,6 +32,31 @@ Query, filter, and access LLM model metadata at runtime.
     ]
   }
 )
+
+# With local providers that use a port per model
+{:ok, snapshot} = LLMDB.load(
+  custom: %{
+    vllm: [
+      name: "VLLM Provider",
+      models: %{
+        "llama-3" => %{
+          capabilities: %{chat: true, tools: %{enabled: true}},
+          limits: %{context: 8192, output: 2048},
+          base_url: "http://localhost:8000/v1"
+        ,
+        "SmolVLM-256M-Instruct" => %{
+          capabilities: %{chat: true},
+          modalities: %{
+            "input" => ["text","image"],
+            "output" => ["text"]
+          },
+          limits: %{context: 8192}
+          base_url: "http://localhost:8001/v1"
+        }
+      }
+    ]
+  }
+)
 ```
 
 **Steps**:

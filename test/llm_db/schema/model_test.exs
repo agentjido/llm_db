@@ -125,6 +125,12 @@ defmodule LLMDB.Schema.ModelTest do
       assert result.knowledge == nil
     end
 
+    test "base_url is optional" do
+      input = %{id: "gpt-4o", provider: :openai}
+      assert {:ok, result} = Zoi.parse(Model.schema(), input)
+      assert result.base_url == nil
+    end
+
     test "limits is optional" do
       input = %{id: "gpt-4o", provider: :openai}
       assert {:ok, result} = Zoi.parse(Model.schema(), input)

@@ -103,6 +103,7 @@ See `LLMDB.Schema.Provider` and `LLMDB.Provider` for details.
 - `:knowledge` (date, optional) - Knowledge cutoff date
 - `:deprecated` (boolean, default: `false`) - Deprecation status
 - `:aliases` (list of strings, default: `[]`) - Alternative identifiers (see below)
+- `:base_url` (date, optional) - Model specific base_url.  Typically used for local models that are deployed to different port numbers.
 - `:tags` (list of strings, optional) - Categorization tags
 - `:extra` (map, optional) - Additional model-specific data
 
