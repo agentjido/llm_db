@@ -10,7 +10,118 @@
   "extra": null,
   "id": "firmware",
   "models": {
-    "claude-haiku-4-5-20251001": {
+    "cerebras-gpt-oss-120b": {
+      "aliases": [],
+      "capabilities": {
+        "chat": true,
+        "embeddings": false,
+        "json": {
+          "native": false,
+          "schema": false,
+          "strict": false
+        },
+        "reasoning": {
+          "enabled": true
+        },
+        "streaming": {
+          "tool_calls": true
+        },
+        "tools": {
+          "enabled": true
+        }
+      },
+      "cost": {
+        "input": 0,
+        "output": 0
+      },
+      "deprecated": false,
+      "extra": {
+        "attachment": false,
+        "family": "gpt-oss",
+        "open_weights": true,
+        "structured_output": true,
+        "temperature": true
+      },
+      "family": null,
+      "id": "cerebras-gpt-oss-120b",
+      "knowledge": null,
+      "last_updated": "1970-01-01",
+      "lifecycle": null,
+      "limits": {
+        "context": 131072,
+        "output": 32768
+      },
+      "modalities": {
+        "input": [
+          "text"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "model": null,
+      "name": "GPT OSS 120B",
+      "provider": "firmware",
+      "provider_model_id": null,
+      "release_date": "1970-01-01",
+      "tags": null
+    },
+    "cerebras-zai-glm-4.7": {
+      "aliases": [],
+      "capabilities": {
+        "chat": true,
+        "embeddings": false,
+        "json": {
+          "native": false,
+          "schema": false,
+          "strict": false
+        },
+        "reasoning": {
+          "enabled": false
+        },
+        "streaming": {
+          "tool_calls": true
+        },
+        "tools": {
+          "enabled": true
+        }
+      },
+      "cost": {
+        "input": 0,
+        "output": 0
+      },
+      "deprecated": false,
+      "extra": {
+        "attachment": false,
+        "open_weights": true,
+        "structured_output": true,
+        "temperature": true
+      },
+      "family": null,
+      "id": "cerebras-zai-glm-4.7",
+      "knowledge": null,
+      "last_updated": "1970-01-01",
+      "lifecycle": null,
+      "limits": {
+        "context": 131072,
+        "output": 40000
+      },
+      "modalities": {
+        "input": [
+          "text"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "model": null,
+      "name": "Z.AI GLM-4.7",
+      "provider": "firmware",
+      "provider_model_id": null,
+      "release_date": "1970-01-01",
+      "tags": null
+    },
+    "claude-haiku-4-5": {
       "aliases": [],
       "capabilities": {
         "chat": true,
@@ -42,7 +153,7 @@
         "temperature": true
       },
       "family": null,
-      "id": "claude-haiku-4-5-20251001",
+      "id": "claude-haiku-4-5",
       "knowledge": "2025-02-28",
       "last_updated": "2025-10-15",
       "lifecycle": null,
@@ -124,7 +235,7 @@
       "release_date": "2025-11-24",
       "tags": null
     },
-    "claude-sonnet-4-5-20250929": {
+    "claude-sonnet-4-5": {
       "aliases": [],
       "capabilities": {
         "chat": true,
@@ -156,7 +267,7 @@
         "temperature": true
       },
       "family": null,
-      "id": "claude-sonnet-4-5-20250929",
+      "id": "claude-sonnet-4-5",
       "knowledge": "2025-07-31",
       "last_updated": "2025-09-29",
       "lifecycle": null,
@@ -234,61 +345,6 @@
       "provider": "firmware",
       "provider_model_id": null,
       "release_date": "2024-12-26",
-      "tags": null
-    },
-    "deepseek-coder": {
-      "aliases": [],
-      "capabilities": {
-        "chat": true,
-        "embeddings": false,
-        "json": {
-          "native": false,
-          "schema": false,
-          "strict": false
-        },
-        "reasoning": {
-          "enabled": false
-        },
-        "streaming": {
-          "tool_calls": true
-        },
-        "tools": {
-          "enabled": true
-        }
-      },
-      "cost": {
-        "input": 0,
-        "output": 0
-      },
-      "deprecated": false,
-      "extra": {
-        "attachment": false,
-        "family": "deepseek",
-        "open_weights": true,
-        "temperature": true
-      },
-      "family": null,
-      "id": "deepseek-coder",
-      "knowledge": null,
-      "last_updated": "2024-01-26",
-      "lifecycle": null,
-      "limits": {
-        "context": 16384,
-        "output": 8192
-      },
-      "modalities": {
-        "input": [
-          "text"
-        ],
-        "output": [
-          "text"
-        ]
-      },
-      "model": null,
-      "name": "DeepSeek Coder",
-      "provider": "firmware",
-      "provider_model_id": null,
-      "release_date": "2024-01-25",
       "tags": null
     },
     "deepseek-reasoner": {

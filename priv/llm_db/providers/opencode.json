@@ -10,126 +10,6 @@
   "extra": null,
   "id": "opencode",
   "models": {
-    "alpha-gd4": {
-      "aliases": [],
-      "capabilities": {
-        "chat": true,
-        "embeddings": false,
-        "json": {
-          "native": false,
-          "schema": false,
-          "strict": false
-        },
-        "reasoning": {
-          "enabled": true
-        },
-        "streaming": {
-          "tool_calls": true
-        },
-        "tools": {
-          "enabled": true
-        }
-      },
-      "cost": {
-        "cache_read": 0.15,
-        "input": 0.5,
-        "output": 2
-      },
-      "deprecated": false,
-      "extra": {
-        "attachment": false,
-        "family": "alpha",
-        "open_weights": true,
-        "provider": {
-          "npm": "@ai-sdk/anthropic"
-        },
-        "status": "alpha",
-        "temperature": true
-      },
-      "family": null,
-      "id": "alpha-gd4",
-      "knowledge": "2025-01",
-      "last_updated": "2025-01-01",
-      "lifecycle": null,
-      "limits": {
-        "context": 262144,
-        "output": 32768
-      },
-      "modalities": {
-        "input": [
-          "text"
-        ],
-        "output": [
-          "text"
-        ]
-      },
-      "model": null,
-      "name": "Alpha GD4",
-      "provider": "opencode",
-      "provider_model_id": null,
-      "release_date": "2025-01-01",
-      "tags": null
-    },
-    "alpha-glm-4.7": {
-      "aliases": [],
-      "capabilities": {
-        "chat": true,
-        "embeddings": false,
-        "json": {
-          "native": false,
-          "schema": false,
-          "strict": false
-        },
-        "reasoning": {
-          "enabled": true
-        },
-        "streaming": {
-          "tool_calls": true
-        },
-        "tools": {
-          "enabled": true
-        }
-      },
-      "cost": {
-        "cache_read": 0.6,
-        "input": 0.6,
-        "output": 2.2
-      },
-      "deprecated": false,
-      "extra": {
-        "attachment": false,
-        "family": "glm",
-        "interleaved": {
-          "field": "reasoning_content"
-        },
-        "open_weights": true,
-        "status": "alpha",
-        "temperature": true
-      },
-      "family": null,
-      "id": "alpha-glm-4.7",
-      "knowledge": "2025-04",
-      "last_updated": "2025-12-22",
-      "lifecycle": null,
-      "limits": {
-        "context": 204800,
-        "output": 131072
-      },
-      "modalities": {
-        "input": [
-          "text"
-        ],
-        "output": [
-          "text"
-        ]
-      },
-      "model": null,
-      "name": "Alpha GLM-4.7",
-      "provider": "opencode",
-      "provider_model_id": null,
-      "release_date": "2025-12-22",
-      "tags": null
-    },
     "big-pickle": {
       "aliases": [],
       "capabilities": {
@@ -744,6 +624,62 @@
       "release_date": "2025-09-30",
       "tags": null
     },
+    "glm-4.7": {
+      "aliases": [],
+      "capabilities": {
+        "chat": true,
+        "embeddings": false,
+        "json": {
+          "native": false,
+          "schema": false,
+          "strict": false
+        },
+        "reasoning": {
+          "enabled": true
+        },
+        "streaming": {
+          "tool_calls": true
+        },
+        "tools": {
+          "enabled": true
+        }
+      },
+      "cost": {
+        "cache_read": 0.1,
+        "input": 0.6,
+        "output": 2.2
+      },
+      "deprecated": false,
+      "extra": {
+        "attachment": false,
+        "family": "glm",
+        "open_weights": true,
+        "temperature": true
+      },
+      "family": null,
+      "id": "glm-4.7",
+      "knowledge": "2025-04",
+      "last_updated": "2025-12-22",
+      "lifecycle": null,
+      "limits": {
+        "context": 204800,
+        "output": 131072
+      },
+      "modalities": {
+        "input": [
+          "text"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "model": null,
+      "name": "GLM-4.7",
+      "provider": "opencode",
+      "provider_model_id": null,
+      "release_date": "2025-12-22",
+      "tags": null
+    },
     "glm-4.7-free": {
       "aliases": [],
       "capabilities": {
@@ -777,6 +713,7 @@
           "field": "reasoning_content"
         },
         "open_weights": true,
+        "status": "deprecated",
         "temperature": true
       },
       "family": null,
@@ -1339,7 +1276,8 @@
       "modalities": {
         "input": [
           "text",
-          "image"
+          "image",
+          "pdf"
         ],
         "output": [
           "text"
@@ -1383,6 +1321,7 @@
         "attachment": true,
         "family": "grok",
         "open_weights": false,
+        "status": "deprecated",
         "temperature": true
       },
       "family": null,
@@ -1557,6 +1496,7 @@
         "provider": {
           "npm": "@ai-sdk/anthropic"
         },
+        "status": "deprecated",
         "temperature": true
       },
       "family": null,

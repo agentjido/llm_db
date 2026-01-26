@@ -100,6 +100,9 @@
       "extra": {
         "attachment": true,
         "family": "claude-sonnet",
+        "interleaved": {
+          "field": "reasoning_content"
+        },
         "open_weights": false,
         "structured_output": true,
         "temperature": true
@@ -219,7 +222,7 @@
         "attachment": true,
         "family": "gemini-flash",
         "interleaved": {
-          "field": "reasoning_details"
+          "field": "reasoning_content"
         },
         "open_weights": false,
         "structured_output": true,
@@ -1061,6 +1064,9 @@
       "extra": {
         "attachment": false,
         "family": "qwen",
+        "interleaved": {
+          "field": "reasoning_content"
+        },
         "open_weights": true,
         "structured_output": true,
         "temperature": true
@@ -1257,6 +1263,63 @@
       "release_date": "2025-04-29",
       "tags": null
     },
+    "qwen3-vl-235b-a22b": {
+      "aliases": [],
+      "capabilities": {
+        "chat": true,
+        "embeddings": false,
+        "json": {
+          "native": false,
+          "schema": false,
+          "strict": false
+        },
+        "reasoning": {
+          "enabled": false
+        },
+        "streaming": {
+          "tool_calls": true
+        },
+        "tools": {
+          "enabled": true
+        }
+      },
+      "cost": {
+        "input": 0.25,
+        "output": 1.5
+      },
+      "deprecated": false,
+      "extra": {
+        "attachment": true,
+        "family": "qwen",
+        "open_weights": true,
+        "structured_output": true,
+        "temperature": true
+      },
+      "family": null,
+      "id": "qwen3-vl-235b-a22b",
+      "knowledge": null,
+      "last_updated": "2026-01-19",
+      "lifecycle": null,
+      "limits": {
+        "context": 262144,
+        "output": 65536
+      },
+      "modalities": {
+        "input": [
+          "text",
+          "image"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "model": null,
+      "name": "Qwen3 VL 235B",
+      "provider": "venice",
+      "provider_model_id": null,
+      "release_date": "2026-01-16",
+      "tags": null
+    },
     "venice-uncensored": {
       "aliases": [],
       "capabilities": null,
@@ -1296,66 +1359,6 @@
       "release_date": "2025-03-18",
       "tags": null
     },
-    "zai-org-glm-4.6v": {
-      "aliases": [],
-      "capabilities": {
-        "chat": true,
-        "embeddings": false,
-        "json": {
-          "native": false,
-          "schema": false,
-          "strict": false
-        },
-        "reasoning": {
-          "enabled": false
-        },
-        "streaming": {
-          "tool_calls": true
-        },
-        "tools": {
-          "enabled": true
-        }
-      },
-      "cost": {
-        "input": 0.39,
-        "output": 1.13
-      },
-      "deprecated": false,
-      "extra": {
-        "attachment": true,
-        "family": "glmv",
-        "interleaved": {
-          "field": "reasoning_details"
-        },
-        "open_weights": true,
-        "structured_output": true,
-        "temperature": true
-      },
-      "family": null,
-      "id": "zai-org-glm-4.6v",
-      "knowledge": null,
-      "last_updated": "2026-01-15",
-      "lifecycle": null,
-      "limits": {
-        "context": 131072,
-        "output": 32768
-      },
-      "modalities": {
-        "input": [
-          "text",
-          "image"
-        ],
-        "output": [
-          "text"
-        ]
-      },
-      "model": null,
-      "name": "GLM 4.6V",
-      "provider": "venice",
-      "provider_model_id": null,
-      "release_date": "2025-12-11",
-      "tags": null
-    },
     "zai-org-glm-4.7": {
       "aliases": [],
       "capabilities": {
@@ -1385,7 +1388,7 @@
         "attachment": false,
         "family": "glm",
         "interleaved": {
-          "field": "reasoning_details"
+          "field": "reasoning_content"
         },
         "open_weights": true,
         "structured_output": true,
