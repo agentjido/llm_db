@@ -101,6 +101,7 @@
       },
       "model": null,
       "name": "Claude Haiku 3.5",
+      "pricing": null,
       "provider": "anthropic",
       "provider_model_id": null,
       "release_date": "2024-10-22",
@@ -160,6 +161,7 @@
       },
       "model": null,
       "name": "Claude Sonnet 3.5",
+      "pricing": null,
       "provider": "anthropic",
       "provider_model_id": null,
       "release_date": "2024-06-20",
@@ -230,6 +232,7 @@
       },
       "model": null,
       "name": "Claude Sonnet 3.7",
+      "pricing": null,
       "provider": "anthropic",
       "provider_model_id": null,
       "release_date": "2025-02-19",
@@ -295,6 +298,7 @@
       },
       "model": null,
       "name": "Claude Haiku 3",
+      "pricing": null,
       "provider": "anthropic",
       "provider_model_id": null,
       "release_date": "2024-03-13",
@@ -361,6 +365,7 @@
       },
       "model": null,
       "name": "Claude Haiku 4.5",
+      "pricing": null,
       "provider": "anthropic",
       "provider_model_id": null,
       "release_date": "2025-10-15",
@@ -427,6 +432,7 @@
       },
       "model": null,
       "name": "Claude Opus 4.1",
+      "pricing": null,
       "provider": "anthropic",
       "provider_model_id": null,
       "release_date": "2025-08-05",
@@ -493,6 +499,7 @@
       },
       "model": null,
       "name": "Claude Opus 4",
+      "pricing": null,
       "provider": "anthropic",
       "provider_model_id": null,
       "release_date": "2025-05-22",
@@ -552,6 +559,7 @@
       },
       "model": null,
       "name": "Claude Opus 4.5 (latest)",
+      "pricing": null,
       "provider": "anthropic",
       "provider_model_id": null,
       "release_date": "2025-11-24",
@@ -613,6 +621,7 @@
       },
       "model": null,
       "name": "Claude Opus 4.5",
+      "pricing": null,
       "provider": "anthropic",
       "provider_model_id": null,
       "release_date": "2025-11-01",
@@ -679,6 +688,7 @@
       },
       "model": null,
       "name": "Claude Sonnet 4",
+      "pricing": null,
       "provider": "anthropic",
       "provider_model_id": null,
       "release_date": "2025-05-22",
@@ -745,11 +755,25 @@
       },
       "model": null,
       "name": "Claude Sonnet 4.5",
+      "pricing": null,
       "provider": "anthropic",
       "provider_model_id": null,
       "release_date": "2025-09-29",
       "tags": null
     }
   },
-  "name": "Anthropic"
+  "name": "Anthropic",
+  "pricing_defaults": {
+    "components": [
+      {
+        "id": "tool.web_search",
+        "kind": "tool",
+        "per": 1000,
+        "rate": 10.0,
+        "tool": "web_search",
+        "unit": "call"
+      }
+    ],
+    "currency": "USD"
+  }
 }
