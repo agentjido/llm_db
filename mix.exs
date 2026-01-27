@@ -32,6 +32,7 @@ defmodule LLMDB.MixProject do
         extras: [
           "README.md",
           "guides/model-spec-formats.md",
+          "guides/pricing-and-billing.md",
           "guides/schema-system.md",
           "guides/sources-and-engine.md",
           "guides/runtime-filters.md",
