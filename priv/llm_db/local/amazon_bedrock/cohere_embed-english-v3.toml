@@ -1,0 +1,29 @@
+id = "cohere.embed-english-v3"
+name = "Cohere Embed English v3"
+provider = "amazon_bedrock"
+family = "embed"
+provider_model_id = "cohere.embed-english-v3"
+release_date = "2023-11-02"
+last_updated = "2023-11-02"
+
+[limits]
+context = 512
+
+[cost]
+input = 0.0001
+
+[modalities]
+input = ["text", "image"]
+output = ["embedding"]
+
+[capabilities.embeddings]
+min_dimensions = 1024
+max_dimensions = 1024
+default_dimensions = 1024
+
+[extra]
+type = "embedding"
+open_weights = false
+reasoning = false
+temperature = false
+tool_call = false

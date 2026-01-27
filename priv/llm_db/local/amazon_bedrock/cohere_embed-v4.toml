@@ -1,0 +1,36 @@
+id = "cohere.embed-v4"
+name = "Cohere Embed v4"
+provider = "amazon_bedrock"
+family = "embed"
+provider_model_id = "cohere.embed-v4:0"
+release_date = "2025-10-02"
+last_updated = "2025-10-02"
+
+aliases = [
+  "us.cohere.embed-v4:0",
+  "eu.cohere.embed-v4:0",
+  "global.cohere.embed-v4:0"
+]
+
+[limits]
+context = 128000
+
+[cost]
+input = 0.0001
+
+[modalities]
+input = ["text", "image"]
+output = ["embedding"]
+
+[capabilities.embeddings]
+min_dimensions = 256
+max_dimensions = 1536
+default_dimensions = 1536
+
+[extra]
+type = "embedding"
+open_weights = false
+reasoning = false
+temperature = false
+tool_call = false
+multimodal = true
