@@ -1,0 +1,88 @@
+# DALL-E 3 - OpenAI image generation model (deprecated May 2026)
+
+id = "dall-e-3"
+name = "DALL-E 3"
+provider = "openai"
+release_date = "2023-10-01"
+family = "dall-e"
+deprecated = false
+
+[lifecycle]
+status = "deprecated"
+deprecated_at = "2025-05-12"
+retires_at = "2026-05-12"
+replacement = "gpt-image-1.5"
+
+[modalities]
+input = ["text"]
+output = ["image"]
+
+[capabilities]
+chat = false
+embeddings = false
+
+[capabilities.tools]
+enabled = false
+
+[capabilities.reasoning]
+enabled = false
+
+[pricing]
+currency = "USD"
+merge = "replace"
+
+# Pricing per image by quality (DALL-E 3 uses standard/HD, not low/medium/high)
+# Square (1024x1024)
+[[pricing.components]]
+id = "image.1024x1024.standard"
+kind = "image"
+unit = "image"
+per = 1
+rate = 0.040
+size_class = "1024x1024:standard"
+
+[[pricing.components]]
+id = "image.1024x1024.hd"
+kind = "image"
+unit = "image"
+per = 1
+rate = 0.080
+size_class = "1024x1024:hd"
+
+# Landscape (1792x1024)
+[[pricing.components]]
+id = "image.1792x1024.standard"
+kind = "image"
+unit = "image"
+per = 1
+rate = 0.080
+size_class = "1792x1024:standard"
+
+[[pricing.components]]
+id = "image.1792x1024.hd"
+kind = "image"
+unit = "image"
+per = 1
+rate = 0.120
+size_class = "1792x1024:hd"
+
+# Portrait (1024x1792)
+[[pricing.components]]
+id = "image.1024x1792.standard"
+kind = "image"
+unit = "image"
+per = 1
+rate = 0.080
+size_class = "1024x1792:standard"
+
+[[pricing.components]]
+id = "image.1024x1792.hd"
+kind = "image"
+unit = "image"
+per = 1
+rate = 0.120
+size_class = "1024x1792:hd"
+
+[extra]
+api = "images"
+description = "OpenAI image generation model (legacy, deprecated May 2026)"

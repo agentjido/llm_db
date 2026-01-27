@@ -1,0 +1,107 @@
+# GPT Image 1.5 - OpenAI's flagship image generation model
+# Released December 16, 2025 - 20% cheaper and 4x faster than GPT Image 1
+
+id = "gpt-image-1.5"
+name = "GPT Image 1.5"
+provider = "openai"
+release_date = "2025-12-16"
+family = "gpt-image"
+deprecated = false
+
+[modalities]
+input = ["text", "image"]
+output = ["image"]
+
+[capabilities]
+chat = false
+embeddings = false
+
+[capabilities.tools]
+enabled = false
+
+[capabilities.reasoning]
+enabled = false
+
+[pricing]
+currency = "USD"
+merge = "replace"
+
+# Pricing per image by quality and resolution
+# Square (1024x1024)
+[[pricing.components]]
+id = "image.1024x1024.low"
+kind = "image"
+unit = "image"
+per = 1
+rate = 0.009
+size_class = "1024x1024:low"
+
+[[pricing.components]]
+id = "image.1024x1024.medium"
+kind = "image"
+unit = "image"
+per = 1
+rate = 0.034
+size_class = "1024x1024:medium"
+
+[[pricing.components]]
+id = "image.1024x1024.high"
+kind = "image"
+unit = "image"
+per = 1
+rate = 0.133
+size_class = "1024x1024:high"
+
+# Portrait (1024x1536)
+[[pricing.components]]
+id = "image.1024x1536.low"
+kind = "image"
+unit = "image"
+per = 1
+rate = 0.013
+size_class = "1024x1536:low"
+
+[[pricing.components]]
+id = "image.1024x1536.medium"
+kind = "image"
+unit = "image"
+per = 1
+rate = 0.050
+size_class = "1024x1536:medium"
+
+[[pricing.components]]
+id = "image.1024x1536.high"
+kind = "image"
+unit = "image"
+per = 1
+rate = 0.200
+size_class = "1024x1536:high"
+
+# Landscape (1536x1024)
+[[pricing.components]]
+id = "image.1536x1024.low"
+kind = "image"
+unit = "image"
+per = 1
+rate = 0.013
+size_class = "1536x1024:low"
+
+[[pricing.components]]
+id = "image.1536x1024.medium"
+kind = "image"
+unit = "image"
+per = 1
+rate = 0.050
+size_class = "1536x1024:medium"
+
+[[pricing.components]]
+id = "image.1536x1024.high"
+kind = "image"
+unit = "image"
+per = 1
+rate = 0.200
+size_class = "1536x1024:high"
+
+[extra]
+api = "images"
+description = "OpenAI's flagship image generation model with superior text rendering, precise editing, and 4x faster generation"

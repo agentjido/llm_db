@@ -1,0 +1,61 @@
+# DALL-E 2 - Legacy OpenAI image generation model (deprecated May 2026)
+
+id = "dall-e-2"
+name = "DALL-E 2"
+provider = "openai"
+release_date = "2022-04-06"
+family = "dall-e"
+deprecated = false
+
+[lifecycle]
+status = "deprecated"
+deprecated_at = "2025-05-12"
+retires_at = "2026-05-12"
+replacement = "gpt-image-1-mini"
+
+[modalities]
+input = ["text"]
+output = ["image"]
+
+[capabilities]
+chat = false
+embeddings = false
+
+[capabilities.tools]
+enabled = false
+
+[capabilities.reasoning]
+enabled = false
+
+[pricing]
+currency = "USD"
+merge = "replace"
+
+# DALL-E 2 has flat pricing per resolution (no quality tiers)
+[[pricing.components]]
+id = "image.1024x1024"
+kind = "image"
+unit = "image"
+per = 1
+rate = 0.020
+size_class = "1024x1024"
+
+[[pricing.components]]
+id = "image.512x512"
+kind = "image"
+unit = "image"
+per = 1
+rate = 0.018
+size_class = "512x512"
+
+[[pricing.components]]
+id = "image.256x256"
+kind = "image"
+unit = "image"
+per = 1
+rate = 0.016
+size_class = "256x256"
+
+[extra]
+api = "images"
+description = "Legacy OpenAI image generation model (deprecated May 2026)"

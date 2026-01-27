@@ -139,50 +139,196 @@
     },
     "dall-e-2": {
       "aliases": [],
-      "capabilities": null,
+      "capabilities": {
+        "chat": false,
+        "embeddings": false,
+        "json": {
+          "native": false,
+          "schema": false,
+          "strict": false
+        },
+        "reasoning": {
+          "enabled": false
+        },
+        "streaming": {
+          "text": true,
+          "tool_calls": false
+        },
+        "tools": {
+          "enabled": false
+        }
+      },
       "cost": null,
       "deprecated": false,
       "extra": {
+        "api": "images",
         "created": 1698798177,
+        "description": "Legacy OpenAI image generation model (deprecated May 2026)",
         "owned_by": "system"
       },
-      "family": null,
+      "family": "dall-e",
       "id": "dall-e-2",
       "knowledge": null,
       "last_updated": null,
-      "lifecycle": null,
+      "lifecycle": {
+        "deprecated_at": "2025-05-12",
+        "replacement": "gpt-image-1-mini",
+        "retires_at": "2026-05-12",
+        "status": "deprecated"
+      },
       "limits": null,
-      "modalities": null,
+      "modalities": {
+        "input": [
+          "text"
+        ],
+        "output": [
+          "image"
+        ]
+      },
       "model": null,
-      "name": null,
-      "pricing": null,
+      "name": "DALL-E 2",
+      "pricing": {
+        "components": [
+          {
+            "id": "image.1024x1024",
+            "kind": "image",
+            "per": 1,
+            "rate": 0.02,
+            "size_class": "1024x1024",
+            "unit": "image"
+          },
+          {
+            "id": "image.512x512",
+            "kind": "image",
+            "per": 1,
+            "rate": 0.018,
+            "size_class": "512x512",
+            "unit": "image"
+          },
+          {
+            "id": "image.256x256",
+            "kind": "image",
+            "per": 1,
+            "rate": 0.016,
+            "size_class": "256x256",
+            "unit": "image"
+          }
+        ],
+        "currency": "USD",
+        "merge": "replace"
+      },
       "provider": "openai",
       "provider_model_id": null,
-      "release_date": null,
+      "release_date": "2022-04-06",
       "tags": null
     },
     "dall-e-3": {
       "aliases": [],
-      "capabilities": null,
+      "capabilities": {
+        "chat": false,
+        "embeddings": false,
+        "json": {
+          "native": false,
+          "schema": false,
+          "strict": false
+        },
+        "reasoning": {
+          "enabled": false
+        },
+        "streaming": {
+          "text": true,
+          "tool_calls": false
+        },
+        "tools": {
+          "enabled": false
+        }
+      },
       "cost": null,
       "deprecated": false,
       "extra": {
+        "api": "images",
         "created": 1698785189,
+        "description": "OpenAI image generation model (legacy, deprecated May 2026)",
         "owned_by": "system"
       },
-      "family": null,
+      "family": "dall-e",
       "id": "dall-e-3",
       "knowledge": null,
       "last_updated": null,
-      "lifecycle": null,
+      "lifecycle": {
+        "deprecated_at": "2025-05-12",
+        "replacement": "gpt-image-1.5",
+        "retires_at": "2026-05-12",
+        "status": "deprecated"
+      },
       "limits": null,
-      "modalities": null,
+      "modalities": {
+        "input": [
+          "text"
+        ],
+        "output": [
+          "image"
+        ]
+      },
       "model": null,
-      "name": null,
-      "pricing": null,
+      "name": "DALL-E 3",
+      "pricing": {
+        "components": [
+          {
+            "id": "image.1024x1024.standard",
+            "kind": "image",
+            "per": 1,
+            "rate": 0.04,
+            "size_class": "1024x1024:standard",
+            "unit": "image"
+          },
+          {
+            "id": "image.1024x1024.hd",
+            "kind": "image",
+            "per": 1,
+            "rate": 0.08,
+            "size_class": "1024x1024:hd",
+            "unit": "image"
+          },
+          {
+            "id": "image.1792x1024.standard",
+            "kind": "image",
+            "per": 1,
+            "rate": 0.08,
+            "size_class": "1792x1024:standard",
+            "unit": "image"
+          },
+          {
+            "id": "image.1792x1024.hd",
+            "kind": "image",
+            "per": 1,
+            "rate": 0.12,
+            "size_class": "1792x1024:hd",
+            "unit": "image"
+          },
+          {
+            "id": "image.1024x1792.standard",
+            "kind": "image",
+            "per": 1,
+            "rate": 0.08,
+            "size_class": "1024x1792:standard",
+            "unit": "image"
+          },
+          {
+            "id": "image.1024x1792.hd",
+            "kind": "image",
+            "per": 1,
+            "rate": 0.12,
+            "size_class": "1024x1792:hd",
+            "unit": "image"
+          }
+        ],
+        "currency": "USD",
+        "merge": "replace"
+      },
       "provider": "openai",
       "provider_model_id": null,
-      "release_date": null,
+      "release_date": "2023-10-01",
       "tags": null
     },
     "davinci-002": {
@@ -3086,74 +3232,389 @@
     },
     "gpt-image-1": {
       "aliases": [],
-      "capabilities": null,
+      "capabilities": {
+        "chat": false,
+        "embeddings": false,
+        "json": {
+          "native": false,
+          "schema": false,
+          "strict": false
+        },
+        "reasoning": {
+          "enabled": false
+        },
+        "streaming": {
+          "text": true,
+          "tool_calls": false
+        },
+        "tools": {
+          "enabled": false
+        }
+      },
       "cost": null,
       "deprecated": false,
       "extra": {
+        "api": "images",
         "created": 1745517030,
+        "description": "OpenAI image generation model with text rendering and editing capabilities",
         "owned_by": "system"
       },
-      "family": null,
+      "family": "gpt-image",
       "id": "gpt-image-1",
       "knowledge": null,
       "last_updated": null,
       "lifecycle": null,
       "limits": null,
-      "modalities": null,
+      "modalities": {
+        "input": [
+          "text",
+          "image"
+        ],
+        "output": [
+          "image"
+        ]
+      },
       "model": null,
-      "name": null,
-      "pricing": null,
+      "name": "GPT Image 1",
+      "pricing": {
+        "components": [
+          {
+            "id": "image.1024x1024.low",
+            "kind": "image",
+            "per": 1,
+            "rate": 0.011,
+            "size_class": "1024x1024:low",
+            "unit": "image"
+          },
+          {
+            "id": "image.1024x1024.medium",
+            "kind": "image",
+            "per": 1,
+            "rate": 0.042,
+            "size_class": "1024x1024:medium",
+            "unit": "image"
+          },
+          {
+            "id": "image.1024x1024.high",
+            "kind": "image",
+            "per": 1,
+            "rate": 0.167,
+            "size_class": "1024x1024:high",
+            "unit": "image"
+          },
+          {
+            "id": "image.1024x1536.low",
+            "kind": "image",
+            "per": 1,
+            "rate": 0.016,
+            "size_class": "1024x1536:low",
+            "unit": "image"
+          },
+          {
+            "id": "image.1024x1536.medium",
+            "kind": "image",
+            "per": 1,
+            "rate": 0.063,
+            "size_class": "1024x1536:medium",
+            "unit": "image"
+          },
+          {
+            "id": "image.1024x1536.high",
+            "kind": "image",
+            "per": 1,
+            "rate": 0.25,
+            "size_class": "1024x1536:high",
+            "unit": "image"
+          },
+          {
+            "id": "image.1536x1024.low",
+            "kind": "image",
+            "per": 1,
+            "rate": 0.016,
+            "size_class": "1536x1024:low",
+            "unit": "image"
+          },
+          {
+            "id": "image.1536x1024.medium",
+            "kind": "image",
+            "per": 1,
+            "rate": 0.063,
+            "size_class": "1536x1024:medium",
+            "unit": "image"
+          },
+          {
+            "id": "image.1536x1024.high",
+            "kind": "image",
+            "per": 1,
+            "rate": 0.25,
+            "size_class": "1536x1024:high",
+            "unit": "image"
+          }
+        ],
+        "currency": "USD",
+        "merge": "replace"
+      },
       "provider": "openai",
       "provider_model_id": null,
-      "release_date": null,
+      "release_date": "2025-04-23",
       "tags": null
     },
     "gpt-image-1-mini": {
       "aliases": [],
-      "capabilities": null,
+      "capabilities": {
+        "chat": false,
+        "embeddings": false,
+        "json": {
+          "native": false,
+          "schema": false,
+          "strict": false
+        },
+        "reasoning": {
+          "enabled": false
+        },
+        "streaming": {
+          "text": true,
+          "tool_calls": false
+        },
+        "tools": {
+          "enabled": false
+        }
+      },
       "cost": null,
       "deprecated": false,
       "extra": {
+        "api": "images",
         "created": 1758845821,
+        "description": "Cost-effective OpenAI image generation model for high-volume use cases",
         "owned_by": "system"
       },
-      "family": null,
+      "family": "gpt-image",
       "id": "gpt-image-1-mini",
       "knowledge": null,
       "last_updated": null,
       "lifecycle": null,
       "limits": null,
-      "modalities": null,
+      "modalities": {
+        "input": [
+          "text",
+          "image"
+        ],
+        "output": [
+          "image"
+        ]
+      },
       "model": null,
-      "name": null,
-      "pricing": null,
+      "name": "GPT Image 1 Mini",
+      "pricing": {
+        "components": [
+          {
+            "id": "image.1024x1024.low",
+            "kind": "image",
+            "per": 1,
+            "rate": 0.005,
+            "size_class": "1024x1024:low",
+            "unit": "image"
+          },
+          {
+            "id": "image.1024x1024.medium",
+            "kind": "image",
+            "per": 1,
+            "rate": 0.011,
+            "size_class": "1024x1024:medium",
+            "unit": "image"
+          },
+          {
+            "id": "image.1024x1024.high",
+            "kind": "image",
+            "per": 1,
+            "rate": 0.036,
+            "size_class": "1024x1024:high",
+            "unit": "image"
+          },
+          {
+            "id": "image.1024x1536.low",
+            "kind": "image",
+            "per": 1,
+            "rate": 0.006,
+            "size_class": "1024x1536:low",
+            "unit": "image"
+          },
+          {
+            "id": "image.1024x1536.medium",
+            "kind": "image",
+            "per": 1,
+            "rate": 0.015,
+            "size_class": "1024x1536:medium",
+            "unit": "image"
+          },
+          {
+            "id": "image.1024x1536.high",
+            "kind": "image",
+            "per": 1,
+            "rate": 0.052,
+            "size_class": "1024x1536:high",
+            "unit": "image"
+          },
+          {
+            "id": "image.1536x1024.low",
+            "kind": "image",
+            "per": 1,
+            "rate": 0.006,
+            "size_class": "1536x1024:low",
+            "unit": "image"
+          },
+          {
+            "id": "image.1536x1024.medium",
+            "kind": "image",
+            "per": 1,
+            "rate": 0.015,
+            "size_class": "1536x1024:medium",
+            "unit": "image"
+          },
+          {
+            "id": "image.1536x1024.high",
+            "kind": "image",
+            "per": 1,
+            "rate": 0.052,
+            "size_class": "1536x1024:high",
+            "unit": "image"
+          }
+        ],
+        "currency": "USD",
+        "merge": "replace"
+      },
       "provider": "openai",
       "provider_model_id": null,
-      "release_date": null,
+      "release_date": "2025-07-15",
       "tags": null
     },
     "gpt-image-1.5": {
       "aliases": [],
-      "capabilities": null,
+      "capabilities": {
+        "chat": false,
+        "embeddings": false,
+        "json": {
+          "native": false,
+          "schema": false,
+          "strict": false
+        },
+        "reasoning": {
+          "enabled": false
+        },
+        "streaming": {
+          "text": true,
+          "tool_calls": false
+        },
+        "tools": {
+          "enabled": false
+        }
+      },
       "cost": null,
       "deprecated": false,
       "extra": {
+        "api": "images",
         "created": 1764030620,
+        "description": "OpenAI's flagship image generation model with superior text rendering, precise editing, and 4x faster generation",
         "owned_by": "system"
       },
-      "family": null,
+      "family": "gpt-image",
       "id": "gpt-image-1.5",
       "knowledge": null,
       "last_updated": null,
       "lifecycle": null,
       "limits": null,
-      "modalities": null,
+      "modalities": {
+        "input": [
+          "text",
+          "image"
+        ],
+        "output": [
+          "image"
+        ]
+      },
       "model": null,
-      "name": null,
-      "pricing": null,
+      "name": "GPT Image 1.5",
+      "pricing": {
+        "components": [
+          {
+            "id": "image.1024x1024.low",
+            "kind": "image",
+            "per": 1,
+            "rate": 0.009,
+            "size_class": "1024x1024:low",
+            "unit": "image"
+          },
+          {
+            "id": "image.1024x1024.medium",
+            "kind": "image",
+            "per": 1,
+            "rate": 0.034,
+            "size_class": "1024x1024:medium",
+            "unit": "image"
+          },
+          {
+            "id": "image.1024x1024.high",
+            "kind": "image",
+            "per": 1,
+            "rate": 0.133,
+            "size_class": "1024x1024:high",
+            "unit": "image"
+          },
+          {
+            "id": "image.1024x1536.low",
+            "kind": "image",
+            "per": 1,
+            "rate": 0.013,
+            "size_class": "1024x1536:low",
+            "unit": "image"
+          },
+          {
+            "id": "image.1024x1536.medium",
+            "kind": "image",
+            "per": 1,
+            "rate": 0.05,
+            "size_class": "1024x1536:medium",
+            "unit": "image"
+          },
+          {
+            "id": "image.1024x1536.high",
+            "kind": "image",
+            "per": 1,
+            "rate": 0.2,
+            "size_class": "1024x1536:high",
+            "unit": "image"
+          },
+          {
+            "id": "image.1536x1024.low",
+            "kind": "image",
+            "per": 1,
+            "rate": 0.013,
+            "size_class": "1536x1024:low",
+            "unit": "image"
+          },
+          {
+            "id": "image.1536x1024.medium",
+            "kind": "image",
+            "per": 1,
+            "rate": 0.05,
+            "size_class": "1536x1024:medium",
+            "unit": "image"
+          },
+          {
+            "id": "image.1536x1024.high",
+            "kind": "image",
+            "per": 1,
+            "rate": 0.2,
+            "size_class": "1536x1024:high",
+            "unit": "image"
+          }
+        ],
+        "currency": "USD",
+        "merge": "replace"
+      },
       "provider": "openai",
       "provider_model_id": null,
-      "release_date": null,
+      "release_date": "2025-12-16",
       "tags": null
     },
     "gpt-realtime": {

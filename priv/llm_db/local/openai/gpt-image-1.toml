@@ -1,0 +1,106 @@
+# GPT Image 1 - OpenAI image generation model
+
+id = "gpt-image-1"
+name = "GPT Image 1"
+provider = "openai"
+release_date = "2025-04-23"
+family = "gpt-image"
+deprecated = false
+
+[modalities]
+input = ["text", "image"]
+output = ["image"]
+
+[capabilities]
+chat = false
+embeddings = false
+
+[capabilities.tools]
+enabled = false
+
+[capabilities.reasoning]
+enabled = false
+
+[pricing]
+currency = "USD"
+merge = "replace"
+
+# Pricing per image by quality and resolution
+# Square (1024x1024)
+[[pricing.components]]
+id = "image.1024x1024.low"
+kind = "image"
+unit = "image"
+per = 1
+rate = 0.011
+size_class = "1024x1024:low"
+
+[[pricing.components]]
+id = "image.1024x1024.medium"
+kind = "image"
+unit = "image"
+per = 1
+rate = 0.042
+size_class = "1024x1024:medium"
+
+[[pricing.components]]
+id = "image.1024x1024.high"
+kind = "image"
+unit = "image"
+per = 1
+rate = 0.167
+size_class = "1024x1024:high"
+
+# Portrait (1024x1536)
+[[pricing.components]]
+id = "image.1024x1536.low"
+kind = "image"
+unit = "image"
+per = 1
+rate = 0.016
+size_class = "1024x1536:low"
+
+[[pricing.components]]
+id = "image.1024x1536.medium"
+kind = "image"
+unit = "image"
+per = 1
+rate = 0.063
+size_class = "1024x1536:medium"
+
+[[pricing.components]]
+id = "image.1024x1536.high"
+kind = "image"
+unit = "image"
+per = 1
+rate = 0.250
+size_class = "1024x1536:high"
+
+# Landscape (1536x1024)
+[[pricing.components]]
+id = "image.1536x1024.low"
+kind = "image"
+unit = "image"
+per = 1
+rate = 0.016
+size_class = "1536x1024:low"
+
+[[pricing.components]]
+id = "image.1536x1024.medium"
+kind = "image"
+unit = "image"
+per = 1
+rate = 0.063
+size_class = "1536x1024:medium"
+
+[[pricing.components]]
+id = "image.1536x1024.high"
+kind = "image"
+unit = "image"
+per = 1
+rate = 0.250
+size_class = "1536x1024:high"
+
+[extra]
+api = "images"
+description = "OpenAI image generation model with text rendering and editing capabilities"
