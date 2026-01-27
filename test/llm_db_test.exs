@@ -9,6 +9,7 @@ defmodule LLMDBTest do
     Application.delete_env(:llm_db, :allow)
     Application.delete_env(:llm_db, :deny)
     Application.delete_env(:llm_db, :prefer)
+    Application.delete_env(:llm_db, :filter)
     :ok
   end
 
