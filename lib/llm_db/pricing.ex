@@ -114,10 +114,6 @@ defmodule LLMDB.Pricing do
       "token.reasoning",
       Map.get(cost, :reasoning) || Map.get(cost, "reasoning")
     )
-    |> maybe_add_image_component(
-      "image.generated",
-      Map.get(cost, :image) || Map.get(cost, "image")
-    )
   end
 
   defp maybe_add_token_component(components, _id, nil), do: components
@@ -127,12 +123,4 @@ defmodule LLMDB.Pricing do
   end
 
   defp maybe_add_token_component(components, _id, _rate), do: components
-
-  defp maybe_add_image_component(components, _id, nil), do: components
-
-  defp maybe_add_image_component(components, id, rate) when is_number(rate) do
-    components ++ [%{id: id, kind: "image", unit: "image", per: 1, rate: rate}]
-  end
-
-  defp maybe_add_image_component(components, _id, _rate), do: components
 end

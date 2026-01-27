@@ -7,7 +7,7 @@ defmodule LLMDB.PricingTest do
     model = %LLMDB.Model{
       id: "m1",
       provider: :test,
-      cost: %{input: 1.0, output: 2.0, cache_read: 0.5, cache_write: 0.8, image: 3.0}
+      cost: %{input: 1.0, output: 2.0, cache_read: 0.5, cache_write: 0.8}
     }
 
     [updated] = Pricing.apply_cost_components([model])
@@ -15,17 +15,11 @@ defmodule LLMDB.PricingTest do
     ids = Enum.map(updated.pricing.components, & &1.id) |> Enum.sort()
 
     assert ids == [
-             "image.generated",
              "token.cache_read",
              "token.cache_write",
              "token.input",
              "token.output"
            ]
-
-    image_component =
-      Enum.find(updated.pricing.components, fn component -> component.id == "image.generated" end)
-
-    assert image_component.per == 1
   end
 
   test "keeps explicit pricing component overrides over cost-derived components" do
