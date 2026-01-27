@@ -167,6 +167,35 @@ defmodule LLMDB.Merge do
 
   Keeps the base list order, overrides items with matching IDs from the override list,
   and appends override-only items in their original order.
+
+  Used by `LLMDB.Pricing` to merge pricing components from provider defaults
+  with model-specific overrides.
+
+  ## Parameters
+
+  - `base_list` - The base list of maps (order preserved)
+  - `override_list` - Maps that override or extend the base list
+  - `id_key` - The key to match on (default: `:id`). Supports both atom and string keys.
+
+  ## Examples
+
+      # Override matching items, preserve order
+      iex> base = [%{id: "a", value: 1}, %{id: "b", value: 2}]
+      iex> override = [%{id: "b", value: 20}]
+      iex> LLMDB.Merge.merge_list_by_id(base, override)
+      [%{id: "a", value: 1}, %{id: "b", value: 20}]
+
+      # Append new items from override
+      iex> base = [%{id: "a", value: 1}]
+      iex> override = [%{id: "b", value: 2}, %{id: "c", value: 3}]
+      iex> LLMDB.Merge.merge_list_by_id(base, override)
+      [%{id: "a", value: 1}, %{id: "b", value: 2}, %{id: "c", value: 3}]
+
+      # Pricing component merge example
+      iex> defaults = [%{id: "tool.search", rate: 10.0}, %{id: "tool.code", rate: 5.0}]
+      iex> overrides = [%{id: "tool.search", rate: 0.0}]  # Free search
+      iex> LLMDB.Merge.merge_list_by_id(defaults, overrides)
+      [%{id: "tool.search", rate: 0.0}, %{id: "tool.code", rate: 5.0}]
   """
   @spec merge_list_by_id([map()], [map()], atom() | String.t()) :: [map()]
   def merge_list_by_id(base_list, override_list, id_key \\ :id)

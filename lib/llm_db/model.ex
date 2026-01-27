@@ -3,7 +3,17 @@ defmodule LLMDB.Model do
   Model struct with Zoi schema validation.
 
   Represents an LLM model with complete metadata including identity, provider,
-  dates, limits, costs, modalities, capabilities, tags, lifecycle status, and aliases.
+  dates, limits, costs, pricing, modalities, capabilities, tags, lifecycle status, and aliases.
+
+  ## Pricing Fields
+
+  Models have two pricing-related fields:
+
+  - `:cost` - Legacy simple pricing (per-million-token rates for input/output/cache/reasoning)
+  - `:pricing` - Flexible component-based pricing with support for tokens, tools, images, storage
+
+  The `:cost` field is automatically converted to `:pricing.components` at load time
+  for backward compatibility. See `LLMDB.Pricing` and the [Pricing and Billing guide](pricing-and-billing.md).
   """
 
   @limits_schema Zoi.object(%{

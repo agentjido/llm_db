@@ -1,15 +1,96 @@
 defmodule LLMDB.Pricing do
   @moduledoc """
-  Pricing helpers for applying provider defaults and merging model overrides.
+  Pricing pipeline for converting legacy cost data and applying provider defaults.
+
+  This module handles two key transformations during snapshot loading:
+
+  1. **Legacy cost conversion** - Converts the simple `cost` map (input/output/cache rates)
+     into the flexible `pricing.components` format for backward compatibility.
+
+  2. **Provider defaults** - Merges provider-level pricing defaults (e.g., tool pricing)
+     into each model's pricing, respecting merge strategies.
+
+  ## Pipeline
+
+  The pricing transformations run during `LLMDB.Loader.load/1`:
+
+      models
+      |> Pricing.apply_cost_components()      # Convert cost -> pricing.components
+      |> Pricing.apply_provider_defaults()    # Merge provider defaults
+
+  ## Pricing Structure
+
+  The `pricing` field on models contains:
+
+      %{
+        currency: "USD",
+        merge: "merge_by_id",  # or "replace"
+        components: [
+          %{id: "token.input", kind: "token", unit: "token", per: 1_000_000, rate: 3.0},
+          %{id: "tool.web_search", kind: "tool", tool: "web_search", unit: "call", per: 1000, rate: 10.0}
+        ]
+      }
+
+  See the [Pricing and Billing guide](pricing-and-billing.md) for full documentation.
   """
 
   alias LLMDB.Merge
 
+  @doc """
+  Converts legacy `cost` fields to `pricing.components` format.
+
+  For each model with a `cost` map, generates corresponding pricing components:
+
+  | Cost Field | Component ID |
+  |------------|--------------|
+  | `input` | `token.input` |
+  | `output` | `token.output` |
+  | `cache_read` | `token.cache_read` |
+  | `cache_write` | `token.cache_write` |
+  | `reasoning` | `token.reasoning` |
+
+  Existing `pricing.components` are preserved and take precedence over
+  generated components (merged by ID).
+
+  ## Examples
+
+      iex> models = [%{id: "gpt-4", provider: :openai, cost: %{input: 3.0, output: 15.0}}]
+      iex> [model] = LLMDB.Pricing.apply_cost_components(models)
+      iex> model.pricing.components
+      [
+        %{id: "token.input", kind: "token", unit: "token", per: 1_000_000, rate: 3.0},
+        %{id: "token.output", kind: "token", unit: "token", per: 1_000_000, rate: 15.0}
+      ]
+  """
   @spec apply_cost_components([LLMDB.Model.t()]) :: [LLMDB.Model.t()]
   def apply_cost_components(models) when is_list(models) do
     Enum.map(models, &apply_cost_components_to_model/1)
   end
 
+  @doc """
+  Applies provider-level pricing defaults to models.
+
+  For each model, looks up its provider's `pricing_defaults` and merges them
+  into the model's `pricing` field. The merge behavior depends on the model's
+  `pricing.merge` setting:
+
+  - `"merge_by_id"` (default) - Provider defaults are merged with model components
+    by ID. Model components override matching defaults.
+  - `"replace"` - Model pricing completely replaces provider defaults.
+
+  Models without existing `pricing` inherit the full provider defaults.
+
+  ## Examples
+
+      iex> providers = [%{id: :openai, pricing_defaults: %{
+      ...>   currency: "USD",
+      ...>   components: [%{id: "tool.web_search", kind: "tool", rate: 10.0}]
+      ...> }}]
+      iex> models = [%{id: "gpt-4", provider: :openai, pricing: nil}]
+      iex> [model] = LLMDB.Pricing.apply_provider_defaults(providers, models)
+      iex> model.pricing.components
+      [%{id: "tool.web_search", kind: "tool", rate: 10.0}]
+  """
   @spec apply_provider_defaults([LLMDB.Provider.t()], [LLMDB.Model.t()]) :: [LLMDB.Model.t()]
   def apply_provider_defaults(providers, models) when is_list(providers) and is_list(models) do
     defaults_by_provider =

@@ -3,7 +3,37 @@ defmodule LLMDB.Provider do
   Provider struct with Zoi schema validation.
 
   Represents an LLM provider with metadata including identity, base URL,
-  environment variables, and documentation.
+  environment variables, documentation, and pricing defaults.
+
+  ## Fields
+
+  - `:id` - Unique provider identifier atom (e.g., `:openai`)
+  - `:name` - Display name
+  - `:base_url` - Base API URL (supports template variables like `{region}`)
+  - `:env` - List of environment variable names for credentials
+  - `:config_schema` - Runtime configuration field definitions
+  - `:doc` - Documentation URL
+  - `:pricing_defaults` - Default pricing components applied to all models (see below)
+  - `:exclude_models` - Model IDs to exclude from upstream sources
+  - `:extra` - Additional provider-specific data
+  - `:alias_of` - Primary provider ID if this is an alias
+
+  ## Pricing Defaults
+
+  The `:pricing_defaults` field defines default pricing for tools and features
+  that apply to all models from this provider. This avoids duplicating tool
+  pricing across every model definition.
+
+      %{
+        currency: "USD",
+        components: [
+          %{id: "tool.web_search", kind: "tool", tool: "web_search", unit: "call", per: 1000, rate: 10.0},
+          %{id: "storage.vectors", kind: "storage", unit: "gb_day", per: 1, rate: 0.10}
+        ]
+      }
+
+  Provider defaults are merged with model-specific pricing at load time.
+  See `LLMDB.Pricing` and the [Pricing and Billing guide](pricing-and-billing.md).
   """
 
   @config_field_schema Zoi.object(%{
