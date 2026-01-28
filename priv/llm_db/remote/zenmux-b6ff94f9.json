@@ -2891,11 +2891,11 @@
     },
     {
       "capabilities": {
-        "reasoning": false
+        "reasoning": true
       },
       "context_length": 256000,
       "created": 1758764009,
-      "display_name": "Qwen: Qwen3-Max",
+      "display_name": "Qwen: Qwen3-Max-Thinking",
       "id": "qwen/qwen3-max",
       "input_modalities": [
         "text"
@@ -2911,7 +2911,7 @@
             "conditions": {
               "prompt_tokens": {
                 "gte": 0,
-                "lt": 32,
+                "lte": 32,
                 "unit": "kTokens"
               }
             },
@@ -2922,8 +2922,8 @@
           {
             "conditions": {
               "prompt_tokens": {
-                "gte": 32,
-                "lt": 128,
+                "gt": 32,
+                "lte": 128,
                 "unit": "kTokens"
               }
             },
@@ -2934,7 +2934,7 @@
           {
             "conditions": {
               "prompt_tokens": {
-                "gte": 128,
+                "gt": 128,
                 "unit": "kTokens"
               }
             },
@@ -2943,86 +2943,12 @@
             "value": 15
           }
         ],
-        "input_cache_read": [
-          {
-            "conditions": {
-              "prompt_tokens": {
-                "gte": 0,
-                "lt": 32,
-                "unit": "kTokens"
-              }
-            },
-            "currency": "USD",
-            "unit": "perMTokens",
-            "value": 0.24
-          },
-          {
-            "conditions": {
-              "prompt_tokens": {
-                "gte": 32,
-                "lt": 128,
-                "unit": "kTokens"
-              }
-            },
-            "currency": "USD",
-            "unit": "perMTokens",
-            "value": 0.48
-          },
-          {
-            "conditions": {
-              "prompt_tokens": {
-                "gte": 128,
-                "unit": "kTokens"
-              }
-            },
-            "currency": "USD",
-            "unit": "perMTokens",
-            "value": 0.6
-          }
-        ],
-        "input_cache_write_5_min": [
-          {
-            "conditions": {
-              "prompt_tokens": {
-                "gte": 0,
-                "lt": 32,
-                "unit": "kTokens"
-              }
-            },
-            "currency": "USD",
-            "unit": "perMTokens",
-            "value": 1.5
-          },
-          {
-            "conditions": {
-              "prompt_tokens": {
-                "gte": 32,
-                "lt": 128,
-                "unit": "kTokens"
-              }
-            },
-            "currency": "USD",
-            "unit": "perMTokens",
-            "value": 3
-          },
-          {
-            "conditions": {
-              "prompt_tokens": {
-                "gte": 128,
-                "unit": "kTokens"
-              }
-            },
-            "currency": "USD",
-            "unit": "perMTokens",
-            "value": 3.75
-          }
-        ],
         "prompt": [
           {
             "conditions": {
               "prompt_tokens": {
                 "gte": 0,
-                "lt": 32,
+                "lte": 32,
                 "unit": "kTokens"
               }
             },
@@ -3033,8 +2959,8 @@
           {
             "conditions": {
               "prompt_tokens": {
-                "gte": 32,
-                "lt": 128,
+                "gt": 32,
+                "lte": 128,
                 "unit": "kTokens"
               }
             },
@@ -3045,13 +2971,20 @@
           {
             "conditions": {
               "prompt_tokens": {
-                "gte": 128,
+                "gt": 128,
                 "unit": "kTokens"
               }
             },
             "currency": "USD",
             "unit": "perMTokens",
             "value": 3
+          }
+        ],
+        "web_search": [
+          {
+            "currency": "USD",
+            "unit": "perCount",
+            "value": 0.01
           }
         ]
       }
@@ -5738,21 +5671,21 @@
           {
             "currency": "USD",
             "unit": "perMTokens",
-            "value": 0
+            "value": 0.3
           }
         ],
         "input_cache_read": [
           {
             "currency": "USD",
             "unit": "perMTokens",
-            "value": 0
+            "value": 0.01
           }
         ],
         "prompt": [
           {
             "currency": "USD",
             "unit": "perMTokens",
-            "value": 0
+            "value": 0.1
           }
         ]
       }
@@ -6158,6 +6091,88 @@
             "currency": "USD",
             "unit": "perMTokens",
             "value": 0.0715
+          }
+        ]
+      }
+    },
+    {
+      "capabilities": {
+        "reasoning": false
+      },
+      "context_length": 2048,
+      "created": 1769495414,
+      "display_name": "MiniMax: MiniMax M2-her",
+      "id": "minimax/minimax-m2-her",
+      "input_modalities": [
+        "text"
+      ],
+      "object": "model",
+      "output_modalities": [
+        "text"
+      ],
+      "owned_by": "minimax",
+      "pricings": {
+        "completion": [
+          {
+            "currency": "USD",
+            "unit": "perMTokens",
+            "value": 1.2
+          }
+        ],
+        "prompt": [
+          {
+            "currency": "USD",
+            "unit": "perMTokens",
+            "value": 0.3
+          }
+        ]
+      }
+    },
+    {
+      "capabilities": {
+        "reasoning": true
+      },
+      "context_length": 262144,
+      "created": 1769493282,
+      "display_name": "MoonshotAI: Kimi K2.5",
+      "id": "moonshotai/kimi-k2.5",
+      "input_modalities": [
+        "text",
+        "image",
+        "video"
+      ],
+      "object": "model",
+      "output_modalities": [
+        "text"
+      ],
+      "owned_by": "moonshotai",
+      "pricings": {
+        "completion": [
+          {
+            "currency": "USD",
+            "unit": "perMTokens",
+            "value": 3.02
+          }
+        ],
+        "input_cache_read": [
+          {
+            "currency": "USD",
+            "unit": "perMTokens",
+            "value": 0.1
+          }
+        ],
+        "prompt": [
+          {
+            "currency": "USD",
+            "unit": "perMTokens",
+            "value": 0.58
+          }
+        ],
+        "web_search": [
+          {
+            "currency": "USD",
+            "unit": "perCount",
+            "value": 0.0043
           }
         ]
       }

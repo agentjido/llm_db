@@ -10,6 +10,7 @@ defmodule LLMDB.Generated.ValidProviders do
   """
 
   @providers [
+    :"302ai",
     :abacus,
     :aihubmix,
     :alibaba,

@@ -12,6 +12,7 @@
   "models": {
     "kimi-k2-0711-preview": {
       "aliases": [],
+      "base_url": null,
       "capabilities": {
         "chat": true,
         "embeddings": false,
@@ -69,6 +70,7 @@
     },
     "kimi-k2-0905-preview": {
       "aliases": [],
+      "base_url": null,
       "capabilities": {
         "chat": true,
         "embeddings": false,
@@ -126,6 +128,7 @@
     },
     "kimi-k2-thinking": {
       "aliases": [],
+      "base_url": null,
       "capabilities": {
         "chat": true,
         "embeddings": false,
@@ -153,6 +156,9 @@
       "extra": {
         "attachment": false,
         "family": "kimi-thinking",
+        "interleaved": {
+          "field": "reasoning_content"
+        },
         "open_weights": true,
         "temperature": true
       },
@@ -183,6 +189,7 @@
     },
     "kimi-k2-thinking-turbo": {
       "aliases": [],
+      "base_url": null,
       "capabilities": {
         "chat": true,
         "embeddings": false,
@@ -210,6 +217,9 @@
       "extra": {
         "attachment": false,
         "family": "kimi-thinking",
+        "interleaved": {
+          "field": "reasoning_content"
+        },
         "open_weights": true,
         "temperature": true
       },
@@ -240,6 +250,7 @@
     },
     "kimi-k2-turbo-preview": {
       "aliases": [],
+      "base_url": null,
       "capabilities": {
         "chat": true,
         "embeddings": false,
@@ -293,6 +304,71 @@
       "provider": "moonshotai_cn",
       "provider_model_id": null,
       "release_date": "2025-09-05",
+      "tags": null
+    },
+    "kimi-k2.5": {
+      "aliases": [],
+      "base_url": null,
+      "capabilities": {
+        "chat": true,
+        "embeddings": false,
+        "json": {
+          "native": false,
+          "schema": false,
+          "strict": false
+        },
+        "reasoning": {
+          "enabled": true
+        },
+        "streaming": {
+          "tool_calls": true
+        },
+        "tools": {
+          "enabled": true
+        }
+      },
+      "cost": {
+        "cache_read": 0,
+        "cache_write": 0,
+        "input": 0,
+        "output": 0
+      },
+      "deprecated": false,
+      "extra": {
+        "attachment": false,
+        "family": "kimi",
+        "interleaved": {
+          "field": "reasoning_content"
+        },
+        "open_weights": true,
+        "structured_output": true,
+        "temperature": true
+      },
+      "family": null,
+      "id": "kimi-k2.5",
+      "knowledge": "2025-01",
+      "last_updated": "2026-01",
+      "lifecycle": null,
+      "limits": {
+        "context": 262144,
+        "output": 262144
+      },
+      "modalities": {
+        "input": [
+          "text",
+          "image",
+          "video"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "model": null,
+      "name": "Kimi K2.5",
+      "pricing": null,
+      "provider": "moonshotai_cn",
+      "provider_model_id": null,
+      "release_date": "2026-01",
       "tags": null
     }
   },
