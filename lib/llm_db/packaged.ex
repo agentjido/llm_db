@@ -256,7 +256,7 @@ defmodule LLMDB.Packaged do
       # Check provider IDs match safe regex
       Enum.each(providers, fn {provider_id, _data} ->
         unless is_atom(provider_id) and
-                 Atom.to_string(provider_id) =~ ~r/^[a-z][a-z0-9_:-]{0,63}$/ do
+                 Atom.to_string(provider_id) =~ ~r/^[a-z0-9][a-z0-9_:-]{0,63}$/ do
           Logger.warning(
             "llm_db: snapshot contains suspicious provider ID: #{inspect(provider_id)}"
           )
