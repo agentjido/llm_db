@@ -5,6 +5,14 @@ defmodule LLMDB.ConfigTest do
   setup do
     original_config = Application.get_all_env(:llm_db)
 
+    # Clear config BEFORE each test to avoid pollution from other test files
+    Application.delete_env(:llm_db, :compile_embed)
+    Application.delete_env(:llm_db, :allow)
+    Application.delete_env(:llm_db, :deny)
+    Application.delete_env(:llm_db, :prefer)
+    Application.delete_env(:llm_db, :filter)
+    Application.delete_env(:llm_db, :custom)
+
     on_exit(fn ->
       # Clear all llm_db config
       Application.get_all_env(:llm_db)
