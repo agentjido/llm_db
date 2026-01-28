@@ -12,6 +12,7 @@
   "models": {
     "big-pickle": {
       "aliases": [],
+      "base_url": null,
       "capabilities": {
         "chat": true,
         "embeddings": false,
@@ -70,6 +71,7 @@
     },
     "claude-3-5-haiku": {
       "aliases": [],
+      "base_url": null,
       "capabilities": {
         "chat": true,
         "embeddings": false,
@@ -133,6 +135,7 @@
     },
     "claude-haiku-4-5": {
       "aliases": [],
+      "base_url": null,
       "capabilities": {
         "chat": true,
         "embeddings": false,
@@ -196,6 +199,7 @@
     },
     "claude-opus-4-1": {
       "aliases": [],
+      "base_url": null,
       "capabilities": {
         "chat": true,
         "embeddings": false,
@@ -259,6 +263,7 @@
     },
     "claude-opus-4-5": {
       "aliases": [],
+      "base_url": null,
       "capabilities": {
         "chat": true,
         "embeddings": false,
@@ -322,6 +327,7 @@
     },
     "claude-sonnet-4": {
       "aliases": [],
+      "base_url": null,
       "capabilities": {
         "chat": true,
         "embeddings": false,
@@ -385,6 +391,7 @@
     },
     "claude-sonnet-4-5": {
       "aliases": [],
+      "base_url": null,
       "capabilities": {
         "chat": true,
         "embeddings": false,
@@ -449,6 +456,7 @@
     },
     "gemini-3-flash": {
       "aliases": [],
+      "base_url": null,
       "capabilities": {
         "chat": true,
         "embeddings": false,
@@ -514,6 +522,7 @@
     },
     "gemini-3-pro": {
       "aliases": [],
+      "base_url": null,
       "capabilities": {
         "chat": true,
         "embeddings": false,
@@ -579,6 +588,7 @@
     },
     "glm-4.6": {
       "aliases": [],
+      "base_url": null,
       "capabilities": {
         "chat": true,
         "embeddings": false,
@@ -636,6 +646,7 @@
     },
     "glm-4.7": {
       "aliases": [],
+      "base_url": null,
       "capabilities": {
         "chat": true,
         "embeddings": false,
@@ -663,6 +674,9 @@
       "extra": {
         "attachment": false,
         "family": "glm",
+        "interleaved": {
+          "field": "reasoning_content"
+        },
         "open_weights": true,
         "temperature": true
       },
@@ -693,6 +707,7 @@
     },
     "glm-4.7-free": {
       "aliases": [],
+      "base_url": null,
       "capabilities": {
         "chat": true,
         "embeddings": false,
@@ -754,6 +769,7 @@
     },
     "gpt-5": {
       "aliases": [],
+      "base_url": null,
       "capabilities": {
         "chat": true,
         "embeddings": false,
@@ -816,6 +832,7 @@
     },
     "gpt-5-codex": {
       "aliases": [],
+      "base_url": null,
       "capabilities": {
         "chat": true,
         "embeddings": false,
@@ -878,6 +895,7 @@
     },
     "gpt-5-nano": {
       "aliases": [],
+      "base_url": null,
       "capabilities": {
         "chat": true,
         "embeddings": false,
@@ -940,6 +958,7 @@
     },
     "gpt-5.1": {
       "aliases": [],
+      "base_url": null,
       "capabilities": {
         "chat": true,
         "embeddings": false,
@@ -1002,6 +1021,7 @@
     },
     "gpt-5.1-codex": {
       "aliases": [],
+      "base_url": null,
       "capabilities": {
         "chat": true,
         "embeddings": false,
@@ -1064,6 +1084,7 @@
     },
     "gpt-5.1-codex-max": {
       "aliases": [],
+      "base_url": null,
       "capabilities": {
         "chat": true,
         "embeddings": false,
@@ -1126,6 +1147,7 @@
     },
     "gpt-5.1-codex-mini": {
       "aliases": [],
+      "base_url": null,
       "capabilities": {
         "chat": true,
         "embeddings": false,
@@ -1188,6 +1210,7 @@
     },
     "gpt-5.2": {
       "aliases": [],
+      "base_url": null,
       "capabilities": {
         "chat": true,
         "embeddings": false,
@@ -1250,6 +1273,7 @@
     },
     "gpt-5.2-codex": {
       "aliases": [],
+      "base_url": null,
       "capabilities": {
         "chat": true,
         "embeddings": false,
@@ -1313,6 +1337,7 @@
     },
     "grok-code": {
       "aliases": [],
+      "base_url": null,
       "capabilities": {
         "chat": true,
         "embeddings": false,
@@ -1372,6 +1397,7 @@
     },
     "kimi-k2": {
       "aliases": [],
+      "base_url": null,
       "capabilities": {
         "chat": true,
         "embeddings": false,
@@ -1429,6 +1455,7 @@
     },
     "kimi-k2-thinking": {
       "aliases": [],
+      "base_url": null,
       "capabilities": {
         "chat": true,
         "embeddings": false,
@@ -1487,8 +1514,133 @@
       "release_date": "2025-09-05",
       "tags": null
     },
+    "kimi-k2.5": {
+      "aliases": [],
+      "base_url": null,
+      "capabilities": {
+        "chat": true,
+        "embeddings": false,
+        "json": {
+          "native": false,
+          "schema": false,
+          "strict": false
+        },
+        "reasoning": {
+          "enabled": true
+        },
+        "streaming": {
+          "tool_calls": true
+        },
+        "tools": {
+          "enabled": true
+        }
+      },
+      "cost": {
+        "cache_read": 0.1,
+        "input": 0.6,
+        "output": 3
+      },
+      "deprecated": false,
+      "extra": {
+        "attachment": false,
+        "family": "kimi",
+        "interleaved": {
+          "field": "reasoning_content"
+        },
+        "open_weights": true,
+        "temperature": true
+      },
+      "family": null,
+      "id": "kimi-k2.5",
+      "knowledge": "2024-10",
+      "last_updated": "2026-01-27",
+      "lifecycle": null,
+      "limits": {
+        "context": 262144,
+        "output": 262144
+      },
+      "modalities": {
+        "input": [
+          "text",
+          "image",
+          "video"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "model": null,
+      "name": "Kimi K2.5",
+      "pricing": null,
+      "provider": "opencode",
+      "provider_model_id": null,
+      "release_date": "2026-01-27",
+      "tags": null
+    },
+    "minimax-m2.1": {
+      "aliases": [],
+      "base_url": null,
+      "capabilities": {
+        "chat": true,
+        "embeddings": false,
+        "json": {
+          "native": false,
+          "schema": false,
+          "strict": false
+        },
+        "reasoning": {
+          "enabled": true
+        },
+        "streaming": {
+          "tool_calls": true
+        },
+        "tools": {
+          "enabled": true
+        }
+      },
+      "cost": {
+        "cache_read": 0.1,
+        "input": 0.3,
+        "output": 1.2
+      },
+      "deprecated": false,
+      "extra": {
+        "attachment": false,
+        "family": "minimax",
+        "interleaved": {
+          "field": "reasoning_content"
+        },
+        "open_weights": true,
+        "temperature": true
+      },
+      "family": null,
+      "id": "minimax-m2.1",
+      "knowledge": "2025-01",
+      "last_updated": "2025-12-23",
+      "lifecycle": null,
+      "limits": {
+        "context": 204800,
+        "output": 131072
+      },
+      "modalities": {
+        "input": [
+          "text"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "model": null,
+      "name": "MiniMax M2.1",
+      "pricing": null,
+      "provider": "opencode",
+      "provider_model_id": null,
+      "release_date": "2025-12-23",
+      "tags": null
+    },
     "minimax-m2.1-free": {
       "aliases": [],
+      "base_url": null,
       "capabilities": {
         "chat": true,
         "embeddings": false,
@@ -1550,6 +1702,7 @@
     },
     "qwen3-coder": {
       "aliases": [],
+      "base_url": null,
       "capabilities": {
         "chat": true,
         "embeddings": false,
