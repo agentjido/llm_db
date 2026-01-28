@@ -1,0 +1,37 @@
+# Gemini 3 Pro Image Preview pricing (Gemini API)
+id = "gemini-3-pro-image-preview"
+provider = "google"
+
+[cost]
+input = 2.0
+output = 12.0
+
+[pricing]
+currency = "USD"
+merge = "merge_by_id"
+
+[[pricing.components]]
+id = "image.input"
+kind = "image"
+unit = "image"
+per = 1
+rate = 0.0011
+notes = "560 tokens per input image"
+
+[[pricing.components]]
+id = "image.output.1024x1024-2048x2048"
+kind = "image"
+unit = "image"
+per = 1
+rate = 0.134
+size_class = "1024x1024-2048x2048"
+notes = "1K/2K output image (1120 tokens)"
+
+[[pricing.components]]
+id = "image.output.4096x4096"
+kind = "image"
+unit = "image"
+per = 1
+rate = 0.24
+size_class = "4096x4096"
+notes = "4K output image (2000 tokens)"
