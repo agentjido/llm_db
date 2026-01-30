@@ -4787,15 +4787,20 @@
       },
       "deprecated": false,
       "extra": {
-        "hugging_face_id": "google/gemma-2-9b-it"
+        "attachment": false,
+        "family": "gemma",
+        "hugging_face_id": "google/gemma-2-9b-it",
+        "open_weights": true,
+        "temperature": true
       },
       "family": null,
       "id": "google/gemma-2-9b-it",
-      "knowledge": null,
-      "last_updated": null,
+      "knowledge": "2024-06",
+      "last_updated": "2024-06-28",
       "lifecycle": null,
       "limits": {
-        "context": 8192
+        "context": 8192,
+        "output": 8192
       },
       "modalities": {
         "input": [
@@ -4826,12 +4831,16 @@
       },
       "deprecated": false,
       "extra": {
-        "hugging_face_id": "google/gemma-3-12b-it"
+        "attachment": true,
+        "family": "gemma",
+        "hugging_face_id": "google/gemma-3-12b-it",
+        "open_weights": true,
+        "temperature": true
       },
       "family": null,
       "id": "google/gemma-3-12b-it:free",
-      "knowledge": null,
-      "last_updated": null,
+      "knowledge": "2024-10",
+      "last_updated": "2025-03-13",
       "lifecycle": null,
       "limits": {
         "context": 32768,
@@ -4929,15 +4938,20 @@
       },
       "deprecated": false,
       "extra": {
-        "hugging_face_id": "google/gemma-3-4b-it"
+        "attachment": true,
+        "family": "gemma",
+        "hugging_face_id": "google/gemma-3-4b-it",
+        "open_weights": true,
+        "temperature": true
       },
       "family": null,
       "id": "google/gemma-3-4b-it",
-      "knowledge": null,
-      "last_updated": null,
+      "knowledge": "2024-10",
+      "last_updated": "2025-03-13",
       "lifecycle": null,
       "limits": {
-        "context": 96000
+        "context": 96000,
+        "output": 96000
       },
       "modalities": {
         "input": [
@@ -4969,12 +4983,16 @@
       },
       "deprecated": false,
       "extra": {
-        "hugging_face_id": "google/gemma-3-4b-it"
+        "attachment": true,
+        "family": "gemma",
+        "hugging_face_id": "google/gemma-3-4b-it",
+        "open_weights": true,
+        "temperature": true
       },
       "family": null,
       "id": "google/gemma-3-4b-it:free",
-      "knowledge": null,
-      "last_updated": null,
+      "knowledge": "2024-10",
+      "last_updated": "2025-03-13",
       "lifecycle": null,
       "limits": {
         "context": 32768,
@@ -5010,12 +5028,16 @@
       },
       "deprecated": false,
       "extra": {
-        "hugging_face_id": "google/gemma-3n-E2B-it"
+        "attachment": true,
+        "family": "gemma",
+        "hugging_face_id": "google/gemma-3n-E2B-it",
+        "open_weights": true,
+        "temperature": true
       },
       "family": null,
       "id": "google/gemma-3n-e2b-it:free",
-      "knowledge": null,
-      "last_updated": null,
+      "knowledge": "2024-06",
+      "last_updated": "2025-07-09",
       "lifecycle": null,
       "limits": {
         "context": 8192,
@@ -5058,18 +5080,16 @@
       },
       "family": null,
       "id": "google/gemma-3n-e4b-it",
-      "knowledge": "2024-10",
+      "knowledge": "2024-06",
       "last_updated": "2025-05-20",
       "lifecycle": null,
       "limits": {
         "context": 32768,
-        "output": 8192
+        "output": 32768
       },
       "modalities": {
         "input": [
-          "text",
-          "image",
-          "audio"
+          "text"
         ],
         "output": [
           "text"
@@ -17653,6 +17673,70 @@
       "provider": "openrouter",
       "provider_model_id": null,
       "release_date": "2025-12-22",
+      "tags": null
+    },
+    "z-ai/glm-4.7-flash": {
+      "aliases": [],
+      "base_url": null,
+      "capabilities": {
+        "chat": true,
+        "embeddings": false,
+        "json": {
+          "native": false,
+          "schema": false,
+          "strict": false
+        },
+        "reasoning": {
+          "enabled": true
+        },
+        "streaming": {
+          "tool_calls": true
+        },
+        "tools": {
+          "enabled": true
+        }
+      },
+      "cost": {
+        "input": 0.07,
+        "output": 0.4
+      },
+      "deprecated": false,
+      "extra": {
+        "attachment": false,
+        "family": "glm",
+        "interleaved": {
+          "field": "reasoning_details"
+        },
+        "open_weights": true,
+        "provider": {
+          "npm": "@openrouter/ai-sdk-provider"
+        },
+        "structured_output": true,
+        "temperature": true
+      },
+      "family": null,
+      "id": "z-ai/glm-4.7-flash",
+      "knowledge": null,
+      "last_updated": "2026-01-19",
+      "lifecycle": null,
+      "limits": {
+        "context": 200000,
+        "output": 65535
+      },
+      "modalities": {
+        "input": [
+          "text"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "model": null,
+      "name": "GLM-4.7",
+      "pricing": null,
+      "provider": "openrouter",
+      "provider_model_id": null,
+      "release_date": "2026-01-19",
       "tags": null
     }
   },

@@ -62,6 +62,7 @@ defmodule LLMDB.Generated.ValidProviders do
     :morph,
     :nano_gpt,
     :nebius,
+    :nova,
     :novita_ai,
     :nvidia,
     :ollama_cloud,
