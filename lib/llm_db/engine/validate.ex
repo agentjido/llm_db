@@ -31,17 +31,19 @@ defmodule LLMDB.Validate do
   @doc """
   Validates a single model map against the Model schema.
 
+  Uses Model.new/2 to ensure lifecycle synchronization runs after validation.
+
   ## Examples
 
       iex> validate_model(%{id: "gpt-4o", provider: :openai})
-      {:ok, %{id: "gpt-4o", provider: :openai, deprecated: false, aliases: []}}
+      {:ok, %{id: "gpt-4o", provider: :openai, deprecated: false, retired: false, aliases: []}}
 
       iex> validate_model(%{id: "gpt-4o"})
       {:error, _}
   """
   @spec validate_model(map()) :: {:ok, Model.t()} | {:error, validation_error()}
   def validate_model(map) when is_map(map) do
-    Zoi.parse(Model.schema(), map)
+    Model.new(map)
   end
 
   @doc """

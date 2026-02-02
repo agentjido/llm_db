@@ -554,94 +554,6 @@ defmodule LLMDB.Schema.ModelTest do
     end
   end
 
-  describe "helper functions" do
-    test "deprecated?/1 returns true when deprecated flag is set" do
-      model = Model.new!(%{id: "gpt-3", provider: :openai, deprecated: true})
-      assert Model.deprecated?(model) == true
-    end
-
-    test "deprecated?/1 returns true when lifecycle status is deprecated" do
-      model =
-        Model.new!(%{
-          id: "gpt-3",
-          provider: :openai,
-          lifecycle: %{status: "deprecated"}
-        })
-
-      assert Model.deprecated?(model) == true
-    end
-
-    test "deprecated?/1 returns true when lifecycle status is retired" do
-      model =
-        Model.new!(%{
-          id: "gpt-3",
-          provider: :openai,
-          lifecycle: %{status: "retired"}
-        })
-
-      assert Model.deprecated?(model) == true
-    end
-
-    test "deprecated?/1 returns false for active models" do
-      model =
-        Model.new!(%{
-          id: "gpt-4",
-          provider: :openai,
-          lifecycle: %{status: "active"}
-        })
-
-      assert Model.deprecated?(model) == false
-    end
-
-    test "deprecated?/1 returns false for models without lifecycle" do
-      model = Model.new!(%{id: "gpt-4", provider: :openai})
-      assert Model.deprecated?(model) == false
-    end
-
-    test "retired?/1 returns true when retired flag is set" do
-      model = Model.new!(%{id: "gpt-3", provider: :openai, retired: true})
-      assert Model.retired?(model) == true
-    end
-
-    test "retired?/1 returns true when lifecycle status is retired" do
-      model =
-        Model.new!(%{
-          id: "gpt-3",
-          provider: :openai,
-          lifecycle: %{status: "retired"}
-        })
-
-      assert Model.retired?(model) == true
-    end
-
-    test "retired?/1 returns false for deprecated models" do
-      model =
-        Model.new!(%{
-          id: "gpt-3",
-          provider: :openai,
-          lifecycle: %{status: "deprecated"}
-        })
-
-      assert Model.retired?(model) == false
-    end
-
-    test "retired?/1 returns false for active models" do
-      model =
-        Model.new!(%{
-          id: "gpt-4",
-          provider: :openai,
-          lifecycle: %{status: "active"}
-        })
-
-      assert Model.retired?(model) == false
-    end
-
-    test "retired?/1 returns false for models without lifecycle" do
-      model = Model.new!(%{id: "gpt-4", provider: :openai})
-      assert Model.retired?(model) == false
-    end
-  end
-
   describe "retired field" do
     test "retired defaults to false" do
       input = %{id: "gpt-4o", provider: :openai}
@@ -672,8 +584,7 @@ defmodule LLMDB.Schema.ModelTest do
       assert {:ok, result} = Model.new(input)
       assert result.retired == false
       assert result.deprecated == false
-      assert Model.deprecated?(result) == false
-      assert Model.retired?(result) == false
+      assert result.lifecycle[:status] == "beta"
     end
 
     test "experimental status is treated as active" do
@@ -685,7 +596,7 @@ defmodule LLMDB.Schema.ModelTest do
 
       assert {:ok, result} = Model.new(input)
       assert result.retired == false
-      assert Model.deprecated?(result) == false
+      assert result.deprecated == false
     end
 
     test "alpha status is treated as active" do
@@ -697,7 +608,7 @@ defmodule LLMDB.Schema.ModelTest do
 
       assert {:ok, result} = Model.new(input)
       assert result.retired == false
-      assert Model.deprecated?(result) == false
+      assert result.deprecated == false
     end
 
     test "archived status is treated as retired" do
@@ -710,8 +621,6 @@ defmodule LLMDB.Schema.ModelTest do
       assert {:ok, result} = Model.new(input)
       assert result.deprecated == true
       assert result.retired == true
-      assert Model.deprecated?(result) == true
-      assert Model.retired?(result) == true
     end
 
     test "removed status is treated as retired" do
@@ -724,8 +633,6 @@ defmodule LLMDB.Schema.ModelTest do
       assert {:ok, result} = Model.new(input)
       assert result.deprecated == true
       assert result.retired == true
-      assert Model.deprecated?(result) == true
-      assert Model.retired?(result) == true
     end
 
     test "unknown custom status preserves existing flags" do
@@ -740,9 +647,7 @@ defmodule LLMDB.Schema.ModelTest do
       # Unknown status preserves flags as-is
       assert result.deprecated == false
       assert result.retired == false
-      # But helper functions check against known statuses
-      assert Model.deprecated?(result) == false
-      assert Model.retired?(result) == false
+      assert result.lifecycle[:status] == "custom_provider_status"
     end
 
     test "unknown custom status with explicit deprecated true is preserved" do
@@ -757,8 +662,6 @@ defmodule LLMDB.Schema.ModelTest do
       # Unknown status preserves flags as-is
       assert result.deprecated == true
       assert result.retired == false
-      # Helper returns true because the boolean flag is set
-      assert Model.deprecated?(result) == true
     end
 
     test "status accepts any string value" do
@@ -771,84 +674,8 @@ defmodule LLMDB.Schema.ModelTest do
       assert {:ok, result} = Model.new(input)
       assert result.lifecycle.status == "google_preview"
     end
-  end
 
-  describe "lifecycle accessor functions" do
-    test "lifecycle_status/1 returns the status" do
-      model = Model.new!(%{id: "gpt-4", provider: :openai, lifecycle: %{status: "active"}})
-      assert Model.lifecycle_status(model) == "active"
-    end
-
-    test "lifecycle_status/1 returns nil for models without lifecycle" do
-      model = Model.new!(%{id: "gpt-4", provider: :openai})
-      assert Model.lifecycle_status(model) == nil
-    end
-
-    test "deprecated_at/1 returns the deprecation date" do
-      model =
-        Model.new!(%{
-          id: "gpt-3",
-          provider: :openai,
-          lifecycle: %{status: "deprecated", deprecated_at: "2024-01-01"}
-        })
-
-      assert Model.deprecated_at(model) == "2024-01-01"
-    end
-
-    test "deprecated_at/1 returns nil for models without deprecation date" do
-      model = Model.new!(%{id: "gpt-4", provider: :openai})
-      assert Model.deprecated_at(model) == nil
-    end
-
-    test "retires_at/1 returns the retirement date" do
-      model =
-        Model.new!(%{
-          id: "gpt-3",
-          provider: :openai,
-          lifecycle: %{status: "deprecated", retires_at: "2025-01-01"}
-        })
-
-      assert Model.retires_at(model) == "2025-01-01"
-    end
-
-    test "retires_at/1 returns nil for models without retirement date" do
-      model = Model.new!(%{id: "gpt-4", provider: :openai})
-      assert Model.retires_at(model) == nil
-    end
-
-    test "replacement/1 returns the replacement model ID" do
-      model =
-        Model.new!(%{
-          id: "gpt-3",
-          provider: :openai,
-          lifecycle: %{replacement: "gpt-4"}
-        })
-
-      assert Model.replacement(model) == "gpt-4"
-    end
-
-    test "replacement/1 returns nil for models without replacement" do
-      model = Model.new!(%{id: "gpt-4", provider: :openai})
-      assert Model.replacement(model) == nil
-    end
-
-    test "has_replacement?/1 returns true when replacement is set" do
-      model =
-        Model.new!(%{
-          id: "gpt-3",
-          provider: :openai,
-          lifecycle: %{replacement: "gpt-4"}
-        })
-
-      assert Model.has_replacement?(model) == true
-    end
-
-    test "has_replacement?/1 returns false when no replacement" do
-      model = Model.new!(%{id: "gpt-4", provider: :openai})
-      assert Model.has_replacement?(model) == false
-    end
-
-    test "full lifecycle data is accessible via accessors" do
+    test "lifecycle fields are accessible via direct map access" do
       # Test the exact scenario from issue #99
       model =
         Model.new!(%{
@@ -862,13 +689,14 @@ defmodule LLMDB.Schema.ModelTest do
           }
         })
 
-      assert Model.lifecycle_status(model) == "deprecated"
-      assert Model.deprecated_at(model) == "2025-05-12"
-      assert Model.retires_at(model) == "2026-05-12"
-      assert Model.replacement(model) == "gpt-image-1.5"
-      assert Model.has_replacement?(model) == true
-      assert Model.deprecated?(model) == true
-      assert Model.retired?(model) == false
+      # Access via direct map access (like cost, limits, etc.)
+      assert model.lifecycle[:status] == "deprecated"
+      assert model.lifecycle[:deprecated_at] == "2025-05-12"
+      assert model.lifecycle[:retires_at] == "2026-05-12"
+      assert model.lifecycle[:replacement] == "gpt-image-1.5"
+      # The deprecated boolean is synced
+      assert model.deprecated == true
+      assert model.retired == false
     end
   end
 end
