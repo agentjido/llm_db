@@ -1090,23 +1090,68 @@
     "grok-imagine-image": {
       "aliases": [],
       "base_url": null,
-      "capabilities": null,
+      "capabilities": {
+        "chat": false,
+        "embeddings": false,
+        "json": {
+          "native": false,
+          "schema": false,
+          "strict": false
+        },
+        "reasoning": {
+          "enabled": false
+        },
+        "streaming": {
+          "text": false,
+          "tool_calls": false
+        },
+        "tools": {
+          "enabled": false
+        }
+      },
       "cost": null,
       "deprecated": false,
       "extra": {
+        "api": "images",
         "created": 1769558400,
         "owned_by": "xai"
       },
-      "family": null,
+      "family": "grok-imagine",
       "id": "grok-imagine-image",
       "knowledge": null,
       "last_updated": null,
       "lifecycle": null,
       "limits": null,
-      "modalities": null,
+      "modalities": {
+        "input": [
+          "text"
+        ],
+        "output": [
+          "image"
+        ]
+      },
       "model": null,
-      "name": null,
-      "pricing": null,
+      "name": "Grok Imagine Image",
+      "pricing": {
+        "components": [
+          {
+            "id": "image.input",
+            "kind": "image",
+            "per": 1,
+            "rate": 0.002,
+            "unit": "image"
+          },
+          {
+            "id": "image.generated",
+            "kind": "image",
+            "per": 1,
+            "rate": 0.02,
+            "unit": "image"
+          }
+        ],
+        "currency": "USD",
+        "merge": "merge_by_id"
+      },
       "provider": "xai",
       "provider_model_id": null,
       "release_date": null,
