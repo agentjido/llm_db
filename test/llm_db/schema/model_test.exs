@@ -433,4 +433,231 @@ defmodule LLMDB.Schema.ModelTest do
       assert result.cost.reasoning == 0.0
     end
   end
+
+  describe "lifecycle synchronization" do
+    test "syncs both flags when lifecycle status is retired" do
+      input = %{
+        id: "claude-3-opus-20240229",
+        provider: :anthropic,
+        lifecycle: %{status: "retired", retires_at: "2025-01-01"}
+      }
+
+      assert {:ok, result} = Model.new(input)
+      assert result.deprecated == true
+      assert result.retired == true
+      assert result.lifecycle.status == "retired"
+      assert result.lifecycle.retires_at == "2025-01-01"
+    end
+
+    test "syncs both flags when lifecycle status is deprecated" do
+      input = %{
+        id: "claude-3-5-sonnet-20241022",
+        provider: :anthropic,
+        lifecycle: %{status: "deprecated", deprecated_at: "2025-02-19"}
+      }
+
+      assert {:ok, result} = Model.new(input)
+      assert result.deprecated == true
+      assert result.retired == false
+      assert result.lifecycle.status == "deprecated"
+      assert result.lifecycle.deprecated_at == "2025-02-19"
+    end
+
+    test "syncs both flags when lifecycle status is deprecated with retires_at" do
+      # Test the exact scenario from issue #99
+      input = %{
+        id: "dall-e-3",
+        provider: :openai,
+        lifecycle: %{
+          status: "deprecated",
+          deprecated_at: "2025-05-12",
+          retires_at: "2026-05-12",
+          replacement: "gpt-image-1.5"
+        }
+      }
+
+      assert {:ok, result} = Model.new(input)
+      # The fix: model.deprecated should now return true
+      assert result.deprecated == true
+      assert result.retired == false
+      assert result.lifecycle.status == "deprecated"
+    end
+
+    test "sets retired to false when lifecycle status is active" do
+      input = %{
+        id: "gpt-4o",
+        provider: :openai,
+        lifecycle: %{status: "active"}
+      }
+
+      assert {:ok, result} = Model.new(input)
+      assert result.retired == false
+      assert result.deprecated == false
+      assert result.lifecycle.status == "active"
+    end
+
+    test "preserves explicit deprecated flag when no lifecycle info" do
+      input = %{
+        id: "gpt-3.5-turbo",
+        provider: :openai,
+        deprecated: true
+      }
+
+      assert {:ok, result} = Model.new(input)
+      assert result.deprecated == true
+      assert result.retired == false
+      assert result.lifecycle == nil
+    end
+
+    test "backwards compatibility: upstream source with only deprecated flag" do
+      # Simulates upstream sources like models.dev that only provide deprecated: true
+      input = %{
+        id: "legacy-model",
+        provider: :test,
+        deprecated: true
+      }
+
+      assert {:ok, result} = Model.new(input)
+      assert result.deprecated == true
+      assert result.retired == false
+      assert result.lifecycle == nil
+    end
+
+    test "local override with lifecycle overrides upstream deprecated flag" do
+      # Simulates merge where upstream has deprecated: false
+      # but local TOML override has full lifecycle info
+      input = %{
+        id: "claude-3-5-sonnet-20241022",
+        provider: :anthropic,
+        deprecated: false,
+        lifecycle: %{status: "deprecated"}
+      }
+
+      assert {:ok, result} = Model.new(input)
+      # Sync logic should set both based on lifecycle
+      assert result.deprecated == true
+      assert result.retired == false
+    end
+
+    test "nil lifecycle with explicit true deprecated preserves both" do
+      input = %{
+        id: "model-with-nil-lifecycle-status",
+        provider: :test,
+        deprecated: true,
+        lifecycle: %{status: nil}
+      }
+
+      assert {:ok, result} = Model.new(input)
+      # nil status preserves both flags as-is
+      assert result.deprecated == true
+      assert result.retired == false
+    end
+  end
+
+  describe "helper functions" do
+    test "deprecated?/1 returns true when deprecated flag is set" do
+      model = Model.new!(%{id: "gpt-3", provider: :openai, deprecated: true})
+      assert Model.deprecated?(model) == true
+    end
+
+    test "deprecated?/1 returns true when lifecycle status is deprecated" do
+      model =
+        Model.new!(%{
+          id: "gpt-3",
+          provider: :openai,
+          lifecycle: %{status: "deprecated"}
+        })
+
+      assert Model.deprecated?(model) == true
+    end
+
+    test "deprecated?/1 returns true when lifecycle status is retired" do
+      model =
+        Model.new!(%{
+          id: "gpt-3",
+          provider: :openai,
+          lifecycle: %{status: "retired"}
+        })
+
+      assert Model.deprecated?(model) == true
+    end
+
+    test "deprecated?/1 returns false for active models" do
+      model =
+        Model.new!(%{
+          id: "gpt-4",
+          provider: :openai,
+          lifecycle: %{status: "active"}
+        })
+
+      assert Model.deprecated?(model) == false
+    end
+
+    test "deprecated?/1 returns false for models without lifecycle" do
+      model = Model.new!(%{id: "gpt-4", provider: :openai})
+      assert Model.deprecated?(model) == false
+    end
+
+    test "retired?/1 returns true when retired flag is set" do
+      model = Model.new!(%{id: "gpt-3", provider: :openai, retired: true})
+      assert Model.retired?(model) == true
+    end
+
+    test "retired?/1 returns true when lifecycle status is retired" do
+      model =
+        Model.new!(%{
+          id: "gpt-3",
+          provider: :openai,
+          lifecycle: %{status: "retired"}
+        })
+
+      assert Model.retired?(model) == true
+    end
+
+    test "retired?/1 returns false for deprecated models" do
+      model =
+        Model.new!(%{
+          id: "gpt-3",
+          provider: :openai,
+          lifecycle: %{status: "deprecated"}
+        })
+
+      assert Model.retired?(model) == false
+    end
+
+    test "retired?/1 returns false for active models" do
+      model =
+        Model.new!(%{
+          id: "gpt-4",
+          provider: :openai,
+          lifecycle: %{status: "active"}
+        })
+
+      assert Model.retired?(model) == false
+    end
+
+    test "retired?/1 returns false for models without lifecycle" do
+      model = Model.new!(%{id: "gpt-4", provider: :openai})
+      assert Model.retired?(model) == false
+    end
+  end
+
+  describe "retired field" do
+    test "retired defaults to false" do
+      input = %{id: "gpt-4o", provider: :openai}
+      assert {:ok, result} = Zoi.parse(Model.schema(), input)
+      assert result.retired == false
+    end
+
+    test "can override retired to true" do
+      input = %{id: "gpt-3", provider: :openai, retired: true}
+      assert {:ok, result} = Zoi.parse(Model.schema(), input)
+      assert result.retired == true
+    end
+
+    test "rejects non-boolean retired" do
+      input = %{id: "gpt-4o", provider: :openai, retired: "true"}
+      assert {:error, _} = Zoi.parse(Model.schema(), input)
+    end
+  end
 end

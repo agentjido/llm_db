@@ -156,6 +156,7 @@ defmodule LLMDB.Model do
              :capabilities,
              :tags,
              :deprecated,
+             :retired,
              :lifecycle,
              :aliases,
              :extra
@@ -186,6 +187,7 @@ defmodule LLMDB.Model do
               capabilities: @capabilities_schema |> Zoi.nullish(),
               tags: Zoi.array(Zoi.string()) |> Zoi.nullish(),
               deprecated: Zoi.boolean() |> Zoi.default(false),
+              retired: Zoi.boolean() |> Zoi.default(false),
               lifecycle: @lifecycle_schema |> Zoi.nullish(),
               aliases: Zoi.array(Zoi.string()) |> Zoi.default([]),
               extra: Zoi.map() |> Zoi.nullish()
@@ -215,7 +217,10 @@ defmodule LLMDB.Model do
   @spec new(map()) :: {:ok, t()} | {:error, term()}
   def new(attrs) when is_map(attrs) do
     attrs = sync_id_model_fields(attrs)
-    Zoi.parse(@schema, attrs)
+
+    with {:ok, model} <- Zoi.parse(@schema, attrs) do
+      {:ok, sync_lifecycle_flags(model)}
+    end
   end
 
   @doc """
@@ -296,6 +301,98 @@ defmodule LLMDB.Model do
   @spec spec(t(), atom() | nil) :: String.t()
   def spec(%__MODULE__{provider: provider, id: id}, format \\ nil) do
     LLMDB.Spec.format_spec({provider, id}, format)
+  end
+
+  @doc """
+  Returns true if the model is deprecated.
+
+  A model is considered deprecated if either:
+  - The `deprecated` boolean field is true, OR
+  - The `lifecycle.status` is "deprecated" or "retired"
+
+  This provides a unified API that works with both simple boolean flags
+  and rich lifecycle information.
+
+  ## Examples
+
+      iex> model = %LLMDB.Model{id: "gpt-3", provider: :openai, deprecated: true}
+      iex> LLMDB.Model.deprecated?(model)
+      true
+
+      iex> model = LLMDB.Model.new!(%{id: "claude-2", provider: :anthropic, lifecycle: %{status: "deprecated"}})
+      iex> LLMDB.Model.deprecated?(model)
+      true
+
+      iex> model = LLMDB.Model.new!(%{id: "gpt-4", provider: :openai})
+      iex> LLMDB.Model.deprecated?(model)
+      false
+  """
+  @spec deprecated?(t()) :: boolean()
+  def deprecated?(%__MODULE__{} = model) do
+    model.deprecated == true or
+      get_in(model.lifecycle, [:status]) in ["deprecated", "retired"]
+  end
+
+  @doc """
+  Returns true if the model is retired.
+
+  A model is considered retired if either:
+  - The `retired` boolean field is true, OR
+  - The `lifecycle.status` is "retired"
+
+  This provides a unified API that works with both simple boolean flags
+  and rich lifecycle information.
+
+  ## Examples
+
+      iex> model = LLMDB.Model.new!(%{id: "gpt-3", provider: :openai, retired: true})
+      iex> LLMDB.Model.retired?(model)
+      true
+
+      iex> model = LLMDB.Model.new!(%{id: "claude-2", provider: :anthropic, lifecycle: %{status: "retired"}})
+      iex> LLMDB.Model.retired?(model)
+      true
+
+      iex> model = LLMDB.Model.new!(%{id: "gpt-4", provider: :openai})
+      iex> LLMDB.Model.retired?(model)
+      false
+  """
+  @spec retired?(t()) :: boolean()
+  def retired?(%__MODULE__{} = model) do
+    model.retired == true or get_in(model.lifecycle, [:status]) == "retired"
+  end
+
+  # Synchronizes the deprecated and retired boolean flags with the lifecycle status.
+  #
+  # This function runs after Zoi validation to ensure the boolean flags are consistent
+  # with the lifecycle status. It maintains backwards compatibility with upstream sources
+  # that only provide the deprecated field.
+  #
+  # Sync logic:
+  # - "retired" status → deprecated: true, retired: true
+  # - "deprecated" status → deprecated: true, retired: false
+  # - "active" status → retired: false, keep deprecated as-is (backwards compat)
+  # - nil status → keep both flags as-is (backwards compat)
+  defp sync_lifecycle_flags(%__MODULE__{} = model) do
+    status = get_in(model.lifecycle, [:status])
+
+    case status do
+      "retired" ->
+        %{model | deprecated: true, retired: true}
+
+      "deprecated" ->
+        %{model | deprecated: true, retired: false}
+
+      "active" ->
+        # Active models: explicitly set retired to false, keep deprecated as-is
+        # This preserves backwards compatibility with upstream sources that
+        # only set deprecated: true without lifecycle information
+        %{model | retired: false}
+
+      nil ->
+        # No lifecycle info: keep both flags as-is (backwards compatibility)
+        model
+    end
   end
 end
 
