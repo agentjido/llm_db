@@ -329,4 +329,137 @@ defmodule LLMDB.Engine.NormalizeTest do
              ] = normalized
     end
   end
+
+  describe "lifecycle normalization" do
+    test "lifecycle.status 'retired' sets both deprecated and retired to true" do
+      models = [
+        %{
+          provider: :openai,
+          id: "old-model",
+          lifecycle: %{status: "retired"}
+        }
+      ]
+
+      [normalized] = Normalize.normalize_models(models)
+
+      assert normalized.deprecated == true
+      assert normalized.retired == true
+      assert normalized.lifecycle.status == "retired"
+    end
+
+    test "lifecycle.status 'deprecated' sets deprecated true, retired false" do
+      models = [
+        %{
+          provider: :openai,
+          id: "old-model",
+          lifecycle: %{status: "deprecated", replacement: "new-model"}
+        }
+      ]
+
+      [normalized] = Normalize.normalize_models(models)
+
+      assert normalized.deprecated == true
+      assert normalized.retired == false
+      assert normalized.lifecycle.status == "deprecated"
+      assert normalized.lifecycle.replacement == "new-model"
+    end
+
+    test "lifecycle.status 'active' sets both booleans to false" do
+      models = [
+        %{
+          provider: :openai,
+          id: "new-model",
+          lifecycle: %{status: "active"}
+        }
+      ]
+
+      [normalized] = Normalize.normalize_models(models)
+
+      assert normalized.deprecated == false
+      assert normalized.retired == false
+    end
+
+    test "lifecycle.status overrides conflicting boolean flags" do
+      models = [
+        %{
+          provider: :openai,
+          id: "model",
+          deprecated: false,
+          lifecycle: %{status: "deprecated"}
+        }
+      ]
+
+      [normalized] = Normalize.normalize_models(models)
+
+      assert normalized.deprecated == true
+      assert normalized.retired == false
+    end
+
+    test "deprecated: true derives lifecycle.status 'deprecated'" do
+      models = [
+        %{
+          provider: :openai,
+          id: "old-model",
+          deprecated: true
+        }
+      ]
+
+      [normalized] = Normalize.normalize_models(models)
+
+      assert normalized.deprecated == true
+      assert normalized.retired == false
+      assert normalized.lifecycle.status == "deprecated"
+    end
+
+    test "retired: true derives lifecycle.status 'retired' and sets deprecated" do
+      models = [
+        %{
+          provider: :openai,
+          id: "old-model",
+          retired: true
+        }
+      ]
+
+      [normalized] = Normalize.normalize_models(models)
+
+      assert normalized.deprecated == true
+      assert normalized.retired == true
+      assert normalized.lifecycle.status == "retired"
+    end
+
+    test "no lifecycle or booleans leaves model unchanged" do
+      models = [
+        %{
+          provider: :openai,
+          id: "model"
+        }
+      ]
+
+      [normalized] = Normalize.normalize_models(models)
+
+      refute Map.has_key?(normalized, :deprecated)
+      refute Map.has_key?(normalized, :retired)
+      refute Map.has_key?(normalized, :lifecycle)
+    end
+
+    test "issue #99 - deprecated flag matches lifecycle status" do
+      models = [
+        %{
+          provider: :openai,
+          id: "dall-e-3",
+          lifecycle: %{
+            status: "deprecated",
+            deprecated_at: "2025-05-12",
+            retires_at: "2026-05-12",
+            replacement: "gpt-image-1.5"
+          }
+        }
+      ]
+
+      [normalized] = Normalize.normalize_models(models)
+
+      assert normalized.lifecycle.status == "deprecated"
+      assert normalized.deprecated == true
+    end
+  end
 end

@@ -198,6 +198,7 @@ defmodule LLMDB.Normalize do
     |> normalize_modalities()
     |> normalize_tags()
     |> normalize_dates()
+    |> normalize_lifecycle()
     |> remove_nil_values()
   end
 
@@ -206,6 +207,7 @@ defmodule LLMDB.Normalize do
     |> normalize_modalities()
     |> normalize_tags()
     |> normalize_dates()
+    |> normalize_lifecycle()
     |> remove_nil_values()
   end
 
@@ -278,6 +280,58 @@ defmodule LLMDB.Normalize do
     |> normalize_date_field(:last_updated)
     |> normalize_date_field(:knowledge)
   end
+
+  defp normalize_lifecycle(model) do
+    lifecycle = Map.get(model, :lifecycle)
+    status = lifecycle_status_from_map(lifecycle)
+    deprecated_flag = Map.get(model, :deprecated) == true
+    retired_flag = Map.get(model, :retired) == true
+
+    cond do
+      status == "retired" ->
+        model
+        |> Map.put(:deprecated, true)
+        |> Map.put(:retired, true)
+
+      status == "deprecated" ->
+        model
+        |> Map.put(:deprecated, true)
+        |> Map.put(:retired, false)
+
+      status == "active" ->
+        model
+        |> Map.put(:deprecated, false)
+        |> Map.put(:retired, false)
+
+      is_nil(status) and (retired_flag or deprecated_flag) ->
+        derived_status =
+          cond do
+            retired_flag -> "retired"
+            deprecated_flag -> "deprecated"
+            true -> nil
+          end
+
+        updated_lifecycle =
+          (lifecycle || %{})
+          |> Map.put(:status, derived_status)
+
+        model
+        |> Map.put(:lifecycle, updated_lifecycle)
+        |> Map.put(:deprecated, deprecated_flag or retired_flag)
+        |> Map.put(:retired, retired_flag)
+
+      true ->
+        model
+    end
+  end
+
+  defp lifecycle_status_from_map(nil), do: nil
+
+  defp lifecycle_status_from_map(lifecycle) when is_map(lifecycle) do
+    Map.get(lifecycle, :status) || Map.get(lifecycle, "status")
+  end
+
+  defp lifecycle_status_from_map(_), do: nil
 
   defp normalize_date_field(model, field) do
     if Map.has_key?(model, field) do
