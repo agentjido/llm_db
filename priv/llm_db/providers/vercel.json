@@ -703,6 +703,64 @@
       "release_date": "2025-09-23",
       "tags": null
     },
+    "alibaba/qwen3-max-thinking": {
+      "aliases": [],
+      "base_url": null,
+      "capabilities": {
+        "chat": true,
+        "embeddings": false,
+        "json": {
+          "native": false,
+          "schema": false,
+          "strict": false
+        },
+        "reasoning": {
+          "enabled": true
+        },
+        "streaming": {
+          "tool_calls": true
+        },
+        "tools": {
+          "enabled": true
+        }
+      },
+      "cost": {
+        "cache_read": 0.24,
+        "input": 1.2,
+        "output": 6
+      },
+      "deprecated": false,
+      "extra": {
+        "attachment": false,
+        "family": "qwen",
+        "open_weights": true,
+        "temperature": true
+      },
+      "family": null,
+      "id": "alibaba/qwen3-max-thinking",
+      "knowledge": "2025-01",
+      "last_updated": "2025-01",
+      "lifecycle": null,
+      "limits": {
+        "context": 256000,
+        "output": 65536
+      },
+      "modalities": {
+        "input": [
+          "text"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "model": null,
+      "name": "Qwen 3 Max Thinking",
+      "pricing": null,
+      "provider": "vercel",
+      "provider_model_id": null,
+      "release_date": "2025-01",
+      "tags": null
+    },
     "alibaba/qwen3-next-80b-a3b-instruct": {
       "aliases": [],
       "base_url": null,
@@ -1608,6 +1666,7 @@
       "extra": {
         "attachment": true,
         "family": "claude-haiku",
+        "interleaved": true,
         "open_weights": false,
         "temperature": true
       },
@@ -1791,6 +1850,7 @@
       "extra": {
         "attachment": true,
         "family": "claude-opus",
+        "interleaved": true,
         "open_weights": false,
         "temperature": true
       },
@@ -1819,6 +1879,68 @@
       "provider": "vercel",
       "provider_model_id": null,
       "release_date": "2025-11-24",
+      "tags": null
+    },
+    "anthropic/claude-opus-4.6": {
+      "aliases": [],
+      "base_url": null,
+      "capabilities": {
+        "chat": true,
+        "embeddings": false,
+        "json": {
+          "native": false,
+          "schema": false,
+          "strict": false
+        },
+        "reasoning": {
+          "enabled": true
+        },
+        "streaming": {
+          "tool_calls": true
+        },
+        "tools": {
+          "enabled": true
+        }
+      },
+      "cost": {
+        "cache_read": 0.5,
+        "cache_write": 6.25,
+        "input": 5,
+        "output": 25
+      },
+      "deprecated": false,
+      "extra": {
+        "attachment": true,
+        "family": "claude-opus",
+        "interleaved": true,
+        "open_weights": false,
+        "temperature": true
+      },
+      "family": null,
+      "id": "anthropic/claude-opus-4.6",
+      "knowledge": "2025-05",
+      "last_updated": "2026-02",
+      "lifecycle": null,
+      "limits": {
+        "context": 1000000,
+        "output": 128000
+      },
+      "modalities": {
+        "input": [
+          "text",
+          "image",
+          "pdf"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "model": null,
+      "name": "Claude Opus 4.6",
+      "pricing": null,
+      "provider": "vercel",
+      "provider_model_id": null,
+      "release_date": "2026-02",
       "tags": null
     },
     "anthropic/claude-sonnet-4": {
@@ -1941,6 +2063,63 @@
       "provider": "vercel",
       "provider_model_id": null,
       "release_date": "2025-09-29",
+      "tags": null
+    },
+    "arcee-ai/trinity-large-preview": {
+      "aliases": [],
+      "base_url": null,
+      "capabilities": {
+        "chat": true,
+        "embeddings": false,
+        "json": {
+          "native": false,
+          "schema": false,
+          "strict": false
+        },
+        "reasoning": {
+          "enabled": false
+        },
+        "streaming": {
+          "tool_calls": true
+        },
+        "tools": {
+          "enabled": true
+        }
+      },
+      "cost": {
+        "input": 0.25,
+        "output": 1
+      },
+      "deprecated": false,
+      "extra": {
+        "attachment": false,
+        "family": "trinity",
+        "open_weights": false,
+        "temperature": true
+      },
+      "family": null,
+      "id": "arcee-ai/trinity-large-preview",
+      "knowledge": "2024-10",
+      "last_updated": "2025-01",
+      "lifecycle": null,
+      "limits": {
+        "context": 131000,
+        "output": 131000
+      },
+      "modalities": {
+        "input": [
+          "text"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "model": null,
+      "name": "Trinity Large Preview",
+      "pricing": null,
+      "provider": "vercel",
+      "provider_model_id": null,
+      "release_date": "2025-01",
       "tags": null
     },
     "arcee-ai/trinity-mini": {
@@ -2733,6 +2912,7 @@
       "extra": {
         "attachment": false,
         "family": "deepseek-thinking",
+        "interleaved": true,
         "open_weights": false,
         "temperature": true
       },
@@ -4413,6 +4593,7 @@
       "extra": {
         "attachment": false,
         "family": "minimax",
+        "interleaved": true,
         "open_weights": true,
         "temperature": true
       },
@@ -4472,6 +4653,7 @@
       "extra": {
         "attachment": false,
         "family": "minimax",
+        "interleaved": true,
         "open_weights": false,
         "temperature": true
       },
@@ -5646,6 +5828,7 @@
       "extra": {
         "attachment": false,
         "family": "kimi-thinking",
+        "interleaved": true,
         "open_weights": false,
         "temperature": true
       },
@@ -5704,6 +5887,7 @@
       "extra": {
         "attachment": false,
         "family": "kimi-thinking",
+        "interleaved": true,
         "open_weights": false,
         "temperature": true
       },
@@ -5818,9 +6002,7 @@
       "extra": {
         "attachment": true,
         "family": "kimi",
-        "interleaved": {
-          "field": "reasoning_details"
-        },
+        "interleaved": true,
         "open_weights": true,
         "temperature": true
       },
@@ -6604,6 +6786,47 @@
       "provider": "vercel",
       "provider_model_id": null,
       "release_date": "2024-07-18",
+      "tags": null
+    },
+    "openai/gpt-4o-mini-search-preview": {
+      "aliases": [],
+      "base_url": null,
+      "capabilities": null,
+      "cost": {
+        "input": 0.15,
+        "output": 0.6
+      },
+      "deprecated": false,
+      "extra": {
+        "attachment": false,
+        "family": "gpt-mini",
+        "open_weights": false,
+        "structured_output": false,
+        "temperature": true
+      },
+      "family": null,
+      "id": "openai/gpt-4o-mini-search-preview",
+      "knowledge": "2023-09",
+      "last_updated": "2025-01",
+      "lifecycle": null,
+      "limits": {
+        "context": 128000,
+        "output": 16384
+      },
+      "modalities": {
+        "input": [
+          "text"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "model": null,
+      "name": "GPT 4o Mini Search Preview",
+      "pricing": null,
+      "provider": "vercel",
+      "provider_model_id": null,
+      "release_date": "2025-01",
       "tags": null
     },
     "openai/gpt-5": {
@@ -9650,6 +9873,7 @@
       "extra": {
         "attachment": false,
         "family": "glm",
+        "interleaved": true,
         "open_weights": true,
         "temperature": true
       },
@@ -9822,6 +10046,7 @@
       "extra": {
         "attachment": false,
         "family": "glm",
+        "interleaved": true,
         "open_weights": true,
         "temperature": true
       },
@@ -9996,6 +10221,7 @@
       "extra": {
         "attachment": false,
         "family": "glm",
+        "interleaved": true,
         "open_weights": false,
         "temperature": true
       },
@@ -10022,6 +10248,65 @@
       "provider": "vercel",
       "provider_model_id": null,
       "release_date": "2025-12-22",
+      "tags": null
+    },
+    "zai/glm-4.7-flashx": {
+      "aliases": [],
+      "base_url": null,
+      "capabilities": {
+        "chat": true,
+        "embeddings": false,
+        "json": {
+          "native": false,
+          "schema": false,
+          "strict": false
+        },
+        "reasoning": {
+          "enabled": true
+        },
+        "streaming": {
+          "tool_calls": true
+        },
+        "tools": {
+          "enabled": true
+        }
+      },
+      "cost": {
+        "cache_read": 0.01,
+        "input": 0.06,
+        "output": 0.4
+      },
+      "deprecated": false,
+      "extra": {
+        "attachment": false,
+        "family": "glm-flash",
+        "interleaved": true,
+        "open_weights": true,
+        "temperature": true
+      },
+      "family": null,
+      "id": "zai/glm-4.7-flashx",
+      "knowledge": "2025-01",
+      "last_updated": "2025-01",
+      "lifecycle": null,
+      "limits": {
+        "context": 200000,
+        "output": 128000
+      },
+      "modalities": {
+        "input": [
+          "text"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "model": null,
+      "name": "GLM 4.7 FlashX",
+      "pricing": null,
+      "provider": "vercel",
+      "provider_model_id": null,
+      "release_date": "2025-01",
       "tags": null
     }
   },
