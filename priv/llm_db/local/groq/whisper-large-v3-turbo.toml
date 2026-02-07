@@ -1,0 +1,45 @@
+# Whisper Large V3 Turbo - Pruned/fine-tuned Whisper for fast transcription on Groq
+# Multilingual transcription only (no translation)
+# Docs: https://console.groq.com/docs/speech-to-text
+
+id = "whisper-large-v3-turbo"
+name = "Whisper Large V3 Turbo"
+family = "whisper"
+deprecated = false
+tags = ["stt", "transcription"]
+
+[modalities]
+input = ["audio"]
+output = ["text"]
+
+[capabilities]
+chat = false
+embeddings = false
+
+[capabilities.tools]
+enabled = false
+
+[capabilities.reasoning]
+enabled = false
+
+[cost]
+audio = 0.04
+
+[pricing]
+currency = "USD"
+merge = "replace"
+
+[[pricing.components]]
+id = "audio.transcription"
+kind = "other"
+unit = "other"
+per = 1
+rate = 0.04
+notes = "per hour of audio"
+
+[extra]
+family = "whisper"
+open_weights = true
+max_file_size_mb = 100
+supported_formats = ["flac", "mp3", "mp4", "mpeg", "mpga", "m4a", "ogg", "wav", "webm"]
+api = "audio"
