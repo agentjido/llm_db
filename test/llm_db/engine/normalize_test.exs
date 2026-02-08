@@ -442,6 +442,39 @@ defmodule LLMDB.Engine.NormalizeTest do
       refute Map.has_key?(normalized, :lifecycle)
     end
 
+    test "non-map lifecycle is treated as nil and does not crash" do
+      models = [
+        %{
+          provider: :openai,
+          id: "model",
+          lifecycle: "invalid",
+          deprecated: true
+        }
+      ]
+
+      [normalized] = Normalize.normalize_models(models)
+
+      assert normalized.deprecated == true
+      assert normalized.lifecycle.status == "deprecated"
+    end
+
+    test "idempotent - normalizing twice produces same result" do
+      models = [
+        %{
+          provider: :openai,
+          id: "model",
+          lifecycle: %{status: "deprecated", replacement: "new-model"}
+        }
+      ]
+
+      [first] = Normalize.normalize_models(models)
+      [second] = Normalize.normalize_models([first])
+
+      assert first.deprecated == second.deprecated
+      assert first.retired == second.retired
+      assert first.lifecycle.status == second.lifecycle.status
+    end
+
     test "issue #99 - deprecated flag matches lifecycle status" do
       models = [
         %{

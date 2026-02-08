@@ -283,6 +283,7 @@ defmodule LLMDB.Normalize do
 
   defp normalize_lifecycle(model) do
     lifecycle = Map.get(model, :lifecycle)
+    lifecycle = if is_map(lifecycle), do: lifecycle, else: nil
     status = lifecycle_status_from_map(lifecycle)
     deprecated_flag = Map.get(model, :deprecated) == true
     retired_flag = Map.get(model, :retired) == true
@@ -304,12 +305,7 @@ defmodule LLMDB.Normalize do
         |> Map.put(:retired, false)
 
       is_nil(status) and (retired_flag or deprecated_flag) ->
-        derived_status =
-          cond do
-            retired_flag -> "retired"
-            deprecated_flag -> "deprecated"
-            true -> nil
-          end
+        derived_status = if retired_flag, do: "retired", else: "deprecated"
 
         updated_lifecycle =
           (lifecycle || %{})
@@ -317,7 +313,7 @@ defmodule LLMDB.Normalize do
 
         model
         |> Map.put(:lifecycle, updated_lifecycle)
-        |> Map.put(:deprecated, deprecated_flag or retired_flag)
+        |> Map.put(:deprecated, true)
         |> Map.put(:retired, retired_flag)
 
       true ->

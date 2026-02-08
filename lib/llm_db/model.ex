@@ -23,18 +23,17 @@ defmodule LLMDB.Model do
   - `lifecycle.status` - One of `"active"`, `"deprecated"`, `"retired"`
   - `lifecycle.deprecated_at` - ISO8601 date when deprecation occurred/will occur
   - `lifecycle.retires_at` - ISO8601 date when retirement is planned
-  - `lifecycle.retired_at` - ISO8601 date when retirement actually occurred
   - `lifecycle.replacement` - Suggested replacement model ID
 
   ### Temporal Lifecycle
 
   Use `effective_status/2`, `deprecated?/2`, and `retired?/2` to get status
-  that respects `deprecated_at` and `retired_at` dates:
+  that respects `deprecated_at` and `retires_at` dates:
 
       model = LLMDB.Model.new!(%{
         id: "old-model",
         provider: :openai,
-        lifecycle: %{status: "active", deprecated_at: "2025-01-01", retired_at: "2025-06-01"}
+        lifecycle: %{status: "active", deprecated_at: "2025-01-01", retires_at: "2025-06-01"}
       })
 
       LLMDB.Model.effective_status(model, ~U[2025-03-01 00:00:00Z])
@@ -145,7 +144,6 @@ defmodule LLMDB.Model do
                       status: Zoi.enum(["active", "deprecated", "retired"]) |> Zoi.nullish(),
                       deprecated_at: Zoi.string() |> Zoi.nullish(),
                       retires_at: Zoi.string() |> Zoi.nullish(),
-                      retired_at: Zoi.string() |> Zoi.nullish(),
                       replacement: Zoi.string() |> Zoi.nullish()
                     })
 
@@ -327,16 +325,13 @@ defmodule LLMDB.Model do
   def lifecycle_status(_), do: nil
 
   @doc """
-  Returns the effective lifecycle status, considering dates and declared status.
+  Returns the effective lifecycle status, considering dates, declared status, and boolean flags.
 
-  This function auto-advances status based on `deprecated_at` and `retired_at` dates
-  when compared to the given `now` timestamp. The declared `lifecycle.status` takes
-  precedence if it indicates a more advanced lifecycle stage.
-
-  ## Parameters
-
-  - `model` - The model struct
-  - `now` - Optional DateTime to compare against (defaults to `DateTime.utc_now()`)
+  This function determines status using this precedence:
+  1. Declared `lifecycle.status` (if it indicates an advanced stage)
+  2. Date-based auto-advancement (`deprecated_at`, `retires_at`)
+  3. Boolean flags (`retired`, `deprecated`) as fallback
+  4. Default: `"active"`
 
   ## Examples
 
@@ -348,31 +343,36 @@ defmodule LLMDB.Model do
       iex> LLMDB.Model.effective_status(model, ~U[2025-06-01 00:00:00Z])
       "deprecated"
   """
-  @spec effective_status(t(), DateTime.t() | nil) :: String.t()
-  def effective_status(model, now \\ nil)
+  @spec effective_status(t(), DateTime.t()) :: String.t()
+  def effective_status(model, now \\ DateTime.utc_now())
 
-  def effective_status(%__MODULE__{} = model, now) do
-    now = now || DateTime.utc_now()
+  def effective_status(%__MODULE__{} = model, %DateTime{} = now) do
     declared = lifecycle_status(model)
     lifecycle = model.lifecycle || %{}
 
     deprecated_at =
       parse_datetime(Map.get(lifecycle, :deprecated_at) || Map.get(lifecycle, "deprecated_at"))
 
-    retired_at =
-      parse_datetime(Map.get(lifecycle, :retired_at) || Map.get(lifecycle, "retired_at"))
+    retires_at =
+      parse_datetime(Map.get(lifecycle, :retires_at) || Map.get(lifecycle, "retires_at"))
 
     cond do
       declared == "retired" ->
         "retired"
 
-      not is_nil(retired_at) and DateTime.compare(now, retired_at) != :lt ->
+      not is_nil(retires_at) and DateTime.compare(now, retires_at) != :lt ->
         "retired"
 
       declared == "deprecated" ->
         "deprecated"
 
       not is_nil(deprecated_at) and DateTime.compare(now, deprecated_at) != :lt ->
+        "deprecated"
+
+      model.retired ->
+        "retired"
+
+      model.deprecated ->
         "deprecated"
 
       true ->
@@ -383,12 +383,7 @@ defmodule LLMDB.Model do
   @doc """
   Returns true if the model is deprecated or retired (effective status).
 
-  Considers both declared status and date-based lifecycle transitions.
-
-  ## Parameters
-
-  - `model` - The model struct
-  - `now` - Optional DateTime to compare against (defaults to `DateTime.utc_now()`)
+  Considers declared status, date-based lifecycle transitions, and boolean flags.
 
   ## Examples
 
@@ -396,20 +391,15 @@ defmodule LLMDB.Model do
       iex> LLMDB.Model.deprecated?(model)
       true
   """
-  @spec deprecated?(t(), DateTime.t() | nil) :: boolean()
-  def deprecated?(model, now \\ nil) do
+  @spec deprecated?(t(), DateTime.t()) :: boolean()
+  def deprecated?(model, now \\ DateTime.utc_now()) do
     effective_status(model, now) in ["deprecated", "retired"]
   end
 
   @doc """
   Returns true if the model is retired (effective status).
 
-  Considers both declared status and date-based lifecycle transitions.
-
-  ## Parameters
-
-  - `model` - The model struct
-  - `now` - Optional DateTime to compare against (defaults to `DateTime.utc_now()`)
+  Considers declared status, date-based lifecycle transitions, and boolean flags.
 
   ## Examples
 
@@ -417,8 +407,8 @@ defmodule LLMDB.Model do
       iex> LLMDB.Model.retired?(model)
       true
   """
-  @spec retired?(t(), DateTime.t() | nil) :: boolean()
-  def retired?(model, now \\ nil) do
+  @spec retired?(t(), DateTime.t()) :: boolean()
+  def retired?(model, now \\ DateTime.utc_now()) do
     effective_status(model, now) == "retired"
   end
 

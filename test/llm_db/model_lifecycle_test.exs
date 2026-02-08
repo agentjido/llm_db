@@ -74,7 +74,7 @@ defmodule LLMDB.ModelLifecycleTest do
       assert Model.effective_status(model, after_deprecation) == "deprecated"
     end
 
-    test "auto-advances to retired based on retired_at date" do
+    test "auto-advances to retired based on retires_at date" do
       {:ok, model} =
         Model.new(%{
           id: "model",
@@ -82,7 +82,7 @@ defmodule LLMDB.ModelLifecycleTest do
           lifecycle: %{
             status: "active",
             deprecated_at: "2025-01-01T00:00:00Z",
-            retired_at: "2025-06-01T00:00:00Z"
+            retires_at: "2025-06-01T00:00:00Z"
           }
         })
 
@@ -115,6 +115,60 @@ defmodule LLMDB.ModelLifecycleTest do
         })
 
       assert Model.effective_status(model, ~U[2025-02-01 00:00:00Z]) == "deprecated"
+    end
+
+    test "falls back to deprecated boolean when no lifecycle" do
+      {:ok, model} =
+        Model.new(%{
+          id: "model",
+          provider: :openai,
+          deprecated: true
+        })
+
+      assert Model.effective_status(model) == "deprecated"
+    end
+
+    test "falls back to retired boolean when no lifecycle" do
+      {:ok, model} =
+        Model.new(%{
+          id: "model",
+          provider: :openai,
+          retired: true
+        })
+
+      assert Model.effective_status(model) == "retired"
+    end
+
+    test "retired boolean takes precedence over deprecated boolean" do
+      {:ok, model} =
+        Model.new(%{
+          id: "model",
+          provider: :openai,
+          deprecated: true,
+          retired: true
+        })
+
+      assert Model.effective_status(model) == "retired"
+    end
+
+    test "real-world scenario: dall-e-3 lifecycle progression" do
+      {:ok, model} =
+        Model.new(%{
+          id: "dall-e-3",
+          provider: :openai,
+          lifecycle: %{
+            status: "deprecated",
+            deprecated_at: "2025-05-12",
+            retires_at: "2026-05-12",
+            replacement: "gpt-image-1.5"
+          }
+        })
+
+      assert Model.effective_status(model, ~U[2025-06-01 00:00:00Z]) == "deprecated"
+      assert Model.effective_status(model, ~U[2026-06-01 00:00:00Z]) == "retired"
+      assert Model.deprecated?(model, ~U[2025-06-01 00:00:00Z]) == true
+      assert Model.retired?(model, ~U[2025-06-01 00:00:00Z]) == false
+      assert Model.retired?(model, ~U[2026-06-01 00:00:00Z]) == true
     end
   end
 
@@ -163,6 +217,17 @@ defmodule LLMDB.ModelLifecycleTest do
       assert Model.deprecated?(model, ~U[2025-05-01 00:00:00Z]) == false
       assert Model.deprecated?(model, ~U[2025-07-01 00:00:00Z]) == true
     end
+
+    test "returns true for boolean-only deprecated model (no lifecycle)" do
+      {:ok, model} =
+        Model.new(%{
+          id: "model",
+          provider: :openai,
+          deprecated: true
+        })
+
+      assert Model.deprecated?(model) == true
+    end
   end
 
   describe "retired?/2" do
@@ -188,16 +253,27 @@ defmodule LLMDB.ModelLifecycleTest do
       assert Model.retired?(model) == false
     end
 
-    test "respects retired_at date" do
+    test "respects retires_at date" do
       {:ok, model} =
         Model.new(%{
           id: "model",
           provider: :openai,
-          lifecycle: %{retired_at: "2025-06-01T00:00:00Z"}
+          lifecycle: %{retires_at: "2025-06-01T00:00:00Z"}
         })
 
       assert Model.retired?(model, ~U[2025-05-01 00:00:00Z]) == false
       assert Model.retired?(model, ~U[2025-07-01 00:00:00Z]) == true
+    end
+
+    test "returns true for boolean-only retired model (no lifecycle)" do
+      {:ok, model} =
+        Model.new(%{
+          id: "model",
+          provider: :openai,
+          retired: true
+        })
+
+      assert Model.retired?(model) == true
     end
   end
 
@@ -211,7 +287,6 @@ defmodule LLMDB.ModelLifecycleTest do
             status: "deprecated",
             deprecated_at: "2025-01-01",
             retires_at: "2025-06-01",
-            retired_at: "2025-06-15",
             replacement: "new-model"
           }
         })
@@ -219,7 +294,6 @@ defmodule LLMDB.ModelLifecycleTest do
       assert model.lifecycle.status == "deprecated"
       assert model.lifecycle.deprecated_at == "2025-01-01"
       assert model.lifecycle.retires_at == "2025-06-01"
-      assert model.lifecycle.retired_at == "2025-06-15"
       assert model.lifecycle.replacement == "new-model"
     end
 
