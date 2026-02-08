@@ -21,6 +21,7 @@ defmodule LLMDB.Generated.ValidProviders do
     :azure_cognitive_services,
     :bailing,
     :baseten,
+    :berget,
     :cerebras,
     :chutes,
     :cloudflare_ai_gateway,

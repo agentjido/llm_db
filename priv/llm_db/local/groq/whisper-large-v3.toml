@@ -1,0 +1,54 @@
+# Whisper Large V3 - OpenAI Whisper speech-to-text on Groq
+# Multilingual transcription and translation
+# Docs: https://console.groq.com/docs/speech-to-text
+
+id = "whisper-large-v3"
+name = "Whisper Large V3"
+family = "whisper"
+deprecated = false
+tags = ["stt", "transcription", "translation"]
+
+[modalities]
+input = ["audio"]
+output = ["text"]
+
+[capabilities]
+chat = false
+embeddings = false
+
+[capabilities.tools]
+enabled = false
+
+[capabilities.reasoning]
+enabled = false
+
+[cost]
+audio = 0.111
+
+[pricing]
+currency = "USD"
+merge = "replace"
+
+[[pricing.components]]
+id = "audio.transcription"
+kind = "other"
+unit = "other"
+per = 1
+rate = 0.111
+notes = "per hour of audio"
+
+[[pricing.components]]
+id = "audio.translation"
+kind = "other"
+unit = "other"
+per = 1
+rate = 0.111
+notes = "per hour of audio"
+
+[extra]
+family = "whisper"
+open_weights = true
+translation = true
+max_file_size_mb = 100
+supported_formats = ["flac", "mp3", "mp4", "mpeg", "mpga", "m4a", "ogg", "wav", "webm"]
+api = "audio"

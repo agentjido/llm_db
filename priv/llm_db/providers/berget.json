@@ -1,0 +1,408 @@
+{
+  "alias_of": null,
+  "base_url": null,
+  "config_schema": null,
+  "doc": "https://api.berget.ai",
+  "env": [
+    "BERGET_API_KEY"
+  ],
+  "exclude_models": null,
+  "extra": null,
+  "id": "berget",
+  "models": {
+    "BAAI/bge-reranker-v2-m3": {
+      "aliases": [],
+      "base_url": null,
+      "capabilities": null,
+      "cost": {
+        "input": 0.1,
+        "output": 0.1
+      },
+      "deprecated": false,
+      "extra": {
+        "attachment": false,
+        "family": "bge",
+        "open_weights": true,
+        "temperature": false
+      },
+      "family": null,
+      "id": "BAAI/bge-reranker-v2-m3",
+      "knowledge": "2025-04",
+      "last_updated": "2025-04-23",
+      "lifecycle": null,
+      "limits": {
+        "context": 512,
+        "output": 512
+      },
+      "modalities": {
+        "input": [
+          "text"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "model": null,
+      "name": "bge-reranker-v2-m3",
+      "pricing": null,
+      "provider": "berget",
+      "provider_model_id": null,
+      "release_date": "2025-04-23",
+      "tags": null
+    },
+    "KBLab/kb-whisper-large": {
+      "aliases": [],
+      "base_url": null,
+      "capabilities": null,
+      "cost": {
+        "input": 3,
+        "output": 3
+      },
+      "deprecated": false,
+      "extra": {
+        "attachment": false,
+        "family": "whisper",
+        "open_weights": true,
+        "temperature": false
+      },
+      "family": null,
+      "id": "KBLab/kb-whisper-large",
+      "knowledge": "2025-04",
+      "last_updated": "2025-04-27",
+      "lifecycle": null,
+      "limits": {
+        "context": 480000,
+        "output": 4800
+      },
+      "modalities": {
+        "input": [
+          "audio"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "model": null,
+      "name": "KB-Whisper-Large",
+      "pricing": null,
+      "provider": "berget",
+      "provider_model_id": null,
+      "release_date": "2025-04-27",
+      "tags": null
+    },
+    "intfloat/multilingual-e5-large": {
+      "aliases": [],
+      "base_url": null,
+      "capabilities": null,
+      "cost": {
+        "input": 0.02,
+        "output": 0
+      },
+      "deprecated": false,
+      "extra": {
+        "attachment": false,
+        "family": "text-embedding",
+        "open_weights": true,
+        "temperature": false
+      },
+      "family": null,
+      "id": "intfloat/multilingual-e5-large",
+      "knowledge": "2025-09",
+      "last_updated": "2025-09-11",
+      "lifecycle": null,
+      "limits": {
+        "context": 512,
+        "output": 1024
+      },
+      "modalities": {
+        "input": [
+          "text"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "model": null,
+      "name": "Multilingual-E5-large",
+      "pricing": null,
+      "provider": "berget",
+      "provider_model_id": null,
+      "release_date": "2025-09-11",
+      "tags": null
+    },
+    "intfloat/multilingual-e5-large-instruct": {
+      "aliases": [],
+      "base_url": null,
+      "capabilities": null,
+      "cost": {
+        "input": 0.02,
+        "output": 0
+      },
+      "deprecated": false,
+      "extra": {
+        "attachment": false,
+        "family": "text-embedding",
+        "open_weights": true,
+        "temperature": false
+      },
+      "family": null,
+      "id": "intfloat/multilingual-e5-large-instruct",
+      "knowledge": "2025-04",
+      "last_updated": "2025-04-27",
+      "lifecycle": null,
+      "limits": {
+        "context": 512,
+        "output": 1024
+      },
+      "modalities": {
+        "input": [
+          "text"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "model": null,
+      "name": "Multilingual-E5-large-instruct",
+      "pricing": null,
+      "provider": "berget",
+      "provider_model_id": null,
+      "release_date": "2025-04-27",
+      "tags": null
+    },
+    "meta-llama/Llama-3.3-70B-Instruct": {
+      "aliases": [],
+      "base_url": null,
+      "capabilities": {
+        "chat": true,
+        "embeddings": false,
+        "json": {
+          "native": false,
+          "schema": false,
+          "strict": false
+        },
+        "reasoning": {
+          "enabled": true
+        },
+        "streaming": {
+          "tool_calls": true
+        },
+        "tools": {
+          "enabled": true
+        }
+      },
+      "cost": {
+        "input": 0.9,
+        "output": 0.9
+      },
+      "deprecated": false,
+      "extra": {
+        "attachment": false,
+        "family": "llama",
+        "open_weights": true,
+        "structured_output": true,
+        "temperature": true
+      },
+      "family": null,
+      "id": "meta-llama/Llama-3.3-70B-Instruct",
+      "knowledge": "2023-12",
+      "last_updated": "2025-04-27",
+      "lifecycle": null,
+      "limits": {
+        "context": 128000,
+        "output": 8192
+      },
+      "modalities": {
+        "input": [
+          "text"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "model": null,
+      "name": "Llama 3.3 70B Instruct",
+      "pricing": null,
+      "provider": "berget",
+      "provider_model_id": null,
+      "release_date": "2025-04-27",
+      "tags": null
+    },
+    "mistralai/Mistral-Small-3.2-24B-Instruct-2506": {
+      "aliases": [],
+      "base_url": null,
+      "capabilities": {
+        "chat": true,
+        "embeddings": false,
+        "json": {
+          "native": false,
+          "schema": false,
+          "strict": false
+        },
+        "reasoning": {
+          "enabled": true
+        },
+        "streaming": {
+          "tool_calls": true
+        },
+        "tools": {
+          "enabled": true
+        }
+      },
+      "cost": {
+        "input": 0.3,
+        "output": 0.3
+      },
+      "deprecated": false,
+      "extra": {
+        "attachment": false,
+        "family": "mistral-small",
+        "open_weights": true,
+        "structured_output": true,
+        "temperature": true
+      },
+      "family": null,
+      "id": "mistralai/Mistral-Small-3.2-24B-Instruct-2506",
+      "knowledge": "2025-09",
+      "last_updated": "2025-10-01",
+      "lifecycle": null,
+      "limits": {
+        "context": 32000,
+        "output": 8192
+      },
+      "modalities": {
+        "input": [
+          "text"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "model": null,
+      "name": "Mistral Small 3.2 24B Instruct 2506",
+      "pricing": null,
+      "provider": "berget",
+      "provider_model_id": null,
+      "release_date": "2025-10-01",
+      "tags": null
+    },
+    "openai/gpt-oss-120b": {
+      "aliases": [],
+      "base_url": null,
+      "capabilities": {
+        "chat": true,
+        "embeddings": false,
+        "json": {
+          "native": false,
+          "schema": false,
+          "strict": false
+        },
+        "reasoning": {
+          "enabled": true
+        },
+        "streaming": {
+          "tool_calls": true
+        },
+        "tools": {
+          "enabled": true
+        }
+      },
+      "cost": {
+        "input": 0.3,
+        "output": 0.9
+      },
+      "deprecated": false,
+      "extra": {
+        "attachment": false,
+        "family": "gpt-oss",
+        "open_weights": true,
+        "structured_output": true,
+        "temperature": true
+      },
+      "family": null,
+      "id": "openai/gpt-oss-120b",
+      "knowledge": "2025-08",
+      "last_updated": "2025-08-05",
+      "lifecycle": null,
+      "limits": {
+        "context": 128000,
+        "output": 8192
+      },
+      "modalities": {
+        "input": [
+          "text"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "model": null,
+      "name": "GPT-OSS-120B",
+      "pricing": null,
+      "provider": "berget",
+      "provider_model_id": null,
+      "release_date": "2025-08-05",
+      "tags": null
+    },
+    "zai-org/GLM-4.7": {
+      "aliases": [],
+      "base_url": null,
+      "capabilities": {
+        "chat": true,
+        "embeddings": false,
+        "json": {
+          "native": false,
+          "schema": false,
+          "strict": false
+        },
+        "reasoning": {
+          "enabled": true
+        },
+        "streaming": {
+          "tool_calls": true
+        },
+        "tools": {
+          "enabled": true
+        }
+      },
+      "cost": {
+        "input": 0.7,
+        "output": 2.3
+      },
+      "deprecated": false,
+      "extra": {
+        "attachment": false,
+        "family": "glm",
+        "open_weights": true,
+        "structured_output": true,
+        "temperature": true
+      },
+      "family": null,
+      "id": "zai-org/GLM-4.7",
+      "knowledge": "2025-12",
+      "last_updated": "2026-01-19",
+      "lifecycle": null,
+      "limits": {
+        "context": 128000,
+        "output": 8192
+      },
+      "modalities": {
+        "input": [
+          "text"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "model": null,
+      "name": "GLM 4.7",
+      "pricing": null,
+      "provider": "berget",
+      "provider_model_id": null,
+      "release_date": "2026-01-19",
+      "tags": null
+    }
+  },
+  "name": "Berget.AI",
+  "pricing_defaults": null
+}

@@ -541,6 +541,178 @@
       "provider_model_id": null,
       "release_date": "2024-12-23",
       "tags": null
+    },
+    "whisper-large-v3": {
+      "aliases": [],
+      "base_url": null,
+      "capabilities": {
+        "chat": false,
+        "embeddings": false,
+        "json": {
+          "native": false,
+          "schema": false,
+          "strict": false
+        },
+        "reasoning": {
+          "enabled": false
+        },
+        "streaming": {
+          "text": true,
+          "tool_calls": false
+        },
+        "tools": {
+          "enabled": false
+        }
+      },
+      "cost": {
+        "audio": 0.111
+      },
+      "deprecated": false,
+      "extra": {
+        "api": "audio",
+        "family": "whisper",
+        "max_file_size_mb": 100,
+        "open_weights": true,
+        "supported_formats": [
+          "flac",
+          "mp3",
+          "mp4",
+          "mpeg",
+          "mpga",
+          "m4a",
+          "ogg",
+          "wav",
+          "webm"
+        ],
+        "translation": true
+      },
+      "family": "whisper",
+      "id": "whisper-large-v3",
+      "knowledge": null,
+      "last_updated": null,
+      "lifecycle": null,
+      "limits": null,
+      "modalities": {
+        "input": [
+          "audio"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "model": null,
+      "name": "Whisper Large V3",
+      "pricing": {
+        "components": [
+          {
+            "id": "audio.transcription",
+            "kind": "other",
+            "notes": "per hour of audio",
+            "per": 1,
+            "rate": 0.111,
+            "unit": "other"
+          },
+          {
+            "id": "audio.translation",
+            "kind": "other",
+            "notes": "per hour of audio",
+            "per": 1,
+            "rate": 0.111,
+            "unit": "other"
+          }
+        ],
+        "currency": "USD",
+        "merge": "replace"
+      },
+      "provider": "groq",
+      "provider_model_id": null,
+      "release_date": null,
+      "tags": [
+        "stt",
+        "transcription",
+        "translation"
+      ]
+    },
+    "whisper-large-v3-turbo": {
+      "aliases": [],
+      "base_url": null,
+      "capabilities": {
+        "chat": false,
+        "embeddings": false,
+        "json": {
+          "native": false,
+          "schema": false,
+          "strict": false
+        },
+        "reasoning": {
+          "enabled": false
+        },
+        "streaming": {
+          "text": true,
+          "tool_calls": false
+        },
+        "tools": {
+          "enabled": false
+        }
+      },
+      "cost": {
+        "audio": 0.04
+      },
+      "deprecated": false,
+      "extra": {
+        "api": "audio",
+        "family": "whisper",
+        "max_file_size_mb": 100,
+        "open_weights": true,
+        "supported_formats": [
+          "flac",
+          "mp3",
+          "mp4",
+          "mpeg",
+          "mpga",
+          "m4a",
+          "ogg",
+          "wav",
+          "webm"
+        ]
+      },
+      "family": "whisper",
+      "id": "whisper-large-v3-turbo",
+      "knowledge": null,
+      "last_updated": null,
+      "lifecycle": null,
+      "limits": null,
+      "modalities": {
+        "input": [
+          "audio"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "model": null,
+      "name": "Whisper Large V3 Turbo",
+      "pricing": {
+        "components": [
+          {
+            "id": "audio.transcription",
+            "kind": "other",
+            "notes": "per hour of audio",
+            "per": 1,
+            "rate": 0.04,
+            "unit": "other"
+          }
+        ],
+        "currency": "USD",
+        "merge": "replace"
+      },
+      "provider": "groq",
+      "provider_model_id": null,
+      "release_date": null,
+      "tags": [
+        "stt",
+        "transcription"
+      ]
     }
   },
   "name": "Groq",

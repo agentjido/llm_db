@@ -10,6 +10,149 @@
   "extra": null,
   "id": "nebius",
   "models": {
+    "BAAI/bge-en-icl": {
+      "aliases": [],
+      "base_url": null,
+      "capabilities": null,
+      "cost": {
+        "input": 0.01,
+        "output": 0
+      },
+      "deprecated": false,
+      "extra": {
+        "attachment": false,
+        "family": "text-embedding",
+        "open_weights": true,
+        "structured_output": false,
+        "temperature": false
+      },
+      "family": null,
+      "id": "BAAI/bge-en-icl",
+      "knowledge": "2024-06",
+      "last_updated": "2026-02-04",
+      "lifecycle": null,
+      "limits": {
+        "context": 32768
+      },
+      "modalities": {
+        "input": [
+          "text"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "model": null,
+      "name": "BGE-ICL",
+      "pricing": null,
+      "provider": "nebius",
+      "provider_model_id": null,
+      "release_date": "2024-07-30",
+      "tags": null
+    },
+    "BAAI/bge-multilingual-gemma2": {
+      "aliases": [],
+      "base_url": null,
+      "capabilities": null,
+      "cost": {
+        "input": 0.01,
+        "output": 0
+      },
+      "deprecated": false,
+      "extra": {
+        "attachment": false,
+        "family": "text-embedding",
+        "open_weights": true,
+        "structured_output": false,
+        "temperature": false
+      },
+      "family": null,
+      "id": "BAAI/bge-multilingual-gemma2",
+      "knowledge": "2024-06",
+      "last_updated": "2026-02-04",
+      "lifecycle": null,
+      "limits": {
+        "context": 8192
+      },
+      "modalities": {
+        "input": [
+          "text"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "model": null,
+      "name": "bge-multilingual-gemma2",
+      "pricing": null,
+      "provider": "nebius",
+      "provider_model_id": null,
+      "release_date": "2024-07-30",
+      "tags": null
+    },
+    "MiniMaxAI/minimax-m2.1": {
+      "aliases": [],
+      "base_url": null,
+      "capabilities": {
+        "chat": true,
+        "embeddings": false,
+        "json": {
+          "native": false,
+          "schema": false,
+          "strict": false
+        },
+        "reasoning": {
+          "enabled": true
+        },
+        "streaming": {
+          "tool_calls": true
+        },
+        "tools": {
+          "enabled": true
+        }
+      },
+      "cost": {
+        "cache_read": 0.03,
+        "cache_write": 0.375,
+        "input": 0.3,
+        "output": 1.2,
+        "reasoning": 1.2
+      },
+      "deprecated": false,
+      "extra": {
+        "attachment": false,
+        "interleaved": {
+          "field": "reasoning_content"
+        },
+        "open_weights": true,
+        "structured_output": true,
+        "temperature": true
+      },
+      "family": null,
+      "id": "MiniMaxAI/minimax-m2.1",
+      "knowledge": "2025-10",
+      "last_updated": "2026-02-04",
+      "lifecycle": null,
+      "limits": {
+        "context": 128000,
+        "output": 8192
+      },
+      "modalities": {
+        "input": [
+          "text"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "model": null,
+      "name": "MiniMax-M2.1",
+      "pricing": null,
+      "provider": "nebius",
+      "provider_model_id": null,
+      "release_date": "2026-02-01",
+      "tags": null
+    },
     "NousResearch/hermes-4-405b": {
       "aliases": [],
       "base_url": null,
@@ -32,23 +175,29 @@
         }
       },
       "cost": {
+        "cache_read": 0.1,
+        "cache_write": 1.25,
         "input": 1,
-        "output": 3
+        "output": 3,
+        "reasoning": 3
       },
       "deprecated": false,
       "extra": {
         "attachment": false,
-        "family": "hermes",
-        "open_weights": false,
+        "interleaved": {
+          "field": "reasoning_content"
+        },
+        "open_weights": true,
+        "structured_output": true,
         "temperature": true
       },
       "family": null,
       "id": "NousResearch/hermes-4-405b",
-      "knowledge": "2024-07",
-      "last_updated": "2025-10-04",
+      "knowledge": "2025-11",
+      "last_updated": "2026-02-04",
       "lifecycle": null,
       "limits": {
-        "context": 131072,
+        "context": 128000,
         "output": 8192
       },
       "modalities": {
@@ -60,11 +209,11 @@
         ]
       },
       "model": null,
-      "name": "Hermes-4 405B",
+      "name": "Hermes-4-405B",
       "pricing": null,
       "provider": "nebius",
       "provider_model_id": null,
-      "release_date": "2024-08-01",
+      "release_date": "2026-01-30",
       "tags": null
     },
     "NousResearch/hermes-4-70b": {
@@ -89,20 +238,283 @@
         }
       },
       "cost": {
+        "cache_read": 0.013,
+        "cache_write": 0.16,
         "input": 0.13,
-        "output": 0.4
+        "output": 0.4,
+        "reasoning": 0.4
       },
       "deprecated": false,
       "extra": {
         "attachment": false,
-        "family": "hermes",
-        "open_weights": false,
+        "interleaved": {
+          "field": "reasoning_content"
+        },
+        "open_weights": true,
+        "structured_output": true,
         "temperature": true
       },
       "family": null,
       "id": "NousResearch/hermes-4-70b",
+      "knowledge": "2025-11",
+      "last_updated": "2026-02-04",
+      "lifecycle": null,
+      "limits": {
+        "context": 128000,
+        "output": 8192
+      },
+      "modalities": {
+        "input": [
+          "text"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "model": null,
+      "name": "Hermes-4-70B",
+      "pricing": null,
+      "provider": "nebius",
+      "provider_model_id": null,
+      "release_date": "2026-01-30",
+      "tags": null
+    },
+    "PrimeIntellect/intellect-3": {
+      "aliases": [],
+      "base_url": null,
+      "capabilities": {
+        "chat": true,
+        "embeddings": false,
+        "json": {
+          "native": false,
+          "schema": false,
+          "strict": false
+        },
+        "reasoning": {
+          "enabled": false
+        },
+        "streaming": {
+          "tool_calls": true
+        },
+        "tools": {
+          "enabled": true
+        }
+      },
+      "cost": {
+        "cache_read": 0.02,
+        "cache_write": 0.25,
+        "input": 0.2,
+        "output": 1.1
+      },
+      "deprecated": false,
+      "extra": {
+        "attachment": false,
+        "open_weights": true,
+        "structured_output": true,
+        "temperature": true
+      },
+      "family": null,
+      "id": "PrimeIntellect/intellect-3",
+      "knowledge": "2025-10",
+      "last_updated": "2026-02-04",
+      "lifecycle": null,
+      "limits": {
+        "context": 128000,
+        "output": 8192
+      },
+      "modalities": {
+        "input": [
+          "text"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "model": null,
+      "name": "INTELLECT-3",
+      "pricing": null,
+      "provider": "nebius",
+      "provider_model_id": null,
+      "release_date": "2026-01-25",
+      "tags": null
+    },
+    "black-forest-labs/flux-dev": {
+      "aliases": [],
+      "base_url": null,
+      "capabilities": null,
+      "cost": {
+        "input": 0,
+        "output": 0
+      },
+      "deprecated": false,
+      "extra": {
+        "attachment": false,
+        "open_weights": true,
+        "structured_output": false,
+        "temperature": false
+      },
+      "family": null,
+      "id": "black-forest-labs/flux-dev",
       "knowledge": "2024-07",
-      "last_updated": "2025-10-04",
+      "last_updated": "2026-02-04",
+      "lifecycle": null,
+      "limits": {
+        "context": 77
+      },
+      "modalities": {
+        "input": [
+          "text"
+        ],
+        "output": [
+          "image"
+        ]
+      },
+      "model": null,
+      "name": "FLUX.1-dev",
+      "pricing": null,
+      "provider": "nebius",
+      "provider_model_id": null,
+      "release_date": "2024-08-01",
+      "tags": null
+    },
+    "black-forest-labs/flux-schnell": {
+      "aliases": [],
+      "base_url": null,
+      "capabilities": null,
+      "cost": {
+        "input": 0,
+        "output": 0
+      },
+      "deprecated": false,
+      "extra": {
+        "attachment": false,
+        "open_weights": true,
+        "structured_output": false,
+        "temperature": false
+      },
+      "family": null,
+      "id": "black-forest-labs/flux-schnell",
+      "knowledge": "2024-07",
+      "last_updated": "2026-02-04",
+      "lifecycle": null,
+      "limits": {
+        "context": 77
+      },
+      "modalities": {
+        "input": [
+          "text"
+        ],
+        "output": [
+          "image"
+        ]
+      },
+      "model": null,
+      "name": "FLUX.1-schnell",
+      "pricing": null,
+      "provider": "nebius",
+      "provider_model_id": null,
+      "release_date": "2024-08-01",
+      "tags": null
+    },
+    "deepseek-ai/deepseek-r1-0528": {
+      "aliases": [],
+      "base_url": null,
+      "capabilities": {
+        "chat": true,
+        "embeddings": false,
+        "json": {
+          "native": false,
+          "schema": false,
+          "strict": false
+        },
+        "reasoning": {
+          "enabled": true
+        },
+        "streaming": {
+          "tool_calls": true
+        },
+        "tools": {
+          "enabled": true
+        }
+      },
+      "cost": {
+        "cache_read": 0.08,
+        "cache_write": 1,
+        "input": 0.8,
+        "output": 2.4,
+        "reasoning": 2.4
+      },
+      "deprecated": false,
+      "extra": {
+        "attachment": false,
+        "interleaved": {
+          "field": "reasoning_content"
+        },
+        "open_weights": true,
+        "structured_output": true,
+        "temperature": true
+      },
+      "family": null,
+      "id": "deepseek-ai/deepseek-r1-0528",
+      "knowledge": "2025-11",
+      "last_updated": "2026-02-04",
+      "lifecycle": null,
+      "limits": {
+        "context": 128000,
+        "output": 32768
+      },
+      "modalities": {
+        "input": [
+          "text"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "model": null,
+      "name": "DeepSeek-R1-0528",
+      "pricing": null,
+      "provider": "nebius",
+      "provider_model_id": null,
+      "release_date": "2026-01-15",
+      "tags": null
+    },
+    "deepseek-ai/deepseek-r1-0528-fast": {
+      "aliases": [],
+      "base_url": null,
+      "capabilities": {
+        "chat": true,
+        "embeddings": false,
+        "json": {
+          "native": false,
+          "schema": false,
+          "strict": false
+        },
+        "reasoning": {
+          "enabled": true
+        },
+        "streaming": {
+          "tool_calls": true
+        },
+        "tools": {
+          "enabled": true
+        }
+      },
+      "cost": {
+        "input": 2,
+        "output": 6
+      },
+      "deprecated": false,
+      "extra": {
+        "attachment": false,
+        "family": "deepseek",
+        "open_weights": true,
+        "temperature": true
+      },
+      "family": null,
+      "id": "deepseek-ai/deepseek-r1-0528-fast",
+      "knowledge": "2025-01",
+      "last_updated": "2025-02-04",
       "lifecycle": null,
       "limits": {
         "context": 131072,
@@ -117,11 +529,11 @@
         ]
       },
       "model": null,
-      "name": "Hermes 4 70B",
+      "name": "DeepSeek R1 0528 Fast",
       "pricing": null,
       "provider": "nebius",
       "provider_model_id": null,
-      "release_date": "2024-08-01",
+      "release_date": "2025-01-01",
       "tags": null
     },
     "deepseek-ai/deepseek-v3": {
@@ -154,12 +566,13 @@
         "attachment": false,
         "family": "deepseek",
         "open_weights": false,
+        "status": "deprecated",
         "temperature": true
       },
       "family": null,
       "id": "deepseek-ai/deepseek-v3",
       "knowledge": "2024-04",
-      "last_updated": "2025-10-04",
+      "last_updated": "2026-02-04",
       "lifecycle": null,
       "limits": {
         "context": 131072,
@@ -181,7 +594,125 @@
       "release_date": "2024-05-07",
       "tags": null
     },
-    "meta-llama/llama-3.3-70b-instruct-base": {
+    "deepseek-ai/deepseek-v3-0324": {
+      "aliases": [],
+      "base_url": null,
+      "capabilities": {
+        "chat": true,
+        "embeddings": false,
+        "json": {
+          "native": false,
+          "schema": false,
+          "strict": false
+        },
+        "reasoning": {
+          "enabled": false
+        },
+        "streaming": {
+          "tool_calls": true
+        },
+        "tools": {
+          "enabled": true
+        }
+      },
+      "cost": {
+        "cache_read": 0.05,
+        "cache_write": 0.1875,
+        "input": 0.5,
+        "output": 1.5
+      },
+      "deprecated": false,
+      "extra": {
+        "attachment": false,
+        "open_weights": true,
+        "structured_output": true,
+        "temperature": true
+      },
+      "family": null,
+      "id": "deepseek-ai/deepseek-v3-0324",
+      "knowledge": "2024-12",
+      "last_updated": "2026-02-04",
+      "lifecycle": null,
+      "limits": {
+        "context": 128000,
+        "output": 8192
+      },
+      "modalities": {
+        "input": [
+          "text"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "model": null,
+      "name": "DeepSeek-V3-0324",
+      "pricing": null,
+      "provider": "nebius",
+      "provider_model_id": null,
+      "release_date": "2025-03-24",
+      "tags": null
+    },
+    "deepseek-ai/deepseek-v3-0324-fast": {
+      "aliases": [],
+      "base_url": null,
+      "capabilities": {
+        "chat": true,
+        "embeddings": false,
+        "json": {
+          "native": false,
+          "schema": false,
+          "strict": false
+        },
+        "reasoning": {
+          "enabled": false
+        },
+        "streaming": {
+          "tool_calls": true
+        },
+        "tools": {
+          "enabled": true
+        }
+      },
+      "cost": {
+        "cache_read": 0.075,
+        "cache_write": 0.28125,
+        "input": 0.75,
+        "output": 2.25
+      },
+      "deprecated": false,
+      "extra": {
+        "attachment": false,
+        "open_weights": true,
+        "structured_output": true,
+        "temperature": true
+      },
+      "family": null,
+      "id": "deepseek-ai/deepseek-v3-0324-fast",
+      "knowledge": "2024-12",
+      "last_updated": "2026-02-04",
+      "lifecycle": null,
+      "limits": {
+        "context": 128000,
+        "output": 8192
+      },
+      "modalities": {
+        "input": [
+          "text"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "model": null,
+      "name": "DeepSeek-V3-0324 (Fast)",
+      "pricing": null,
+      "provider": "nebius",
+      "provider_model_id": null,
+      "release_date": "2025-03-24",
+      "tags": null
+    },
+    "deepseek-ai/deepseek-v3.2": {
       "aliases": [],
       "base_url": null,
       "capabilities": {
@@ -203,23 +734,29 @@
         }
       },
       "cost": {
-        "input": 0.13,
-        "output": 0.4
+        "cache_read": 0.03,
+        "cache_write": 0.375,
+        "input": 0.3,
+        "output": 0.45,
+        "reasoning": 0.45
       },
       "deprecated": false,
       "extra": {
         "attachment": false,
-        "family": "llama",
-        "open_weights": false,
+        "interleaved": {
+          "field": "reasoning_content"
+        },
+        "open_weights": true,
+        "structured_output": true,
         "temperature": true
       },
       "family": null,
-      "id": "meta-llama/llama-3.3-70b-instruct-base",
-      "knowledge": "2024-08",
-      "last_updated": "2025-10-04",
+      "id": "deepseek-ai/deepseek-v3.2",
+      "knowledge": "2025-11",
+      "last_updated": "2026-02-04",
       "lifecycle": null,
       "limits": {
-        "context": 131072,
+        "context": 128000,
         "output": 8192
       },
       "modalities": {
@@ -231,11 +768,314 @@
         ]
       },
       "model": null,
-      "name": "Llama-3.3-70B-Instruct (Base)",
+      "name": "DeepSeek-V3.2",
       "pricing": null,
       "provider": "nebius",
       "provider_model_id": null,
-      "release_date": "2024-08-22",
+      "release_date": "2026-01-20",
+      "tags": null
+    },
+    "google/gemma-2-2b-it": {
+      "aliases": [],
+      "base_url": null,
+      "capabilities": null,
+      "cost": {
+        "cache_read": 0.002,
+        "cache_write": 0.025,
+        "input": 0.02,
+        "output": 0.06
+      },
+      "deprecated": false,
+      "extra": {
+        "attachment": false,
+        "open_weights": true,
+        "structured_output": false,
+        "temperature": true
+      },
+      "family": null,
+      "id": "google/gemma-2-2b-it",
+      "knowledge": "2024-06",
+      "last_updated": "2026-02-04",
+      "lifecycle": null,
+      "limits": {
+        "context": 8192,
+        "output": 4096
+      },
+      "modalities": {
+        "input": [
+          "text"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "model": null,
+      "name": "Gemma-2-2b-it",
+      "pricing": null,
+      "provider": "nebius",
+      "provider_model_id": null,
+      "release_date": "2024-07-31",
+      "tags": null
+    },
+    "google/gemma-2-9b-it-fast": {
+      "aliases": [],
+      "base_url": null,
+      "capabilities": null,
+      "cost": {
+        "cache_read": 0.003,
+        "cache_write": 0.0375,
+        "input": 0.03,
+        "output": 0.09
+      },
+      "deprecated": false,
+      "extra": {
+        "attachment": false,
+        "open_weights": true,
+        "structured_output": false,
+        "temperature": true
+      },
+      "family": null,
+      "id": "google/gemma-2-9b-it-fast",
+      "knowledge": "2024-06",
+      "last_updated": "2026-02-04",
+      "lifecycle": null,
+      "limits": {
+        "context": 8192,
+        "output": 4096
+      },
+      "modalities": {
+        "input": [
+          "text"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "model": null,
+      "name": "Gemma-2-9b-it (Fast)",
+      "pricing": null,
+      "provider": "nebius",
+      "provider_model_id": null,
+      "release_date": "2024-06-27",
+      "tags": null
+    },
+    "google/gemma-3-27b-it": {
+      "aliases": [],
+      "base_url": null,
+      "capabilities": {
+        "chat": true,
+        "embeddings": false,
+        "json": {
+          "native": false,
+          "schema": false,
+          "strict": false
+        },
+        "reasoning": {
+          "enabled": false
+        },
+        "streaming": {
+          "tool_calls": true
+        },
+        "tools": {
+          "enabled": true
+        }
+      },
+      "cost": {
+        "cache_read": 0.01,
+        "cache_write": 0.125,
+        "input": 0.1,
+        "output": 0.3
+      },
+      "deprecated": false,
+      "extra": {
+        "attachment": true,
+        "open_weights": true,
+        "structured_output": true,
+        "temperature": true
+      },
+      "family": null,
+      "id": "google/gemma-3-27b-it",
+      "knowledge": "2025-10",
+      "last_updated": "2026-02-04",
+      "lifecycle": null,
+      "limits": {
+        "context": 128000,
+        "output": 8192
+      },
+      "modalities": {
+        "input": [
+          "text",
+          "image"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "model": null,
+      "name": "Gemma-3-27b-it",
+      "pricing": null,
+      "provider": "nebius",
+      "provider_model_id": null,
+      "release_date": "2026-01-20",
+      "tags": null
+    },
+    "google/gemma-3-27b-it-fast": {
+      "aliases": [],
+      "base_url": null,
+      "capabilities": {
+        "chat": true,
+        "embeddings": false,
+        "json": {
+          "native": false,
+          "schema": false,
+          "strict": false
+        },
+        "reasoning": {
+          "enabled": false
+        },
+        "streaming": {
+          "tool_calls": true
+        },
+        "tools": {
+          "enabled": true
+        }
+      },
+      "cost": {
+        "cache_read": 0.02,
+        "cache_write": 0.25,
+        "input": 0.2,
+        "output": 0.6
+      },
+      "deprecated": false,
+      "extra": {
+        "attachment": true,
+        "open_weights": true,
+        "structured_output": true,
+        "temperature": true
+      },
+      "family": null,
+      "id": "google/gemma-3-27b-it-fast",
+      "knowledge": "2025-10",
+      "last_updated": "2026-02-04",
+      "lifecycle": null,
+      "limits": {
+        "context": 128000,
+        "output": 8192
+      },
+      "modalities": {
+        "input": [
+          "text",
+          "image"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "model": null,
+      "name": "Gemma-3-27b-it (Fast)",
+      "pricing": null,
+      "provider": "nebius",
+      "provider_model_id": null,
+      "release_date": "2026-01-20",
+      "tags": null
+    },
+    "intfloat/e5-mistral-7b-instruct": {
+      "aliases": [],
+      "base_url": null,
+      "capabilities": null,
+      "cost": {
+        "input": 0.01,
+        "output": 0
+      },
+      "deprecated": false,
+      "extra": {
+        "attachment": false,
+        "family": "text-embedding",
+        "open_weights": true,
+        "structured_output": false,
+        "temperature": false
+      },
+      "family": null,
+      "id": "intfloat/e5-mistral-7b-instruct",
+      "knowledge": "2023-12",
+      "last_updated": "2026-02-04",
+      "lifecycle": null,
+      "limits": {
+        "context": 32768
+      },
+      "modalities": {
+        "input": [
+          "text"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "model": null,
+      "name": "e5-mistral-7b-instruct",
+      "pricing": null,
+      "provider": "nebius",
+      "provider_model_id": null,
+      "release_date": "2024-01-01",
+      "tags": null
+    },
+    "meta-llama/llama-3.3-70b-instruct-base": {
+      "aliases": [],
+      "base_url": null,
+      "capabilities": {
+        "chat": true,
+        "embeddings": false,
+        "json": {
+          "native": false,
+          "schema": false,
+          "strict": false
+        },
+        "reasoning": {
+          "enabled": false
+        },
+        "streaming": {
+          "tool_calls": true
+        },
+        "tools": {
+          "enabled": true
+        }
+      },
+      "cost": {
+        "cache_read": 0.013,
+        "cache_write": 0.16,
+        "input": 0.13,
+        "output": 0.4
+      },
+      "deprecated": false,
+      "extra": {
+        "attachment": false,
+        "open_weights": true,
+        "structured_output": true,
+        "temperature": true
+      },
+      "family": null,
+      "id": "meta-llama/llama-3.3-70b-instruct-base",
+      "knowledge": "2025-08",
+      "last_updated": "2026-02-04",
+      "lifecycle": null,
+      "limits": {
+        "context": 128000,
+        "output": 8192
+      },
+      "modalities": {
+        "input": [
+          "text"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "model": null,
+      "name": "Llama-3.3-70B-Instruct",
+      "pricing": null,
+      "provider": "nebius",
+      "provider_model_id": null,
+      "release_date": "2025-12-05",
       "tags": null
     },
     "meta-llama/llama-3.3-70b-instruct-fast": {
@@ -250,7 +1090,7 @@
           "strict": false
         },
         "reasoning": {
-          "enabled": true
+          "enabled": false
         },
         "streaming": {
           "tool_calls": true
@@ -260,23 +1100,25 @@
         }
       },
       "cost": {
+        "cache_read": 0.025,
+        "cache_write": 0.31,
         "input": 0.25,
         "output": 0.75
       },
       "deprecated": false,
       "extra": {
         "attachment": false,
-        "family": "llama",
-        "open_weights": false,
+        "open_weights": true,
+        "structured_output": true,
         "temperature": true
       },
       "family": null,
       "id": "meta-llama/llama-3.3-70b-instruct-fast",
-      "knowledge": "2024-08",
-      "last_updated": "2025-10-04",
+      "knowledge": "2025-08",
+      "last_updated": "2026-02-04",
       "lifecycle": null,
       "limits": {
-        "context": 131072,
+        "context": 128000,
         "output": 8192
       },
       "modalities": {
@@ -292,7 +1134,7 @@
       "pricing": null,
       "provider": "nebius",
       "provider_model_id": null,
-      "release_date": "2024-08-22",
+      "release_date": "2025-12-05",
       "tags": null
     },
     "meta-llama/llama-3_1-405b-instruct": {
@@ -307,7 +1149,7 @@
           "strict": false
         },
         "reasoning": {
-          "enabled": true
+          "enabled": false
         },
         "streaming": {
           "tool_calls": true
@@ -317,20 +1159,23 @@
         }
       },
       "cost": {
+        "cache_read": 0.1,
+        "cache_write": 1.25,
         "input": 1,
         "output": 3
       },
       "deprecated": false,
       "extra": {
         "attachment": false,
-        "family": "llama",
-        "open_weights": false,
+        "open_weights": true,
+        "status": "deprecated",
+        "structured_output": true,
         "temperature": true
       },
       "family": null,
       "id": "meta-llama/llama-3_1-405b-instruct",
-      "knowledge": "2024-03",
-      "last_updated": "2025-10-04",
+      "knowledge": "2024-12",
+      "last_updated": "2026-02-04",
       "lifecycle": null,
       "limits": {
         "context": 131072,
@@ -345,7 +1190,167 @@
         ]
       },
       "model": null,
-      "name": "Llama 3.1 405B Instruct",
+      "name": "Llama-3.1-405B-Instruct",
+      "pricing": null,
+      "provider": "nebius",
+      "provider_model_id": null,
+      "release_date": "2025-01-20",
+      "tags": null
+    },
+    "meta-llama/llama-guard-3-8b": {
+      "aliases": [],
+      "base_url": null,
+      "capabilities": null,
+      "cost": {
+        "cache_read": 0.002,
+        "cache_write": 0.025,
+        "input": 0.02,
+        "output": 0.06
+      },
+      "deprecated": false,
+      "extra": {
+        "attachment": false,
+        "open_weights": true,
+        "structured_output": true,
+        "temperature": false
+      },
+      "family": null,
+      "id": "meta-llama/llama-guard-3-8b",
+      "knowledge": "2024-04",
+      "last_updated": "2026-02-04",
+      "lifecycle": null,
+      "limits": {
+        "context": 8192,
+        "output": 1024
+      },
+      "modalities": {
+        "input": [
+          "text"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "model": null,
+      "name": "Llama-Guard-3-8B",
+      "pricing": null,
+      "provider": "nebius",
+      "provider_model_id": null,
+      "release_date": "2024-04-18",
+      "tags": null
+    },
+    "meta-llama/meta-llama-3.1-8b-instruct": {
+      "aliases": [],
+      "base_url": null,
+      "capabilities": {
+        "chat": true,
+        "embeddings": false,
+        "json": {
+          "native": false,
+          "schema": false,
+          "strict": false
+        },
+        "reasoning": {
+          "enabled": false
+        },
+        "streaming": {
+          "tool_calls": true
+        },
+        "tools": {
+          "enabled": true
+        }
+      },
+      "cost": {
+        "cache_read": 0.002,
+        "cache_write": 0.025,
+        "input": 0.02,
+        "output": 0.06
+      },
+      "deprecated": false,
+      "extra": {
+        "attachment": false,
+        "open_weights": true,
+        "structured_output": true,
+        "temperature": true
+      },
+      "family": null,
+      "id": "meta-llama/meta-llama-3.1-8b-instruct",
+      "knowledge": "2024-12",
+      "last_updated": "2026-02-04",
+      "lifecycle": null,
+      "limits": {
+        "context": 128000,
+        "output": 4096
+      },
+      "modalities": {
+        "input": [
+          "text"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "model": null,
+      "name": "Meta-Llama-3.1-8B-Instruct",
+      "pricing": null,
+      "provider": "nebius",
+      "provider_model_id": null,
+      "release_date": "2024-07-23",
+      "tags": null
+    },
+    "meta-llama/meta-llama-3.1-8b-instruct-fast": {
+      "aliases": [],
+      "base_url": null,
+      "capabilities": {
+        "chat": true,
+        "embeddings": false,
+        "json": {
+          "native": false,
+          "schema": false,
+          "strict": false
+        },
+        "reasoning": {
+          "enabled": false
+        },
+        "streaming": {
+          "tool_calls": true
+        },
+        "tools": {
+          "enabled": true
+        }
+      },
+      "cost": {
+        "cache_read": 0.003,
+        "cache_write": 0.03,
+        "input": 0.03,
+        "output": 0.09
+      },
+      "deprecated": false,
+      "extra": {
+        "attachment": false,
+        "open_weights": true,
+        "structured_output": true,
+        "temperature": true
+      },
+      "family": null,
+      "id": "meta-llama/meta-llama-3.1-8b-instruct-fast",
+      "knowledge": "2024-12",
+      "last_updated": "2026-02-04",
+      "lifecycle": null,
+      "limits": {
+        "context": 128000,
+        "output": 4096
+      },
+      "modalities": {
+        "input": [
+          "text"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "model": null,
+      "name": "Meta-Llama-3.1-8B-Instruct (Fast)",
       "pricing": null,
       "provider": "nebius",
       "provider_model_id": null,
@@ -364,7 +1369,7 @@
           "strict": false
         },
         "reasoning": {
-          "enabled": true
+          "enabled": false
         },
         "streaming": {
           "tool_calls": true
@@ -374,42 +1379,45 @@
         }
       },
       "cost": {
+        "cache_read": 0.05,
+        "cache_write": 0.625,
         "input": 0.5,
         "output": 2.4
       },
       "deprecated": false,
       "extra": {
-        "attachment": false,
-        "family": "kimi",
+        "attachment": true,
         "open_weights": false,
+        "structured_output": true,
         "temperature": true
       },
       "family": null,
       "id": "moonshotai/kimi-k2-instruct",
-      "knowledge": "2024-01",
-      "last_updated": "2025-10-04",
+      "knowledge": "2025-10",
+      "last_updated": "2026-02-04",
       "lifecycle": null,
       "limits": {
-        "context": 131072,
+        "context": 200000,
         "output": 8192
       },
       "modalities": {
         "input": [
-          "text"
+          "text",
+          "image"
         ],
         "output": [
           "text"
         ]
       },
       "model": null,
-      "name": "Kimi K2 Instruct",
+      "name": "Kimi-K2-Instruct",
       "pricing": null,
       "provider": "nebius",
       "provider_model_id": null,
-      "release_date": "2025-01-01",
+      "release_date": "2026-01-05",
       "tags": null
     },
-    "nvidia/llama-3_1-nemotron-ultra-253b-v1": {
+    "moonshotai/kimi-k2-thinking": {
       "aliases": [],
       "base_url": null,
       "capabilities": {
@@ -431,24 +1439,30 @@
         }
       },
       "cost": {
+        "cache_read": 0.06,
+        "cache_write": 0.75,
         "input": 0.6,
-        "output": 1.8
+        "output": 2.5,
+        "reasoning": 2.5
       },
       "deprecated": false,
       "extra": {
-        "attachment": false,
-        "family": "llama",
-        "open_weights": false,
+        "attachment": true,
+        "interleaved": {
+          "field": "reasoning_content"
+        },
+        "open_weights": true,
+        "structured_output": true,
         "temperature": true
       },
       "family": null,
-      "id": "nvidia/llama-3_1-nemotron-ultra-253b-v1",
-      "knowledge": "2024-07",
-      "last_updated": "2025-10-04",
+      "id": "moonshotai/kimi-k2-thinking",
+      "knowledge": "2025-10",
+      "last_updated": "2026-02-04",
       "lifecycle": null,
       "limits": {
-        "context": 131072,
-        "output": 8192
+        "context": 128000,
+        "output": 16384
       },
       "modalities": {
         "input": [
@@ -459,11 +1473,188 @@
         ]
       },
       "model": null,
-      "name": "Llama 3.1 Nemotron Ultra 253B v1",
+      "name": "Kimi-K2-Thinking",
       "pricing": null,
       "provider": "nebius",
       "provider_model_id": null,
-      "release_date": "2024-07-01",
+      "release_date": "2026-01-05",
+      "tags": null
+    },
+    "nvidia/llama-3_1-nemotron-ultra-253b-v1": {
+      "aliases": [],
+      "base_url": null,
+      "capabilities": {
+        "chat": true,
+        "embeddings": false,
+        "json": {
+          "native": false,
+          "schema": false,
+          "strict": false
+        },
+        "reasoning": {
+          "enabled": false
+        },
+        "streaming": {
+          "tool_calls": true
+        },
+        "tools": {
+          "enabled": true
+        }
+      },
+      "cost": {
+        "cache_read": 0.06,
+        "cache_write": 0.75,
+        "input": 0.6,
+        "output": 1.8
+      },
+      "deprecated": false,
+      "extra": {
+        "attachment": false,
+        "open_weights": true,
+        "structured_output": true,
+        "temperature": true
+      },
+      "family": null,
+      "id": "nvidia/llama-3_1-nemotron-ultra-253b-v1",
+      "knowledge": "2024-12",
+      "last_updated": "2026-02-04",
+      "lifecycle": null,
+      "limits": {
+        "context": 128000,
+        "output": 4096
+      },
+      "modalities": {
+        "input": [
+          "text"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "model": null,
+      "name": "Llama-3.1-Nemotron-Ultra-253B-v1",
+      "pricing": null,
+      "provider": "nebius",
+      "provider_model_id": null,
+      "release_date": "2025-01-15",
+      "tags": null
+    },
+    "nvidia/nemotron-nano-v2-12b": {
+      "aliases": [],
+      "base_url": null,
+      "capabilities": {
+        "chat": true,
+        "embeddings": false,
+        "json": {
+          "native": false,
+          "schema": false,
+          "strict": false
+        },
+        "reasoning": {
+          "enabled": false
+        },
+        "streaming": {
+          "tool_calls": true
+        },
+        "tools": {
+          "enabled": true
+        }
+      },
+      "cost": {
+        "cache_read": 0.007,
+        "cache_write": 0.08,
+        "input": 0.07,
+        "output": 0.2
+      },
+      "deprecated": false,
+      "extra": {
+        "attachment": false,
+        "open_weights": true,
+        "structured_output": true,
+        "temperature": true
+      },
+      "family": null,
+      "id": "nvidia/nemotron-nano-v2-12b",
+      "knowledge": "2025-01",
+      "last_updated": "2026-02-04",
+      "lifecycle": null,
+      "limits": {
+        "context": 32000,
+        "output": 4096
+      },
+      "modalities": {
+        "input": [
+          "text"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "model": null,
+      "name": "Nemotron-Nano-V2-12b",
+      "pricing": null,
+      "provider": "nebius",
+      "provider_model_id": null,
+      "release_date": "2025-03-15",
+      "tags": null
+    },
+    "nvidia/nvidia-nemotron-3-nano-30b-a3b": {
+      "aliases": [],
+      "base_url": null,
+      "capabilities": {
+        "chat": true,
+        "embeddings": false,
+        "json": {
+          "native": false,
+          "schema": false,
+          "strict": false
+        },
+        "reasoning": {
+          "enabled": false
+        },
+        "streaming": {
+          "tool_calls": true
+        },
+        "tools": {
+          "enabled": true
+        }
+      },
+      "cost": {
+        "cache_read": 0.006,
+        "cache_write": 0.075,
+        "input": 0.06,
+        "output": 0.24
+      },
+      "deprecated": false,
+      "extra": {
+        "attachment": false,
+        "open_weights": true,
+        "structured_output": true,
+        "temperature": true
+      },
+      "family": null,
+      "id": "nvidia/nvidia-nemotron-3-nano-30b-a3b",
+      "knowledge": "2025-05",
+      "last_updated": "2026-02-04",
+      "lifecycle": null,
+      "limits": {
+        "context": 32000,
+        "output": 4096
+      },
+      "modalities": {
+        "input": [
+          "text"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "model": null,
+      "name": "Nemotron-3-Nano-30B-A3B",
+      "pricing": null,
+      "provider": "nebius",
+      "provider_model_id": null,
+      "release_date": "2025-08-10",
       "tags": null
     },
     "openai/gpt-oss-120b": {
@@ -488,23 +1679,29 @@
         }
       },
       "cost": {
+        "cache_read": 0.015,
+        "cache_write": 0.18,
         "input": 0.15,
-        "output": 0.6
+        "output": 0.6,
+        "reasoning": 0.6
       },
       "deprecated": false,
       "extra": {
-        "attachment": true,
-        "family": "gpt-oss",
-        "open_weights": false,
+        "attachment": false,
+        "interleaved": {
+          "field": "reasoning_content"
+        },
+        "open_weights": true,
+        "structured_output": true,
         "temperature": true
       },
       "family": null,
       "id": "openai/gpt-oss-120b",
-      "knowledge": "2024-01",
-      "last_updated": "2025-10-04",
+      "knowledge": "2025-09",
+      "last_updated": "2026-02-04",
       "lifecycle": null,
       "limits": {
-        "context": 131072,
+        "context": 128000,
         "output": 8192
       },
       "modalities": {
@@ -516,11 +1713,11 @@
         ]
       },
       "model": null,
-      "name": "GPT OSS 120B",
+      "name": "gpt-oss-120b",
       "pricing": null,
       "provider": "nebius",
       "provider_model_id": null,
-      "release_date": "2024-01-01",
+      "release_date": "2026-01-10",
       "tags": null
     },
     "openai/gpt-oss-20b": {
@@ -535,7 +1732,7 @@
           "strict": false
         },
         "reasoning": {
-          "enabled": true
+          "enabled": false
         },
         "streaming": {
           "tool_calls": true
@@ -545,23 +1742,84 @@
         }
       },
       "cost": {
+        "cache_read": 0.005,
+        "cache_write": 0.06,
         "input": 0.05,
         "output": 0.2
       },
       "deprecated": false,
       "extra": {
-        "attachment": true,
-        "family": "gpt-oss",
-        "open_weights": false,
+        "attachment": false,
+        "open_weights": true,
+        "structured_output": true,
         "temperature": true
       },
       "family": null,
       "id": "openai/gpt-oss-20b",
-      "knowledge": "2024-01",
-      "last_updated": "2025-10-04",
+      "knowledge": "2025-09",
+      "last_updated": "2026-02-04",
       "lifecycle": null,
       "limits": {
-        "context": 131072,
+        "context": 128000,
+        "output": 4096
+      },
+      "modalities": {
+        "input": [
+          "text"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "model": null,
+      "name": "gpt-oss-20b",
+      "pricing": null,
+      "provider": "nebius",
+      "provider_model_id": null,
+      "release_date": "2026-01-10",
+      "tags": null
+    },
+    "qwen/qwen2.5-coder-7b-fast": {
+      "aliases": [],
+      "base_url": null,
+      "capabilities": {
+        "chat": true,
+        "embeddings": false,
+        "json": {
+          "native": false,
+          "schema": false,
+          "strict": false
+        },
+        "reasoning": {
+          "enabled": false
+        },
+        "streaming": {
+          "tool_calls": true
+        },
+        "tools": {
+          "enabled": true
+        }
+      },
+      "cost": {
+        "cache_read": 0.003,
+        "cache_write": 0.03,
+        "input": 0.03,
+        "output": 0.09
+      },
+      "deprecated": false,
+      "extra": {
+        "attachment": false,
+        "open_weights": true,
+        "structured_output": true,
+        "temperature": true
+      },
+      "family": null,
+      "id": "qwen/qwen2.5-coder-7b-fast",
+      "knowledge": "2024-09",
+      "last_updated": "2026-02-04",
+      "lifecycle": null,
+      "limits": {
+        "context": 128000,
         "output": 8192
       },
       "modalities": {
@@ -573,11 +1831,71 @@
         ]
       },
       "model": null,
-      "name": "GPT OSS 20B",
+      "name": "Qwen2.5-Coder-7B (Fast)",
       "pricing": null,
       "provider": "nebius",
       "provider_model_id": null,
-      "release_date": "2024-01-01",
+      "release_date": "2024-09-19",
+      "tags": null
+    },
+    "qwen/qwen2.5-vl-72b-instruct": {
+      "aliases": [],
+      "base_url": null,
+      "capabilities": {
+        "chat": true,
+        "embeddings": false,
+        "json": {
+          "native": false,
+          "schema": false,
+          "strict": false
+        },
+        "reasoning": {
+          "enabled": false
+        },
+        "streaming": {
+          "tool_calls": true
+        },
+        "tools": {
+          "enabled": true
+        }
+      },
+      "cost": {
+        "cache_read": 0.025,
+        "cache_write": 0.31,
+        "input": 0.25,
+        "output": 0.75
+      },
+      "deprecated": false,
+      "extra": {
+        "attachment": true,
+        "open_weights": true,
+        "structured_output": true,
+        "temperature": true
+      },
+      "family": null,
+      "id": "qwen/qwen2.5-vl-72b-instruct",
+      "knowledge": "2024-12",
+      "last_updated": "2026-02-04",
+      "lifecycle": null,
+      "limits": {
+        "context": 128000,
+        "output": 8192
+      },
+      "modalities": {
+        "input": [
+          "text",
+          "image"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "model": null,
+      "name": "Qwen2.5-VL-72B-Instruct",
+      "pricing": null,
+      "provider": "nebius",
+      "provider_model_id": null,
+      "release_date": "2025-01-20",
       "tags": null
     },
     "qwen/qwen3-235b-a22b-instruct-2507": {
@@ -694,6 +2012,305 @@
       "release_date": "2025-07-25",
       "tags": null
     },
+    "qwen/qwen3-30b-a3b-instruct-2507": {
+      "aliases": [],
+      "base_url": null,
+      "capabilities": {
+        "chat": true,
+        "embeddings": false,
+        "json": {
+          "native": false,
+          "schema": false,
+          "strict": false
+        },
+        "reasoning": {
+          "enabled": false
+        },
+        "streaming": {
+          "tool_calls": true
+        },
+        "tools": {
+          "enabled": true
+        }
+      },
+      "cost": {
+        "cache_read": 0.01,
+        "cache_write": 0.125,
+        "input": 0.1,
+        "output": 0.3
+      },
+      "deprecated": false,
+      "extra": {
+        "attachment": false,
+        "open_weights": true,
+        "structured_output": true,
+        "temperature": true
+      },
+      "family": null,
+      "id": "qwen/qwen3-30b-a3b-instruct-2507",
+      "knowledge": "2025-12",
+      "last_updated": "2026-02-04",
+      "lifecycle": null,
+      "limits": {
+        "context": 128000,
+        "output": 8192
+      },
+      "modalities": {
+        "input": [
+          "text"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "model": null,
+      "name": "Qwen3-30B-A3B-Instruct-2507",
+      "pricing": null,
+      "provider": "nebius",
+      "provider_model_id": null,
+      "release_date": "2026-01-28",
+      "tags": null
+    },
+    "qwen/qwen3-30b-a3b-thinking-2507": {
+      "aliases": [],
+      "base_url": null,
+      "capabilities": {
+        "chat": true,
+        "embeddings": false,
+        "json": {
+          "native": false,
+          "schema": false,
+          "strict": false
+        },
+        "reasoning": {
+          "enabled": true
+        },
+        "streaming": {
+          "tool_calls": true
+        },
+        "tools": {
+          "enabled": true
+        }
+      },
+      "cost": {
+        "cache_read": 0.01,
+        "cache_write": 0.125,
+        "input": 0.1,
+        "output": 0.3,
+        "reasoning": 0.3
+      },
+      "deprecated": false,
+      "extra": {
+        "attachment": false,
+        "interleaved": {
+          "field": "reasoning_content"
+        },
+        "open_weights": true,
+        "structured_output": true,
+        "temperature": true
+      },
+      "family": null,
+      "id": "qwen/qwen3-30b-a3b-thinking-2507",
+      "knowledge": "2025-12",
+      "last_updated": "2026-02-04",
+      "lifecycle": null,
+      "limits": {
+        "context": 128000,
+        "output": 16384
+      },
+      "modalities": {
+        "input": [
+          "text"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "model": null,
+      "name": "Qwen3-30B-A3B-Thinking-2507",
+      "pricing": null,
+      "provider": "nebius",
+      "provider_model_id": null,
+      "release_date": "2026-01-28",
+      "tags": null
+    },
+    "qwen/qwen3-32b": {
+      "aliases": [],
+      "base_url": null,
+      "capabilities": {
+        "chat": true,
+        "embeddings": false,
+        "json": {
+          "native": false,
+          "schema": false,
+          "strict": false
+        },
+        "reasoning": {
+          "enabled": false
+        },
+        "streaming": {
+          "tool_calls": true
+        },
+        "tools": {
+          "enabled": true
+        }
+      },
+      "cost": {
+        "cache_read": 0.01,
+        "cache_write": 0.125,
+        "input": 0.1,
+        "output": 0.3
+      },
+      "deprecated": false,
+      "extra": {
+        "attachment": false,
+        "open_weights": true,
+        "structured_output": true,
+        "temperature": true
+      },
+      "family": null,
+      "id": "qwen/qwen3-32b",
+      "knowledge": "2025-12",
+      "last_updated": "2026-02-04",
+      "lifecycle": null,
+      "limits": {
+        "context": 128000,
+        "output": 8192
+      },
+      "modalities": {
+        "input": [
+          "text"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "model": null,
+      "name": "Qwen3-32B",
+      "pricing": null,
+      "provider": "nebius",
+      "provider_model_id": null,
+      "release_date": "2026-01-28",
+      "tags": null
+    },
+    "qwen/qwen3-32b-fast": {
+      "aliases": [],
+      "base_url": null,
+      "capabilities": {
+        "chat": true,
+        "embeddings": false,
+        "json": {
+          "native": false,
+          "schema": false,
+          "strict": false
+        },
+        "reasoning": {
+          "enabled": false
+        },
+        "streaming": {
+          "tool_calls": true
+        },
+        "tools": {
+          "enabled": true
+        }
+      },
+      "cost": {
+        "cache_read": 0.02,
+        "cache_write": 0.25,
+        "input": 0.2,
+        "output": 0.6
+      },
+      "deprecated": false,
+      "extra": {
+        "attachment": false,
+        "open_weights": true,
+        "structured_output": true,
+        "temperature": true
+      },
+      "family": null,
+      "id": "qwen/qwen3-32b-fast",
+      "knowledge": "2025-12",
+      "last_updated": "2026-02-04",
+      "lifecycle": null,
+      "limits": {
+        "context": 128000,
+        "output": 8192
+      },
+      "modalities": {
+        "input": [
+          "text"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "model": null,
+      "name": "Qwen3-32B (Fast)",
+      "pricing": null,
+      "provider": "nebius",
+      "provider_model_id": null,
+      "release_date": "2026-01-28",
+      "tags": null
+    },
+    "qwen/qwen3-coder-30b-a3b-instruct": {
+      "aliases": [],
+      "base_url": null,
+      "capabilities": {
+        "chat": true,
+        "embeddings": false,
+        "json": {
+          "native": false,
+          "schema": false,
+          "strict": false
+        },
+        "reasoning": {
+          "enabled": false
+        },
+        "streaming": {
+          "tool_calls": true
+        },
+        "tools": {
+          "enabled": true
+        }
+      },
+      "cost": {
+        "cache_read": 0.01,
+        "cache_write": 0.125,
+        "input": 0.1,
+        "output": 0.3
+      },
+      "deprecated": false,
+      "extra": {
+        "attachment": false,
+        "open_weights": true,
+        "structured_output": true,
+        "temperature": true
+      },
+      "family": null,
+      "id": "qwen/qwen3-coder-30b-a3b-instruct",
+      "knowledge": "2025-12",
+      "last_updated": "2026-02-04",
+      "lifecycle": null,
+      "limits": {
+        "context": 128000,
+        "output": 8192
+      },
+      "modalities": {
+        "input": [
+          "text"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "model": null,
+      "name": "Qwen3-Coder-30B-A3B-Instruct",
+      "pricing": null,
+      "provider": "nebius",
+      "provider_model_id": null,
+      "release_date": "2026-01-28",
+      "tags": null
+    },
     "qwen/qwen3-coder-480b-a35b-instruct": {
       "aliases": [],
       "base_url": null,
@@ -751,7 +2368,47 @@
       "release_date": "2025-07-23",
       "tags": null
     },
-    "zai-org/glm-4.5": {
+    "qwen/qwen3-embedding-8b": {
+      "aliases": [],
+      "base_url": null,
+      "capabilities": null,
+      "cost": {
+        "input": 0.01,
+        "output": 0
+      },
+      "deprecated": false,
+      "extra": {
+        "attachment": false,
+        "family": "text-embedding",
+        "open_weights": true,
+        "structured_output": false,
+        "temperature": false
+      },
+      "family": null,
+      "id": "qwen/qwen3-embedding-8b",
+      "knowledge": "2025-10",
+      "last_updated": "2026-02-04",
+      "lifecycle": null,
+      "limits": {
+        "context": 32768
+      },
+      "modalities": {
+        "input": [
+          "text"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "model": null,
+      "name": "Qwen3-Embedding-8B",
+      "pricing": null,
+      "provider": "nebius",
+      "provider_model_id": null,
+      "release_date": "2026-01-10",
+      "tags": null
+    },
+    "qwen/qwen3-next-80b-a3b-thinking": {
       "aliases": [],
       "base_url": null,
       "capabilities": {
@@ -773,24 +2430,30 @@
         }
       },
       "cost": {
-        "input": 0.6,
-        "output": 2.2
+        "cache_read": 0.015,
+        "cache_write": 0.18,
+        "input": 0.15,
+        "output": 1.2,
+        "reasoning": 1.2
       },
       "deprecated": false,
       "extra": {
         "attachment": false,
-        "family": "glm",
-        "open_weights": false,
+        "interleaved": {
+          "field": "reasoning_content"
+        },
+        "open_weights": true,
+        "structured_output": true,
         "temperature": true
       },
       "family": null,
-      "id": "zai-org/glm-4.5",
-      "knowledge": "2024-05",
-      "last_updated": "2025-10-04",
+      "id": "qwen/qwen3-next-80b-a3b-thinking",
+      "knowledge": "2025-12",
+      "last_updated": "2026-02-04",
       "lifecycle": null,
       "limits": {
-        "context": 131072,
-        "output": 8192
+        "context": 128000,
+        "output": 16384
       },
       "modalities": {
         "input": [
@@ -801,11 +2464,70 @@
         ]
       },
       "model": null,
-      "name": "GLM 4.5",
+      "name": "Qwen3-Next-80B-A3B-Thinking",
       "pricing": null,
       "provider": "nebius",
       "provider_model_id": null,
-      "release_date": "2024-06-01",
+      "release_date": "2026-01-28",
+      "tags": null
+    },
+    "zai-org/glm-4.5": {
+      "aliases": [],
+      "base_url": null,
+      "capabilities": {
+        "chat": true,
+        "embeddings": false,
+        "json": {
+          "native": false,
+          "schema": false,
+          "strict": false
+        },
+        "reasoning": {
+          "enabled": false
+        },
+        "streaming": {
+          "tool_calls": true
+        },
+        "tools": {
+          "enabled": true
+        }
+      },
+      "cost": {
+        "cache_read": 0.06,
+        "cache_write": 0.75,
+        "input": 0.6,
+        "output": 2.2
+      },
+      "deprecated": false,
+      "extra": {
+        "attachment": false,
+        "open_weights": false,
+        "structured_output": true,
+        "temperature": true
+      },
+      "family": null,
+      "id": "zai-org/glm-4.5",
+      "knowledge": "2025-06",
+      "last_updated": "2026-02-04",
+      "lifecycle": null,
+      "limits": {
+        "context": 128000,
+        "output": 4096
+      },
+      "modalities": {
+        "input": [
+          "text"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "model": null,
+      "name": "GLM-4.5",
+      "pricing": null,
+      "provider": "nebius",
+      "provider_model_id": null,
+      "release_date": "2025-11-15",
       "tags": null
     },
     "zai-org/glm-4.5-air": {
@@ -820,6 +2542,65 @@
           "strict": false
         },
         "reasoning": {
+          "enabled": false
+        },
+        "streaming": {
+          "tool_calls": true
+        },
+        "tools": {
+          "enabled": true
+        }
+      },
+      "cost": {
+        "cache_read": 0.02,
+        "cache_write": 0.25,
+        "input": 0.2,
+        "output": 1.2
+      },
+      "deprecated": false,
+      "extra": {
+        "attachment": false,
+        "open_weights": false,
+        "structured_output": true,
+        "temperature": true
+      },
+      "family": null,
+      "id": "zai-org/glm-4.5-air",
+      "knowledge": "2025-06",
+      "last_updated": "2026-02-04",
+      "lifecycle": null,
+      "limits": {
+        "context": 128000,
+        "output": 4096
+      },
+      "modalities": {
+        "input": [
+          "text"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "model": null,
+      "name": "GLM-4.5-Air",
+      "pricing": null,
+      "provider": "nebius",
+      "provider_model_id": null,
+      "release_date": "2025-11-15",
+      "tags": null
+    },
+    "zai-org/glm-4.7": {
+      "aliases": [],
+      "base_url": null,
+      "capabilities": {
+        "chat": true,
+        "embeddings": false,
+        "json": {
+          "native": false,
+          "schema": false,
+          "strict": false
+        },
+        "reasoning": {
           "enabled": true
         },
         "streaming": {
@@ -830,20 +2611,20 @@
         }
       },
       "cost": {
-        "input": 0.2,
-        "output": 1.2
+        "input": 0.4,
+        "output": 2
       },
       "deprecated": false,
       "extra": {
         "attachment": false,
-        "family": "glm-air",
+        "family": "glm",
         "open_weights": false,
         "temperature": true
       },
       "family": null,
-      "id": "zai-org/glm-4.5-air",
-      "knowledge": "2024-05",
-      "last_updated": "2025-10-04",
+      "id": "zai-org/glm-4.7",
+      "knowledge": "2025-01",
+      "last_updated": "2025-02-04",
       "lifecycle": null,
       "limits": {
         "context": 131072,
@@ -858,11 +2639,70 @@
         ]
       },
       "model": null,
-      "name": "GLM 4.5 Air",
+      "name": "GLM 4.7",
       "pricing": null,
       "provider": "nebius",
       "provider_model_id": null,
-      "release_date": "2024-06-01",
+      "release_date": "2025-01-01",
+      "tags": null
+    },
+    "zai-org/glm-4.7-fp8": {
+      "aliases": [],
+      "base_url": null,
+      "capabilities": {
+        "chat": true,
+        "embeddings": false,
+        "json": {
+          "native": false,
+          "schema": false,
+          "strict": false
+        },
+        "reasoning": {
+          "enabled": false
+        },
+        "streaming": {
+          "tool_calls": true
+        },
+        "tools": {
+          "enabled": true
+        }
+      },
+      "cost": {
+        "cache_read": 0.04,
+        "cache_write": 0.5,
+        "input": 0.4,
+        "output": 2
+      },
+      "deprecated": false,
+      "extra": {
+        "attachment": false,
+        "open_weights": false,
+        "structured_output": true,
+        "temperature": true
+      },
+      "family": null,
+      "id": "zai-org/glm-4.7-fp8",
+      "knowledge": "2025-12",
+      "last_updated": "2026-02-04",
+      "lifecycle": null,
+      "limits": {
+        "context": 128000,
+        "output": 4096
+      },
+      "modalities": {
+        "input": [
+          "text"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "model": null,
+      "name": "GLM-4.7 (FP8)",
+      "pricing": null,
+      "provider": "nebius",
+      "provider_model_id": null,
+      "release_date": "2026-01-15",
       "tags": null
     }
   },
