@@ -5,6 +5,43 @@ defmodule LLMDB.Model do
   Represents an LLM model with complete metadata including identity, provider,
   dates, limits, costs, pricing, modalities, capabilities, tags, lifecycle status, and aliases.
 
+  ## Lifecycle
+
+  Models have a lifecycle with three possible states: `"active"`, `"deprecated"`, and `"retired"`.
+
+  The lifecycle is represented in two ways for flexibility and backward compatibility:
+
+  - `:deprecated` and `:retired` - Boolean flags for quick checks
+  - `:lifecycle` - Structured map with status, dates, and replacement info
+
+  These are automatically synchronized:
+  - If `lifecycle.status` is set, the boolean flags are derived from it
+  - If only boolean flags are set, `lifecycle.status` is derived from them
+
+  ### Lifecycle Fields
+
+  - `lifecycle.status` - One of `"active"`, `"deprecated"`, `"retired"`
+  - `lifecycle.deprecated_at` - ISO8601 date when deprecation occurred/will occur
+  - `lifecycle.retires_at` - ISO8601 date when retirement is planned
+  - `lifecycle.replacement` - Suggested replacement model ID
+
+  ### Temporal Lifecycle
+
+  Use `effective_status/2`, `deprecated?/2`, and `retired?/2` to get status
+  that respects `deprecated_at` and `retires_at` dates:
+
+      model = LLMDB.Model.new!(%{
+        id: "old-model",
+        provider: :openai,
+        lifecycle: %{status: "active", deprecated_at: "2025-01-01", retires_at: "2025-06-01"}
+      })
+
+      LLMDB.Model.effective_status(model, ~U[2025-03-01 00:00:00Z])
+      # => "deprecated"
+
+      LLMDB.Model.retired?(model, ~U[2025-07-01 00:00:00Z])
+      # => true
+
   ## Pricing Fields
 
   Models have two pricing-related fields:
@@ -156,6 +193,7 @@ defmodule LLMDB.Model do
              :capabilities,
              :tags,
              :deprecated,
+             :retired,
              :lifecycle,
              :aliases,
              :extra
@@ -186,6 +224,7 @@ defmodule LLMDB.Model do
               capabilities: @capabilities_schema |> Zoi.nullish(),
               tags: Zoi.array(Zoi.string()) |> Zoi.nullish(),
               deprecated: Zoi.boolean() |> Zoi.default(false),
+              retired: Zoi.boolean() |> Zoi.default(false),
               lifecycle: @lifecycle_schema |> Zoi.nullish(),
               aliases: Zoi.array(Zoi.string()) |> Zoi.default([]),
               extra: Zoi.map() |> Zoi.nullish()
@@ -267,6 +306,128 @@ defmodule LLMDB.Model do
     |> Map.put(key, value)
     |> Map.put(to_string(key), value)
   end
+
+  @doc """
+  Returns the declared lifecycle status from the model's lifecycle field.
+
+  ## Examples
+
+      iex> model = %LLMDB.Model{id: "gpt-4", provider: :openai, lifecycle: %{status: "deprecated"}}
+      iex> LLMDB.Model.lifecycle_status(model)
+      "deprecated"
+
+      iex> model = %LLMDB.Model{id: "gpt-4", provider: :openai}
+      iex> LLMDB.Model.lifecycle_status(model)
+      nil
+  """
+  @spec lifecycle_status(t()) :: String.t() | nil
+  def lifecycle_status(%__MODULE__{lifecycle: %{status: status}}), do: status
+  def lifecycle_status(_), do: nil
+
+  @doc """
+  Returns the effective lifecycle status, considering dates, declared status, and boolean flags.
+
+  This function determines status using this precedence:
+  1. Declared `lifecycle.status` (if it indicates an advanced stage)
+  2. Date-based auto-advancement (`deprecated_at`, `retires_at`)
+  3. Boolean flags (`retired`, `deprecated`) as fallback
+  4. Default: `"active"`
+
+  ## Examples
+
+      iex> model = %LLMDB.Model{
+      ...>   id: "gpt-4",
+      ...>   provider: :openai,
+      ...>   lifecycle: %{status: "active", deprecated_at: "2025-01-01T00:00:00Z"}
+      ...> }
+      iex> LLMDB.Model.effective_status(model, ~U[2025-06-01 00:00:00Z])
+      "deprecated"
+  """
+  @spec effective_status(t(), DateTime.t()) :: String.t()
+  def effective_status(model, now \\ DateTime.utc_now())
+
+  def effective_status(%__MODULE__{} = model, %DateTime{} = now) do
+    declared = lifecycle_status(model)
+    lifecycle = model.lifecycle || %{}
+
+    deprecated_at =
+      parse_datetime(Map.get(lifecycle, :deprecated_at) || Map.get(lifecycle, "deprecated_at"))
+
+    retires_at =
+      parse_datetime(Map.get(lifecycle, :retires_at) || Map.get(lifecycle, "retires_at"))
+
+    cond do
+      declared == "retired" ->
+        "retired"
+
+      not is_nil(retires_at) and DateTime.compare(now, retires_at) != :lt ->
+        "retired"
+
+      declared == "deprecated" ->
+        "deprecated"
+
+      not is_nil(deprecated_at) and DateTime.compare(now, deprecated_at) != :lt ->
+        "deprecated"
+
+      model.retired ->
+        "retired"
+
+      model.deprecated ->
+        "deprecated"
+
+      true ->
+        "active"
+    end
+  end
+
+  @doc """
+  Returns true if the model is deprecated or retired (effective status).
+
+  Considers declared status, date-based lifecycle transitions, and boolean flags.
+
+  ## Examples
+
+      iex> model = %LLMDB.Model{id: "gpt-4", provider: :openai, deprecated: true}
+      iex> LLMDB.Model.deprecated?(model)
+      true
+  """
+  @spec deprecated?(t(), DateTime.t()) :: boolean()
+  def deprecated?(model, now \\ DateTime.utc_now()) do
+    effective_status(model, now) in ["deprecated", "retired"]
+  end
+
+  @doc """
+  Returns true if the model is retired (effective status).
+
+  Considers declared status, date-based lifecycle transitions, and boolean flags.
+
+  ## Examples
+
+      iex> model = %LLMDB.Model{id: "gpt-4", provider: :openai, retired: true}
+      iex> LLMDB.Model.retired?(model)
+      true
+  """
+  @spec retired?(t(), DateTime.t()) :: boolean()
+  def retired?(model, now \\ DateTime.utc_now()) do
+    effective_status(model, now) == "retired"
+  end
+
+  defp parse_datetime(nil), do: nil
+
+  defp parse_datetime(str) when is_binary(str) do
+    case DateTime.from_iso8601(str) do
+      {:ok, dt, _offset} ->
+        dt
+
+      {:error, _} ->
+        case Date.from_iso8601(str) do
+          {:ok, date} -> DateTime.new!(date, ~T[00:00:00], "Etc/UTC")
+          {:error, _} -> nil
+        end
+    end
+  end
+
+  defp parse_datetime(_), do: nil
 
   @doc """
   Formats a model as a spec string in the given format.
