@@ -6202,7 +6202,8 @@
       "id": "anthropic/claude-opus-4.6",
       "input_modalities": [
         "text",
-        "image"
+        "image",
+        "file"
       ],
       "object": "model",
       "output_modalities": [
@@ -6212,37 +6213,127 @@
       "pricings": {
         "completion": [
           {
+            "conditions": {
+              "prompt_tokens": {
+                "gte": 0,
+                "lt": 200,
+                "unit": "kTokens"
+              }
+            },
             "currency": "USD",
             "unit": "perMTokens",
             "value": 25
+          },
+          {
+            "conditions": {
+              "prompt_tokens": {
+                "gte": 200,
+                "unit": "kTokens"
+              }
+            },
+            "currency": "USD",
+            "unit": "perMTokens",
+            "value": 37.5
           }
         ],
         "input_cache_read": [
           {
+            "conditions": {
+              "prompt_tokens": {
+                "gte": 0,
+                "lt": 200,
+                "unit": "kTokens"
+              }
+            },
             "currency": "USD",
             "unit": "perMTokens",
             "value": 0.5
+          },
+          {
+            "conditions": {
+              "prompt_tokens": {
+                "gte": 200,
+                "unit": "kTokens"
+              }
+            },
+            "currency": "USD",
+            "unit": "perMTokens",
+            "value": 1
           }
         ],
         "input_cache_write_1_h": [
           {
+            "conditions": {
+              "prompt_tokens": {
+                "gte": 0,
+                "lt": 200,
+                "unit": "kTokens"
+              }
+            },
             "currency": "USD",
             "unit": "perMTokens",
             "value": 10
+          },
+          {
+            "conditions": {
+              "prompt_tokens": {
+                "gte": 200,
+                "unit": "kTokens"
+              }
+            },
+            "currency": "USD",
+            "unit": "perMTokens",
+            "value": 20
           }
         ],
         "input_cache_write_5_min": [
           {
+            "conditions": {
+              "prompt_tokens": {
+                "gte": 0,
+                "lt": 200,
+                "unit": "kTokens"
+              }
+            },
             "currency": "USD",
             "unit": "perMTokens",
             "value": 6.25
+          },
+          {
+            "conditions": {
+              "prompt_tokens": {
+                "gte": 200,
+                "unit": "kTokens"
+              }
+            },
+            "currency": "USD",
+            "unit": "perMTokens",
+            "value": 12.5
           }
         ],
         "prompt": [
           {
+            "conditions": {
+              "prompt_tokens": {
+                "gte": 0,
+                "lt": 200,
+                "unit": "kTokens"
+              }
+            },
             "currency": "USD",
             "unit": "perMTokens",
             "value": 5
+          },
+          {
+            "conditions": {
+              "prompt_tokens": {
+                "gte": 200,
+                "unit": "kTokens"
+              }
+            },
+            "currency": "USD",
+            "unit": "perMTokens",
+            "value": 10
           }
         ],
         "web_search": [
