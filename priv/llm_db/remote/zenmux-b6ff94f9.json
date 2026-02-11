@@ -641,69 +641,6 @@
         "reasoning": false
       },
       "context_length": 200000,
-      "created": 1755152854,
-      "display_name": "Anthropic: Claude 3.5 Sonnet (Retiring Soon)",
-      "id": "anthropic/claude-3.5-sonnet",
-      "input_modalities": [
-        "text",
-        "image",
-        "file"
-      ],
-      "object": "model",
-      "output_modalities": [
-        "text"
-      ],
-      "owned_by": "anthropic",
-      "pricings": {
-        "completion": [
-          {
-            "currency": "USD",
-            "unit": "perMTokens",
-            "value": 15
-          }
-        ],
-        "input_cache_read": [
-          {
-            "currency": "USD",
-            "unit": "perMTokens",
-            "value": 0.3
-          }
-        ],
-        "input_cache_write_1_h": [
-          {
-            "currency": "USD",
-            "unit": "perMTokens",
-            "value": 6
-          }
-        ],
-        "input_cache_write_5_min": [
-          {
-            "currency": "USD",
-            "unit": "perMTokens",
-            "value": 3.75
-          }
-        ],
-        "prompt": [
-          {
-            "currency": "USD",
-            "unit": "perMTokens",
-            "value": 3
-          }
-        ],
-        "web_search": [
-          {
-            "currency": "USD",
-            "unit": "perCount",
-            "value": 0.01
-          }
-        ]
-      }
-    },
-    {
-      "capabilities": {
-        "reasoning": false
-      },
-      "context_length": 200000,
       "created": 1755152798,
       "display_name": "Anthropic: Claude 3.5 Haiku",
       "id": "anthropic/claude-3.5-haiku",
@@ -4919,58 +4856,6 @@
       "capabilities": {
         "reasoning": false
       },
-      "context_length": 64000,
-      "created": 1764677944,
-      "display_name": "inclusionAI: Ming-flash-omni Preview",
-      "id": "inclusionai/ming-flash-omni-preview",
-      "input_modalities": [
-        "text",
-        "audio",
-        "video",
-        "image"
-      ],
-      "object": "model",
-      "output_modalities": [
-        "text",
-        "image",
-        "audio"
-      ],
-      "owned_by": "inclusionai",
-      "pricings": {
-        "audio": [
-          {
-            "currency": "USD",
-            "unit": "perMTokens",
-            "value": 8.8
-          }
-        ],
-        "completion": [
-          {
-            "currency": "USD",
-            "unit": "perMTokens",
-            "value": 1.8
-          }
-        ],
-        "image": [
-          {
-            "currency": "USD",
-            "unit": "perCount",
-            "value": 0.0282
-          }
-        ],
-        "prompt": [
-          {
-            "currency": "USD",
-            "unit": "perMTokens",
-            "value": 0.8
-          }
-        ]
-      }
-    },
-    {
-      "capabilities": {
-        "reasoning": false
-      },
       "context_length": 131072,
       "created": 1764732046,
       "display_name": "Meta: Llama 4 Scout Instruct",
@@ -6476,6 +6361,185 @@
             "currency": "USD",
             "unit": "perMTokens",
             "value": 0.1
+          }
+        ]
+      }
+    },
+    {
+      "capabilities": {
+        "reasoning": true
+      },
+      "context_length": 200000,
+      "created": 1770816906,
+      "display_name": "Z.AI: GLM 5",
+      "id": "z-ai/glm-5",
+      "input_modalities": [
+        "text"
+      ],
+      "object": "model",
+      "output_modalities": [
+        "text"
+      ],
+      "owned_by": "z-ai",
+      "pricings": {
+        "completion": [
+          {
+            "conditions": {
+              "prompt_tokens": {
+                "gte": 0,
+                "lt": 32,
+                "unit": "kTokens"
+              }
+            },
+            "currency": "USD",
+            "unit": "perMTokens",
+            "value": 2.6
+          },
+          {
+            "conditions": {
+              "prompt_tokens": {
+                "gte": 32,
+                "unit": "kTokens"
+              }
+            },
+            "currency": "USD",
+            "unit": "perMTokens",
+            "value": 3.18
+          }
+        ],
+        "input_cache_read": [
+          {
+            "conditions": {
+              "prompt_tokens": {
+                "gte": 0,
+                "lt": 32,
+                "unit": "kTokens"
+              }
+            },
+            "currency": "USD",
+            "unit": "perMTokens",
+            "value": 0.14
+          },
+          {
+            "conditions": {
+              "prompt_tokens": {
+                "gte": 32,
+                "unit": "kTokens"
+              }
+            },
+            "currency": "USD",
+            "unit": "perMTokens",
+            "value": 0.22
+          }
+        ],
+        "prompt": [
+          {
+            "conditions": {
+              "prompt_tokens": {
+                "gte": 0,
+                "lt": 32,
+                "unit": "kTokens"
+              }
+            },
+            "currency": "USD",
+            "unit": "perMTokens",
+            "value": 0.58
+          },
+          {
+            "conditions": {
+              "prompt_tokens": {
+                "gte": 32,
+                "unit": "kTokens"
+              }
+            },
+            "currency": "USD",
+            "unit": "perMTokens",
+            "value": 0.87
+          }
+        ]
+      }
+    },
+    {
+      "capabilities": {
+        "reasoning": false
+      },
+      "context_length": 64000,
+      "created": 1770619090,
+      "display_name": "inclusionAI: Ming-flash-omni-2.0",
+      "id": "inclusionai/ming-flash-omni-2.0",
+      "input_modalities": [
+        "text",
+        "image",
+        "audio",
+        "video"
+      ],
+      "object": "model",
+      "output_modalities": [
+        "text",
+        "image",
+        "audio"
+      ],
+      "owned_by": "inclusionai",
+      "pricings": {
+        "audio": [
+          {
+            "currency": "USD",
+            "unit": "perMTokens",
+            "value": 8.8
+          }
+        ],
+        "completion": [
+          {
+            "currency": "USD",
+            "unit": "perMTokens",
+            "value": 1.8
+          }
+        ],
+        "image": [
+          {
+            "currency": "USD",
+            "unit": "perCount",
+            "value": 0.0282
+          }
+        ],
+        "prompt": [
+          {
+            "currency": "USD",
+            "unit": "perMTokens",
+            "value": 0.8
+          }
+        ]
+      }
+    },
+    {
+      "capabilities": {
+        "reasoning": false
+      },
+      "context_length": 128000,
+      "created": 1770733953,
+      "display_name": "Joyland: RoleMind_12B",
+      "id": "joyland/rolemind-12b",
+      "input_modalities": [
+        "text"
+      ],
+      "object": "model",
+      "output_modalities": [
+        "text"
+      ],
+      "owned_by": "joyland",
+      "pricings": {
+        "completion": [
+          {
+            "currency": "USD",
+            "unit": "perMTokens",
+            "value": 0.096
+          }
+        ],
+        "prompt": [
+          {
+            "currency": "USD",
+            "unit": "perMTokens",
+            "value": 0.024
           }
         ]
       }

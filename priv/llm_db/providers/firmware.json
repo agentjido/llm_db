@@ -22,7 +22,7 @@
           "strict": false
         },
         "reasoning": {
-          "enabled": true
+          "enabled": false
         },
         "streaming": {
           "tool_calls": true
@@ -32,8 +32,10 @@
         }
       },
       "cost": {
-        "input": 0,
-        "output": 0
+        "cache_read": 0.1,
+        "cache_write": 1.25,
+        "input": 1,
+        "output": 5
       },
       "deprecated": false,
       "extra": {
@@ -82,7 +84,7 @@
           "strict": false
         },
         "reasoning": {
-          "enabled": true
+          "enabled": false
         },
         "streaming": {
           "tool_calls": true
@@ -92,8 +94,10 @@
         }
       },
       "cost": {
-        "input": 0,
-        "output": 0
+        "cache_read": 0.5,
+        "cache_write": 6.25,
+        "input": 5,
+        "output": 25
       },
       "deprecated": false,
       "extra": {
@@ -142,7 +146,7 @@
           "strict": false
         },
         "reasoning": {
-          "enabled": true
+          "enabled": false
         },
         "streaming": {
           "tool_calls": true
@@ -152,8 +156,10 @@
         }
       },
       "cost": {
-        "input": 0,
-        "output": 0
+        "cache_read": 0.5,
+        "cache_write": 6.25,
+        "input": 5,
+        "output": 25
       },
       "deprecated": false,
       "extra": {
@@ -202,7 +208,7 @@
           "strict": false
         },
         "reasoning": {
-          "enabled": true
+          "enabled": false
         },
         "streaming": {
           "tool_calls": true
@@ -212,8 +218,10 @@
         }
       },
       "cost": {
-        "input": 0,
-        "output": 0
+        "cache_read": 0.3,
+        "cache_write": 3.75,
+        "input": 3,
+        "output": 15
       },
       "deprecated": false,
       "extra": {
@@ -250,7 +258,7 @@
       "retired": false,
       "tags": null
     },
-    "deepseek-chat": {
+    "deepseek-r1": {
       "aliases": [],
       "base_url": null,
       "capabilities": {
@@ -272,66 +280,8 @@
         }
       },
       "cost": {
-        "input": 0,
-        "output": 0
-      },
-      "deprecated": false,
-      "extra": {
-        "attachment": true,
-        "family": "deepseek",
-        "open_weights": false,
-        "temperature": true
-      },
-      "family": null,
-      "id": "deepseek-chat",
-      "knowledge": "2024-07",
-      "last_updated": "2025-09-29",
-      "lifecycle": null,
-      "limits": {
-        "context": 128000,
-        "output": 8192
-      },
-      "modalities": {
-        "input": [
-          "text"
-        ],
-        "output": [
-          "text"
-        ]
-      },
-      "model": null,
-      "name": "DeepSeek Chat",
-      "pricing": null,
-      "provider": "firmware",
-      "provider_model_id": null,
-      "release_date": "2024-12-26",
-      "retired": false,
-      "tags": null
-    },
-    "deepseek-reasoner": {
-      "aliases": [],
-      "base_url": null,
-      "capabilities": {
-        "chat": true,
-        "embeddings": false,
-        "json": {
-          "native": false,
-          "schema": false,
-          "strict": false
-        },
-        "reasoning": {
-          "enabled": true
-        },
-        "streaming": {
-          "tool_calls": true
-        },
-        "tools": {
-          "enabled": true
-        }
-      },
-      "cost": {
-        "input": 0,
-        "output": 0
+        "input": 1.35,
+        "output": 5.4
       },
       "deprecated": false,
       "extra": {
@@ -344,7 +294,7 @@
         "temperature": true
       },
       "family": null,
-      "id": "deepseek-reasoner",
+      "id": "deepseek-r1",
       "knowledge": "2024-07",
       "last_updated": "2025-09-29",
       "lifecycle": null,
@@ -361,7 +311,7 @@
         ]
       },
       "model": null,
-      "name": "DeepSeek Reasoner",
+      "name": "DeepSeek R1",
       "pricing": null,
       "provider": "firmware",
       "provider_model_id": null,
@@ -391,8 +341,9 @@
         }
       },
       "cost": {
-        "input": 0,
-        "output": 0
+        "cache_read": 0.075,
+        "input": 0.3,
+        "output": 2.5
       },
       "deprecated": false,
       "extra": {
@@ -453,8 +404,9 @@
         }
       },
       "cost": {
-        "input": 0,
-        "output": 0
+        "cache_read": 0.31,
+        "input": 1.25,
+        "output": 10
       },
       "deprecated": false,
       "extra": {
@@ -515,8 +467,9 @@
         }
       },
       "cost": {
-        "input": 0,
-        "output": 0
+        "cache_read": 0.05,
+        "input": 0.5,
+        "output": 3
       },
       "deprecated": false,
       "extra": {
@@ -578,8 +531,9 @@
         }
       },
       "cost": {
-        "input": 0,
-        "output": 0
+        "cache_read": 0.2,
+        "input": 2,
+        "output": 12
       },
       "deprecated": false,
       "extra": {
@@ -641,8 +595,9 @@
         }
       },
       "cost": {
-        "input": 0,
-        "output": 0
+        "cache_read": 1.25,
+        "input": 2.5,
+        "output": 10
       },
       "deprecated": false,
       "extra": {
@@ -701,8 +656,9 @@
         }
       },
       "cost": {
-        "input": 0,
-        "output": 0
+        "cache_read": 0.13,
+        "input": 1.25,
+        "output": 10
       },
       "deprecated": false,
       "extra": {
@@ -761,9 +717,9 @@
         }
       },
       "cost": {
-        "cache_read": 0,
-        "input": 0,
-        "output": 0
+        "cache_read": 0.03,
+        "input": 0.25,
+        "output": 2
       },
       "deprecated": false,
       "extra": {
@@ -822,9 +778,9 @@
         }
       },
       "cost": {
-        "cache_read": 0,
-        "input": 0,
-        "output": 0
+        "cache_read": 0.01,
+        "input": 0.05,
+        "output": 0.4
       },
       "deprecated": false,
       "extra": {
@@ -883,8 +839,9 @@
         }
       },
       "cost": {
-        "input": 0,
-        "output": 0
+        "cache_read": 0.175,
+        "input": 1.75,
+        "output": 14
       },
       "deprecated": false,
       "extra": {
@@ -942,8 +899,8 @@
         }
       },
       "cost": {
-        "input": 0,
-        "output": 0
+        "input": 0.15,
+        "output": 0.6
       },
       "deprecated": false,
       "extra": {
@@ -979,66 +936,7 @@
       "retired": false,
       "tags": null
     },
-    "grok-4-fast-non-reasoning": {
-      "aliases": [],
-      "base_url": null,
-      "capabilities": {
-        "chat": true,
-        "embeddings": false,
-        "json": {
-          "native": false,
-          "schema": false,
-          "strict": false
-        },
-        "reasoning": {
-          "enabled": false
-        },
-        "streaming": {
-          "tool_calls": true
-        },
-        "tools": {
-          "enabled": true
-        }
-      },
-      "cost": {
-        "input": 0,
-        "output": 0
-      },
-      "deprecated": false,
-      "extra": {
-        "attachment": true,
-        "family": "grok",
-        "open_weights": false,
-        "temperature": true
-      },
-      "family": null,
-      "id": "grok-4-fast-non-reasoning",
-      "knowledge": "2025-07",
-      "last_updated": "2025-09-19",
-      "lifecycle": null,
-      "limits": {
-        "context": 2000000,
-        "output": 30000
-      },
-      "modalities": {
-        "input": [
-          "text",
-          "image"
-        ],
-        "output": [
-          "text"
-        ]
-      },
-      "model": null,
-      "name": "Grok 4 Fast (Non-Reasoning)",
-      "pricing": null,
-      "provider": "firmware",
-      "provider_model_id": null,
-      "release_date": "2025-09-19",
-      "retired": false,
-      "tags": null
-    },
-    "grok-4-fast-reasoning": {
+    "gpt-oss-20b": {
       "aliases": [],
       "base_url": null,
       "capabilities": {
@@ -1060,83 +958,25 @@
         }
       },
       "cost": {
-        "input": 0,
-        "output": 0
-      },
-      "deprecated": false,
-      "extra": {
-        "attachment": true,
-        "family": "grok",
-        "open_weights": false,
-        "temperature": true
-      },
-      "family": null,
-      "id": "grok-4-fast-reasoning",
-      "knowledge": "2025-07",
-      "last_updated": "2025-09-19",
-      "lifecycle": null,
-      "limits": {
-        "context": 2000000,
-        "output": 30000
-      },
-      "modalities": {
-        "input": [
-          "text",
-          "image"
-        ],
-        "output": [
-          "text"
-        ]
-      },
-      "model": null,
-      "name": "Grok 4 Fast (Reasoning)",
-      "pricing": null,
-      "provider": "firmware",
-      "provider_model_id": null,
-      "release_date": "2025-09-19",
-      "retired": false,
-      "tags": null
-    },
-    "grok-code-fast-1": {
-      "aliases": [],
-      "base_url": null,
-      "capabilities": {
-        "chat": true,
-        "embeddings": false,
-        "json": {
-          "native": false,
-          "schema": false,
-          "strict": false
-        },
-        "reasoning": {
-          "enabled": true
-        },
-        "streaming": {
-          "tool_calls": true
-        },
-        "tools": {
-          "enabled": true
-        }
-      },
-      "cost": {
-        "input": 0,
-        "output": 0
+        "input": 0.07,
+        "output": 0.2
       },
       "deprecated": false,
       "extra": {
         "attachment": false,
-        "family": "grok",
-        "open_weights": false,
+        "family": "gpt-oss",
+        "open_weights": true,
+        "structured_output": true,
         "temperature": true
       },
       "family": null,
-      "id": "grok-code-fast-1",
-      "knowledge": "2023-10",
-      "last_updated": "2025-08-28",
+      "id": "gpt-oss-20b",
+      "knowledge": null,
+      "last_updated": "1970-01-01",
       "lifecycle": null,
       "limits": {
-        "context": 256000,
-        "output": 10000
+        "context": 131072,
+        "output": 32768
       },
       "modalities": {
         "input": [
@@ -1147,11 +987,11 @@
         ]
       },
       "model": null,
-      "name": "Grok Code Fast 1",
+      "name": "GPT OSS 20B",
       "pricing": null,
       "provider": "firmware",
       "provider_model_id": null,
-      "release_date": "2025-08-28",
+      "release_date": "1970-01-01",
       "retired": false,
       "tags": null
     },
@@ -1213,64 +1053,6 @@
       "retired": false,
       "tags": null
     },
-    "kimi-k2-thinking-turbo": {
-      "aliases": [],
-      "base_url": null,
-      "capabilities": {
-        "chat": true,
-        "embeddings": false,
-        "json": {
-          "native": false,
-          "schema": false,
-          "strict": false
-        },
-        "reasoning": {
-          "enabled": true
-        },
-        "streaming": {
-          "tool_calls": true
-        },
-        "tools": {
-          "enabled": true
-        }
-      },
-      "cost": {
-        "input": 1.15,
-        "output": 8
-      },
-      "deprecated": false,
-      "extra": {
-        "attachment": false,
-        "open_weights": false,
-        "structured_output": true,
-        "temperature": true
-      },
-      "family": null,
-      "id": "kimi-k2-thinking-turbo",
-      "knowledge": null,
-      "last_updated": "1970-01-01",
-      "lifecycle": null,
-      "limits": {
-        "context": 262000,
-        "output": 128000
-      },
-      "modalities": {
-        "input": [
-          "text"
-        ],
-        "output": [
-          "text"
-        ]
-      },
-      "model": null,
-      "name": "Kimi K2 Thinking Turbo",
-      "pricing": null,
-      "provider": "firmware",
-      "provider_model_id": null,
-      "release_date": "1970-01-01",
-      "retired": false,
-      "tags": null
-    },
     "kimi-k2.5": {
       "aliases": [],
       "base_url": null,
@@ -1293,7 +1075,7 @@
         }
       },
       "cost": {
-        "input": 0.1,
+        "input": 0.6,
         "output": 3
       },
       "deprecated": false,
@@ -1309,12 +1091,13 @@
       "last_updated": "1970-01-01",
       "lifecycle": null,
       "limits": {
-        "context": 262000,
+        "context": 256000,
         "output": 128000
       },
       "modalities": {
         "input": [
-          "text"
+          "text",
+          "image"
         ],
         "output": [
           "text"
@@ -1351,8 +1134,8 @@
         }
       },
       "cost": {
-        "input": 0,
-        "output": 0
+        "input": 0.6,
+        "output": 2.2
       },
       "deprecated": false,
       "extra": {
@@ -1380,6 +1163,64 @@
       },
       "model": null,
       "name": "Z.AI GLM-4.7",
+      "pricing": null,
+      "provider": "firmware",
+      "provider_model_id": null,
+      "release_date": "1970-01-01",
+      "retired": false,
+      "tags": null
+    },
+    "zai-glm-4.7-flash": {
+      "aliases": [],
+      "base_url": null,
+      "capabilities": {
+        "chat": true,
+        "embeddings": false,
+        "json": {
+          "native": false,
+          "schema": false,
+          "strict": false
+        },
+        "reasoning": {
+          "enabled": false
+        },
+        "streaming": {
+          "tool_calls": true
+        },
+        "tools": {
+          "enabled": true
+        }
+      },
+      "cost": {
+        "input": 0.07,
+        "output": 0.4
+      },
+      "deprecated": false,
+      "extra": {
+        "attachment": false,
+        "open_weights": true,
+        "structured_output": true,
+        "temperature": true
+      },
+      "family": null,
+      "id": "zai-glm-4.7-flash",
+      "knowledge": null,
+      "last_updated": "1970-01-01",
+      "lifecycle": null,
+      "limits": {
+        "context": 131072,
+        "output": 40000
+      },
+      "modalities": {
+        "input": [
+          "text"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "model": null,
+      "name": "Z.AI GLM-4.7 Flash",
       "pricing": null,
       "provider": "firmware",
       "provider_model_id": null,
