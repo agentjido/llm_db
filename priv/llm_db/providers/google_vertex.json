@@ -923,7 +923,32 @@
     "gemini-embedding-001": {
       "aliases": [],
       "base_url": null,
-      "capabilities": null,
+      "capabilities": {
+        "chat": false,
+        "embeddings": {
+          "default_dimensions": 3072,
+          "max_dimensions": 3072,
+          "min_dimensions": 768
+        },
+        "json": {
+          "native": false,
+          "schema": false,
+          "strict": false
+        },
+        "reasoning": {
+          "enabled": false
+        },
+        "streaming": {
+          "text": false,
+          "tool_calls": false
+        },
+        "tools": {
+          "enabled": false,
+          "parallel": false,
+          "streaming": false,
+          "strict": false
+        }
+      },
       "cost": {
         "input": 0.15,
         "output": 0
