@@ -10,355 +10,41 @@
   "extra": null,
   "id": "stackit",
   "models": {
-    "e5-mistral-7b": {
+    "Qwen/Qwen3-VL-235B-A22B-Instruct-FP8": {
       "aliases": [],
       "base_url": null,
-      "capabilities": null,
+      "capabilities": {
+        "chat": true,
+        "embeddings": false,
+        "json": {
+          "native": false,
+          "schema": false,
+          "strict": false
+        },
+        "reasoning": {
+          "enabled": false
+        },
+        "streaming": {
+          "tool_calls": true
+        },
+        "tools": {
+          "enabled": true
+        }
+      },
       "cost": {
-        "input": 0.02,
-        "output": 0.02
-      },
-      "deprecated": false,
-      "extra": {
-        "attachment": false,
-        "open_weights": true,
-        "structured_output": false,
-        "temperature": false
-      },
-      "family": null,
-      "id": "e5-mistral-7b",
-      "knowledge": null,
-      "last_updated": "2023-12-11",
-      "lifecycle": null,
-      "limits": {
-        "context": 4096,
-        "output": 4096
-      },
-      "modalities": {
-        "input": [
-          "text"
-        ],
-        "output": [
-          "text"
-        ]
-      },
-      "model": null,
-      "name": "E5 Mistral 7B",
-      "pricing": null,
-      "provider": "stackit",
-      "provider_model_id": null,
-      "release_date": "2023-12-11",
-      "retired": false,
-      "tags": null
-    },
-    "gemma-3-27b": {
-      "aliases": [],
-      "base_url": null,
-      "capabilities": null,
-      "cost": {
-        "input": 0.53,
-        "output": 0.77
+        "input": 1.64,
+        "output": 1.91
       },
       "deprecated": false,
       "extra": {
         "attachment": true,
+        "family": "qwen",
         "open_weights": true,
         "structured_output": false,
         "temperature": true
       },
       "family": null,
-      "id": "gemma-3-27b",
-      "knowledge": null,
-      "last_updated": "2025-05-17",
-      "lifecycle": null,
-      "limits": {
-        "context": 37000,
-        "output": 8192
-      },
-      "modalities": {
-        "input": [
-          "text",
-          "image"
-        ],
-        "output": [
-          "text"
-        ]
-      },
-      "model": null,
-      "name": "Gemma 3 27B",
-      "pricing": null,
-      "provider": "stackit",
-      "provider_model_id": null,
-      "release_date": "2025-05-17",
-      "retired": false,
-      "tags": null
-    },
-    "gpt-oss-120b": {
-      "aliases": [],
-      "base_url": null,
-      "capabilities": {
-        "chat": true,
-        "embeddings": false,
-        "json": {
-          "native": false,
-          "schema": false,
-          "strict": false
-        },
-        "reasoning": {
-          "enabled": true
-        },
-        "streaming": {
-          "tool_calls": true
-        },
-        "tools": {
-          "enabled": true
-        }
-      },
-      "cost": {
-        "input": 0.53,
-        "output": 0.77
-      },
-      "deprecated": false,
-      "extra": {
-        "attachment": false,
-        "open_weights": true,
-        "structured_output": false,
-        "temperature": true
-      },
-      "family": null,
-      "id": "gpt-oss-120b",
-      "knowledge": null,
-      "last_updated": "2025-08-05",
-      "lifecycle": null,
-      "limits": {
-        "context": 128000,
-        "output": 8192
-      },
-      "modalities": {
-        "input": [
-          "text"
-        ],
-        "output": [
-          "text"
-        ]
-      },
-      "model": null,
-      "name": "GPT-OSS 120B",
-      "pricing": null,
-      "provider": "stackit",
-      "provider_model_id": null,
-      "release_date": "2025-08-05",
-      "retired": false,
-      "tags": null
-    },
-    "llama-3.1-8b": {
-      "aliases": [],
-      "base_url": null,
-      "capabilities": {
-        "chat": true,
-        "embeddings": false,
-        "json": {
-          "native": false,
-          "schema": false,
-          "strict": false
-        },
-        "reasoning": {
-          "enabled": false
-        },
-        "streaming": {
-          "tool_calls": true
-        },
-        "tools": {
-          "enabled": true
-        }
-      },
-      "cost": {
-        "input": 0.18,
-        "output": 0.3
-      },
-      "deprecated": false,
-      "extra": {
-        "attachment": false,
-        "open_weights": true,
-        "structured_output": true,
-        "temperature": true
-      },
-      "family": null,
-      "id": "llama-3.1-8b",
-      "knowledge": null,
-      "last_updated": "2024-07-23",
-      "lifecycle": null,
-      "limits": {
-        "context": 128000,
-        "output": 8192
-      },
-      "modalities": {
-        "input": [
-          "text"
-        ],
-        "output": [
-          "text"
-        ]
-      },
-      "model": null,
-      "name": "Llama 3.1 8B",
-      "pricing": null,
-      "provider": "stackit",
-      "provider_model_id": null,
-      "release_date": "2024-07-23",
-      "retired": false,
-      "tags": null
-    },
-    "llama-3.3-70b": {
-      "aliases": [],
-      "base_url": null,
-      "capabilities": {
-        "chat": true,
-        "embeddings": false,
-        "json": {
-          "native": false,
-          "schema": false,
-          "strict": false
-        },
-        "reasoning": {
-          "enabled": false
-        },
-        "streaming": {
-          "tool_calls": true
-        },
-        "tools": {
-          "enabled": true
-        }
-      },
-      "cost": {
-        "input": 0.53,
-        "output": 0.77
-      },
-      "deprecated": false,
-      "extra": {
-        "attachment": false,
-        "open_weights": true,
-        "structured_output": false,
-        "temperature": true
-      },
-      "family": null,
-      "id": "llama-3.3-70b",
-      "knowledge": null,
-      "last_updated": "2024-12-05",
-      "lifecycle": null,
-      "limits": {
-        "context": 128000,
-        "output": 8192
-      },
-      "modalities": {
-        "input": [
-          "text"
-        ],
-        "output": [
-          "text"
-        ]
-      },
-      "model": null,
-      "name": "Llama 3.3 70B",
-      "pricing": null,
-      "provider": "stackit",
-      "provider_model_id": null,
-      "release_date": "2024-12-05",
-      "retired": false,
-      "tags": null
-    },
-    "mistral-nemo": {
-      "aliases": [],
-      "base_url": null,
-      "capabilities": {
-        "chat": true,
-        "embeddings": false,
-        "json": {
-          "native": false,
-          "schema": false,
-          "strict": false
-        },
-        "reasoning": {
-          "enabled": false
-        },
-        "streaming": {
-          "tool_calls": true
-        },
-        "tools": {
-          "enabled": true
-        }
-      },
-      "cost": {
-        "input": 0.53,
-        "output": 0.77
-      },
-      "deprecated": false,
-      "extra": {
-        "attachment": false,
-        "open_weights": true,
-        "structured_output": false,
-        "temperature": true
-      },
-      "family": null,
-      "id": "mistral-nemo",
-      "knowledge": null,
-      "last_updated": "2024-07-01",
-      "lifecycle": null,
-      "limits": {
-        "context": 128000,
-        "output": 8192
-      },
-      "modalities": {
-        "input": [
-          "text"
-        ],
-        "output": [
-          "text"
-        ]
-      },
-      "model": null,
-      "name": "Mistral Nemo",
-      "pricing": null,
-      "provider": "stackit",
-      "provider_model_id": null,
-      "release_date": "2024-07-01",
-      "retired": false,
-      "tags": null
-    },
-    "qwen3-vl-235b": {
-      "aliases": [],
-      "base_url": null,
-      "capabilities": {
-        "chat": true,
-        "embeddings": false,
-        "json": {
-          "native": false,
-          "schema": false,
-          "strict": false
-        },
-        "reasoning": {
-          "enabled": false
-        },
-        "streaming": {
-          "tool_calls": true
-        },
-        "tools": {
-          "enabled": true
-        }
-      },
-      "cost": {
-        "input": 1.77,
-        "output": 2.07
-      },
-      "deprecated": false,
-      "extra": {
-        "attachment": true,
-        "open_weights": true,
-        "structured_output": false,
-        "temperature": true
-      },
-      "family": null,
-      "id": "qwen3-vl-235b",
+      "id": "Qwen/Qwen3-VL-235B-A22B-Instruct-FP8",
       "knowledge": null,
       "last_updated": "2024-11-01",
       "lifecycle": null,
@@ -384,7 +70,7 @@
       "retired": false,
       "tags": null
     },
-    "qwen3-vl-embedding-8b": {
+    "Qwen/Qwen3-VL-Embedding-8B": {
       "aliases": [],
       "base_url": null,
       "capabilities": null,
@@ -395,12 +81,13 @@
       "deprecated": false,
       "extra": {
         "attachment": true,
+        "family": "qwen",
         "open_weights": true,
         "structured_output": false,
         "temperature": false
       },
       "family": null,
-      "id": "qwen3-vl-embedding-8b",
+      "id": "Qwen/Qwen3-VL-Embedding-8B",
       "knowledge": null,
       "last_updated": "2026-02-05",
       "lifecycle": null,
@@ -423,6 +110,327 @@
       "provider": "stackit",
       "provider_model_id": null,
       "release_date": "2026-02-05",
+      "retired": false,
+      "tags": null
+    },
+    "cortecs/Llama-3.3-70B-Instruct-FP8-Dynamic": {
+      "aliases": [],
+      "base_url": null,
+      "capabilities": {
+        "chat": true,
+        "embeddings": false,
+        "json": {
+          "native": false,
+          "schema": false,
+          "strict": false
+        },
+        "reasoning": {
+          "enabled": false
+        },
+        "streaming": {
+          "tool_calls": true
+        },
+        "tools": {
+          "enabled": true
+        }
+      },
+      "cost": {
+        "input": 0.49,
+        "output": 0.71
+      },
+      "deprecated": false,
+      "extra": {
+        "attachment": false,
+        "family": "llama",
+        "open_weights": true,
+        "structured_output": false,
+        "temperature": true
+      },
+      "family": null,
+      "id": "cortecs/Llama-3.3-70B-Instruct-FP8-Dynamic",
+      "knowledge": null,
+      "last_updated": "2024-12-05",
+      "lifecycle": null,
+      "limits": {
+        "context": 128000,
+        "output": 8192
+      },
+      "modalities": {
+        "input": [
+          "text"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "model": null,
+      "name": "Llama 3.3 70B",
+      "pricing": null,
+      "provider": "stackit",
+      "provider_model_id": null,
+      "release_date": "2024-12-05",
+      "retired": false,
+      "tags": null
+    },
+    "google/gemma-3-27b-it": {
+      "aliases": [],
+      "base_url": null,
+      "capabilities": null,
+      "cost": {
+        "input": 0.49,
+        "output": 0.71
+      },
+      "deprecated": false,
+      "extra": {
+        "attachment": true,
+        "family": "gemma",
+        "open_weights": true,
+        "structured_output": false,
+        "temperature": true
+      },
+      "family": null,
+      "id": "google/gemma-3-27b-it",
+      "knowledge": null,
+      "last_updated": "2025-05-17",
+      "lifecycle": null,
+      "limits": {
+        "context": 37000,
+        "output": 8192
+      },
+      "modalities": {
+        "input": [
+          "text",
+          "image"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "model": null,
+      "name": "Gemma 3 27B",
+      "pricing": null,
+      "provider": "stackit",
+      "provider_model_id": null,
+      "release_date": "2025-05-17",
+      "retired": false,
+      "tags": null
+    },
+    "intfloat/e5-mistral-7b-instruct": {
+      "aliases": [],
+      "base_url": null,
+      "capabilities": null,
+      "cost": {
+        "input": 0.02,
+        "output": 0.02
+      },
+      "deprecated": false,
+      "extra": {
+        "attachment": false,
+        "family": "mistral",
+        "open_weights": true,
+        "structured_output": false,
+        "temperature": false
+      },
+      "family": null,
+      "id": "intfloat/e5-mistral-7b-instruct",
+      "knowledge": null,
+      "last_updated": "2023-12-11",
+      "lifecycle": null,
+      "limits": {
+        "context": 4096,
+        "output": 4096
+      },
+      "modalities": {
+        "input": [
+          "text"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "model": null,
+      "name": "E5 Mistral 7B",
+      "pricing": null,
+      "provider": "stackit",
+      "provider_model_id": null,
+      "release_date": "2023-12-11",
+      "retired": false,
+      "tags": null
+    },
+    "neuralmagic/Meta-Llama-3.1-8B-Instruct-FP8": {
+      "aliases": [],
+      "base_url": null,
+      "capabilities": {
+        "chat": true,
+        "embeddings": false,
+        "json": {
+          "native": false,
+          "schema": false,
+          "strict": false
+        },
+        "reasoning": {
+          "enabled": false
+        },
+        "streaming": {
+          "tool_calls": true
+        },
+        "tools": {
+          "enabled": true
+        }
+      },
+      "cost": {
+        "input": 0.16,
+        "output": 0.27
+      },
+      "deprecated": false,
+      "extra": {
+        "attachment": false,
+        "family": "llama",
+        "open_weights": true,
+        "structured_output": true,
+        "temperature": true
+      },
+      "family": null,
+      "id": "neuralmagic/Meta-Llama-3.1-8B-Instruct-FP8",
+      "knowledge": null,
+      "last_updated": "2024-07-23",
+      "lifecycle": null,
+      "limits": {
+        "context": 128000,
+        "output": 8192
+      },
+      "modalities": {
+        "input": [
+          "text"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "model": null,
+      "name": "Llama 3.1 8B",
+      "pricing": null,
+      "provider": "stackit",
+      "provider_model_id": null,
+      "release_date": "2024-07-23",
+      "retired": false,
+      "tags": null
+    },
+    "neuralmagic/Mistral-Nemo-Instruct-2407-FP8": {
+      "aliases": [],
+      "base_url": null,
+      "capabilities": {
+        "chat": true,
+        "embeddings": false,
+        "json": {
+          "native": false,
+          "schema": false,
+          "strict": false
+        },
+        "reasoning": {
+          "enabled": false
+        },
+        "streaming": {
+          "tool_calls": true
+        },
+        "tools": {
+          "enabled": true
+        }
+      },
+      "cost": {
+        "input": 0.49,
+        "output": 0.71
+      },
+      "deprecated": false,
+      "extra": {
+        "attachment": false,
+        "family": "mistral",
+        "open_weights": true,
+        "structured_output": false,
+        "temperature": true
+      },
+      "family": null,
+      "id": "neuralmagic/Mistral-Nemo-Instruct-2407-FP8",
+      "knowledge": null,
+      "last_updated": "2024-07-01",
+      "lifecycle": null,
+      "limits": {
+        "context": 128000,
+        "output": 8192
+      },
+      "modalities": {
+        "input": [
+          "text"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "model": null,
+      "name": "Mistral Nemo",
+      "pricing": null,
+      "provider": "stackit",
+      "provider_model_id": null,
+      "release_date": "2024-07-01",
+      "retired": false,
+      "tags": null
+    },
+    "openai/gpt-oss-120b": {
+      "aliases": [],
+      "base_url": null,
+      "capabilities": {
+        "chat": true,
+        "embeddings": false,
+        "json": {
+          "native": false,
+          "schema": false,
+          "strict": false
+        },
+        "reasoning": {
+          "enabled": true
+        },
+        "streaming": {
+          "tool_calls": true
+        },
+        "tools": {
+          "enabled": true
+        }
+      },
+      "cost": {
+        "input": 0.49,
+        "output": 0.71
+      },
+      "deprecated": false,
+      "extra": {
+        "attachment": false,
+        "family": "gpt",
+        "open_weights": true,
+        "structured_output": false,
+        "temperature": true
+      },
+      "family": null,
+      "id": "openai/gpt-oss-120b",
+      "knowledge": null,
+      "last_updated": "2025-08-05",
+      "lifecycle": null,
+      "limits": {
+        "context": 131000,
+        "output": 8192
+      },
+      "modalities": {
+        "input": [
+          "text"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "model": null,
+      "name": "GPT-OSS 120B",
+      "pricing": null,
+      "provider": "stackit",
+      "provider_model_id": null,
+      "release_date": "2025-08-05",
       "retired": false,
       "tags": null
     }

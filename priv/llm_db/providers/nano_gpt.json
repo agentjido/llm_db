@@ -311,6 +311,68 @@
       "retired": false,
       "tags": null
     },
+    "minimax/minimax-m2.5-official": {
+      "aliases": [],
+      "base_url": null,
+      "capabilities": {
+        "chat": true,
+        "embeddings": false,
+        "json": {
+          "native": false,
+          "schema": false,
+          "strict": false
+        },
+        "reasoning": {
+          "enabled": true
+        },
+        "streaming": {
+          "tool_calls": true
+        },
+        "tools": {
+          "enabled": true
+        }
+      },
+      "cost": {
+        "input": 0.3,
+        "output": 1.2
+      },
+      "deprecated": false,
+      "extra": {
+        "attachment": false,
+        "family": "minimax",
+        "interleaved": {
+          "field": "reasoning_content"
+        },
+        "open_weights": false,
+        "structured_output": true,
+        "temperature": true
+      },
+      "family": null,
+      "id": "minimax/minimax-m2.5-official",
+      "knowledge": null,
+      "last_updated": "2026-02-12",
+      "lifecycle": null,
+      "limits": {
+        "context": 204800,
+        "output": 131072
+      },
+      "modalities": {
+        "input": [
+          "text"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "model": null,
+      "name": "MiniMax M2.5",
+      "pricing": null,
+      "provider": "nano_gpt",
+      "provider_model_id": null,
+      "release_date": "2026-02-12",
+      "retired": false,
+      "tags": null
+    },
     "mistralai/devstral-2-123b-instruct-2512": {
       "aliases": [],
       "base_url": null,
@@ -1030,124 +1092,6 @@
       "retired": false,
       "tags": null
     },
-    "z-ai/glm-4.6": {
-      "aliases": [],
-      "base_url": null,
-      "capabilities": {
-        "chat": true,
-        "embeddings": false,
-        "json": {
-          "native": false,
-          "schema": false,
-          "strict": false
-        },
-        "reasoning": {
-          "enabled": false
-        },
-        "streaming": {
-          "tool_calls": true
-        },
-        "tools": {
-          "enabled": true
-        }
-      },
-      "cost": {
-        "input": 1,
-        "output": 2
-      },
-      "deprecated": false,
-      "extra": {
-        "attachment": false,
-        "family": "glm",
-        "open_weights": true,
-        "structured_output": true,
-        "temperature": true
-      },
-      "family": null,
-      "id": "z-ai/glm-4.6",
-      "knowledge": "2024-10",
-      "last_updated": "2025-12-24",
-      "lifecycle": null,
-      "limits": {
-        "context": 200000,
-        "output": 8192
-      },
-      "modalities": {
-        "input": [
-          "text"
-        ],
-        "output": [
-          "text"
-        ]
-      },
-      "model": null,
-      "name": "GLM 4.6",
-      "pricing": null,
-      "provider": "nano_gpt",
-      "provider_model_id": null,
-      "release_date": "2024-11-15",
-      "retired": false,
-      "tags": null
-    },
-    "z-ai/glm-4.6:thinking": {
-      "aliases": [],
-      "base_url": null,
-      "capabilities": {
-        "chat": true,
-        "embeddings": false,
-        "json": {
-          "native": false,
-          "schema": false,
-          "strict": false
-        },
-        "reasoning": {
-          "enabled": true
-        },
-        "streaming": {
-          "tool_calls": true
-        },
-        "tools": {
-          "enabled": true
-        }
-      },
-      "cost": {
-        "input": 1,
-        "output": 2
-      },
-      "deprecated": false,
-      "extra": {
-        "attachment": false,
-        "family": "glm",
-        "open_weights": true,
-        "structured_output": true,
-        "temperature": true
-      },
-      "family": null,
-      "id": "z-ai/glm-4.6:thinking",
-      "knowledge": null,
-      "last_updated": "2025-12-24",
-      "lifecycle": null,
-      "limits": {
-        "context": 128000,
-        "output": 8192
-      },
-      "modalities": {
-        "input": [
-          "text"
-        ],
-        "output": [
-          "text"
-        ]
-      },
-      "model": null,
-      "name": "GLM 4.6 Thinking",
-      "pricing": null,
-      "provider": "nano_gpt",
-      "provider_model_id": null,
-      "release_date": "2025-04-07",
-      "retired": false,
-      "tags": null
-    },
     "zai-org/glm-4.5-air": {
       "aliases": [],
       "base_url": null,
@@ -1259,6 +1203,124 @@
       },
       "model": null,
       "name": "GLM 4.5 Air Thinking",
+      "pricing": null,
+      "provider": "nano_gpt",
+      "provider_model_id": null,
+      "release_date": "2025-04-07",
+      "retired": false,
+      "tags": null
+    },
+    "zai-org/glm-4.6": {
+      "aliases": [],
+      "base_url": null,
+      "capabilities": {
+        "chat": true,
+        "embeddings": false,
+        "json": {
+          "native": false,
+          "schema": false,
+          "strict": false
+        },
+        "reasoning": {
+          "enabled": false
+        },
+        "streaming": {
+          "tool_calls": true
+        },
+        "tools": {
+          "enabled": true
+        }
+      },
+      "cost": {
+        "input": 1,
+        "output": 2
+      },
+      "deprecated": false,
+      "extra": {
+        "attachment": false,
+        "family": "glm",
+        "open_weights": true,
+        "structured_output": true,
+        "temperature": true
+      },
+      "family": null,
+      "id": "zai-org/glm-4.6",
+      "knowledge": "2024-10",
+      "last_updated": "2025-12-24",
+      "lifecycle": null,
+      "limits": {
+        "context": 200000,
+        "output": 8192
+      },
+      "modalities": {
+        "input": [
+          "text"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "model": null,
+      "name": "GLM 4.6",
+      "pricing": null,
+      "provider": "nano_gpt",
+      "provider_model_id": null,
+      "release_date": "2024-11-15",
+      "retired": false,
+      "tags": null
+    },
+    "zai-org/glm-4.6:thinking": {
+      "aliases": [],
+      "base_url": null,
+      "capabilities": {
+        "chat": true,
+        "embeddings": false,
+        "json": {
+          "native": false,
+          "schema": false,
+          "strict": false
+        },
+        "reasoning": {
+          "enabled": true
+        },
+        "streaming": {
+          "tool_calls": true
+        },
+        "tools": {
+          "enabled": true
+        }
+      },
+      "cost": {
+        "input": 1,
+        "output": 2
+      },
+      "deprecated": false,
+      "extra": {
+        "attachment": false,
+        "family": "glm",
+        "open_weights": true,
+        "structured_output": true,
+        "temperature": true
+      },
+      "family": null,
+      "id": "zai-org/glm-4.6:thinking",
+      "knowledge": null,
+      "last_updated": "2025-12-24",
+      "lifecycle": null,
+      "limits": {
+        "context": 128000,
+        "output": 8192
+      },
+      "modalities": {
+        "input": [
+          "text"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "model": null,
+      "name": "GLM 4.6 Thinking",
       "pricing": null,
       "provider": "nano_gpt",
       "provider_model_id": null,
@@ -1429,7 +1491,7 @@
       "family": null,
       "id": "zai-org/glm-5",
       "knowledge": "2025-06",
-      "last_updated": "2025-02-11",
+      "last_updated": "2026-02-11",
       "lifecycle": null,
       "limits": {
         "context": 200000,
@@ -1448,7 +1510,131 @@
       "pricing": null,
       "provider": "nano_gpt",
       "provider_model_id": null,
-      "release_date": "2025-02-11",
+      "release_date": "2026-02-11",
+      "retired": false,
+      "tags": null
+    },
+    "zai-org/glm-5-original": {
+      "aliases": [],
+      "base_url": null,
+      "capabilities": {
+        "chat": true,
+        "embeddings": false,
+        "json": {
+          "native": false,
+          "schema": false,
+          "strict": false
+        },
+        "reasoning": {
+          "enabled": true
+        },
+        "streaming": {
+          "tool_calls": true
+        },
+        "tools": {
+          "enabled": true
+        }
+      },
+      "cost": {
+        "input": 0.8,
+        "output": 2.56
+      },
+      "deprecated": false,
+      "extra": {
+        "attachment": false,
+        "family": "glm",
+        "interleaved": {
+          "field": "reasoning_content"
+        },
+        "open_weights": true,
+        "structured_output": true,
+        "temperature": true
+      },
+      "family": null,
+      "id": "zai-org/glm-5-original",
+      "knowledge": "2025-06",
+      "last_updated": "2026-02-11",
+      "lifecycle": null,
+      "limits": {
+        "context": 200000,
+        "output": 128000
+      },
+      "modalities": {
+        "input": [
+          "text"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "model": null,
+      "name": "GLM 5 Original",
+      "pricing": null,
+      "provider": "nano_gpt",
+      "provider_model_id": null,
+      "release_date": "2026-02-11",
+      "retired": false,
+      "tags": null
+    },
+    "zai-org/glm-5-original:thinking": {
+      "aliases": [],
+      "base_url": null,
+      "capabilities": {
+        "chat": true,
+        "embeddings": false,
+        "json": {
+          "native": false,
+          "schema": false,
+          "strict": false
+        },
+        "reasoning": {
+          "enabled": true
+        },
+        "streaming": {
+          "tool_calls": true
+        },
+        "tools": {
+          "enabled": true
+        }
+      },
+      "cost": {
+        "input": 0.8,
+        "output": 2.56
+      },
+      "deprecated": false,
+      "extra": {
+        "attachment": false,
+        "family": "glm",
+        "interleaved": {
+          "field": "reasoning_content"
+        },
+        "open_weights": true,
+        "structured_output": true,
+        "temperature": true
+      },
+      "family": null,
+      "id": "zai-org/glm-5-original:thinking",
+      "knowledge": "2025-06",
+      "last_updated": "2026-02-11",
+      "lifecycle": null,
+      "limits": {
+        "context": 200000,
+        "output": 128000
+      },
+      "modalities": {
+        "input": [
+          "text"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "model": null,
+      "name": "GLM 5 Original Thinking",
+      "pricing": null,
+      "provider": "nano_gpt",
+      "provider_model_id": null,
+      "release_date": "2026-02-11",
       "retired": false,
       "tags": null
     },
@@ -1491,7 +1677,7 @@
       "family": null,
       "id": "zai-org/glm-5:thinking",
       "knowledge": "2025-06",
-      "last_updated": "2025-02-11",
+      "last_updated": "2026-02-11",
       "lifecycle": null,
       "limits": {
         "context": 200000,
@@ -1510,7 +1696,7 @@
       "pricing": null,
       "provider": "nano_gpt",
       "provider_model_id": null,
-      "release_date": "2025-02-11",
+      "release_date": "2026-02-11",
       "retired": false,
       "tags": null
     }
