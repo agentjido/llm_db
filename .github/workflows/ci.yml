@@ -22,3 +22,15 @@ jobs:
       otp_versions: '["27", "28"]'
       elixir_versions: '["1.18", "1.19"]'
       test_command: mix test
+
+  build-check:
+    name: Build Check
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: erlef/setup-beam@v1
+        with:
+          otp-version: "27"
+          elixir-version: "1.18"
+      - run: mix deps.get
+      - run: mix llm_db.build --check

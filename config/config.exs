@@ -44,7 +44,8 @@ if Mix.env() == :dev do
       ],
       pre_commit: [
         tasks: [
-          {:mix_task, :format, ["--check-formatted"]}
+          {:mix_task, :format, ["--check-formatted"]},
+          {:cmd, "mix llm_db.build --check"}
         ]
       ],
       pre_push: [
