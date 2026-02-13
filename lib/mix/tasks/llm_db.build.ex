@@ -1,7 +1,7 @@
 defmodule Mix.Tasks.LlmDb.Build do
   use Mix.Task
 
-  @shortdoc "Build snapshot.json from sources using the ETL pipeline"
+  @shortdoc "Build snapshot.json from sources using the ETL pipeline (--check to verify)"
 
   @moduledoc """
   Builds snapshot.json from configured sources using the Engine ETL pipeline.
@@ -13,6 +13,14 @@ defmodule Mix.Tasks.LlmDb.Build do
   ## Usage
 
       mix llm_db.build
+      mix llm_db.build --check
+
+  ## Options
+
+    * `--check` — Instead of writing files, verify that the generated artifacts
+      match what is already on disk. Exits with a non-zero status if any files
+      are missing, unexpected, or out of date. Useful in CI to ensure
+      contributors ran `mix llm_db.build` after editing TOML sources.
 
   ## Configuration
 
@@ -33,16 +41,23 @@ defmodule Mix.Tasks.LlmDb.Build do
   @providers_dir "priv/llm_db/providers"
 
   @impl Mix.Task
-  def run(_args) do
+  def run(args) do
     ensure_llm_db_project!()
+
+    {opts, _, _} = OptionParser.parse(args, strict: [check: :boolean])
 
     Mix.Task.run("app.start")
 
     Mix.shell().info("Building snapshot from configured sources...\n")
 
     {:ok, snapshot} = build_snapshot()
-    save_snapshot(snapshot)
-    print_summary(snapshot)
+
+    if opts[:check] do
+      check_snapshot(snapshot)
+    else
+      save_snapshot(snapshot)
+      print_summary(snapshot)
+    end
   end
 
   defp build_snapshot do
@@ -61,6 +76,28 @@ defmodule Mix.Tasks.LlmDb.Build do
     )
   end
 
+  defp render_manifest(snapshot) do
+    provider_ids =
+      snapshot.providers
+      |> Map.keys()
+      |> Enum.map(&Atom.to_string/1)
+      |> Enum.sort()
+
+    manifest = %{
+      "version" => snapshot.version,
+      "generated_at" => snapshot.generated_at,
+      "providers" => provider_ids
+    }
+
+    Jason.encode!(manifest, pretty: true)
+  end
+
+  defp render_provider(provider_data) do
+    provider_data
+    |> map_with_string_keys()
+    |> Jason.encode!(pretty: true)
+  end
+
   defp save_snapshot(snapshot) do
     # Create providers directory
     File.mkdir_p!(@providers_dir)
@@ -69,34 +106,138 @@ defmodule Mix.Tasks.LlmDb.Build do
     provider_ids =
       snapshot.providers
       |> Enum.map(fn {provider_id, provider_data} ->
-        filename = "#{provider_id}.json"
-        path = Path.join(@providers_dir, filename)
-
-        provider_output = map_with_string_keys(provider_data)
-        json = Jason.encode!(provider_output, pretty: true)
-        File.write!(path, json)
-
+        path = Path.join(@providers_dir, "#{provider_id}.json")
+        File.write!(path, render_provider(provider_data))
         Atom.to_string(provider_id)
       end)
       |> Enum.sort()
 
-    # Write manifest with metadata
+    # Remove stale provider files no longer in the build
+    expected_filenames = MapSet.new(provider_ids, &"#{&1}.json")
+
+    case File.ls(@providers_dir) do
+      {:ok, entries} ->
+        entries
+        |> Enum.filter(&String.ends_with?(&1, ".json"))
+        |> Enum.reject(&MapSet.member?(expected_filenames, &1))
+        |> Enum.each(fn filename ->
+          path = Path.join(@providers_dir, filename)
+          File.rm!(path)
+          Mix.shell().info("✓ Removed stale #{path}")
+        end)
+
+      {:error, _} ->
+        :ok
+    end
+
+    # Write manifest
     File.mkdir_p!(Path.dirname(@manifest_path))
-
-    manifest = %{
-      "version" => snapshot.version,
-      "generated_at" => snapshot.generated_at,
-      "providers" => provider_ids
-    }
-
-    json = Jason.encode!(manifest, pretty: true)
-    File.write!(@manifest_path, json)
+    File.write!(@manifest_path, render_manifest(snapshot))
 
     Mix.shell().info("✓ Manifest written to #{@manifest_path} (v#{snapshot.version})")
     Mix.shell().info("✓ #{length(provider_ids)} provider files written to #{@providers_dir}/")
 
     # Generate ValidProviders module from normalized snapshot data
     generate_valid_providers(snapshot)
+  end
+
+  defp check_snapshot(snapshot) do
+    mismatches = []
+
+    # Check manifest (compare only version and providers list, not generated_at)
+    expected_providers_list =
+      snapshot.providers
+      |> Map.keys()
+      |> Enum.map(&Atom.to_string/1)
+      |> Enum.sort()
+
+    mismatches =
+      case File.read(@manifest_path) do
+        {:ok, on_disk} ->
+          on_disk_manifest = Jason.decode!(on_disk)
+
+          providers_match =
+            Map.get(on_disk_manifest, "providers", []) == expected_providers_list
+
+          version_match =
+            Map.get(on_disk_manifest, "version") == snapshot.version
+
+          if providers_match and version_match,
+            do: mismatches,
+            else: [{:mismatch, @manifest_path} | mismatches]
+
+        {:error, _} ->
+          [{:missing, @manifest_path} | mismatches]
+      end
+
+    # Check each expected provider file
+    expected_providers =
+      snapshot.providers
+      |> Enum.map(fn {provider_id, provider_data} ->
+        filename = "#{provider_id}.json"
+        {filename, render_provider(provider_data)}
+      end)
+      |> Map.new()
+
+    mismatches =
+      Enum.reduce(expected_providers, mismatches, fn {filename, expected_json}, acc ->
+        path = Path.join(@providers_dir, filename)
+
+        case File.read(path) do
+          {:ok, on_disk} ->
+            if on_disk != expected_json,
+              do: [{:mismatch, path} | acc],
+              else: acc
+
+          {:error, _} ->
+            [{:missing, path} | acc]
+        end
+      end)
+
+    # Check for unexpected files in providers/
+    expected_filenames = Map.keys(expected_providers) |> MapSet.new()
+
+    mismatches =
+      case File.ls(@providers_dir) do
+        {:ok, entries} ->
+          entries
+          |> Enum.filter(&String.ends_with?(&1, ".json"))
+          |> Enum.reject(&MapSet.member?(expected_filenames, &1))
+          |> Enum.reduce(mismatches, fn filename, acc ->
+            [{:unexpected, Path.join(@providers_dir, filename)} | acc]
+          end)
+
+        {:error, _} ->
+          mismatches
+      end
+
+    if mismatches == [] do
+      Mix.shell().info("✓ All generated artifacts are up to date.")
+    else
+      files_list =
+        mismatches
+        |> Enum.sort_by(fn {_kind, path} -> path end)
+        |> Enum.map_join("\n", fn
+          {:mismatch, path} -> "  - #{path} (content mismatch)"
+          {:missing, path} -> "  - #{path} (missing)"
+          {:unexpected, path} -> "  - #{path} (unexpected)"
+        end)
+
+      Mix.raise("""
+      Generated provider artifacts are out of date or were manually edited.
+
+      Mismatched files:
+      #{files_list}
+
+      To fix this:
+        1. Edit TOML source files under priv/llm_db/local/<provider>/
+        2. Run: mix llm_db.build
+        3. Commit the regenerated files
+
+      Do NOT edit priv/llm_db/providers/*.json directly — these files are
+      generated by `mix llm_db.build` and will be overwritten.
+      """)
+    end
   end
 
   defp print_summary(snapshot) do

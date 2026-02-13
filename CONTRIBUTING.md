@@ -182,16 +182,34 @@ git commit -m "feat(providers): add Claude 3.5 Sonnet model metadata"
 
 ## Provider Data Contributions
 
-When contributing provider data updates:
+The JSON files in `priv/llm_db/providers/` are **generated** — do not edit them directly. They will be overwritten by `mix llm_db.build`.
 
-1. **Update provider files** in `priv/llm_db/providers/`
-2. **Validate the data** runs without errors
-3. **Test lookups** work correctly with new data
-4. **Document changes** in the PR description
+To contribute model data changes:
+
+1. **Edit TOML source files** in `priv/llm_db/local/<provider>/`
+   - Each provider has a directory (e.g., `priv/llm_db/local/google/`)
+   - Each model has its own TOML file (e.g., `gemini-embedding-001.toml`)
+   - See existing files for the expected format
+2. **Rebuild** the generated artifacts: `mix llm_db.build`
+3. **Commit both** the TOML changes and the regenerated JSON files
+4. **Validate** the data with `mix test`
+
+### Example: Adding embedding capabilities to a model
+
+```toml
+# priv/llm_db/local/google_vertex/gemini-embedding-001.toml
+id = "gemini-embedding-001"
+name = "Gemini Embedding 001"
+
+[capabilities.embeddings]
+min_dimensions = 768
+max_dimensions = 3072
+default_dimensions = 3072
+```
 
 ### Provider Data Format
 
-See `guides/model-spec-formats.md` for the expected data format.
+See `guides/model-spec-formats.md` for the complete data format reference.
 
 ## Questions?
 
