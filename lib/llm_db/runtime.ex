@@ -68,8 +68,8 @@ defmodule LLMDB.Runtime do
       # With custom providers
       runtime = Runtime.compile(
         custom: %{
-          local: [
-            name: "Local Provider",
+          vllm: [
+            name: "Local vLLM Provider",
             models: %{
               "llama-3" => %{capabilities: %{chat: true}}
             }

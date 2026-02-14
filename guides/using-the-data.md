@@ -20,38 +20,13 @@ Query, filter, and access LLM model metadata at runtime.
 # With custom providers
 {:ok, snapshot} = LLMDB.load(
   custom: %{
-    local: [
-      name: "Local Provider",
-      base_url: "http://localhost:8080",
+    vllm: [
+      name: "Local vLLM Provider",
+      base_url: "http://localhost:8000/v1",
       models: %{
         "llama-3" => %{
           capabilities: %{chat: true, tools: %{enabled: true}},
           limits: %{context: 8192, output: 2048}
-        }
-      }
-    ]
-  }
-)
-
-# With local providers that use a port per model
-{:ok, snapshot} = LLMDB.load(
-  custom: %{
-    vllm: [
-      name: "VLLM Provider",
-      models: %{
-        "llama-3" => %{
-          capabilities: %{chat: true, tools: %{enabled: true}},
-          limits: %{context: 8192, output: 2048},
-          base_url: "http://localhost:8000/v1"
-        ,
-        "SmolVLM-256M-Instruct" => %{
-          capabilities: %{chat: true},
-          modalities: %{
-            "input" => ["text","image"],
-            "output" => ["text"]
-          },
-          limits: %{context: 8192}
-          base_url: "http://localhost:8001/v1"
         }
       }
     ]
@@ -293,10 +268,10 @@ Add local or private models to the catalog at load time:
 ```elixir
 {:ok, _} = LLMDB.load(
   custom: %{
-    local: [
-      name: "Local LLM Server",
-      base_url: "http://localhost:8080",
-      env: ["LOCAL_API_KEY"],
+    vllm: [
+      name: "Local vLLM Server",
+      base_url: "http://localhost:8000/v1",
+      env: ["OPENAI_API_KEY"],
       models: %{
         "llama-3-8b" => %{
           name: "Llama 3 8B",
@@ -321,8 +296,8 @@ Add local or private models to the catalog at load time:
 )
 
 # Use custom models
-{:ok, model} = LLMDB.model("local:llama-3-8b")
-{:ok, {provider, id}} = LLMDB.select(require: [tools: true], prefer: [:local])
+{:ok, model} = LLMDB.model("vllm:llama-3-8b")
+{:ok, {provider, id}} = LLMDB.select(require: [tools: true], prefer: [:vllm])
 ```
 
 **Custom Provider Format:**
@@ -331,6 +306,7 @@ Add local or private models to the catalog at load time:
 - `:models` is required - a map where keys are model IDs and values are model configs
 - Models inherit the provider ID automatically
 - Custom providers/models merge with packaged data (last wins by ID)
+- ReqLLM users should pick a ReqLLM-supported provider ID (for local OpenAI-compatible servers, use `:vllm`) or register a custom ReqLLM provider module
 
 ## Load Options
 
@@ -341,7 +317,7 @@ All options passed to `LLMDB.load/1`:
   allow: %{openai: ["gpt-4*"]},
   deny: %{openai: ["*-preview"]},
   prefer: [:openai, :anthropic],
-  custom: %{local: [models: %{"llama-3" => %{capabilities: %{chat: true}}}]}
+  custom: %{vllm: [models: %{"llama-3" => %{capabilities: %{chat: true}}}]}
 )
 ```
 
