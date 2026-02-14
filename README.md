@@ -150,9 +150,9 @@ config :llm_db,
   },
   prefer: [:openai, :anthropic],     # provider preference order
   custom: %{
-    local: [
-      name: "Local Provider",
-      base_url: "http://localhost:8080",
+    vllm: [
+      name: "Local vLLM Provider",
+      base_url: "http://localhost:8000/v1",
       models: %{
         "llama-3" => %{capabilities: %{chat: true}},
         "mistral-7b" => %{capabilities: %{chat: true, tools: %{enabled: true}}}
@@ -199,11 +199,11 @@ Add local or private models to the catalog:
 config :llm_db,
   custom: %{
     # Provider ID as key
-    local: [
-      name: "Local LLM Provider",
-      base_url: "http://localhost:8080",
-      env: ["LOCAL_API_KEY"],
-      doc: "http://localhost:8080/docs",
+    vllm: [
+      name: "Local vLLM Provider",
+      base_url: "http://localhost:8000/v1",
+      env: ["OPENAI_API_KEY"],
+      doc: "https://docs.vllm.ai",
       models: %{
         "llama-3-8b" => %{
           name: "Llama 3 8B",
@@ -226,9 +226,11 @@ config :llm_db,
   }
 
 # Use custom models like any other
-{:ok, model} = LLMDB.model("local:llama-3-8b")
-{:ok, {provider, id}} = LLMDB.select(require: [chat: true], prefer: [:local, :openai])
+{:ok, model} = LLMDB.model("vllm:llama-3-8b")
+{:ok, {provider, id}} = LLMDB.select(require: [chat: true], prefer: [:vllm, :openai])
 ```
+
+If you use LLMDB with ReqLLM, use a provider ID that ReqLLM supports (for local OpenAI-compatible servers, use `:vllm`) or register your own ReqLLM provider module for custom IDs like `:local`.
 
 **Filter Rules:**
 - Provider keys: atoms or strings; patterns: `"*"` (glob) and `~r//` (Regex)
@@ -256,6 +258,26 @@ See the [Sources & Engine](guides/sources-and-engine.md) guide for details.
 ## Using with ReqLLM
 
 Designed to power [ReqLLM](https://github.com/agentjido/req_llm), but fully standalone. Use `model_spec` + `model/1` to retrieve metadata for API calls.
+
+Important: LLMDB custom provider IDs do not automatically create ReqLLM providers.
+- For local OpenAI-compatible servers, use `:vllm`.
+- For arbitrary provider IDs (for example `:local`), register a ReqLLM provider module:
+
+```elixir
+defmodule MyApp.ReqLLM.Providers.Local do
+  use ReqLLM.Provider,
+    id: :local,
+    default_base_url: "http://localhost:8080/v1",
+    default_env_key: "OPENAI_API_KEY"
+
+  use ReqLLM.Provider.Defaults
+
+  @provider_schema []
+end
+
+# config/config.exs
+config :req_llm, custom_providers: [MyApp.ReqLLM.Providers.Local]
+```
 
 ## Contributing
 

@@ -56,9 +56,9 @@ defmodule LLMDB.Config do
         deny: %{},    # or [:provider] or %{provider: ["pattern"]}
         prefer: [:openai, :anthropic],
         custom: %{
-          local: [
-            name: "Local Provider",
-            base_url: "http://localhost:8080",
+          vllm: [
+            name: "Local vLLM Provider",
+            base_url: "http://localhost:8000/v1",
             models: %{
               "llama-3" => %{capabilities: %{chat: true}},
               "mistral-7b" => %{capabilities: %{chat: true, tools: %{enabled: true}}}
