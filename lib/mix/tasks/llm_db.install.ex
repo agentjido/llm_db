@@ -8,7 +8,7 @@ defmodule Mix.Tasks.LlmDb.Install.Docs do
 
   @spec example() :: String.t()
   def example do
-    "mix llm_db.install "
+    "mix igniter.install llm_db"
   end
 
   @spec long_doc() :: String.t()
@@ -70,7 +70,7 @@ if Code.ensure_loaded?(Igniter) do
       # Do your work here and return an updated igniter
       igniter
       |> Igniter.add_notice("""
-      LLM DB installed sucessfully ! 
+      LLM DB installed successfully !
 
       Next steps:
       https://hexdocs.pm/llm_db/readme.html#quick-start
