@@ -49,6 +49,7 @@ defmodule LLMDB.Generated.ValidProviders do
     :io_net,
     :jiekou,
     :kimi_for_coding,
+    :kuae_cloud_coding_plan,
     :llama,
     :lmstudio,
     :lucidquery,
