@@ -6513,12 +6513,151 @@
     },
     {
       "capabilities": {
-        "reasoning": false
+        "reasoning": true
       },
-      "context_length": 128000,
-      "created": 1770733953,
-      "display_name": "Joyland: RoleMind_12B",
-      "id": "joyland/rolemind-12b",
+      "context_length": 256000,
+      "created": 1771054033,
+      "display_name": "VolcanoEngine: Doubao-Seed-2.0-mini",
+      "id": "volcengine/doubao-seed-2.0-mini",
+      "input_modalities": [
+        "text",
+        "image",
+        "video"
+      ],
+      "object": "model",
+      "output_modalities": [
+        "text"
+      ],
+      "owned_by": "volcengine",
+      "pricings": {
+        "completion": [
+          {
+            "conditions": {
+              "prompt_tokens": {
+                "gte": 0,
+                "lte": 32,
+                "unit": "kTokens"
+              }
+            },
+            "currency": "USD",
+            "unit": "perMTokens",
+            "value": 0.28
+          },
+          {
+            "conditions": {
+              "prompt_tokens": {
+                "gte": 32,
+                "lt": 128,
+                "unit": "kTokens"
+              }
+            },
+            "currency": "USD",
+            "unit": "perMTokens",
+            "value": 0.56
+          },
+          {
+            "conditions": {
+              "prompt_tokens": {
+                "gte": 128,
+                "unit": "kTokens"
+              }
+            },
+            "currency": "USD",
+            "unit": "perMTokens",
+            "value": 1.12
+          }
+        ],
+        "input_cache_read": [
+          {
+            "conditions": {
+              "prompt_tokens": {
+                "gte": 0,
+                "lte": 32,
+                "unit": "kTokens"
+              }
+            },
+            "currency": "USD",
+            "unit": "perMTokens",
+            "value": 0.01
+          },
+          {
+            "conditions": {
+              "prompt_tokens": {
+                "gt": 32,
+                "lte": 128,
+                "unit": "kTokens"
+              }
+            },
+            "currency": "USD",
+            "unit": "perMTokens",
+            "value": 0.02
+          },
+          {
+            "conditions": {
+              "prompt_tokens": {
+                "gte": 128,
+                "unit": "kTokens"
+              }
+            },
+            "currency": "USD",
+            "unit": "perMTokens",
+            "value": 0.03
+          }
+        ],
+        "input_cache_write_1_h": [
+          {
+            "currency": "USD",
+            "unit": "perMTokens",
+            "value": 0.0024
+          }
+        ],
+        "prompt": [
+          {
+            "conditions": {
+              "prompt_tokens": {
+                "gte": 0,
+                "lte": 32,
+                "unit": "kTokens"
+              }
+            },
+            "currency": "USD",
+            "unit": "perMTokens",
+            "value": 0.03
+          },
+          {
+            "conditions": {
+              "prompt_tokens": {
+                "gt": 32,
+                "lte": 128,
+                "unit": "kTokens"
+              }
+            },
+            "currency": "USD",
+            "unit": "perMTokens",
+            "value": 0.06
+          },
+          {
+            "conditions": {
+              "prompt_tokens": {
+                "gt": 128,
+                "unit": "kTokens"
+              }
+            },
+            "currency": "USD",
+            "unit": "perMTokens",
+            "value": 0.12
+          }
+        ]
+      }
+    },
+    {
+      "capabilities": {
+        "reasoning": true
+      },
+      "context_length": 204800,
+      "created": 1770877055,
+      "display_name": "MiniMax: MiniMax M2.5",
+      "id": "minimax/minimax-m2.5",
       "input_modalities": [
         "text"
       ],
@@ -6526,20 +6665,498 @@
       "output_modalities": [
         "text"
       ],
-      "owned_by": "joyland",
+      "owned_by": "minimax",
       "pricings": {
         "completion": [
           {
             "currency": "USD",
             "unit": "perMTokens",
-            "value": 0.096
+            "value": 1.2
+          }
+        ],
+        "input_cache_read": [
+          {
+            "currency": "USD",
+            "unit": "perMTokens",
+            "value": 0.03
+          }
+        ],
+        "input_cache_write": [
+          {
+            "currency": "USD",
+            "unit": "perMTokens",
+            "value": 0.375
           }
         ],
         "prompt": [
           {
             "currency": "USD",
             "unit": "perMTokens",
-            "value": 0.024
+            "value": 0.3
+          }
+        ]
+      }
+    },
+    {
+      "capabilities": {
+        "reasoning": true
+      },
+      "context_length": 256000,
+      "created": 1771052263,
+      "display_name": "VolcanoEngine: Doubao-Seed-2.0-Code",
+      "id": "volcengine/doubao-seed-2.0-code",
+      "input_modalities": [
+        "text",
+        "image",
+        "video"
+      ],
+      "object": "model",
+      "output_modalities": [
+        "text"
+      ],
+      "owned_by": "volcengine",
+      "pricings": {
+        "completion": [
+          {
+            "conditions": {
+              "prompt_tokens": {
+                "gte": 0,
+                "lte": 32,
+                "unit": "kTokens"
+              }
+            },
+            "currency": "USD",
+            "unit": "perMTokens",
+            "value": 2.24
+          },
+          {
+            "conditions": {
+              "prompt_tokens": {
+                "gte": 32,
+                "lt": 128,
+                "unit": "kTokens"
+              }
+            },
+            "currency": "USD",
+            "unit": "perMTokens",
+            "value": 3.36
+          },
+          {
+            "conditions": {
+              "prompt_tokens": {
+                "gte": 128,
+                "unit": "kTokens"
+              }
+            },
+            "currency": "USD",
+            "unit": "perMTokens",
+            "value": 6.71
+          }
+        ],
+        "input_cache_read": [
+          {
+            "conditions": {
+              "prompt_tokens": {
+                "gte": 0,
+                "lte": 32,
+                "unit": "kTokens"
+              }
+            },
+            "currency": "USD",
+            "unit": "perMTokens",
+            "value": 0.09
+          },
+          {
+            "conditions": {
+              "prompt_tokens": {
+                "gt": 32,
+                "lte": 128,
+                "unit": "kTokens"
+              }
+            },
+            "currency": "USD",
+            "unit": "perMTokens",
+            "value": 0.14
+          },
+          {
+            "conditions": {
+              "prompt_tokens": {
+                "gte": 128,
+                "unit": "kTokens"
+              }
+            },
+            "currency": "USD",
+            "unit": "perMTokens",
+            "value": 0.27
+          }
+        ],
+        "input_cache_write_1_h": [
+          {
+            "currency": "USD",
+            "unit": "perMTokens",
+            "value": 0.0024
+          }
+        ],
+        "prompt": [
+          {
+            "conditions": {
+              "prompt_tokens": {
+                "gte": 0,
+                "lte": 32,
+                "unit": "kTokens"
+              }
+            },
+            "currency": "USD",
+            "unit": "perMTokens",
+            "value": 0.45
+          },
+          {
+            "conditions": {
+              "prompt_tokens": {
+                "gt": 32,
+                "lte": 128,
+                "unit": "kTokens"
+              }
+            },
+            "currency": "USD",
+            "unit": "perMTokens",
+            "value": 0.67
+          },
+          {
+            "conditions": {
+              "prompt_tokens": {
+                "gt": 128,
+                "unit": "kTokens"
+              }
+            },
+            "currency": "USD",
+            "unit": "perMTokens",
+            "value": 1.34
+          }
+        ]
+      }
+    },
+    {
+      "capabilities": {
+        "reasoning": true
+      },
+      "context_length": 204800,
+      "created": 1770954580,
+      "display_name": "MiniMax: MiniMax M2.5 highspeed",
+      "id": "minimax/minimax-m2.5-lightning",
+      "input_modalities": [
+        "text"
+      ],
+      "object": "model",
+      "output_modalities": [
+        "text"
+      ],
+      "owned_by": "minimax",
+      "pricings": {
+        "completion": [
+          {
+            "currency": "USD",
+            "unit": "perMTokens",
+            "value": 2.4
+          }
+        ],
+        "input_cache_read": [
+          {
+            "currency": "USD",
+            "unit": "perMTokens",
+            "value": 0.03
+          }
+        ],
+        "input_cache_write": [
+          {
+            "currency": "USD",
+            "unit": "perMTokens",
+            "value": 0.375
+          }
+        ],
+        "prompt": [
+          {
+            "currency": "USD",
+            "unit": "perMTokens",
+            "value": 0.6
+          }
+        ]
+      }
+    },
+    {
+      "capabilities": {
+        "reasoning": true
+      },
+      "context_length": 256000,
+      "created": 1770964408,
+      "display_name": "VolcanoEngine: Doubao-Seed-2.0-pro",
+      "id": "volcengine/doubao-seed-2.0-pro",
+      "input_modalities": [
+        "text",
+        "image",
+        "video"
+      ],
+      "object": "model",
+      "output_modalities": [
+        "text"
+      ],
+      "owned_by": "volcengine",
+      "pricings": {
+        "completion": [
+          {
+            "conditions": {
+              "prompt_tokens": {
+                "gte": 0,
+                "lte": 32,
+                "unit": "kTokens"
+              }
+            },
+            "currency": "USD",
+            "unit": "perMTokens",
+            "value": 2.24
+          },
+          {
+            "conditions": {
+              "prompt_tokens": {
+                "gte": 32,
+                "lt": 128,
+                "unit": "kTokens"
+              }
+            },
+            "currency": "USD",
+            "unit": "perMTokens",
+            "value": 3.36
+          },
+          {
+            "conditions": {
+              "prompt_tokens": {
+                "gte": 128,
+                "unit": "kTokens"
+              }
+            },
+            "currency": "USD",
+            "unit": "perMTokens",
+            "value": 6.71
+          }
+        ],
+        "input_cache_read": [
+          {
+            "conditions": {
+              "prompt_tokens": {
+                "gte": 0,
+                "lte": 32,
+                "unit": "kTokens"
+              }
+            },
+            "currency": "USD",
+            "unit": "perMTokens",
+            "value": 0.09
+          },
+          {
+            "conditions": {
+              "prompt_tokens": {
+                "gt": 32,
+                "lte": 128,
+                "unit": "kTokens"
+              }
+            },
+            "currency": "USD",
+            "unit": "perMTokens",
+            "value": 0.14
+          },
+          {
+            "conditions": {
+              "prompt_tokens": {
+                "gte": 128,
+                "unit": "kTokens"
+              }
+            },
+            "currency": "USD",
+            "unit": "perMTokens",
+            "value": 0.27
+          }
+        ],
+        "input_cache_write_1_h": [
+          {
+            "currency": "USD",
+            "unit": "perMTokens",
+            "value": 0.0024
+          }
+        ],
+        "prompt": [
+          {
+            "conditions": {
+              "prompt_tokens": {
+                "gte": 0,
+                "lte": 32,
+                "unit": "kTokens"
+              }
+            },
+            "currency": "USD",
+            "unit": "perMTokens",
+            "value": 0.45
+          },
+          {
+            "conditions": {
+              "prompt_tokens": {
+                "gt": 32,
+                "lte": 128,
+                "unit": "kTokens"
+              }
+            },
+            "currency": "USD",
+            "unit": "perMTokens",
+            "value": 0.67
+          },
+          {
+            "conditions": {
+              "prompt_tokens": {
+                "gt": 128,
+                "unit": "kTokens"
+              }
+            },
+            "currency": "USD",
+            "unit": "perMTokens",
+            "value": 1.34
+          }
+        ]
+      }
+    },
+    {
+      "capabilities": {
+        "reasoning": true
+      },
+      "context_length": 256000,
+      "created": 1771053175,
+      "display_name": "VolcanoEngine: Doubao-Seed-2.0-lite",
+      "id": "volcengine/doubao-seed-2.0-lite",
+      "input_modalities": [
+        "text",
+        "image",
+        "video"
+      ],
+      "object": "model",
+      "output_modalities": [
+        "text"
+      ],
+      "owned_by": "volcengine",
+      "pricings": {
+        "completion": [
+          {
+            "conditions": {
+              "prompt_tokens": {
+                "gte": 0,
+                "lte": 32,
+                "unit": "kTokens"
+              }
+            },
+            "currency": "USD",
+            "unit": "perMTokens",
+            "value": 0.51
+          },
+          {
+            "conditions": {
+              "prompt_tokens": {
+                "gte": 32,
+                "lt": 128,
+                "unit": "kTokens"
+              }
+            },
+            "currency": "USD",
+            "unit": "perMTokens",
+            "value": 0.76
+          },
+          {
+            "conditions": {
+              "prompt_tokens": {
+                "gte": 128,
+                "unit": "kTokens"
+              }
+            },
+            "currency": "USD",
+            "unit": "perMTokens",
+            "value": 1.51
+          }
+        ],
+        "input_cache_read": [
+          {
+            "conditions": {
+              "prompt_tokens": {
+                "gte": 0,
+                "lte": 32,
+                "unit": "kTokens"
+              }
+            },
+            "currency": "USD",
+            "unit": "perMTokens",
+            "value": 0.02
+          },
+          {
+            "conditions": {
+              "prompt_tokens": {
+                "gt": 32,
+                "lte": 128,
+                "unit": "kTokens"
+              }
+            },
+            "currency": "USD",
+            "unit": "perMTokens",
+            "value": 0.03
+          },
+          {
+            "conditions": {
+              "prompt_tokens": {
+                "gte": 128,
+                "unit": "kTokens"
+              }
+            },
+            "currency": "USD",
+            "unit": "perMTokens",
+            "value": 0.05
+          }
+        ],
+        "input_cache_write_1_h": [
+          {
+            "currency": "USD",
+            "unit": "perMTokens",
+            "value": 0.0024
+          }
+        ],
+        "prompt": [
+          {
+            "conditions": {
+              "prompt_tokens": {
+                "gte": 0,
+                "lte": 32,
+                "unit": "kTokens"
+              }
+            },
+            "currency": "USD",
+            "unit": "perMTokens",
+            "value": 0.09
+          },
+          {
+            "conditions": {
+              "prompt_tokens": {
+                "gt": 32,
+                "lte": 128,
+                "unit": "kTokens"
+              }
+            },
+            "currency": "USD",
+            "unit": "perMTokens",
+            "value": 0.13
+          },
+          {
+            "conditions": {
+              "prompt_tokens": {
+                "gt": 128,
+                "unit": "kTokens"
+              }
+            },
+            "currency": "USD",
+            "unit": "perMTokens",
+            "value": 0.25
           }
         ]
       }
