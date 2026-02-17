@@ -5336,7 +5336,7 @@
           {
             "currency": "USD",
             "unit": "perCount",
-            "value": 0.035
+            "value": 0.014
           }
         ]
       }
@@ -7157,6 +7157,135 @@
             "currency": "USD",
             "unit": "perMTokens",
             "value": 0.25
+          }
+        ]
+      }
+    },
+    {
+      "capabilities": {
+        "reasoning": true
+      },
+      "context_length": 1000000,
+      "created": 1771233701,
+      "display_name": "Qwen: Qwen3.5-Plus",
+      "id": "qwen/qwen3.5-plus",
+      "input_modalities": [
+        "text",
+        "image",
+        "file",
+        "video"
+      ],
+      "object": "model",
+      "output_modalities": [
+        "text"
+      ],
+      "owned_by": "qwen",
+      "pricings": {
+        "completion": [
+          {
+            "conditions": {
+              "prompt_tokens": {
+                "gte": 0,
+                "lte": 256,
+                "unit": "kTokens"
+              }
+            },
+            "currency": "USD",
+            "unit": "perMTokens",
+            "value": 2.4
+          },
+          {
+            "conditions": {
+              "prompt_tokens": {
+                "gt": 256,
+                "unit": "kTokens"
+              }
+            },
+            "currency": "USD",
+            "unit": "perMTokens",
+            "value": 7.2
+          }
+        ],
+        "input_cache_read": [
+          {
+            "conditions": {
+              "prompt_tokens": {
+                "gte": 0,
+                "lte": 256,
+                "unit": "kTokens"
+              }
+            },
+            "currency": "USD",
+            "unit": "perMTokens",
+            "value": 0.04
+          },
+          {
+            "conditions": {
+              "prompt_tokens": {
+                "gt": 256,
+                "unit": "kTokens"
+              }
+            },
+            "currency": "USD",
+            "unit": "perMTokens",
+            "value": 0.12
+          }
+        ],
+        "input_cache_write": [
+          {
+            "conditions": {
+              "prompt_tokens": {
+                "gte": 0,
+                "lte": 256,
+                "unit": "kTokens"
+              }
+            },
+            "currency": "USD",
+            "unit": "perMTokens",
+            "value": 0.5
+          },
+          {
+            "conditions": {
+              "prompt_tokens": {
+                "gt": 256,
+                "unit": "kTokens"
+              }
+            },
+            "currency": "USD",
+            "unit": "perMTokens",
+            "value": 1.5
+          }
+        ],
+        "prompt": [
+          {
+            "conditions": {
+              "prompt_tokens": {
+                "gte": 0,
+                "lte": 256,
+                "unit": "kTokens"
+              }
+            },
+            "currency": "USD",
+            "unit": "perMTokens",
+            "value": 0.4
+          },
+          {
+            "conditions": {
+              "prompt_tokens": {
+                "gt": 256,
+                "unit": "kTokens"
+              }
+            },
+            "currency": "USD",
+            "unit": "perMTokens",
+            "value": 1.2
+          }
+        ],
+        "web_search": [
+          {
+            "currency": "USD",
+            "unit": "perCount",
+            "value": 0.01
           }
         ]
       }
