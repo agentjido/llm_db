@@ -2,15 +2,15 @@
   "alias_of": null,
   "base_url": null,
   "config_schema": null,
-  "doc": "https://docs.gitlab.com/user/duo_agent_platform/",
+  "doc": "https://www.qhaigc.net/docs",
   "env": [
-    "GITLAB_TOKEN"
+    "QIHANG_API_KEY"
   ],
   "exclude_models": null,
   "extra": null,
-  "id": "gitlab",
+  "id": "qihang_ai",
   "models": {
-    "duo-chat-gpt-5-1": {
+    "claude-haiku-4-5-20251001": {
       "aliases": [],
       "base_url": null,
       "capabilities": {
@@ -32,311 +32,8 @@
         }
       },
       "cost": {
-        "input": 0,
-        "output": 0
-      },
-      "deprecated": false,
-      "extra": {
-        "attachment": true,
-        "family": "gpt",
-        "open_weights": false,
-        "structured_output": true,
-        "temperature": false
-      },
-      "family": null,
-      "id": "duo-chat-gpt-5-1",
-      "knowledge": "2024-09-30",
-      "last_updated": "2026-01-22",
-      "lifecycle": null,
-      "limits": {
-        "context": 400000,
-        "output": 128000
-      },
-      "modalities": {
-        "input": [
-          "text",
-          "image"
-        ],
-        "output": [
-          "text"
-        ]
-      },
-      "model": null,
-      "name": "Agentic Chat (GPT-5.1)",
-      "pricing": null,
-      "provider": "gitlab",
-      "provider_model_id": null,
-      "release_date": "2026-01-22",
-      "retired": false,
-      "tags": null
-    },
-    "duo-chat-gpt-5-2": {
-      "aliases": [],
-      "base_url": null,
-      "capabilities": {
-        "chat": true,
-        "embeddings": false,
-        "json": {
-          "native": false,
-          "schema": false,
-          "strict": false
-        },
-        "reasoning": {
-          "enabled": true
-        },
-        "streaming": {
-          "tool_calls": true
-        },
-        "tools": {
-          "enabled": true
-        }
-      },
-      "cost": {
-        "input": 0,
-        "output": 0
-      },
-      "deprecated": false,
-      "extra": {
-        "attachment": true,
-        "family": "gpt",
-        "open_weights": false,
-        "structured_output": true,
-        "temperature": false
-      },
-      "family": null,
-      "id": "duo-chat-gpt-5-2",
-      "knowledge": "2025-08-31",
-      "last_updated": "2026-01-23",
-      "lifecycle": null,
-      "limits": {
-        "context": 400000,
-        "output": 128000
-      },
-      "modalities": {
-        "input": [
-          "text",
-          "image"
-        ],
-        "output": [
-          "text"
-        ]
-      },
-      "model": null,
-      "name": "Agentic Chat (GPT-5.2)",
-      "pricing": null,
-      "provider": "gitlab",
-      "provider_model_id": null,
-      "release_date": "2026-01-23",
-      "retired": false,
-      "tags": null
-    },
-    "duo-chat-gpt-5-2-codex": {
-      "aliases": [],
-      "base_url": null,
-      "capabilities": {
-        "chat": true,
-        "embeddings": false,
-        "json": {
-          "native": false,
-          "schema": false,
-          "strict": false
-        },
-        "reasoning": {
-          "enabled": true
-        },
-        "streaming": {
-          "tool_calls": true
-        },
-        "tools": {
-          "enabled": true
-        }
-      },
-      "cost": {
-        "input": 0,
-        "output": 0
-      },
-      "deprecated": false,
-      "extra": {
-        "attachment": true,
-        "family": "gpt-codex",
-        "open_weights": false,
-        "structured_output": true,
-        "temperature": false
-      },
-      "family": null,
-      "id": "duo-chat-gpt-5-2-codex",
-      "knowledge": "2025-08-31",
-      "last_updated": "2026-01-22",
-      "lifecycle": null,
-      "limits": {
-        "context": 400000,
-        "output": 128000
-      },
-      "modalities": {
-        "input": [
-          "text",
-          "image",
-          "pdf"
-        ],
-        "output": [
-          "text"
-        ]
-      },
-      "model": null,
-      "name": "Agentic Chat (GPT-5.2 Codex)",
-      "pricing": null,
-      "provider": "gitlab",
-      "provider_model_id": null,
-      "release_date": "2026-01-22",
-      "retired": false,
-      "tags": null
-    },
-    "duo-chat-gpt-5-codex": {
-      "aliases": [],
-      "base_url": null,
-      "capabilities": {
-        "chat": true,
-        "embeddings": false,
-        "json": {
-          "native": false,
-          "schema": false,
-          "strict": false
-        },
-        "reasoning": {
-          "enabled": true
-        },
-        "streaming": {
-          "tool_calls": true
-        },
-        "tools": {
-          "enabled": true
-        }
-      },
-      "cost": {
-        "input": 0,
-        "output": 0
-      },
-      "deprecated": false,
-      "extra": {
-        "attachment": false,
-        "family": "gpt-codex",
-        "open_weights": false,
-        "structured_output": true,
-        "temperature": false
-      },
-      "family": null,
-      "id": "duo-chat-gpt-5-codex",
-      "knowledge": "2024-09-30",
-      "last_updated": "2026-01-22",
-      "lifecycle": null,
-      "limits": {
-        "context": 400000,
-        "output": 128000
-      },
-      "modalities": {
-        "input": [
-          "text",
-          "image"
-        ],
-        "output": [
-          "text"
-        ]
-      },
-      "model": null,
-      "name": "Agentic Chat (GPT-5 Codex)",
-      "pricing": null,
-      "provider": "gitlab",
-      "provider_model_id": null,
-      "release_date": "2026-01-22",
-      "retired": false,
-      "tags": null
-    },
-    "duo-chat-gpt-5-mini": {
-      "aliases": [],
-      "base_url": null,
-      "capabilities": {
-        "chat": true,
-        "embeddings": false,
-        "json": {
-          "native": false,
-          "schema": false,
-          "strict": false
-        },
-        "reasoning": {
-          "enabled": true
-        },
-        "streaming": {
-          "tool_calls": true
-        },
-        "tools": {
-          "enabled": true
-        }
-      },
-      "cost": {
-        "input": 0,
-        "output": 0
-      },
-      "deprecated": false,
-      "extra": {
-        "attachment": true,
-        "family": "gpt-mini",
-        "open_weights": false,
-        "structured_output": true,
-        "temperature": false
-      },
-      "family": null,
-      "id": "duo-chat-gpt-5-mini",
-      "knowledge": "2024-05-30",
-      "last_updated": "2026-01-22",
-      "lifecycle": null,
-      "limits": {
-        "context": 400000,
-        "output": 128000
-      },
-      "modalities": {
-        "input": [
-          "text",
-          "image"
-        ],
-        "output": [
-          "text"
-        ]
-      },
-      "model": null,
-      "name": "Agentic Chat (GPT-5 Mini)",
-      "pricing": null,
-      "provider": "gitlab",
-      "provider_model_id": null,
-      "release_date": "2026-01-22",
-      "retired": false,
-      "tags": null
-    },
-    "duo-chat-haiku-4-5": {
-      "aliases": [],
-      "base_url": null,
-      "capabilities": {
-        "chat": true,
-        "embeddings": false,
-        "json": {
-          "native": false,
-          "schema": false,
-          "strict": false
-        },
-        "reasoning": {
-          "enabled": true
-        },
-        "streaming": {
-          "tool_calls": true
-        },
-        "tools": {
-          "enabled": true
-        }
-      },
-      "cost": {
-        "cache_read": 0,
-        "cache_write": 0,
-        "input": 0,
-        "output": 0
+        "input": 0.14,
+        "output": 0.71
       },
       "deprecated": false,
       "extra": {
@@ -346,195 +43,9 @@
         "temperature": true
       },
       "family": null,
-      "id": "duo-chat-haiku-4-5",
-      "knowledge": "2025-02-28",
-      "last_updated": "2026-01-08",
-      "lifecycle": null,
-      "limits": {
-        "context": 200000,
-        "output": 64000
-      },
-      "modalities": {
-        "input": [
-          "text",
-          "image",
-          "pdf"
-        ],
-        "output": [
-          "text"
-        ]
-      },
-      "model": null,
-      "name": "Agentic Chat (Claude Haiku 4.5)",
-      "pricing": null,
-      "provider": "gitlab",
-      "provider_model_id": null,
-      "release_date": "2026-01-08",
-      "retired": false,
-      "tags": null
-    },
-    "duo-chat-opus-4-5": {
-      "aliases": [],
-      "base_url": null,
-      "capabilities": {
-        "chat": true,
-        "embeddings": false,
-        "json": {
-          "native": false,
-          "schema": false,
-          "strict": false
-        },
-        "reasoning": {
-          "enabled": true
-        },
-        "streaming": {
-          "tool_calls": true
-        },
-        "tools": {
-          "enabled": true
-        }
-      },
-      "cost": {
-        "cache_read": 0,
-        "cache_write": 0,
-        "input": 0,
-        "output": 0
-      },
-      "deprecated": false,
-      "extra": {
-        "attachment": true,
-        "family": "claude-opus",
-        "open_weights": false,
-        "temperature": true
-      },
-      "family": null,
-      "id": "duo-chat-opus-4-5",
-      "knowledge": "2025-03-31",
-      "last_updated": "2026-01-08",
-      "lifecycle": null,
-      "limits": {
-        "context": 200000,
-        "output": 64000
-      },
-      "modalities": {
-        "input": [
-          "text",
-          "image",
-          "pdf"
-        ],
-        "output": [
-          "text"
-        ]
-      },
-      "model": null,
-      "name": "Agentic Chat (Claude Opus 4.5)",
-      "pricing": null,
-      "provider": "gitlab",
-      "provider_model_id": null,
-      "release_date": "2026-01-08",
-      "retired": false,
-      "tags": null
-    },
-    "duo-chat-opus-4-6": {
-      "aliases": [],
-      "base_url": null,
-      "capabilities": {
-        "chat": true,
-        "embeddings": false,
-        "json": {
-          "native": false,
-          "schema": false,
-          "strict": false
-        },
-        "reasoning": {
-          "enabled": true
-        },
-        "streaming": {
-          "tool_calls": true
-        },
-        "tools": {
-          "enabled": true
-        }
-      },
-      "cost": {
-        "cache_read": 0,
-        "cache_write": 0,
-        "input": 0,
-        "output": 0
-      },
-      "deprecated": false,
-      "extra": {
-        "attachment": true,
-        "family": "claude-opus",
-        "open_weights": false,
-        "temperature": true
-      },
-      "family": null,
-      "id": "duo-chat-opus-4-6",
-      "knowledge": "2025-03-31",
-      "last_updated": "2026-02-05",
-      "lifecycle": null,
-      "limits": {
-        "context": 200000,
-        "output": 64000
-      },
-      "modalities": {
-        "input": [
-          "text",
-          "image",
-          "pdf"
-        ],
-        "output": [
-          "text"
-        ]
-      },
-      "model": null,
-      "name": "Agentic Chat (Claude Opus 4.6)",
-      "pricing": null,
-      "provider": "gitlab",
-      "provider_model_id": null,
-      "release_date": "2026-02-05",
-      "retired": false,
-      "tags": null
-    },
-    "duo-chat-sonnet-4-5": {
-      "aliases": [],
-      "base_url": null,
-      "capabilities": {
-        "chat": true,
-        "embeddings": false,
-        "json": {
-          "native": false,
-          "schema": false,
-          "strict": false
-        },
-        "reasoning": {
-          "enabled": true
-        },
-        "streaming": {
-          "tool_calls": true
-        },
-        "tools": {
-          "enabled": true
-        }
-      },
-      "cost": {
-        "cache_read": 0,
-        "cache_write": 0,
-        "input": 0,
-        "output": 0
-      },
-      "deprecated": false,
-      "extra": {
-        "attachment": true,
-        "family": "claude-sonnet",
-        "open_weights": false,
-        "temperature": true
-      },
-      "family": null,
-      "id": "duo-chat-sonnet-4-5",
+      "id": "claude-haiku-4-5-20251001",
       "knowledge": "2025-07-31",
-      "last_updated": "2026-01-08",
+      "last_updated": "2025-10-01",
       "lifecycle": null,
       "limits": {
         "context": 200000,
@@ -551,15 +62,15 @@
         ]
       },
       "model": null,
-      "name": "Agentic Chat (Claude Sonnet 4.5)",
+      "name": "Claude Haiku 4.5",
       "pricing": null,
-      "provider": "gitlab",
+      "provider": "qihang_ai",
       "provider_model_id": null,
-      "release_date": "2026-01-08",
+      "release_date": "2025-10-01",
       "retired": false,
       "tags": null
     },
-    "duo-chat-sonnet-4-6": {
+    "claude-opus-4-5-20251101": {
       "aliases": [],
       "base_url": null,
       "capabilities": {
@@ -581,10 +92,67 @@
         }
       },
       "cost": {
-        "cache_read": 0,
-        "cache_write": 0,
-        "input": 0,
-        "output": 0
+        "input": 0.71,
+        "output": 3.57
+      },
+      "deprecated": false,
+      "extra": {
+        "attachment": true,
+        "family": "claude-opus",
+        "open_weights": false,
+        "temperature": true
+      },
+      "family": null,
+      "id": "claude-opus-4-5-20251101",
+      "knowledge": "2025-03",
+      "last_updated": "2025-11-01",
+      "lifecycle": null,
+      "limits": {
+        "context": 200000,
+        "output": 32000
+      },
+      "modalities": {
+        "input": [
+          "text",
+          "image"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "model": null,
+      "name": "Claude Opus 4.5",
+      "pricing": null,
+      "provider": "qihang_ai",
+      "provider_model_id": null,
+      "release_date": "2025-11-01",
+      "retired": false,
+      "tags": null
+    },
+    "claude-sonnet-4-5-20250929": {
+      "aliases": [],
+      "base_url": null,
+      "capabilities": {
+        "chat": true,
+        "embeddings": false,
+        "json": {
+          "native": false,
+          "schema": false,
+          "strict": false
+        },
+        "reasoning": {
+          "enabled": true
+        },
+        "streaming": {
+          "tool_calls": true
+        },
+        "tools": {
+          "enabled": true
+        }
+      },
+      "cost": {
+        "input": 0.43,
+        "output": 2.14
       },
       "deprecated": false,
       "extra": {
@@ -594,9 +162,9 @@
         "temperature": true
       },
       "family": null,
-      "id": "duo-chat-sonnet-4-6",
-      "knowledge": "2025-08-31",
-      "last_updated": "2026-02-17",
+      "id": "claude-sonnet-4-5-20250929",
+      "knowledge": "2025-07-31",
+      "last_updated": "2025-09-29",
       "lifecycle": null,
       "limits": {
         "context": 200000,
@@ -613,15 +181,381 @@
         ]
       },
       "model": null,
-      "name": "Agentic Chat (Claude Sonnet 4.6)",
+      "name": "Claude Sonnet 4.5",
       "pricing": null,
-      "provider": "gitlab",
+      "provider": "qihang_ai",
       "provider_model_id": null,
-      "release_date": "2026-02-17",
+      "release_date": "2025-09-29",
+      "retired": false,
+      "tags": null
+    },
+    "gemini-2.5-flash": {
+      "aliases": [],
+      "base_url": null,
+      "capabilities": {
+        "chat": true,
+        "embeddings": false,
+        "json": {
+          "native": false,
+          "schema": false,
+          "strict": false
+        },
+        "reasoning": {
+          "enabled": true
+        },
+        "streaming": {
+          "tool_calls": true
+        },
+        "tools": {
+          "enabled": true
+        }
+      },
+      "cost": {
+        "input": 0.09,
+        "output": 0.71
+      },
+      "deprecated": false,
+      "extra": {
+        "attachment": true,
+        "family": "gemini-flash",
+        "open_weights": false,
+        "structured_output": true,
+        "temperature": true
+      },
+      "family": null,
+      "id": "gemini-2.5-flash",
+      "knowledge": "2025-01",
+      "last_updated": "2025-12-17",
+      "lifecycle": null,
+      "limits": {
+        "context": 1048576,
+        "output": 65536
+      },
+      "modalities": {
+        "input": [
+          "text",
+          "image",
+          "video",
+          "audio",
+          "pdf"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "model": null,
+      "name": "Gemini 2.5 Flash",
+      "pricing": null,
+      "provider": "qihang_ai",
+      "provider_model_id": null,
+      "release_date": "2025-12-17",
+      "retired": false,
+      "tags": null
+    },
+    "gemini-3-flash-preview": {
+      "aliases": [],
+      "base_url": null,
+      "capabilities": {
+        "chat": true,
+        "embeddings": false,
+        "json": {
+          "native": false,
+          "schema": false,
+          "strict": false
+        },
+        "reasoning": {
+          "enabled": true
+        },
+        "streaming": {
+          "tool_calls": true
+        },
+        "tools": {
+          "enabled": true
+        }
+      },
+      "cost": {
+        "input": 0.07,
+        "output": 0.43
+      },
+      "deprecated": false,
+      "extra": {
+        "attachment": true,
+        "family": "gemini-flash",
+        "open_weights": false,
+        "structured_output": true,
+        "temperature": true
+      },
+      "family": null,
+      "id": "gemini-3-flash-preview",
+      "knowledge": "2025-01",
+      "last_updated": "2025-12-17",
+      "lifecycle": null,
+      "limits": {
+        "context": 1048576,
+        "output": 65536
+      },
+      "modalities": {
+        "input": [
+          "text",
+          "image",
+          "video",
+          "audio",
+          "pdf"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "model": null,
+      "name": "Gemini 3 Flash Preview",
+      "pricing": null,
+      "provider": "qihang_ai",
+      "provider_model_id": null,
+      "release_date": "2025-12-17",
+      "retired": false,
+      "tags": null
+    },
+    "gemini-3-pro-preview": {
+      "aliases": [],
+      "base_url": null,
+      "capabilities": {
+        "chat": true,
+        "embeddings": false,
+        "json": {
+          "native": false,
+          "schema": false,
+          "strict": false
+        },
+        "reasoning": {
+          "enabled": true
+        },
+        "streaming": {
+          "tool_calls": true
+        },
+        "tools": {
+          "enabled": true
+        }
+      },
+      "cost": {
+        "input": 0.57,
+        "output": 3.43
+      },
+      "deprecated": false,
+      "extra": {
+        "attachment": true,
+        "family": "gemini-pro",
+        "open_weights": false,
+        "temperature": true
+      },
+      "family": null,
+      "id": "gemini-3-pro-preview",
+      "knowledge": "2025-11",
+      "last_updated": "2025-11-19",
+      "lifecycle": null,
+      "limits": {
+        "context": 1000000,
+        "output": 65000
+      },
+      "modalities": {
+        "input": [
+          "text",
+          "image",
+          "audio",
+          "video"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "model": null,
+      "name": "Gemini 3 Pro Preview",
+      "pricing": null,
+      "provider": "qihang_ai",
+      "provider_model_id": null,
+      "release_date": "2025-11-19",
+      "retired": false,
+      "tags": null
+    },
+    "gpt-5-mini": {
+      "aliases": [],
+      "base_url": null,
+      "capabilities": {
+        "chat": true,
+        "embeddings": false,
+        "json": {
+          "native": false,
+          "schema": false,
+          "strict": false
+        },
+        "reasoning": {
+          "enabled": true
+        },
+        "streaming": {
+          "tool_calls": true
+        },
+        "tools": {
+          "enabled": true
+        }
+      },
+      "cost": {
+        "input": 0.04,
+        "output": 0.29
+      },
+      "deprecated": false,
+      "extra": {
+        "attachment": true,
+        "family": "gpt-mini",
+        "open_weights": false,
+        "temperature": true
+      },
+      "family": null,
+      "id": "gpt-5-mini",
+      "knowledge": "2024-09-30",
+      "last_updated": "2025-09-15",
+      "lifecycle": null,
+      "limits": {
+        "context": 200000,
+        "output": 64000
+      },
+      "modalities": {
+        "input": [
+          "text",
+          "image"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "model": null,
+      "name": "GPT-5-Mini",
+      "pricing": null,
+      "provider": "qihang_ai",
+      "provider_model_id": null,
+      "release_date": "2025-09-15",
+      "retired": false,
+      "tags": null
+    },
+    "gpt-5.2": {
+      "aliases": [],
+      "base_url": null,
+      "capabilities": {
+        "chat": true,
+        "embeddings": false,
+        "json": {
+          "native": false,
+          "schema": false,
+          "strict": false
+        },
+        "reasoning": {
+          "enabled": true
+        },
+        "streaming": {
+          "tool_calls": true
+        },
+        "tools": {
+          "enabled": true
+        }
+      },
+      "cost": {
+        "input": 0.25,
+        "output": 2
+      },
+      "deprecated": false,
+      "extra": {
+        "attachment": true,
+        "family": "gpt",
+        "open_weights": false,
+        "structured_output": true,
+        "temperature": true
+      },
+      "family": null,
+      "id": "gpt-5.2",
+      "knowledge": "2025-08-31",
+      "last_updated": "2025-12-11",
+      "lifecycle": null,
+      "limits": {
+        "context": 400000,
+        "output": 128000
+      },
+      "modalities": {
+        "input": [
+          "text",
+          "image"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "model": null,
+      "name": "GPT-5.2",
+      "pricing": null,
+      "provider": "qihang_ai",
+      "provider_model_id": null,
+      "release_date": "2025-12-11",
+      "retired": false,
+      "tags": null
+    },
+    "gpt-5.2-codex": {
+      "aliases": [],
+      "base_url": null,
+      "capabilities": {
+        "chat": true,
+        "embeddings": false,
+        "json": {
+          "native": false,
+          "schema": false,
+          "strict": false
+        },
+        "reasoning": {
+          "enabled": true
+        },
+        "streaming": {
+          "tool_calls": true
+        },
+        "tools": {
+          "enabled": true
+        }
+      },
+      "cost": {
+        "input": 0.14,
+        "output": 1.14
+      },
+      "deprecated": false,
+      "extra": {
+        "attachment": true,
+        "family": "gpt-codex",
+        "open_weights": false,
+        "structured_output": true,
+        "temperature": false
+      },
+      "family": null,
+      "id": "gpt-5.2-codex",
+      "knowledge": "2025-08-31",
+      "last_updated": "2025-12-11",
+      "lifecycle": null,
+      "limits": {
+        "context": 400000,
+        "output": 128000
+      },
+      "modalities": {
+        "input": [
+          "text",
+          "image"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "model": null,
+      "name": "GPT-5.2 Codex",
+      "pricing": null,
+      "provider": "qihang_ai",
+      "provider_model_id": null,
+      "release_date": "2025-12-11",
       "retired": false,
       "tags": null
     }
   },
-  "name": "GitLab Duo",
+  "name": "QiHang",
   "pricing_defaults": null
 }

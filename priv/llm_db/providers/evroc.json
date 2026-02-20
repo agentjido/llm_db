@@ -2,494 +2,56 @@
   "alias_of": null,
   "base_url": null,
   "config_schema": null,
-  "doc": "https://fireworks.ai/docs/",
+  "doc": "https://docs.evroc.com/products/think/overview.html",
   "env": [
-    "FIREWORKS_API_KEY"
+    "EVROC_API_KEY"
   ],
   "exclude_models": null,
   "extra": null,
-  "id": "fireworks_ai",
+  "id": "evroc",
   "models": {
-    "accounts/fireworks/models/deepseek-v3p1": {
+    "KBLab/kb-whisper-large": {
       "aliases": [],
       "base_url": null,
-      "capabilities": {
-        "chat": true,
-        "embeddings": false,
-        "json": {
-          "native": false,
-          "schema": false,
-          "strict": false
-        },
-        "reasoning": {
-          "enabled": true
-        },
-        "streaming": {
-          "tool_calls": true
-        },
-        "tools": {
-          "enabled": true
-        }
-      },
+      "capabilities": null,
       "cost": {
-        "input": 0.56,
-        "output": 1.68
+        "input": 0.00236,
+        "output": 0.00236,
+        "output_audio": 2.36
       },
       "deprecated": false,
       "extra": {
         "attachment": false,
-        "family": "deepseek",
-        "open_weights": true,
-        "temperature": true
+        "family": "whisper",
+        "open_weights": true
       },
       "family": null,
-      "id": "accounts/fireworks/models/deepseek-v3p1",
-      "knowledge": "2025-07",
-      "last_updated": "2025-08-21",
-      "lifecycle": null,
-      "limits": {
-        "context": 163840,
-        "output": 163840
-      },
-      "modalities": {
-        "input": [
-          "text"
-        ],
-        "output": [
-          "text"
-        ]
-      },
-      "model": null,
-      "name": "DeepSeek V3.1",
-      "pricing": null,
-      "provider": "fireworks_ai",
-      "provider_model_id": null,
-      "release_date": "2025-08-21",
-      "retired": false,
-      "tags": null
-    },
-    "accounts/fireworks/models/deepseek-v3p2": {
-      "aliases": [],
-      "base_url": null,
-      "capabilities": {
-        "chat": true,
-        "embeddings": false,
-        "json": {
-          "native": false,
-          "schema": false,
-          "strict": false
-        },
-        "reasoning": {
-          "enabled": true
-        },
-        "streaming": {
-          "tool_calls": true
-        },
-        "tools": {
-          "enabled": true
-        }
-      },
-      "cost": {
-        "cache_read": 0.28,
-        "input": 0.56,
-        "output": 1.68
-      },
-      "deprecated": false,
-      "extra": {
-        "attachment": false,
-        "family": "deepseek",
-        "interleaved": {
-          "field": "reasoning_content"
-        },
-        "open_weights": true,
-        "temperature": true
-      },
-      "family": null,
-      "id": "accounts/fireworks/models/deepseek-v3p2",
-      "knowledge": "2025-09",
-      "last_updated": "2025-12-01",
-      "lifecycle": null,
-      "limits": {
-        "context": 160000,
-        "output": 160000
-      },
-      "modalities": {
-        "input": [
-          "text"
-        ],
-        "output": [
-          "text"
-        ]
-      },
-      "model": null,
-      "name": "DeepSeek V3.2",
-      "pricing": null,
-      "provider": "fireworks_ai",
-      "provider_model_id": null,
-      "release_date": "2025-12-01",
-      "retired": false,
-      "tags": null
-    },
-    "accounts/fireworks/models/glm-4p5": {
-      "aliases": [],
-      "base_url": null,
-      "capabilities": {
-        "chat": true,
-        "embeddings": false,
-        "json": {
-          "native": false,
-          "schema": false,
-          "strict": false
-        },
-        "reasoning": {
-          "enabled": true
-        },
-        "streaming": {
-          "tool_calls": true
-        },
-        "tools": {
-          "enabled": true
-        }
-      },
-      "cost": {
-        "input": 0.55,
-        "output": 2.19
-      },
-      "deprecated": false,
-      "extra": {
-        "attachment": false,
-        "family": "glm",
-        "interleaved": {
-          "field": "reasoning_content"
-        },
-        "open_weights": true,
-        "temperature": true
-      },
-      "family": null,
-      "id": "accounts/fireworks/models/glm-4p5",
-      "knowledge": "2025-04",
-      "last_updated": "2025-07-29",
-      "lifecycle": null,
-      "limits": {
-        "context": 131072,
-        "output": 131072
-      },
-      "modalities": {
-        "input": [
-          "text"
-        ],
-        "output": [
-          "text"
-        ]
-      },
-      "model": null,
-      "name": "GLM 4.5",
-      "pricing": null,
-      "provider": "fireworks_ai",
-      "provider_model_id": null,
-      "release_date": "2025-07-29",
-      "retired": false,
-      "tags": null
-    },
-    "accounts/fireworks/models/glm-4p5-air": {
-      "aliases": [],
-      "base_url": null,
-      "capabilities": {
-        "chat": true,
-        "embeddings": false,
-        "json": {
-          "native": false,
-          "schema": false,
-          "strict": false
-        },
-        "reasoning": {
-          "enabled": true
-        },
-        "streaming": {
-          "tool_calls": true
-        },
-        "tools": {
-          "enabled": true
-        }
-      },
-      "cost": {
-        "input": 0.22,
-        "output": 0.88
-      },
-      "deprecated": false,
-      "extra": {
-        "attachment": false,
-        "family": "glm-air",
-        "open_weights": true,
-        "temperature": true
-      },
-      "family": null,
-      "id": "accounts/fireworks/models/glm-4p5-air",
-      "knowledge": "2025-04",
-      "last_updated": "2025-08-01",
-      "lifecycle": null,
-      "limits": {
-        "context": 131072,
-        "output": 131072
-      },
-      "modalities": {
-        "input": [
-          "text"
-        ],
-        "output": [
-          "text"
-        ]
-      },
-      "model": null,
-      "name": "GLM 4.5 Air",
-      "pricing": null,
-      "provider": "fireworks_ai",
-      "provider_model_id": null,
-      "release_date": "2025-08-01",
-      "retired": false,
-      "tags": null
-    },
-    "accounts/fireworks/models/glm-4p7": {
-      "aliases": [],
-      "base_url": null,
-      "capabilities": {
-        "chat": true,
-        "embeddings": false,
-        "json": {
-          "native": false,
-          "schema": false,
-          "strict": false
-        },
-        "reasoning": {
-          "enabled": true
-        },
-        "streaming": {
-          "tool_calls": true
-        },
-        "tools": {
-          "enabled": true
-        }
-      },
-      "cost": {
-        "cache_read": 0.3,
-        "input": 0.6,
-        "output": 2.2
-      },
-      "deprecated": false,
-      "extra": {
-        "attachment": false,
-        "family": "glm",
-        "interleaved": {
-          "field": "reasoning_content"
-        },
-        "open_weights": true,
-        "temperature": true
-      },
-      "family": null,
-      "id": "accounts/fireworks/models/glm-4p7",
-      "knowledge": "2025-04",
-      "last_updated": "2025-12-22",
-      "lifecycle": null,
-      "limits": {
-        "context": 198000,
-        "output": 198000
-      },
-      "modalities": {
-        "input": [
-          "text"
-        ],
-        "output": [
-          "text"
-        ]
-      },
-      "model": null,
-      "name": "GLM 4.7",
-      "pricing": null,
-      "provider": "fireworks_ai",
-      "provider_model_id": null,
-      "release_date": "2025-12-22",
-      "retired": false,
-      "tags": null
-    },
-    "accounts/fireworks/models/glm-5": {
-      "aliases": [],
-      "base_url": null,
-      "capabilities": {
-        "chat": true,
-        "embeddings": false,
-        "json": {
-          "native": false,
-          "schema": false,
-          "strict": false
-        },
-        "reasoning": {
-          "enabled": true
-        },
-        "streaming": {
-          "tool_calls": true
-        },
-        "tools": {
-          "enabled": true
-        }
-      },
-      "cost": {
-        "cache_read": 0.5,
-        "input": 1,
-        "output": 3.2
-      },
-      "deprecated": false,
-      "extra": {
-        "attachment": false,
-        "family": "glm",
-        "interleaved": {
-          "field": "reasoning_content"
-        },
-        "open_weights": true,
-        "temperature": true
-      },
-      "family": null,
-      "id": "accounts/fireworks/models/glm-5",
+      "id": "KBLab/kb-whisper-large",
       "knowledge": null,
-      "last_updated": "2026-02-11",
+      "last_updated": "2024-10-01",
       "lifecycle": null,
       "limits": {
-        "context": 202752,
-        "output": 131072
+        "context": 448,
+        "output": 448
       },
       "modalities": {
         "input": [
-          "text"
+          "audio"
         ],
         "output": [
           "text"
         ]
       },
       "model": null,
-      "name": "GLM 5",
+      "name": "KB Whisper",
       "pricing": null,
-      "provider": "fireworks_ai",
+      "provider": "evroc",
       "provider_model_id": null,
-      "release_date": "2026-02-11",
+      "release_date": "2024-10-01",
       "retired": false,
       "tags": null
     },
-    "accounts/fireworks/models/gpt-oss-120b": {
-      "aliases": [],
-      "base_url": null,
-      "capabilities": {
-        "chat": true,
-        "embeddings": false,
-        "json": {
-          "native": false,
-          "schema": false,
-          "strict": false
-        },
-        "reasoning": {
-          "enabled": true
-        },
-        "streaming": {
-          "tool_calls": true
-        },
-        "tools": {
-          "enabled": true
-        }
-      },
-      "cost": {
-        "input": 0.15,
-        "output": 0.6
-      },
-      "deprecated": false,
-      "extra": {
-        "attachment": false,
-        "family": "gpt-oss",
-        "open_weights": true,
-        "temperature": true
-      },
-      "family": null,
-      "id": "accounts/fireworks/models/gpt-oss-120b",
-      "knowledge": null,
-      "last_updated": "2025-08-05",
-      "lifecycle": null,
-      "limits": {
-        "context": 131072,
-        "output": 32768
-      },
-      "modalities": {
-        "input": [
-          "text"
-        ],
-        "output": [
-          "text"
-        ]
-      },
-      "model": null,
-      "name": "GPT OSS 120B",
-      "pricing": null,
-      "provider": "fireworks_ai",
-      "provider_model_id": null,
-      "release_date": "2025-08-05",
-      "retired": false,
-      "tags": null
-    },
-    "accounts/fireworks/models/gpt-oss-20b": {
-      "aliases": [],
-      "base_url": null,
-      "capabilities": {
-        "chat": true,
-        "embeddings": false,
-        "json": {
-          "native": false,
-          "schema": false,
-          "strict": false
-        },
-        "reasoning": {
-          "enabled": true
-        },
-        "streaming": {
-          "tool_calls": true
-        },
-        "tools": {
-          "enabled": true
-        }
-      },
-      "cost": {
-        "input": 0.05,
-        "output": 0.2
-      },
-      "deprecated": false,
-      "extra": {
-        "attachment": false,
-        "family": "gpt-oss",
-        "open_weights": true,
-        "temperature": true
-      },
-      "family": null,
-      "id": "accounts/fireworks/models/gpt-oss-20b",
-      "knowledge": null,
-      "last_updated": "2025-08-05",
-      "lifecycle": null,
-      "limits": {
-        "context": 131072,
-        "output": 32768
-      },
-      "modalities": {
-        "input": [
-          "text"
-        ],
-        "output": [
-          "text"
-        ]
-      },
-      "model": null,
-      "name": "GPT OSS 20B",
-      "pricing": null,
-      "provider": "fireworks_ai",
-      "provider_model_id": null,
-      "release_date": "2025-08-05",
-      "retired": false,
-      "tags": null
-    },
-    "accounts/fireworks/models/kimi-k2-instruct": {
+    "Qwen/Qwen3-30B-A3B-Instruct-2507-FP8": {
       "aliases": [],
       "base_url": null,
       "capabilities": {
@@ -511,148 +73,436 @@
         }
       },
       "cost": {
-        "input": 1,
-        "output": 3
+        "input": 0.35,
+        "output": 1.42
+      },
+      "deprecated": false,
+      "extra": {
+        "attachment": false,
+        "family": "qwen",
+        "open_weights": true
+      },
+      "family": null,
+      "id": "Qwen/Qwen3-30B-A3B-Instruct-2507-FP8",
+      "knowledge": null,
+      "last_updated": "2025-07-30",
+      "lifecycle": null,
+      "limits": {
+        "context": 64000,
+        "output": 64000
+      },
+      "modalities": {
+        "input": [
+          "text"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "model": null,
+      "name": "Qwen3 30B 2507",
+      "pricing": null,
+      "provider": "evroc",
+      "provider_model_id": null,
+      "release_date": "2025-07-30",
+      "retired": false,
+      "tags": null
+    },
+    "Qwen/Qwen3-Embedding-8B": {
+      "aliases": [],
+      "base_url": null,
+      "capabilities": null,
+      "cost": {
+        "input": 0.12,
+        "output": 0.12
+      },
+      "deprecated": false,
+      "extra": {
+        "attachment": false,
+        "family": "text-embedding",
+        "open_weights": true
+      },
+      "family": null,
+      "id": "Qwen/Qwen3-Embedding-8B",
+      "knowledge": null,
+      "last_updated": "2025-07-30",
+      "lifecycle": null,
+      "limits": {
+        "context": 40960,
+        "output": 40960
+      },
+      "modalities": {
+        "input": [
+          "text"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "model": null,
+      "name": "Qwen3 Embedding 8B",
+      "pricing": null,
+      "provider": "evroc",
+      "provider_model_id": null,
+      "release_date": "2025-07-30",
+      "retired": false,
+      "tags": null
+    },
+    "Qwen/Qwen3-VL-30B-A3B-Instruct": {
+      "aliases": [],
+      "base_url": null,
+      "capabilities": {
+        "chat": true,
+        "embeddings": false,
+        "json": {
+          "native": false,
+          "schema": false,
+          "strict": false
+        },
+        "reasoning": {
+          "enabled": false
+        },
+        "streaming": {
+          "tool_calls": true
+        },
+        "tools": {
+          "enabled": true
+        }
+      },
+      "cost": {
+        "input": 0.24,
+        "output": 0.94
+      },
+      "deprecated": false,
+      "extra": {
+        "attachment": false,
+        "family": "qwen",
+        "open_weights": true
+      },
+      "family": null,
+      "id": "Qwen/Qwen3-VL-30B-A3B-Instruct",
+      "knowledge": null,
+      "last_updated": "2025-07-30",
+      "lifecycle": null,
+      "limits": {
+        "context": 100000,
+        "output": 100000
+      },
+      "modalities": {
+        "input": [
+          "text",
+          "image",
+          "video"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "model": null,
+      "name": "Qwen3 VL 30B",
+      "pricing": null,
+      "provider": "evroc",
+      "provider_model_id": null,
+      "release_date": "2025-07-30",
+      "retired": false,
+      "tags": null
+    },
+    "intfloat/multilingual-e5-large-instruct": {
+      "aliases": [],
+      "base_url": null,
+      "capabilities": null,
+      "cost": {
+        "input": 0.12,
+        "output": 0.12
+      },
+      "deprecated": false,
+      "extra": {
+        "attachment": false,
+        "family": "text-embedding",
+        "open_weights": true
+      },
+      "family": null,
+      "id": "intfloat/multilingual-e5-large-instruct",
+      "knowledge": null,
+      "last_updated": "2024-06-01",
+      "lifecycle": null,
+      "limits": {
+        "context": 512,
+        "output": 512
+      },
+      "modalities": {
+        "input": [
+          "text"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "model": null,
+      "name": "E5 Multi-Lingual Large Embeddings 0.6B",
+      "pricing": null,
+      "provider": "evroc",
+      "provider_model_id": null,
+      "release_date": "2024-06-01",
+      "retired": false,
+      "tags": null
+    },
+    "microsoft/Phi-4-multimodal-instruct": {
+      "aliases": [],
+      "base_url": null,
+      "capabilities": {
+        "chat": true,
+        "embeddings": false,
+        "json": {
+          "native": false,
+          "schema": false,
+          "strict": false
+        },
+        "reasoning": {
+          "enabled": false
+        },
+        "streaming": {
+          "tool_calls": true
+        },
+        "tools": {
+          "enabled": true
+        }
+      },
+      "cost": {
+        "input": 0.24,
+        "output": 0.47
+      },
+      "deprecated": false,
+      "extra": {
+        "attachment": false,
+        "family": "phi",
+        "open_weights": true
+      },
+      "family": null,
+      "id": "microsoft/Phi-4-multimodal-instruct",
+      "knowledge": null,
+      "last_updated": "2025-01-01",
+      "lifecycle": null,
+      "limits": {
+        "context": 32000,
+        "output": 32000
+      },
+      "modalities": {
+        "input": [
+          "text"
+        ],
+        "output": [
+          "text",
+          "image"
+        ]
+      },
+      "model": null,
+      "name": "Phi-4 15B",
+      "pricing": null,
+      "provider": "evroc",
+      "provider_model_id": null,
+      "release_date": "2025-01-01",
+      "retired": false,
+      "tags": null
+    },
+    "mistralai/Magistral-Small-2509": {
+      "aliases": [],
+      "base_url": null,
+      "capabilities": {
+        "chat": true,
+        "embeddings": false,
+        "json": {
+          "native": false,
+          "schema": false,
+          "strict": false
+        },
+        "reasoning": {
+          "enabled": false
+        },
+        "streaming": {
+          "tool_calls": true
+        },
+        "tools": {
+          "enabled": true
+        }
+      },
+      "cost": {
+        "input": 0.59,
+        "output": 2.36
+      },
+      "deprecated": false,
+      "extra": {
+        "attachment": false,
+        "family": "magistral-small",
+        "open_weights": true
+      },
+      "family": null,
+      "id": "mistralai/Magistral-Small-2509",
+      "knowledge": null,
+      "last_updated": "2025-06-01",
+      "lifecycle": null,
+      "limits": {
+        "context": 131072,
+        "output": 131072
+      },
+      "modalities": {
+        "input": [
+          "text"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "model": null,
+      "name": "Magistral Small 1.2 24B",
+      "pricing": null,
+      "provider": "evroc",
+      "provider_model_id": null,
+      "release_date": "2025-06-01",
+      "retired": false,
+      "tags": null
+    },
+    "mistralai/Voxtral-Small-24B-2507": {
+      "aliases": [],
+      "base_url": null,
+      "capabilities": null,
+      "cost": {
+        "input": 0.00236,
+        "output": 0.00236,
+        "output_audio": 2.36
+      },
+      "deprecated": false,
+      "extra": {
+        "attachment": false,
+        "family": "voxtral",
+        "open_weights": true
+      },
+      "family": null,
+      "id": "mistralai/Voxtral-Small-24B-2507",
+      "knowledge": null,
+      "last_updated": "2025-03-01",
+      "lifecycle": null,
+      "limits": {
+        "context": 32000,
+        "output": 32000
+      },
+      "modalities": {
+        "input": [
+          "audio",
+          "text"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "model": null,
+      "name": "Voxtral Small 24B",
+      "pricing": null,
+      "provider": "evroc",
+      "provider_model_id": null,
+      "release_date": "2025-03-01",
+      "retired": false,
+      "tags": null
+    },
+    "mistralai/devstral-small-2-24b-instruct-2512": {
+      "aliases": [],
+      "base_url": null,
+      "capabilities": {
+        "chat": true,
+        "embeddings": false,
+        "json": {
+          "native": false,
+          "schema": false,
+          "strict": false
+        },
+        "reasoning": {
+          "enabled": false
+        },
+        "streaming": {
+          "tool_calls": true
+        },
+        "tools": {
+          "enabled": true
+        }
+      },
+      "cost": {
+        "input": 0.12,
+        "output": 0.47
+      },
+      "deprecated": false,
+      "extra": {
+        "attachment": false,
+        "family": "devstral",
+        "open_weights": true
+      },
+      "family": null,
+      "id": "mistralai/devstral-small-2-24b-instruct-2512",
+      "knowledge": null,
+      "last_updated": "2025-12-01",
+      "lifecycle": null,
+      "limits": {
+        "context": 32768,
+        "output": 32768
+      },
+      "modalities": {
+        "input": [
+          "text"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "model": null,
+      "name": "Devstral Small 2 24B Instruct 2512",
+      "pricing": null,
+      "provider": "evroc",
+      "provider_model_id": null,
+      "release_date": "2025-12-01",
+      "retired": false,
+      "tags": null
+    },
+    "moonshotai/Kimi-K2.5": {
+      "aliases": [],
+      "base_url": null,
+      "capabilities": {
+        "chat": true,
+        "embeddings": false,
+        "json": {
+          "native": false,
+          "schema": false,
+          "strict": false
+        },
+        "reasoning": {
+          "enabled": true
+        },
+        "streaming": {
+          "tool_calls": true
+        },
+        "tools": {
+          "enabled": true
+        }
+      },
+      "cost": {
+        "input": 1.47,
+        "output": 5.9
       },
       "deprecated": false,
       "extra": {
         "attachment": false,
         "family": "kimi",
-        "open_weights": true,
-        "temperature": true
-      },
-      "family": null,
-      "id": "accounts/fireworks/models/kimi-k2-instruct",
-      "knowledge": "2024-10",
-      "last_updated": "2025-07-11",
-      "lifecycle": null,
-      "limits": {
-        "context": 128000,
-        "output": 16384
-      },
-      "modalities": {
-        "input": [
-          "text"
-        ],
-        "output": [
-          "text"
-        ]
-      },
-      "model": null,
-      "name": "Kimi K2 Instruct",
-      "pricing": null,
-      "provider": "fireworks_ai",
-      "provider_model_id": null,
-      "release_date": "2025-07-11",
-      "retired": false,
-      "tags": null
-    },
-    "accounts/fireworks/models/kimi-k2-thinking": {
-      "aliases": [],
-      "base_url": null,
-      "capabilities": {
-        "chat": true,
-        "embeddings": false,
-        "json": {
-          "native": false,
-          "schema": false,
-          "strict": false
-        },
-        "reasoning": {
-          "enabled": true
-        },
-        "streaming": {
-          "tool_calls": true
-        },
-        "tools": {
-          "enabled": true
-        }
-      },
-      "cost": {
-        "cache_read": 0.3,
-        "input": 0.6,
-        "output": 2.5
-      },
-      "deprecated": false,
-      "extra": {
-        "attachment": false,
-        "family": "kimi-thinking",
         "interleaved": {
           "field": "reasoning_content"
         },
-        "open_weights": true,
-        "temperature": true
+        "open_weights": true
       },
       "family": null,
-      "id": "accounts/fireworks/models/kimi-k2-thinking",
+      "id": "moonshotai/Kimi-K2.5",
       "knowledge": null,
-      "last_updated": "2025-11-06",
-      "lifecycle": null,
-      "limits": {
-        "context": 256000,
-        "output": 256000
-      },
-      "modalities": {
-        "input": [
-          "text"
-        ],
-        "output": [
-          "text"
-        ]
-      },
-      "model": null,
-      "name": "Kimi K2 Thinking",
-      "pricing": null,
-      "provider": "fireworks_ai",
-      "provider_model_id": null,
-      "release_date": "2025-11-06",
-      "retired": false,
-      "tags": null
-    },
-    "accounts/fireworks/models/kimi-k2p5": {
-      "aliases": [],
-      "base_url": null,
-      "capabilities": {
-        "chat": true,
-        "embeddings": false,
-        "json": {
-          "native": false,
-          "schema": false,
-          "strict": false
-        },
-        "reasoning": {
-          "enabled": true
-        },
-        "streaming": {
-          "tool_calls": true
-        },
-        "tools": {
-          "enabled": true
-        }
-      },
-      "cost": {
-        "cache_read": 0.1,
-        "input": 0.6,
-        "output": 3
-      },
-      "deprecated": false,
-      "extra": {
-        "attachment": false,
-        "family": "kimi-thinking",
-        "interleaved": {
-          "field": "reasoning_content"
-        },
-        "open_weights": true,
-        "temperature": true
-      },
-      "family": null,
-      "id": "accounts/fireworks/models/kimi-k2p5",
-      "knowledge": "2025-01",
       "last_updated": "2026-01-27",
       "lifecycle": null,
       "limits": {
-        "context": 256000,
-        "output": 256000
+        "context": 262144,
+        "output": 262144
       },
       "modalities": {
         "input": [
@@ -667,13 +517,13 @@
       "model": null,
       "name": "Kimi K2.5",
       "pricing": null,
-      "provider": "fireworks_ai",
+      "provider": "evroc",
       "provider_model_id": null,
       "release_date": "2026-01-27",
       "retired": false,
       "tags": null
     },
-    "accounts/fireworks/models/minimax-m2p1": {
+    "nvidia/Llama-3.3-70B-Instruct-FP8": {
       "aliases": [],
       "base_url": null,
       "capabilities": {
@@ -685,7 +535,7 @@
           "strict": false
         },
         "reasoning": {
-          "enabled": true
+          "enabled": false
         },
         "streaming": {
           "tool_calls": true
@@ -695,28 +545,23 @@
         }
       },
       "cost": {
-        "cache_read": 0.03,
-        "input": 0.3,
-        "output": 1.2
+        "input": 1.18,
+        "output": 1.18
       },
       "deprecated": false,
       "extra": {
         "attachment": false,
-        "family": "minimax",
-        "interleaved": {
-          "field": "reasoning_content"
-        },
-        "open_weights": true,
-        "temperature": true
+        "family": "llama",
+        "open_weights": true
       },
       "family": null,
-      "id": "accounts/fireworks/models/minimax-m2p1",
+      "id": "nvidia/Llama-3.3-70B-Instruct-FP8",
       "knowledge": null,
-      "last_updated": "2025-12-23",
+      "last_updated": "2024-12-01",
       "lifecycle": null,
       "limits": {
-        "context": 200000,
-        "output": 200000
+        "context": 131072,
+        "output": 32768
       },
       "modalities": {
         "input": [
@@ -727,15 +572,15 @@
         ]
       },
       "model": null,
-      "name": "MiniMax-M2.1",
+      "name": "Llama 3.3 70B",
       "pricing": null,
-      "provider": "fireworks_ai",
+      "provider": "evroc",
       "provider_model_id": null,
-      "release_date": "2025-12-23",
+      "release_date": "2024-12-01",
       "retired": false,
       "tags": null
     },
-    "accounts/fireworks/models/minimax-m2p5": {
+    "openai/gpt-oss-120b": {
       "aliases": [],
       "base_url": null,
       "capabilities": {
@@ -757,28 +602,23 @@
         }
       },
       "cost": {
-        "cache_read": 0.03,
-        "input": 0.3,
-        "output": 1.2
+        "input": 0.24,
+        "output": 0.94
       },
       "deprecated": false,
       "extra": {
         "attachment": false,
-        "family": "minimax",
-        "interleaved": {
-          "field": "reasoning_content"
-        },
-        "open_weights": true,
-        "temperature": true
+        "family": "gpt-oss",
+        "open_weights": true
       },
       "family": null,
-      "id": "accounts/fireworks/models/minimax-m2p5",
+      "id": "openai/gpt-oss-120b",
       "knowledge": null,
-      "last_updated": "2026-02-12",
+      "last_updated": "2025-08-05",
       "lifecycle": null,
       "limits": {
-        "context": 196608,
-        "output": 196608
+        "context": 65536,
+        "output": 65536
       },
       "modalities": {
         "input": [
@@ -789,15 +629,56 @@
         ]
       },
       "model": null,
-      "name": "MiniMax-M2.5",
+      "name": "GPT OSS 120B",
       "pricing": null,
-      "provider": "fireworks_ai",
+      "provider": "evroc",
       "provider_model_id": null,
-      "release_date": "2026-02-12",
+      "release_date": "2025-08-05",
+      "retired": false,
+      "tags": null
+    },
+    "openai/whisper-large-v3": {
+      "aliases": [],
+      "base_url": null,
+      "capabilities": null,
+      "cost": {
+        "input": 0.00236,
+        "output": 0.00236,
+        "output_audio": 2.36
+      },
+      "deprecated": false,
+      "extra": {
+        "attachment": false,
+        "family": "whisper",
+        "open_weights": true
+      },
+      "family": null,
+      "id": "openai/whisper-large-v3",
+      "knowledge": null,
+      "last_updated": "2024-10-01",
+      "lifecycle": null,
+      "limits": {
+        "context": 448,
+        "output": 4096
+      },
+      "modalities": {
+        "input": [
+          "audio"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "model": null,
+      "name": "Whisper 3 Large",
+      "pricing": null,
+      "provider": "evroc",
+      "provider_model_id": null,
+      "release_date": "2024-10-01",
       "retired": false,
       "tags": null
     }
   },
-  "name": "Fireworks AI",
+  "name": "evroc",
   "pricing_defaults": null
 }

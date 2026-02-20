@@ -35,6 +35,70 @@
   },
   "id": "google_vertex",
   "models": {
+    "deepseek-ai/deepseek-v3.1-maas": {
+      "aliases": [],
+      "base_url": null,
+      "capabilities": {
+        "chat": true,
+        "embeddings": false,
+        "json": {
+          "native": false,
+          "schema": false,
+          "strict": false
+        },
+        "reasoning": {
+          "enabled": true
+        },
+        "streaming": {
+          "tool_calls": true
+        },
+        "tools": {
+          "enabled": true
+        }
+      },
+      "cost": {
+        "input": 0.6,
+        "output": 1.7
+      },
+      "deprecated": false,
+      "extra": {
+        "attachment": false,
+        "family": "deepseek",
+        "open_weights": true,
+        "provider": {
+          "api": "https://${GOOGLE_VERTEX_ENDPOINT}/v1/projects/${GOOGLE_VERTEX_PROJECT}/locations/${GOOGLE_VERTEX_LOCATION}/endpoints/openapi",
+          "npm": "@ai-sdk/openai-compatible"
+        },
+        "structured_output": true,
+        "temperature": true
+      },
+      "family": null,
+      "id": "deepseek-ai/deepseek-v3.1-maas",
+      "knowledge": null,
+      "last_updated": "2025-08-28",
+      "lifecycle": null,
+      "limits": {
+        "context": 163840,
+        "output": 32768
+      },
+      "modalities": {
+        "input": [
+          "text",
+          "pdf"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "model": null,
+      "name": "DeepSeek V3.1",
+      "pricing": null,
+      "provider": "google_vertex",
+      "provider_model_id": null,
+      "release_date": "2025-08-28",
+      "retired": false,
+      "tags": null
+    },
     "gemini-2.0-flash": {
       "aliases": [],
       "base_url": null,
@@ -920,6 +984,134 @@
       "retired": false,
       "tags": null
     },
+    "gemini-3.1-pro-preview": {
+      "aliases": [],
+      "base_url": null,
+      "capabilities": {
+        "chat": true,
+        "embeddings": false,
+        "json": {
+          "native": false,
+          "schema": false,
+          "strict": false
+        },
+        "reasoning": {
+          "enabled": true
+        },
+        "streaming": {
+          "tool_calls": true
+        },
+        "tools": {
+          "enabled": true
+        }
+      },
+      "cost": {
+        "cache_read": 0.2,
+        "input": 2,
+        "output": 12
+      },
+      "deprecated": false,
+      "extra": {
+        "attachment": true,
+        "family": "gemini-pro",
+        "open_weights": false,
+        "structured_output": true,
+        "temperature": true
+      },
+      "family": null,
+      "id": "gemini-3.1-pro-preview",
+      "knowledge": "2025-01",
+      "last_updated": "2026-02-19",
+      "lifecycle": null,
+      "limits": {
+        "context": 1048576,
+        "output": 65536
+      },
+      "modalities": {
+        "input": [
+          "text",
+          "image",
+          "video",
+          "audio",
+          "pdf"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "model": null,
+      "name": "Gemini 3.1 Pro Preview",
+      "pricing": null,
+      "provider": "google_vertex",
+      "provider_model_id": null,
+      "release_date": "2026-02-19",
+      "retired": false,
+      "tags": null
+    },
+    "gemini-3.1-pro-preview-customtools": {
+      "aliases": [],
+      "base_url": null,
+      "capabilities": {
+        "chat": true,
+        "embeddings": false,
+        "json": {
+          "native": false,
+          "schema": false,
+          "strict": false
+        },
+        "reasoning": {
+          "enabled": true
+        },
+        "streaming": {
+          "tool_calls": true
+        },
+        "tools": {
+          "enabled": true
+        }
+      },
+      "cost": {
+        "cache_read": 0.2,
+        "input": 2,
+        "output": 12
+      },
+      "deprecated": false,
+      "extra": {
+        "attachment": true,
+        "family": "gemini-pro",
+        "open_weights": false,
+        "structured_output": true,
+        "temperature": true
+      },
+      "family": null,
+      "id": "gemini-3.1-pro-preview-customtools",
+      "knowledge": "2025-01",
+      "last_updated": "2026-02-19",
+      "lifecycle": null,
+      "limits": {
+        "context": 1048576,
+        "output": 65536
+      },
+      "modalities": {
+        "input": [
+          "text",
+          "image",
+          "video",
+          "audio",
+          "pdf"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "model": null,
+      "name": "Gemini 3.1 Pro Preview Custom Tools",
+      "pricing": null,
+      "provider": "google_vertex",
+      "provider_model_id": null,
+      "release_date": "2026-02-19",
+      "retired": false,
+      "tags": null
+    },
     "gemini-embedding-001": {
       "aliases": [],
       "base_url": null,
@@ -1088,6 +1280,133 @@
       "retired": false,
       "tags": null
     },
+    "meta/llama-3.3-70b-instruct-maas": {
+      "aliases": [],
+      "base_url": null,
+      "capabilities": {
+        "chat": true,
+        "embeddings": false,
+        "json": {
+          "native": false,
+          "schema": false,
+          "strict": false
+        },
+        "reasoning": {
+          "enabled": false
+        },
+        "streaming": {
+          "tool_calls": true
+        },
+        "tools": {
+          "enabled": true
+        }
+      },
+      "cost": {
+        "input": 0.72,
+        "output": 0.72
+      },
+      "deprecated": false,
+      "extra": {
+        "attachment": false,
+        "family": "llama",
+        "open_weights": true,
+        "provider": {
+          "api": "https://${GOOGLE_VERTEX_ENDPOINT}/v1/projects/${GOOGLE_VERTEX_PROJECT}/locations/${GOOGLE_VERTEX_LOCATION}/endpoints/openapi",
+          "npm": "@ai-sdk/openai-compatible"
+        },
+        "structured_output": true,
+        "temperature": true
+      },
+      "family": null,
+      "id": "meta/llama-3.3-70b-instruct-maas",
+      "knowledge": "2023-12",
+      "last_updated": "2025-04-29",
+      "lifecycle": null,
+      "limits": {
+        "context": 128000,
+        "output": 8192
+      },
+      "modalities": {
+        "input": [
+          "text"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "model": null,
+      "name": "Llama 3.3 70B Instruct",
+      "pricing": null,
+      "provider": "google_vertex",
+      "provider_model_id": null,
+      "release_date": "2025-04-29",
+      "retired": false,
+      "tags": null
+    },
+    "meta/llama-4-maverick-17b-128e-instruct-maas": {
+      "aliases": [],
+      "base_url": null,
+      "capabilities": {
+        "chat": true,
+        "embeddings": false,
+        "json": {
+          "native": false,
+          "schema": false,
+          "strict": false
+        },
+        "reasoning": {
+          "enabled": false
+        },
+        "streaming": {
+          "tool_calls": true
+        },
+        "tools": {
+          "enabled": true
+        }
+      },
+      "cost": {
+        "input": 0.35,
+        "output": 1.15
+      },
+      "deprecated": false,
+      "extra": {
+        "attachment": true,
+        "family": "llama",
+        "open_weights": true,
+        "provider": {
+          "api": "https://${GOOGLE_VERTEX_ENDPOINT}/v1/projects/${GOOGLE_VERTEX_PROJECT}/locations/${GOOGLE_VERTEX_LOCATION}/endpoints/openapi",
+          "npm": "@ai-sdk/openai-compatible"
+        },
+        "structured_output": true,
+        "temperature": true
+      },
+      "family": null,
+      "id": "meta/llama-4-maverick-17b-128e-instruct-maas",
+      "knowledge": "2024-08",
+      "last_updated": "2025-04-29",
+      "lifecycle": null,
+      "limits": {
+        "context": 524288,
+        "output": 8192
+      },
+      "modalities": {
+        "input": [
+          "text",
+          "image"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "model": null,
+      "name": "Llama 4 Maverick 17B 128E Instruct",
+      "pricing": null,
+      "provider": "google_vertex",
+      "provider_model_id": null,
+      "release_date": "2025-04-29",
+      "retired": false,
+      "tags": null
+    },
     "openai/gpt-oss-120b-maas": {
       "aliases": [],
       "base_url": null,
@@ -1204,6 +1523,69 @@
       "retired": false,
       "tags": null
     },
+    "qwen/qwen3-235b-a22b-instruct-2507-maas": {
+      "aliases": [],
+      "base_url": null,
+      "capabilities": {
+        "chat": true,
+        "embeddings": false,
+        "json": {
+          "native": false,
+          "schema": false,
+          "strict": false
+        },
+        "reasoning": {
+          "enabled": true
+        },
+        "streaming": {
+          "tool_calls": true
+        },
+        "tools": {
+          "enabled": true
+        }
+      },
+      "cost": {
+        "input": 0.22,
+        "output": 0.88
+      },
+      "deprecated": false,
+      "extra": {
+        "attachment": false,
+        "family": "qwen",
+        "open_weights": true,
+        "provider": {
+          "api": "https://${GOOGLE_VERTEX_ENDPOINT}/v1/projects/${GOOGLE_VERTEX_PROJECT}/locations/${GOOGLE_VERTEX_LOCATION}/endpoints/openapi",
+          "npm": "@ai-sdk/openai-compatible"
+        },
+        "structured_output": true,
+        "temperature": true
+      },
+      "family": null,
+      "id": "qwen/qwen3-235b-a22b-instruct-2507-maas",
+      "knowledge": null,
+      "last_updated": "2025-08-13",
+      "lifecycle": null,
+      "limits": {
+        "context": 262144,
+        "output": 16384
+      },
+      "modalities": {
+        "input": [
+          "text"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "model": null,
+      "name": "Qwen3 235B A22B Instruct",
+      "pricing": null,
+      "provider": "google_vertex",
+      "provider_model_id": null,
+      "release_date": "2025-08-13",
+      "retired": false,
+      "tags": null
+    },
     "zai-org/glm-4.7-maas": {
       "aliases": [],
       "base_url": null,
@@ -1237,20 +1619,26 @@
           "field": "reasoning_content"
         },
         "open_weights": true,
+        "provider": {
+          "api": "https://${GOOGLE_VERTEX_ENDPOINT}/v1/projects/${GOOGLE_VERTEX_PROJECT}/locations/${GOOGLE_VERTEX_LOCATION}/endpoints/openapi",
+          "npm": "@ai-sdk/openai-compatible"
+        },
+        "structured_output": true,
         "temperature": true
       },
       "family": null,
       "id": "zai-org/glm-4.7-maas",
       "knowledge": "2025-04",
-      "last_updated": "2025-12-22",
+      "last_updated": "2026-01-06",
       "lifecycle": null,
       "limits": {
-        "context": 204800,
-        "output": 131072
+        "context": 200000,
+        "output": 128000
       },
       "modalities": {
         "input": [
-          "text"
+          "text",
+          "pdf"
         ],
         "output": [
           "text"
@@ -1261,7 +1649,7 @@
       "pricing": null,
       "provider": "google_vertex",
       "provider_model_id": null,
-      "release_date": "2025-12-22",
+      "release_date": "2026-01-06",
       "retired": false,
       "tags": null
     },
@@ -1299,6 +1687,10 @@
           "field": "reasoning_content"
         },
         "open_weights": true,
+        "provider": {
+          "api": "https://${GOOGLE_VERTEX_ENDPOINT}/v1/projects/${GOOGLE_VERTEX_PROJECT}/locations/${GOOGLE_VERTEX_LOCATION}/endpoints/openapi",
+          "npm": "@ai-sdk/openai-compatible"
+        },
         "temperature": true
       },
       "family": null,

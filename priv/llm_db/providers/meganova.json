@@ -2,15 +2,15 @@
   "alias_of": null,
   "base_url": null,
   "config_schema": null,
-  "doc": "https://fireworks.ai/docs/",
+  "doc": "https://docs.meganova.ai",
   "env": [
-    "FIREWORKS_API_KEY"
+    "MEGANOVA_API_KEY"
   ],
   "exclude_models": null,
   "extra": null,
-  "id": "fireworks_ai",
+  "id": "meganova",
   "models": {
-    "accounts/fireworks/models/deepseek-v3p1": {
+    "MiniMaxAI/MiniMax-M2.1": {
       "aliases": [],
       "base_url": null,
       "capabilities": {
@@ -32,72 +32,13 @@
         }
       },
       "cost": {
-        "input": 0.56,
-        "output": 1.68
+        "input": 0.28,
+        "output": 1.2
       },
       "deprecated": false,
       "extra": {
         "attachment": false,
-        "family": "deepseek",
-        "open_weights": true,
-        "temperature": true
-      },
-      "family": null,
-      "id": "accounts/fireworks/models/deepseek-v3p1",
-      "knowledge": "2025-07",
-      "last_updated": "2025-08-21",
-      "lifecycle": null,
-      "limits": {
-        "context": 163840,
-        "output": 163840
-      },
-      "modalities": {
-        "input": [
-          "text"
-        ],
-        "output": [
-          "text"
-        ]
-      },
-      "model": null,
-      "name": "DeepSeek V3.1",
-      "pricing": null,
-      "provider": "fireworks_ai",
-      "provider_model_id": null,
-      "release_date": "2025-08-21",
-      "retired": false,
-      "tags": null
-    },
-    "accounts/fireworks/models/deepseek-v3p2": {
-      "aliases": [],
-      "base_url": null,
-      "capabilities": {
-        "chat": true,
-        "embeddings": false,
-        "json": {
-          "native": false,
-          "schema": false,
-          "strict": false
-        },
-        "reasoning": {
-          "enabled": true
-        },
-        "streaming": {
-          "tool_calls": true
-        },
-        "tools": {
-          "enabled": true
-        }
-      },
-      "cost": {
-        "cache_read": 0.28,
-        "input": 0.56,
-        "output": 1.68
-      },
-      "deprecated": false,
-      "extra": {
-        "attachment": false,
-        "family": "deepseek",
+        "family": "minimax",
         "interleaved": {
           "field": "reasoning_content"
         },
@@ -105,73 +46,12 @@
         "temperature": true
       },
       "family": null,
-      "id": "accounts/fireworks/models/deepseek-v3p2",
-      "knowledge": "2025-09",
-      "last_updated": "2025-12-01",
+      "id": "MiniMaxAI/MiniMax-M2.1",
+      "knowledge": null,
+      "last_updated": "2025-12-23",
       "lifecycle": null,
       "limits": {
-        "context": 160000,
-        "output": 160000
-      },
-      "modalities": {
-        "input": [
-          "text"
-        ],
-        "output": [
-          "text"
-        ]
-      },
-      "model": null,
-      "name": "DeepSeek V3.2",
-      "pricing": null,
-      "provider": "fireworks_ai",
-      "provider_model_id": null,
-      "release_date": "2025-12-01",
-      "retired": false,
-      "tags": null
-    },
-    "accounts/fireworks/models/glm-4p5": {
-      "aliases": [],
-      "base_url": null,
-      "capabilities": {
-        "chat": true,
-        "embeddings": false,
-        "json": {
-          "native": false,
-          "schema": false,
-          "strict": false
-        },
-        "reasoning": {
-          "enabled": true
-        },
-        "streaming": {
-          "tool_calls": true
-        },
-        "tools": {
-          "enabled": true
-        }
-      },
-      "cost": {
-        "input": 0.55,
-        "output": 2.19
-      },
-      "deprecated": false,
-      "extra": {
-        "attachment": false,
-        "family": "glm",
-        "interleaved": {
-          "field": "reasoning_content"
-        },
-        "open_weights": true,
-        "temperature": true
-      },
-      "family": null,
-      "id": "accounts/fireworks/models/glm-4p5",
-      "knowledge": "2025-04",
-      "last_updated": "2025-07-29",
-      "lifecycle": null,
-      "limits": {
-        "context": 131072,
+        "context": 196608,
         "output": 131072
       },
       "modalities": {
@@ -183,15 +63,15 @@
         ]
       },
       "model": null,
-      "name": "GLM 4.5",
+      "name": "MiniMax M2.1",
       "pricing": null,
-      "provider": "fireworks_ai",
+      "provider": "meganova",
       "provider_model_id": null,
-      "release_date": "2025-07-29",
+      "release_date": "2025-12-23",
       "retired": false,
       "tags": null
     },
-    "accounts/fireworks/models/glm-4p5-air": {
+    "MiniMaxAI/MiniMax-M2.5": {
       "aliases": [],
       "base_url": null,
       "capabilities": {
@@ -213,23 +93,26 @@
         }
       },
       "cost": {
-        "input": 0.22,
-        "output": 0.88
+        "input": 0.3,
+        "output": 1.2
       },
       "deprecated": false,
       "extra": {
         "attachment": false,
-        "family": "glm-air",
+        "family": "minimax",
+        "interleaved": {
+          "field": "reasoning_content"
+        },
         "open_weights": true,
         "temperature": true
       },
       "family": null,
-      "id": "accounts/fireworks/models/glm-4p5-air",
-      "knowledge": "2025-04",
-      "last_updated": "2025-08-01",
+      "id": "MiniMaxAI/MiniMax-M2.5",
+      "knowledge": null,
+      "last_updated": "2026-02-12",
       "lifecycle": null,
       "limits": {
-        "context": 131072,
+        "context": 204800,
         "output": 131072
       },
       "modalities": {
@@ -241,255 +124,15 @@
         ]
       },
       "model": null,
-      "name": "GLM 4.5 Air",
+      "name": "MiniMax M2.5",
       "pricing": null,
-      "provider": "fireworks_ai",
+      "provider": "meganova",
       "provider_model_id": null,
-      "release_date": "2025-08-01",
+      "release_date": "2026-02-12",
       "retired": false,
       "tags": null
     },
-    "accounts/fireworks/models/glm-4p7": {
-      "aliases": [],
-      "base_url": null,
-      "capabilities": {
-        "chat": true,
-        "embeddings": false,
-        "json": {
-          "native": false,
-          "schema": false,
-          "strict": false
-        },
-        "reasoning": {
-          "enabled": true
-        },
-        "streaming": {
-          "tool_calls": true
-        },
-        "tools": {
-          "enabled": true
-        }
-      },
-      "cost": {
-        "cache_read": 0.3,
-        "input": 0.6,
-        "output": 2.2
-      },
-      "deprecated": false,
-      "extra": {
-        "attachment": false,
-        "family": "glm",
-        "interleaved": {
-          "field": "reasoning_content"
-        },
-        "open_weights": true,
-        "temperature": true
-      },
-      "family": null,
-      "id": "accounts/fireworks/models/glm-4p7",
-      "knowledge": "2025-04",
-      "last_updated": "2025-12-22",
-      "lifecycle": null,
-      "limits": {
-        "context": 198000,
-        "output": 198000
-      },
-      "modalities": {
-        "input": [
-          "text"
-        ],
-        "output": [
-          "text"
-        ]
-      },
-      "model": null,
-      "name": "GLM 4.7",
-      "pricing": null,
-      "provider": "fireworks_ai",
-      "provider_model_id": null,
-      "release_date": "2025-12-22",
-      "retired": false,
-      "tags": null
-    },
-    "accounts/fireworks/models/glm-5": {
-      "aliases": [],
-      "base_url": null,
-      "capabilities": {
-        "chat": true,
-        "embeddings": false,
-        "json": {
-          "native": false,
-          "schema": false,
-          "strict": false
-        },
-        "reasoning": {
-          "enabled": true
-        },
-        "streaming": {
-          "tool_calls": true
-        },
-        "tools": {
-          "enabled": true
-        }
-      },
-      "cost": {
-        "cache_read": 0.5,
-        "input": 1,
-        "output": 3.2
-      },
-      "deprecated": false,
-      "extra": {
-        "attachment": false,
-        "family": "glm",
-        "interleaved": {
-          "field": "reasoning_content"
-        },
-        "open_weights": true,
-        "temperature": true
-      },
-      "family": null,
-      "id": "accounts/fireworks/models/glm-5",
-      "knowledge": null,
-      "last_updated": "2026-02-11",
-      "lifecycle": null,
-      "limits": {
-        "context": 202752,
-        "output": 131072
-      },
-      "modalities": {
-        "input": [
-          "text"
-        ],
-        "output": [
-          "text"
-        ]
-      },
-      "model": null,
-      "name": "GLM 5",
-      "pricing": null,
-      "provider": "fireworks_ai",
-      "provider_model_id": null,
-      "release_date": "2026-02-11",
-      "retired": false,
-      "tags": null
-    },
-    "accounts/fireworks/models/gpt-oss-120b": {
-      "aliases": [],
-      "base_url": null,
-      "capabilities": {
-        "chat": true,
-        "embeddings": false,
-        "json": {
-          "native": false,
-          "schema": false,
-          "strict": false
-        },
-        "reasoning": {
-          "enabled": true
-        },
-        "streaming": {
-          "tool_calls": true
-        },
-        "tools": {
-          "enabled": true
-        }
-      },
-      "cost": {
-        "input": 0.15,
-        "output": 0.6
-      },
-      "deprecated": false,
-      "extra": {
-        "attachment": false,
-        "family": "gpt-oss",
-        "open_weights": true,
-        "temperature": true
-      },
-      "family": null,
-      "id": "accounts/fireworks/models/gpt-oss-120b",
-      "knowledge": null,
-      "last_updated": "2025-08-05",
-      "lifecycle": null,
-      "limits": {
-        "context": 131072,
-        "output": 32768
-      },
-      "modalities": {
-        "input": [
-          "text"
-        ],
-        "output": [
-          "text"
-        ]
-      },
-      "model": null,
-      "name": "GPT OSS 120B",
-      "pricing": null,
-      "provider": "fireworks_ai",
-      "provider_model_id": null,
-      "release_date": "2025-08-05",
-      "retired": false,
-      "tags": null
-    },
-    "accounts/fireworks/models/gpt-oss-20b": {
-      "aliases": [],
-      "base_url": null,
-      "capabilities": {
-        "chat": true,
-        "embeddings": false,
-        "json": {
-          "native": false,
-          "schema": false,
-          "strict": false
-        },
-        "reasoning": {
-          "enabled": true
-        },
-        "streaming": {
-          "tool_calls": true
-        },
-        "tools": {
-          "enabled": true
-        }
-      },
-      "cost": {
-        "input": 0.05,
-        "output": 0.2
-      },
-      "deprecated": false,
-      "extra": {
-        "attachment": false,
-        "family": "gpt-oss",
-        "open_weights": true,
-        "temperature": true
-      },
-      "family": null,
-      "id": "accounts/fireworks/models/gpt-oss-20b",
-      "knowledge": null,
-      "last_updated": "2025-08-05",
-      "lifecycle": null,
-      "limits": {
-        "context": 131072,
-        "output": 32768
-      },
-      "modalities": {
-        "input": [
-          "text"
-        ],
-        "output": [
-          "text"
-        ]
-      },
-      "model": null,
-      "name": "GPT OSS 20B",
-      "pricing": null,
-      "provider": "fireworks_ai",
-      "provider_model_id": null,
-      "release_date": "2025-08-05",
-      "retired": false,
-      "tags": null
-    },
-    "accounts/fireworks/models/kimi-k2-instruct": {
+    "Qwen/Qwen2.5-VL-32B-Instruct": {
       "aliases": [],
       "base_url": null,
       "capabilities": {
@@ -511,43 +154,45 @@
         }
       },
       "cost": {
-        "input": 1,
-        "output": 3
+        "input": 0.2,
+        "output": 0.6
       },
       "deprecated": false,
       "extra": {
-        "attachment": false,
-        "family": "kimi",
+        "attachment": true,
+        "family": "qwen",
         "open_weights": true,
+        "structured_output": true,
         "temperature": true
       },
       "family": null,
-      "id": "accounts/fireworks/models/kimi-k2-instruct",
-      "knowledge": "2024-10",
-      "last_updated": "2025-07-11",
+      "id": "Qwen/Qwen2.5-VL-32B-Instruct",
+      "knowledge": null,
+      "last_updated": "2025-03-24",
       "lifecycle": null,
       "limits": {
-        "context": 128000,
+        "context": 16384,
         "output": 16384
       },
       "modalities": {
         "input": [
-          "text"
+          "text",
+          "image"
         ],
         "output": [
           "text"
         ]
       },
       "model": null,
-      "name": "Kimi K2 Instruct",
+      "name": "Qwen2.5 VL 32B Instruct",
       "pricing": null,
-      "provider": "fireworks_ai",
+      "provider": "meganova",
       "provider_model_id": null,
-      "release_date": "2025-07-11",
+      "release_date": "2025-03-24",
       "retired": false,
       "tags": null
     },
-    "accounts/fireworks/models/kimi-k2-thinking": {
+    "Qwen/Qwen3-235B-A22B-Instruct-2507": {
       "aliases": [],
       "base_url": null,
       "capabilities": {
@@ -559,7 +204,7 @@
           "strict": false
         },
         "reasoning": {
-          "enabled": true
+          "enabled": false
         },
         "streaming": {
           "tool_calls": true
@@ -569,28 +214,25 @@
         }
       },
       "cost": {
-        "cache_read": 0.3,
-        "input": 0.6,
-        "output": 2.5
+        "input": 0.09,
+        "output": 0.6
       },
       "deprecated": false,
       "extra": {
         "attachment": false,
-        "family": "kimi-thinking",
-        "interleaved": {
-          "field": "reasoning_content"
-        },
+        "family": "qwen",
         "open_weights": true,
+        "structured_output": true,
         "temperature": true
       },
       "family": null,
-      "id": "accounts/fireworks/models/kimi-k2-thinking",
+      "id": "Qwen/Qwen3-235B-A22B-Instruct-2507",
       "knowledge": null,
-      "last_updated": "2025-11-06",
+      "last_updated": "2025-07-23",
       "lifecycle": null,
       "limits": {
-        "context": 256000,
-        "output": 256000
+        "context": 262000,
+        "output": 262000
       },
       "modalities": {
         "input": [
@@ -601,15 +243,15 @@
         ]
       },
       "model": null,
-      "name": "Kimi K2 Thinking",
+      "name": "Qwen3 235B A22B Instruct 2507",
       "pricing": null,
-      "provider": "fireworks_ai",
+      "provider": "meganova",
       "provider_model_id": null,
-      "release_date": "2025-11-06",
+      "release_date": "2025-07-23",
       "retired": false,
       "tags": null
     },
-    "accounts/fireworks/models/kimi-k2p5": {
+    "Qwen/Qwen3.5-Plus": {
       "aliases": [],
       "base_url": null,
       "capabilities": {
@@ -631,28 +273,25 @@
         }
       },
       "cost": {
-        "cache_read": 0.1,
-        "input": 0.6,
-        "output": 3
+        "input": 0.4,
+        "output": 2.4,
+        "reasoning": 2.4
       },
       "deprecated": false,
       "extra": {
         "attachment": false,
-        "family": "kimi-thinking",
-        "interleaved": {
-          "field": "reasoning_content"
-        },
-        "open_weights": true,
+        "family": "qwen",
+        "open_weights": false,
         "temperature": true
       },
       "family": null,
-      "id": "accounts/fireworks/models/kimi-k2p5",
-      "knowledge": "2025-01",
-      "last_updated": "2026-01-27",
+      "id": "Qwen/Qwen3.5-Plus",
+      "knowledge": "2025-04",
+      "last_updated": "2026-02",
       "lifecycle": null,
       "limits": {
-        "context": 256000,
-        "output": 256000
+        "context": 1000000,
+        "output": 65536
       },
       "modalities": {
         "input": [
@@ -665,15 +304,673 @@
         ]
       },
       "model": null,
+      "name": "Qwen3.5 Plus",
+      "pricing": null,
+      "provider": "meganova",
+      "provider_model_id": null,
+      "release_date": "2026-02",
+      "retired": false,
+      "tags": null
+    },
+    "XiaomiMiMo/MiMo-V2-Flash": {
+      "aliases": [],
+      "base_url": null,
+      "capabilities": {
+        "chat": true,
+        "embeddings": false,
+        "json": {
+          "native": false,
+          "schema": false,
+          "strict": false
+        },
+        "reasoning": {
+          "enabled": true
+        },
+        "streaming": {
+          "tool_calls": true
+        },
+        "tools": {
+          "enabled": true
+        }
+      },
+      "cost": {
+        "input": 0.1,
+        "output": 0.3
+      },
+      "deprecated": false,
+      "extra": {
+        "attachment": false,
+        "family": "mimo",
+        "open_weights": true,
+        "temperature": true
+      },
+      "family": null,
+      "id": "XiaomiMiMo/MiMo-V2-Flash",
+      "knowledge": "2024-12-01",
+      "last_updated": "2025-12-17",
+      "lifecycle": null,
+      "limits": {
+        "context": 262144,
+        "output": 32000
+      },
+      "modalities": {
+        "input": [
+          "text"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "model": null,
+      "name": "MiMo V2 Flash",
+      "pricing": null,
+      "provider": "meganova",
+      "provider_model_id": null,
+      "release_date": "2025-12-17",
+      "retired": false,
+      "tags": null
+    },
+    "deepseek-ai/DeepSeek-R1-0528": {
+      "aliases": [],
+      "base_url": null,
+      "capabilities": {
+        "chat": true,
+        "embeddings": false,
+        "json": {
+          "native": false,
+          "schema": false,
+          "strict": false
+        },
+        "reasoning": {
+          "enabled": true
+        },
+        "streaming": {
+          "text": true,
+          "tool_calls": false
+        },
+        "tools": {
+          "enabled": false,
+          "parallel": false,
+          "streaming": false,
+          "strict": false
+        }
+      },
+      "cost": {
+        "input": 0.5,
+        "output": 2.15
+      },
+      "deprecated": false,
+      "extra": {
+        "attachment": false,
+        "family": "deepseek-thinking",
+        "interleaved": {
+          "field": "reasoning_content"
+        },
+        "open_weights": true,
+        "temperature": true
+      },
+      "family": null,
+      "id": "deepseek-ai/DeepSeek-R1-0528",
+      "knowledge": "2024-07",
+      "last_updated": "2025-05-28",
+      "lifecycle": null,
+      "limits": {
+        "context": 163840,
+        "output": 64000
+      },
+      "modalities": {
+        "input": [
+          "text"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "model": null,
+      "name": "DeepSeek R1 0528",
+      "pricing": null,
+      "provider": "meganova",
+      "provider_model_id": null,
+      "release_date": "2025-05-28",
+      "retired": false,
+      "tags": null
+    },
+    "deepseek-ai/DeepSeek-V3-0324": {
+      "aliases": [],
+      "base_url": null,
+      "capabilities": {
+        "chat": true,
+        "embeddings": false,
+        "json": {
+          "native": false,
+          "schema": false,
+          "strict": false
+        },
+        "reasoning": {
+          "enabled": false
+        },
+        "streaming": {
+          "tool_calls": true
+        },
+        "tools": {
+          "enabled": true
+        }
+      },
+      "cost": {
+        "input": 0.25,
+        "output": 0.88
+      },
+      "deprecated": false,
+      "extra": {
+        "attachment": false,
+        "family": "deepseek",
+        "open_weights": true,
+        "temperature": true
+      },
+      "family": null,
+      "id": "deepseek-ai/DeepSeek-V3-0324",
+      "knowledge": null,
+      "last_updated": "2025-03-24",
+      "lifecycle": null,
+      "limits": {
+        "context": 163840,
+        "output": 163840
+      },
+      "modalities": {
+        "input": [
+          "text"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "model": null,
+      "name": "DeepSeek V3 0324",
+      "pricing": null,
+      "provider": "meganova",
+      "provider_model_id": null,
+      "release_date": "2025-03-24",
+      "retired": false,
+      "tags": null
+    },
+    "deepseek-ai/DeepSeek-V3.1": {
+      "aliases": [],
+      "base_url": null,
+      "capabilities": {
+        "chat": true,
+        "embeddings": false,
+        "json": {
+          "native": false,
+          "schema": false,
+          "strict": false
+        },
+        "reasoning": {
+          "enabled": false
+        },
+        "streaming": {
+          "tool_calls": true
+        },
+        "tools": {
+          "enabled": true
+        }
+      },
+      "cost": {
+        "input": 0.27,
+        "output": 1
+      },
+      "deprecated": false,
+      "extra": {
+        "attachment": false,
+        "family": "deepseek",
+        "open_weights": true,
+        "structured_output": true,
+        "temperature": true
+      },
+      "family": null,
+      "id": "deepseek-ai/DeepSeek-V3.1",
+      "knowledge": null,
+      "last_updated": "2025-08-25",
+      "lifecycle": null,
+      "limits": {
+        "context": 164000,
+        "output": 164000
+      },
+      "modalities": {
+        "input": [
+          "text"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "model": null,
+      "name": "DeepSeek V3.1",
+      "pricing": null,
+      "provider": "meganova",
+      "provider_model_id": null,
+      "release_date": "2025-08-25",
+      "retired": false,
+      "tags": null
+    },
+    "deepseek-ai/DeepSeek-V3.2": {
+      "aliases": [],
+      "base_url": null,
+      "capabilities": {
+        "chat": true,
+        "embeddings": false,
+        "json": {
+          "native": false,
+          "schema": false,
+          "strict": false
+        },
+        "reasoning": {
+          "enabled": false
+        },
+        "streaming": {
+          "tool_calls": true
+        },
+        "tools": {
+          "enabled": true
+        }
+      },
+      "cost": {
+        "input": 0.26,
+        "output": 0.38
+      },
+      "deprecated": false,
+      "extra": {
+        "attachment": false,
+        "family": "deepseek",
+        "open_weights": true,
+        "structured_output": true,
+        "temperature": true
+      },
+      "family": null,
+      "id": "deepseek-ai/DeepSeek-V3.2",
+      "knowledge": null,
+      "last_updated": "2025-12-03",
+      "lifecycle": null,
+      "limits": {
+        "context": 164000,
+        "output": 164000
+      },
+      "modalities": {
+        "input": [
+          "text"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "model": null,
+      "name": "DeepSeek V3.2",
+      "pricing": null,
+      "provider": "meganova",
+      "provider_model_id": null,
+      "release_date": "2025-12-03",
+      "retired": false,
+      "tags": null
+    },
+    "deepseek-ai/DeepSeek-V3.2-Exp": {
+      "aliases": [],
+      "base_url": null,
+      "capabilities": {
+        "chat": true,
+        "embeddings": false,
+        "json": {
+          "native": false,
+          "schema": false,
+          "strict": false
+        },
+        "reasoning": {
+          "enabled": false
+        },
+        "streaming": {
+          "tool_calls": true
+        },
+        "tools": {
+          "enabled": true
+        }
+      },
+      "cost": {
+        "input": 0.27,
+        "output": 0.4
+      },
+      "deprecated": false,
+      "extra": {
+        "attachment": false,
+        "family": "deepseek",
+        "open_weights": true,
+        "structured_output": true,
+        "temperature": true
+      },
+      "family": null,
+      "id": "deepseek-ai/DeepSeek-V3.2-Exp",
+      "knowledge": null,
+      "last_updated": "2025-10-10",
+      "lifecycle": null,
+      "limits": {
+        "context": 164000,
+        "output": 164000
+      },
+      "modalities": {
+        "input": [
+          "text"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "model": null,
+      "name": "DeepSeek V3.2 Exp",
+      "pricing": null,
+      "provider": "meganova",
+      "provider_model_id": null,
+      "release_date": "2025-10-10",
+      "retired": false,
+      "tags": null
+    },
+    "meta-llama/Llama-3.3-70B-Instruct": {
+      "aliases": [],
+      "base_url": null,
+      "capabilities": {
+        "chat": true,
+        "embeddings": false,
+        "json": {
+          "native": false,
+          "schema": false,
+          "strict": false
+        },
+        "reasoning": {
+          "enabled": false
+        },
+        "streaming": {
+          "tool_calls": true
+        },
+        "tools": {
+          "enabled": true
+        }
+      },
+      "cost": {
+        "input": 0.1,
+        "output": 0.3
+      },
+      "deprecated": false,
+      "extra": {
+        "attachment": false,
+        "family": "llama",
+        "open_weights": true,
+        "temperature": true
+      },
+      "family": null,
+      "id": "meta-llama/Llama-3.3-70B-Instruct",
+      "knowledge": null,
+      "last_updated": "2024-12-06",
+      "lifecycle": null,
+      "limits": {
+        "context": 131072,
+        "output": 16384
+      },
+      "modalities": {
+        "input": [
+          "text"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "model": null,
+      "name": "Llama 3.3 70B Instruct",
+      "pricing": null,
+      "provider": "meganova",
+      "provider_model_id": null,
+      "release_date": "2024-12-06",
+      "retired": false,
+      "tags": null
+    },
+    "mistralai/Mistral-Nemo-Instruct-2407": {
+      "aliases": [],
+      "base_url": null,
+      "capabilities": {
+        "chat": true,
+        "embeddings": false,
+        "json": {
+          "native": false,
+          "schema": false,
+          "strict": false
+        },
+        "reasoning": {
+          "enabled": false
+        },
+        "streaming": {
+          "tool_calls": true
+        },
+        "tools": {
+          "enabled": true
+        }
+      },
+      "cost": {
+        "input": 0.02,
+        "output": 0.04
+      },
+      "deprecated": false,
+      "extra": {
+        "attachment": false,
+        "family": "mistral",
+        "open_weights": true,
+        "structured_output": true,
+        "temperature": true
+      },
+      "family": null,
+      "id": "mistralai/Mistral-Nemo-Instruct-2407",
+      "knowledge": null,
+      "last_updated": "2024-07-18",
+      "lifecycle": null,
+      "limits": {
+        "context": 131072,
+        "output": 65536
+      },
+      "modalities": {
+        "input": [
+          "text"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "model": null,
+      "name": "Mistral Nemo Instruct 2407",
+      "pricing": null,
+      "provider": "meganova",
+      "provider_model_id": null,
+      "release_date": "2024-07-18",
+      "retired": false,
+      "tags": null
+    },
+    "mistralai/Mistral-Small-3.2-24B-Instruct-2506": {
+      "aliases": [],
+      "base_url": null,
+      "capabilities": {
+        "chat": true,
+        "embeddings": false,
+        "json": {
+          "native": false,
+          "schema": false,
+          "strict": false
+        },
+        "reasoning": {
+          "enabled": false
+        },
+        "streaming": {
+          "tool_calls": true
+        },
+        "tools": {
+          "enabled": true
+        }
+      },
+      "cost": {
+        "input": 0,
+        "output": 0
+      },
+      "deprecated": false,
+      "extra": {
+        "attachment": true,
+        "family": "mistral-small",
+        "open_weights": true,
+        "structured_output": true,
+        "temperature": true
+      },
+      "family": null,
+      "id": "mistralai/Mistral-Small-3.2-24B-Instruct-2506",
+      "knowledge": "2024-10",
+      "last_updated": "2025-06-20",
+      "lifecycle": null,
+      "limits": {
+        "context": 32768,
+        "output": 8192
+      },
+      "modalities": {
+        "input": [
+          "text",
+          "image"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "model": null,
+      "name": "Mistral Small 3.2 24B Instruct",
+      "pricing": null,
+      "provider": "meganova",
+      "provider_model_id": null,
+      "release_date": "2025-06-20",
+      "retired": false,
+      "tags": null
+    },
+    "moonshotai/Kimi-K2-Thinking": {
+      "aliases": [],
+      "base_url": null,
+      "capabilities": {
+        "chat": true,
+        "embeddings": false,
+        "json": {
+          "native": false,
+          "schema": false,
+          "strict": false
+        },
+        "reasoning": {
+          "enabled": true
+        },
+        "streaming": {
+          "tool_calls": true
+        },
+        "tools": {
+          "enabled": true
+        }
+      },
+      "cost": {
+        "input": 0.6,
+        "output": 2.6
+      },
+      "deprecated": false,
+      "extra": {
+        "attachment": false,
+        "family": "kimi-thinking",
+        "interleaved": {
+          "field": "reasoning_content"
+        },
+        "open_weights": true,
+        "temperature": true
+      },
+      "family": null,
+      "id": "moonshotai/Kimi-K2-Thinking",
+      "knowledge": "2024-08",
+      "last_updated": "2025-11-06",
+      "lifecycle": null,
+      "limits": {
+        "context": 262144,
+        "output": 262144
+      },
+      "modalities": {
+        "input": [
+          "text"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "model": null,
+      "name": "Kimi K2 Thinking",
+      "pricing": null,
+      "provider": "meganova",
+      "provider_model_id": null,
+      "release_date": "2025-11-06",
+      "retired": false,
+      "tags": null
+    },
+    "moonshotai/Kimi-K2.5": {
+      "aliases": [],
+      "base_url": null,
+      "capabilities": {
+        "chat": true,
+        "embeddings": false,
+        "json": {
+          "native": false,
+          "schema": false,
+          "strict": false
+        },
+        "reasoning": {
+          "enabled": true
+        },
+        "streaming": {
+          "tool_calls": true
+        },
+        "tools": {
+          "enabled": true
+        }
+      },
+      "cost": {
+        "input": 0.45,
+        "output": 2.8
+      },
+      "deprecated": false,
+      "extra": {
+        "attachment": false,
+        "family": "kimi",
+        "interleaved": {
+          "field": "reasoning_content"
+        },
+        "open_weights": true,
+        "temperature": true
+      },
+      "family": null,
+      "id": "moonshotai/Kimi-K2.5",
+      "knowledge": "2026-01",
+      "last_updated": "2026-01-27",
+      "lifecycle": null,
+      "limits": {
+        "context": 262144,
+        "output": 262144
+      },
+      "modalities": {
+        "input": [
+          "text",
+          "image"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "model": null,
       "name": "Kimi K2.5",
       "pricing": null,
-      "provider": "fireworks_ai",
+      "provider": "meganova",
       "provider_model_id": null,
       "release_date": "2026-01-27",
       "retired": false,
       "tags": null
     },
-    "accounts/fireworks/models/minimax-m2p1": {
+    "zai-org/GLM-4.6": {
       "aliases": [],
       "base_url": null,
       "capabilities": {
@@ -695,14 +992,13 @@
         }
       },
       "cost": {
-        "cache_read": 0.03,
-        "input": 0.3,
-        "output": 1.2
+        "input": 0.45,
+        "output": 1.9
       },
       "deprecated": false,
       "extra": {
         "attachment": false,
-        "family": "minimax",
+        "family": "glm",
         "interleaved": {
           "field": "reasoning_content"
         },
@@ -710,13 +1006,13 @@
         "temperature": true
       },
       "family": null,
-      "id": "accounts/fireworks/models/minimax-m2p1",
-      "knowledge": null,
-      "last_updated": "2025-12-23",
+      "id": "zai-org/GLM-4.6",
+      "knowledge": "2025-04",
+      "last_updated": "2025-09-30",
       "lifecycle": null,
       "limits": {
-        "context": 200000,
-        "output": 200000
+        "context": 202752,
+        "output": 131072
       },
       "modalities": {
         "input": [
@@ -727,15 +1023,15 @@
         ]
       },
       "model": null,
-      "name": "MiniMax-M2.1",
+      "name": "GLM-4.6",
       "pricing": null,
-      "provider": "fireworks_ai",
+      "provider": "meganova",
       "provider_model_id": null,
-      "release_date": "2025-12-23",
+      "release_date": "2025-09-30",
       "retired": false,
       "tags": null
     },
-    "accounts/fireworks/models/minimax-m2p5": {
+    "zai-org/GLM-4.7": {
       "aliases": [],
       "base_url": null,
       "capabilities": {
@@ -757,14 +1053,13 @@
         }
       },
       "cost": {
-        "cache_read": 0.03,
-        "input": 0.3,
-        "output": 1.2
+        "input": 0.2,
+        "output": 0.8
       },
       "deprecated": false,
       "extra": {
         "attachment": false,
-        "family": "minimax",
+        "family": "glm",
         "interleaved": {
           "field": "reasoning_content"
         },
@@ -772,13 +1067,13 @@
         "temperature": true
       },
       "family": null,
-      "id": "accounts/fireworks/models/minimax-m2p5",
-      "knowledge": null,
-      "last_updated": "2026-02-12",
+      "id": "zai-org/GLM-4.7",
+      "knowledge": "2025-04",
+      "last_updated": "2025-12-22",
       "lifecycle": null,
       "limits": {
-        "context": 196608,
-        "output": 196608
+        "context": 202752,
+        "output": 131072
       },
       "modalities": {
         "input": [
@@ -789,15 +1084,76 @@
         ]
       },
       "model": null,
-      "name": "MiniMax-M2.5",
+      "name": "GLM-4.7",
       "pricing": null,
-      "provider": "fireworks_ai",
+      "provider": "meganova",
       "provider_model_id": null,
-      "release_date": "2026-02-12",
+      "release_date": "2025-12-22",
+      "retired": false,
+      "tags": null
+    },
+    "zai-org/GLM-5": {
+      "aliases": [],
+      "base_url": null,
+      "capabilities": {
+        "chat": true,
+        "embeddings": false,
+        "json": {
+          "native": false,
+          "schema": false,
+          "strict": false
+        },
+        "reasoning": {
+          "enabled": true
+        },
+        "streaming": {
+          "tool_calls": true
+        },
+        "tools": {
+          "enabled": true
+        }
+      },
+      "cost": {
+        "input": 0.8,
+        "output": 2.56
+      },
+      "deprecated": false,
+      "extra": {
+        "attachment": false,
+        "family": "glm",
+        "interleaved": {
+          "field": "reasoning_content"
+        },
+        "open_weights": false,
+        "temperature": true
+      },
+      "family": null,
+      "id": "zai-org/GLM-5",
+      "knowledge": null,
+      "last_updated": "2026-02-11",
+      "lifecycle": null,
+      "limits": {
+        "context": 202752,
+        "output": 131072
+      },
+      "modalities": {
+        "input": [
+          "text"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "model": null,
+      "name": "GLM-5",
+      "pricing": null,
+      "provider": "meganova",
+      "provider_model_id": null,
+      "release_date": "2026-02-11",
       "retired": false,
       "tags": null
     }
   },
-  "name": "Fireworks AI",
+  "name": "Meganova",
   "pricing_defaults": null
 }

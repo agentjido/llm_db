@@ -2,15 +2,15 @@
   "alias_of": null,
   "base_url": null,
   "config_schema": null,
-  "doc": "https://llm.chutes.ai/v1/models",
+  "doc": "https://developer.qiniu.com/aitokenapi",
   "env": [
-    "CHUTES_API_KEY"
+    "Qiniu_API_KEY"
   ],
   "exclude_models": null,
   "extra": null,
-  "id": "chutes",
+  "id": "qiniu_ai",
   "models": {
-    "MiniMaxAI/MiniMax-M2.1-TEE": {
+    "MiniMax-M1": {
       "aliases": [],
       "base_url": null,
       "capabilities": {
@@ -31,378 +31,22 @@
           "enabled": true
         }
       },
-      "cost": {
-        "input": 0.27,
-        "output": 1.12
-      },
+      "cost": null,
       "deprecated": false,
       "extra": {
         "attachment": false,
-        "family": "minimax",
-        "interleaved": {
-          "field": "reasoning_content"
-        },
-        "open_weights": true,
-        "structured_output": true,
-        "temperature": true
-      },
-      "family": null,
-      "id": "MiniMaxAI/MiniMax-M2.1-TEE",
-      "knowledge": null,
-      "last_updated": "2026-01-27",
-      "lifecycle": null,
-      "limits": {
-        "context": 196608,
-        "output": 65536
-      },
-      "modalities": {
-        "input": [
-          "text"
-        ],
-        "output": [
-          "text"
-        ]
-      },
-      "model": null,
-      "name": "MiniMax M2.1 TEE",
-      "pricing": null,
-      "provider": "chutes",
-      "provider_model_id": null,
-      "release_date": "2025-12-29",
-      "retired": false,
-      "tags": null
-    },
-    "MiniMaxAI/MiniMax-M2.5-TEE": {
-      "aliases": [],
-      "base_url": null,
-      "capabilities": {
-        "chat": true,
-        "embeddings": false,
-        "json": {
-          "native": false,
-          "schema": false,
-          "strict": false
-        },
-        "reasoning": {
-          "enabled": true
-        },
-        "streaming": {
-          "tool_calls": true
-        },
-        "tools": {
-          "enabled": true
-        }
-      },
-      "cost": {
-        "input": 0.15,
-        "output": 0.6
-      },
-      "deprecated": false,
-      "extra": {
-        "attachment": false,
-        "family": "minimax",
-        "interleaved": {
-          "field": "reasoning_content"
-        },
-        "open_weights": true,
-        "structured_output": true,
-        "temperature": true
-      },
-      "family": null,
-      "id": "MiniMaxAI/MiniMax-M2.5-TEE",
-      "knowledge": null,
-      "last_updated": "2026-02-15",
-      "lifecycle": null,
-      "limits": {
-        "context": 196608,
-        "output": 65536
-      },
-      "modalities": {
-        "input": [
-          "text"
-        ],
-        "output": [
-          "text"
-        ]
-      },
-      "model": null,
-      "name": "MiniMax M2.5 TEE",
-      "pricing": null,
-      "provider": "chutes",
-      "provider_model_id": null,
-      "release_date": "2026-02-15",
-      "retired": false,
-      "tags": null
-    },
-    "NousResearch/DeepHermes-3-Mistral-24B-Preview": {
-      "aliases": [],
-      "base_url": null,
-      "capabilities": {
-        "chat": true,
-        "embeddings": false,
-        "json": {
-          "native": false,
-          "schema": false,
-          "strict": false
-        },
-        "reasoning": {
-          "enabled": false
-        },
-        "streaming": {
-          "tool_calls": true
-        },
-        "tools": {
-          "enabled": true
-        }
-      },
-      "cost": {
-        "input": 0.02,
-        "output": 0.1
-      },
-      "deprecated": false,
-      "extra": {
-        "attachment": false,
-        "family": "nousresearch",
-        "open_weights": true,
-        "structured_output": true,
-        "temperature": true
-      },
-      "family": null,
-      "id": "NousResearch/DeepHermes-3-Mistral-24B-Preview",
-      "knowledge": null,
-      "last_updated": "2026-01-10",
-      "lifecycle": null,
-      "limits": {
-        "context": 32768,
-        "output": 32768
-      },
-      "modalities": {
-        "input": [
-          "text"
-        ],
-        "output": [
-          "text"
-        ]
-      },
-      "model": null,
-      "name": "DeepHermes 3 Mistral 24B Preview",
-      "pricing": null,
-      "provider": "chutes",
-      "provider_model_id": null,
-      "release_date": "2025-12-29",
-      "retired": false,
-      "tags": null
-    },
-    "NousResearch/Hermes-4-14B": {
-      "aliases": [],
-      "base_url": null,
-      "capabilities": {
-        "chat": true,
-        "embeddings": false,
-        "json": {
-          "native": false,
-          "schema": false,
-          "strict": false
-        },
-        "reasoning": {
-          "enabled": true
-        },
-        "streaming": {
-          "tool_calls": true
-        },
-        "tools": {
-          "enabled": true
-        }
-      },
-      "cost": {
-        "input": 0.01,
-        "output": 0.05
-      },
-      "deprecated": false,
-      "extra": {
-        "attachment": false,
-        "family": "nousresearch",
-        "interleaved": {
-          "field": "reasoning_content"
-        },
-        "open_weights": true,
-        "structured_output": true,
-        "temperature": true
-      },
-      "family": null,
-      "id": "NousResearch/Hermes-4-14B",
-      "knowledge": null,
-      "last_updated": "2026-01-10",
-      "lifecycle": null,
-      "limits": {
-        "context": 40960,
-        "output": 40960
-      },
-      "modalities": {
-        "input": [
-          "text"
-        ],
-        "output": [
-          "text"
-        ]
-      },
-      "model": null,
-      "name": "Hermes 4 14B",
-      "pricing": null,
-      "provider": "chutes",
-      "provider_model_id": null,
-      "release_date": "2025-12-29",
-      "retired": false,
-      "tags": null
-    },
-    "NousResearch/Hermes-4-405B-FP8-TEE": {
-      "aliases": [],
-      "base_url": null,
-      "capabilities": {
-        "chat": true,
-        "embeddings": false,
-        "json": {
-          "native": false,
-          "schema": false,
-          "strict": false
-        },
-        "reasoning": {
-          "enabled": true
-        },
-        "streaming": {
-          "tool_calls": true
-        },
-        "tools": {
-          "enabled": true
-        }
-      },
-      "cost": {
-        "input": 0.3,
-        "output": 1.2
-      },
-      "deprecated": false,
-      "extra": {
-        "attachment": false,
-        "family": "nousresearch",
-        "interleaved": {
-          "field": "reasoning_content"
-        },
-        "open_weights": true,
-        "structured_output": true,
-        "temperature": true
-      },
-      "family": null,
-      "id": "NousResearch/Hermes-4-405B-FP8-TEE",
-      "knowledge": null,
-      "last_updated": "2026-01-10",
-      "lifecycle": null,
-      "limits": {
-        "context": 131072,
-        "output": 65536
-      },
-      "modalities": {
-        "input": [
-          "text"
-        ],
-        "output": [
-          "text"
-        ]
-      },
-      "model": null,
-      "name": "Hermes 4 405B FP8 TEE",
-      "pricing": null,
-      "provider": "chutes",
-      "provider_model_id": null,
-      "release_date": "2025-12-29",
-      "retired": false,
-      "tags": null
-    },
-    "NousResearch/Hermes-4-70B": {
-      "aliases": [],
-      "base_url": null,
-      "capabilities": {
-        "chat": true,
-        "embeddings": false,
-        "json": {
-          "native": false,
-          "schema": false,
-          "strict": false
-        },
-        "reasoning": {
-          "enabled": true
-        },
-        "streaming": {
-          "tool_calls": true
-        },
-        "tools": {
-          "enabled": true
-        }
-      },
-      "cost": {
-        "input": 0.11,
-        "output": 0.38
-      },
-      "deprecated": false,
-      "extra": {
-        "attachment": false,
-        "family": "nousresearch",
-        "interleaved": {
-          "field": "reasoning_content"
-        },
-        "open_weights": true,
-        "structured_output": true,
-        "temperature": true
-      },
-      "family": null,
-      "id": "NousResearch/Hermes-4-70B",
-      "knowledge": null,
-      "last_updated": "2026-01-10",
-      "lifecycle": null,
-      "limits": {
-        "context": 131072,
-        "output": 131072
-      },
-      "modalities": {
-        "input": [
-          "text"
-        ],
-        "output": [
-          "text"
-        ]
-      },
-      "model": null,
-      "name": "Hermes 4 70B",
-      "pricing": null,
-      "provider": "chutes",
-      "provider_model_id": null,
-      "release_date": "2025-12-29",
-      "retired": false,
-      "tags": null
-    },
-    "NousResearch/Hermes-4.3-36B": {
-      "aliases": [],
-      "base_url": null,
-      "capabilities": null,
-      "cost": {
-        "input": 0.1,
-        "output": 0.39
-      },
-      "deprecated": false,
-      "extra": {
-        "attachment": false,
-        "family": "nousresearch",
-        "open_weights": true,
+        "open_weights": false,
         "structured_output": false,
         "temperature": true
       },
       "family": null,
-      "id": "NousResearch/Hermes-4.3-36B",
+      "id": "MiniMax-M1",
       "knowledge": null,
-      "last_updated": "2026-01-10",
+      "last_updated": "2025-08-05",
       "lifecycle": null,
       "limits": {
-        "context": 32768,
-        "output": 8192
+        "context": 1000000,
+        "output": 80000
       },
       "modalities": {
         "input": [
@@ -413,58 +57,15 @@
         ]
       },
       "model": null,
-      "name": "Hermes 4.3 36B",
+      "name": "MiniMax M1",
       "pricing": null,
-      "provider": "chutes",
+      "provider": "qiniu_ai",
       "provider_model_id": null,
-      "release_date": "2025-12-29",
+      "release_date": "2025-08-05",
       "retired": false,
       "tags": null
     },
-    "OpenGVLab/InternVL3-78B-TEE": {
-      "aliases": [],
-      "base_url": null,
-      "capabilities": null,
-      "cost": {
-        "input": 0.1,
-        "output": 0.39
-      },
-      "deprecated": false,
-      "extra": {
-        "attachment": false,
-        "family": "opengvlab",
-        "open_weights": true,
-        "structured_output": true,
-        "temperature": true
-      },
-      "family": null,
-      "id": "OpenGVLab/InternVL3-78B-TEE",
-      "knowledge": null,
-      "last_updated": "2026-01-10",
-      "lifecycle": null,
-      "limits": {
-        "context": 32768,
-        "output": 32768
-      },
-      "modalities": {
-        "input": [
-          "text",
-          "image"
-        ],
-        "output": [
-          "text"
-        ]
-      },
-      "model": null,
-      "name": "InternVL3 78B TEE",
-      "pricing": null,
-      "provider": "chutes",
-      "provider_model_id": null,
-      "release_date": "2025-01-06",
-      "retired": false,
-      "tags": null
-    },
-    "Qwen/Qwen2.5-72B-Instruct": {
+    "claude-3.5-haiku": {
       "aliases": [],
       "base_url": null,
       "capabilities": {
@@ -485,885 +86,22 @@
           "enabled": true
         }
       },
-      "cost": {
-        "input": 0.13,
-        "output": 0.52
-      },
-      "deprecated": false,
-      "extra": {
-        "attachment": false,
-        "family": "qwen",
-        "open_weights": true,
-        "structured_output": true,
-        "temperature": true
-      },
-      "family": null,
-      "id": "Qwen/Qwen2.5-72B-Instruct",
-      "knowledge": null,
-      "last_updated": "2026-01-10",
-      "lifecycle": null,
-      "limits": {
-        "context": 32768,
-        "output": 32768
-      },
-      "modalities": {
-        "input": [
-          "text"
-        ],
-        "output": [
-          "text"
-        ]
-      },
-      "model": null,
-      "name": "Qwen2.5 72B Instruct",
-      "pricing": null,
-      "provider": "chutes",
-      "provider_model_id": null,
-      "release_date": "2025-12-29",
-      "retired": false,
-      "tags": null
-    },
-    "Qwen/Qwen2.5-Coder-32B-Instruct": {
-      "aliases": [],
-      "base_url": null,
-      "capabilities": null,
-      "cost": {
-        "input": 0.03,
-        "output": 0.11
-      },
-      "deprecated": false,
-      "extra": {
-        "attachment": false,
-        "family": "qwen",
-        "open_weights": true,
-        "structured_output": true,
-        "temperature": true
-      },
-      "family": null,
-      "id": "Qwen/Qwen2.5-Coder-32B-Instruct",
-      "knowledge": null,
-      "last_updated": "2026-01-10",
-      "lifecycle": null,
-      "limits": {
-        "context": 32768,
-        "output": 32768
-      },
-      "modalities": {
-        "input": [
-          "text"
-        ],
-        "output": [
-          "text"
-        ]
-      },
-      "model": null,
-      "name": "Qwen2.5 Coder 32B Instruct",
-      "pricing": null,
-      "provider": "chutes",
-      "provider_model_id": null,
-      "release_date": "2025-12-29",
-      "retired": false,
-      "tags": null
-    },
-    "Qwen/Qwen2.5-VL-32B-Instruct": {
-      "aliases": [],
-      "base_url": null,
-      "capabilities": null,
-      "cost": {
-        "input": 0.05,
-        "output": 0.22
-      },
-      "deprecated": false,
-      "extra": {
-        "attachment": false,
-        "family": "qwen",
-        "open_weights": true,
-        "structured_output": true,
-        "temperature": true
-      },
-      "family": null,
-      "id": "Qwen/Qwen2.5-VL-32B-Instruct",
-      "knowledge": null,
-      "last_updated": "2026-01-10",
-      "lifecycle": null,
-      "limits": {
-        "context": 16384,
-        "output": 16384
-      },
-      "modalities": {
-        "input": [
-          "text",
-          "image"
-        ],
-        "output": [
-          "text"
-        ]
-      },
-      "model": null,
-      "name": "Qwen2.5 VL 32B Instruct",
-      "pricing": null,
-      "provider": "chutes",
-      "provider_model_id": null,
-      "release_date": "2025-12-29",
-      "retired": false,
-      "tags": null
-    },
-    "Qwen/Qwen2.5-VL-72B-Instruct-TEE": {
-      "aliases": [],
-      "base_url": null,
-      "capabilities": null,
-      "cost": {
-        "input": 0.15,
-        "output": 0.6
-      },
-      "deprecated": false,
-      "extra": {
-        "attachment": false,
-        "family": "qwen",
-        "open_weights": true,
-        "structured_output": true,
-        "temperature": true
-      },
-      "family": null,
-      "id": "Qwen/Qwen2.5-VL-72B-Instruct-TEE",
-      "knowledge": null,
-      "last_updated": "2026-01-10",
-      "lifecycle": null,
-      "limits": {
-        "context": 32768,
-        "output": 32768
-      },
-      "modalities": {
-        "input": [
-          "text",
-          "image"
-        ],
-        "output": [
-          "text"
-        ]
-      },
-      "model": null,
-      "name": "Qwen2.5 VL 72B Instruct TEE",
-      "pricing": null,
-      "provider": "chutes",
-      "provider_model_id": null,
-      "release_date": "2025-12-29",
-      "retired": false,
-      "tags": null
-    },
-    "Qwen/Qwen3-14B": {
-      "aliases": [],
-      "base_url": null,
-      "capabilities": {
-        "chat": true,
-        "embeddings": false,
-        "json": {
-          "native": false,
-          "schema": false,
-          "strict": false
-        },
-        "reasoning": {
-          "enabled": true
-        },
-        "streaming": {
-          "tool_calls": true
-        },
-        "tools": {
-          "enabled": true
-        }
-      },
-      "cost": {
-        "input": 0.05,
-        "output": 0.22
-      },
-      "deprecated": false,
-      "extra": {
-        "attachment": false,
-        "family": "qwen",
-        "interleaved": {
-          "field": "reasoning_content"
-        },
-        "open_weights": true,
-        "structured_output": true,
-        "temperature": true
-      },
-      "family": null,
-      "id": "Qwen/Qwen3-14B",
-      "knowledge": null,
-      "last_updated": "2026-01-10",
-      "lifecycle": null,
-      "limits": {
-        "context": 40960,
-        "output": 40960
-      },
-      "modalities": {
-        "input": [
-          "text"
-        ],
-        "output": [
-          "text"
-        ]
-      },
-      "model": null,
-      "name": "Qwen3 14B",
-      "pricing": null,
-      "provider": "chutes",
-      "provider_model_id": null,
-      "release_date": "2025-12-29",
-      "retired": false,
-      "tags": null
-    },
-    "Qwen/Qwen3-235B-A22B": {
-      "aliases": [],
-      "base_url": null,
-      "capabilities": {
-        "chat": true,
-        "embeddings": false,
-        "json": {
-          "native": false,
-          "schema": false,
-          "strict": false
-        },
-        "reasoning": {
-          "enabled": true
-        },
-        "streaming": {
-          "tool_calls": true
-        },
-        "tools": {
-          "enabled": true
-        }
-      },
-      "cost": {
-        "input": 0.3,
-        "output": 1.2
-      },
-      "deprecated": false,
-      "extra": {
-        "attachment": false,
-        "family": "qwen",
-        "interleaved": {
-          "field": "reasoning_content"
-        },
-        "open_weights": true,
-        "structured_output": true,
-        "temperature": true
-      },
-      "family": null,
-      "id": "Qwen/Qwen3-235B-A22B",
-      "knowledge": null,
-      "last_updated": "2026-01-10",
-      "lifecycle": null,
-      "limits": {
-        "context": 40960,
-        "output": 40960
-      },
-      "modalities": {
-        "input": [
-          "text"
-        ],
-        "output": [
-          "text"
-        ]
-      },
-      "model": null,
-      "name": "Qwen3 235B A22B",
-      "pricing": null,
-      "provider": "chutes",
-      "provider_model_id": null,
-      "release_date": "2025-12-29",
-      "retired": false,
-      "tags": null
-    },
-    "Qwen/Qwen3-235B-A22B-Instruct-2507-TEE": {
-      "aliases": [],
-      "base_url": null,
-      "capabilities": {
-        "chat": true,
-        "embeddings": false,
-        "json": {
-          "native": false,
-          "schema": false,
-          "strict": false
-        },
-        "reasoning": {
-          "enabled": false
-        },
-        "streaming": {
-          "tool_calls": true
-        },
-        "tools": {
-          "enabled": true
-        }
-      },
-      "cost": {
-        "cache_read": 0.04,
-        "input": 0.08,
-        "output": 0.55
-      },
-      "deprecated": false,
-      "extra": {
-        "attachment": false,
-        "family": "qwen",
-        "open_weights": true,
-        "structured_output": true,
-        "temperature": true
-      },
-      "family": null,
-      "id": "Qwen/Qwen3-235B-A22B-Instruct-2507-TEE",
-      "knowledge": null,
-      "last_updated": "2026-01-10",
-      "lifecycle": null,
-      "limits": {
-        "context": 262144,
-        "output": 65536
-      },
-      "modalities": {
-        "input": [
-          "text"
-        ],
-        "output": [
-          "text"
-        ]
-      },
-      "model": null,
-      "name": "Qwen3 235B A22B Instruct 2507 TEE",
-      "pricing": null,
-      "provider": "chutes",
-      "provider_model_id": null,
-      "release_date": "2025-12-29",
-      "retired": false,
-      "tags": null
-    },
-    "Qwen/Qwen3-235B-A22B-Thinking-2507": {
-      "aliases": [],
-      "base_url": null,
-      "capabilities": {
-        "chat": true,
-        "embeddings": false,
-        "json": {
-          "native": false,
-          "schema": false,
-          "strict": false
-        },
-        "reasoning": {
-          "enabled": true
-        },
-        "streaming": {
-          "tool_calls": true
-        },
-        "tools": {
-          "enabled": true
-        }
-      },
-      "cost": {
-        "input": 0.11,
-        "output": 0.6
-      },
-      "deprecated": false,
-      "extra": {
-        "attachment": false,
-        "family": "qwen",
-        "interleaved": {
-          "field": "reasoning_content"
-        },
-        "open_weights": true,
-        "structured_output": true,
-        "temperature": true
-      },
-      "family": null,
-      "id": "Qwen/Qwen3-235B-A22B-Thinking-2507",
-      "knowledge": null,
-      "last_updated": "2026-01-10",
-      "lifecycle": null,
-      "limits": {
-        "context": 262144,
-        "output": 262144
-      },
-      "modalities": {
-        "input": [
-          "text"
-        ],
-        "output": [
-          "text"
-        ]
-      },
-      "model": null,
-      "name": "Qwen3 235B A22B Thinking 2507",
-      "pricing": null,
-      "provider": "chutes",
-      "provider_model_id": null,
-      "release_date": "2025-12-29",
-      "retired": false,
-      "tags": null
-    },
-    "Qwen/Qwen3-30B-A3B": {
-      "aliases": [],
-      "base_url": null,
-      "capabilities": {
-        "chat": true,
-        "embeddings": false,
-        "json": {
-          "native": false,
-          "schema": false,
-          "strict": false
-        },
-        "reasoning": {
-          "enabled": true
-        },
-        "streaming": {
-          "tool_calls": true
-        },
-        "tools": {
-          "enabled": true
-        }
-      },
-      "cost": {
-        "input": 0.06,
-        "output": 0.22
-      },
-      "deprecated": false,
-      "extra": {
-        "attachment": false,
-        "family": "qwen",
-        "interleaved": {
-          "field": "reasoning_content"
-        },
-        "open_weights": true,
-        "structured_output": true,
-        "temperature": true
-      },
-      "family": null,
-      "id": "Qwen/Qwen3-30B-A3B",
-      "knowledge": null,
-      "last_updated": "2026-01-10",
-      "lifecycle": null,
-      "limits": {
-        "context": 40960,
-        "output": 40960
-      },
-      "modalities": {
-        "input": [
-          "text"
-        ],
-        "output": [
-          "text"
-        ]
-      },
-      "model": null,
-      "name": "Qwen3 30B A3B",
-      "pricing": null,
-      "provider": "chutes",
-      "provider_model_id": null,
-      "release_date": "2025-12-29",
-      "retired": false,
-      "tags": null
-    },
-    "Qwen/Qwen3-30B-A3B-Instruct-2507": {
-      "aliases": [],
-      "base_url": null,
-      "capabilities": {
-        "chat": true,
-        "embeddings": false,
-        "json": {
-          "native": false,
-          "schema": false,
-          "strict": false
-        },
-        "reasoning": {
-          "enabled": false
-        },
-        "streaming": {
-          "tool_calls": true
-        },
-        "tools": {
-          "enabled": true
-        }
-      },
-      "cost": {
-        "input": 0.08,
-        "output": 0.33
-      },
-      "deprecated": false,
-      "extra": {
-        "attachment": false,
-        "family": "qwen",
-        "open_weights": true,
-        "structured_output": true,
-        "temperature": true
-      },
-      "family": null,
-      "id": "Qwen/Qwen3-30B-A3B-Instruct-2507",
-      "knowledge": null,
-      "last_updated": "2026-01-10",
-      "lifecycle": null,
-      "limits": {
-        "context": 262144,
-        "output": 262144
-      },
-      "modalities": {
-        "input": [
-          "text"
-        ],
-        "output": [
-          "text"
-        ]
-      },
-      "model": null,
-      "name": "Qwen3 30B A3B Instruct 2507",
-      "pricing": null,
-      "provider": "chutes",
-      "provider_model_id": null,
-      "release_date": "2025-12-29",
-      "retired": false,
-      "tags": null
-    },
-    "Qwen/Qwen3-32B": {
-      "aliases": [],
-      "base_url": null,
-      "capabilities": {
-        "chat": true,
-        "embeddings": false,
-        "json": {
-          "native": false,
-          "schema": false,
-          "strict": false
-        },
-        "reasoning": {
-          "enabled": true
-        },
-        "streaming": {
-          "tool_calls": true
-        },
-        "tools": {
-          "enabled": true
-        }
-      },
-      "cost": {
-        "cache_read": 0.04,
-        "input": 0.08,
-        "output": 0.24
-      },
-      "deprecated": false,
-      "extra": {
-        "attachment": false,
-        "family": "qwen",
-        "interleaved": {
-          "field": "reasoning_content"
-        },
-        "open_weights": true,
-        "structured_output": true,
-        "temperature": true
-      },
-      "family": null,
-      "id": "Qwen/Qwen3-32B",
-      "knowledge": null,
-      "last_updated": "2026-01-10",
-      "lifecycle": null,
-      "limits": {
-        "context": 40960,
-        "output": 40960
-      },
-      "modalities": {
-        "input": [
-          "text"
-        ],
-        "output": [
-          "text"
-        ]
-      },
-      "model": null,
-      "name": "Qwen3 32B",
-      "pricing": null,
-      "provider": "chutes",
-      "provider_model_id": null,
-      "release_date": "2025-12-29",
-      "retired": false,
-      "tags": null
-    },
-    "Qwen/Qwen3-Coder-480B-A35B-Instruct-FP8-TEE": {
-      "aliases": [],
-      "base_url": null,
-      "capabilities": {
-        "chat": true,
-        "embeddings": false,
-        "json": {
-          "native": false,
-          "schema": false,
-          "strict": false
-        },
-        "reasoning": {
-          "enabled": false
-        },
-        "streaming": {
-          "tool_calls": true
-        },
-        "tools": {
-          "enabled": true
-        }
-      },
-      "cost": {
-        "cache_read": 0.11,
-        "input": 0.22,
-        "output": 0.95
-      },
-      "deprecated": false,
-      "extra": {
-        "attachment": false,
-        "family": "qwen",
-        "open_weights": true,
-        "structured_output": true,
-        "temperature": true
-      },
-      "family": null,
-      "id": "Qwen/Qwen3-Coder-480B-A35B-Instruct-FP8-TEE",
-      "knowledge": null,
-      "last_updated": "2026-01-10",
-      "lifecycle": null,
-      "limits": {
-        "context": 262144,
-        "output": 262144
-      },
-      "modalities": {
-        "input": [
-          "text"
-        ],
-        "output": [
-          "text"
-        ]
-      },
-      "model": null,
-      "name": "Qwen3 Coder 480B A35B Instruct FP8 TEE",
-      "pricing": null,
-      "provider": "chutes",
-      "provider_model_id": null,
-      "release_date": "2025-12-29",
-      "retired": false,
-      "tags": null
-    },
-    "Qwen/Qwen3-Coder-Next": {
-      "aliases": [],
-      "base_url": null,
-      "capabilities": {
-        "chat": true,
-        "embeddings": false,
-        "json": {
-          "native": false,
-          "schema": false,
-          "strict": false
-        },
-        "reasoning": {
-          "enabled": false
-        },
-        "streaming": {
-          "tool_calls": true
-        },
-        "tools": {
-          "enabled": true
-        }
-      },
-      "cost": {
-        "input": 0.07,
-        "output": 0.3
-      },
-      "deprecated": false,
-      "extra": {
-        "attachment": false,
-        "family": "qwen",
-        "open_weights": true,
-        "structured_output": true,
-        "temperature": true
-      },
-      "family": null,
-      "id": "Qwen/Qwen3-Coder-Next",
-      "knowledge": null,
-      "last_updated": "2026-02-05",
-      "lifecycle": null,
-      "limits": {
-        "context": 262144,
-        "output": 65536
-      },
-      "modalities": {
-        "input": [
-          "text"
-        ],
-        "output": [
-          "text"
-        ]
-      },
-      "model": null,
-      "name": "Qwen3 Coder Next",
-      "pricing": null,
-      "provider": "chutes",
-      "provider_model_id": null,
-      "release_date": "2026-02-05",
-      "retired": false,
-      "tags": null
-    },
-    "Qwen/Qwen3-Next-80B-A3B-Instruct": {
-      "aliases": [],
-      "base_url": null,
-      "capabilities": {
-        "chat": true,
-        "embeddings": false,
-        "json": {
-          "native": false,
-          "schema": false,
-          "strict": false
-        },
-        "reasoning": {
-          "enabled": false
-        },
-        "streaming": {
-          "tool_calls": true
-        },
-        "tools": {
-          "enabled": true
-        }
-      },
-      "cost": {
-        "input": 0.1,
-        "output": 0.8
-      },
-      "deprecated": false,
-      "extra": {
-        "attachment": false,
-        "family": "qwen",
-        "open_weights": true,
-        "structured_output": true,
-        "temperature": true
-      },
-      "family": null,
-      "id": "Qwen/Qwen3-Next-80B-A3B-Instruct",
-      "knowledge": null,
-      "last_updated": "2026-01-10",
-      "lifecycle": null,
-      "limits": {
-        "context": 262144,
-        "output": 262144
-      },
-      "modalities": {
-        "input": [
-          "text"
-        ],
-        "output": [
-          "text"
-        ]
-      },
-      "model": null,
-      "name": "Qwen3 Next 80B A3B Instruct",
-      "pricing": null,
-      "provider": "chutes",
-      "provider_model_id": null,
-      "release_date": "2025-12-29",
-      "retired": false,
-      "tags": null
-    },
-    "Qwen/Qwen3-VL-235B-A22B-Instruct": {
-      "aliases": [],
-      "base_url": null,
-      "capabilities": {
-        "chat": true,
-        "embeddings": false,
-        "json": {
-          "native": false,
-          "schema": false,
-          "strict": false
-        },
-        "reasoning": {
-          "enabled": false
-        },
-        "streaming": {
-          "tool_calls": true
-        },
-        "tools": {
-          "enabled": true
-        }
-      },
-      "cost": {
-        "input": 0.3,
-        "output": 1.2
-      },
-      "deprecated": false,
-      "extra": {
-        "attachment": false,
-        "family": "qwen",
-        "open_weights": true,
-        "structured_output": true,
-        "temperature": true
-      },
-      "family": null,
-      "id": "Qwen/Qwen3-VL-235B-A22B-Instruct",
-      "knowledge": null,
-      "last_updated": "2026-01-10",
-      "lifecycle": null,
-      "limits": {
-        "context": 262144,
-        "output": 262144
-      },
-      "modalities": {
-        "input": [
-          "text",
-          "image"
-        ],
-        "output": [
-          "text"
-        ]
-      },
-      "model": null,
-      "name": "Qwen3 VL 235B A22B Instruct",
-      "pricing": null,
-      "provider": "chutes",
-      "provider_model_id": null,
-      "release_date": "2025-12-29",
-      "retired": false,
-      "tags": null
-    },
-    "Qwen/Qwen3.5-397B-A17B-TEE": {
-      "aliases": [],
-      "base_url": null,
-      "capabilities": {
-        "chat": true,
-        "embeddings": false,
-        "json": {
-          "native": false,
-          "schema": false,
-          "strict": false
-        },
-        "reasoning": {
-          "enabled": true
-        },
-        "streaming": {
-          "tool_calls": true
-        },
-        "tools": {
-          "enabled": true
-        }
-      },
-      "cost": {
-        "cache_read": 0.15,
-        "input": 0.3,
-        "output": 1.2
-      },
+      "cost": null,
       "deprecated": false,
       "extra": {
         "attachment": true,
-        "family": "qwen",
-        "interleaved": {
-          "field": "reasoning_content"
-        },
-        "open_weights": true,
-        "structured_output": true,
+        "open_weights": false,
+        "structured_output": false,
         "temperature": true
       },
       "family": null,
-      "id": "Qwen/Qwen3.5-397B-A17B-TEE",
+      "id": "claude-3.5-haiku",
       "knowledge": null,
-      "last_updated": "2026-02-18",
+      "last_updated": "2025-08-26",
       "lifecycle": null,
       "limits": {
-        "context": 262144,
-        "output": 65536
+        "context": 200000,
+        "output": 8192
       },
       "modalities": {
         "input": [
@@ -1375,39 +113,499 @@
         ]
       },
       "model": null,
-      "name": "Qwen3.5 397B A17B TEE",
+      "name": "Claude 3.5 Haiku",
       "pricing": null,
-      "provider": "chutes",
+      "provider": "qiniu_ai",
       "provider_model_id": null,
-      "release_date": "2026-02-18",
+      "release_date": "2025-08-26",
       "retired": false,
       "tags": null
     },
-    "Qwen/Qwen3Guard-Gen-0.6B": {
+    "claude-3.5-sonnet": {
       "aliases": [],
       "base_url": null,
-      "capabilities": null,
-      "cost": {
-        "cache_read": 0.005,
-        "input": 0.01,
-        "output": 0.01
+      "capabilities": {
+        "chat": true,
+        "embeddings": false,
+        "json": {
+          "native": false,
+          "schema": false,
+          "strict": false
+        },
+        "reasoning": {
+          "enabled": true
+        },
+        "streaming": {
+          "tool_calls": true
+        },
+        "tools": {
+          "enabled": true
+        }
       },
+      "cost": null,
       "deprecated": false,
       "extra": {
-        "attachment": false,
-        "family": "qwen",
-        "open_weights": true,
+        "attachment": true,
+        "open_weights": false,
         "structured_output": false,
         "temperature": true
       },
       "family": null,
-      "id": "Qwen/Qwen3Guard-Gen-0.6B",
+      "id": "claude-3.5-sonnet",
       "knowledge": null,
-      "last_updated": "2026-01-10",
+      "last_updated": "2025-09-09",
       "lifecycle": null,
       "limits": {
-        "context": 32768,
-        "output": 8192
+        "context": 200000,
+        "output": 8200
+      },
+      "modalities": {
+        "input": [
+          "text",
+          "image"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "model": null,
+      "name": "Claude 3.5 Sonnet",
+      "pricing": null,
+      "provider": "qiniu_ai",
+      "provider_model_id": null,
+      "release_date": "2025-09-09",
+      "retired": false,
+      "tags": null
+    },
+    "claude-3.7-sonnet": {
+      "aliases": [],
+      "base_url": null,
+      "capabilities": {
+        "chat": true,
+        "embeddings": false,
+        "json": {
+          "native": false,
+          "schema": false,
+          "strict": false
+        },
+        "reasoning": {
+          "enabled": true
+        },
+        "streaming": {
+          "tool_calls": true
+        },
+        "tools": {
+          "enabled": true
+        }
+      },
+      "cost": null,
+      "deprecated": false,
+      "extra": {
+        "attachment": true,
+        "open_weights": false,
+        "structured_output": false,
+        "temperature": true
+      },
+      "family": null,
+      "id": "claude-3.7-sonnet",
+      "knowledge": null,
+      "last_updated": "2025-08-05",
+      "lifecycle": null,
+      "limits": {
+        "context": 200000,
+        "output": 128000
+      },
+      "modalities": {
+        "input": [
+          "text",
+          "image"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "model": null,
+      "name": "Claude 3.7 Sonnet",
+      "pricing": null,
+      "provider": "qiniu_ai",
+      "provider_model_id": null,
+      "release_date": "2025-08-05",
+      "retired": false,
+      "tags": null
+    },
+    "claude-4.0-opus": {
+      "aliases": [],
+      "base_url": null,
+      "capabilities": {
+        "chat": true,
+        "embeddings": false,
+        "json": {
+          "native": false,
+          "schema": false,
+          "strict": false
+        },
+        "reasoning": {
+          "enabled": true
+        },
+        "streaming": {
+          "tool_calls": true
+        },
+        "tools": {
+          "enabled": true
+        }
+      },
+      "cost": null,
+      "deprecated": false,
+      "extra": {
+        "attachment": true,
+        "open_weights": false,
+        "structured_output": false,
+        "temperature": true
+      },
+      "family": null,
+      "id": "claude-4.0-opus",
+      "knowledge": null,
+      "last_updated": "2025-08-05",
+      "lifecycle": null,
+      "limits": {
+        "context": 200000,
+        "output": 32000
+      },
+      "modalities": {
+        "input": [
+          "text",
+          "image"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "model": null,
+      "name": "Claude 4.0 Opus",
+      "pricing": null,
+      "provider": "qiniu_ai",
+      "provider_model_id": null,
+      "release_date": "2025-08-05",
+      "retired": false,
+      "tags": null
+    },
+    "claude-4.0-sonnet": {
+      "aliases": [],
+      "base_url": null,
+      "capabilities": {
+        "chat": true,
+        "embeddings": false,
+        "json": {
+          "native": false,
+          "schema": false,
+          "strict": false
+        },
+        "reasoning": {
+          "enabled": true
+        },
+        "streaming": {
+          "tool_calls": true
+        },
+        "tools": {
+          "enabled": true
+        }
+      },
+      "cost": null,
+      "deprecated": false,
+      "extra": {
+        "attachment": true,
+        "open_weights": false,
+        "structured_output": false,
+        "temperature": true
+      },
+      "family": null,
+      "id": "claude-4.0-sonnet",
+      "knowledge": null,
+      "last_updated": "2025-08-05",
+      "lifecycle": null,
+      "limits": {
+        "context": 200000,
+        "output": 64000
+      },
+      "modalities": {
+        "input": [
+          "text",
+          "image"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "model": null,
+      "name": "Claude 4.0 Sonnet",
+      "pricing": null,
+      "provider": "qiniu_ai",
+      "provider_model_id": null,
+      "release_date": "2025-08-05",
+      "retired": false,
+      "tags": null
+    },
+    "claude-4.1-opus": {
+      "aliases": [],
+      "base_url": null,
+      "capabilities": {
+        "chat": true,
+        "embeddings": false,
+        "json": {
+          "native": false,
+          "schema": false,
+          "strict": false
+        },
+        "reasoning": {
+          "enabled": true
+        },
+        "streaming": {
+          "tool_calls": true
+        },
+        "tools": {
+          "enabled": true
+        }
+      },
+      "cost": null,
+      "deprecated": false,
+      "extra": {
+        "attachment": true,
+        "open_weights": false,
+        "structured_output": false,
+        "temperature": true
+      },
+      "family": null,
+      "id": "claude-4.1-opus",
+      "knowledge": null,
+      "last_updated": "2025-08-06",
+      "lifecycle": null,
+      "limits": {
+        "context": 200000,
+        "output": 32000
+      },
+      "modalities": {
+        "input": [
+          "text",
+          "image"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "model": null,
+      "name": "Claude 4.1 Opus",
+      "pricing": null,
+      "provider": "qiniu_ai",
+      "provider_model_id": null,
+      "release_date": "2025-08-06",
+      "retired": false,
+      "tags": null
+    },
+    "claude-4.5-haiku": {
+      "aliases": [],
+      "base_url": null,
+      "capabilities": {
+        "chat": true,
+        "embeddings": false,
+        "json": {
+          "native": false,
+          "schema": false,
+          "strict": false
+        },
+        "reasoning": {
+          "enabled": true
+        },
+        "streaming": {
+          "tool_calls": true
+        },
+        "tools": {
+          "enabled": true
+        }
+      },
+      "cost": null,
+      "deprecated": false,
+      "extra": {
+        "attachment": true,
+        "open_weights": false,
+        "structured_output": false,
+        "temperature": true
+      },
+      "family": null,
+      "id": "claude-4.5-haiku",
+      "knowledge": null,
+      "last_updated": "2025-10-16",
+      "lifecycle": null,
+      "limits": {
+        "context": 200000,
+        "output": 64000
+      },
+      "modalities": {
+        "input": [
+          "text",
+          "image"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "model": null,
+      "name": "Claude 4.5 Haiku",
+      "pricing": null,
+      "provider": "qiniu_ai",
+      "provider_model_id": null,
+      "release_date": "2025-10-16",
+      "retired": false,
+      "tags": null
+    },
+    "claude-4.5-opus": {
+      "aliases": [],
+      "base_url": null,
+      "capabilities": {
+        "chat": true,
+        "embeddings": false,
+        "json": {
+          "native": false,
+          "schema": false,
+          "strict": false
+        },
+        "reasoning": {
+          "enabled": true
+        },
+        "streaming": {
+          "tool_calls": true
+        },
+        "tools": {
+          "enabled": true
+        }
+      },
+      "cost": null,
+      "deprecated": false,
+      "extra": {
+        "attachment": true,
+        "open_weights": false,
+        "structured_output": false,
+        "temperature": true
+      },
+      "family": null,
+      "id": "claude-4.5-opus",
+      "knowledge": null,
+      "last_updated": "2025-11-25",
+      "lifecycle": null,
+      "limits": {
+        "context": 200000,
+        "output": 200000
+      },
+      "modalities": {
+        "input": [
+          "text",
+          "image"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "model": null,
+      "name": "Claude 4.5 Opus",
+      "pricing": null,
+      "provider": "qiniu_ai",
+      "provider_model_id": null,
+      "release_date": "2025-11-25",
+      "retired": false,
+      "tags": null
+    },
+    "claude-4.5-sonnet": {
+      "aliases": [],
+      "base_url": null,
+      "capabilities": {
+        "chat": true,
+        "embeddings": false,
+        "json": {
+          "native": false,
+          "schema": false,
+          "strict": false
+        },
+        "reasoning": {
+          "enabled": true
+        },
+        "streaming": {
+          "tool_calls": true
+        },
+        "tools": {
+          "enabled": true
+        }
+      },
+      "cost": null,
+      "deprecated": false,
+      "extra": {
+        "attachment": true,
+        "open_weights": false,
+        "structured_output": false,
+        "temperature": true
+      },
+      "family": null,
+      "id": "claude-4.5-sonnet",
+      "knowledge": null,
+      "last_updated": "2025-09-30",
+      "lifecycle": null,
+      "limits": {
+        "context": 200000,
+        "output": 64000
+      },
+      "modalities": {
+        "input": [
+          "text",
+          "image"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "model": null,
+      "name": "Claude 4.5 Sonnet",
+      "pricing": null,
+      "provider": "qiniu_ai",
+      "provider_model_id": null,
+      "release_date": "2025-09-30",
+      "retired": false,
+      "tags": null
+    },
+    "deepseek-r1": {
+      "aliases": [],
+      "base_url": null,
+      "capabilities": {
+        "chat": true,
+        "embeddings": false,
+        "json": {
+          "native": false,
+          "schema": false,
+          "strict": false
+        },
+        "reasoning": {
+          "enabled": true
+        },
+        "streaming": {
+          "tool_calls": true
+        },
+        "tools": {
+          "enabled": true
+        }
+      },
+      "cost": null,
+      "deprecated": false,
+      "extra": {
+        "attachment": false,
+        "open_weights": false,
+        "structured_output": false,
+        "temperature": true
+      },
+      "family": null,
+      "id": "deepseek-r1",
+      "knowledge": null,
+      "last_updated": "2025-08-05",
+      "lifecycle": null,
+      "limits": {
+        "context": 128000,
+        "output": 32000
       },
       "modalities": {
         "input": [
@@ -1418,38 +616,51 @@
         ]
       },
       "model": null,
-      "name": "Qwen3Guard Gen 0.6B",
+      "name": "DeepSeek-R1",
       "pricing": null,
-      "provider": "chutes",
+      "provider": "qiniu_ai",
       "provider_model_id": null,
-      "release_date": "2025-12-29",
+      "release_date": "2025-08-05",
       "retired": false,
       "tags": null
     },
-    "XiaomiMiMo/MiMo-V2-Flash": {
+    "deepseek-r1-0528": {
       "aliases": [],
       "base_url": null,
-      "capabilities": null,
-      "cost": {
-        "input": 0.09,
-        "output": 0.29
+      "capabilities": {
+        "chat": true,
+        "embeddings": false,
+        "json": {
+          "native": false,
+          "schema": false,
+          "strict": false
+        },
+        "reasoning": {
+          "enabled": true
+        },
+        "streaming": {
+          "tool_calls": true
+        },
+        "tools": {
+          "enabled": true
+        }
       },
+      "cost": null,
       "deprecated": false,
       "extra": {
         "attachment": false,
-        "family": "mimo",
-        "open_weights": true,
+        "open_weights": false,
         "structured_output": false,
         "temperature": true
       },
       "family": null,
-      "id": "XiaomiMiMo/MiMo-V2-Flash",
+      "id": "deepseek-r1-0528",
       "knowledge": null,
-      "last_updated": "2026-01-27",
+      "last_updated": "2025-08-05",
       "lifecycle": null,
       "limits": {
-        "context": 32768,
-        "output": 8192
+        "context": 128000,
+        "output": 32000
       },
       "modalities": {
         "input": [
@@ -1460,15 +671,53 @@
         ]
       },
       "model": null,
-      "name": "MiMo V2 Flash",
+      "name": "DeepSeek-R1-0528",
       "pricing": null,
-      "provider": "chutes",
+      "provider": "qiniu_ai",
       "provider_model_id": null,
-      "release_date": "2025-12-29",
+      "release_date": "2025-08-05",
       "retired": false,
       "tags": null
     },
-    "chutesai/Mistral-Small-3.1-24B-Instruct-2503": {
+    "deepseek-v3": {
+      "aliases": [],
+      "base_url": null,
+      "capabilities": null,
+      "cost": null,
+      "deprecated": false,
+      "extra": {
+        "attachment": false,
+        "open_weights": false,
+        "structured_output": false,
+        "temperature": true
+      },
+      "family": null,
+      "id": "deepseek-v3",
+      "knowledge": null,
+      "last_updated": "2025-08-13",
+      "lifecycle": null,
+      "limits": {
+        "context": 128000,
+        "output": 16000
+      },
+      "modalities": {
+        "input": [
+          "text"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "model": null,
+      "name": "DeepSeek-V3",
+      "pricing": null,
+      "provider": "qiniu_ai",
+      "provider_model_id": null,
+      "release_date": "2025-08-13",
+      "retired": false,
+      "tags": null
+    },
+    "deepseek-v3-0324": {
       "aliases": [],
       "base_url": null,
       "capabilities": {
@@ -1489,107 +738,41 @@
           "enabled": true
         }
       },
-      "cost": {
-        "cache_read": 0.015,
-        "input": 0.03,
-        "output": 0.11
-      },
+      "cost": null,
       "deprecated": false,
       "extra": {
         "attachment": false,
-        "family": "chutesai",
-        "open_weights": true,
-        "structured_output": true,
+        "open_weights": false,
+        "structured_output": false,
         "temperature": true
       },
       "family": null,
-      "id": "chutesai/Mistral-Small-3.1-24B-Instruct-2503",
+      "id": "deepseek-v3-0324",
       "knowledge": null,
-      "last_updated": "2026-01-10",
+      "last_updated": "2025-08-05",
       "lifecycle": null,
       "limits": {
-        "context": 131072,
-        "output": 131072
+        "context": 128000,
+        "output": 16000
       },
       "modalities": {
         "input": [
-          "text",
-          "image"
+          "text"
         ],
         "output": [
           "text"
         ]
       },
       "model": null,
-      "name": "Mistral Small 3.1 24B Instruct 2503",
+      "name": "DeepSeek-V3-0324",
       "pricing": null,
-      "provider": "chutes",
+      "provider": "qiniu_ai",
       "provider_model_id": null,
-      "release_date": "2025-12-29",
+      "release_date": "2025-08-05",
       "retired": false,
       "tags": null
     },
-    "chutesai/Mistral-Small-3.2-24B-Instruct-2506": {
-      "aliases": [],
-      "base_url": null,
-      "capabilities": {
-        "chat": true,
-        "embeddings": false,
-        "json": {
-          "native": false,
-          "schema": false,
-          "strict": false
-        },
-        "reasoning": {
-          "enabled": false
-        },
-        "streaming": {
-          "tool_calls": true
-        },
-        "tools": {
-          "enabled": true
-        }
-      },
-      "cost": {
-        "input": 0.06,
-        "output": 0.18
-      },
-      "deprecated": false,
-      "extra": {
-        "attachment": false,
-        "family": "chutesai",
-        "open_weights": true,
-        "structured_output": true,
-        "temperature": true
-      },
-      "family": null,
-      "id": "chutesai/Mistral-Small-3.2-24B-Instruct-2506",
-      "knowledge": null,
-      "last_updated": "2026-01-10",
-      "lifecycle": null,
-      "limits": {
-        "context": 131072,
-        "output": 131072
-      },
-      "modalities": {
-        "input": [
-          "text",
-          "image"
-        ],
-        "output": [
-          "text"
-        ]
-      },
-      "model": null,
-      "name": "Mistral Small 3.2 24B Instruct 2506",
-      "pricing": null,
-      "provider": "chutes",
-      "provider_model_id": null,
-      "release_date": "2025-12-29",
-      "retired": false,
-      "tags": null
-    },
-    "deepseek-ai/DeepSeek-R1-0528-TEE": {
+    "deepseek-v3.1": {
       "aliases": [],
       "base_url": null,
       "capabilities": {
@@ -1610,29 +793,22 @@
           "enabled": true
         }
       },
-      "cost": {
-        "input": 0.4,
-        "output": 1.75
-      },
+      "cost": null,
       "deprecated": false,
       "extra": {
         "attachment": false,
-        "family": "deepseek-thinking",
-        "interleaved": {
-          "field": "reasoning_content"
-        },
-        "open_weights": true,
-        "structured_output": true,
+        "open_weights": false,
+        "structured_output": false,
         "temperature": true
       },
       "family": null,
-      "id": "deepseek-ai/DeepSeek-R1-0528-TEE",
+      "id": "deepseek-v3.1",
       "knowledge": null,
-      "last_updated": "2026-01-10",
+      "last_updated": "2025-08-19",
       "lifecycle": null,
       "limits": {
-        "context": 163840,
-        "output": 65536
+        "context": 128000,
+        "output": 32000
       },
       "modalities": {
         "input": [
@@ -1643,77 +819,15 @@
         ]
       },
       "model": null,
-      "name": "DeepSeek R1 0528 TEE",
+      "name": "DeepSeek-V3.1",
       "pricing": null,
-      "provider": "chutes",
+      "provider": "qiniu_ai",
       "provider_model_id": null,
-      "release_date": "2025-12-29",
+      "release_date": "2025-08-19",
       "retired": false,
       "tags": null
     },
-    "deepseek-ai/DeepSeek-R1-Distill-Llama-70B": {
-      "aliases": [],
-      "base_url": null,
-      "capabilities": {
-        "chat": true,
-        "embeddings": false,
-        "json": {
-          "native": false,
-          "schema": false,
-          "strict": false
-        },
-        "reasoning": {
-          "enabled": true
-        },
-        "streaming": {
-          "tool_calls": true
-        },
-        "tools": {
-          "enabled": true
-        }
-      },
-      "cost": {
-        "input": 0.03,
-        "output": 0.11
-      },
-      "deprecated": false,
-      "extra": {
-        "attachment": false,
-        "family": "deepseek-thinking",
-        "interleaved": {
-          "field": "reasoning_content"
-        },
-        "open_weights": true,
-        "structured_output": true,
-        "temperature": true
-      },
-      "family": null,
-      "id": "deepseek-ai/DeepSeek-R1-Distill-Llama-70B",
-      "knowledge": null,
-      "last_updated": "2026-01-10",
-      "lifecycle": null,
-      "limits": {
-        "context": 131072,
-        "output": 131072
-      },
-      "modalities": {
-        "input": [
-          "text"
-        ],
-        "output": [
-          "text"
-        ]
-      },
-      "model": null,
-      "name": "DeepSeek R1 Distill Llama 70B",
-      "pricing": null,
-      "provider": "chutes",
-      "provider_model_id": null,
-      "release_date": "2025-12-29",
-      "retired": false,
-      "tags": null
-    },
-    "deepseek-ai/DeepSeek-R1-TEE": {
+    "deepseek/deepseek-math-v2": {
       "aliases": [],
       "base_url": null,
       "capabilities": {
@@ -1738,29 +852,22 @@
           "strict": false
         }
       },
-      "cost": {
-        "input": 0.3,
-        "output": 1.2
-      },
+      "cost": null,
       "deprecated": false,
       "extra": {
         "attachment": false,
-        "family": "deepseek-thinking",
-        "interleaved": {
-          "field": "reasoning_content"
-        },
-        "open_weights": true,
-        "structured_output": true,
+        "open_weights": false,
+        "structured_output": false,
         "temperature": true
       },
       "family": null,
-      "id": "deepseek-ai/DeepSeek-R1-TEE",
+      "id": "deepseek/deepseek-math-v2",
       "knowledge": null,
-      "last_updated": "2026-01-10",
+      "last_updated": "2025-12-04",
       "lifecycle": null,
       "limits": {
-        "context": 163840,
-        "output": 163840
+        "context": 160000,
+        "output": 160000
       },
       "modalities": {
         "input": [
@@ -1771,57 +878,15 @@
         ]
       },
       "model": null,
-      "name": "DeepSeek R1 TEE",
+      "name": "Deepseek/Deepseek-Math-V2",
       "pricing": null,
-      "provider": "chutes",
+      "provider": "qiniu_ai",
       "provider_model_id": null,
-      "release_date": "2025-12-29",
+      "release_date": "2025-12-04",
       "retired": false,
       "tags": null
     },
-    "deepseek-ai/DeepSeek-V3": {
-      "aliases": [],
-      "base_url": null,
-      "capabilities": null,
-      "cost": {
-        "input": 0.3,
-        "output": 1.2
-      },
-      "deprecated": false,
-      "extra": {
-        "attachment": false,
-        "family": "deepseek",
-        "open_weights": true,
-        "structured_output": true,
-        "temperature": true
-      },
-      "family": null,
-      "id": "deepseek-ai/DeepSeek-V3",
-      "knowledge": null,
-      "last_updated": "2026-01-10",
-      "lifecycle": null,
-      "limits": {
-        "context": 163840,
-        "output": 163840
-      },
-      "modalities": {
-        "input": [
-          "text"
-        ],
-        "output": [
-          "text"
-        ]
-      },
-      "model": null,
-      "name": "DeepSeek V3",
-      "pricing": null,
-      "provider": "chutes",
-      "provider_model_id": null,
-      "release_date": "2025-12-29",
-      "retired": false,
-      "tags": null
-    },
-    "deepseek-ai/DeepSeek-V3-0324-TEE": {
+    "deepseek/deepseek-v3.1-terminus": {
       "aliases": [],
       "base_url": null,
       "capabilities": {
@@ -1842,27 +907,22 @@
           "enabled": true
         }
       },
-      "cost": {
-        "cache_read": 0.095,
-        "input": 0.19,
-        "output": 0.87
-      },
+      "cost": null,
       "deprecated": false,
       "extra": {
         "attachment": false,
-        "family": "deepseek",
-        "open_weights": true,
-        "structured_output": true,
+        "open_weights": false,
+        "structured_output": false,
         "temperature": true
       },
       "family": null,
-      "id": "deepseek-ai/DeepSeek-V3-0324-TEE",
+      "id": "deepseek/deepseek-v3.1-terminus",
       "knowledge": null,
-      "last_updated": "2026-01-10",
+      "last_updated": "2025-09-22",
       "lifecycle": null,
       "limits": {
-        "context": 163840,
-        "output": 65536
+        "context": 128000,
+        "output": 32000
       },
       "modalities": {
         "input": [
@@ -1873,139 +933,15 @@
         ]
       },
       "model": null,
-      "name": "DeepSeek V3 0324 TEE",
+      "name": "DeepSeek/DeepSeek-V3.1-Terminus",
       "pricing": null,
-      "provider": "chutes",
+      "provider": "qiniu_ai",
       "provider_model_id": null,
-      "release_date": "2025-12-29",
+      "release_date": "2025-09-22",
       "retired": false,
       "tags": null
     },
-    "deepseek-ai/DeepSeek-V3.1-TEE": {
-      "aliases": [],
-      "base_url": null,
-      "capabilities": {
-        "chat": true,
-        "embeddings": false,
-        "json": {
-          "native": false,
-          "schema": false,
-          "strict": false
-        },
-        "reasoning": {
-          "enabled": true
-        },
-        "streaming": {
-          "tool_calls": true
-        },
-        "tools": {
-          "enabled": true
-        }
-      },
-      "cost": {
-        "input": 0.2,
-        "output": 0.8
-      },
-      "deprecated": false,
-      "extra": {
-        "attachment": false,
-        "family": "deepseek",
-        "interleaved": {
-          "field": "reasoning_content"
-        },
-        "open_weights": true,
-        "structured_output": true,
-        "temperature": true
-      },
-      "family": null,
-      "id": "deepseek-ai/DeepSeek-V3.1-TEE",
-      "knowledge": null,
-      "last_updated": "2026-01-10",
-      "lifecycle": null,
-      "limits": {
-        "context": 163840,
-        "output": 65536
-      },
-      "modalities": {
-        "input": [
-          "text"
-        ],
-        "output": [
-          "text"
-        ]
-      },
-      "model": null,
-      "name": "DeepSeek V3.1 TEE",
-      "pricing": null,
-      "provider": "chutes",
-      "provider_model_id": null,
-      "release_date": "2025-12-29",
-      "retired": false,
-      "tags": null
-    },
-    "deepseek-ai/DeepSeek-V3.1-Terminus-TEE": {
-      "aliases": [],
-      "base_url": null,
-      "capabilities": {
-        "chat": true,
-        "embeddings": false,
-        "json": {
-          "native": false,
-          "schema": false,
-          "strict": false
-        },
-        "reasoning": {
-          "enabled": true
-        },
-        "streaming": {
-          "tool_calls": true
-        },
-        "tools": {
-          "enabled": true
-        }
-      },
-      "cost": {
-        "input": 0.23,
-        "output": 0.9
-      },
-      "deprecated": false,
-      "extra": {
-        "attachment": false,
-        "family": "deepseek",
-        "interleaved": {
-          "field": "reasoning_content"
-        },
-        "open_weights": true,
-        "structured_output": true,
-        "temperature": true
-      },
-      "family": null,
-      "id": "deepseek-ai/DeepSeek-V3.1-Terminus-TEE",
-      "knowledge": null,
-      "last_updated": "2026-01-10",
-      "lifecycle": null,
-      "limits": {
-        "context": 163840,
-        "output": 65536
-      },
-      "modalities": {
-        "input": [
-          "text"
-        ],
-        "output": [
-          "text"
-        ]
-      },
-      "model": null,
-      "name": "DeepSeek V3.1 Terminus TEE",
-      "pricing": null,
-      "provider": "chutes",
-      "provider_model_id": null,
-      "release_date": "2025-12-29",
-      "retired": false,
-      "tags": null
-    },
-    "deepseek-ai/DeepSeek-V3.2-Speciale-TEE": {
+    "deepseek/deepseek-v3.1-terminus-thinking": {
       "aliases": [],
       "base_url": null,
       "capabilities": {
@@ -2030,134 +966,22 @@
           "strict": false
         }
       },
-      "cost": {
-        "input": 0.27,
-        "output": 0.41
-      },
+      "cost": null,
       "deprecated": false,
       "extra": {
         "attachment": false,
-        "family": "deepseek",
-        "interleaved": {
-          "field": "reasoning_content"
-        },
-        "open_weights": true,
-        "structured_output": true,
-        "temperature": true
-      },
-      "family": null,
-      "id": "deepseek-ai/DeepSeek-V3.2-Speciale-TEE",
-      "knowledge": null,
-      "last_updated": "2026-01-10",
-      "lifecycle": null,
-      "limits": {
-        "context": 163840,
-        "output": 65536
-      },
-      "modalities": {
-        "input": [
-          "text"
-        ],
-        "output": [
-          "text"
-        ]
-      },
-      "model": null,
-      "name": "DeepSeek V3.2 Speciale TEE",
-      "pricing": null,
-      "provider": "chutes",
-      "provider_model_id": null,
-      "release_date": "2025-12-29",
-      "retired": false,
-      "tags": null
-    },
-    "deepseek-ai/DeepSeek-V3.2-TEE": {
-      "aliases": [],
-      "base_url": null,
-      "capabilities": {
-        "chat": true,
-        "embeddings": false,
-        "json": {
-          "native": false,
-          "schema": false,
-          "strict": false
-        },
-        "reasoning": {
-          "enabled": true
-        },
-        "streaming": {
-          "tool_calls": true
-        },
-        "tools": {
-          "enabled": true
-        }
-      },
-      "cost": {
-        "cache_read": 0.125,
-        "input": 0.25,
-        "output": 0.38
-      },
-      "deprecated": false,
-      "extra": {
-        "attachment": false,
-        "family": "deepseek",
-        "interleaved": {
-          "field": "reasoning_content"
-        },
-        "open_weights": true,
-        "structured_output": true,
-        "temperature": true
-      },
-      "family": null,
-      "id": "deepseek-ai/DeepSeek-V3.2-TEE",
-      "knowledge": null,
-      "last_updated": "2026-01-10",
-      "lifecycle": null,
-      "limits": {
-        "context": 163840,
-        "output": 65536
-      },
-      "modalities": {
-        "input": [
-          "text"
-        ],
-        "output": [
-          "text"
-        ]
-      },
-      "model": null,
-      "name": "DeepSeek V3.2 TEE",
-      "pricing": null,
-      "provider": "chutes",
-      "provider_model_id": null,
-      "release_date": "2025-12-29",
-      "retired": false,
-      "tags": null
-    },
-    "miromind-ai/MiroThinker-v1.5-235B": {
-      "aliases": [],
-      "base_url": null,
-      "capabilities": null,
-      "cost": {
-        "cache_read": 0.15,
-        "input": 0.3,
-        "output": 1.2
-      },
-      "deprecated": false,
-      "extra": {
-        "attachment": false,
-        "open_weights": true,
+        "open_weights": false,
         "structured_output": false,
         "temperature": true
       },
       "family": null,
-      "id": "miromind-ai/MiroThinker-v1.5-235B",
+      "id": "deepseek/deepseek-v3.1-terminus-thinking",
       "knowledge": null,
-      "last_updated": "2026-01-10",
+      "last_updated": "2025-09-22",
       "lifecycle": null,
       "limits": {
-        "context": 262144,
-        "output": 8192
+        "context": 128000,
+        "output": 32000
       },
       "modalities": {
         "input": [
@@ -2168,15 +992,70 @@
         ]
       },
       "model": null,
-      "name": "MiroThinker V1.5 235B",
+      "name": "DeepSeek/DeepSeek-V3.1-Terminus-Thinking",
       "pricing": null,
-      "provider": "chutes",
+      "provider": "qiniu_ai",
       "provider_model_id": null,
-      "release_date": "2026-01-10",
+      "release_date": "2025-09-22",
       "retired": false,
       "tags": null
     },
-    "mistralai/Devstral-2-123B-Instruct-2512-TEE": {
+    "deepseek/deepseek-v3.2-251201": {
+      "aliases": [],
+      "base_url": null,
+      "capabilities": {
+        "chat": true,
+        "embeddings": false,
+        "json": {
+          "native": false,
+          "schema": false,
+          "strict": false
+        },
+        "reasoning": {
+          "enabled": true
+        },
+        "streaming": {
+          "tool_calls": true
+        },
+        "tools": {
+          "enabled": true
+        }
+      },
+      "cost": null,
+      "deprecated": false,
+      "extra": {
+        "attachment": false,
+        "open_weights": false,
+        "structured_output": false,
+        "temperature": true
+      },
+      "family": null,
+      "id": "deepseek/deepseek-v3.2-251201",
+      "knowledge": null,
+      "last_updated": "2025-12-01",
+      "lifecycle": null,
+      "limits": {
+        "context": 128000,
+        "output": 32000
+      },
+      "modalities": {
+        "input": [
+          "text"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "model": null,
+      "name": "Deepseek/DeepSeek-V3.2",
+      "pricing": null,
+      "provider": "qiniu_ai",
+      "provider_model_id": null,
+      "release_date": "2025-12-01",
+      "retired": false,
+      "tags": null
+    },
+    "deepseek/deepseek-v3.2-exp": {
       "aliases": [],
       "base_url": null,
       "capabilities": {
@@ -2197,25 +1076,22 @@
           "enabled": true
         }
       },
-      "cost": {
-        "input": 0.05,
-        "output": 0.22
-      },
+      "cost": null,
       "deprecated": false,
       "extra": {
         "attachment": false,
-        "open_weights": true,
-        "structured_output": true,
+        "open_weights": false,
+        "structured_output": false,
         "temperature": true
       },
       "family": null,
-      "id": "mistralai/Devstral-2-123B-Instruct-2512-TEE",
+      "id": "deepseek/deepseek-v3.2-exp",
       "knowledge": null,
-      "last_updated": "2026-01-10",
+      "last_updated": "2025-09-29",
       "lifecycle": null,
       "limits": {
-        "context": 262144,
-        "output": 65536
+        "context": 128000,
+        "output": 32000
       },
       "modalities": {
         "input": [
@@ -2226,15 +1102,74 @@
         ]
       },
       "model": null,
-      "name": "Devstral 2 123B Instruct 2512 TEE",
+      "name": "DeepSeek/DeepSeek-V3.2-Exp",
       "pricing": null,
-      "provider": "chutes",
+      "provider": "qiniu_ai",
       "provider_model_id": null,
-      "release_date": "2026-01-10",
+      "release_date": "2025-09-29",
       "retired": false,
       "tags": null
     },
-    "moonshotai/Kimi-K2-Instruct-0905": {
+    "deepseek/deepseek-v3.2-exp-thinking": {
+      "aliases": [],
+      "base_url": null,
+      "capabilities": {
+        "chat": true,
+        "embeddings": false,
+        "json": {
+          "native": false,
+          "schema": false,
+          "strict": false
+        },
+        "reasoning": {
+          "enabled": true
+        },
+        "streaming": {
+          "text": true,
+          "tool_calls": false
+        },
+        "tools": {
+          "enabled": false,
+          "parallel": false,
+          "streaming": false,
+          "strict": false
+        }
+      },
+      "cost": null,
+      "deprecated": false,
+      "extra": {
+        "attachment": false,
+        "open_weights": false,
+        "structured_output": false,
+        "temperature": true
+      },
+      "family": null,
+      "id": "deepseek/deepseek-v3.2-exp-thinking",
+      "knowledge": null,
+      "last_updated": "2025-09-29",
+      "lifecycle": null,
+      "limits": {
+        "context": 128000,
+        "output": 32000
+      },
+      "modalities": {
+        "input": [
+          "text"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "model": null,
+      "name": "DeepSeek/DeepSeek-V3.2-Exp-Thinking",
+      "pricing": null,
+      "provider": "qiniu_ai",
+      "provider_model_id": null,
+      "release_date": "2025-09-29",
+      "retired": false,
+      "tags": null
+    },
+    "doubao-1.5-pro-32k": {
       "aliases": [],
       "base_url": null,
       "capabilities": {
@@ -2255,27 +1190,22 @@
           "enabled": true
         }
       },
-      "cost": {
-        "cache_read": 0.195,
-        "input": 0.39,
-        "output": 1.9
-      },
+      "cost": null,
       "deprecated": false,
       "extra": {
         "attachment": false,
-        "family": "kimi",
-        "open_weights": true,
-        "structured_output": true,
+        "open_weights": false,
+        "structured_output": false,
         "temperature": true
       },
       "family": null,
-      "id": "moonshotai/Kimi-K2-Instruct-0905",
+      "id": "doubao-1.5-pro-32k",
       "knowledge": null,
-      "last_updated": "2026-01-10",
+      "last_updated": "2025-08-05",
       "lifecycle": null,
       "limits": {
-        "context": 262144,
-        "output": 262144
+        "context": 128000,
+        "output": 12000
       },
       "modalities": {
         "input": [
@@ -2286,15 +1216,15 @@
         ]
       },
       "model": null,
-      "name": "Kimi K2 Instruct 0905",
+      "name": "Doubao 1.5 Pro 32k",
       "pricing": null,
-      "provider": "chutes",
+      "provider": "qiniu_ai",
       "provider_model_id": null,
-      "release_date": "2025-12-29",
+      "release_date": "2025-08-05",
       "retired": false,
       "tags": null
     },
-    "moonshotai/Kimi-K2-Thinking-TEE": {
+    "doubao-1.5-thinking-pro": {
       "aliases": [],
       "base_url": null,
       "capabilities": {
@@ -2315,29 +1245,22 @@
           "enabled": true
         }
       },
-      "cost": {
-        "input": 0.4,
-        "output": 1.75
-      },
+      "cost": null,
       "deprecated": false,
       "extra": {
         "attachment": false,
-        "family": "kimi-thinking",
-        "interleaved": {
-          "field": "reasoning_content"
-        },
-        "open_weights": true,
-        "structured_output": true,
+        "open_weights": false,
+        "structured_output": false,
         "temperature": true
       },
       "family": null,
-      "id": "moonshotai/Kimi-K2-Thinking-TEE",
+      "id": "doubao-1.5-thinking-pro",
       "knowledge": null,
-      "last_updated": "2026-01-10",
+      "last_updated": "2025-08-05",
       "lifecycle": null,
       "limits": {
-        "context": 262144,
-        "output": 65535
+        "context": 128000,
+        "output": 16000
       },
       "modalities": {
         "input": [
@@ -2348,58 +1271,34 @@
         ]
       },
       "model": null,
-      "name": "Kimi K2 Thinking TEE",
+      "name": "Doubao 1.5 Thinking Pro",
       "pricing": null,
-      "provider": "chutes",
+      "provider": "qiniu_ai",
       "provider_model_id": null,
-      "release_date": "2025-12-29",
+      "release_date": "2025-08-05",
       "retired": false,
       "tags": null
     },
-    "moonshotai/Kimi-K2.5-TEE": {
+    "doubao-1.5-vision-pro": {
       "aliases": [],
       "base_url": null,
-      "capabilities": {
-        "chat": true,
-        "embeddings": false,
-        "json": {
-          "native": false,
-          "schema": false,
-          "strict": false
-        },
-        "reasoning": {
-          "enabled": true
-        },
-        "streaming": {
-          "tool_calls": true
-        },
-        "tools": {
-          "enabled": true
-        }
-      },
-      "cost": {
-        "input": 0.6,
-        "output": 3
-      },
+      "capabilities": null,
+      "cost": null,
       "deprecated": false,
       "extra": {
-        "attachment": false,
-        "family": "kimi",
-        "interleaved": {
-          "field": "reasoning_content"
-        },
-        "open_weights": true,
-        "structured_output": true,
+        "attachment": true,
+        "open_weights": false,
+        "structured_output": false,
         "temperature": true
       },
       "family": null,
-      "id": "moonshotai/Kimi-K2.5-TEE",
-      "knowledge": "2024-10",
-      "last_updated": "2026-01-27",
+      "id": "doubao-1.5-vision-pro",
+      "knowledge": null,
+      "last_updated": "2025-08-05",
       "lifecycle": null,
       "limits": {
-        "context": 262144,
-        "output": 65535
+        "context": 128000,
+        "output": 16000
       },
       "modalities": {
         "input": [
@@ -2412,15 +1311,186 @@
         ]
       },
       "model": null,
-      "name": "Kimi K2.5 TEE",
+      "name": "Doubao 1.5 Vision Pro",
       "pricing": null,
-      "provider": "chutes",
+      "provider": "qiniu_ai",
       "provider_model_id": null,
-      "release_date": "2026-01-27",
+      "release_date": "2025-08-05",
       "retired": false,
       "tags": null
     },
-    "nvidia/NVIDIA-Nemotron-3-Nano-30B-A3B-BF16": {
+    "doubao-seed-1.6": {
+      "aliases": [],
+      "base_url": null,
+      "capabilities": {
+        "chat": true,
+        "embeddings": false,
+        "json": {
+          "native": false,
+          "schema": false,
+          "strict": false
+        },
+        "reasoning": {
+          "enabled": true
+        },
+        "streaming": {
+          "tool_calls": true
+        },
+        "tools": {
+          "enabled": true
+        }
+      },
+      "cost": null,
+      "deprecated": false,
+      "extra": {
+        "attachment": true,
+        "open_weights": false,
+        "structured_output": false,
+        "temperature": true
+      },
+      "family": null,
+      "id": "doubao-seed-1.6",
+      "knowledge": null,
+      "last_updated": "2025-08-15",
+      "lifecycle": null,
+      "limits": {
+        "context": 256000,
+        "output": 32000
+      },
+      "modalities": {
+        "input": [
+          "text",
+          "image",
+          "video"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "model": null,
+      "name": "Doubao-Seed 1.6",
+      "pricing": null,
+      "provider": "qiniu_ai",
+      "provider_model_id": null,
+      "release_date": "2025-08-15",
+      "retired": false,
+      "tags": null
+    },
+    "doubao-seed-1.6-flash": {
+      "aliases": [],
+      "base_url": null,
+      "capabilities": {
+        "chat": true,
+        "embeddings": false,
+        "json": {
+          "native": false,
+          "schema": false,
+          "strict": false
+        },
+        "reasoning": {
+          "enabled": true
+        },
+        "streaming": {
+          "tool_calls": true
+        },
+        "tools": {
+          "enabled": true
+        }
+      },
+      "cost": null,
+      "deprecated": false,
+      "extra": {
+        "attachment": true,
+        "open_weights": false,
+        "structured_output": false,
+        "temperature": true
+      },
+      "family": null,
+      "id": "doubao-seed-1.6-flash",
+      "knowledge": null,
+      "last_updated": "2025-08-15",
+      "lifecycle": null,
+      "limits": {
+        "context": 256000,
+        "output": 32000
+      },
+      "modalities": {
+        "input": [
+          "text",
+          "image",
+          "video"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "model": null,
+      "name": "Doubao-Seed 1.6 Flash",
+      "pricing": null,
+      "provider": "qiniu_ai",
+      "provider_model_id": null,
+      "release_date": "2025-08-15",
+      "retired": false,
+      "tags": null
+    },
+    "doubao-seed-1.6-thinking": {
+      "aliases": [],
+      "base_url": null,
+      "capabilities": {
+        "chat": true,
+        "embeddings": false,
+        "json": {
+          "native": false,
+          "schema": false,
+          "strict": false
+        },
+        "reasoning": {
+          "enabled": true
+        },
+        "streaming": {
+          "tool_calls": true
+        },
+        "tools": {
+          "enabled": true
+        }
+      },
+      "cost": null,
+      "deprecated": false,
+      "extra": {
+        "attachment": true,
+        "open_weights": false,
+        "structured_output": false,
+        "temperature": true
+      },
+      "family": null,
+      "id": "doubao-seed-1.6-thinking",
+      "knowledge": null,
+      "last_updated": "2025-08-15",
+      "lifecycle": null,
+      "limits": {
+        "context": 256000,
+        "output": 32000
+      },
+      "modalities": {
+        "input": [
+          "image",
+          "text",
+          "video"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "model": null,
+      "name": "Doubao-Seed 1.6 Thinking",
+      "pricing": null,
+      "provider": "qiniu_ai",
+      "provider_model_id": null,
+      "release_date": "2025-08-15",
+      "retired": false,
+      "tags": null
+    },
+    "gemini-2.0-flash": {
       "aliases": [],
       "base_url": null,
       "capabilities": {
@@ -2441,480 +1511,175 @@
           "enabled": true
         }
       },
-      "cost": {
-        "input": 0.06,
-        "output": 0.24
-      },
+      "cost": null,
       "deprecated": false,
       "extra": {
-        "attachment": false,
-        "family": "nemotron",
-        "open_weights": true,
-        "structured_output": true,
-        "temperature": true
-      },
-      "family": null,
-      "id": "nvidia/NVIDIA-Nemotron-3-Nano-30B-A3B-BF16",
-      "knowledge": null,
-      "last_updated": "2026-01-10",
-      "lifecycle": null,
-      "limits": {
-        "context": 262144,
-        "output": 262144
-      },
-      "modalities": {
-        "input": [
-          "text"
-        ],
-        "output": [
-          "text"
-        ]
-      },
-      "model": null,
-      "name": "NVIDIA Nemotron 3 Nano 30B A3B BF16",
-      "pricing": null,
-      "provider": "chutes",
-      "provider_model_id": null,
-      "release_date": "2025-12-29",
-      "retired": false,
-      "tags": null
-    },
-    "openai/gpt-oss-120b-TEE": {
-      "aliases": [],
-      "base_url": null,
-      "capabilities": {
-        "chat": true,
-        "embeddings": false,
-        "json": {
-          "native": false,
-          "schema": false,
-          "strict": false
-        },
-        "reasoning": {
-          "enabled": true
-        },
-        "streaming": {
-          "tool_calls": true
-        },
-        "tools": {
-          "enabled": true
-        }
-      },
-      "cost": {
-        "input": 0.04,
-        "output": 0.18
-      },
-      "deprecated": false,
-      "extra": {
-        "attachment": false,
-        "family": "gpt-oss",
-        "interleaved": {
-          "field": "reasoning_content"
-        },
-        "open_weights": true,
-        "structured_output": true,
-        "temperature": true
-      },
-      "family": null,
-      "id": "openai/gpt-oss-120b-TEE",
-      "knowledge": null,
-      "last_updated": "2026-01-10",
-      "lifecycle": null,
-      "limits": {
-        "context": 131072,
-        "output": 65536
-      },
-      "modalities": {
-        "input": [
-          "text"
-        ],
-        "output": [
-          "text"
-        ]
-      },
-      "model": null,
-      "name": "gpt oss 120b TEE",
-      "pricing": null,
-      "provider": "chutes",
-      "provider_model_id": null,
-      "release_date": "2025-12-29",
-      "retired": false,
-      "tags": null
-    },
-    "openai/gpt-oss-20b": {
-      "aliases": [],
-      "base_url": null,
-      "capabilities": {
-        "chat": true,
-        "embeddings": false,
-        "json": {
-          "native": false,
-          "schema": false,
-          "strict": false
-        },
-        "reasoning": {
-          "enabled": true
-        },
-        "streaming": {
-          "tool_calls": true
-        },
-        "tools": {
-          "enabled": true
-        }
-      },
-      "cost": {
-        "input": 0.02,
-        "output": 0.1
-      },
-      "deprecated": false,
-      "extra": {
-        "attachment": false,
-        "family": "gpt-oss",
-        "interleaved": {
-          "field": "reasoning_content"
-        },
-        "open_weights": true,
-        "structured_output": true,
-        "temperature": true
-      },
-      "family": null,
-      "id": "openai/gpt-oss-20b",
-      "knowledge": null,
-      "last_updated": "2026-01-10",
-      "lifecycle": null,
-      "limits": {
-        "context": 131072,
-        "output": 131072
-      },
-      "modalities": {
-        "input": [
-          "text"
-        ],
-        "output": [
-          "text"
-        ]
-      },
-      "model": null,
-      "name": "gpt oss 20b",
-      "pricing": null,
-      "provider": "chutes",
-      "provider_model_id": null,
-      "release_date": "2025-12-29",
-      "retired": false,
-      "tags": null
-    },
-    "rednote-hilab/dots.ocr": {
-      "aliases": [],
-      "base_url": null,
-      "capabilities": null,
-      "cost": {
-        "cache_read": 0.005,
-        "input": 0.01,
-        "output": 0.01
-      },
-      "deprecated": false,
-      "extra": {
-        "attachment": false,
-        "family": "rednote",
-        "open_weights": true,
-        "structured_output": true,
-        "temperature": true
-      },
-      "family": null,
-      "id": "rednote-hilab/dots.ocr",
-      "knowledge": null,
-      "last_updated": "2026-01-10",
-      "lifecycle": null,
-      "limits": {
-        "context": 131072,
-        "output": 131072
-      },
-      "modalities": {
-        "input": [
-          "text",
-          "image"
-        ],
-        "output": [
-          "text"
-        ]
-      },
-      "model": null,
-      "name": "dots.ocr",
-      "pricing": null,
-      "provider": "chutes",
-      "provider_model_id": null,
-      "release_date": "2025-12-29",
-      "retired": false,
-      "tags": null
-    },
-    "tngtech/DeepSeek-R1T-Chimera": {
-      "aliases": [],
-      "base_url": null,
-      "capabilities": {
-        "chat": true,
-        "embeddings": false,
-        "json": {
-          "native": false,
-          "schema": false,
-          "strict": false
-        },
-        "reasoning": {
-          "enabled": true
-        },
-        "streaming": {
-          "text": true,
-          "tool_calls": false
-        },
-        "tools": {
-          "enabled": false,
-          "parallel": false,
-          "streaming": false,
-          "strict": false
-        }
-      },
-      "cost": {
-        "input": 0.3,
-        "output": 1.2
-      },
-      "deprecated": false,
-      "extra": {
-        "attachment": false,
-        "family": "tngtech",
-        "interleaved": {
-          "field": "reasoning_content"
-        },
-        "open_weights": true,
-        "structured_output": true,
-        "temperature": true
-      },
-      "family": null,
-      "id": "tngtech/DeepSeek-R1T-Chimera",
-      "knowledge": null,
-      "last_updated": "2026-01-10",
-      "lifecycle": null,
-      "limits": {
-        "context": 163840,
-        "output": 163840
-      },
-      "modalities": {
-        "input": [
-          "text"
-        ],
-        "output": [
-          "text"
-        ]
-      },
-      "model": null,
-      "name": "DeepSeek R1T Chimera",
-      "pricing": null,
-      "provider": "chutes",
-      "provider_model_id": null,
-      "release_date": "2025-12-29",
-      "retired": false,
-      "tags": null
-    },
-    "tngtech/DeepSeek-TNG-R1T2-Chimera": {
-      "aliases": [],
-      "base_url": null,
-      "capabilities": {
-        "chat": true,
-        "embeddings": false,
-        "json": {
-          "native": false,
-          "schema": false,
-          "strict": false
-        },
-        "reasoning": {
-          "enabled": true
-        },
-        "streaming": {
-          "tool_calls": true
-        },
-        "tools": {
-          "enabled": true
-        }
-      },
-      "cost": {
-        "input": 0.25,
-        "output": 0.85
-      },
-      "deprecated": false,
-      "extra": {
-        "attachment": false,
-        "family": "tngtech",
-        "interleaved": {
-          "field": "reasoning_content"
-        },
-        "open_weights": true,
-        "structured_output": true,
-        "temperature": true
-      },
-      "family": null,
-      "id": "tngtech/DeepSeek-TNG-R1T2-Chimera",
-      "knowledge": null,
-      "last_updated": "2026-01-10",
-      "lifecycle": null,
-      "limits": {
-        "context": 163840,
-        "output": 163840
-      },
-      "modalities": {
-        "input": [
-          "text"
-        ],
-        "output": [
-          "text"
-        ]
-      },
-      "model": null,
-      "name": "DeepSeek TNG R1T2 Chimera",
-      "pricing": null,
-      "provider": "chutes",
-      "provider_model_id": null,
-      "release_date": "2025-12-29",
-      "retired": false,
-      "tags": null
-    },
-    "tngtech/TNG-R1T-Chimera-TEE": {
-      "aliases": [],
-      "base_url": null,
-      "capabilities": {
-        "chat": true,
-        "embeddings": false,
-        "json": {
-          "native": false,
-          "schema": false,
-          "strict": false
-        },
-        "reasoning": {
-          "enabled": true
-        },
-        "streaming": {
-          "tool_calls": true
-        },
-        "tools": {
-          "enabled": true
-        }
-      },
-      "cost": {
-        "input": 0.25,
-        "output": 0.85
-      },
-      "deprecated": false,
-      "extra": {
-        "attachment": false,
-        "family": "tngtech",
-        "interleaved": {
-          "field": "reasoning_content"
-        },
-        "open_weights": true,
-        "structured_output": true,
-        "temperature": true
-      },
-      "family": null,
-      "id": "tngtech/TNG-R1T-Chimera-TEE",
-      "knowledge": null,
-      "last_updated": "2026-01-10",
-      "lifecycle": null,
-      "limits": {
-        "context": 163840,
-        "output": 65536
-      },
-      "modalities": {
-        "input": [
-          "text"
-        ],
-        "output": [
-          "text"
-        ]
-      },
-      "model": null,
-      "name": "TNG R1T Chimera TEE",
-      "pricing": null,
-      "provider": "chutes",
-      "provider_model_id": null,
-      "release_date": "2025-12-29",
-      "retired": false,
-      "tags": null
-    },
-    "tngtech/TNG-R1T-Chimera-Turbo": {
-      "aliases": [],
-      "base_url": null,
-      "capabilities": {
-        "chat": true,
-        "embeddings": false,
-        "json": {
-          "native": false,
-          "schema": false,
-          "strict": false
-        },
-        "reasoning": {
-          "enabled": true
-        },
-        "streaming": {
-          "tool_calls": true
-        },
-        "tools": {
-          "enabled": true
-        }
-      },
-      "cost": {
-        "input": 0.22,
-        "output": 0.6
-      },
-      "deprecated": false,
-      "extra": {
-        "attachment": false,
-        "open_weights": true,
-        "structured_output": true,
-        "temperature": true
-      },
-      "family": null,
-      "id": "tngtech/TNG-R1T-Chimera-Turbo",
-      "knowledge": null,
-      "last_updated": "2026-01-27",
-      "lifecycle": null,
-      "limits": {
-        "context": 163840,
-        "output": 65536
-      },
-      "modalities": {
-        "input": [
-          "text"
-        ],
-        "output": [
-          "text"
-        ]
-      },
-      "model": null,
-      "name": "TNG R1T Chimera Turbo",
-      "pricing": null,
-      "provider": "chutes",
-      "provider_model_id": null,
-      "release_date": "2026-01-27",
-      "retired": false,
-      "tags": null
-    },
-    "unsloth/Llama-3.2-1B-Instruct": {
-      "aliases": [],
-      "base_url": null,
-      "capabilities": null,
-      "cost": {
-        "cache_read": 0.005,
-        "input": 0.01,
-        "output": 0.01
-      },
-      "deprecated": false,
-      "extra": {
-        "attachment": false,
-        "open_weights": true,
+        "attachment": true,
+        "open_weights": false,
         "structured_output": false,
         "temperature": true
       },
       "family": null,
-      "id": "unsloth/Llama-3.2-1B-Instruct",
+      "id": "gemini-2.0-flash",
       "knowledge": null,
-      "last_updated": "2026-01-27",
+      "last_updated": "2025-08-05",
+      "lifecycle": null,
+      "limits": {
+        "context": 1048576,
+        "output": 8192
+      },
+      "modalities": {
+        "input": [
+          "text",
+          "image",
+          "audio",
+          "video"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "model": null,
+      "name": "Gemini 2.0 Flash",
+      "pricing": null,
+      "provider": "qiniu_ai",
+      "provider_model_id": null,
+      "release_date": "2025-08-05",
+      "retired": false,
+      "tags": null
+    },
+    "gemini-2.0-flash-lite": {
+      "aliases": [],
+      "base_url": null,
+      "capabilities": {
+        "chat": true,
+        "embeddings": false,
+        "json": {
+          "native": false,
+          "schema": false,
+          "strict": false
+        },
+        "reasoning": {
+          "enabled": true
+        },
+        "streaming": {
+          "tool_calls": true
+        },
+        "tools": {
+          "enabled": true
+        }
+      },
+      "cost": null,
+      "deprecated": false,
+      "extra": {
+        "attachment": true,
+        "open_weights": false,
+        "structured_output": false,
+        "temperature": true
+      },
+      "family": null,
+      "id": "gemini-2.0-flash-lite",
+      "knowledge": null,
+      "last_updated": "2025-08-05",
+      "lifecycle": null,
+      "limits": {
+        "context": 1048576,
+        "output": 8192
+      },
+      "modalities": {
+        "input": [
+          "text",
+          "image",
+          "audio",
+          "video"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "model": null,
+      "name": "Gemini 2.0 Flash Lite",
+      "pricing": null,
+      "provider": "qiniu_ai",
+      "provider_model_id": null,
+      "release_date": "2025-08-05",
+      "retired": false,
+      "tags": null
+    },
+    "gemini-2.5-flash": {
+      "aliases": [],
+      "base_url": null,
+      "capabilities": {
+        "chat": true,
+        "embeddings": false,
+        "json": {
+          "native": false,
+          "schema": false,
+          "strict": false
+        },
+        "reasoning": {
+          "enabled": true
+        },
+        "streaming": {
+          "tool_calls": true
+        },
+        "tools": {
+          "enabled": true
+        }
+      },
+      "cost": null,
+      "deprecated": false,
+      "extra": {
+        "attachment": true,
+        "open_weights": false,
+        "structured_output": false,
+        "temperature": true
+      },
+      "family": null,
+      "id": "gemini-2.5-flash",
+      "knowledge": null,
+      "last_updated": "2025-08-05",
+      "lifecycle": null,
+      "limits": {
+        "context": 1048576,
+        "output": 64000
+      },
+      "modalities": {
+        "input": [
+          "text",
+          "image",
+          "audio",
+          "video"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "model": null,
+      "name": "Gemini 2.5 Flash",
+      "pricing": null,
+      "provider": "qiniu_ai",
+      "provider_model_id": null,
+      "release_date": "2025-08-05",
+      "retired": false,
+      "tags": null
+    },
+    "gemini-2.5-flash-image": {
+      "aliases": [],
+      "base_url": null,
+      "capabilities": null,
+      "cost": null,
+      "deprecated": false,
+      "extra": {
+        "attachment": true,
+        "open_weights": false,
+        "structured_output": false,
+        "temperature": true
+      },
+      "family": null,
+      "id": "gemini-2.5-flash-image",
+      "knowledge": null,
+      "last_updated": "2025-10-22",
       "lifecycle": null,
       "limits": {
         "context": 32768,
@@ -2922,108 +1687,81 @@
       },
       "modalities": {
         "input": [
-          "text"
+          "text",
+          "image"
         ],
         "output": [
-          "text"
+          "image"
         ]
       },
       "model": null,
-      "name": "Llama 3.2 1B Instruct",
+      "name": "Gemini 2.5 Flash Image",
       "pricing": null,
-      "provider": "chutes",
+      "provider": "qiniu_ai",
       "provider_model_id": null,
-      "release_date": "2026-01-27",
+      "release_date": "2025-10-22",
       "retired": false,
       "tags": null
     },
-    "unsloth/Llama-3.2-3B-Instruct": {
+    "gemini-2.5-flash-lite": {
       "aliases": [],
       "base_url": null,
-      "capabilities": null,
-      "cost": {
-        "cache_read": 0.005,
-        "input": 0.01,
-        "output": 0.01
+      "capabilities": {
+        "chat": true,
+        "embeddings": false,
+        "json": {
+          "native": false,
+          "schema": false,
+          "strict": false
+        },
+        "reasoning": {
+          "enabled": false
+        },
+        "streaming": {
+          "tool_calls": true
+        },
+        "tools": {
+          "enabled": true
+        }
       },
+      "cost": null,
       "deprecated": false,
       "extra": {
-        "attachment": false,
-        "family": "unsloth",
-        "open_weights": true,
+        "attachment": true,
+        "open_weights": false,
         "structured_output": false,
         "temperature": true
       },
       "family": null,
-      "id": "unsloth/Llama-3.2-3B-Instruct",
+      "id": "gemini-2.5-flash-lite",
       "knowledge": null,
-      "last_updated": "2025-02-12",
+      "last_updated": "2025-08-05",
       "lifecycle": null,
       "limits": {
-        "context": 16384,
-        "output": 16384
+        "context": 1048576,
+        "output": 64000
       },
       "modalities": {
         "input": [
-          "text"
+          "text",
+          "image",
+          "audio",
+          "video"
         ],
         "output": [
           "text"
         ]
       },
       "model": null,
-      "name": "Llama 3.2 3B Instruct",
+      "name": "Gemini 2.5 Flash Lite",
       "pricing": null,
-      "provider": "chutes",
+      "provider": "qiniu_ai",
       "provider_model_id": null,
-      "release_date": "2025-02-12",
+      "release_date": "2025-08-05",
       "retired": false,
       "tags": null
     },
-    "unsloth/Mistral-Nemo-Instruct-2407": {
-      "aliases": [],
-      "base_url": null,
-      "capabilities": null,
-      "cost": {
-        "cache_read": 0.01,
-        "input": 0.02,
-        "output": 0.04
-      },
-      "deprecated": false,
-      "extra": {
-        "attachment": false,
-        "family": "unsloth",
-        "open_weights": true,
-        "structured_output": true,
-        "temperature": true
-      },
-      "family": null,
-      "id": "unsloth/Mistral-Nemo-Instruct-2407",
-      "knowledge": null,
-      "last_updated": "2026-01-10",
-      "lifecycle": null,
-      "limits": {
-        "context": 131072,
-        "output": 131072
-      },
-      "modalities": {
-        "input": [
-          "text"
-        ],
-        "output": [
-          "text"
-        ]
-      },
-      "model": null,
-      "name": "Mistral Nemo Instruct 2407",
-      "pricing": null,
-      "provider": "chutes",
-      "provider_model_id": null,
-      "release_date": "2025-12-29",
-      "retired": false,
-      "tags": null
-    },
-    "unsloth/Mistral-Small-24B-Instruct-2501": {
+    "gemini-2.5-pro": {
       "aliases": [],
       "base_url": null,
       "capabilities": {
@@ -3035,7 +1773,7 @@
           "strict": false
         },
         "reasoning": {
-          "enabled": false
+          "enabled": true
         },
         "streaming": {
           "tool_calls": true
@@ -3044,193 +1782,44 @@
           "enabled": true
         }
       },
-      "cost": {
-        "input": 0.03,
-        "output": 0.11
-      },
+      "cost": null,
       "deprecated": false,
       "extra": {
-        "attachment": false,
-        "family": "unsloth",
-        "open_weights": true,
-        "structured_output": true,
+        "attachment": true,
+        "open_weights": false,
+        "structured_output": false,
         "temperature": true
       },
       "family": null,
-      "id": "unsloth/Mistral-Small-24B-Instruct-2501",
+      "id": "gemini-2.5-pro",
       "knowledge": null,
-      "last_updated": "2026-01-10",
+      "last_updated": "2025-08-05",
       "lifecycle": null,
       "limits": {
-        "context": 32768,
-        "output": 32768
-      },
-      "modalities": {
-        "input": [
-          "text",
-          "image"
-        ],
-        "output": [
-          "text"
-        ]
-      },
-      "model": null,
-      "name": "Mistral Small 24B Instruct 2501",
-      "pricing": null,
-      "provider": "chutes",
-      "provider_model_id": null,
-      "release_date": "2025-12-29",
-      "retired": false,
-      "tags": null
-    },
-    "unsloth/gemma-3-12b-it": {
-      "aliases": [],
-      "base_url": null,
-      "capabilities": null,
-      "cost": {
-        "input": 0.03,
-        "output": 0.1
-      },
-      "deprecated": false,
-      "extra": {
-        "attachment": false,
-        "family": "unsloth",
-        "open_weights": true,
-        "structured_output": true,
-        "temperature": true
-      },
-      "family": null,
-      "id": "unsloth/gemma-3-12b-it",
-      "knowledge": null,
-      "last_updated": "2026-01-10",
-      "lifecycle": null,
-      "limits": {
-        "context": 131072,
-        "output": 131072
-      },
-      "modalities": {
-        "input": [
-          "text",
-          "image"
-        ],
-        "output": [
-          "text"
-        ]
-      },
-      "model": null,
-      "name": "gemma 3 12b it",
-      "pricing": null,
-      "provider": "chutes",
-      "provider_model_id": null,
-      "release_date": "2025-12-29",
-      "retired": false,
-      "tags": null
-    },
-    "unsloth/gemma-3-27b-it": {
-      "aliases": [],
-      "base_url": null,
-      "capabilities": {
-        "chat": true,
-        "embeddings": false,
-        "json": {
-          "native": false,
-          "schema": false,
-          "strict": false
-        },
-        "reasoning": {
-          "enabled": false
-        },
-        "streaming": {
-          "tool_calls": true
-        },
-        "tools": {
-          "enabled": true
-        }
-      },
-      "cost": {
-        "cache_read": 0.02,
-        "input": 0.04,
-        "output": 0.15
-      },
-      "deprecated": false,
-      "extra": {
-        "attachment": false,
-        "family": "unsloth",
-        "open_weights": true,
-        "structured_output": true,
-        "temperature": true
-      },
-      "family": null,
-      "id": "unsloth/gemma-3-27b-it",
-      "knowledge": null,
-      "last_updated": "2026-01-10",
-      "lifecycle": null,
-      "limits": {
-        "context": 128000,
+        "context": 1048576,
         "output": 65536
       },
       "modalities": {
         "input": [
           "text",
-          "image"
+          "image",
+          "video",
+          "audio"
         ],
         "output": [
           "text"
         ]
       },
       "model": null,
-      "name": "gemma 3 27b it",
+      "name": "Gemini 2.5 Pro",
       "pricing": null,
-      "provider": "chutes",
+      "provider": "qiniu_ai",
       "provider_model_id": null,
-      "release_date": "2025-12-29",
+      "release_date": "2025-08-05",
       "retired": false,
       "tags": null
     },
-    "unsloth/gemma-3-4b-it": {
-      "aliases": [],
-      "base_url": null,
-      "capabilities": null,
-      "cost": {
-        "input": 0.01,
-        "output": 0.03
-      },
-      "deprecated": false,
-      "extra": {
-        "attachment": false,
-        "family": "unsloth",
-        "open_weights": true,
-        "structured_output": true,
-        "temperature": true
-      },
-      "family": null,
-      "id": "unsloth/gemma-3-4b-it",
-      "knowledge": null,
-      "last_updated": "2026-01-10",
-      "lifecycle": null,
-      "limits": {
-        "context": 96000,
-        "output": 96000
-      },
-      "modalities": {
-        "input": [
-          "text",
-          "image"
-        ],
-        "output": [
-          "text"
-        ]
-      },
-      "model": null,
-      "name": "gemma 3 4b it",
-      "pricing": null,
-      "provider": "chutes",
-      "provider_model_id": null,
-      "release_date": "2025-12-29",
-      "retired": false,
-      "tags": null
-    },
-    "zai-org/GLM-4.5-Air": {
+    "gemini-3.0-flash-preview": {
       "aliases": [],
       "base_url": null,
       "capabilities": {
@@ -3251,29 +1840,235 @@
           "enabled": true
         }
       },
-      "cost": {
-        "input": 0.05,
-        "output": 0.22
-      },
+      "cost": null,
       "deprecated": false,
       "extra": {
-        "attachment": false,
-        "family": "glm",
-        "interleaved": {
-          "field": "reasoning_content"
-        },
-        "open_weights": true,
-        "structured_output": true,
+        "attachment": true,
+        "open_weights": false,
+        "structured_output": false,
         "temperature": true
       },
       "family": null,
-      "id": "zai-org/GLM-4.5-Air",
+      "id": "gemini-3.0-flash-preview",
       "knowledge": null,
-      "last_updated": "2026-01-10",
+      "last_updated": "2025-12-18",
+      "lifecycle": null,
+      "limits": {
+        "context": 1000000,
+        "output": 64000
+      },
+      "modalities": {
+        "input": [
+          "text",
+          "image",
+          "audio",
+          "video",
+          "pdf"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "model": null,
+      "name": "Gemini 3.0 Flash Preview",
+      "pricing": null,
+      "provider": "qiniu_ai",
+      "provider_model_id": null,
+      "release_date": "2025-12-18",
+      "retired": false,
+      "tags": null
+    },
+    "gemini-3.0-pro-image-preview": {
+      "aliases": [],
+      "base_url": null,
+      "capabilities": null,
+      "cost": null,
+      "deprecated": false,
+      "extra": {
+        "attachment": true,
+        "open_weights": false,
+        "structured_output": false,
+        "temperature": true
+      },
+      "family": null,
+      "id": "gemini-3.0-pro-image-preview",
+      "knowledge": null,
+      "last_updated": "2025-11-20",
+      "lifecycle": null,
+      "limits": {
+        "context": 32768,
+        "output": 8192
+      },
+      "modalities": {
+        "input": [
+          "text",
+          "image"
+        ],
+        "output": [
+          "text",
+          "image"
+        ]
+      },
+      "model": null,
+      "name": "Gemini 3.0 Pro Image Preview",
+      "pricing": null,
+      "provider": "qiniu_ai",
+      "provider_model_id": null,
+      "release_date": "2025-11-20",
+      "retired": false,
+      "tags": null
+    },
+    "gemini-3.0-pro-preview": {
+      "aliases": [],
+      "base_url": null,
+      "capabilities": {
+        "chat": true,
+        "embeddings": false,
+        "json": {
+          "native": false,
+          "schema": false,
+          "strict": false
+        },
+        "reasoning": {
+          "enabled": true
+        },
+        "streaming": {
+          "tool_calls": true
+        },
+        "tools": {
+          "enabled": true
+        }
+      },
+      "cost": null,
+      "deprecated": false,
+      "extra": {
+        "attachment": true,
+        "open_weights": false,
+        "structured_output": false,
+        "temperature": true
+      },
+      "family": null,
+      "id": "gemini-3.0-pro-preview",
+      "knowledge": null,
+      "last_updated": "2025-11-19",
+      "lifecycle": null,
+      "limits": {
+        "context": 1000000,
+        "output": 64000
+      },
+      "modalities": {
+        "input": [
+          "text",
+          "image",
+          "video",
+          "pdf",
+          "audio"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "model": null,
+      "name": "Gemini 3.0 Pro Preview",
+      "pricing": null,
+      "provider": "qiniu_ai",
+      "provider_model_id": null,
+      "release_date": "2025-11-19",
+      "retired": false,
+      "tags": null
+    },
+    "glm-4.5": {
+      "aliases": [],
+      "base_url": null,
+      "capabilities": {
+        "chat": true,
+        "embeddings": false,
+        "json": {
+          "native": false,
+          "schema": false,
+          "strict": false
+        },
+        "reasoning": {
+          "enabled": true
+        },
+        "streaming": {
+          "tool_calls": true
+        },
+        "tools": {
+          "enabled": true
+        }
+      },
+      "cost": null,
+      "deprecated": false,
+      "extra": {
+        "attachment": false,
+        "open_weights": false,
+        "structured_output": false,
+        "temperature": true
+      },
+      "family": null,
+      "id": "glm-4.5",
+      "knowledge": null,
+      "last_updated": "2025-08-05",
       "lifecycle": null,
       "limits": {
         "context": 131072,
-        "output": 131072
+        "output": 98304
+      },
+      "modalities": {
+        "input": [
+          "text"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "model": null,
+      "name": "GLM 4.5",
+      "pricing": null,
+      "provider": "qiniu_ai",
+      "provider_model_id": null,
+      "release_date": "2025-08-05",
+      "retired": false,
+      "tags": null
+    },
+    "glm-4.5-air": {
+      "aliases": [],
+      "base_url": null,
+      "capabilities": {
+        "chat": true,
+        "embeddings": false,
+        "json": {
+          "native": false,
+          "schema": false,
+          "strict": false
+        },
+        "reasoning": {
+          "enabled": true
+        },
+        "streaming": {
+          "tool_calls": true
+        },
+        "tools": {
+          "enabled": true
+        }
+      },
+      "cost": null,
+      "deprecated": false,
+      "extra": {
+        "attachment": false,
+        "open_weights": false,
+        "structured_output": false,
+        "temperature": true
+      },
+      "family": null,
+      "id": "glm-4.5-air",
+      "knowledge": null,
+      "last_updated": "2025-08-05",
+      "lifecycle": null,
+      "limits": {
+        "context": 131000,
+        "output": 4096
       },
       "modalities": {
         "input": [
@@ -3286,13 +2081,13 @@
       "model": null,
       "name": "GLM 4.5 Air",
       "pricing": null,
-      "provider": "chutes",
+      "provider": "qiniu_ai",
       "provider_model_id": null,
-      "release_date": "2025-12-29",
+      "release_date": "2025-08-05",
       "retired": false,
       "tags": null
     },
-    "zai-org/GLM-4.5-FP8": {
+    "gpt-oss-120b": {
       "aliases": [],
       "base_url": null,
       "capabilities": {
@@ -3313,25 +2108,210 @@
           "enabled": true
         }
       },
-      "cost": {
-        "input": 0.3,
-        "output": 1.2
-      },
+      "cost": null,
       "deprecated": false,
       "extra": {
         "attachment": false,
-        "open_weights": true,
-        "structured_output": true,
+        "open_weights": false,
+        "structured_output": false,
         "temperature": true
       },
       "family": null,
-      "id": "zai-org/GLM-4.5-FP8",
+      "id": "gpt-oss-120b",
       "knowledge": null,
-      "last_updated": "2026-01-27",
+      "last_updated": "2025-08-06",
+      "lifecycle": null,
+      "limits": {
+        "context": 128000,
+        "output": 4096
+      },
+      "modalities": {
+        "input": [
+          "text"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "model": null,
+      "name": "gpt-oss-120b",
+      "pricing": null,
+      "provider": "qiniu_ai",
+      "provider_model_id": null,
+      "release_date": "2025-08-06",
+      "retired": false,
+      "tags": null
+    },
+    "gpt-oss-20b": {
+      "aliases": [],
+      "base_url": null,
+      "capabilities": {
+        "chat": true,
+        "embeddings": false,
+        "json": {
+          "native": false,
+          "schema": false,
+          "strict": false
+        },
+        "reasoning": {
+          "enabled": true
+        },
+        "streaming": {
+          "tool_calls": true
+        },
+        "tools": {
+          "enabled": true
+        }
+      },
+      "cost": null,
+      "deprecated": false,
+      "extra": {
+        "attachment": false,
+        "open_weights": false,
+        "structured_output": false,
+        "temperature": true
+      },
+      "family": null,
+      "id": "gpt-oss-20b",
+      "knowledge": null,
+      "last_updated": "2025-08-06",
+      "lifecycle": null,
+      "limits": {
+        "context": 128000,
+        "output": 4096
+      },
+      "modalities": {
+        "input": [
+          "text"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "model": null,
+      "name": "gpt-oss-20b",
+      "pricing": null,
+      "provider": "qiniu_ai",
+      "provider_model_id": null,
+      "release_date": "2025-08-06",
+      "retired": false,
+      "tags": null
+    },
+    "kimi-k2": {
+      "aliases": [],
+      "base_url": null,
+      "capabilities": {
+        "chat": true,
+        "embeddings": false,
+        "json": {
+          "native": false,
+          "schema": false,
+          "strict": false
+        },
+        "reasoning": {
+          "enabled": false
+        },
+        "streaming": {
+          "tool_calls": true
+        },
+        "tools": {
+          "enabled": true
+        }
+      },
+      "cost": null,
+      "deprecated": false,
+      "extra": {
+        "attachment": false,
+        "open_weights": false,
+        "structured_output": false,
+        "temperature": true
+      },
+      "family": null,
+      "id": "kimi-k2",
+      "knowledge": null,
+      "last_updated": "2025-08-05",
+      "lifecycle": null,
+      "limits": {
+        "context": 128000,
+        "output": 128000
+      },
+      "modalities": {
+        "input": [
+          "text"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "model": null,
+      "name": "Kimi K2",
+      "pricing": null,
+      "provider": "qiniu_ai",
+      "provider_model_id": null,
+      "release_date": "2025-08-05",
+      "retired": false,
+      "tags": null
+    },
+    "kling-v2-6": {
+      "aliases": [],
+      "base_url": null,
+      "capabilities": null,
+      "cost": null,
+      "deprecated": false,
+      "extra": {
+        "attachment": true,
+        "open_weights": false,
+        "structured_output": false,
+        "temperature": true
+      },
+      "family": null,
+      "id": "kling-v2-6",
+      "knowledge": null,
+      "last_updated": "2026-01-13",
+      "lifecycle": null,
+      "limits": {
+        "context": 99999999,
+        "output": 99999999
+      },
+      "modalities": {
+        "input": [
+          "text",
+          "image",
+          "video"
+        ],
+        "output": [
+          "video"
+        ]
+      },
+      "model": null,
+      "name": "Kling-V2 6",
+      "pricing": null,
+      "provider": "qiniu_ai",
+      "provider_model_id": null,
+      "release_date": "2026-01-13",
+      "retired": false,
+      "tags": null
+    },
+    "meituan/longcat-flash-chat": {
+      "aliases": [],
+      "base_url": null,
+      "capabilities": null,
+      "cost": null,
+      "deprecated": false,
+      "extra": {
+        "attachment": false,
+        "open_weights": false,
+        "structured_output": false,
+        "temperature": true
+      },
+      "family": null,
+      "id": "meituan/longcat-flash-chat",
+      "knowledge": null,
+      "last_updated": "2025-11-05",
       "lifecycle": null,
       "limits": {
         "context": 131072,
-        "output": 65536
+        "output": 131072
       },
       "modalities": {
         "input": [
@@ -3342,15 +2322,15 @@
         ]
       },
       "model": null,
-      "name": "GLM 4.5 FP8",
+      "name": "Meituan/Longcat-Flash-Chat",
       "pricing": null,
-      "provider": "chutes",
+      "provider": "qiniu_ai",
       "provider_model_id": null,
-      "release_date": "2026-01-27",
+      "release_date": "2025-11-05",
       "retired": false,
       "tags": null
     },
-    "zai-org/GLM-4.5-TEE": {
+    "mimo-v2-flash": {
       "aliases": [],
       "base_url": null,
       "capabilities": {
@@ -3371,29 +2351,22 @@
           "enabled": true
         }
       },
-      "cost": {
-        "input": 0.35,
-        "output": 1.55
-      },
+      "cost": null,
       "deprecated": false,
       "extra": {
         "attachment": false,
-        "family": "glm",
-        "interleaved": {
-          "field": "reasoning_content"
-        },
-        "open_weights": true,
-        "structured_output": true,
+        "open_weights": false,
+        "structured_output": false,
         "temperature": true
       },
       "family": null,
-      "id": "zai-org/GLM-4.5-TEE",
+      "id": "mimo-v2-flash",
       "knowledge": null,
-      "last_updated": "2026-01-10",
+      "last_updated": "2025-12-17",
       "lifecycle": null,
       "limits": {
-        "context": 131072,
-        "output": 65536
+        "context": 256000,
+        "output": 256000
       },
       "modalities": {
         "input": [
@@ -3404,15 +2377,15 @@
         ]
       },
       "model": null,
-      "name": "GLM 4.5 TEE",
+      "name": "Mimo-V2-Flash",
       "pricing": null,
-      "provider": "chutes",
+      "provider": "qiniu_ai",
       "provider_model_id": null,
-      "release_date": "2025-12-29",
+      "release_date": "2025-12-17",
       "retired": false,
       "tags": null
     },
-    "zai-org/GLM-4.6-FP8": {
+    "minimax/minimax-m2": {
       "aliases": [],
       "base_url": null,
       "capabilities": {
@@ -3433,25 +2406,22 @@
           "enabled": true
         }
       },
-      "cost": {
-        "input": 0.3,
-        "output": 1.2
-      },
+      "cost": null,
       "deprecated": false,
       "extra": {
         "attachment": false,
-        "open_weights": true,
-        "structured_output": true,
+        "open_weights": false,
+        "structured_output": false,
         "temperature": true
       },
       "family": null,
-      "id": "zai-org/GLM-4.6-FP8",
+      "id": "minimax/minimax-m2",
       "knowledge": null,
-      "last_updated": "2026-01-27",
+      "last_updated": "2025-10-28",
       "lifecycle": null,
       "limits": {
-        "context": 202752,
-        "output": 65535
+        "context": 200000,
+        "output": 128000
       },
       "modalities": {
         "input": [
@@ -3462,15 +2432,15 @@
         ]
       },
       "model": null,
-      "name": "GLM 4.6 FP8",
+      "name": "Minimax/Minimax-M2",
       "pricing": null,
-      "provider": "chutes",
+      "provider": "qiniu_ai",
       "provider_model_id": null,
-      "release_date": "2026-01-27",
+      "release_date": "2025-10-28",
       "retired": false,
       "tags": null
     },
-    "zai-org/GLM-4.6-TEE": {
+    "minimax/minimax-m2.1": {
       "aliases": [],
       "base_url": null,
       "capabilities": {
@@ -3491,29 +2461,22 @@
           "enabled": true
         }
       },
-      "cost": {
-        "input": 0.35,
-        "output": 1.5
-      },
+      "cost": null,
       "deprecated": false,
       "extra": {
         "attachment": false,
-        "family": "glm",
-        "interleaved": {
-          "field": "reasoning_content"
-        },
-        "open_weights": true,
-        "structured_output": true,
+        "open_weights": false,
+        "structured_output": false,
         "temperature": true
       },
       "family": null,
-      "id": "zai-org/GLM-4.6-TEE",
+      "id": "minimax/minimax-m2.1",
       "knowledge": null,
-      "last_updated": "2026-01-10",
+      "last_updated": "2025-12-23",
       "lifecycle": null,
       "limits": {
-        "context": 202752,
-        "output": 65536
+        "context": 204800,
+        "output": 128000
       },
       "modalities": {
         "input": [
@@ -3524,15 +2487,180 @@
         ]
       },
       "model": null,
-      "name": "GLM 4.6 TEE",
+      "name": "Minimax/Minimax-M2.1",
       "pricing": null,
-      "provider": "chutes",
+      "provider": "qiniu_ai",
       "provider_model_id": null,
-      "release_date": "2025-12-29",
+      "release_date": "2025-12-23",
       "retired": false,
       "tags": null
     },
-    "zai-org/GLM-4.6V": {
+    "moonshotai/kimi-k2-0905": {
+      "aliases": [],
+      "base_url": null,
+      "capabilities": {
+        "chat": true,
+        "embeddings": false,
+        "json": {
+          "native": false,
+          "schema": false,
+          "strict": false
+        },
+        "reasoning": {
+          "enabled": false
+        },
+        "streaming": {
+          "tool_calls": true
+        },
+        "tools": {
+          "enabled": true
+        }
+      },
+      "cost": null,
+      "deprecated": false,
+      "extra": {
+        "attachment": false,
+        "open_weights": false,
+        "structured_output": false,
+        "temperature": true
+      },
+      "family": null,
+      "id": "moonshotai/kimi-k2-0905",
+      "knowledge": null,
+      "last_updated": "2025-09-08",
+      "lifecycle": null,
+      "limits": {
+        "context": 256000,
+        "output": 100000
+      },
+      "modalities": {
+        "input": [
+          "text"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "model": null,
+      "name": "Kimi K2 0905",
+      "pricing": null,
+      "provider": "qiniu_ai",
+      "provider_model_id": null,
+      "release_date": "2025-09-08",
+      "retired": false,
+      "tags": null
+    },
+    "moonshotai/kimi-k2-thinking": {
+      "aliases": [],
+      "base_url": null,
+      "capabilities": {
+        "chat": true,
+        "embeddings": false,
+        "json": {
+          "native": false,
+          "schema": false,
+          "strict": false
+        },
+        "reasoning": {
+          "enabled": false
+        },
+        "streaming": {
+          "tool_calls": true
+        },
+        "tools": {
+          "enabled": true
+        }
+      },
+      "cost": null,
+      "deprecated": false,
+      "extra": {
+        "attachment": false,
+        "open_weights": false,
+        "structured_output": false,
+        "temperature": true
+      },
+      "family": null,
+      "id": "moonshotai/kimi-k2-thinking",
+      "knowledge": null,
+      "last_updated": "2025-11-07",
+      "lifecycle": null,
+      "limits": {
+        "context": 256000,
+        "output": 100000
+      },
+      "modalities": {
+        "input": [
+          "text"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "model": null,
+      "name": "Kimi K2 Thinking",
+      "pricing": null,
+      "provider": "qiniu_ai",
+      "provider_model_id": null,
+      "release_date": "2025-11-07",
+      "retired": false,
+      "tags": null
+    },
+    "openai/gpt-5": {
+      "aliases": [],
+      "base_url": null,
+      "capabilities": {
+        "chat": true,
+        "embeddings": false,
+        "json": {
+          "native": false,
+          "schema": false,
+          "strict": false
+        },
+        "reasoning": {
+          "enabled": false
+        },
+        "streaming": {
+          "tool_calls": true
+        },
+        "tools": {
+          "enabled": true
+        }
+      },
+      "cost": null,
+      "deprecated": false,
+      "extra": {
+        "attachment": false,
+        "open_weights": false,
+        "structured_output": false,
+        "temperature": true
+      },
+      "family": null,
+      "id": "openai/gpt-5",
+      "knowledge": null,
+      "last_updated": "2025-09-19",
+      "lifecycle": null,
+      "limits": {
+        "context": 400000,
+        "output": 128000
+      },
+      "modalities": {
+        "input": [
+          "text"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "model": null,
+      "name": "OpenAI/GPT-5",
+      "pricing": null,
+      "provider": "qiniu_ai",
+      "provider_model_id": null,
+      "release_date": "2025-09-19",
+      "retired": false,
+      "tags": null
+    },
+    "openai/gpt-5.2": {
       "aliases": [],
       "base_url": null,
       "capabilities": {
@@ -3553,29 +2681,22 @@
           "enabled": true
         }
       },
-      "cost": {
-        "input": 0.3,
-        "output": 0.9
-      },
+      "cost": null,
       "deprecated": false,
       "extra": {
-        "attachment": false,
-        "family": "glm",
-        "interleaved": {
-          "field": "reasoning_content"
-        },
-        "open_weights": true,
-        "structured_output": true,
+        "attachment": true,
+        "open_weights": false,
+        "structured_output": false,
         "temperature": true
       },
       "family": null,
-      "id": "zai-org/GLM-4.6V",
+      "id": "openai/gpt-5.2",
       "knowledge": null,
-      "last_updated": "2026-01-10",
+      "last_updated": "2025-12-11",
       "lifecycle": null,
       "limits": {
-        "context": 131072,
-        "output": 65536
+        "context": 400000,
+        "output": 128000
       },
       "modalities": {
         "input": [
@@ -3587,15 +2708,70 @@
         ]
       },
       "model": null,
-      "name": "GLM 4.6V",
+      "name": "OpenAI/GPT-5.2",
       "pricing": null,
-      "provider": "chutes",
+      "provider": "qiniu_ai",
       "provider_model_id": null,
-      "release_date": "2025-12-29",
+      "release_date": "2025-12-11",
       "retired": false,
       "tags": null
     },
-    "zai-org/GLM-4.7-FP8": {
+    "qwen-max-2025-01-25": {
+      "aliases": [],
+      "base_url": null,
+      "capabilities": {
+        "chat": true,
+        "embeddings": false,
+        "json": {
+          "native": false,
+          "schema": false,
+          "strict": false
+        },
+        "reasoning": {
+          "enabled": false
+        },
+        "streaming": {
+          "tool_calls": true
+        },
+        "tools": {
+          "enabled": true
+        }
+      },
+      "cost": null,
+      "deprecated": false,
+      "extra": {
+        "attachment": false,
+        "open_weights": false,
+        "structured_output": false,
+        "temperature": true
+      },
+      "family": null,
+      "id": "qwen-max-2025-01-25",
+      "knowledge": null,
+      "last_updated": "2025-08-05",
+      "lifecycle": null,
+      "limits": {
+        "context": 128000,
+        "output": 4096
+      },
+      "modalities": {
+        "input": [
+          "text"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "model": null,
+      "name": "Qwen2.5-Max-2025-01-25",
+      "pricing": null,
+      "provider": "qiniu_ai",
+      "provider_model_id": null,
+      "release_date": "2025-08-05",
+      "retired": false,
+      "tags": null
+    },
+    "qwen-turbo": {
       "aliases": [],
       "base_url": null,
       "capabilities": {
@@ -3616,25 +2792,22 @@
           "enabled": true
         }
       },
-      "cost": {
-        "input": 0.3,
-        "output": 1.2
-      },
+      "cost": null,
       "deprecated": false,
       "extra": {
         "attachment": false,
-        "open_weights": true,
-        "structured_output": true,
+        "open_weights": false,
+        "structured_output": false,
         "temperature": true
       },
       "family": null,
-      "id": "zai-org/GLM-4.7-FP8",
+      "id": "qwen-turbo",
       "knowledge": null,
-      "last_updated": "2026-01-27",
+      "last_updated": "2025-08-05",
       "lifecycle": null,
       "limits": {
-        "context": 202752,
-        "output": 65535
+        "context": 1000000,
+        "output": 4096
       },
       "modalities": {
         "input": [
@@ -3645,15 +2818,299 @@
         ]
       },
       "model": null,
-      "name": "GLM 4.7 FP8",
+      "name": "Qwen-Turbo",
       "pricing": null,
-      "provider": "chutes",
+      "provider": "qiniu_ai",
       "provider_model_id": null,
-      "release_date": "2026-01-27",
+      "release_date": "2025-08-05",
       "retired": false,
       "tags": null
     },
-    "zai-org/GLM-4.7-Flash": {
+    "qwen-vl-max-2025-01-25": {
+      "aliases": [],
+      "base_url": null,
+      "capabilities": {
+        "chat": true,
+        "embeddings": false,
+        "json": {
+          "native": false,
+          "schema": false,
+          "strict": false
+        },
+        "reasoning": {
+          "enabled": false
+        },
+        "streaming": {
+          "tool_calls": true
+        },
+        "tools": {
+          "enabled": true
+        }
+      },
+      "cost": null,
+      "deprecated": false,
+      "extra": {
+        "attachment": true,
+        "open_weights": false,
+        "structured_output": false,
+        "temperature": true
+      },
+      "family": null,
+      "id": "qwen-vl-max-2025-01-25",
+      "knowledge": null,
+      "last_updated": "2025-08-05",
+      "lifecycle": null,
+      "limits": {
+        "context": 128000,
+        "output": 4096
+      },
+      "modalities": {
+        "input": [
+          "text",
+          "image",
+          "audio",
+          "video"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "model": null,
+      "name": "Qwen VL-MAX-2025-01-25",
+      "pricing": null,
+      "provider": "qiniu_ai",
+      "provider_model_id": null,
+      "release_date": "2025-08-05",
+      "retired": false,
+      "tags": null
+    },
+    "qwen2.5-vl-72b-instruct": {
+      "aliases": [],
+      "base_url": null,
+      "capabilities": {
+        "chat": true,
+        "embeddings": false,
+        "json": {
+          "native": false,
+          "schema": false,
+          "strict": false
+        },
+        "reasoning": {
+          "enabled": false
+        },
+        "streaming": {
+          "tool_calls": true
+        },
+        "tools": {
+          "enabled": true
+        }
+      },
+      "cost": null,
+      "deprecated": false,
+      "extra": {
+        "attachment": true,
+        "open_weights": false,
+        "structured_output": false,
+        "temperature": true
+      },
+      "family": null,
+      "id": "qwen2.5-vl-72b-instruct",
+      "knowledge": null,
+      "last_updated": "2025-08-05",
+      "lifecycle": null,
+      "limits": {
+        "context": 128000,
+        "output": 8192
+      },
+      "modalities": {
+        "input": [
+          "text",
+          "image",
+          "audio",
+          "video"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "model": null,
+      "name": "Qwen 2.5 VL 72B Instruct",
+      "pricing": null,
+      "provider": "qiniu_ai",
+      "provider_model_id": null,
+      "release_date": "2025-08-05",
+      "retired": false,
+      "tags": null
+    },
+    "qwen2.5-vl-7b-instruct": {
+      "aliases": [],
+      "base_url": null,
+      "capabilities": {
+        "chat": true,
+        "embeddings": false,
+        "json": {
+          "native": false,
+          "schema": false,
+          "strict": false
+        },
+        "reasoning": {
+          "enabled": false
+        },
+        "streaming": {
+          "tool_calls": true
+        },
+        "tools": {
+          "enabled": true
+        }
+      },
+      "cost": null,
+      "deprecated": false,
+      "extra": {
+        "attachment": true,
+        "open_weights": false,
+        "structured_output": false,
+        "temperature": true
+      },
+      "family": null,
+      "id": "qwen2.5-vl-7b-instruct",
+      "knowledge": null,
+      "last_updated": "2025-08-05",
+      "lifecycle": null,
+      "limits": {
+        "context": 128000,
+        "output": 8192
+      },
+      "modalities": {
+        "input": [
+          "text",
+          "image",
+          "audio",
+          "video"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "model": null,
+      "name": "Qwen 2.5 VL 7B Instruct",
+      "pricing": null,
+      "provider": "qiniu_ai",
+      "provider_model_id": null,
+      "release_date": "2025-08-05",
+      "retired": false,
+      "tags": null
+    },
+    "qwen3-235b-a22b": {
+      "aliases": [],
+      "base_url": null,
+      "capabilities": {
+        "chat": true,
+        "embeddings": false,
+        "json": {
+          "native": false,
+          "schema": false,
+          "strict": false
+        },
+        "reasoning": {
+          "enabled": false
+        },
+        "streaming": {
+          "tool_calls": true
+        },
+        "tools": {
+          "enabled": true
+        }
+      },
+      "cost": null,
+      "deprecated": false,
+      "extra": {
+        "attachment": false,
+        "open_weights": false,
+        "structured_output": false,
+        "temperature": true
+      },
+      "family": null,
+      "id": "qwen3-235b-a22b",
+      "knowledge": null,
+      "last_updated": "2025-08-05",
+      "lifecycle": null,
+      "limits": {
+        "context": 128000,
+        "output": 32000
+      },
+      "modalities": {
+        "input": [
+          "text"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "model": null,
+      "name": "Qwen 3 235B A22B",
+      "pricing": null,
+      "provider": "qiniu_ai",
+      "provider_model_id": null,
+      "release_date": "2025-08-05",
+      "retired": false,
+      "tags": null
+    },
+    "qwen3-235b-a22b-instruct-2507": {
+      "aliases": [],
+      "base_url": null,
+      "capabilities": {
+        "chat": true,
+        "embeddings": false,
+        "json": {
+          "native": false,
+          "schema": false,
+          "strict": false
+        },
+        "reasoning": {
+          "enabled": false
+        },
+        "streaming": {
+          "tool_calls": true
+        },
+        "tools": {
+          "enabled": true
+        }
+      },
+      "cost": null,
+      "deprecated": false,
+      "extra": {
+        "attachment": false,
+        "open_weights": false,
+        "structured_output": false,
+        "temperature": true
+      },
+      "family": null,
+      "id": "qwen3-235b-a22b-instruct-2507",
+      "knowledge": null,
+      "last_updated": "2025-08-12",
+      "lifecycle": null,
+      "limits": {
+        "context": 262144,
+        "output": 64000
+      },
+      "modalities": {
+        "input": [
+          "text"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "model": null,
+      "name": "Qwen3 235b A22B Instruct 2507",
+      "pricing": null,
+      "provider": "qiniu_ai",
+      "provider_model_id": null,
+      "release_date": "2025-08-12",
+      "retired": false,
+      "tags": null
+    },
+    "qwen3-235b-a22b-thinking-2507": {
       "aliases": [],
       "base_url": null,
       "capabilities": {
@@ -3674,25 +3131,22 @@
           "enabled": true
         }
       },
-      "cost": {
-        "input": 0.06,
-        "output": 0.35
-      },
+      "cost": null,
       "deprecated": false,
       "extra": {
         "attachment": false,
-        "open_weights": true,
-        "structured_output": true,
+        "open_weights": false,
+        "structured_output": false,
         "temperature": true
       },
       "family": null,
-      "id": "zai-org/GLM-4.7-Flash",
+      "id": "qwen3-235b-a22b-thinking-2507",
       "knowledge": null,
-      "last_updated": "2026-01-27",
+      "last_updated": "2025-08-12",
       "lifecycle": null,
       "limits": {
-        "context": 202752,
-        "output": 65535
+        "context": 262144,
+        "output": 4096
       },
       "modalities": {
         "input": [
@@ -3703,15 +3157,15 @@
         ]
       },
       "model": null,
-      "name": "GLM 4.7 Flash",
+      "name": "Qwen3 235B A22B Thinking 2507",
       "pricing": null,
-      "provider": "chutes",
+      "provider": "qiniu_ai",
       "provider_model_id": null,
-      "release_date": "2026-01-27",
+      "release_date": "2025-08-12",
       "retired": false,
       "tags": null
     },
-    "zai-org/GLM-4.7-TEE": {
+    "qwen3-30b-a3b": {
       "aliases": [],
       "base_url": null,
       "capabilities": {
@@ -3732,29 +3186,22 @@
           "enabled": true
         }
       },
-      "cost": {
-        "input": 0.4,
-        "output": 1.5
-      },
+      "cost": null,
       "deprecated": false,
       "extra": {
         "attachment": false,
-        "family": "glm",
-        "interleaved": {
-          "field": "reasoning_content"
-        },
-        "open_weights": true,
-        "structured_output": true,
+        "open_weights": false,
+        "structured_output": false,
         "temperature": true
       },
       "family": null,
-      "id": "zai-org/GLM-4.7-TEE",
+      "id": "qwen3-30b-a3b",
       "knowledge": null,
-      "last_updated": "2026-01-10",
+      "last_updated": "2025-08-05",
       "lifecycle": null,
       "limits": {
-        "context": 202752,
-        "output": 65535
+        "context": 40000,
+        "output": 4096
       },
       "modalities": {
         "input": [
@@ -3765,15 +3212,15 @@
         ]
       },
       "model": null,
-      "name": "GLM 4.7 TEE",
+      "name": "Qwen3 30B A3B",
       "pricing": null,
-      "provider": "chutes",
+      "provider": "qiniu_ai",
       "provider_model_id": null,
-      "release_date": "2025-12-29",
+      "release_date": "2025-08-05",
       "retired": false,
       "tags": null
     },
-    "zai-org/GLM-5-TEE": {
+    "qwen3-32b": {
       "aliases": [],
       "base_url": null,
       "capabilities": {
@@ -3794,29 +3241,22 @@
           "enabled": true
         }
       },
-      "cost": {
-        "input": 0.75,
-        "output": 2.5
-      },
+      "cost": null,
       "deprecated": false,
       "extra": {
         "attachment": false,
-        "family": "glm",
-        "interleaved": {
-          "field": "reasoning_content"
-        },
-        "open_weights": true,
-        "structured_output": true,
+        "open_weights": false,
+        "structured_output": false,
         "temperature": true
       },
       "family": null,
-      "id": "zai-org/GLM-5-TEE",
+      "id": "qwen3-32b",
       "knowledge": null,
-      "last_updated": "2026-02-14",
+      "last_updated": "2025-08-05",
       "lifecycle": null,
       "limits": {
-        "context": 202752,
-        "output": 65535
+        "context": 40000,
+        "output": 4096
       },
       "modalities": {
         "input": [
@@ -3827,15 +3267,912 @@
         ]
       },
       "model": null,
-      "name": "GLM 5 TEE",
+      "name": "Qwen3 32B",
       "pricing": null,
-      "provider": "chutes",
+      "provider": "qiniu_ai",
       "provider_model_id": null,
-      "release_date": "2026-02-14",
+      "release_date": "2025-08-05",
+      "retired": false,
+      "tags": null
+    },
+    "qwen3-coder-480b-a35b-instruct": {
+      "aliases": [],
+      "base_url": null,
+      "capabilities": {
+        "chat": true,
+        "embeddings": false,
+        "json": {
+          "native": false,
+          "schema": false,
+          "strict": false
+        },
+        "reasoning": {
+          "enabled": false
+        },
+        "streaming": {
+          "tool_calls": true
+        },
+        "tools": {
+          "enabled": true
+        }
+      },
+      "cost": null,
+      "deprecated": false,
+      "extra": {
+        "attachment": false,
+        "open_weights": false,
+        "structured_output": false,
+        "temperature": true
+      },
+      "family": null,
+      "id": "qwen3-coder-480b-a35b-instruct",
+      "knowledge": null,
+      "last_updated": "2025-08-14",
+      "lifecycle": null,
+      "limits": {
+        "context": 262000,
+        "output": 4096
+      },
+      "modalities": {
+        "input": [
+          "text"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "model": null,
+      "name": "Qwen3 Coder 480B A35B Instruct",
+      "pricing": null,
+      "provider": "qiniu_ai",
+      "provider_model_id": null,
+      "release_date": "2025-08-14",
+      "retired": false,
+      "tags": null
+    },
+    "qwen3-max": {
+      "aliases": [],
+      "base_url": null,
+      "capabilities": {
+        "chat": true,
+        "embeddings": false,
+        "json": {
+          "native": false,
+          "schema": false,
+          "strict": false
+        },
+        "reasoning": {
+          "enabled": false
+        },
+        "streaming": {
+          "tool_calls": true
+        },
+        "tools": {
+          "enabled": true
+        }
+      },
+      "cost": null,
+      "deprecated": false,
+      "extra": {
+        "attachment": false,
+        "open_weights": false,
+        "structured_output": false,
+        "temperature": true
+      },
+      "family": null,
+      "id": "qwen3-max",
+      "knowledge": null,
+      "last_updated": "2025-09-24",
+      "lifecycle": null,
+      "limits": {
+        "context": 262144,
+        "output": 65536
+      },
+      "modalities": {
+        "input": [
+          "text"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "model": null,
+      "name": "Qwen3 Max",
+      "pricing": null,
+      "provider": "qiniu_ai",
+      "provider_model_id": null,
+      "release_date": "2025-09-24",
+      "retired": false,
+      "tags": null
+    },
+    "qwen3-max-preview": {
+      "aliases": [],
+      "base_url": null,
+      "capabilities": {
+        "chat": true,
+        "embeddings": false,
+        "json": {
+          "native": false,
+          "schema": false,
+          "strict": false
+        },
+        "reasoning": {
+          "enabled": false
+        },
+        "streaming": {
+          "tool_calls": true
+        },
+        "tools": {
+          "enabled": true
+        }
+      },
+      "cost": null,
+      "deprecated": false,
+      "extra": {
+        "attachment": false,
+        "open_weights": false,
+        "structured_output": false,
+        "temperature": true
+      },
+      "family": null,
+      "id": "qwen3-max-preview",
+      "knowledge": null,
+      "last_updated": "2025-09-06",
+      "lifecycle": null,
+      "limits": {
+        "context": 256000,
+        "output": 64000
+      },
+      "modalities": {
+        "input": [
+          "text"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "model": null,
+      "name": "Qwen3 Max Preview",
+      "pricing": null,
+      "provider": "qiniu_ai",
+      "provider_model_id": null,
+      "release_date": "2025-09-06",
+      "retired": false,
+      "tags": null
+    },
+    "qwen3-next-80b-a3b-instruct": {
+      "aliases": [],
+      "base_url": null,
+      "capabilities": {
+        "chat": true,
+        "embeddings": false,
+        "json": {
+          "native": false,
+          "schema": false,
+          "strict": false
+        },
+        "reasoning": {
+          "enabled": false
+        },
+        "streaming": {
+          "tool_calls": true
+        },
+        "tools": {
+          "enabled": true
+        }
+      },
+      "cost": null,
+      "deprecated": false,
+      "extra": {
+        "attachment": false,
+        "open_weights": false,
+        "structured_output": false,
+        "temperature": true
+      },
+      "family": null,
+      "id": "qwen3-next-80b-a3b-instruct",
+      "knowledge": null,
+      "last_updated": "2025-09-12",
+      "lifecycle": null,
+      "limits": {
+        "context": 131072,
+        "output": 32768
+      },
+      "modalities": {
+        "input": [
+          "text"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "model": null,
+      "name": "Qwen3 Next 80B A3B Instruct",
+      "pricing": null,
+      "provider": "qiniu_ai",
+      "provider_model_id": null,
+      "release_date": "2025-09-12",
+      "retired": false,
+      "tags": null
+    },
+    "qwen3-next-80b-a3b-thinking": {
+      "aliases": [],
+      "base_url": null,
+      "capabilities": {
+        "chat": true,
+        "embeddings": false,
+        "json": {
+          "native": false,
+          "schema": false,
+          "strict": false
+        },
+        "reasoning": {
+          "enabled": true
+        },
+        "streaming": {
+          "tool_calls": true
+        },
+        "tools": {
+          "enabled": true
+        }
+      },
+      "cost": null,
+      "deprecated": false,
+      "extra": {
+        "attachment": false,
+        "open_weights": false,
+        "structured_output": false,
+        "temperature": true
+      },
+      "family": null,
+      "id": "qwen3-next-80b-a3b-thinking",
+      "knowledge": null,
+      "last_updated": "2025-09-12",
+      "lifecycle": null,
+      "limits": {
+        "context": 131072,
+        "output": 32768
+      },
+      "modalities": {
+        "input": [
+          "text"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "model": null,
+      "name": "Qwen3 Next 80B A3B Thinking",
+      "pricing": null,
+      "provider": "qiniu_ai",
+      "provider_model_id": null,
+      "release_date": "2025-09-12",
+      "retired": false,
+      "tags": null
+    },
+    "stepfun-ai/gelab-zero-4b-preview": {
+      "aliases": [],
+      "base_url": null,
+      "capabilities": {
+        "chat": true,
+        "embeddings": false,
+        "json": {
+          "native": false,
+          "schema": false,
+          "strict": false
+        },
+        "reasoning": {
+          "enabled": false
+        },
+        "streaming": {
+          "tool_calls": true
+        },
+        "tools": {
+          "enabled": true
+        }
+      },
+      "cost": null,
+      "deprecated": false,
+      "extra": {
+        "attachment": true,
+        "open_weights": false,
+        "structured_output": false,
+        "temperature": true
+      },
+      "family": null,
+      "id": "stepfun-ai/gelab-zero-4b-preview",
+      "knowledge": null,
+      "last_updated": "2025-12-23",
+      "lifecycle": null,
+      "limits": {
+        "context": 8192,
+        "output": 4096
+      },
+      "modalities": {
+        "input": [
+          "text",
+          "image"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "model": null,
+      "name": "Stepfun-Ai/Gelab Zero 4b Preview",
+      "pricing": null,
+      "provider": "qiniu_ai",
+      "provider_model_id": null,
+      "release_date": "2025-12-23",
+      "retired": false,
+      "tags": null
+    },
+    "x-ai/grok-4-fast": {
+      "aliases": [],
+      "base_url": null,
+      "capabilities": {
+        "chat": true,
+        "embeddings": false,
+        "json": {
+          "native": false,
+          "schema": false,
+          "strict": false
+        },
+        "reasoning": {
+          "enabled": true
+        },
+        "streaming": {
+          "tool_calls": true
+        },
+        "tools": {
+          "enabled": true
+        }
+      },
+      "cost": null,
+      "deprecated": false,
+      "extra": {
+        "attachment": true,
+        "open_weights": false,
+        "structured_output": false,
+        "temperature": true
+      },
+      "family": null,
+      "id": "x-ai/grok-4-fast",
+      "knowledge": null,
+      "last_updated": "2025-09-20",
+      "lifecycle": null,
+      "limits": {
+        "context": 2000000,
+        "output": 2000000
+      },
+      "modalities": {
+        "input": [
+          "text",
+          "image",
+          "audio",
+          "video"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "model": null,
+      "name": "x-AI/Grok-4-Fast",
+      "pricing": null,
+      "provider": "qiniu_ai",
+      "provider_model_id": null,
+      "release_date": "2025-09-20",
+      "retired": false,
+      "tags": null
+    },
+    "x-ai/grok-4-fast-non-reasoning": {
+      "aliases": [],
+      "base_url": null,
+      "capabilities": {
+        "chat": true,
+        "embeddings": false,
+        "json": {
+          "native": false,
+          "schema": false,
+          "strict": false
+        },
+        "reasoning": {
+          "enabled": true
+        },
+        "streaming": {
+          "tool_calls": true
+        },
+        "tools": {
+          "enabled": true
+        }
+      },
+      "cost": null,
+      "deprecated": false,
+      "extra": {
+        "attachment": true,
+        "open_weights": false,
+        "structured_output": false,
+        "temperature": true
+      },
+      "family": null,
+      "id": "x-ai/grok-4-fast-non-reasoning",
+      "knowledge": null,
+      "last_updated": "2025-12-18",
+      "lifecycle": null,
+      "limits": {
+        "context": 2000000,
+        "output": 2000000
+      },
+      "modalities": {
+        "input": [
+          "text",
+          "image",
+          "audio",
+          "video"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "model": null,
+      "name": "X-Ai/Grok-4-Fast-Non-Reasoning",
+      "pricing": null,
+      "provider": "qiniu_ai",
+      "provider_model_id": null,
+      "release_date": "2025-12-18",
+      "retired": false,
+      "tags": null
+    },
+    "x-ai/grok-4-fast-reasoning": {
+      "aliases": [],
+      "base_url": null,
+      "capabilities": {
+        "chat": true,
+        "embeddings": false,
+        "json": {
+          "native": false,
+          "schema": false,
+          "strict": false
+        },
+        "reasoning": {
+          "enabled": true
+        },
+        "streaming": {
+          "tool_calls": true
+        },
+        "tools": {
+          "enabled": true
+        }
+      },
+      "cost": null,
+      "deprecated": false,
+      "extra": {
+        "attachment": true,
+        "open_weights": false,
+        "structured_output": false,
+        "temperature": true
+      },
+      "family": null,
+      "id": "x-ai/grok-4-fast-reasoning",
+      "knowledge": null,
+      "last_updated": "2025-12-18",
+      "lifecycle": null,
+      "limits": {
+        "context": 2000000,
+        "output": 2000000
+      },
+      "modalities": {
+        "input": [
+          "text",
+          "image",
+          "audio",
+          "video"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "model": null,
+      "name": "X-Ai/Grok-4-Fast-Reasoning",
+      "pricing": null,
+      "provider": "qiniu_ai",
+      "provider_model_id": null,
+      "release_date": "2025-12-18",
+      "retired": false,
+      "tags": null
+    },
+    "x-ai/grok-4.1-fast": {
+      "aliases": [],
+      "base_url": null,
+      "capabilities": {
+        "chat": true,
+        "embeddings": false,
+        "json": {
+          "native": false,
+          "schema": false,
+          "strict": false
+        },
+        "reasoning": {
+          "enabled": true
+        },
+        "streaming": {
+          "tool_calls": true
+        },
+        "tools": {
+          "enabled": true
+        }
+      },
+      "cost": null,
+      "deprecated": false,
+      "extra": {
+        "attachment": false,
+        "open_weights": false,
+        "structured_output": false,
+        "temperature": true
+      },
+      "family": null,
+      "id": "x-ai/grok-4.1-fast",
+      "knowledge": null,
+      "last_updated": "2025-11-20",
+      "lifecycle": null,
+      "limits": {
+        "context": 2000000,
+        "output": 2000000
+      },
+      "modalities": {
+        "input": [
+          "text"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "model": null,
+      "name": "x-AI/Grok-4.1-Fast",
+      "pricing": null,
+      "provider": "qiniu_ai",
+      "provider_model_id": null,
+      "release_date": "2025-11-20",
+      "retired": false,
+      "tags": null
+    },
+    "x-ai/grok-4.1-fast-non-reasoning": {
+      "aliases": [],
+      "base_url": null,
+      "capabilities": {
+        "chat": true,
+        "embeddings": false,
+        "json": {
+          "native": false,
+          "schema": false,
+          "strict": false
+        },
+        "reasoning": {
+          "enabled": true
+        },
+        "streaming": {
+          "tool_calls": true
+        },
+        "tools": {
+          "enabled": true
+        }
+      },
+      "cost": null,
+      "deprecated": false,
+      "extra": {
+        "attachment": true,
+        "open_weights": false,
+        "structured_output": false,
+        "temperature": true
+      },
+      "family": null,
+      "id": "x-ai/grok-4.1-fast-non-reasoning",
+      "knowledge": null,
+      "last_updated": "2025-12-19",
+      "lifecycle": null,
+      "limits": {
+        "context": 2000000,
+        "output": 2000000
+      },
+      "modalities": {
+        "input": [
+          "text",
+          "image",
+          "audio",
+          "video"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "model": null,
+      "name": "X-Ai/Grok 4.1 Fast Non Reasoning",
+      "pricing": null,
+      "provider": "qiniu_ai",
+      "provider_model_id": null,
+      "release_date": "2025-12-19",
+      "retired": false,
+      "tags": null
+    },
+    "x-ai/grok-4.1-fast-reasoning": {
+      "aliases": [],
+      "base_url": null,
+      "capabilities": {
+        "chat": true,
+        "embeddings": false,
+        "json": {
+          "native": false,
+          "schema": false,
+          "strict": false
+        },
+        "reasoning": {
+          "enabled": true
+        },
+        "streaming": {
+          "tool_calls": true
+        },
+        "tools": {
+          "enabled": true
+        }
+      },
+      "cost": null,
+      "deprecated": false,
+      "extra": {
+        "attachment": true,
+        "open_weights": false,
+        "structured_output": false,
+        "temperature": true
+      },
+      "family": null,
+      "id": "x-ai/grok-4.1-fast-reasoning",
+      "knowledge": null,
+      "last_updated": "2025-12-19",
+      "lifecycle": null,
+      "limits": {
+        "context": 20000000,
+        "output": 2000000
+      },
+      "modalities": {
+        "input": [
+          "text",
+          "image",
+          "audio",
+          "video"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "model": null,
+      "name": "X-Ai/Grok 4.1 Fast Reasoning",
+      "pricing": null,
+      "provider": "qiniu_ai",
+      "provider_model_id": null,
+      "release_date": "2025-12-19",
+      "retired": false,
+      "tags": null
+    },
+    "x-ai/grok-code-fast-1": {
+      "aliases": [],
+      "base_url": null,
+      "capabilities": {
+        "chat": true,
+        "embeddings": false,
+        "json": {
+          "native": false,
+          "schema": false,
+          "strict": false
+        },
+        "reasoning": {
+          "enabled": true
+        },
+        "streaming": {
+          "tool_calls": true
+        },
+        "tools": {
+          "enabled": true
+        }
+      },
+      "cost": null,
+      "deprecated": false,
+      "extra": {
+        "attachment": false,
+        "open_weights": false,
+        "structured_output": false,
+        "temperature": true
+      },
+      "family": null,
+      "id": "x-ai/grok-code-fast-1",
+      "knowledge": null,
+      "last_updated": "2025-09-02",
+      "lifecycle": null,
+      "limits": {
+        "context": 256000,
+        "output": 10000
+      },
+      "modalities": {
+        "input": [
+          "text"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "model": null,
+      "name": "x-AI/Grok-Code-Fast 1",
+      "pricing": null,
+      "provider": "qiniu_ai",
+      "provider_model_id": null,
+      "release_date": "2025-09-02",
+      "retired": false,
+      "tags": null
+    },
+    "z-ai/autoglm-phone-9b": {
+      "aliases": [],
+      "base_url": null,
+      "capabilities": {
+        "chat": true,
+        "embeddings": false,
+        "json": {
+          "native": false,
+          "schema": false,
+          "strict": false
+        },
+        "reasoning": {
+          "enabled": false
+        },
+        "streaming": {
+          "tool_calls": true
+        },
+        "tools": {
+          "enabled": true
+        }
+      },
+      "cost": null,
+      "deprecated": false,
+      "extra": {
+        "attachment": true,
+        "open_weights": false,
+        "structured_output": false,
+        "temperature": true
+      },
+      "family": null,
+      "id": "z-ai/autoglm-phone-9b",
+      "knowledge": null,
+      "last_updated": "2025-12-23",
+      "lifecycle": null,
+      "limits": {
+        "context": 12800,
+        "output": 4096
+      },
+      "modalities": {
+        "input": [
+          "text",
+          "image"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "model": null,
+      "name": "Z-Ai/Autoglm Phone 9b",
+      "pricing": null,
+      "provider": "qiniu_ai",
+      "provider_model_id": null,
+      "release_date": "2025-12-23",
+      "retired": false,
+      "tags": null
+    },
+    "z-ai/glm-4.6": {
+      "aliases": [],
+      "base_url": null,
+      "capabilities": {
+        "chat": true,
+        "embeddings": false,
+        "json": {
+          "native": false,
+          "schema": false,
+          "strict": false
+        },
+        "reasoning": {
+          "enabled": false
+        },
+        "streaming": {
+          "tool_calls": true
+        },
+        "tools": {
+          "enabled": true
+        }
+      },
+      "cost": null,
+      "deprecated": false,
+      "extra": {
+        "attachment": false,
+        "open_weights": false,
+        "structured_output": false,
+        "temperature": true
+      },
+      "family": null,
+      "id": "z-ai/glm-4.6",
+      "knowledge": null,
+      "last_updated": "2025-10-11",
+      "lifecycle": null,
+      "limits": {
+        "context": 200000,
+        "output": 200000
+      },
+      "modalities": {
+        "input": [
+          "text"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "model": null,
+      "name": "Z-AI/GLM 4.6",
+      "pricing": null,
+      "provider": "qiniu_ai",
+      "provider_model_id": null,
+      "release_date": "2025-10-11",
+      "retired": false,
+      "tags": null
+    },
+    "z-ai/glm-4.7": {
+      "aliases": [],
+      "base_url": null,
+      "capabilities": {
+        "chat": true,
+        "embeddings": false,
+        "json": {
+          "native": false,
+          "schema": false,
+          "strict": false
+        },
+        "reasoning": {
+          "enabled": true
+        },
+        "streaming": {
+          "tool_calls": true
+        },
+        "tools": {
+          "enabled": true
+        }
+      },
+      "cost": null,
+      "deprecated": false,
+      "extra": {
+        "attachment": false,
+        "open_weights": false,
+        "structured_output": false,
+        "temperature": true
+      },
+      "family": null,
+      "id": "z-ai/glm-4.7",
+      "knowledge": null,
+      "last_updated": "2025-12-23",
+      "lifecycle": null,
+      "limits": {
+        "context": 200000,
+        "output": 200000
+      },
+      "modalities": {
+        "input": [
+          "text"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "model": null,
+      "name": "Z-Ai/GLM 4.7",
+      "pricing": null,
+      "provider": "qiniu_ai",
+      "provider_model_id": null,
+      "release_date": "2025-12-23",
       "retired": false,
       "tags": null
     }
   },
-  "name": "Chutes",
+  "name": "Qiniu",
   "pricing_defaults": null
 }

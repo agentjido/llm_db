@@ -617,6 +617,66 @@
       "retired": false,
       "tags": null
     },
+    "anthropic/claude-sonnet-4.6": {
+      "aliases": [],
+      "base_url": null,
+      "capabilities": {
+        "chat": true,
+        "embeddings": false,
+        "json": {
+          "native": false,
+          "schema": false,
+          "strict": false
+        },
+        "reasoning": {
+          "enabled": true
+        },
+        "streaming": {
+          "tool_calls": true
+        },
+        "tools": {
+          "enabled": true
+        }
+      },
+      "cost": {
+        "cache_read": 0.3,
+        "cache_write": 3.75,
+        "input": 3,
+        "output": 15
+      },
+      "deprecated": false,
+      "extra": {
+        "attachment": true,
+        "open_weights": false,
+        "temperature": true
+      },
+      "family": null,
+      "id": "anthropic/claude-sonnet-4.6",
+      "knowledge": "2025-01-01",
+      "last_updated": "2026-02-18",
+      "lifecycle": null,
+      "limits": {
+        "context": 1000000,
+        "output": 64000
+      },
+      "modalities": {
+        "input": [
+          "text",
+          "image"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "model": null,
+      "name": "Claude Sonnet 4.6",
+      "pricing": null,
+      "provider": "zenmux",
+      "provider_model_id": null,
+      "release_date": "2026-02-18",
+      "retired": false,
+      "tags": null
+    },
     "baidu/ernie-5.0-thinking-preview": {
       "aliases": [],
       "base_url": null,
@@ -3295,22 +3355,52 @@
     "volcengine/doubao-seed-2.0-lite": {
       "aliases": [],
       "base_url": null,
-      "capabilities": null,
-      "cost": null,
+      "capabilities": {
+        "chat": true,
+        "embeddings": false,
+        "json": {
+          "native": false,
+          "schema": false,
+          "strict": false
+        },
+        "reasoning": {
+          "enabled": true
+        },
+        "streaming": {
+          "tool_calls": true
+        },
+        "tools": {
+          "enabled": true
+        }
+      },
+      "cost": {
+        "cache_read": 0.02,
+        "cache_write": 0.0024,
+        "input": 0.09,
+        "output": 0.51
+      },
       "deprecated": false,
       "extra": {
+        "attachment": true,
         "created": 1771053175,
-        "owned_by": "volcengine"
+        "open_weights": false,
+        "owned_by": "volcengine",
+        "temperature": true
       },
       "family": null,
       "id": "volcengine/doubao-seed-2.0-lite",
-      "knowledge": null,
-      "last_updated": null,
+      "knowledge": "2026-02-14",
+      "last_updated": "2026-02-14",
       "lifecycle": null,
-      "limits": null,
+      "limits": {
+        "context": 256000,
+        "output": 64000
+      },
       "modalities": {
         "input": [
-          "text"
+          "text",
+          "image",
+          "video"
         ],
         "output": [
           "text"
@@ -3321,29 +3411,59 @@
       "pricing": null,
       "provider": "zenmux",
       "provider_model_id": null,
-      "release_date": null,
+      "release_date": "2026-02-14",
       "retired": false,
       "tags": null
     },
     "volcengine/doubao-seed-2.0-mini": {
       "aliases": [],
       "base_url": null,
-      "capabilities": null,
-      "cost": null,
+      "capabilities": {
+        "chat": true,
+        "embeddings": false,
+        "json": {
+          "native": false,
+          "schema": false,
+          "strict": false
+        },
+        "reasoning": {
+          "enabled": true
+        },
+        "streaming": {
+          "tool_calls": true
+        },
+        "tools": {
+          "enabled": true
+        }
+      },
+      "cost": {
+        "cache_read": 0.01,
+        "cache_write": 0.0024,
+        "input": 0.03,
+        "output": 0.28
+      },
       "deprecated": false,
       "extra": {
+        "attachment": true,
         "created": 1771054033,
-        "owned_by": "volcengine"
+        "open_weights": false,
+        "owned_by": "volcengine",
+        "temperature": true
       },
       "family": null,
       "id": "volcengine/doubao-seed-2.0-mini",
-      "knowledge": null,
-      "last_updated": null,
+      "knowledge": "2026-02-14",
+      "last_updated": "2026-02-14",
       "lifecycle": null,
-      "limits": null,
+      "limits": {
+        "context": 256000,
+        "output": 64000
+      },
       "modalities": {
         "input": [
-          "text"
+          "text",
+          "image",
+          "video"
         ],
         "output": [
           "text"
@@ -3354,29 +3474,59 @@
       "pricing": null,
       "provider": "zenmux",
       "provider_model_id": null,
-      "release_date": null,
+      "release_date": "2026-02-14",
       "retired": false,
       "tags": null
     },
     "volcengine/doubao-seed-2.0-pro": {
       "aliases": [],
       "base_url": null,
-      "capabilities": null,
-      "cost": null,
+      "capabilities": {
+        "chat": true,
+        "embeddings": false,
+        "json": {
+          "native": false,
+          "schema": false,
+          "strict": false
+        },
+        "reasoning": {
+          "enabled": true
+        },
+        "streaming": {
+          "tool_calls": true
+        },
+        "tools": {
+          "enabled": true
+        }
+      },
+      "cost": {
+        "cache_read": 0.09,
+        "cache_write": 0.0024,
+        "input": 0.45,
+        "output": 2.24
+      },
       "deprecated": false,
       "extra": {
+        "attachment": true,
         "created": 1770964408,
-        "owned_by": "volcengine"
+        "open_weights": false,
+        "owned_by": "volcengine",
+        "temperature": true
       },
       "family": null,
       "id": "volcengine/doubao-seed-2.0-pro",
-      "knowledge": null,
-      "last_updated": null,
+      "knowledge": "2026-02-14",
+      "last_updated": "2026-02-14",
       "lifecycle": null,
-      "limits": null,
+      "limits": {
+        "context": 256000,
+        "output": 64000
+      },
       "modalities": {
         "input": [
-          "text"
+          "text",
+          "image",
+          "video"
         ],
         "output": [
           "text"
@@ -3387,7 +3537,7 @@
       "pricing": null,
       "provider": "zenmux",
       "provider_model_id": null,
-      "release_date": null,
+      "release_date": "2026-02-14",
       "retired": false,
       "tags": null
     },
