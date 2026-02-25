@@ -1,30 +1,23 @@
-defmodule Mix.Tasks.LlmDb.History.Backfill do
+defmodule Mix.Tasks.LlmDb.History.Sync do
   use Mix.Task
 
-  @shortdoc "Backfill model history from git commits into priv/llm_db/history NDJSON"
+  @shortdoc "Incrementally syncs model history into priv/llm_db/history"
 
   @moduledoc """
-  Backfills model history from committed provider snapshots.
+  Incrementally syncs model history from committed provider snapshots.
 
-  The task walks git history for `priv/llm_db/providers/*.json`, computes model
-  deltas per commit, and writes append-only history artifacts:
-
-  - `priv/llm_db/history/events/YYYY.ndjson`
-  - `priv/llm_db/history/snapshots.ndjson`
-  - `priv/llm_db/history/meta.json`
+  This task reads `priv/llm_db/history/meta.json` when present and appends only
+  events for commits after `to_commit`. If history does not exist yet, it
+  performs an initial full backfill into the output directory.
 
   ## Usage
 
-      mix llm_db.history.backfill
-      mix llm_db.history.backfill --force
-      mix llm_db.history.backfill --from <sha>
-      mix llm_db.history.backfill --to <ref>
-      mix llm_db.history.backfill --output-dir priv/llm_db/history
+      mix llm_db.history.sync
+      mix llm_db.history.sync --to HEAD
+      mix llm_db.history.sync --output-dir priv/llm_db/history
 
   ## Options
 
-  - `--force` - Remove existing generated history files first
-  - `--from` - Start commit SHA/ref (inclusive)
   - `--to` - End commit SHA/ref (default: `HEAD`)
   - `--output-dir` - Directory for generated history files (default: `priv/llm_db/history`)
   """
@@ -36,8 +29,6 @@ defmodule Mix.Tasks.LlmDb.History.Backfill do
     {opts, _, invalid} =
       OptionParser.parse(args,
         strict: [
-          force: :boolean,
-          from: :string,
           to: :string,
           output_dir: :string
         ]
@@ -49,16 +40,14 @@ defmodule Mix.Tasks.LlmDb.History.Backfill do
 
     runtime_opts =
       []
-      |> maybe_put(:force, opts[:force] == true)
-      |> maybe_put(:from, opts[:from])
       |> maybe_put(:to, opts[:to])
       |> maybe_put(:output_dir, opts[:output_dir])
 
-    Mix.shell().info("Backfilling model history from git...")
+    Mix.shell().info("Syncing model history from git...")
 
-    case LLMDB.History.Backfill.run(runtime_opts) do
+    case LLMDB.History.Backfill.sync(runtime_opts) do
       {:ok, summary} ->
-        Mix.shell().info("✓ History backfill complete")
+        Mix.shell().info("✓ History sync complete")
         Mix.shell().info("  commits scanned:   #{summary.commits_scanned}")
         Mix.shell().info("  commits processed: #{summary.commits_processed}")
         Mix.shell().info("  snapshots written: #{summary.snapshots_written}")
@@ -68,12 +57,11 @@ defmodule Mix.Tasks.LlmDb.History.Backfill do
         Mix.shell().info("  to commit:         #{summary.to_commit}")
 
       {:error, reason} ->
-        Mix.raise("History backfill failed: #{inspect(reason)}")
+        Mix.raise("History sync failed: #{inspect(reason)}")
     end
   end
 
   defp maybe_put(opts, _key, nil), do: opts
-  defp maybe_put(opts, _key, false), do: opts
   defp maybe_put(opts, key, value), do: Keyword.put(opts, key, value)
 
   defp ensure_llm_db_project! do
@@ -81,7 +69,7 @@ defmodule Mix.Tasks.LlmDb.History.Backfill do
 
     if app != :llm_db do
       Mix.raise("""
-      mix llm_db.history.backfill can only be run inside the llm_db project itself.
+      mix llm_db.history.sync can only be run inside the llm_db project itself.
       """)
     end
   end

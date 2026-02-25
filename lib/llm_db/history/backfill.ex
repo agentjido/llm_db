@@ -9,8 +9,13 @@ defmodule LLMDB.History.Backfill do
 
   @providers_dir "priv/llm_db/providers"
   @manifest_path "priv/llm_db/manifest.json"
+  @default_output_dir Path.join(["priv", "llm_db", "history"])
+  @lineage_overrides_file "lineage_overrides.json"
 
   @sortable_list_keys MapSet.new(["aliases", "tags", "input", "output"])
+
+  # Keep inference conservative. Use lineage overrides for ambiguous migrations.
+  @lineage_inference_threshold 30
 
   @type summary :: %{
           commits_scanned: non_neg_integer(),
@@ -22,6 +27,11 @@ defmodule LLMDB.History.Backfill do
           to_commit: String.t() | nil
         }
 
+  @type check_result ::
+          :history_unavailable
+          | :up_to_date
+          | {:outdated, %{new_commits: non_neg_integer(), latest_commit: String.t()}}
+
   @doc """
   Runs a full history backfill from git.
 
@@ -29,20 +39,95 @@ defmodule LLMDB.History.Backfill do
 
   - `:from` - Optional start commit (inclusive)
   - `:to` - Optional end commit/reference (default: `"HEAD"`)
-  - `:output_dir` - Output directory (default: `"history"`)
+  - `:output_dir` - Output directory (default: `"priv/llm_db/history"`)
   - `:force` - Remove previously generated history files first (default: `false`)
   """
   @spec run(keyword()) :: {:ok, summary()} | {:error, term()}
   def run(opts \\ []) do
-    output_dir = Keyword.get(opts, :output_dir, "history")
+    output_dir = Keyword.get(opts, :output_dir, @default_output_dir)
     force? = Keyword.get(opts, :force, false)
     from_ref = Keyword.get(opts, :from)
     to_ref = Keyword.get(opts, :to, "HEAD")
 
     with :ok <- prepare_output_dir(output_dir, force?),
+         {:ok, lineage_overrides} <- load_lineage_overrides(output_dir),
          {:ok, commits} <- history_commits(from_ref, to_ref),
-         {:ok, summary} <- process_commits(commits, output_dir) do
+         {:ok, summary} <- process_commits(commits, output_dir, lineage_overrides) do
       {:ok, summary}
+    end
+  end
+
+  @doc """
+  Incrementally syncs history output from the last generated commit to `:to` (default `HEAD`).
+
+  If no history output exists yet, this performs a full backfill into the output directory.
+
+  ## Options
+
+  - `:to` - Optional end commit/reference (default: `"HEAD"`)
+  - `:output_dir` - Output directory (default: `"priv/llm_db/history"`)
+  """
+  @spec sync(keyword()) :: {:ok, summary()} | {:error, term()}
+  def sync(opts \\ []) do
+    output_dir = Keyword.get(opts, :output_dir, @default_output_dir)
+    to_ref = Keyword.get(opts, :to, "HEAD")
+
+    with :ok <- ensure_output_dir(output_dir),
+         {:ok, lineage_overrides} <- load_lineage_overrides(output_dir),
+         {:ok, meta} <- read_meta(output_dir) do
+      case meta do
+        nil ->
+          if partial_history_output?(output_dir) do
+            {:error,
+             "history output is partially present at #{output_dir}. Re-run with mix llm_db.history.backfill --force."}
+          else
+            with {:ok, commits} <- history_commits(nil, to_ref),
+                 {:ok, summary} <- process_commits(commits, output_dir, lineage_overrides) do
+              {:ok, summary}
+            end
+          end
+
+        meta_map ->
+          sync_from_meta(meta_map, to_ref, output_dir, lineage_overrides)
+      end
+    end
+  end
+
+  @doc """
+  Checks whether generated history is current with git history.
+
+  Returns `:history_unavailable` when `meta.json` is missing, `:up_to_date` when no
+  metadata commits are pending, or `{:outdated, ...}` when new commits exist.
+  """
+  @spec check(keyword()) :: {:ok, check_result()} | {:error, term()}
+  def check(opts \\ []) do
+    output_dir = Keyword.get(opts, :output_dir, @default_output_dir)
+    to_ref = Keyword.get(opts, :to, "HEAD")
+
+    with {:ok, meta} <- read_meta(output_dir) do
+      case meta do
+        nil ->
+          {:ok, :history_unavailable}
+
+        meta_map ->
+          case meta_value(meta_map, "to_commit") do
+            nil ->
+              {:ok, :history_unavailable}
+
+            from_commit ->
+              with {:ok, commits} <- history_commits_after(from_commit, to_ref) do
+                case commits do
+                  [] ->
+                    {:ok, :up_to_date}
+
+                  _ ->
+                    {:ok,
+                     {:outdated,
+                      %{new_commits: length(commits), latest_commit: List.last(commits)}}}
+                end
+              end
+          end
+      end
     end
   end
 
@@ -95,6 +180,113 @@ defmodule LLMDB.History.Backfill do
 
   # Internal pipeline
 
+  defp sync_from_meta(meta, to_ref, output_dir, lineage_overrides) do
+    from_commit = meta_value(meta, "to_commit")
+
+    with true <- is_binary(from_commit),
+         {:ok, commits} <- history_commits_after(from_commit, to_ref) do
+      case commits do
+        [] ->
+          {:ok, noop_summary(meta, output_dir)}
+
+        _ ->
+          process_incremental_commits(meta, from_commit, commits, output_dir, lineage_overrides)
+      end
+    else
+      false ->
+        {:error, "existing history metadata at #{output_dir} is missing to_commit"}
+
+      {:error, reason} ->
+        {:error, reason}
+    end
+  end
+
+  defp process_incremental_commits(meta, from_commit, commits, output_dir, lineage_overrides) do
+    with {:ok, state_by_file} <- load_commit_state(from_commit) do
+      previous_models = flatten_state_models(state_by_file)
+
+      previous_lineage_by_key =
+        load_previous_lineage(output_dir, Map.keys(previous_models), previous_models)
+
+      initial = %{
+        commits_scanned: length(commits),
+        commits_processed: 0,
+        snapshots_written: 0,
+        events_written: 0,
+        output_dir: output_dir,
+        from_commit: meta_value(meta, "from_commit") || from_commit,
+        to_commit: from_commit,
+        state_by_file: state_by_file,
+        previous_models: previous_models,
+        previous_sha: from_commit,
+        previous_lineage_by_key: previous_lineage_by_key,
+        lineage_overrides: lineage_overrides
+      }
+
+      final =
+        Enum.reduce(commits, initial, fn sha, acc ->
+          process_commit(sha, acc)
+        end)
+
+      summary =
+        final
+        |> summarize(base_counts(meta))
+        |> Map.put(:generated_at, DateTime.utc_now() |> DateTime.to_iso8601())
+        |> Map.put(:source_repo, source_repo())
+
+      write_meta(summary, output_dir)
+      {:ok, summary}
+    else
+      {:error, reason} ->
+        {:error, reason}
+    end
+  rescue
+    error ->
+      {:error, Exception.message(error)}
+  end
+
+  defp noop_summary(meta, output_dir) do
+    %{
+      commits_scanned: meta_count(meta, "commits_scanned"),
+      commits_processed: meta_count(meta, "commits_processed"),
+      snapshots_written: meta_count(meta, "snapshots_written"),
+      events_written: meta_count(meta, "events_written"),
+      output_dir: output_dir,
+      from_commit: meta_value(meta, "from_commit"),
+      to_commit: meta_value(meta, "to_commit"),
+      generated_at: meta_value(meta, "generated_at"),
+      source_repo: meta_value(meta, "source_repo")
+    }
+  end
+
+  defp base_counts(meta) do
+    %{
+      commits_scanned: meta_count(meta, "commits_scanned"),
+      commits_processed: meta_count(meta, "commits_processed"),
+      snapshots_written: meta_count(meta, "snapshots_written"),
+      events_written: meta_count(meta, "events_written")
+    }
+  end
+
+  defp summarize(final, base_counts) do
+    base =
+      base_counts ||
+        %{commits_scanned: 0, commits_processed: 0, snapshots_written: 0, events_written: 0}
+
+    final
+    |> Map.drop([
+      :state_by_file,
+      :previous_models,
+      :previous_sha,
+      :previous_lineage_by_key,
+      :lineage_overrides
+    ])
+    |> Map.update!(:commits_scanned, &(&1 + base.commits_scanned))
+    |> Map.update!(:commits_processed, &(&1 + base.commits_processed))
+    |> Map.update!(:snapshots_written, &(&1 + base.snapshots_written))
+    |> Map.update!(:events_written, &(&1 + base.events_written))
+  end
+
   defp prepare_output_dir(output_dir, force?) do
     events_dir = Path.join(output_dir, "events")
     meta_path = Path.join(output_dir, "meta.json")
@@ -116,6 +308,23 @@ defmodule LLMDB.History.Backfill do
     end
   end
 
+  defp ensure_output_dir(output_dir) do
+    events_dir = Path.join(output_dir, "events")
+    File.mkdir_p!(events_dir)
+    :ok
+  rescue
+    error ->
+      {:error, Exception.message(error)}
+  end
+
+  defp partial_history_output?(output_dir) do
+    events_dir = Path.join(output_dir, "events")
+    snapshots_path = Path.join(output_dir, "snapshots.ndjson")
+    meta_path = Path.join(output_dir, "meta.json")
+
+    (File.exists?(events_dir) or File.exists?(snapshots_path)) and not File.exists?(meta_path)
+  end
+
   defp history_commits(from_ref, to_ref) do
     with {:ok, commits_output} <-
            git([
@@ -130,6 +339,15 @@ defmodule LLMDB.History.Backfill do
          commits <- parse_lines(commits_output),
          {:ok, commits} <- maybe_apply_from(commits, from_ref) do
       {:ok, commits}
+    end
+  end
+
+  defp history_commits_after(from_ref, to_ref) do
+    with {:ok, commits} <- history_commits(from_ref, to_ref) do
+      case commits do
+        [] -> {:ok, []}
+        [_from | rest] -> {:ok, rest}
+      end
     end
   end
 
@@ -151,7 +369,7 @@ defmodule LLMDB.History.Backfill do
     end
   end
 
-  defp process_commits(commits, output_dir) do
+  defp process_commits(commits, output_dir, lineage_overrides) do
     initial = %{
       commits_scanned: length(commits),
       commits_processed: 0,
@@ -162,7 +380,9 @@ defmodule LLMDB.History.Backfill do
       to_commit: nil,
       state_by_file: nil,
       previous_models: nil,
-      previous_sha: nil
+      previous_sha: nil,
+      previous_lineage_by_key: %{},
+      lineage_overrides: lineage_overrides
     }
 
     final =
@@ -172,7 +392,7 @@ defmodule LLMDB.History.Backfill do
 
     summary =
       final
-      |> Map.drop([:state_by_file, :previous_models, :previous_sha])
+      |> summarize(nil)
       |> Map.put(:generated_at, DateTime.utc_now() |> DateTime.to_iso8601())
       |> Map.put(:source_repo, source_repo())
 
@@ -200,7 +420,8 @@ defmodule LLMDB.History.Backfill do
 
       {:ok, state_by_file} ->
         models = flatten_state_models(state_by_file)
-        events = diff_models(%{}, models)
+        lineage_by_key = initialize_lineage(models, acc.lineage_overrides)
+        events = diff_models(%{}, models) |> attach_lineage(%{}, lineage_by_key)
         commit_date = commit_date_iso8601(sha)
         manifest_generated_at = manifest_generated_at(sha)
 
@@ -216,7 +437,8 @@ defmodule LLMDB.History.Backfill do
             to_commit: sha,
             state_by_file: state_by_file,
             previous_models: models,
-            previous_sha: sha
+            previous_sha: sha,
+            previous_lineage_by_key: lineage_by_key
         }
 
       {:error, _} ->
@@ -228,8 +450,21 @@ defmodule LLMDB.History.Backfill do
     {:ok, next_state_by_file} = apply_commit_delta(acc.previous_sha, sha, state_by_file)
 
     previous_models = acc.previous_models || %{}
+    previous_lineage_by_key = acc.previous_lineage_by_key || %{}
+
     current_models = flatten_state_models(next_state_by_file)
-    events = diff_models(previous_models, current_models)
+
+    current_lineage_by_key =
+      resolve_current_lineage(
+        previous_models,
+        current_models,
+        previous_lineage_by_key,
+        acc.lineage_overrides
+      )
+
+    events =
+      diff_models(previous_models, current_models)
+      |> attach_lineage(previous_lineage_by_key, current_lineage_by_key)
 
     if events == [] do
       %{
@@ -238,7 +473,8 @@ defmodule LLMDB.History.Backfill do
           to_commit: sha,
           state_by_file: next_state_by_file,
           previous_models: current_models,
-          previous_sha: sha
+          previous_sha: sha,
+          previous_lineage_by_key: current_lineage_by_key
       }
     else
       commit_date = commit_date_iso8601(sha)
@@ -263,9 +499,320 @@ defmodule LLMDB.History.Backfill do
           to_commit: sha,
           state_by_file: next_state_by_file,
           previous_models: current_models,
-          previous_sha: sha
+          previous_sha: sha,
+          previous_lineage_by_key: current_lineage_by_key
       }
     end
+  end
+
+  defp initialize_lineage(models, lineage_overrides) do
+    models
+    |> Map.keys()
+    |> Enum.sort()
+    |> Enum.reduce(%{}, fn model_key, acc ->
+      lineage = lineage_for_model_key(model_key, lineage_overrides, %{}, acc, model_key)
+      Map.put(acc, model_key, lineage)
+    end)
+  end
+
+  defp resolve_current_lineage(
+         previous_models,
+         current_models,
+         previous_lineage_by_key,
+         lineage_overrides
+       ) do
+    previous_keys = Map.keys(previous_models) |> MapSet.new()
+    current_keys = Map.keys(current_models) |> MapSet.new()
+
+    shared_keys =
+      MapSet.intersection(previous_keys, current_keys)
+      |> MapSet.to_list()
+      |> Enum.sort()
+
+    removed_keys =
+      MapSet.difference(previous_keys, current_keys)
+      |> MapSet.to_list()
+      |> Enum.sort()
+
+    introduced_keys =
+      MapSet.difference(current_keys, previous_keys)
+      |> MapSet.to_list()
+      |> Enum.sort()
+
+    current_lineage_by_key =
+      Enum.reduce(shared_keys, %{}, fn model_key, acc ->
+        default_lineage = Map.get(previous_lineage_by_key, model_key, model_key)
+
+        lineage =
+          lineage_for_model_key(
+            model_key,
+            lineage_overrides,
+            previous_lineage_by_key,
+            acc,
+            default_lineage
+          )
+
+        Map.put(acc, model_key, lineage)
+      end)
+
+    {current_lineage_by_key, unresolved_introduced} =
+      Enum.reduce(introduced_keys, {current_lineage_by_key, []}, fn model_key,
+                                                                    {acc, unresolved} ->
+        if Map.has_key?(lineage_overrides, model_key) do
+          lineage =
+            lineage_for_model_key(
+              model_key,
+              lineage_overrides,
+              previous_lineage_by_key,
+              acc,
+              model_key
+            )
+
+          {Map.put(acc, model_key, lineage), unresolved}
+        else
+          {acc, [model_key | unresolved]}
+        end
+      end)
+
+    unresolved_introduced = Enum.reverse(unresolved_introduced)
+
+    inferred_matches =
+      infer_lineage_matches(removed_keys, unresolved_introduced, previous_models, current_models)
+
+    {current_lineage_by_key, matched_introduced} =
+      Enum.reduce(inferred_matches, {current_lineage_by_key, MapSet.new()}, fn {new_key, old_key},
+                                                                               {acc, matched} ->
+        default_lineage = Map.get(previous_lineage_by_key, old_key, old_key)
+
+        lineage =
+          lineage_for_model_key(
+            new_key,
+            lineage_overrides,
+            previous_lineage_by_key,
+            acc,
+            default_lineage
+          )
+
+        {Map.put(acc, new_key, lineage), MapSet.put(matched, new_key)}
+      end)
+
+    Enum.reduce(unresolved_introduced, current_lineage_by_key, fn model_key, acc ->
+      if MapSet.member?(matched_introduced, model_key) do
+        acc
+      else
+        lineage =
+          lineage_for_model_key(
+            model_key,
+            lineage_overrides,
+            previous_lineage_by_key,
+            acc,
+            model_key
+          )
+
+        Map.put(acc, model_key, lineage)
+      end
+    end)
+  end
+
+  defp infer_lineage_matches(removed_keys, introduced_keys, previous_models, current_models) do
+    candidates =
+      for removed_key <- removed_keys,
+          introduced_key <- introduced_keys,
+          score =
+            lineage_inference_score(
+              Map.get(previous_models, removed_key, %{}),
+              Map.get(current_models, introduced_key, %{})
+            ),
+          score >= @lineage_inference_threshold do
+        {score, introduced_key, removed_key}
+      end
+
+    candidates
+    |> Enum.sort_by(fn {score, introduced_key, removed_key} ->
+      {-score, introduced_key, removed_key}
+    end)
+    |> Enum.reduce({[], MapSet.new(), MapSet.new()}, fn {_score, introduced_key, removed_key},
+                                                        {acc, claimed_new, claimed_old} ->
+      cond do
+        MapSet.member?(claimed_new, introduced_key) ->
+          {acc, claimed_new, claimed_old}
+
+        MapSet.member?(claimed_old, removed_key) ->
+          {acc, claimed_new, claimed_old}
+
+        true ->
+          {
+            [{introduced_key, removed_key} | acc],
+            MapSet.put(claimed_new, introduced_key),
+            MapSet.put(claimed_old, removed_key)
+          }
+      end
+    end)
+    |> elem(0)
+    |> Enum.reverse()
+  end
+
+  defp lineage_inference_score(previous_model, current_model)
+       when is_map(previous_model) and is_map(current_model) do
+    previous_id = Map.get(previous_model, "id")
+    current_id = Map.get(current_model, "id")
+
+    previous_provider_model_id = Map.get(previous_model, "provider_model_id")
+    current_provider_model_id = Map.get(current_model, "provider_model_id")
+
+    previous_aliases = string_set(Map.get(previous_model, "aliases"))
+    current_aliases = string_set(Map.get(current_model, "aliases"))
+
+    alias_overlap = MapSet.intersection(previous_aliases, current_aliases) |> MapSet.size()
+
+    id_match_score =
+      if is_binary(previous_id) and previous_id == current_id do
+        50
+      else
+        0
+      end
+
+    provider_model_score =
+      if is_binary(previous_provider_model_id) and
+           previous_provider_model_id == current_provider_model_id do
+        40
+      else
+        0
+      end
+
+    previous_id_in_current_aliases_score =
+      if is_binary(previous_id) and MapSet.member?(current_aliases, previous_id) do
+        30
+      else
+        0
+      end
+
+    current_id_in_previous_aliases_score =
+      if is_binary(current_id) and MapSet.member?(previous_aliases, current_id) do
+        30
+      else
+        0
+      end
+
+    model_field_score =
+      if is_binary(Map.get(previous_model, "model")) and
+           Map.get(previous_model, "model") == Map.get(current_model, "model") do
+        5
+      else
+        0
+      end
+
+    name_field_score =
+      if is_binary(Map.get(previous_model, "name")) and
+           Map.get(previous_model, "name") == Map.get(current_model, "name") do
+        2
+      else
+        0
+      end
+
+    id_match_score + provider_model_score + previous_id_in_current_aliases_score +
+      current_id_in_previous_aliases_score + alias_overlap * 5 + model_field_score +
+      name_field_score
+  end
+
+  defp string_set(value) when is_list(value) do
+    value
+    |> Enum.filter(&is_binary/1)
+    |> MapSet.new()
+  end
+
+  defp string_set(_), do: MapSet.new()
+
+  defp lineage_for_model_key(
+         model_key,
+         lineage_overrides,
+         previous_lineage_by_key,
+         current_lineage_by_key,
+         default_lineage
+       ) do
+    case resolve_override_target(model_key, lineage_overrides) do
+      nil ->
+        default_lineage
+
+      target_key ->
+        Map.get(current_lineage_by_key, target_key) ||
+          Map.get(previous_lineage_by_key, target_key) ||
+          target_key
+    end
+  end
+
+  defp resolve_override_target(model_key, lineage_overrides) do
+    if Map.has_key?(lineage_overrides, model_key) do
+      follow_override_target(model_key, lineage_overrides, MapSet.new(), 0)
+    else
+      nil
+    end
+  end
+
+  defp follow_override_target(model_key, _lineage_overrides, _seen, depth) when depth >= 32,
+    do: model_key
+
+  defp follow_override_target(model_key, lineage_overrides, seen, depth) do
+    if MapSet.member?(seen, model_key) do
+      model_key
+    else
+      case Map.get(lineage_overrides, model_key) do
+        nil ->
+          model_key
+
+        target when is_binary(target) ->
+          follow_override_target(
+            target,
+            lineage_overrides,
+            MapSet.put(seen, model_key),
+            depth + 1
+          )
+      end
+    end
+  end
+
+  defp attach_lineage(events, previous_lineage_by_key, current_lineage_by_key) do
+    Enum.map(events, fn event ->
+      lineage_key =
+        case event.type do
+          "removed" ->
+            Map.get(previous_lineage_by_key, event.model_key, event.model_key)
+
+          _ ->
+            Map.get(current_lineage_by_key, event.model_key) ||
+              Map.get(previous_lineage_by_key, event.model_key, event.model_key)
+        end
+
+      Map.put(event, :lineage_key, lineage_key)
+    end)
+  end
+
+  defp load_previous_lineage(output_dir, model_keys, previous_models) do
+    needed_keys = MapSet.new(model_keys)
+
+    loaded =
+      output_dir
+      |> event_paths()
+      |> Enum.reduce(%{}, fn path, acc ->
+        File.stream!(path)
+        |> Enum.reduce(acc, fn line, inner_acc ->
+          case Jason.decode(line) do
+            {:ok, %{"model_key" => model_key} = event} ->
+              if MapSet.member?(needed_keys, model_key) do
+                Map.put(inner_acc, model_key, Map.get(event, "lineage_key", model_key))
+              else
+                inner_acc
+              end
+
+            _ ->
+              inner_acc
+          end
+        end)
+      end)
+
+    Enum.reduce(previous_models, %{}, fn {model_key, _model}, acc ->
+      Map.put(acc, model_key, Map.get(loaded, model_key, model_key))
+    end)
   end
 
   defp load_commit_state(sha) do
@@ -471,6 +1018,7 @@ defmodule LLMDB.History.Backfill do
         captured_at: commit_date,
         type: event.type,
         model_key: event.model_key,
+        lineage_key: Map.get(event, :lineage_key, event.model_key),
         provider: Enum.at(provider_model, 0),
         model_id: Enum.at(provider_model, 1),
         changes: event.changes
@@ -483,6 +1031,87 @@ defmodule LLMDB.History.Backfill do
   defp write_meta(summary, output_dir) do
     path = Path.join(output_dir, "meta.json")
     File.write!(path, Jason.encode!(summary, pretty: true))
+  end
+
+  defp read_meta(output_dir) do
+    path = Path.join(output_dir, "meta.json")
+
+    cond do
+      not File.exists?(path) ->
+        {:ok, nil}
+
+      true ->
+        with {:ok, content} <- File.read(path),
+             {:ok, map} <- Jason.decode(content) do
+          {:ok, map}
+        else
+          {:error, reason} ->
+            {:error, "failed to read #{path}: #{inspect(reason)}"}
+        end
+    end
+  end
+
+  defp meta_value(meta, key) when is_map(meta) and is_binary(key) do
+    atom_key = meta_atom_key(key)
+    Map.get(meta, key) || (atom_key && Map.get(meta, atom_key))
+  end
+
+  defp meta_count(meta, key) do
+    case meta_value(meta, key) do
+      value when is_integer(value) and value >= 0 -> value
+      _ -> 0
+    end
+  end
+
+  defp meta_atom_key("commits_scanned"), do: :commits_scanned
+  defp meta_atom_key("commits_processed"), do: :commits_processed
+  defp meta_atom_key("snapshots_written"), do: :snapshots_written
+  defp meta_atom_key("events_written"), do: :events_written
+  defp meta_atom_key("output_dir"), do: :output_dir
+  defp meta_atom_key("from_commit"), do: :from_commit
+  defp meta_atom_key("to_commit"), do: :to_commit
+  defp meta_atom_key("generated_at"), do: :generated_at
+  defp meta_atom_key("source_repo"), do: :source_repo
+  defp meta_atom_key(_), do: nil
+
+  defp load_lineage_overrides(output_dir) do
+    path = Path.join(output_dir, @lineage_overrides_file)
+
+    if not File.exists?(path) do
+      {:ok, %{}}
+    else
+      with {:ok, content} <- File.read(path),
+           {:ok, decoded} <- Jason.decode(content),
+           {:ok, overrides} <- parse_lineage_overrides(decoded) do
+        {:ok, overrides}
+      else
+        {:error, reason} ->
+          {:error, "invalid lineage overrides at #{path}: #{inspect(reason)}"}
+      end
+    end
+  end
+
+  defp parse_lineage_overrides(%{"lineage" => lineage}) when is_map(lineage),
+    do: validate_lineage_overrides(lineage)
+
+  defp parse_lineage_overrides(map) when is_map(map), do: validate_lineage_overrides(map)
+  defp parse_lineage_overrides(_), do: {:error, :invalid_format}
+
+  defp validate_lineage_overrides(lineage_overrides) do
+    Enum.reduce_while(lineage_overrides, {:ok, %{}}, fn {from, to}, {:ok, acc} ->
+      if is_binary(from) and is_binary(to) do
+        {:cont, {:ok, Map.put(acc, from, to)}}
+      else
+        {:halt, {:error, :non_string_keys_or_values}}
+      end
+    end)
+  end
+
+  defp event_paths(output_dir) do
+    output_dir
+    |> Path.join("events/*.ndjson")
+    |> Path.wildcard()
+    |> Enum.sort()
   end
 
   defp append_ndjson(path, map) do

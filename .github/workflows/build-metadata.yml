@@ -2,7 +2,7 @@ name: Refresh Upstream Metadata
 
 on:
   schedule:
-    - cron: "0 0 * * 1"
+    - cron: "0 0 * * *"
   workflow_dispatch:
     inputs:
       force_update:
@@ -66,6 +66,7 @@ jobs:
           echo "Pulling latest LLM model metadata..."
           mix llm_db.pull
           mix llm_db.build
+          mix llm_db.history.sync
 
       - name: Check for changes
         id: changes
@@ -212,6 +213,7 @@ jobs:
           base: "main"
           add-paths: |
             priv/llm_db/**
+            priv/llm_db/history/**
             lib/llm_db/generated/**
 
       - name: Report no changes

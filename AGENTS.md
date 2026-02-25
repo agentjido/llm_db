@@ -11,7 +11,9 @@
 - **Compile**: `mix compile`
 - **Quality check**: `mix quality` (format, compile warnings, dialyzer, credo)
 - **Update model data**: `mix llm_db.pull` (fetches from configured remote sources and regenerates snapshot)
-- **Backfill model history (one-time)**: `mix llm_db.history.backfill --force` (generates `history/events/*.ndjson` from git snapshot history)
+- **Backfill model history (one-time)**: `mix llm_db.history.backfill --force` (generates `priv/llm_db/history/events/*.ndjson` from git snapshot history)
+- **Sync model history (incremental)**: `mix llm_db.history.sync`
+- **Check history drift**: `mix llm_db.history.check`
 - **Dependencies**: `mix deps.get`
 - **Release**: `mix llm_db.version && mix git_ops.release && git push && git push --tags` (bumps to date-based version, updates CHANGELOG, tags, and pushes)
 
