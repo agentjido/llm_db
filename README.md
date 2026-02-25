@@ -253,6 +253,15 @@ mix llm_db.pull
 mix llm_db.build
 ```
 
+To generate historical change events from committed snapshot history (one-time setup):
+
+```bash
+mix llm_db.history.backfill --force
+```
+
+This writes append-only NDJSON history artifacts under `history/`:
+`history/events/YYYY.ndjson`, `history/snapshots.ndjson`, and `history/meta.json`.
+
 See the [Sources & Engine](guides/sources-and-engine.md) guide for details.
 
 ## Using with ReqLLM
