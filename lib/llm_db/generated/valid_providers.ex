@@ -75,6 +75,7 @@ defmodule LLMDB.Generated.ValidProviders do
     :ollama_cloud,
     :openai,
     :opencode,
+    :opencode_go,
     :openrouter,
     :ovhcloud,
     :perplexity,
