@@ -1,5 +1,6 @@
 defmodule Mix.Tasks.LlmDb.History.Sync do
   use Mix.Task
+  @dialyzer {:nowarn_function, run: 1}
 
   @shortdoc "Incrementally syncs model history into priv/llm_db/history"
 

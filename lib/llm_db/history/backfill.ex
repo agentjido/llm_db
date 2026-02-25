@@ -660,10 +660,10 @@ defmodule LLMDB.History.Backfill do
     previous_provider_model_id = Map.get(previous_model, "provider_model_id")
     current_provider_model_id = Map.get(current_model, "provider_model_id")
 
-    previous_aliases = string_set(Map.get(previous_model, "aliases"))
-    current_aliases = string_set(Map.get(current_model, "aliases"))
+    previous_aliases = string_list(Map.get(previous_model, "aliases"))
+    current_aliases = string_list(Map.get(current_model, "aliases"))
 
-    alias_overlap = MapSet.intersection(previous_aliases, current_aliases) |> MapSet.size()
+    alias_overlap = overlap_count(previous_aliases, current_aliases)
 
     id_match_score =
       if is_binary(previous_id) and previous_id == current_id do
@@ -681,14 +681,14 @@ defmodule LLMDB.History.Backfill do
       end
 
     previous_id_in_current_aliases_score =
-      if is_binary(previous_id) and MapSet.member?(current_aliases, previous_id) do
+      if is_binary(previous_id) and previous_id in current_aliases do
         30
       else
         0
       end
 
     current_id_in_previous_aliases_score =
-      if is_binary(current_id) and MapSet.member?(previous_aliases, current_id) do
+      if is_binary(current_id) and current_id in previous_aliases do
         30
       else
         0
@@ -715,13 +715,18 @@ defmodule LLMDB.History.Backfill do
       name_field_score
   end
 
-  defp string_set(value) when is_list(value) do
+  defp string_list(value) when is_list(value) do
     value
     |> Enum.filter(&is_binary/1)
-    |> MapSet.new()
+    |> Enum.uniq()
   end
 
-  defp string_set(_), do: MapSet.new()
+  defp string_list(_), do: []
+
+  defp overlap_count(left, right) do
+    right_lookup = Map.new(right, &{&1, true})
+    Enum.count(left, &Map.has_key?(right_lookup, &1))
+  end
 
   defp lineage_for_model_key(
          model_key,
@@ -743,7 +748,7 @@ defmodule LLMDB.History.Backfill do
 
   defp resolve_override_target(model_key, lineage_overrides) do
     if Map.has_key?(lineage_overrides, model_key) do
-      follow_override_target(model_key, lineage_overrides, MapSet.new(), 0)
+      follow_override_target(model_key, lineage_overrides, [], 0)
     else
       nil
     end
@@ -753,7 +758,7 @@ defmodule LLMDB.History.Backfill do
     do: model_key
 
   defp follow_override_target(model_key, lineage_overrides, seen, depth) do
-    if MapSet.member?(seen, model_key) do
+    if model_key in seen do
       model_key
     else
       case Map.get(lineage_overrides, model_key) do
@@ -764,7 +769,7 @@ defmodule LLMDB.History.Backfill do
           follow_override_target(
             target,
             lineage_overrides,
-            MapSet.put(seen, model_key),
+            [model_key | seen],
             depth + 1
           )
       end

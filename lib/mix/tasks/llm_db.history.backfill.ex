@@ -1,5 +1,6 @@
 defmodule Mix.Tasks.LlmDb.History.Backfill do
   use Mix.Task
+  @dialyzer {:nowarn_function, run: 1}
 
   @shortdoc "Backfill model history from git commits into priv/llm_db/history NDJSON"
 
