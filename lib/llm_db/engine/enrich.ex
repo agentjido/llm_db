@@ -91,8 +91,58 @@ defmodule LLMDB.Enrich do
   """
   @spec enrich_models([map()]) :: [map()]
   def enrich_models(models) when is_list(models) do
-    Enum.map(models, &enrich_model/1)
+    models
+    |> Enum.map(&enrich_model/1)
+    |> inherit_canonical_costs()
   end
+
+  @date_suffix ~r/-\d{4}-\d{2}-\d{2}$/
+
+  @doc """
+  Propagates cost from canonical models to their dated variants.
+
+  For models with a date suffix (e.g., `gpt-4o-mini-2024-07-18`), if the model
+  has no cost, looks up the canonical model (e.g., `gpt-4o-mini`) from the same
+  provider and copies its cost.
+
+  Models that already have a cost are left unchanged.
+
+  ## Examples
+
+      iex> models = [
+      ...>   %{id: "gpt-4o-mini", provider: :openai, cost: %{input: 0.15, output: 0.6}},
+      ...>   %{id: "gpt-4o-mini-2024-07-18", provider: :openai}
+      ...> ]
+      iex> [_, dated] = LLMDB.Enrich.inherit_canonical_costs(models)
+      iex> dated.cost
+      %{input: 0.15, output: 0.6}
+  """
+  @spec inherit_canonical_costs([map()]) :: [map()]
+  def inherit_canonical_costs(models) when is_list(models) do
+    canonicals_with_cost =
+      models
+      |> Enum.reject(&dated_model?/1)
+      |> Enum.filter(&has_cost?/1)
+      |> Map.new(&{{&1.provider, &1.id}, &1.cost})
+
+    Enum.map(models, fn model ->
+      if dated_model?(model) and not has_cost?(model) do
+        canonical_id = Regex.replace(@date_suffix, model.id, "")
+
+        case Map.get(canonicals_with_cost, {model.provider, canonical_id}) do
+          nil -> model
+          cost -> Map.put(model, :cost, cost)
+        end
+      else
+        model
+      end
+    end)
+  end
+
+  defp dated_model?(%{id: id}), do: Regex.match?(@date_suffix, id)
+
+  defp has_cost?(%{cost: cost}) when is_map(cost) and map_size(cost) > 0, do: true
+  defp has_cost?(_), do: false
 
   # Private helpers
 

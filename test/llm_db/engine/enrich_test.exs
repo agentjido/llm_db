@@ -210,6 +210,109 @@ defmodule LLMDB.Engine.EnrichTest do
     end
   end
 
+  describe "inherit_canonical_costs/1" do
+    test "dated model inherits cost from canonical" do
+      models = [
+        %{id: "gpt-4o-mini", provider: :openai, cost: %{input: 0.15, output: 0.6}},
+        %{id: "gpt-4o-mini-2024-07-18", provider: :openai}
+      ]
+
+      [_canonical, dated] = Enrich.inherit_canonical_costs(models)
+      assert dated.cost == %{input: 0.15, output: 0.6}
+    end
+
+    test "does not overwrite existing cost on dated model" do
+      models = [
+        %{id: "gpt-4o", provider: :openai, cost: %{input: 2.5, output: 10}},
+        %{id: "gpt-4o-2024-08-06", provider: :openai, cost: %{input: 1.25, output: 5}}
+      ]
+
+      [_canonical, dated] = Enrich.inherit_canonical_costs(models)
+      assert dated.cost == %{input: 1.25, output: 5}
+    end
+
+    test "does not inherit across providers" do
+      models = [
+        %{id: "model-v1", provider: :openai, cost: %{input: 1.0, output: 2.0}},
+        %{id: "model-v1-2024-07-18", provider: :anthropic}
+      ]
+
+      [_canonical, dated] = Enrich.inherit_canonical_costs(models)
+      refute Map.has_key?(dated, :cost)
+    end
+
+    test "leaves dated model unchanged when no canonical exists" do
+      models = [
+        %{id: "orphan-model-2024-07-18", provider: :openai}
+      ]
+
+      [dated] = Enrich.inherit_canonical_costs(models)
+      refute Map.has_key?(dated, :cost)
+    end
+
+    test "leaves dated model unchanged when canonical has no cost" do
+      models = [
+        %{id: "gpt-4o-mini", provider: :openai},
+        %{id: "gpt-4o-mini-2024-07-18", provider: :openai}
+      ]
+
+      [_canonical, dated] = Enrich.inherit_canonical_costs(models)
+      refute Map.has_key?(dated, :cost)
+    end
+
+    test "handles multiple dated variants of the same canonical" do
+      cost = %{input: 0.15, output: 0.6}
+
+      models = [
+        %{id: "gpt-4o-mini", provider: :openai, cost: cost},
+        %{id: "gpt-4o-mini-2024-07-18", provider: :openai},
+        %{id: "gpt-4o-mini-2025-01-15", provider: :openai}
+      ]
+
+      [_canonical, dated1, dated2] = Enrich.inherit_canonical_costs(models)
+      assert dated1.cost == cost
+      assert dated2.cost == cost
+    end
+
+    test "handles complex model IDs with date suffix" do
+      cost = %{input: 1.0, output: 4.0}
+
+      models = [
+        %{id: "gpt-4o-mini-realtime-preview", provider: :openai, cost: cost},
+        %{id: "gpt-4o-mini-realtime-preview-2024-12-17", provider: :openai}
+      ]
+
+      [_canonical, dated] = Enrich.inherit_canonical_costs(models)
+      assert dated.cost == cost
+    end
+
+    test "does not treat non-date suffixes as dated models" do
+      models = [
+        %{id: "gpt-3.5-turbo", provider: :openai, cost: %{input: 0.5, output: 1.5}},
+        %{id: "gpt-3.5-turbo-0125", provider: :openai}
+      ]
+
+      [_canonical, model] = Enrich.inherit_canonical_costs(models)
+      refute Map.has_key?(model, :cost)
+    end
+
+    test "empty list returns empty list" do
+      assert Enrich.inherit_canonical_costs([]) == []
+    end
+
+    test "integrates with enrich_models pipeline" do
+      models = [
+        %{id: "test-model-v1", provider: :test_provider_alpha, cost: %{input: 1.0, output: 2.0}},
+        %{id: "test-model-v1-2024-07-18", provider: :test_provider_alpha}
+      ]
+
+      [canonical, dated] = Enrich.enrich_models(models)
+      assert canonical.provider_model_id == "test-model-v1"
+      assert dated.cost == %{input: 1.0, output: 2.0}
+      assert dated.provider_model_id == "test-model-v1-2024-07-18"
+    end
+  end
+
   describe "integration with validation" do
     test "enrichment works before validation" do
       alias LLMDB.Validate
