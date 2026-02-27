@@ -7,6 +7,7 @@ defmodule LLMDB.History do
   """
 
   @table :llm_db_history
+  @table_heir_key {__MODULE__, :table_heir}
   @max_limit 500
 
   @type event :: map()
@@ -94,22 +95,26 @@ defmodule LLMDB.History do
   defp normalize_provider(_), do: {:error, :bad_provider}
 
   defp ensure_loaded do
+    do_ensure_loaded(1)
+  end
+
+  defp do_ensure_loaded(retries_left) when is_integer(retries_left) and retries_left >= 0 do
     table = ensure_table()
 
     with {:ok, signature} <- history_signature(),
          stale? <- stale_index?(table, signature) do
       if stale? do
         with {:ok, index} <- load_index() do
-          :ets.insert(table, [
-            {:signature, signature},
-            {:meta, index.meta},
-            {:model_index, index.model_index},
-            {:lineage_index, index.lineage_index},
-            {:lineage_by_model, index.lineage_by_model},
-            {:recent_events, index.recent_events}
-          ])
+          case put_index(table, signature, index) do
+            :ok ->
+              {:ok, :loaded}
 
-          {:ok, :loaded}
+            :retry when retries_left > 0 ->
+              do_ensure_loaded(retries_left - 1)
+
+            :retry ->
+              {:error, :history_unavailable}
+          end
         end
       else
         {:ok, :loaded}
@@ -120,10 +125,97 @@ defmodule LLMDB.History do
   defp ensure_table do
     case :ets.whereis(@table) do
       :undefined ->
-        :ets.new(@table, [:named_table, :public, read_concurrency: true])
+        create_table()
 
       tid ->
         tid
+    end
+  end
+
+  defp create_table do
+    heir = ensure_table_heir()
+
+    tid =
+      try do
+        :ets.new(@table, [
+          :named_table,
+          :public,
+          {:heir, heir, :llm_db_history},
+          read_concurrency: true
+        ])
+      rescue
+        ArgumentError ->
+          :ets.whereis(@table)
+      end
+
+    if tid == :undefined do
+      create_table()
+    else
+      tid
+    end
+  end
+
+  defp ensure_table_heir do
+    case :persistent_term.get(@table_heir_key, nil) do
+      pid when is_pid(pid) ->
+        if Process.alive?(pid) do
+          pid
+        else
+          start_table_heir()
+        end
+
+      _ ->
+        start_table_heir()
+    end
+  end
+
+  defp start_table_heir do
+    pid = spawn(fn -> table_heir_loop() end)
+
+    case :persistent_term.get(@table_heir_key, nil) do
+      existing when is_pid(existing) ->
+        if Process.alive?(existing) do
+          if existing != pid do
+            Process.exit(pid, :normal)
+          end
+
+          existing
+        else
+          :persistent_term.put(@table_heir_key, pid)
+          pid
+        end
+
+      _ ->
+        :persistent_term.put(@table_heir_key, pid)
+        pid
+    end
+  end
+
+  defp table_heir_loop do
+    receive do
+      {:"ETS-TRANSFER", _table, _from, _data} ->
+        table_heir_loop()
+
+      _ ->
+        table_heir_loop()
+    end
+  end
+
+  defp put_index(table, signature, index) do
+    try do
+      :ets.insert(table, [
+        {:signature, signature},
+        {:meta, index.meta},
+        {:model_index, index.model_index},
+        {:lineage_index, index.lineage_index},
+        {:lineage_by_model, index.lineage_by_model},
+        {:recent_events, index.recent_events}
+      ])
+
+      :ok
+    rescue
+      ArgumentError ->
+        :retry
     end
   end
 

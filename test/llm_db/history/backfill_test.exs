@@ -1,5 +1,5 @@
 defmodule LLMDB.History.BackfillTest do
-  use ExUnit.Case, async: true
+  use ExUnit.Case, async: false
 
   alias LLMDB.History.Backfill
 
@@ -79,5 +79,57 @@ defmodule LLMDB.History.BackfillTest do
 
       assert Backfill.diff_models(previous_normalized, current_normalized) == []
     end
+  end
+
+  describe "sync/1" do
+    test "bootstraps on empty output directory and is idempotent" do
+      output_dir = temp_output_dir()
+      first_commit = first_metadata_commit()
+
+      on_exit(fn -> File.rm_rf!(output_dir) end)
+
+      assert {:ok, first} = Backfill.sync(output_dir: output_dir, to: first_commit)
+      assert first.from_commit == first_commit
+      assert first.to_commit == first_commit
+      assert first.commits_processed == 1
+      assert first.snapshots_written == 1
+
+      assert File.exists?(Path.join(output_dir, "meta.json"))
+      assert File.exists?(Path.join(output_dir, "snapshots.ndjson"))
+
+      assert {:ok, second} = Backfill.sync(output_dir: output_dir, to: first_commit)
+      assert second.from_commit == first_commit
+      assert second.to_commit == first_commit
+      assert second.commits_processed == first.commits_processed
+      assert second.events_written == first.events_written
+    end
+  end
+
+  defp temp_output_dir do
+    path =
+      Path.join(
+        System.tmp_dir!(),
+        "llm_db_history_sync_test_#{System.unique_integer([:positive])}"
+      )
+
+    File.mkdir_p!(path)
+    path
+  end
+
+  defp first_metadata_commit do
+    {output, 0} =
+      System.cmd("git", [
+        "rev-list",
+        "--reverse",
+        "--topo-order",
+        "HEAD",
+        "--",
+        "priv/llm_db/providers",
+        "priv/llm_db/manifest.json"
+      ])
+
+    output
+    |> String.split("\n", trim: true)
+    |> List.first()
   end
 end

@@ -322,7 +322,16 @@ defmodule LLMDB.History.Backfill do
     snapshots_path = Path.join(output_dir, "snapshots.ndjson")
     meta_path = Path.join(output_dir, "meta.json")
 
-    (File.exists?(events_dir) or File.exists?(snapshots_path)) and not File.exists?(meta_path)
+    events_present? =
+      case File.ls(events_dir) do
+        {:ok, entries} ->
+          Enum.any?(entries, &String.ends_with?(&1, ".ndjson"))
+
+        {:error, _} ->
+          false
+      end
+
+    (events_present? or File.exists?(snapshots_path)) and not File.exists?(meta_path)
   end
 
   defp history_commits(from_ref, to_ref) do

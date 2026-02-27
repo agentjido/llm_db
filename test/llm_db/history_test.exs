@@ -133,6 +133,28 @@ defmodule LLMDB.HistoryTest do
     assert {:error, :invalid_limit} = History.recent(0)
   end
 
+  test "available?/0 is safe under concurrent first-load calls" do
+    clear_history_cache()
+
+    results =
+      1..100
+      |> Task.async_stream(
+        fn _ -> History.available?() end,
+        max_concurrency: 100,
+        ordered: false,
+        timeout: 15_000,
+        on_timeout: :kill_task
+      )
+      |> Enum.to_list()
+
+    refute Enum.any?(results, &match?({:exit, _}, &1))
+
+    assert Enum.all?(results, fn
+             {:ok, value} when is_boolean(value) -> true
+             _ -> false
+           end)
+  end
+
   defp write_meta(dir) do
     File.mkdir_p!(Path.join(dir, "events"))
 
