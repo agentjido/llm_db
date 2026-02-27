@@ -36,4 +36,22 @@ jobs:
           elixir-version: "1.18"
       - run: mix deps.get
       - run: mix llm_db.build --check
-      - run: mix llm_db.history.check
+      - name: Check history drift
+        run: |
+          set -euo pipefail
+
+          if mix llm_db.history.check; then
+            exit 0
+          fi
+
+          if [ "${{ github.event_name }}" = "push" ]; then
+            latest_metadata_commit="$(git rev-list --max-count=1 HEAD -- priv/llm_db/providers priv/llm_db/manifest.json || true)"
+
+            if [ -n "$latest_metadata_commit" ] && git rev-parse --verify "${latest_metadata_commit}^" >/dev/null 2>&1; then
+              echo "Retrying history check against ${latest_metadata_commit}^ to tolerate squash-merged metadata commits."
+              mix llm_db.history.check --to "${latest_metadata_commit}^"
+              exit 0
+            fi
+          fi
+
+          exit 1
