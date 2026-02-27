@@ -134,6 +134,26 @@ defmodule LLMDB.HistoryTest do
   end
 
   test "available?/0 is safe under concurrent first-load calls" do
+    dir = temp_history_dir()
+    write_meta(dir)
+
+    write_events(dir, "2026", [
+      %{
+        "schema_version" => 1,
+        "event_id" => "a:1",
+        "snapshot_id" => "a",
+        "source_commit" => "a",
+        "captured_at" => "2026-01-01T00:00:00Z",
+        "type" => "introduced",
+        "model_key" => "openai:gpt-4o",
+        "lineage_key" => "openai:gpt-4o",
+        "provider" => "openai",
+        "model_id" => "gpt-4o",
+        "changes" => []
+      }
+    ])
+
+    Application.put_env(:llm_db, :history_dir, dir)
     clear_history_cache()
 
     results =

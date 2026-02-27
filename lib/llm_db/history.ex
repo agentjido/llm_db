@@ -8,6 +8,7 @@ defmodule LLMDB.History do
 
   @table :llm_db_history
   @table_heir_key {__MODULE__, :table_heir}
+  @load_lock {__MODULE__, :index_load}
   @max_limit 500
 
   @type event :: map()
@@ -104,22 +105,24 @@ defmodule LLMDB.History do
     with {:ok, signature} <- history_signature(),
          stale? <- stale_index?(table, signature) do
       if stale? do
-        with {:ok, index} <- load_index() do
-          case put_index(table, signature, index) do
-            :ok ->
-              {:ok, :loaded}
+        case with_load_lock(fn -> maybe_refresh_index(table, signature) end) do
+          :retry when retries_left > 0 ->
+            do_ensure_loaded(retries_left - 1)
 
-            :retry when retries_left > 0 ->
-              do_ensure_loaded(retries_left - 1)
+          :retry ->
+            {:error, :history_unavailable}
 
-            :retry ->
-              {:error, :history_unavailable}
-          end
+          result ->
+            result
         end
       else
         {:ok, :loaded}
       end
     end
+  end
+
+  defp with_load_lock(fun) do
+    :global.trans(@load_lock, fun)
   end
 
   defp ensure_table do
@@ -220,9 +223,27 @@ defmodule LLMDB.History do
   end
 
   defp stale_index?(table, signature) do
-    case :ets.lookup(table, :signature) do
-      [{:signature, ^signature}] -> false
-      _ -> true
+    try do
+      case :ets.lookup(table, :signature) do
+        [{:signature, ^signature}] -> false
+        _ -> true
+      end
+    rescue
+      ArgumentError ->
+        true
+    end
+  end
+
+  defp maybe_refresh_index(table, signature) do
+    if stale_index?(table, signature) do
+      with {:ok, index} <- load_index() do
+        case put_index(table, signature, index) do
+          :ok -> {:ok, :loaded}
+          :retry -> :retry
+        end
+      end
+    else
+      {:ok, :loaded}
     end
   end
 
