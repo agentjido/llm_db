@@ -231,10 +231,13 @@ defmodule LLMDB.Store do
              end)
              |> Enum.map(fn {id, _} -> id end))
 
+        # Strip inference profile prefix for Bedrock lookups
+        {lookup_id, _prefix} = LLMDB.Spec.strip_prefix(provider_id, model_id)
+
         # Try each provider in the search list
         result =
           Enum.find_value(providers_to_search, fn search_provider_id ->
-            key = {search_provider_id, model_id}
+            key = {search_provider_id, lookup_id}
 
             # Try direct lookup first
             case Map.get(models_by_key, key) do

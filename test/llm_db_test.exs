@@ -622,6 +622,48 @@ defmodule LLMDBTest do
       assert {:error, :unknown_provider} = LLMDB.model("nonexistent:model")
     end
 
+    test "model/1 strips Bedrock inference profile prefixes" do
+      Store.clear!()
+
+      {:ok, _} =
+        load_with_test_data(%{
+          overrides: %{
+            providers: [%{id: :amazon_bedrock, name: "Amazon Bedrock"}],
+            models: [
+              %{
+                id: "anthropic.claude-sonnet-4-5-20250929-v1:0",
+                provider: :amazon_bedrock,
+                capabilities: %{chat: true}
+              }
+            ]
+          }
+        })
+
+      # Without prefix
+      assert {:ok, model} =
+               LLMDB.model("amazon_bedrock:anthropic.claude-sonnet-4-5-20250929-v1:0")
+
+      assert model.id == "anthropic.claude-sonnet-4-5-20250929-v1:0"
+
+      # With au. prefix
+      assert {:ok, model} =
+               LLMDB.model("amazon_bedrock:au.anthropic.claude-sonnet-4-5-20250929-v1:0")
+
+      assert model.id == "anthropic.claude-sonnet-4-5-20250929-v1:0"
+
+      # With us. prefix
+      assert {:ok, model} =
+               LLMDB.model("amazon_bedrock:us.anthropic.claude-sonnet-4-5-20250929-v1:0")
+
+      assert model.id == "anthropic.claude-sonnet-4-5-20250929-v1:0"
+
+      # With eu. prefix
+      assert {:ok, model} =
+               LLMDB.model("amazon_bedrock:eu.anthropic.claude-sonnet-4-5-20250929-v1:0")
+
+      assert model.id == "anthropic.claude-sonnet-4-5-20250929-v1:0"
+    end
+
     test "model/2 resolves model by provider and id" do
       providers = LLMDB.providers()
 

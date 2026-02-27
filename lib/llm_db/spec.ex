@@ -19,12 +19,12 @@ defmodule LLMDB.Spec do
 
   ## Amazon Bedrock Inference Profiles
 
-  For Amazon Bedrock models, inference profile IDs with region prefixes (us., eu., ap., ca., global.)
-  are supported. The region prefix is stripped for catalog lookup but preserved in the returned
-  model ID. For example:
+  For Amazon Bedrock models, inference profile IDs with region prefixes (us., eu., ap., apac., ca.,
+  au., jp., us-gov., global.) are supported. The region prefix is stripped for catalog lookup but
+  preserved in the returned model ID. For example:
 
-      iex> LLMDB.Spec.resolve("bedrock:us.anthropic.claude-opus-4-1-20250805-v1:0")
-      {:ok, {:bedrock, "us.anthropic.claude-opus-4-1-20250805-v1:0", %LLMDB.Model{}}}
+      iex> LLMDB.Spec.resolve("amazon_bedrock:us.anthropic.claude-opus-4-1-20250805-v1:0")
+      {:ok, {:amazon_bedrock, "us.anthropic.claude-opus-4-1-20250805-v1:0", %LLMDB.Model{}}}
 
   The lookup uses "anthropic.claude-opus-4-1-20250805-v1:0" to find metadata, but the returned
   model ID retains the "us." prefix for API routing purposes.
@@ -33,8 +33,9 @@ defmodule LLMDB.Spec do
   alias LLMDB.{Normalize, Store}
   alias LLMDB.Model
 
-  # Valid Bedrock inference profile region prefixes
-  @bedrock_prefixes ~w(us. eu. ap. ca. global.)
+  # Valid Bedrock inference profile region prefixes.
+  # See: https://docs.aws.amazon.com/bedrock/latest/userguide/inference-profiles-support.html
+  @bedrock_prefixes ~w(us. eu. ap. apac. ca. au. jp. us-gov. global.)
 
   @doc """
   Parses and validates a provider identifier.
@@ -438,11 +439,22 @@ defmodule LLMDB.Spec do
     end
   end
 
-  # For Bedrock inference profiles, splits model_id into {base_id, prefix} where
-  # base_id is used for catalog lookup and prefix is preserved for the returned ID.
-  # For other providers or non-prefixed Bedrock IDs, returns {model_id, nil}.
+  @doc """
+  Strips any inference profile prefix from a model ID.
+
+  For Amazon Bedrock, splits prefixes like `"us."`, `"eu."`, `"au."` etc. from the model ID
+  so the base ID can be used for catalog lookup. Returns `{base_id, prefix}` where prefix
+  is `nil` if no prefix was found.
+
+  For other providers, returns `{model_id, nil}` unchanged.
+  """
+  @spec strip_prefix(atom(), String.t()) :: {String.t(), String.t() | nil}
+  def strip_prefix(provider, model_id) do
+    lookup_id_and_prefix(provider, model_id)
+  end
+
   defp lookup_id_and_prefix(provider, model_id) do
-    if provider == :bedrock do
+    if provider == :amazon_bedrock do
       case Enum.find_value(@bedrock_prefixes, fn prefix ->
              if String.starts_with?(model_id, prefix),
                do: {prefix, String.replace_prefix(model_id, prefix, "")}

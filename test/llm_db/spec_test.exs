@@ -10,7 +10,7 @@ defmodule LLMDB.SpecTest do
       %{id: :openai, name: "OpenAI"},
       %{id: :anthropic, name: "Anthropic"},
       %{id: :google_vertex, name: "Google Vertex AI"},
-      %{id: :bedrock, name: "Amazon Bedrock"}
+      %{id: :amazon_bedrock, name: "Amazon Bedrock"}
     ]
 
     models = [
@@ -58,13 +58,13 @@ defmodule LLMDB.SpecTest do
       },
       %{
         id: "anthropic.claude-opus-4-1-20250805-v1:0",
-        provider: :bedrock,
+        provider: :amazon_bedrock,
         name: "Claude Opus 4.1",
         aliases: ["anthropic.claude-opus"]
       },
       %{
         id: "meta.llama3-2-3b-instruct-v1:0",
-        provider: :bedrock,
+        provider: :amazon_bedrock,
         name: "Llama 3.2 3B",
         aliases: []
       }
@@ -419,7 +419,7 @@ defmodule LLMDB.SpecTest do
     end
 
     test "round-trips with complex Bedrock model IDs in colon format" do
-      original = "bedrock:anthropic.claude-opus-4-1-20250805-v1:0"
+      original = "amazon_bedrock:anthropic.claude-opus-4-1-20250805-v1:0"
       {:ok, spec} = Spec.parse_spec(original)
       formatted = Spec.format_spec(spec, :provider_colon_model)
       assert formatted == original
@@ -607,85 +607,113 @@ defmodule LLMDB.SpecTest do
 
   describe "resolve/2 with Bedrock inference profiles" do
     test "resolves inference profile with us. prefix" do
-      assert {:ok, {:bedrock, "us.anthropic.claude-opus-4-1-20250805-v1:0", model}} =
-               Spec.resolve("bedrock:us.anthropic.claude-opus-4-1-20250805-v1:0")
+      assert {:ok, {:amazon_bedrock, "us.anthropic.claude-opus-4-1-20250805-v1:0", model}} =
+               Spec.resolve("amazon_bedrock:us.anthropic.claude-opus-4-1-20250805-v1:0")
 
       assert model.id == "anthropic.claude-opus-4-1-20250805-v1:0"
       assert model.name == "Claude Opus 4.1"
     end
 
     test "resolves inference profile with global. prefix" do
-      assert {:ok, {:bedrock, "global.anthropic.claude-opus-4-1-20250805-v1:0", model}} =
-               Spec.resolve("bedrock:global.anthropic.claude-opus-4-1-20250805-v1:0")
+      assert {:ok, {:amazon_bedrock, "global.anthropic.claude-opus-4-1-20250805-v1:0", model}} =
+               Spec.resolve("amazon_bedrock:global.anthropic.claude-opus-4-1-20250805-v1:0")
 
       assert model.id == "anthropic.claude-opus-4-1-20250805-v1:0"
     end
 
     test "resolves inference profile with eu. prefix" do
-      assert {:ok, {:bedrock, "eu.meta.llama3-2-3b-instruct-v1:0", model}} =
-               Spec.resolve("bedrock:eu.meta.llama3-2-3b-instruct-v1:0")
+      assert {:ok, {:amazon_bedrock, "eu.meta.llama3-2-3b-instruct-v1:0", model}} =
+               Spec.resolve("amazon_bedrock:eu.meta.llama3-2-3b-instruct-v1:0")
 
       assert model.id == "meta.llama3-2-3b-instruct-v1:0"
       assert model.name == "Llama 3.2 3B"
     end
 
     test "resolves inference profile with ap. prefix" do
-      assert {:ok, {:bedrock, "ap.anthropic.claude-opus-4-1-20250805-v1:0", model}} =
-               Spec.resolve("bedrock:ap.anthropic.claude-opus-4-1-20250805-v1:0")
+      assert {:ok, {:amazon_bedrock, "ap.anthropic.claude-opus-4-1-20250805-v1:0", model}} =
+               Spec.resolve("amazon_bedrock:ap.anthropic.claude-opus-4-1-20250805-v1:0")
 
       assert model.id == "anthropic.claude-opus-4-1-20250805-v1:0"
     end
 
     test "resolves inference profile with ca. prefix" do
-      assert {:ok, {:bedrock, "ca.anthropic.claude-opus-4-1-20250805-v1:0", model}} =
-               Spec.resolve("bedrock:ca.anthropic.claude-opus-4-1-20250805-v1:0")
+      assert {:ok, {:amazon_bedrock, "ca.anthropic.claude-opus-4-1-20250805-v1:0", model}} =
+               Spec.resolve("amazon_bedrock:ca.anthropic.claude-opus-4-1-20250805-v1:0")
+
+      assert model.id == "anthropic.claude-opus-4-1-20250805-v1:0"
+    end
+
+    test "resolves inference profile with au. prefix" do
+      assert {:ok, {:amazon_bedrock, "au.anthropic.claude-opus-4-1-20250805-v1:0", model}} =
+               Spec.resolve("amazon_bedrock:au.anthropic.claude-opus-4-1-20250805-v1:0")
+
+      assert model.id == "anthropic.claude-opus-4-1-20250805-v1:0"
+    end
+
+    test "resolves inference profile with apac. prefix" do
+      assert {:ok, {:amazon_bedrock, "apac.anthropic.claude-opus-4-1-20250805-v1:0", model}} =
+               Spec.resolve("amazon_bedrock:apac.anthropic.claude-opus-4-1-20250805-v1:0")
+
+      assert model.id == "anthropic.claude-opus-4-1-20250805-v1:0"
+    end
+
+    test "resolves inference profile with jp. prefix" do
+      assert {:ok, {:amazon_bedrock, "jp.anthropic.claude-opus-4-1-20250805-v1:0", model}} =
+               Spec.resolve("amazon_bedrock:jp.anthropic.claude-opus-4-1-20250805-v1:0")
+
+      assert model.id == "anthropic.claude-opus-4-1-20250805-v1:0"
+    end
+
+    test "resolves inference profile with us-gov. prefix" do
+      assert {:ok, {:amazon_bedrock, "us-gov.anthropic.claude-opus-4-1-20250805-v1:0", model}} =
+               Spec.resolve("amazon_bedrock:us-gov.anthropic.claude-opus-4-1-20250805-v1:0")
 
       assert model.id == "anthropic.claude-opus-4-1-20250805-v1:0"
     end
 
     test "resolves native Bedrock model without prefix" do
-      assert {:ok, {:bedrock, "anthropic.claude-opus-4-1-20250805-v1:0", model}} =
-               Spec.resolve("bedrock:anthropic.claude-opus-4-1-20250805-v1:0")
+      assert {:ok, {:amazon_bedrock, "anthropic.claude-opus-4-1-20250805-v1:0", model}} =
+               Spec.resolve("amazon_bedrock:anthropic.claude-opus-4-1-20250805-v1:0")
 
       assert model.id == "anthropic.claude-opus-4-1-20250805-v1:0"
     end
 
     test "resolves inference profile with tuple input" do
-      assert {:ok, {:bedrock, "us.anthropic.claude-opus-4-1-20250805-v1:0", model}} =
-               Spec.resolve({:bedrock, "us.anthropic.claude-opus-4-1-20250805-v1:0"})
+      assert {:ok, {:amazon_bedrock, "us.anthropic.claude-opus-4-1-20250805-v1:0", model}} =
+               Spec.resolve({:amazon_bedrock, "us.anthropic.claude-opus-4-1-20250805-v1:0"})
 
       assert model.id == "anthropic.claude-opus-4-1-20250805-v1:0"
     end
 
     test "resolves inference profile alias to canonical with prefix preserved" do
-      assert {:ok, {:bedrock, "us.anthropic.claude-opus-4-1-20250805-v1:0", model}} =
-               Spec.resolve("bedrock:us.anthropic.claude-opus")
+      assert {:ok, {:amazon_bedrock, "us.anthropic.claude-opus-4-1-20250805-v1:0", model}} =
+               Spec.resolve("amazon_bedrock:us.anthropic.claude-opus")
 
       assert model.id == "anthropic.claude-opus-4-1-20250805-v1:0"
       assert model.name == "Claude Opus 4.1"
     end
 
     test "resolves inference profile alias with different prefix" do
-      assert {:ok, {:bedrock, "global.anthropic.claude-opus-4-1-20250805-v1:0", model}} =
-               Spec.resolve("bedrock:global.anthropic.claude-opus")
+      assert {:ok, {:amazon_bedrock, "global.anthropic.claude-opus-4-1-20250805-v1:0", model}} =
+               Spec.resolve("amazon_bedrock:global.anthropic.claude-opus")
 
       assert model.id == "anthropic.claude-opus-4-1-20250805-v1:0"
     end
 
     test "returns error for inference profile with nonexistent base model" do
-      assert {:error, :not_found} = Spec.resolve("bedrock:us.nonexistent.model")
+      assert {:error, :not_found} = Spec.resolve("amazon_bedrock:us.nonexistent.model")
     end
 
     test "preserves prefix for bare alias resolution with scope" do
-      assert {:ok, {:bedrock, "us.anthropic.claude-opus-4-1-20250805-v1:0", model}} =
-               Spec.resolve("us.anthropic.claude-opus", scope: :bedrock)
+      assert {:ok, {:amazon_bedrock, "us.anthropic.claude-opus-4-1-20250805-v1:0", model}} =
+               Spec.resolve("us.anthropic.claude-opus", scope: :amazon_bedrock)
 
       assert model.id == "anthropic.claude-opus-4-1-20250805-v1:0"
     end
 
     test "only strips known Bedrock prefixes, not arbitrary prefixes" do
       assert {:error, :not_found} =
-               Spec.resolve("bedrock:unknown.anthropic.claude-opus-4-1-20250805-v1:0")
+               Spec.resolve("amazon_bedrock:unknown.anthropic.claude-opus-4-1-20250805-v1:0")
     end
 
     test "does not affect non-Bedrock providers with similar prefixes" do
