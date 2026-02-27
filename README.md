@@ -96,6 +96,10 @@ LLMDB.allowed?("openai:gpt-4o-mini") #=> true
 - **`load/1`**, **`load/0`** — load or reload snapshot with optional runtime overrides
 - **`load_empty/1`** — load empty catalog (fallback when no snapshot available)
 - **`epoch/0`**, **`snapshot/0`** — diagnostics
+- **`LLMDB.History.available?/0`** — history files available in runtime
+- **`LLMDB.History.meta/0`** — history metadata (`meta.json`)
+- **`LLMDB.History.timeline/2`** — lineage-aware events for one model
+- **`LLMDB.History.recent/1`** — most recent events globally (capped)
 
 See the full function docs in [hexdocs](https://hexdocs.pm/llm_db).
 
@@ -252,6 +256,38 @@ mix llm_db.pull
 # Run ETL and write snapshot.json
 mix llm_db.build
 ```
+
+To generate historical change events from committed snapshot history (initial setup):
+
+```bash
+mix llm_db.history.backfill --force
+```
+
+This writes append-only NDJSON history artifacts under `priv/llm_db/history/`:
+`priv/llm_db/history/events/YYYY.ndjson`,
+`priv/llm_db/history/snapshots.ndjson`, and `priv/llm_db/history/meta.json`.
+
+For daily/incremental maintenance:
+
+```bash
+mix llm_db.history.sync
+mix llm_db.history.check
+```
+
+For exceptional spec migrations (renames/provider moves that inference cannot match),
+add optional lineage overrides in `priv/llm_db/history/lineage_overrides.json`:
+
+```json
+{
+  "schema_version": 1,
+  "lineage": {
+    "openai:gpt-4.1": "openai:gpt-4o"
+  }
+}
+```
+
+History artifacts are intended for Git/path dependencies and local repo usage.
+Hex packages do not guarantee inclusion of `priv/llm_db/history/**`.
 
 See the [Sources & Engine](guides/sources-and-engine.md) guide for details.
 

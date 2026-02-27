@@ -28,9 +28,12 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
       - uses: erlef/setup-beam@v1
         with:
           otp-version: "27"
           elixir-version: "1.18"
       - run: mix deps.get
       - run: mix llm_db.build --check
+      - run: mix llm_db.history.check
