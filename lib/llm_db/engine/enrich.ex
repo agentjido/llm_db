@@ -5,8 +5,11 @@ defmodule LLMDB.Enrich do
   This module performs simple derivations and defaults, such as:
   - Deriving model family from model ID
   - Setting provider_model_id to id if not present
+  - Attaching optional llmfit sidecar metadata for matching Hugging Face models
   - Ensuring capability defaults are applied (handled by Zoi schemas)
   """
+
+  alias LLMDB.Sources.Llmfit
 
   @doc """
   Derives the family name from a model ID using prefix logic.
@@ -94,6 +97,7 @@ defmodule LLMDB.Enrich do
     models
     |> Enum.map(&enrich_model/1)
     |> inherit_canonical_costs()
+    |> enrich_llmfit_metadata()
   end
 
   @date_suffix ~r/-\d{4}-\d{2}-\d{2}$/
@@ -143,6 +147,88 @@ defmodule LLMDB.Enrich do
 
   defp has_cost?(%{cost: cost}) when is_map(cost) and map_size(cost) > 0, do: true
   defp has_cost?(_), do: false
+
+  defp enrich_llmfit_metadata(models) do
+    if Application.get_env(:llm_db, :llmfit_enrichment, true) do
+      case Llmfit.load_index(%{}) do
+        {:ok, index} when map_size(index) > 0 ->
+          Enum.map(models, &merge_llmfit_metadata(&1, index))
+
+        _ ->
+          models
+      end
+    else
+      models
+    end
+  end
+
+  defp merge_llmfit_metadata(model, llmfit_index) do
+    with repo_id when is_binary(repo_id) <- find_hf_repo_id(model),
+         llmfit_metadata when is_map(llmfit_metadata) <- Map.get(llmfit_index, repo_id) do
+      model
+      |> put_llmfit_extra(llmfit_metadata, repo_id)
+      |> maybe_set_context_limit(Map.get(llmfit_metadata, :context_length))
+      |> maybe_set_release_date(Map.get(llmfit_metadata, :release_date))
+    else
+      _ -> model
+    end
+  end
+
+  defp put_llmfit_extra(model, llmfit_metadata, repo_id) do
+    extra =
+      model
+      |> Map.get(:extra, %{})
+      |> normalize_extra_map()
+      |> Map.put(:llmfit, Map.put(llmfit_metadata, :matched_hugging_face_id, repo_id))
+
+    Map.put(model, :extra, extra)
+  end
+
+  defp normalize_extra_map(extra) when is_map(extra), do: extra
+  defp normalize_extra_map(_), do: %{}
+
+  defp maybe_set_context_limit(model, context_length)
+       when is_integer(context_length) and context_length > 0 do
+    limits = Map.get(model, :limits)
+
+    cond do
+      is_map(limits) and not is_nil(Map.get(limits, :context)) ->
+        model
+
+      is_map(limits) ->
+        Map.put(model, :limits, Map.put(limits, :context, context_length))
+
+      true ->
+        Map.put(model, :limits, %{context: context_length})
+    end
+  end
+
+  defp maybe_set_context_limit(model, _), do: model
+
+  defp maybe_set_release_date(%{release_date: release_date} = model, incoming)
+       when is_binary(release_date) and byte_size(release_date) > 0 and is_binary(incoming),
+       do: model
+
+  defp maybe_set_release_date(model, incoming)
+       when is_binary(incoming) and byte_size(incoming) > 0,
+       do: Map.put(model, :release_date, incoming)
+
+  defp maybe_set_release_date(model, _), do: model
+
+  defp find_hf_repo_id(model) do
+    from_extra = get_in(model, [:extra, :hugging_face_id])
+
+    cond do
+      is_binary(from_extra) and byte_size(from_extra) > 0 ->
+        from_extra
+
+      is_binary(model[:id]) and String.contains?(model.id, "/") ->
+        model.id
+
+      true ->
+        nil
+    end
+  end
 
   # Private helpers
 
