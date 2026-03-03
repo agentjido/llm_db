@@ -22,7 +22,7 @@ defmodule Mix.Tasks.LlmDb.Pull do
 
   ## Switches
 
-  - `--source` - Pull from a specific source only (openai, anthropic, google, xai, models_dev)
+  - `--source` - Pull from a specific source only (openai, anthropic, google, xai, models_dev, openrouter, zenmux)
 
   ## Configuration
 
@@ -66,6 +66,7 @@ defmodule Mix.Tasks.LlmDb.Pull do
     "google" => LLMDB.Sources.Google,
     "xai" => LLMDB.Sources.XAI,
     "models_dev" => LLMDB.Sources.ModelsDev,
+    "openrouter" => LLMDB.Sources.OpenRouter,
     "zenmux" => LLMDB.Sources.Zenmux
   }
 
