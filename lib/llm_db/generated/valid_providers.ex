@@ -79,6 +79,7 @@ defmodule LLMDB.Generated.ValidProviders do
     :openrouter,
     :ovhcloud,
     :perplexity,
+    :perplexity_agent,
     :poe,
     :privatemode_ai,
     :qihang_ai,

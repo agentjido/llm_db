@@ -5,6 +5,231 @@
         "input_modalities": [
           "text",
           "image",
+          "file"
+        ],
+        "instruct_type": null,
+        "modality": "text+image+file->text",
+        "output_modalities": [
+          "text"
+        ],
+        "tokenizer": "GPT"
+      },
+      "canonical_slug": "openai/gpt-5.4-pro-20260305",
+      "context_length": 1050000,
+      "created": 1772734366,
+      "default_parameters": {
+        "frequency_penalty": null,
+        "presence_penalty": null,
+        "repetition_penalty": null,
+        "temperature": null,
+        "top_k": null,
+        "top_p": null
+      },
+      "description": "GPT-5.4 Pro is OpenAI's most advanced model, building on GPT-5.4's unified architecture with enhanced reasoning capabilities for complex, high-stakes tasks. It features a 1M+ token context window (922K input, 128K output) with support for text and image inputs. Optimized for step-by-step reasoning, instruction following, and accuracy, GPT-5.4 Pro excels at agentic coding, long-context workflows, and multi-step problem solving.",
+      "expiration_date": null,
+      "hugging_face_id": "",
+      "id": "openai/gpt-5.4-pro",
+      "name": "OpenAI: GPT-5.4 Pro",
+      "per_request_limits": null,
+      "pricing": {
+        "completion": "0.00018",
+        "prompt": "0.00003",
+        "web_search": "0.01"
+      },
+      "supported_parameters": [
+        "frequency_penalty",
+        "include_reasoning",
+        "logit_bias",
+        "logprobs",
+        "max_tokens",
+        "presence_penalty",
+        "reasoning",
+        "response_format",
+        "seed",
+        "stop",
+        "structured_outputs",
+        "tool_choice",
+        "tools",
+        "top_logprobs"
+      ],
+      "top_provider": {
+        "context_length": 1050000,
+        "is_moderated": true,
+        "max_completion_tokens": 128000
+      }
+    },
+    {
+      "architecture": {
+        "input_modalities": [
+          "text",
+          "image",
+          "file"
+        ],
+        "instruct_type": null,
+        "modality": "text+image+file->text",
+        "output_modalities": [
+          "text"
+        ],
+        "tokenizer": "GPT"
+      },
+      "canonical_slug": "openai/gpt-5.4-20260305",
+      "context_length": 1050000,
+      "created": 1772734352,
+      "default_parameters": {
+        "frequency_penalty": null,
+        "presence_penalty": null,
+        "repetition_penalty": null,
+        "temperature": null,
+        "top_k": null,
+        "top_p": null
+      },
+      "description": "GPT-5.4 is OpenAI’s latest frontier model, unifying the Codex and GPT lines into a single system. It features a 1M+ token context window (922K input, 128K output) with support for text and image inputs, enabling high-context reasoning, coding, and multimodal analysis within the same workflow.\n\nThe model delivers improved performance in coding, document understanding, tool use, and instruction following. It is designed as a strong default for both general-purpose tasks and software engineering, capable of generating production-quality code, synthesizing information across multiple sources, and executing complex multi-step workflows with fewer iterations and greater token efficiency.",
+      "expiration_date": null,
+      "hugging_face_id": "",
+      "id": "openai/gpt-5.4",
+      "name": "OpenAI: GPT-5.4",
+      "per_request_limits": null,
+      "pricing": {
+        "completion": "0.000015",
+        "input_cache_read": "0.00000025",
+        "prompt": "0.0000025",
+        "web_search": "0.01"
+      },
+      "supported_parameters": [
+        "frequency_penalty",
+        "include_reasoning",
+        "logit_bias",
+        "logprobs",
+        "max_tokens",
+        "presence_penalty",
+        "reasoning",
+        "response_format",
+        "seed",
+        "stop",
+        "structured_outputs",
+        "tool_choice",
+        "tools",
+        "top_logprobs"
+      ],
+      "top_provider": {
+        "context_length": 1050000,
+        "is_moderated": true,
+        "max_completion_tokens": 128000
+      }
+    },
+    {
+      "architecture": {
+        "input_modalities": [
+          "text"
+        ],
+        "instruct_type": null,
+        "modality": "text->text",
+        "output_modalities": [
+          "text"
+        ],
+        "tokenizer": "Other"
+      },
+      "canonical_slug": "inception/mercury-2-20260304",
+      "context_length": 128000,
+      "created": 1772636275,
+      "default_parameters": {
+        "frequency_penalty": null,
+        "presence_penalty": null,
+        "repetition_penalty": null,
+        "temperature": 0.75,
+        "top_k": null,
+        "top_p": null
+      },
+      "description": "Mercury 2 is an extremely fast reasoning LLM, and the first reasoning diffusion LLM (dLLM).\nInstead of generating tokens sequentially, Mercury 2 produces and refines multiple tokens in parallel, achieving >1,000 tokens/sec on standard GPUs. Mercury 2 is 5x+ faster than leading speed-optimized LLMs like Claude 4.5 Haiku and GPT 5 Mini, at a fraction of the cost. \nMercury 2 supports tunable reasoning levels, 128K context, native tool use, and schema-aligned JSON output. Built for coding workflows where latency compounds, real-time voice/search, and agent loops. OpenAI API compatible. Read more in the [blog post](https://www.inceptionlabs.ai/blog/introducing-mercury-2).",
+      "expiration_date": null,
+      "hugging_face_id": null,
+      "id": "inception/mercury-2",
+      "name": "Inception: Mercury 2",
+      "per_request_limits": null,
+      "pricing": {
+        "completion": "0.00000075",
+        "input_cache_read": "0.000000025",
+        "prompt": "0.00000025"
+      },
+      "supported_parameters": [
+        "include_reasoning",
+        "max_tokens",
+        "reasoning",
+        "response_format",
+        "stop",
+        "structured_outputs",
+        "temperature",
+        "tool_choice",
+        "tools"
+      ],
+      "top_provider": {
+        "context_length": 128000,
+        "is_moderated": false,
+        "max_completion_tokens": 50000
+      }
+    },
+    {
+      "architecture": {
+        "input_modalities": [
+          "text",
+          "image",
+          "file"
+        ],
+        "instruct_type": null,
+        "modality": "text+image+file->text",
+        "output_modalities": [
+          "text"
+        ],
+        "tokenizer": "GPT"
+      },
+      "canonical_slug": "openai/gpt-5.3-chat-20260303",
+      "context_length": 128000,
+      "created": 1772564061,
+      "default_parameters": {
+        "frequency_penalty": null,
+        "presence_penalty": null,
+        "repetition_penalty": null,
+        "temperature": null,
+        "top_k": null,
+        "top_p": null
+      },
+      "description": "GPT-5.3 Chat is an update to ChatGPT's most-used model that makes everyday conversations smoother, more useful, and more directly helpful. It delivers more accurate answers with better contextualization and significantly reduces unnecessary refusals, caveats, and overly cautious phrasing that can interrupt conversational flow.",
+      "expiration_date": null,
+      "hugging_face_id": "",
+      "id": "openai/gpt-5.3-chat",
+      "name": "OpenAI: GPT-5.3 Chat",
+      "per_request_limits": null,
+      "pricing": {
+        "completion": "0.000014",
+        "input_cache_read": "0.000000175",
+        "prompt": "0.00000175",
+        "web_search": "0.1"
+      },
+      "supported_parameters": [
+        "frequency_penalty",
+        "logit_bias",
+        "logprobs",
+        "max_tokens",
+        "presence_penalty",
+        "response_format",
+        "seed",
+        "stop",
+        "structured_outputs",
+        "tool_choice",
+        "tools",
+        "top_logprobs"
+      ],
+      "top_provider": {
+        "context_length": 128000,
+        "is_moderated": true,
+        "max_completion_tokens": 16384
+      }
+    },
+    {
+      "architecture": {
+        "input_modalities": [
+          "text",
+          "image",
           "video",
           "file",
           "audio"
@@ -144,8 +369,8 @@
       "name": "Google: Nano Banana 2 (Gemini 3.1 Flash Image Preview)",
       "per_request_limits": null,
       "pricing": {
-        "completion": "0.0000015",
-        "prompt": "0.00000025"
+        "completion": "0.000003",
+        "prompt": "0.0000005"
       },
       "supported_parameters": [
         "include_reasoning",
@@ -193,9 +418,8 @@
       "name": "Qwen: Qwen3.5-35B-A3B",
       "per_request_limits": null,
       "pricing": {
-        "completion": "0.0000018",
-        "input_cache_read": "0.000000225",
-        "prompt": "0.000000225"
+        "completion": "0.0000013",
+        "prompt": "0.0000001625"
       },
       "supported_parameters": [
         "frequency_penalty",
@@ -253,9 +477,8 @@
       "name": "Qwen: Qwen3.5-27B",
       "per_request_limits": null,
       "pricing": {
-        "completion": "0.00000216",
-        "input_cache_read": "0.00000027",
-        "prompt": "0.00000027"
+        "completion": "0.00000156",
+        "prompt": "0.000000195"
       },
       "supported_parameters": [
         "frequency_penalty",
@@ -313,9 +536,8 @@
       "name": "Qwen: Qwen3.5-122B-A10B",
       "per_request_limits": null,
       "pricing": {
-        "completion": "0.0000024",
-        "input_cache_read": "0.0000003",
-        "prompt": "0.0000003"
+        "completion": "0.00000208",
+        "prompt": "0.00000026"
       },
       "supported_parameters": [
         "frequency_penalty",
@@ -738,8 +960,8 @@
       "name": "Qwen: Qwen3.5 Plus 2026-02-15",
       "per_request_limits": null,
       "pricing": {
-        "completion": "0.0000024",
-        "prompt": "0.0000004"
+        "completion": "0.00000156",
+        "prompt": "0.00000026"
       },
       "supported_parameters": [
         "include_reasoning",
@@ -789,9 +1011,8 @@
       "name": "Qwen: Qwen3.5 397B A17B",
       "per_request_limits": null,
       "pricing": {
-        "completion": "0.0000035",
-        "input_cache_read": "0.00000055",
-        "prompt": "0.00000055"
+        "completion": "0.00000234",
+        "prompt": "0.00000039"
       },
       "supported_parameters": [
         "frequency_penalty",
@@ -963,8 +1184,8 @@
       "name": "Qwen: Qwen3 Max Thinking",
       "per_request_limits": null,
       "pricing": {
-        "completion": "0.000006",
-        "prompt": "0.0000012"
+        "completion": "0.0000039",
+        "prompt": "0.00000078"
       },
       "supported_parameters": [
         "include_reasoning",
@@ -5400,7 +5621,7 @@
         "tokenizer": "Other"
       },
       "canonical_slug": "z-ai/glm-4.6",
-      "context_length": 202752,
+      "context_length": 204800,
       "created": 1759235576,
       "default_parameters": {
         "frequency_penalty": null,
@@ -5414,8 +5635,8 @@
       "name": "Z.ai: GLM 4.6",
       "per_request_limits": null,
       "pricing": {
-        "completion": "0.00000171",
-        "prompt": "0.00000035"
+        "completion": "0.0000019",
+        "prompt": "0.00000039"
       },
       "supported_parameters": [
         "frequency_penalty",
@@ -5437,9 +5658,9 @@
         "top_p"
       ],
       "top_provider": {
-        "context_length": 202752,
+        "context_length": 204800,
         "is_moderated": false,
-        "max_completion_tokens": 131072
+        "max_completion_tokens": 204800
       }
     },
     {
@@ -5941,9 +6162,9 @@
       "name": "Qwen: Qwen3 Coder Plus",
       "per_request_limits": null,
       "pricing": {
-        "completion": "0.000005",
-        "input_cache_read": "0.0000002",
-        "prompt": "0.000001"
+        "completion": "0.00000325",
+        "input_cache_read": "0.00000013",
+        "prompt": "0.00000065"
       },
       "supported_parameters": [
         "max_tokens",
@@ -6257,9 +6478,9 @@
       "name": "Qwen: Qwen3 Coder Flash",
       "per_request_limits": null,
       "pricing": {
-        "completion": "0.0000015",
-        "input_cache_read": "0.00000006",
-        "prompt": "0.0000003"
+        "completion": "0.000000975",
+        "input_cache_read": "0.000000039",
+        "prompt": "0.000000195"
       },
       "supported_parameters": [
         "max_tokens",
@@ -6503,8 +6724,8 @@
       "name": "Qwen: Qwen Plus 0728 (thinking)",
       "per_request_limits": null,
       "pricing": {
-        "completion": "0.0000012",
-        "prompt": "0.0000004"
+        "completion": "0.00000078",
+        "prompt": "0.00000026"
       },
       "supported_parameters": [
         "include_reasoning",
@@ -6552,8 +6773,8 @@
       "name": "Qwen: Qwen Plus 0728",
       "per_request_limits": null,
       "pricing": {
-        "completion": "0.0000012",
-        "prompt": "0.0000004"
+        "completion": "0.00000078",
+        "prompt": "0.00000026"
       },
       "supported_parameters": [
         "max_tokens",
@@ -7962,7 +8183,7 @@
         "tokenizer": "Other"
       },
       "canonical_slug": "z-ai/glm-4.5",
-      "context_length": 131000,
+      "context_length": 131072,
       "created": 1753471347,
       "default_parameters": {
         "frequency_penalty": null,
@@ -7970,14 +8191,15 @@
         "top_p": null
       },
       "description": "GLM-4.5 is our latest flagship foundation model, purpose-built for agent-based applications. It leverages a Mixture-of-Experts (MoE) architecture and supports a context length of up to 128k tokens. GLM-4.5 delivers significantly enhanced capabilities in reasoning, code generation, and agent alignment. It supports a hybrid inference mode with two options, a \"thinking mode\" designed for complex reasoning and tool use, and a \"non-thinking mode\" optimized for instant responses. Users can control the reasoning behaviour with the `reasoning` `enabled` boolean. [Learn more in our docs](https://openrouter.ai/docs/use-cases/reasoning-tokens#enable-reasoning-with-default-config)",
-      "expiration_date": "2026-02-12",
+      "expiration_date": null,
       "hugging_face_id": "zai-org/GLM-4.5",
       "id": "z-ai/glm-4.5",
       "name": "Z.ai: GLM 4.5",
       "per_request_limits": null,
       "pricing": {
-        "completion": "0.000002",
-        "prompt": "0.00000055"
+        "completion": "0.0000022",
+        "input_cache_read": "0.00000011",
+        "prompt": "0.0000006"
       },
       "supported_parameters": [
         "frequency_penalty",
@@ -7997,9 +8219,9 @@
         "top_p"
       ],
       "top_provider": {
-        "context_length": 131000,
+        "context_length": 131072,
         "is_moderated": false,
-        "max_completion_tokens": 131000
+        "max_completion_tokens": 98304
       }
     },
     {
@@ -8489,7 +8711,6 @@
         "tool_choice",
         "tools",
         "top_k",
-        "top_logprobs",
         "top_p"
       ],
       "top_provider": {
@@ -9107,26 +9328,23 @@
       "name": "Inception: Mercury",
       "per_request_limits": null,
       "pricing": {
-        "completion": "0.000001",
+        "completion": "0.00000075",
+        "input_cache_read": "0.000000025",
         "prompt": "0.00000025"
       },
       "supported_parameters": [
-        "frequency_penalty",
         "max_tokens",
-        "presence_penalty",
         "response_format",
         "stop",
         "structured_outputs",
         "temperature",
         "tool_choice",
-        "tools",
-        "top_k",
-        "top_p"
+        "tools"
       ],
       "top_provider": {
         "context_length": 128000,
         "is_moderated": false,
-        "max_completion_tokens": 16384
+        "max_completion_tokens": 32000
       }
     },
     {
@@ -9588,7 +9806,6 @@
         "frequency_penalty",
         "include_reasoning",
         "logit_bias",
-        "logprobs",
         "max_tokens",
         "min_p",
         "presence_penalty",
@@ -9602,7 +9819,6 @@
         "tool_choice",
         "tools",
         "top_k",
-        "top_logprobs",
         "top_p"
       ],
       "top_provider": {
@@ -9678,7 +9894,7 @@
         "tokenizer": "Claude"
       },
       "canonical_slug": "anthropic/claude-4-sonnet-20250522",
-      "context_length": 1000000,
+      "context_length": 200000,
       "created": 1747930371,
       "default_parameters": {
         "frequency_penalty": null,
@@ -9710,8 +9926,8 @@
         "top_p"
       ],
       "top_provider": {
-        "context_length": 1000000,
-        "is_moderated": false,
+        "context_length": 200000,
+        "is_moderated": true,
         "max_completion_tokens": 64000
       }
     },
@@ -10110,26 +10326,23 @@
       "name": "Inception: Mercury Coder",
       "per_request_limits": null,
       "pricing": {
-        "completion": "0.000001",
+        "completion": "0.00000075",
+        "input_cache_read": "0.000000025",
         "prompt": "0.00000025"
       },
       "supported_parameters": [
-        "frequency_penalty",
         "max_tokens",
-        "presence_penalty",
         "response_format",
         "stop",
         "structured_outputs",
         "temperature",
         "tool_choice",
-        "tools",
-        "top_k",
-        "top_p"
+        "tools"
       ],
       "top_provider": {
         "context_length": 128000,
         "is_moderated": false,
-        "max_completion_tokens": 16384
+        "max_completion_tokens": 32000
       }
     },
     {
@@ -10365,6 +10578,7 @@
       "supported_parameters": [
         "frequency_penalty",
         "include_reasoning",
+        "logprobs",
         "max_tokens",
         "min_p",
         "presence_penalty",
@@ -10378,6 +10592,7 @@
         "tool_choice",
         "tools",
         "top_k",
+        "top_logprobs",
         "top_p"
       ],
       "top_provider": {
@@ -11161,7 +11376,7 @@
       "per_request_limits": null,
       "pricing": {
         "completion": "0.00000077",
-        "input_cache_read": "0.000000135",
+        "input_cache_read": "0.00000013",
         "prompt": "0.0000002"
       },
       "supported_parameters": [
@@ -11187,7 +11402,7 @@
       "top_provider": {
         "context_length": 163840,
         "is_moderated": false,
-        "max_completion_tokens": null
+        "max_completion_tokens": 163840
       }
     },
     {
@@ -12355,9 +12570,9 @@
       "name": "Qwen: Qwen VL Plus",
       "per_request_limits": null,
       "pricing": {
-        "completion": "0.00000063",
-        "input_cache_read": "0.000000042",
-        "prompt": "0.00000021"
+        "completion": "0.0000004095",
+        "input_cache_read": "0.0000000273",
+        "prompt": "0.0000001365"
       },
       "supported_parameters": [
         "max_tokens",
@@ -12558,9 +12773,9 @@
       "name": "Qwen: Qwen-Turbo",
       "per_request_limits": null,
       "pricing": {
-        "completion": "0.0000002",
-        "input_cache_read": "0.00000001",
-        "prompt": "0.00000005"
+        "completion": "0.00000013",
+        "input_cache_read": "0.0000000065",
+        "prompt": "0.0000000325"
       },
       "supported_parameters": [
         "max_tokens",
@@ -12691,9 +12906,9 @@
       "name": "Qwen: Qwen-Max ",
       "per_request_limits": null,
       "pricing": {
-        "completion": "0.0000064",
-        "input_cache_read": "0.00000032",
-        "prompt": "0.0000016"
+        "completion": "0.00000416",
+        "input_cache_read": "0.000000208",
+        "prompt": "0.00000104"
       },
       "supported_parameters": [
         "max_tokens",
@@ -13063,6 +13278,7 @@
       },
       "supported_parameters": [
         "frequency_penalty",
+        "logprobs",
         "max_tokens",
         "min_p",
         "presence_penalty",
@@ -13073,6 +13289,7 @@
         "structured_outputs",
         "temperature",
         "top_k",
+        "top_logprobs",
         "top_p"
       ],
       "top_provider": {
@@ -13840,7 +14057,9 @@
         "logprobs",
         "max_tokens",
         "presence_penalty",
+        "repetition_penalty",
         "response_format",
+        "seed",
         "stop",
         "structured_outputs",
         "temperature",
@@ -14474,12 +14693,14 @@
       },
       "supported_parameters": [
         "frequency_penalty",
+        "logprobs",
         "max_tokens",
         "presence_penalty",
         "response_format",
         "stop",
         "structured_outputs",
         "temperature",
+        "top_logprobs",
         "top_p"
       ],
       "top_provider": {
@@ -14608,6 +14829,7 @@
       },
       "supported_parameters": [
         "frequency_penalty",
+        "logprobs",
         "max_tokens",
         "min_p",
         "presence_penalty",
@@ -14620,6 +14842,7 @@
         "tool_choice",
         "tools",
         "top_k",
+        "top_logprobs",
         "top_p"
       ],
       "top_provider": {
@@ -14702,6 +14925,7 @@
       },
       "supported_parameters": [
         "frequency_penalty",
+        "logprobs",
         "max_tokens",
         "min_p",
         "presence_penalty",
@@ -14712,6 +14936,7 @@
         "structured_outputs",
         "temperature",
         "top_k",
+        "top_logprobs",
         "top_p"
       ],
       "top_provider": {
