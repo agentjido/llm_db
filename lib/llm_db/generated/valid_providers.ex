@@ -31,6 +31,7 @@ defmodule LLMDB.Generated.ValidProviders do
     :cortecs,
     :deepinfra,
     :deepseek,
+    :elevenlabs,
     :evroc,
     :fastrouter,
     :fireworks_ai,
