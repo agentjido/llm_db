@@ -1145,12 +1145,39 @@
     "gemini-3.1-flash-image-preview": {
       "aliases": [],
       "base_url": null,
-      "capabilities": null,
-      "cost": null,
+      "capabilities": {
+        "chat": true,
+        "embeddings": false,
+        "json": {
+          "native": false,
+          "schema": false,
+          "strict": false
+        },
+        "reasoning": {
+          "enabled": true
+        },
+        "streaming": {
+          "text": true,
+          "tool_calls": false
+        },
+        "tools": {
+          "enabled": false,
+          "parallel": false,
+          "streaming": false,
+          "strict": false
+        }
+      },
+      "cost": {
+        "input": 0.25,
+        "output": 60
+      },
       "deprecated": false,
       "extra": {
+        "attachment": true,
         "description": "Gemini 3.1 Flash Image Preview.",
+        "family": "gemini-flash",
         "max_temperature": 1,
+        "open_weights": false,
         "supported_generation_methods": [
           "generateContent",
           "countTokens",
@@ -1164,32 +1191,67 @@
       },
       "family": null,
       "id": "gemini-3.1-flash-image-preview",
-      "knowledge": null,
-      "last_updated": null,
+      "knowledge": "2025-01",
+      "last_updated": "2026-02-26",
       "lifecycle": null,
       "limits": {
         "context": 65536,
         "output": 65536
       },
-      "modalities": null,
+      "modalities": {
+        "input": [
+          "text",
+          "image",
+          "pdf"
+        ],
+        "output": [
+          "text",
+          "image"
+        ]
+      },
       "model": null,
       "name": "Nano Banana 2",
       "pricing": null,
       "provider": "google",
       "provider_model_id": null,
-      "release_date": null,
+      "release_date": "2026-02-26",
       "retired": false,
       "tags": null
     },
     "gemini-3.1-flash-lite-preview": {
       "aliases": [],
       "base_url": null,
-      "capabilities": null,
-      "cost": null,
+      "capabilities": {
+        "chat": true,
+        "embeddings": false,
+        "json": {
+          "native": false,
+          "schema": false,
+          "strict": false
+        },
+        "reasoning": {
+          "enabled": true
+        },
+        "streaming": {
+          "tool_calls": true
+        },
+        "tools": {
+          "enabled": true
+        }
+      },
+      "cost": {
+        "cache_read": 0.05,
+        "input": 0.5,
+        "output": 3
+      },
       "deprecated": false,
       "extra": {
+        "attachment": true,
         "description": "Gemini 3.1 Flash Lite Preview",
+        "family": "gemini-flash-lite",
         "max_temperature": 2,
+        "open_weights": false,
+        "structured_output": true,
         "supported_generation_methods": [
           "generateContent",
           "countTokens",
@@ -1204,20 +1266,31 @@
       },
       "family": null,
       "id": "gemini-3.1-flash-lite-preview",
-      "knowledge": null,
-      "last_updated": null,
+      "knowledge": "2025-01",
+      "last_updated": "2026-03-03",
       "lifecycle": null,
       "limits": {
         "context": 1048576,
         "output": 65536
       },
-      "modalities": null,
+      "modalities": {
+        "input": [
+          "text",
+          "image",
+          "video",
+          "audio",
+          "pdf"
+        ],
+        "output": [
+          "text"
+        ]
+      },
       "model": null,
       "name": "Gemini 3.1 Flash Lite Preview",
       "pricing": null,
       "provider": "google",
       "provider_model_id": null,
-      "release_date": null,
+      "release_date": "2026-03-03",
       "retired": false,
       "tags": null
     },
