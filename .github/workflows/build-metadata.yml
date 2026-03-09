@@ -201,11 +201,10 @@ jobs:
             echo "" >> "$PR_BODY_FILE"
           fi
 
-          echo "### Merge Requirements" >> "$PR_BODY_FILE"
+          echo "### History Sync Notes" >> "$PR_BODY_FILE"
           echo "" >> "$PR_BODY_FILE"
-          echo "- Merge this PR with a merge commit." >> "$PR_BODY_FILE"
-          echo "- Do not squash merge or rebase merge metadata-update PRs." >> "$PR_BODY_FILE"
-          echo "- The history sync commit relies on the metadata commit SHA remaining reachable in git history." >> "$PR_BODY_FILE"
+          echo "- Merge commits preserve metadata lineage most directly." >> "$PR_BODY_FILE"
+          echo "- If a metadata anchor commit has been rewritten out of reachable history, the workflow will re-anchor to the previous reachable metadata commit and re-sync history." >> "$PR_BODY_FILE"
           echo "" >> "$PR_BODY_FILE"
 
           echo "### Changed Files" >> "$PR_BODY_FILE"
@@ -235,7 +234,34 @@ jobs:
         if: steps.changes.outputs.has_changes == 'true'
         run: |
           set -euo pipefail
-          mix llm_db.history.sync --to HEAD
+          sync_log="$(mktemp)"
+
+          if mix llm_db.history.sync --to HEAD 2>&1 | tee "$sync_log"; then
+            exit 0
+          fi
+
+          if grep -Fq "not reachable in the metadata history range" "$sync_log"; then
+            previous_reachable="$(
+              git rev-list --topo-order HEAD -- priv/llm_db/providers priv/llm_db/manifest.json \
+                | sed -n '2p'
+            )"
+
+            if [ -n "$previous_reachable" ]; then
+              echo "History anchor commit is no longer reachable. Re-anchoring to ${previous_reachable} and retrying sync..."
+              tmp_meta="$(mktemp)"
+              jq --arg to_commit "$previous_reachable" '.to_commit = $to_commit' \
+                priv/llm_db/history/meta.json > "$tmp_meta"
+              mv "$tmp_meta" priv/llm_db/history/meta.json
+              mix llm_db.history.sync --to HEAD
+            else
+              echo "No previous reachable metadata commit found. Rebuilding history from reachable metadata commits..."
+              mix llm_db.history.backfill --force --to HEAD
+            fi
+
+            exit 0
+          fi
+
+          exit 1
 
       - name: Commit synced history
         if: steps.changes.outputs.has_changes == 'true'
