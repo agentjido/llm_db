@@ -1043,4 +1043,23 @@ defmodule LLMDBTest do
     end)
     |> Map.new()
   end
+
+  describe "packaged catalog regressions" do
+    setup do
+      {:ok, _snapshot} = LLMDB.load()
+      :ok
+    end
+
+    test "model/1 resolves ElevenLabs TTS models by string spec" do
+      assert {:ok, model} = LLMDB.model("elevenlabs:eleven_multilingual_v2")
+
+      assert model.provider == :elevenlabs
+      assert model.id == "eleven_multilingual_v2"
+      assert model.modalities.input == [:text]
+      assert model.modalities.output == [:audio]
+      assert model.capabilities.chat == false
+      assert model.capabilities.embeddings == false
+      assert model.extra.api == "tts"
+    end
+  end
 end

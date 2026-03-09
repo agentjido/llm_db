@@ -1,0 +1,31 @@
+# Eleven Turbo v2.5 - balanced quality and speed for text-to-speech
+# Docs: https://elevenlabs.io/docs/overview/models
+
+id = "eleven_turbo_v2_5"
+name = "Eleven Turbo v2.5"
+family = "eleven_turbo"
+deprecated = false
+tags = ["tts", "speech"]
+
+[modalities]
+input = ["text"]
+output = ["audio"]
+
+[capabilities]
+chat = false
+embeddings = false
+
+[capabilities.tools]
+enabled = false
+
+[capabilities.reasoning]
+enabled = false
+
+[capabilities.streaming]
+text = false
+
+[extra]
+api = "tts"
+description = "High quality, low-latency model with a good balance of quality and speed (~250ms-300ms)"
+languages_supported = 32
+character_limit = 40000
