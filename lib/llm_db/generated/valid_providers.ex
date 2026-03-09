@@ -19,6 +19,7 @@ defmodule LLMDB.Generated.ValidProviders do
     :anthropic,
     :azure,
     :azure_cognitive_services,
+    :azure_foundry,
     :bailing,
     :baseten,
     :berget,

@@ -11,6 +11,7 @@ config :llm_db,
     {LLMDB.Sources.Google, %{}},
     {LLMDB.Sources.XAI, %{}},
     {LLMDB.Sources.Zenmux, %{}},
+    {LLMDB.Sources.AzureFoundry, %{}},
     {LLMDB.Sources.Local, %{dir: "priv/llm_db/local"}}
   ],
 
@@ -22,7 +23,8 @@ config :llm_db,
   anthropic_cache_dir: "priv/llm_db/remote",
   google_cache_dir: "priv/llm_db/remote",
   xai_cache_dir: "priv/llm_db/remote",
-  zenmux_cache_dir: "priv/llm_db/remote"
+  zenmux_cache_dir: "priv/llm_db/remote",
+  azure_foundry_cache_dir: "priv/llm_db/remote"
 
 if Mix.env() == :dev do
   config :git_ops,
