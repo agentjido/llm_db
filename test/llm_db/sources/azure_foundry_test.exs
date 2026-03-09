@@ -13,7 +13,7 @@ defmodule LLMDB.Sources.AzureFoundryTest do
         "maxOutputTokens" => 4096,
         "inputModalities" => ["text"],
         "outputModalities" => ["text"],
-        "inferenceTasks" => ["chat-completion"],
+        "inferenceTasks" => ["chat-completion", "responses"],
         "modelCapabilities" => ["agentsV2", "streaming", "tool-calling"],
         "azureOffers" => ["standard-paygo"]
       }
@@ -82,6 +82,32 @@ defmodule LLMDB.Sources.AzureFoundryTest do
       assert hd(models).id == "grok-3"
     end
 
+    test "includes azure-openai registry models regardless of offers" do
+      openai_model = %{
+        "annotations" => %{
+          "name" => "gpt-5",
+          "systemCatalogData" => %{
+            "displayName" => "gpt-5",
+            "publisher" => "OpenAI",
+            "textContextWindow" => 200_000,
+            "maxOutputTokens" => 16_384,
+            "inputModalities" => ["text"],
+            "outputModalities" => ["text"],
+            "inferenceTasks" => ["chat-completion", "responses"],
+            "modelCapabilities" => ["agentsV2", "reasoning"],
+            "azureOffers" => nil
+          }
+        },
+        "entityResourceName" => "azure-openai"
+      }
+
+      result = AzureFoundry.transform([openai_model, @vm_model])
+      models = result["azure_foundry"].models
+
+      assert length(models) == 1
+      assert hd(models).id == "gpt-5"
+    end
+
     test "correctly transforms chat model fields" do
       result = AzureFoundry.transform([@chat_model])
       model = hd(result["azure_foundry"].models)
@@ -108,7 +134,7 @@ defmodule LLMDB.Sources.AzureFoundryTest do
       assert model.extra.wire_protocol == :anthropic_messages
     end
 
-    test "assigns :openai_responses wire protocol for agentsV2 capability" do
+    test "assigns :openai_responses wire protocol for responses task" do
       result = AzureFoundry.transform([@chat_model])
       model = hd(result["azure_foundry"].models)
 
@@ -117,9 +143,9 @@ defmodule LLMDB.Sources.AzureFoundryTest do
 
     test "assigns :openai_completion wire protocol for plain chat models" do
       plain_chat =
-        put_in(@chat_model, ["annotations", "systemCatalogData", "modelCapabilities"], [
-          "streaming"
-        ])
+        @chat_model
+        |> put_in(["annotations", "systemCatalogData", "modelCapabilities"], ["streaming"])
+        |> put_in(["annotations", "systemCatalogData", "inferenceTasks"], ["chat-completion"])
 
       result = AzureFoundry.transform([plain_chat])
       model = hd(result["azure_foundry"].models)
@@ -141,11 +167,11 @@ defmodule LLMDB.Sources.AzureFoundryTest do
       assert model.type == :embedding
     end
 
-    test "defaults output modalities to input when nil" do
+    test "embedding models output :embedding modality" do
       result = AzureFoundry.transform([@embedding_model])
       model = hd(result["azure_foundry"].models)
 
-      assert model.modalities == %{input: [:text], output: [:text]}
+      assert model.modalities == %{input: [:text], output: [:embedding]}
     end
 
     test "includes publisher, license, capabilities, registry in extra" do

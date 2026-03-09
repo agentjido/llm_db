@@ -46,7 +46,7 @@ defmodule LLMDB.Sources.AzureFoundry do
     "azureml-alibaba"
   ]
 
-  @chat_tasks ["chat-completion", "text-generation"]
+  @chat_tasks ["chat-completion", "completions", "text-generation"]
   @embedding_tasks ["embeddings", "embedding"]
   @image_tasks ["text-to-image", "image-to-image"]
 
@@ -131,11 +131,19 @@ defmodule LLMDB.Sources.AzureFoundry do
     }
   end
 
-  defp paygo?(model) do
-    offers =
-      get_in(model, ["annotations", "systemCatalogData", "azureOffers"]) || []
+  @openai_registry "azure-openai"
 
-    "standard-paygo" in offers
+  defp paygo?(model) do
+    registry = model["entityResourceName"]
+
+    if registry == @openai_registry do
+      true
+    else
+      offers =
+        get_in(model, ["annotations", "systemCatalogData", "azureOffers"]) || []
+
+      "standard-paygo" in offers
+    end
   end
 
   defp family_match?(_model, []), do: true
@@ -155,17 +163,17 @@ defmodule LLMDB.Sources.AzureFoundry do
     input_mods = Map.get(catalog, "inputModalities")
     output_mods = Map.get(catalog, "outputModalities")
 
-    base = %{
+    type = derive_type(tasks)
+
+    %{
       id: model_id(model),
       provider: :azure_foundry,
       name: Map.get(catalog, "displayName", model_id(model)),
-      type: derive_type(tasks),
-      modalities: build_modalities(input_mods, output_mods),
+      type: type,
+      modalities: build_modalities(input_mods, output_mods, type),
       limits: build_limits(catalog),
       extra: build_extra(catalog, capabilities, model)
     }
-
-    base
   end
 
   defp model_id(model) do
@@ -185,9 +193,13 @@ defmodule LLMDB.Sources.AzureFoundry do
     end
   end
 
-  defp build_modalities(nil, nil), do: %{input: [], output: []}
+  defp build_modalities(_, _, :embedding) do
+    %{input: [:text], output: [:embedding]}
+  end
 
-  defp build_modalities(input, output) do
+  defp build_modalities(nil, nil, _type), do: %{input: [], output: []}
+
+  defp build_modalities(input, output, _type) do
     input_atoms = atomize_modalities(input || [])
     output_atoms = atomize_modalities(output)
 
@@ -241,12 +253,12 @@ defmodule LLMDB.Sources.AzureFoundry do
     maybe_put_wire_protocol(extra, tasks, capabilities)
   end
 
-  defp maybe_put_wire_protocol(extra, tasks, capabilities) do
+  defp maybe_put_wire_protocol(extra, tasks, _capabilities) do
     cond do
       "messages" in tasks ->
         Map.put(extra, :wire_protocol, :anthropic_messages)
 
-      "agentsV2" in capabilities ->
+      "responses" in tasks ->
         Map.put(extra, :wire_protocol, :openai_responses)
 
       Enum.any?(tasks, &(&1 in @chat_tasks)) ->

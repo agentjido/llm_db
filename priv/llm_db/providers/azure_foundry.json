@@ -1,9 +1,30 @@
 {
   "alias_of": null,
   "base_url": null,
-  "config_schema": null,
-  "doc": null,
-  "env": null,
+  "config_schema": [
+    {
+      "doc": "Azure AI Foundry API base URL (e.g. https://{instance_name}.openai.azure.com)",
+      "name": "base_url",
+      "required": true,
+      "type": "string"
+    },
+    {
+      "doc": "Azure AI Foundry deployment name for the model to use",
+      "name": "deployment_name",
+      "required": false,
+      "type": "string"
+    },
+    {
+      "doc": "Azure AI Foundry API version to use (e.g. 2024-06-01)",
+      "name": "api_version",
+      "required": false,
+      "type": "string"
+    }
+  ],
+  "doc": "https://ai.azure.com/explore/models",
+  "env": [
+    "AZURE_FOUNDRY_API_KEY"
+  ],
   "exclude_models": null,
   "extra": null,
   "id": "azure_foundry",
@@ -138,7 +159,8 @@
       "deprecated": false,
       "extra": {
         "publisher": "OpenAI",
-        "registry": "azure-openai"
+        "registry": "azure-openai",
+        "wire_protocol": "openai_completion"
       },
       "family": null,
       "id": "babbage-002",
@@ -752,7 +774,7 @@
           "text"
         ],
         "output": [
-          "other"
+          "embedding"
         ]
       },
       "model": null,
@@ -788,7 +810,7 @@
           "text"
         ],
         "output": [
-          "other"
+          "embedding"
         ]
       },
       "model": null,
@@ -998,7 +1020,8 @@
       "extra": {
         "license": "custom",
         "publisher": "OpenAI",
-        "registry": "azure-openai"
+        "registry": "azure-openai",
+        "wire_protocol": "openai_responses"
       },
       "family": null,
       "id": "computer-use-preview",
@@ -1103,7 +1126,8 @@
       "extra": {
         "license": "custom",
         "publisher": "OpenAI",
-        "registry": "azure-openai"
+        "registry": "azure-openai",
+        "wire_protocol": "openai_completion"
       },
       "family": null,
       "id": "davinci-002",
@@ -1186,7 +1210,7 @@
         "license": "MIT",
         "publisher": "DeepSeek",
         "registry": "azureml-deepseek",
-        "wire_protocol": "openai_responses"
+        "wire_protocol": "openai_completion"
       },
       "family": null,
       "id": "deepseek-r1-0528",
@@ -1271,7 +1295,7 @@
         "license": "MIT",
         "publisher": "DeepSeek",
         "registry": "azureml-deepseek",
-        "wire_protocol": "openai_responses"
+        "wire_protocol": "openai_completion"
       },
       "family": null,
       "id": "deepseek-v3-0324",
@@ -1314,7 +1338,7 @@
         "license": "custom",
         "publisher": "DeepSeek",
         "registry": "azureml-deepseek",
-        "wire_protocol": "openai_responses"
+        "wire_protocol": "openai_completion"
       },
       "family": null,
       "id": "deepseek-v3.1",
@@ -1448,12 +1472,10 @@
       },
       "modalities": {
         "input": [
-          "image",
           "text"
         ],
         "output": [
-          "image",
-          "text"
+          "embedding"
         ]
       },
       "model": null,
@@ -1627,7 +1649,7 @@
         "license": "custom",
         "publisher": "OpenAI",
         "registry": "azure-openai",
-        "wire_protocol": "openai_completion"
+        "wire_protocol": "openai_responses"
       },
       "family": null,
       "id": "gpt-4-32k",
@@ -2081,6 +2103,45 @@
       "retired": false,
       "tags": null
     },
+    "gpt-4o-mini-tts": {
+      "aliases": [],
+      "base_url": null,
+      "capabilities": null,
+      "cost": null,
+      "deprecated": false,
+      "extra": {
+        "license": "custom",
+        "publisher": "OpenAI",
+        "registry": "azure-openai"
+      },
+      "family": null,
+      "id": "gpt-4o-mini-tts",
+      "knowledge": null,
+      "last_updated": null,
+      "lifecycle": null,
+      "limits": {
+        "context": 2000,
+        "output": 2000
+      },
+      "modalities": {
+        "input": [
+          "text",
+          "audio"
+        ],
+        "output": [
+          "text",
+          "audio"
+        ]
+      },
+      "model": null,
+      "name": "gpt-4o-mini-tts",
+      "pricing": null,
+      "provider": "azure_foundry",
+      "provider_model_id": null,
+      "release_date": null,
+      "retired": false,
+      "tags": null
+    },
     "gpt-4o-realtime-preview": {
       "aliases": [],
       "base_url": null,
@@ -2142,6 +2203,966 @@
       },
       "model": null,
       "name": "gpt-4o-transcribe",
+      "pricing": null,
+      "provider": "azure_foundry",
+      "provider_model_id": null,
+      "release_date": null,
+      "retired": false,
+      "tags": null
+    },
+    "gpt-4o-transcribe-diarize": {
+      "aliases": [],
+      "base_url": null,
+      "capabilities": null,
+      "cost": null,
+      "deprecated": false,
+      "extra": {
+        "license": "custom",
+        "publisher": "OpenAI",
+        "registry": "azure-openai"
+      },
+      "family": null,
+      "id": "gpt-4o-transcribe-diarize",
+      "knowledge": null,
+      "last_updated": null,
+      "lifecycle": null,
+      "limits": {
+        "context": 16000,
+        "output": 2000
+      },
+      "modalities": {
+        "input": [
+          "text",
+          "audio"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "model": null,
+      "name": "OpenAI gpt-4o-transcribe-diarize",
+      "pricing": null,
+      "provider": "azure_foundry",
+      "provider_model_id": null,
+      "release_date": null,
+      "retired": false,
+      "tags": null
+    },
+    "gpt-5": {
+      "aliases": [],
+      "base_url": null,
+      "capabilities": null,
+      "cost": null,
+      "deprecated": false,
+      "extra": {
+        "capabilities": [
+          "agents",
+          "agentsV2",
+          "reasoning",
+          "tool-calling",
+          "streaming",
+          "fine-tuning"
+        ],
+        "license": "custom",
+        "publisher": "OpenAI",
+        "registry": "azure-openai",
+        "wire_protocol": "openai_responses"
+      },
+      "family": null,
+      "id": "gpt-5",
+      "knowledge": null,
+      "last_updated": null,
+      "lifecycle": null,
+      "limits": {
+        "context": 200000,
+        "output": 100000
+      },
+      "modalities": {
+        "input": [
+          "text",
+          "image"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "model": null,
+      "name": "OpenAI gpt-5",
+      "pricing": null,
+      "provider": "azure_foundry",
+      "provider_model_id": null,
+      "release_date": null,
+      "retired": false,
+      "tags": null
+    },
+    "gpt-5-chat": {
+      "aliases": [],
+      "base_url": null,
+      "capabilities": null,
+      "cost": null,
+      "deprecated": false,
+      "extra": {
+        "capabilities": [
+          "agents",
+          "agentsV2",
+          "reasoning",
+          "tool-calling",
+          "streaming"
+        ],
+        "license": "custom",
+        "publisher": "OpenAI",
+        "registry": "azure-openai",
+        "wire_protocol": "openai_responses"
+      },
+      "family": null,
+      "id": "gpt-5-chat",
+      "knowledge": null,
+      "last_updated": null,
+      "lifecycle": null,
+      "limits": {
+        "context": 200000,
+        "output": 100000
+      },
+      "modalities": {
+        "input": [
+          "text",
+          "image"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "model": null,
+      "name": "OpenAI gpt-5-chat (preview)",
+      "pricing": null,
+      "provider": "azure_foundry",
+      "provider_model_id": null,
+      "release_date": null,
+      "retired": false,
+      "tags": null
+    },
+    "gpt-5-codex": {
+      "aliases": [],
+      "base_url": null,
+      "capabilities": null,
+      "cost": null,
+      "deprecated": false,
+      "extra": {
+        "capabilities": [
+          "agentsV2",
+          "reasoning",
+          "streaming"
+        ],
+        "license": "custom",
+        "publisher": "OpenAI",
+        "registry": "azure-openai",
+        "wire_protocol": "openai_responses"
+      },
+      "family": null,
+      "id": "gpt-5-codex",
+      "knowledge": null,
+      "last_updated": null,
+      "lifecycle": null,
+      "limits": {
+        "context": 272000,
+        "output": 128000
+      },
+      "modalities": {
+        "input": [
+          "text",
+          "image"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "model": null,
+      "name": "gpt-5-codex",
+      "pricing": null,
+      "provider": "azure_foundry",
+      "provider_model_id": null,
+      "release_date": null,
+      "retired": false,
+      "tags": null
+    },
+    "gpt-5-mini": {
+      "aliases": [],
+      "base_url": null,
+      "capabilities": null,
+      "cost": null,
+      "deprecated": false,
+      "extra": {
+        "capabilities": [
+          "agents",
+          "agentsV2",
+          "reasoning"
+        ],
+        "license": "custom",
+        "publisher": "OpenAI",
+        "registry": "azure-openai",
+        "wire_protocol": "openai_responses"
+      },
+      "family": null,
+      "id": "gpt-5-mini",
+      "knowledge": null,
+      "last_updated": null,
+      "lifecycle": null,
+      "limits": {
+        "context": 200000,
+        "output": 100000
+      },
+      "modalities": {
+        "input": [
+          "text",
+          "image"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "model": null,
+      "name": "OpenAI gpt-5-mini",
+      "pricing": null,
+      "provider": "azure_foundry",
+      "provider_model_id": null,
+      "release_date": null,
+      "retired": false,
+      "tags": null
+    },
+    "gpt-5-nano": {
+      "aliases": [],
+      "base_url": null,
+      "capabilities": null,
+      "cost": null,
+      "deprecated": false,
+      "extra": {
+        "capabilities": [
+          "agents",
+          "agentsV2",
+          "reasoning"
+        ],
+        "license": "custom",
+        "publisher": "OpenAI",
+        "registry": "azure-openai",
+        "wire_protocol": "openai_responses"
+      },
+      "family": null,
+      "id": "gpt-5-nano",
+      "knowledge": null,
+      "last_updated": null,
+      "lifecycle": null,
+      "limits": {
+        "context": 200000,
+        "output": 100000
+      },
+      "modalities": {
+        "input": [
+          "text",
+          "image"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "model": null,
+      "name": "OpenAI gpt-5-nano",
+      "pricing": null,
+      "provider": "azure_foundry",
+      "provider_model_id": null,
+      "release_date": null,
+      "retired": false,
+      "tags": null
+    },
+    "gpt-5-pro": {
+      "aliases": [],
+      "base_url": null,
+      "capabilities": null,
+      "cost": null,
+      "deprecated": false,
+      "extra": {
+        "capabilities": [
+          "agentsV2",
+          "reasoning",
+          "tool-calling",
+          "streaming"
+        ],
+        "license": "custom",
+        "publisher": "OpenAI",
+        "registry": "azure-openai",
+        "wire_protocol": "openai_responses"
+      },
+      "family": null,
+      "id": "gpt-5-pro",
+      "knowledge": null,
+      "last_updated": null,
+      "lifecycle": null,
+      "limits": {
+        "context": 400000,
+        "output": 2720000
+      },
+      "modalities": {
+        "input": [
+          "text",
+          "image"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "model": null,
+      "name": "OpenAI gpt-5-pro",
+      "pricing": null,
+      "provider": "azure_foundry",
+      "provider_model_id": null,
+      "release_date": null,
+      "retired": false,
+      "tags": null
+    },
+    "gpt-5.1": {
+      "aliases": [],
+      "base_url": null,
+      "capabilities": null,
+      "cost": null,
+      "deprecated": false,
+      "extra": {
+        "capabilities": [
+          "agentsV2",
+          "reasoning",
+          "tool-calling",
+          "streaming"
+        ],
+        "license": "custom",
+        "publisher": "OpenAI",
+        "registry": "azure-openai",
+        "wire_protocol": "openai_responses"
+      },
+      "family": null,
+      "id": "gpt-5.1",
+      "knowledge": null,
+      "last_updated": null,
+      "lifecycle": null,
+      "limits": {
+        "context": 200000,
+        "output": 100000
+      },
+      "modalities": {
+        "input": [
+          "text",
+          "image"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "model": null,
+      "name": "OpenAI gpt-5.1",
+      "pricing": null,
+      "provider": "azure_foundry",
+      "provider_model_id": null,
+      "release_date": null,
+      "retired": false,
+      "tags": null
+    },
+    "gpt-5.1-chat": {
+      "aliases": [],
+      "base_url": null,
+      "capabilities": null,
+      "cost": null,
+      "deprecated": false,
+      "extra": {
+        "capabilities": [
+          "agentsV2",
+          "reasoning",
+          "tool-calling",
+          "streaming"
+        ],
+        "license": "custom",
+        "publisher": "OpenAI",
+        "registry": "azure-openai",
+        "wire_protocol": "openai_responses"
+      },
+      "family": null,
+      "id": "gpt-5.1-chat",
+      "knowledge": null,
+      "last_updated": null,
+      "lifecycle": null,
+      "limits": {
+        "context": 200000,
+        "output": 100000
+      },
+      "modalities": {
+        "input": [
+          "text",
+          "image"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "model": null,
+      "name": "OpenAI gpt-5.1-chat (preview)",
+      "pricing": null,
+      "provider": "azure_foundry",
+      "provider_model_id": null,
+      "release_date": null,
+      "retired": false,
+      "tags": null
+    },
+    "gpt-5.1-codex": {
+      "aliases": [],
+      "base_url": null,
+      "capabilities": null,
+      "cost": null,
+      "deprecated": false,
+      "extra": {
+        "capabilities": [
+          "agentsV2",
+          "reasoning",
+          "streaming"
+        ],
+        "license": "custom",
+        "publisher": "OpenAI",
+        "registry": "azure-openai",
+        "wire_protocol": "openai_responses"
+      },
+      "family": null,
+      "id": "gpt-5.1-codex",
+      "knowledge": null,
+      "last_updated": null,
+      "lifecycle": null,
+      "limits": {
+        "context": 272000,
+        "output": 128000
+      },
+      "modalities": {
+        "input": [
+          "text",
+          "image"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "model": null,
+      "name": "gpt-5.1-codex",
+      "pricing": null,
+      "provider": "azure_foundry",
+      "provider_model_id": null,
+      "release_date": null,
+      "retired": false,
+      "tags": null
+    },
+    "gpt-5.1-codex-max": {
+      "aliases": [],
+      "base_url": null,
+      "capabilities": null,
+      "cost": null,
+      "deprecated": false,
+      "extra": {
+        "capabilities": [
+          "agentsV2",
+          "reasoning"
+        ],
+        "license": "custom",
+        "publisher": "OpenAI",
+        "registry": "azure-openai",
+        "wire_protocol": "openai_responses"
+      },
+      "family": null,
+      "id": "gpt-5.1-codex-max",
+      "knowledge": null,
+      "last_updated": null,
+      "lifecycle": null,
+      "limits": {
+        "context": 272000,
+        "output": 128000
+      },
+      "modalities": {
+        "input": [
+          "text",
+          "image"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "model": null,
+      "name": "gpt-5.1-codex-max",
+      "pricing": null,
+      "provider": "azure_foundry",
+      "provider_model_id": null,
+      "release_date": null,
+      "retired": false,
+      "tags": null
+    },
+    "gpt-5.1-codex-mini": {
+      "aliases": [],
+      "base_url": null,
+      "capabilities": null,
+      "cost": null,
+      "deprecated": false,
+      "extra": {
+        "capabilities": [
+          "agentsV2",
+          "reasoning",
+          "streaming"
+        ],
+        "license": "custom",
+        "publisher": "OpenAI",
+        "registry": "azure-openai",
+        "wire_protocol": "openai_responses"
+      },
+      "family": null,
+      "id": "gpt-5.1-codex-mini",
+      "knowledge": null,
+      "last_updated": null,
+      "lifecycle": null,
+      "limits": {
+        "context": 272000,
+        "output": 128000
+      },
+      "modalities": {
+        "input": [
+          "text",
+          "image"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "model": null,
+      "name": "gpt-5.1-codex-mini",
+      "pricing": null,
+      "provider": "azure_foundry",
+      "provider_model_id": null,
+      "release_date": null,
+      "retired": false,
+      "tags": null
+    },
+    "gpt-5.2": {
+      "aliases": [],
+      "base_url": null,
+      "capabilities": null,
+      "cost": null,
+      "deprecated": false,
+      "extra": {
+        "capabilities": [
+          "agentsV2",
+          "reasoning",
+          "tool-calling",
+          "streaming"
+        ],
+        "license": "custom",
+        "publisher": "OpenAI",
+        "registry": "azure-openai",
+        "wire_protocol": "openai_responses"
+      },
+      "family": null,
+      "id": "gpt-5.2",
+      "knowledge": null,
+      "last_updated": null,
+      "lifecycle": null,
+      "limits": {
+        "context": 200000,
+        "output": 100000
+      },
+      "modalities": {
+        "input": [
+          "text",
+          "image"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "model": null,
+      "name": "OpenAI gpt-5.2",
+      "pricing": null,
+      "provider": "azure_foundry",
+      "provider_model_id": null,
+      "release_date": null,
+      "retired": false,
+      "tags": null
+    },
+    "gpt-5.2-chat": {
+      "aliases": [],
+      "base_url": null,
+      "capabilities": null,
+      "cost": null,
+      "deprecated": false,
+      "extra": {
+        "capabilities": [
+          "agentsV2",
+          "reasoning",
+          "tool-calling",
+          "streaming"
+        ],
+        "license": "custom",
+        "publisher": "OpenAI",
+        "registry": "azure-openai",
+        "wire_protocol": "openai_responses"
+      },
+      "family": null,
+      "id": "gpt-5.2-chat",
+      "knowledge": null,
+      "last_updated": null,
+      "lifecycle": null,
+      "limits": {
+        "context": 200000,
+        "output": 100000
+      },
+      "modalities": {
+        "input": [
+          "text",
+          "image"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "model": null,
+      "name": "OpenAI gpt-5.2-chat (preview)",
+      "pricing": null,
+      "provider": "azure_foundry",
+      "provider_model_id": null,
+      "release_date": null,
+      "retired": false,
+      "tags": null
+    },
+    "gpt-5.2-codex": {
+      "aliases": [],
+      "base_url": null,
+      "capabilities": null,
+      "cost": null,
+      "deprecated": false,
+      "extra": {
+        "capabilities": [
+          "agentsV2",
+          "reasoning",
+          "streaming"
+        ],
+        "license": "custom",
+        "publisher": "OpenAI",
+        "registry": "azure-openai",
+        "wire_protocol": "openai_responses"
+      },
+      "family": null,
+      "id": "gpt-5.2-codex",
+      "knowledge": null,
+      "last_updated": null,
+      "lifecycle": null,
+      "limits": {
+        "context": 272000,
+        "output": 228000
+      },
+      "modalities": {
+        "input": [
+          "text",
+          "image"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "model": null,
+      "name": "gpt-5.2-codex",
+      "pricing": null,
+      "provider": "azure_foundry",
+      "provider_model_id": null,
+      "release_date": null,
+      "retired": false,
+      "tags": null
+    },
+    "gpt-5.3-chat": {
+      "aliases": [],
+      "base_url": null,
+      "capabilities": null,
+      "cost": null,
+      "deprecated": false,
+      "extra": {
+        "capabilities": [
+          "agentsV2",
+          "reasoning",
+          "tool-calling",
+          "streaming"
+        ],
+        "license": "custom",
+        "publisher": "OpenAI",
+        "registry": "azure-openai",
+        "wire_protocol": "openai_responses"
+      },
+      "family": null,
+      "id": "gpt-5.3-chat",
+      "knowledge": null,
+      "last_updated": null,
+      "lifecycle": null,
+      "limits": {
+        "context": 200000,
+        "output": 100000
+      },
+      "modalities": {
+        "input": [
+          "text",
+          "image"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "model": null,
+      "name": "OpenAI gpt-5.3-chat (preview)",
+      "pricing": null,
+      "provider": "azure_foundry",
+      "provider_model_id": null,
+      "release_date": null,
+      "retired": false,
+      "tags": null
+    },
+    "gpt-5.3-codex": {
+      "aliases": [],
+      "base_url": null,
+      "capabilities": null,
+      "cost": null,
+      "deprecated": false,
+      "extra": {
+        "capabilities": [
+          "agentsV2",
+          "reasoning",
+          "streaming"
+        ],
+        "license": "custom",
+        "publisher": "OpenAI",
+        "registry": "azure-openai",
+        "wire_protocol": "openai_responses"
+      },
+      "family": null,
+      "id": "gpt-5.3-codex",
+      "knowledge": null,
+      "last_updated": null,
+      "lifecycle": null,
+      "limits": {
+        "context": 272000,
+        "output": 228000
+      },
+      "modalities": {
+        "input": [
+          "text",
+          "image"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "model": null,
+      "name": "gpt-5.3-codex",
+      "pricing": null,
+      "provider": "azure_foundry",
+      "provider_model_id": null,
+      "release_date": null,
+      "retired": false,
+      "tags": null
+    },
+    "gpt-5.4": {
+      "aliases": [],
+      "base_url": null,
+      "capabilities": null,
+      "cost": null,
+      "deprecated": false,
+      "extra": {
+        "capabilities": [
+          "agentsV2",
+          "reasoning",
+          "tool-calling",
+          "streaming"
+        ],
+        "license": "custom",
+        "publisher": "OpenAI",
+        "registry": "azure-openai",
+        "wire_protocol": "openai_responses"
+      },
+      "family": null,
+      "id": "gpt-5.4",
+      "knowledge": null,
+      "last_updated": null,
+      "lifecycle": null,
+      "limits": {
+        "context": 200000,
+        "output": 100000
+      },
+      "modalities": {
+        "input": [
+          "text",
+          "image"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "model": null,
+      "name": "OpenAI gpt-5.4",
+      "pricing": null,
+      "provider": "azure_foundry",
+      "provider_model_id": null,
+      "release_date": null,
+      "retired": false,
+      "tags": null
+    },
+    "gpt-5.4-pro": {
+      "aliases": [],
+      "base_url": null,
+      "capabilities": null,
+      "cost": null,
+      "deprecated": false,
+      "extra": {
+        "capabilities": [
+          "agentsV2",
+          "reasoning",
+          "tool-calling",
+          "streaming"
+        ],
+        "license": "custom",
+        "publisher": "OpenAI",
+        "registry": "azure-openai",
+        "wire_protocol": "openai_responses"
+      },
+      "family": null,
+      "id": "gpt-5.4-pro",
+      "knowledge": null,
+      "last_updated": null,
+      "lifecycle": null,
+      "limits": {
+        "context": 200000,
+        "output": 100000
+      },
+      "modalities": {
+        "input": [
+          "text",
+          "image"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "model": null,
+      "name": "OpenAI gpt-5.4",
+      "pricing": null,
+      "provider": "azure_foundry",
+      "provider_model_id": null,
+      "release_date": null,
+      "retired": false,
+      "tags": null
+    },
+    "gpt-audio": {
+      "aliases": [],
+      "base_url": null,
+      "capabilities": null,
+      "cost": null,
+      "deprecated": false,
+      "extra": {
+        "license": "custom",
+        "publisher": "OpenAI",
+        "registry": "azure-openai"
+      },
+      "family": null,
+      "id": "gpt-audio",
+      "knowledge": null,
+      "last_updated": null,
+      "lifecycle": null,
+      "limits": {
+        "context": 128000,
+        "output": 16384
+      },
+      "modalities": {
+        "input": [
+          "audio",
+          "text"
+        ],
+        "output": [
+          "audio",
+          "text"
+        ]
+      },
+      "model": null,
+      "name": "OpenAI gpt-audio",
+      "pricing": null,
+      "provider": "azure_foundry",
+      "provider_model_id": null,
+      "release_date": null,
+      "retired": false,
+      "tags": null
+    },
+    "gpt-audio-1.5": {
+      "aliases": [],
+      "base_url": null,
+      "capabilities": null,
+      "cost": null,
+      "deprecated": false,
+      "extra": {
+        "license": "custom",
+        "publisher": "OpenAI",
+        "registry": "azure-openai"
+      },
+      "family": null,
+      "id": "gpt-audio-1.5",
+      "knowledge": null,
+      "last_updated": null,
+      "lifecycle": null,
+      "limits": {
+        "context": 128000,
+        "output": 16384
+      },
+      "modalities": {
+        "input": [
+          "audio",
+          "text",
+          "image"
+        ],
+        "output": [
+          "audio",
+          "text"
+        ]
+      },
+      "model": null,
+      "name": "OpenAI gpt-audio",
+      "pricing": null,
+      "provider": "azure_foundry",
+      "provider_model_id": null,
+      "release_date": null,
+      "retired": false,
+      "tags": null
+    },
+    "gpt-audio-mini": {
+      "aliases": [],
+      "base_url": null,
+      "capabilities": null,
+      "cost": null,
+      "deprecated": false,
+      "extra": {
+        "license": "custom",
+        "publisher": "OpenAI",
+        "registry": "azure-openai"
+      },
+      "family": null,
+      "id": "gpt-audio-mini",
+      "knowledge": null,
+      "last_updated": null,
+      "lifecycle": null,
+      "limits": {
+        "context": 128000,
+        "output": 16384
+      },
+      "modalities": {
+        "input": [
+          "audio",
+          "text"
+        ],
+        "output": [
+          "audio",
+          "text"
+        ]
+      },
+      "model": null,
+      "name": "OpenAI gpt-audio-mini",
       "pricing": null,
       "provider": "azure_foundry",
       "provider_model_id": null,
@@ -2220,6 +3241,158 @@
       "retired": false,
       "tags": null
     },
+    "gpt-image-1.5": {
+      "aliases": [],
+      "base_url": null,
+      "capabilities": null,
+      "cost": null,
+      "deprecated": false,
+      "extra": {
+        "license": "custom",
+        "publisher": "OpenAI",
+        "registry": "azure-openai"
+      },
+      "family": null,
+      "id": "gpt-image-1.5",
+      "knowledge": null,
+      "last_updated": null,
+      "lifecycle": null,
+      "limits": {},
+      "modalities": {
+        "input": [
+          "text",
+          "image"
+        ],
+        "output": [
+          "image"
+        ]
+      },
+      "model": null,
+      "name": "GPT-image-1.5",
+      "pricing": null,
+      "provider": "azure_foundry",
+      "provider_model_id": null,
+      "release_date": null,
+      "retired": false,
+      "tags": null
+    },
+    "gpt-realtime": {
+      "aliases": [],
+      "base_url": null,
+      "capabilities": null,
+      "cost": null,
+      "deprecated": false,
+      "extra": {
+        "license": "custom",
+        "publisher": "OpenAI",
+        "registry": "azure-openai"
+      },
+      "family": null,
+      "id": "gpt-realtime",
+      "knowledge": null,
+      "last_updated": null,
+      "lifecycle": null,
+      "limits": {
+        "context": 128000,
+        "output": 16384
+      },
+      "modalities": {
+        "input": [
+          "audio",
+          "text",
+          "image"
+        ],
+        "output": [
+          "audio",
+          "text"
+        ]
+      },
+      "model": null,
+      "name": "OpenAI gpt-realtime",
+      "pricing": null,
+      "provider": "azure_foundry",
+      "provider_model_id": null,
+      "release_date": null,
+      "retired": false,
+      "tags": null
+    },
+    "gpt-realtime-1.5": {
+      "aliases": [],
+      "base_url": null,
+      "capabilities": null,
+      "cost": null,
+      "deprecated": false,
+      "extra": {
+        "license": "custom",
+        "publisher": "OpenAI",
+        "registry": "azure-openai"
+      },
+      "family": null,
+      "id": "gpt-realtime-1.5",
+      "knowledge": null,
+      "last_updated": null,
+      "lifecycle": null,
+      "limits": {
+        "context": 128000,
+        "output": 16384
+      },
+      "modalities": {
+        "input": [
+          "audio",
+          "text",
+          "image"
+        ],
+        "output": [
+          "audio",
+          "text"
+        ]
+      },
+      "model": null,
+      "name": "OpenAI gpt-realtime",
+      "pricing": null,
+      "provider": "azure_foundry",
+      "provider_model_id": null,
+      "release_date": null,
+      "retired": false,
+      "tags": null
+    },
+    "gpt-realtime-mini": {
+      "aliases": [],
+      "base_url": null,
+      "capabilities": null,
+      "cost": null,
+      "deprecated": false,
+      "extra": {
+        "license": "custom",
+        "publisher": "OpenAI",
+        "registry": "azure-openai"
+      },
+      "family": null,
+      "id": "gpt-realtime-mini",
+      "knowledge": null,
+      "last_updated": null,
+      "lifecycle": null,
+      "limits": {
+        "context": 128000,
+        "output": 16384
+      },
+      "modalities": {
+        "input": [
+          "audio"
+        ],
+        "output": [
+          "audio"
+        ]
+      },
+      "model": null,
+      "name": "OpenAI gpt-realtime-mini",
+      "pricing": null,
+      "provider": "azure_foundry",
+      "provider_model_id": null,
+      "release_date": null,
+      "retired": false,
+      "tags": null
+    },
     "grok-3": {
       "aliases": [],
       "base_url": null,
@@ -2235,7 +3408,7 @@
         "license": "custom",
         "publisher": "xAI",
         "registry": "azureml-xai",
-        "wire_protocol": "openai_responses"
+        "wire_protocol": "openai_completion"
       },
       "family": null,
       "id": "grok-3",
@@ -2278,7 +3451,7 @@
         "license": "custom",
         "publisher": "xAI",
         "registry": "azureml-xai",
-        "wire_protocol": "openai_responses"
+        "wire_protocol": "openai_completion"
       },
       "family": null,
       "id": "grok-3-mini",
@@ -2319,7 +3492,7 @@
         "license": "custom",
         "publisher": "xAI",
         "registry": "azureml-xai",
-        "wire_protocol": "openai_responses"
+        "wire_protocol": "openai_completion"
       },
       "family": null,
       "id": "grok-4",
@@ -2362,7 +3535,7 @@
         "license": "custom",
         "publisher": "xAI",
         "registry": "azureml-xai",
-        "wire_protocol": "openai_responses"
+        "wire_protocol": "openai_completion"
       },
       "family": null,
       "id": "grok-4-1-fast-non-reasoning",
@@ -2406,7 +3579,7 @@
         "license": "custom",
         "publisher": "xAI",
         "registry": "azureml-xai",
-        "wire_protocol": "openai_responses"
+        "wire_protocol": "openai_completion"
       },
       "family": null,
       "id": "grok-4-1-fast-reasoning",
@@ -2450,7 +3623,7 @@
         "license": "custom",
         "publisher": "xAI",
         "registry": "azureml-xai",
-        "wire_protocol": "openai_responses"
+        "wire_protocol": "openai_completion"
       },
       "family": null,
       "id": "grok-4-fast-non-reasoning",
@@ -2494,7 +3667,7 @@
         "license": "custom",
         "publisher": "xAI",
         "registry": "azureml-xai",
-        "wire_protocol": "openai_responses"
+        "wire_protocol": "openai_completion"
       },
       "family": null,
       "id": "grok-4-fast-reasoning",
@@ -2938,7 +4111,7 @@
         "license": "custom",
         "publisher": "Meta",
         "registry": "azureml-meta",
-        "wire_protocol": "openai_responses"
+        "wire_protocol": "openai_completion"
       },
       "family": null,
       "id": "llama-3.3-70b-instruct",
@@ -2983,7 +4156,7 @@
         "license": "custom",
         "publisher": "Meta",
         "registry": "azureml-meta",
-        "wire_protocol": "openai_responses"
+        "wire_protocol": "openai_completion"
       },
       "family": null,
       "id": "llama-4-maverick-17b-128e-instruct-fp8",
@@ -3072,7 +4245,7 @@
         "license": "MIT",
         "publisher": "Microsoft",
         "registry": "azureml",
-        "wire_protocol": "openai_responses"
+        "wire_protocol": "openai_completion"
       },
       "family": null,
       "id": "mai-ds-r1",
@@ -4765,6 +5938,43 @@
       "retired": false,
       "tags": null
     },
+    "sora-2": {
+      "aliases": [],
+      "base_url": null,
+      "capabilities": null,
+      "cost": null,
+      "deprecated": false,
+      "extra": {
+        "license": "custom",
+        "publisher": "OpenAI",
+        "registry": "azure-openai"
+      },
+      "family": null,
+      "id": "sora-2",
+      "knowledge": null,
+      "last_updated": null,
+      "lifecycle": null,
+      "limits": {},
+      "modalities": {
+        "input": [
+          "text",
+          "image",
+          "video"
+        ],
+        "output": [
+          "video",
+          "audio"
+        ]
+      },
+      "model": null,
+      "name": "OpenAI Sora-2",
+      "pricing": null,
+      "provider": "azure_foundry",
+      "provider_model_id": null,
+      "release_date": null,
+      "retired": false,
+      "tags": null
+    },
     "text-embedding-3-large": {
       "aliases": [],
       "base_url": null,
@@ -4789,7 +5999,7 @@
           "text"
         ],
         "output": [
-          "other"
+          "embedding"
         ]
       },
       "model": null,
@@ -4825,7 +6035,7 @@
           "text"
         ],
         "output": [
-          "other"
+          "embedding"
         ]
       },
       "model": null,
@@ -4855,8 +6065,12 @@
       "lifecycle": null,
       "limits": {},
       "modalities": {
-        "input": [],
-        "output": []
+        "input": [
+          "text"
+        ],
+        "output": [
+          "embedding"
+        ]
       },
       "model": null,
       "name": "text-embedding-ada-002",
