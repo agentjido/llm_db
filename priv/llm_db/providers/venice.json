@@ -157,10 +157,10 @@
         }
       },
       "cost": {
-        "cache_read": 0.375,
-        "cache_write": 4.69,
-        "input": 3.75,
-        "output": 18.75
+        "cache_read": 0.36,
+        "cache_write": 4.5,
+        "input": 3.6,
+        "output": 18
       },
       "deprecated": false,
       "extra": {
@@ -173,11 +173,11 @@
       "family": null,
       "id": "claude-sonnet-4-6",
       "knowledge": null,
-      "last_updated": "2026-02-19",
+      "last_updated": "2026-02-28",
       "lifecycle": null,
       "limits": {
         "context": 1000000,
-        "output": 128000
+        "output": 64000
       },
       "modalities": {
         "input": [
@@ -601,9 +601,9 @@
         }
       },
       "cost": {
-        "cache_read": 0.125,
-        "input": 0.5,
-        "output": 1.25
+        "cache_read": 0.0625,
+        "input": 0.25,
+        "output": 0.625
       },
       "deprecated": false,
       "extra": {
@@ -616,11 +616,11 @@
       "family": null,
       "id": "grok-41-fast",
       "knowledge": "2025-07",
-      "last_updated": "2026-01-28",
+      "last_updated": "2026-02-28",
       "lifecycle": null,
       "limits": {
-        "context": 256000,
-        "output": 64000
+        "context": 1000000,
+        "output": 30720
       },
       "modalities": {
         "input": [
@@ -1284,6 +1284,127 @@
       "retired": false,
       "tags": null
     },
+    "openai-gpt-4o-2024-11-20": {
+      "aliases": [],
+      "base_url": null,
+      "capabilities": {
+        "chat": true,
+        "embeddings": false,
+        "json": {
+          "native": false,
+          "schema": false,
+          "strict": false
+        },
+        "reasoning": {
+          "enabled": false
+        },
+        "streaming": {
+          "tool_calls": true
+        },
+        "tools": {
+          "enabled": true
+        }
+      },
+      "cost": {
+        "input": 3.125,
+        "output": 12.5
+      },
+      "deprecated": false,
+      "extra": {
+        "attachment": true,
+        "family": "gpt",
+        "open_weights": false,
+        "structured_output": true,
+        "temperature": true
+      },
+      "family": null,
+      "id": "openai-gpt-4o-2024-11-20",
+      "knowledge": null,
+      "last_updated": "2026-03-06",
+      "lifecycle": null,
+      "limits": {
+        "context": 128000,
+        "output": 16384
+      },
+      "modalities": {
+        "input": [
+          "text",
+          "image"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "model": null,
+      "name": "GPT-4o",
+      "pricing": null,
+      "provider": "venice",
+      "provider_model_id": null,
+      "release_date": "2026-02-28",
+      "retired": false,
+      "tags": null
+    },
+    "openai-gpt-4o-mini-2024-07-18": {
+      "aliases": [],
+      "base_url": null,
+      "capabilities": {
+        "chat": true,
+        "embeddings": false,
+        "json": {
+          "native": false,
+          "schema": false,
+          "strict": false
+        },
+        "reasoning": {
+          "enabled": false
+        },
+        "streaming": {
+          "tool_calls": true
+        },
+        "tools": {
+          "enabled": true
+        }
+      },
+      "cost": {
+        "cache_read": 0.09375,
+        "input": 0.1875,
+        "output": 0.75
+      },
+      "deprecated": false,
+      "extra": {
+        "attachment": true,
+        "family": "gpt-mini",
+        "open_weights": false,
+        "structured_output": true,
+        "temperature": true
+      },
+      "family": null,
+      "id": "openai-gpt-4o-mini-2024-07-18",
+      "knowledge": null,
+      "last_updated": "2026-03-06",
+      "lifecycle": null,
+      "limits": {
+        "context": 128000,
+        "output": 16384
+      },
+      "modalities": {
+        "input": [
+          "text",
+          "image"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "model": null,
+      "name": "GPT-4o Mini",
+      "pricing": null,
+      "provider": "venice",
+      "provider_model_id": null,
+      "release_date": "2026-02-28",
+      "retired": false,
+      "tags": null
+    },
     "openai-gpt-52": {
       "aliases": [],
       "base_url": null,
@@ -1463,6 +1584,66 @@
       "provider": "venice",
       "provider_model_id": null,
       "release_date": "2026-02-24",
+      "retired": false,
+      "tags": null
+    },
+    "openai-gpt-54": {
+      "aliases": [],
+      "base_url": null,
+      "capabilities": {
+        "chat": true,
+        "embeddings": false,
+        "json": {
+          "native": false,
+          "schema": false,
+          "strict": false
+        },
+        "reasoning": {
+          "enabled": true
+        },
+        "streaming": {
+          "tool_calls": true
+        },
+        "tools": {
+          "enabled": true
+        }
+      },
+      "cost": {
+        "cache_read": 0.313,
+        "input": 3.13,
+        "output": 18.8
+      },
+      "deprecated": false,
+      "extra": {
+        "attachment": false,
+        "family": "gpt",
+        "open_weights": false,
+        "structured_output": true,
+        "temperature": true
+      },
+      "family": null,
+      "id": "openai-gpt-54",
+      "knowledge": null,
+      "last_updated": "2026-03-06",
+      "lifecycle": null,
+      "limits": {
+        "context": 1000000,
+        "output": 131072
+      },
+      "modalities": {
+        "input": [
+          "text"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "model": null,
+      "name": "GPT-5.4",
+      "pricing": null,
+      "provider": "venice",
+      "provider_model_id": null,
+      "release_date": "2026-03-05",
       "retired": false,
       "tags": null
     },
@@ -1701,6 +1882,66 @@
       "provider": "venice",
       "provider_model_id": null,
       "release_date": "2025-04-29",
+      "retired": false,
+      "tags": null
+    },
+    "qwen3-5-35b-a3b": {
+      "aliases": [],
+      "base_url": null,
+      "capabilities": {
+        "chat": true,
+        "embeddings": false,
+        "json": {
+          "native": false,
+          "schema": false,
+          "strict": false
+        },
+        "reasoning": {
+          "enabled": true
+        },
+        "streaming": {
+          "tool_calls": true
+        },
+        "tools": {
+          "enabled": true
+        }
+      },
+      "cost": {
+        "cache_read": 0.15625,
+        "input": 0.3125,
+        "output": 1.25
+      },
+      "deprecated": false,
+      "extra": {
+        "attachment": false,
+        "family": "qwen",
+        "open_weights": true,
+        "structured_output": true,
+        "temperature": true
+      },
+      "family": null,
+      "id": "qwen3-5-35b-a3b",
+      "knowledge": null,
+      "last_updated": "2026-02-28",
+      "lifecycle": null,
+      "limits": {
+        "context": 256000,
+        "output": 65536
+      },
+      "modalities": {
+        "input": [
+          "text"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "model": null,
+      "name": "Qwen 3.5 35B A3B",
+      "pricing": null,
+      "provider": "venice",
+      "provider_model_id": null,
+      "release_date": "2026-02-25",
       "retired": false,
       "tags": null
     },

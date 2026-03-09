@@ -2,15 +2,76 @@
   "alias_of": null,
   "base_url": null,
   "config_schema": null,
-  "doc": "https://platform.inceptionlabs.ai/docs",
+  "doc": "https://www.d.run",
   "env": [
-    "INCEPTION_API_KEY"
+    "DRUN_API_KEY"
   ],
   "exclude_models": null,
   "extra": null,
-  "id": "inception",
+  "id": "drun",
   "models": {
-    "mercury": {
+    "public/deepseek-r1": {
+      "aliases": [],
+      "base_url": null,
+      "capabilities": {
+        "chat": true,
+        "embeddings": false,
+        "json": {
+          "native": false,
+          "schema": false,
+          "strict": false
+        },
+        "reasoning": {
+          "enabled": true
+        },
+        "streaming": {
+          "tool_calls": true
+        },
+        "tools": {
+          "enabled": true
+        }
+      },
+      "cost": {
+        "input": 0.55,
+        "output": 2.2
+      },
+      "deprecated": false,
+      "extra": {
+        "attachment": false,
+        "family": "deepseek-thinking",
+        "interleaved": {
+          "field": "reasoning_content"
+        },
+        "open_weights": true,
+        "temperature": true
+      },
+      "family": null,
+      "id": "public/deepseek-r1",
+      "knowledge": "2024-12",
+      "last_updated": "2025-01-20",
+      "lifecycle": null,
+      "limits": {
+        "context": 131072,
+        "output": 32000
+      },
+      "modalities": {
+        "input": [
+          "text"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "model": null,
+      "name": "DeepSeek R1",
+      "pricing": null,
+      "provider": "drun",
+      "provider_model_id": null,
+      "release_date": "2025-01-20",
+      "retired": false,
+      "tags": null
+    },
+    "public/deepseek-v3": {
       "aliases": [],
       "base_url": null,
       "capabilities": {
@@ -32,207 +93,23 @@
         }
       },
       "cost": {
-        "cache_read": 0.25,
-        "cache_write": 1,
-        "input": 0.25,
-        "output": 1
+        "input": 0.28,
+        "output": 1.1
       },
       "deprecated": false,
       "extra": {
         "attachment": false,
-        "family": "mercury",
-        "open_weights": false,
+        "family": "deepseek",
+        "open_weights": true,
         "temperature": true
       },
       "family": null,
-      "id": "mercury",
-      "knowledge": "2023-10",
-      "last_updated": "2025-07-31",
+      "id": "public/deepseek-v3",
+      "knowledge": "2024-07",
+      "last_updated": "2024-12-26",
       "lifecycle": null,
       "limits": {
-        "context": 128000,
-        "output": 16384
-      },
-      "modalities": {
-        "input": [
-          "text"
-        ],
-        "output": [
-          "text"
-        ]
-      },
-      "model": null,
-      "name": "Mercury",
-      "pricing": null,
-      "provider": "inception",
-      "provider_model_id": null,
-      "release_date": "2025-06-26",
-      "retired": false,
-      "tags": null
-    },
-    "mercury-2": {
-      "aliases": [],
-      "base_url": null,
-      "capabilities": {
-        "chat": true,
-        "embeddings": false,
-        "json": {
-          "native": false,
-          "schema": false,
-          "strict": false
-        },
-        "reasoning": {
-          "enabled": true
-        },
-        "streaming": {
-          "tool_calls": true
-        },
-        "tools": {
-          "enabled": true
-        }
-      },
-      "cost": {
-        "cache_read": 0.025,
-        "input": 0.25,
-        "output": 0.75
-      },
-      "deprecated": false,
-      "extra": {
-        "attachment": false,
-        "family": "mercury",
-        "open_weights": false,
-        "structured_output": true,
-        "temperature": true
-      },
-      "family": null,
-      "id": "mercury-2",
-      "knowledge": "2025-01-01",
-      "last_updated": "2026-02-24",
-      "lifecycle": null,
-      "limits": {
-        "context": 128000,
-        "output": 50000
-      },
-      "modalities": {
-        "input": [
-          "text"
-        ],
-        "output": [
-          "text"
-        ]
-      },
-      "model": null,
-      "name": "Mercury 2",
-      "pricing": null,
-      "provider": "inception",
-      "provider_model_id": null,
-      "release_date": "2026-02-24",
-      "retired": false,
-      "tags": null
-    },
-    "mercury-coder": {
-      "aliases": [],
-      "base_url": null,
-      "capabilities": {
-        "chat": true,
-        "embeddings": false,
-        "json": {
-          "native": false,
-          "schema": false,
-          "strict": false
-        },
-        "reasoning": {
-          "enabled": false
-        },
-        "streaming": {
-          "tool_calls": true
-        },
-        "tools": {
-          "enabled": true
-        }
-      },
-      "cost": {
-        "cache_read": 0.25,
-        "cache_write": 1,
-        "input": 0.25,
-        "output": 1
-      },
-      "deprecated": false,
-      "extra": {
-        "attachment": false,
-        "family": "mercury",
-        "open_weights": false,
-        "temperature": true
-      },
-      "family": null,
-      "id": "mercury-coder",
-      "knowledge": "2023-10",
-      "last_updated": "2025-07-31",
-      "lifecycle": null,
-      "limits": {
-        "context": 128000,
-        "output": 16384
-      },
-      "modalities": {
-        "input": [
-          "text"
-        ],
-        "output": [
-          "text"
-        ]
-      },
-      "model": null,
-      "name": "Mercury Coder",
-      "pricing": null,
-      "provider": "inception",
-      "provider_model_id": null,
-      "release_date": "2025-02-26",
-      "retired": false,
-      "tags": null
-    },
-    "mercury-edit": {
-      "aliases": [],
-      "base_url": null,
-      "capabilities": {
-        "chat": true,
-        "embeddings": false,
-        "json": {
-          "native": false,
-          "schema": false,
-          "strict": false
-        },
-        "reasoning": {
-          "enabled": true
-        },
-        "streaming": {
-          "text": true,
-          "tool_calls": false
-        },
-        "tools": {
-          "enabled": false,
-          "parallel": false,
-          "streaming": false,
-          "strict": false
-        }
-      },
-      "cost": {
-        "cache_read": 0.025,
-        "input": 0.25,
-        "output": 0.75
-      },
-      "deprecated": false,
-      "extra": {
-        "attachment": false,
-        "open_weights": false,
-        "temperature": true
-      },
-      "family": null,
-      "id": "mercury-edit",
-      "knowledge": null,
-      "last_updated": "2026-02-24",
-      "lifecycle": null,
-      "limits": {
-        "context": 128000,
+        "context": 131072,
         "output": 8192
       },
       "modalities": {
@@ -244,15 +121,76 @@
         ]
       },
       "model": null,
-      "name": "Mercury Edit",
+      "name": "DeepSeek V3",
       "pricing": null,
-      "provider": "inception",
+      "provider": "drun",
       "provider_model_id": null,
-      "release_date": "2026-02-24",
+      "release_date": "2024-12-26",
+      "retired": false,
+      "tags": null
+    },
+    "public/minimax-m25": {
+      "aliases": [],
+      "base_url": null,
+      "capabilities": {
+        "chat": true,
+        "embeddings": false,
+        "json": {
+          "native": false,
+          "schema": false,
+          "strict": false
+        },
+        "reasoning": {
+          "enabled": true
+        },
+        "streaming": {
+          "tool_calls": true
+        },
+        "tools": {
+          "enabled": true
+        }
+      },
+      "cost": {
+        "input": 0.29,
+        "output": 1.16
+      },
+      "deprecated": false,
+      "extra": {
+        "attachment": false,
+        "family": "minimax",
+        "interleaved": {
+          "field": "reasoning_details"
+        },
+        "open_weights": false,
+        "temperature": true
+      },
+      "family": null,
+      "id": "public/minimax-m25",
+      "knowledge": null,
+      "last_updated": "2025-03-01",
+      "lifecycle": null,
+      "limits": {
+        "context": 204800,
+        "output": 131072
+      },
+      "modalities": {
+        "input": [
+          "text"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "model": null,
+      "name": "MiniMax M2.5",
+      "pricing": null,
+      "provider": "drun",
+      "provider_model_id": null,
+      "release_date": "2025-03-01",
       "retired": false,
       "tags": null
     }
   },
-  "name": "Inception",
+  "name": "D.Run (China)",
   "pricing_defaults": null
 }
