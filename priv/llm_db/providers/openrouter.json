@@ -5717,18 +5717,24 @@
         }
       },
       "cost": {
+        "cache_read": 0.025,
         "input": 0.25,
         "output": 0.75
       },
       "deprecated": false,
       "extra": {
+        "attachment": false,
         "expiration_date": null,
-        "hugging_face_id": ""
+        "family": "mercury",
+        "hugging_face_id": "",
+        "open_weights": false,
+        "structured_output": true,
+        "temperature": true
       },
       "family": null,
       "id": "inception/mercury",
       "knowledge": null,
-      "last_updated": null,
+      "last_updated": "2025-06-26",
       "lifecycle": null,
       "limits": {
         "context": 128000,
@@ -5774,18 +5780,24 @@
         }
       },
       "cost": {
+        "cache_read": 0.025,
         "input": 0.25,
         "output": 0.75
       },
       "deprecated": false,
       "extra": {
+        "attachment": false,
         "expiration_date": null,
-        "hugging_face_id": null
+        "family": "mercury",
+        "hugging_face_id": null,
+        "open_weights": false,
+        "structured_output": true,
+        "temperature": true
       },
       "family": null,
       "id": "inception/mercury-2",
       "knowledge": null,
-      "last_updated": null,
+      "last_updated": "2026-03-04",
       "lifecycle": null,
       "limits": {
         "context": 128000,
@@ -5831,18 +5843,24 @@
         }
       },
       "cost": {
+        "cache_read": 0.025,
         "input": 0.25,
         "output": 0.75
       },
       "deprecated": false,
       "extra": {
+        "attachment": false,
         "expiration_date": null,
-        "hugging_face_id": ""
+        "family": "mercury",
+        "hugging_face_id": "",
+        "open_weights": false,
+        "structured_output": true,
+        "temperature": true
       },
       "family": null,
       "id": "inception/mercury-coder",
       "knowledge": null,
-      "last_updated": null,
+      "last_updated": "2025-04-30",
       "lifecycle": null,
       "limits": {
         "context": 128000,
@@ -12510,18 +12528,24 @@
         }
       },
       "cost": {
+        "cache_read": 0.175,
         "input": 1.75,
         "output": 14.0
       },
       "deprecated": false,
       "extra": {
+        "attachment": true,
         "expiration_date": null,
-        "hugging_face_id": ""
+        "family": "gpt-codex",
+        "hugging_face_id": "",
+        "open_weights": false,
+        "structured_output": true,
+        "temperature": false
       },
       "family": null,
       "id": "openai/gpt-5.3-codex",
-      "knowledge": null,
-      "last_updated": null,
+      "knowledge": "2025-08-31",
+      "last_updated": "2026-02-24",
       "lifecycle": null,
       "limits": {
         "context": 400000,
@@ -12530,7 +12554,8 @@
       "modalities": {
         "input": [
           "text",
-          "image"
+          "image",
+          "pdf"
         ],
         "output": [
           "text"
@@ -12568,18 +12593,24 @@
         }
       },
       "cost": {
+        "cache_read": 0.25,
         "input": 2.5,
         "output": 15.0
       },
       "deprecated": false,
       "extra": {
+        "attachment": true,
         "expiration_date": null,
-        "hugging_face_id": ""
+        "family": "gpt",
+        "hugging_face_id": "",
+        "open_weights": false,
+        "structured_output": true,
+        "temperature": false
       },
       "family": null,
       "id": "openai/gpt-5.4",
-      "knowledge": null,
-      "last_updated": null,
+      "knowledge": "2025-08-31",
+      "last_updated": "2026-03-05",
       "lifecycle": null,
       "limits": {
         "context": 1050000,
@@ -12589,6 +12620,7 @@
         "input": [
           "text",
           "image",
+          "pdf",
           "file"
         ],
         "output": [
@@ -12627,18 +12659,24 @@
         }
       },
       "cost": {
+        "cache_read": 30,
         "input": 30.0,
         "output": 180.0
       },
       "deprecated": false,
       "extra": {
+        "attachment": true,
         "expiration_date": null,
-        "hugging_face_id": ""
+        "family": "gpt-pro",
+        "hugging_face_id": "",
+        "open_weights": false,
+        "structured_output": false,
+        "temperature": false
       },
       "family": null,
       "id": "openai/gpt-5.4-pro",
-      "knowledge": null,
-      "last_updated": null,
+      "knowledge": "2025-08-31",
+      "last_updated": "2026-03-05",
       "lifecycle": null,
       "limits": {
         "context": 1050000,
@@ -12648,6 +12686,7 @@
         "input": [
           "text",
           "image",
+          "pdf",
           "file"
         ],
         "output": [
@@ -13875,16 +13914,21 @@
       },
       "deprecated": false,
       "extra": {
+        "attachment": true,
         "expiration_date": null,
-        "hugging_face_id": ""
+        "hugging_face_id": "",
+        "open_weights": false,
+        "structured_output": true,
+        "temperature": true
       },
       "family": null,
       "id": "openrouter/free",
       "knowledge": null,
-      "last_updated": null,
+      "last_updated": "2026-02-01",
       "lifecycle": null,
       "limits": {
-        "context": 200000
+        "context": 200000,
+        "output": 8000
       },
       "modalities": {
         "input": [
@@ -15291,11 +15335,8 @@
         }
       },
       "cost": {
-        "image": 0.0,
-        "input": 0.0,
-        "output": 0.0,
-        "reasoning": 0.0,
-        "request": 0.0
+        "input": 0.11,
+        "output": 0.6
       },
       "deprecated": false,
       "extra": {
@@ -15313,8 +15354,8 @@
       "last_updated": "2025-07-25",
       "lifecycle": null,
       "limits": {
-        "context": 131072,
-        "output": 81920
+        "context": 262144,
+        "output": 262144
       },
       "modalities": {
         "input": [
@@ -19099,8 +19140,8 @@
       },
       "cost": {
         "cache_read": 0.11,
-        "input": 0.3,
-        "output": 1.4
+        "input": 0.38,
+        "output": 1.98
       },
       "deprecated": false,
       "extra": {
