@@ -1,7 +1,26 @@
 {
   "alias_of": null,
   "base_url": null,
-  "config_schema": null,
+  "config_schema": [
+    {
+      "doc": "Azure AI Foundry API base URL (e.g. https://{instance_name}.openai.azure.com)",
+      "name": "base_url",
+      "required": true,
+      "type": "string"
+    },
+    {
+      "doc": "Azure AI Foundry deployment name for the model to use",
+      "name": "deployment_name",
+      "required": false,
+      "type": "string"
+    },
+    {
+      "doc": "Azure AI Foundry API version to use (e.g. 2024-06-01)",
+      "name": "api_version",
+      "required": false,
+      "type": "string"
+    }
+  ],
   "doc": "https://learn.microsoft.com/en-us/azure/ai-services/openai/concepts/models",
   "env": [
     "AZURE_COGNITIVE_SERVICES_RESOURCE_NAME",
@@ -436,6 +455,7 @@
       },
       "deprecated": false,
       "extra": {
+        "api": "responses",
         "attachment": true,
         "family": "gpt-codex-mini",
         "open_weights": false,
@@ -648,7 +668,32 @@
     "cohere-embed-v-4-0": {
       "aliases": [],
       "base_url": null,
-      "capabilities": null,
+      "capabilities": {
+        "chat": true,
+        "embeddings": {
+          "default_dimensions": 1536,
+          "max_dimensions": 1536,
+          "min_dimensions": 256
+        },
+        "json": {
+          "native": false,
+          "schema": false,
+          "strict": false
+        },
+        "reasoning": {
+          "enabled": false
+        },
+        "streaming": {
+          "text": true,
+          "tool_calls": false
+        },
+        "tools": {
+          "enabled": false,
+          "parallel": false,
+          "streaming": false,
+          "strict": false
+        }
+      },
       "cost": {
         "input": 0.12,
         "output": 0
@@ -658,7 +703,8 @@
         "attachment": true,
         "family": "cohere-embed",
         "open_weights": true,
-        "temperature": false
+        "temperature": false,
+        "type": "embedding"
       },
       "family": null,
       "id": "cohere-embed-v-4-0",
@@ -675,7 +721,8 @@
           "image"
         ],
         "output": [
-          "text"
+          "text",
+          "embedding"
         ]
       },
       "model": null,
@@ -690,7 +737,32 @@
     "cohere-embed-v3-english": {
       "aliases": [],
       "base_url": null,
-      "capabilities": null,
+      "capabilities": {
+        "chat": true,
+        "embeddings": {
+          "default_dimensions": 1024,
+          "max_dimensions": 1024,
+          "min_dimensions": 1024
+        },
+        "json": {
+          "native": false,
+          "schema": false,
+          "strict": false
+        },
+        "reasoning": {
+          "enabled": false
+        },
+        "streaming": {
+          "text": true,
+          "tool_calls": false
+        },
+        "tools": {
+          "enabled": false,
+          "parallel": false,
+          "streaming": false,
+          "strict": false
+        }
+      },
       "cost": {
         "input": 0.1,
         "output": 0
@@ -700,7 +772,8 @@
         "attachment": false,
         "family": "cohere-embed",
         "open_weights": true,
-        "temperature": false
+        "temperature": false,
+        "type": "embedding"
       },
       "family": null,
       "id": "cohere-embed-v3-english",
@@ -716,7 +789,8 @@
           "text"
         ],
         "output": [
-          "text"
+          "text",
+          "embedding"
         ]
       },
       "model": null,
@@ -731,7 +805,32 @@
     "cohere-embed-v3-multilingual": {
       "aliases": [],
       "base_url": null,
-      "capabilities": null,
+      "capabilities": {
+        "chat": true,
+        "embeddings": {
+          "default_dimensions": 1024,
+          "max_dimensions": 1024,
+          "min_dimensions": 1024
+        },
+        "json": {
+          "native": false,
+          "schema": false,
+          "strict": false
+        },
+        "reasoning": {
+          "enabled": false
+        },
+        "streaming": {
+          "text": true,
+          "tool_calls": false
+        },
+        "tools": {
+          "enabled": false,
+          "parallel": false,
+          "streaming": false,
+          "strict": false
+        }
+      },
       "cost": {
         "input": 0.1,
         "output": 0
@@ -741,7 +840,8 @@
         "attachment": false,
         "family": "cohere-embed",
         "open_weights": true,
-        "temperature": false
+        "temperature": false,
+        "type": "embedding"
       },
       "family": null,
       "id": "cohere-embed-v3-multilingual",
@@ -757,7 +857,8 @@
           "text"
         ],
         "output": [
-          "text"
+          "text",
+          "embedding"
         ]
       },
       "model": null,
@@ -844,13 +945,15 @@
           "strict": false
         },
         "reasoning": {
-          "enabled": true
+          "enabled": false
         },
         "streaming": {
-          "tool_calls": true
+          "text": true,
+          "tool_calls": false
         },
         "tools": {
-          "enabled": true
+          "enabled": true,
+          "forced_choice": false
         }
       },
       "cost": {
@@ -906,10 +1009,12 @@
           "enabled": false
         },
         "streaming": {
-          "tool_calls": true
+          "text": true,
+          "tool_calls": false
         },
         "tools": {
-          "enabled": true
+          "enabled": true,
+          "forced_choice": false
         }
       },
       "cost": {
@@ -962,13 +1067,15 @@
           "strict": false
         },
         "reasoning": {
-          "enabled": true
+          "enabled": false
         },
         "streaming": {
-          "tool_calls": true
+          "text": true,
+          "tool_calls": false
         },
         "tools": {
-          "enabled": true
+          "enabled": true,
+          "forced_choice": false
         }
       },
       "cost": {
@@ -2031,6 +2138,7 @@
       },
       "deprecated": false,
       "extra": {
+        "api": "responses",
         "attachment": false,
         "family": "gpt-codex",
         "open_weights": false,
@@ -2403,6 +2511,7 @@
       },
       "deprecated": false,
       "extra": {
+        "api": "responses",
         "attachment": false,
         "family": "gpt-codex",
         "open_weights": false,
@@ -2467,6 +2576,7 @@
       },
       "deprecated": false,
       "extra": {
+        "api": "responses",
         "attachment": false,
         "family": "gpt-codex",
         "open_weights": false,
@@ -4981,7 +5091,8 @@
         "attachment": false,
         "family": "phi",
         "open_weights": true,
-        "temperature": true
+        "temperature": true,
+        "wire_protocol": "openai_completion"
       },
       "family": null,
       "id": "phi-4-mini",
@@ -5082,7 +5193,8 @@
         "attachment": true,
         "family": "phi",
         "open_weights": true,
-        "temperature": true
+        "temperature": true,
+        "wire_protocol": "openai_completion"
       },
       "family": null,
       "id": "phi-4-multimodal",
@@ -5241,7 +5353,32 @@
     "text-embedding-3-large": {
       "aliases": [],
       "base_url": null,
-      "capabilities": null,
+      "capabilities": {
+        "chat": true,
+        "embeddings": {
+          "default_dimensions": 3072,
+          "max_dimensions": 3072,
+          "min_dimensions": 1
+        },
+        "json": {
+          "native": false,
+          "schema": false,
+          "strict": false
+        },
+        "reasoning": {
+          "enabled": false
+        },
+        "streaming": {
+          "text": true,
+          "tool_calls": false
+        },
+        "tools": {
+          "enabled": false,
+          "parallel": false,
+          "streaming": false,
+          "strict": false
+        }
+      },
       "cost": {
         "input": 0.13,
         "output": 0
@@ -5250,7 +5387,8 @@
       "extra": {
         "attachment": false,
         "family": "text-embedding",
-        "open_weights": false
+        "open_weights": false,
+        "type": "embedding"
       },
       "family": null,
       "id": "text-embedding-3-large",
@@ -5266,7 +5404,8 @@
           "text"
         ],
         "output": [
-          "text"
+          "text",
+          "embedding"
         ]
       },
       "model": null,
@@ -5281,7 +5420,32 @@
     "text-embedding-3-small": {
       "aliases": [],
       "base_url": null,
-      "capabilities": null,
+      "capabilities": {
+        "chat": true,
+        "embeddings": {
+          "default_dimensions": 1536,
+          "max_dimensions": 1536,
+          "min_dimensions": 1
+        },
+        "json": {
+          "native": false,
+          "schema": false,
+          "strict": false
+        },
+        "reasoning": {
+          "enabled": false
+        },
+        "streaming": {
+          "text": true,
+          "tool_calls": false
+        },
+        "tools": {
+          "enabled": false,
+          "parallel": false,
+          "streaming": false,
+          "strict": false
+        }
+      },
       "cost": {
         "input": 0.02,
         "output": 0
@@ -5290,7 +5454,8 @@
       "extra": {
         "attachment": false,
         "family": "text-embedding",
-        "open_weights": false
+        "open_weights": false,
+        "type": "embedding"
       },
       "family": null,
       "id": "text-embedding-3-small",
@@ -5306,7 +5471,8 @@
           "text"
         ],
         "output": [
-          "text"
+          "text",
+          "embedding"
         ]
       },
       "model": null,
@@ -5321,7 +5487,32 @@
     "text-embedding-ada-002": {
       "aliases": [],
       "base_url": null,
-      "capabilities": null,
+      "capabilities": {
+        "chat": true,
+        "embeddings": {
+          "default_dimensions": 1536,
+          "max_dimensions": 1536,
+          "min_dimensions": 1536
+        },
+        "json": {
+          "native": false,
+          "schema": false,
+          "strict": false
+        },
+        "reasoning": {
+          "enabled": false
+        },
+        "streaming": {
+          "text": true,
+          "tool_calls": false
+        },
+        "tools": {
+          "enabled": false,
+          "parallel": false,
+          "streaming": false,
+          "strict": false
+        }
+      },
       "cost": {
         "input": 0.1,
         "output": 0
@@ -5330,7 +5521,8 @@
       "extra": {
         "attachment": false,
         "family": "text-embedding",
-        "open_weights": false
+        "open_weights": false,
+        "type": "embedding"
       },
       "family": null,
       "id": "text-embedding-ada-002",
@@ -5346,7 +5538,8 @@
           "text"
         ],
         "output": [
-          "text"
+          "text",
+          "embedding"
         ]
       },
       "model": null,

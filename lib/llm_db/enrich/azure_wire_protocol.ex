@@ -37,6 +37,7 @@ defmodule LLMDB.Enrich.AzureWireProtocol do
   ]
 
   @chat_tasks ["chat-completion", "completions", "text-generation"]
+  @lookup_suffixes ["-instruct"]
 
   @azure_providers [:azure, :azure_cognitive_services]
 
@@ -106,7 +107,7 @@ defmodule LLMDB.Enrich.AzureWireProtocol do
   defp enrich_model(model, _lookup), do: model
 
   defp set_wire_protocol(%{id: model_id} = model, lookup) do
-    case Map.get(lookup, model_id) || Map.get(lookup, strip_date_suffix(model_id)) do
+    case resolve_wire_protocol(model_id, lookup) do
       nil ->
         model
 
@@ -116,10 +117,26 @@ defmodule LLMDB.Enrich.AzureWireProtocol do
     end
   end
 
+  defp resolve_wire_protocol(model_id, lookup) do
+    model_id
+    |> lookup_candidates()
+    |> Enum.find_value(&Map.get(lookup, &1))
+  end
+
   @date_suffix ~r/-\d{4}-\d{2}-\d{2}$/
 
   defp strip_date_suffix(model_id) do
     Regex.replace(@date_suffix, model_id, "")
+  end
+
+  defp lookup_candidates(model_id) do
+    canonical_id = strip_date_suffix(model_id)
+
+    [model_id, canonical_id]
+    |> Enum.flat_map(fn candidate ->
+      [candidate | Enum.map(@lookup_suffixes, &"#{candidate}#{&1}")]
+    end)
+    |> Enum.uniq()
   end
 
   defp build_lookup_from_models(models) do
