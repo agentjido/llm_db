@@ -1,0 +1,31 @@
+# Eleven Flash v2.5 - low-latency text-to-speech
+# Docs: https://elevenlabs.io/docs/overview/models
+
+id = "eleven_flash_v2_5"
+name = "Eleven Flash v2.5"
+family = "eleven_flash"
+deprecated = false
+tags = ["tts", "speech"]
+
+[modalities]
+input = ["text"]
+output = ["audio"]
+
+[capabilities]
+chat = false
+embeddings = false
+
+[capabilities.tools]
+enabled = false
+
+[capabilities.reasoning]
+enabled = false
+
+[capabilities.streaming]
+text = false
+
+[extra]
+api = "tts"
+description = "Ultra-fast model optimized for real-time use (~75ms)"
+languages_supported = 32
+character_limit = 40000

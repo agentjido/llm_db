@@ -98,6 +98,7 @@ defmodule LLMDB.Enrich do
     |> Enum.map(&enrich_model/1)
     |> inherit_canonical_costs()
     |> enrich_llmfit_metadata()
+    |> LLMDB.Enrich.AzureWireProtocol.enrich_models()
   end
 
   @date_suffix ~r/-\d{4}-\d{2}-\d{2}$/

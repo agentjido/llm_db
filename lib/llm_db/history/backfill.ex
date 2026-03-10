@@ -110,22 +110,16 @@ defmodule LLMDB.History.Backfill do
           {:ok, :history_unavailable}
 
         meta_map ->
-          case meta_value(meta_map, "to_commit") do
-            nil ->
-              {:ok, :history_unavailable}
+          with {:ok, %{pending_commits: commits}} <-
+                 resolve_history_anchor(meta_map, to_ref, output_dir) do
+            case commits do
+              [] ->
+                {:ok, :up_to_date}
 
-            from_commit ->
-              with {:ok, commits} <- history_commits_after(from_commit, to_ref) do
-                case commits do
-                  [] ->
-                    {:ok, :up_to_date}
-
-                  _ ->
-                    {:ok,
-                     {:outdated,
-                      %{new_commits: length(commits), latest_commit: List.last(commits)}}}
-                end
-              end
+              _ ->
+                {:ok,
+                 {:outdated, %{new_commits: length(commits), latest_commit: List.last(commits)}}}
+            end
           end
       end
     end
@@ -181,21 +175,30 @@ defmodule LLMDB.History.Backfill do
   # Internal pipeline
 
   defp sync_from_meta(meta, to_ref, output_dir, lineage_overrides) do
-    from_commit = meta_value(meta, "to_commit")
+    with {:ok, resolution} <- resolve_history_anchor(meta, to_ref, output_dir) do
+      case resolution do
+        %{resolved_commit: from_commit, pending_commits: commits, repaired?: repaired?} ->
+          case commits do
+            [] ->
+              summary = noop_summary(meta, output_dir, from_commit)
 
-    with true <- is_binary(from_commit),
-         {:ok, commits} <- history_commits_after(from_commit, to_ref) do
-      case commits do
-        [] ->
-          {:ok, noop_summary(meta, output_dir)}
+              if repaired? do
+                write_meta(summary, output_dir)
+              end
 
-        _ ->
-          process_incremental_commits(meta, from_commit, commits, output_dir, lineage_overrides)
+              {:ok, summary}
+
+            _ ->
+              process_incremental_commits(
+                meta,
+                from_commit,
+                commits,
+                output_dir,
+                lineage_overrides
+              )
+          end
       end
     else
-      false ->
-        {:error, "existing history metadata at #{output_dir} is missing to_commit"}
-
       {:error, reason} ->
         {:error, reason}
     end
@@ -245,7 +248,7 @@ defmodule LLMDB.History.Backfill do
       {:error, Exception.message(error)}
   end
 
-  defp noop_summary(meta, output_dir) do
+  defp noop_summary(meta, output_dir, to_commit) do
     %{
       commits_scanned: meta_count(meta, "commits_scanned"),
       commits_processed: meta_count(meta, "commits_processed"),
@@ -253,9 +256,9 @@ defmodule LLMDB.History.Backfill do
       events_written: meta_count(meta, "events_written"),
       output_dir: output_dir,
       from_commit: meta_value(meta, "from_commit"),
-      to_commit: meta_value(meta, "to_commit"),
-      generated_at: meta_value(meta, "generated_at"),
-      source_repo: meta_value(meta, "source_repo")
+      to_commit: to_commit,
+      generated_at: DateTime.utc_now() |> DateTime.to_iso8601(),
+      source_repo: source_repo()
     }
   end
 
@@ -370,12 +373,127 @@ defmodule LLMDB.History.Backfill do
       |> Enum.drop_while(&(&1 != from_sha))
       |> then(&{:ok, &1})
     else
-      {:error, reason} ->
-        {:error, reason}
+      {:error, _reason} ->
+        {:error, metadata_history_range_error(from_ref)}
 
       false ->
-        {:error, "from commit #{from_ref} is not in the metadata history range"}
+        {:error, metadata_history_range_error(from_ref)}
     end
+  end
+
+  defp resolve_history_anchor(meta, to_ref, output_dir) do
+    case meta_value(meta, "to_commit") do
+      from_commit when is_binary(from_commit) ->
+        case history_commits_after(from_commit, to_ref) do
+          {:ok, commits} ->
+            {:ok, %{resolved_commit: from_commit, pending_commits: commits, repaired?: false}}
+
+          {:error, reason} ->
+            if reason == metadata_history_range_error(from_commit) do
+              resolve_reanchored_history(meta, to_ref, output_dir)
+            else
+              {:error, reason}
+            end
+        end
+
+      _ ->
+        resolve_reanchored_history(meta, to_ref, output_dir)
+    end
+  end
+
+  defp resolve_reanchored_history(meta, to_ref, output_dir) do
+    with {:ok, snapshot_digest} <- read_last_snapshot_digest(output_dir),
+         {:ok, commits} <- history_commits(nil, to_ref),
+         {:ok, resolved_commit} <- find_reachable_anchor_by_digest(commits, snapshot_digest),
+         {:ok, pending_commits} <- history_commits_after(resolved_commit, to_ref) do
+      {:ok,
+       %{
+         resolved_commit: resolved_commit,
+         pending_commits: pending_commits,
+         repaired?: resolved_commit != meta_value(meta, "to_commit")
+       }}
+    else
+      {:error, :missing_last_snapshot_digest} ->
+        {:error, unrecoverable_history_error(output_dir, :missing_last_snapshot_digest)}
+
+      {:error, :no_matching_snapshot} ->
+        {:error, unrecoverable_history_error(output_dir, :no_matching_snapshot)}
+
+      {:error, reason} ->
+        {:error, reason}
+    end
+  end
+
+  defp find_reachable_anchor_by_digest(commits, snapshot_digest)
+       when is_binary(snapshot_digest) do
+    Enum.reduce_while(Enum.reverse(commits), {:error, :no_matching_snapshot}, fn sha, _acc ->
+      case commit_models_summary(sha) do
+        {:ok, %{digest: ^snapshot_digest}} ->
+          {:halt, {:ok, sha}}
+
+        {:ok, _summary} ->
+          {:cont, {:error, :no_matching_snapshot}}
+
+        {:error, reason} ->
+          {:halt, {:error, reason}}
+      end
+    end)
+  end
+
+  defp read_last_snapshot_digest(output_dir) do
+    path = Path.join(output_dir, "snapshots.ndjson")
+
+    cond do
+      not File.exists?(path) ->
+        {:error, :missing_last_snapshot_digest}
+
+      true ->
+        case File.read(path) do
+          {:ok, content} ->
+            with lines <- parse_lines(content),
+                 true <- lines != [],
+                 last_line <- List.last(lines),
+                 {:ok, snapshot} <- Jason.decode(last_line),
+                 snapshot_digest when is_binary(snapshot_digest) <- Map.get(snapshot, "digest") do
+              {:ok, snapshot_digest}
+            else
+              false ->
+                {:error, :missing_last_snapshot_digest}
+
+              _ ->
+                {:error, :missing_last_snapshot_digest}
+            end
+
+          {:error, _reason} ->
+            {:error, :missing_last_snapshot_digest}
+        end
+    end
+  end
+
+  defp commit_models_summary(sha) do
+    with {:ok, state_by_file} <- load_commit_state(sha) do
+      models = flatten_state_models(state_by_file)
+
+      {:ok,
+       %{
+         model_count: map_size(models),
+         digest: models_digest(models)
+       }}
+    end
+  end
+
+  defp metadata_history_range_error(from_ref) do
+    "commit #{from_ref} is not reachable in the metadata history range."
+  end
+
+  defp unrecoverable_history_error(output_dir, :missing_last_snapshot_digest) do
+    "history output at #{output_dir} cannot be re-anchored because the last snapshot digest is unavailable. " <>
+      "Re-run with mix llm_db.history.backfill --force."
+  end
+
+  defp unrecoverable_history_error(output_dir, :no_matching_snapshot) do
+    "history output at #{output_dir} cannot be re-anchored because no reachable metadata commit matches the last snapshot digest. " <>
+      "Re-run with mix llm_db.history.backfill --force."
   end
 
   defp process_commits(commits, output_dir, lineage_overrides) do

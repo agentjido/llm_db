@@ -1,0 +1,31 @@
+# Eleven v3 - flagship text-to-speech model
+# Docs: https://elevenlabs.io/docs/overview/models
+
+id = "eleven_v3"
+name = "Eleven v3"
+family = "eleven_v3"
+deprecated = false
+tags = ["tts", "speech"]
+
+[modalities]
+input = ["text"]
+output = ["audio"]
+
+[capabilities]
+chat = false
+embeddings = false
+
+[capabilities.tools]
+enabled = false
+
+[capabilities.reasoning]
+enabled = false
+
+[capabilities.streaming]
+text = false
+
+[extra]
+api = "tts"
+description = "Human-like and expressive speech generation"
+languages_supported = 70
+character_limit = 5000

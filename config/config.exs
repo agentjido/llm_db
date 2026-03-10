@@ -24,7 +24,8 @@ config :llm_db,
   google_cache_dir: "priv/llm_db/remote",
   xai_cache_dir: "priv/llm_db/remote",
   zenmux_cache_dir: "priv/llm_db/remote",
-  llmfit_enrichment: true
+  llmfit_enrichment: true,
+  azure_foundry_cache_dir: "priv/llm_db/remote"
 
 if Mix.env() == :dev do
   config :git_ops,

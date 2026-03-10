@@ -16,12 +16,72 @@ jobs:
     uses: agentjido/github-actions/.github/workflows/elixir-lint.yml@main
 
   test:
-    name: Test
-    uses: agentjido/github-actions/.github/workflows/elixir-test.yml@main
-    with:
-      otp_versions: '["27", "28"]'
-      elixir_versions: '["1.18", "1.19"]'
-      test_command: mix test
+    name: Test / Elixir ${{ matrix.elixir }}
+    runs-on: ubuntu-24.04
+    timeout-minutes: 15
+
+    strategy:
+      fail-fast: false
+      matrix:
+        otp: ["27", "28"]
+        elixir: ["1.18", "1.19"]
+
+    env:
+      MIX_ENV: test
+
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      # Cache only immutable package downloads; avoid cached archives/binaries.
+      - name: Restore Hex package cache
+        uses: actions/cache@v4
+        with:
+          path: |
+            ~/.hex/packages
+            ~/.hex/cache.ets
+          key: ${{ runner.os }}-hex-v2-otp${{ matrix.otp }}-elixir${{ matrix.elixir }}-${{ hashFiles('mix.lock') }}
+
+      - name: Restore dependencies cache
+        uses: actions/cache@v4
+        with:
+          path: |
+            deps
+            _build
+          key: ${{ runner.os }}-mix-${{ env.MIX_ENV }}-otp${{ matrix.otp }}-elixir${{ matrix.elixir }}-${{ hashFiles('mix.lock') }}
+
+      - uses: erlef/setup-beam@v1
+        with:
+          otp-version: ${{ matrix.otp }}
+          elixir-version: ${{ matrix.elixir }}
+
+      # Always install fresh Hex/Rebar after cache restore to avoid poisoned archives.
+      - name: Install Hex/Rebar
+        run: |
+          set -euo pipefail
+          mix local.hex --force
+          mix local.rebar --force
+          mix hex.info >/dev/null
+
+      - name: Remove cached rebar3 build artifacts in deps
+        run: |
+          if [ -d deps ]; then
+            find deps -maxdepth 6 -type d \( -name _build -o -name .rebar3 \) -prune -exec rm -rf {} + || true
+            find deps -maxdepth 6 -type f -name rebar3.crashdump -delete || true
+          fi
+
+      - name: Install dependencies
+        run: mix deps.get
+
+      - name: Compile dependencies
+        run: mix deps.compile
+
+      - name: Compile project
+        run: mix compile --warnings-as-errors
+
+      - name: Run tests
+        run: mix test
 
   build-check:
     name: Build Check
@@ -37,21 +97,4 @@ jobs:
       - run: mix deps.get
       - run: mix llm_db.build --check
       - name: Check history drift
-        run: |
-          set -euo pipefail
-
-          if mix llm_db.history.check; then
-            exit 0
-          fi
-
-          if [ "${{ github.event_name }}" = "push" ]; then
-            latest_metadata_commit="$(git rev-list --max-count=1 HEAD -- priv/llm_db/providers priv/llm_db/manifest.json || true)"
-
-            if [ -n "$latest_metadata_commit" ] && git rev-parse --verify "${latest_metadata_commit}^" >/dev/null 2>&1; then
-              echo "Retrying history check against ${latest_metadata_commit}^ to tolerate squash-merged metadata commits."
-              mix llm_db.history.check --to "${latest_metadata_commit}^"
-              exit 0
-            fi
-          fi
-
-          exit 1
+        run: mix llm_db.history.check

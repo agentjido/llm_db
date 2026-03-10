@@ -24,7 +24,7 @@ Runs on every push and pull request to ensure code quality.
 - OTP versions: 25, 26
 - Excludes: Elixir 1.14 with OTP 26 (compatibility)
 
-### 2. Update Metadata (`update-metadata.yml`)
+### 2. Refresh Upstream Metadata (`build-metadata.yml`)
 
 Automatically pulls latest LLM model metadata from upstream sources and creates PRs for review.
 
@@ -34,19 +34,19 @@ Automatically pulls latest LLM model metadata from upstream sources and creates 
 
 **Jobs:**
 1. Pull latest metadata using `mix llm_db.pull`
-2. Detect changes in:
-   - `priv/llm_db/upstream/`
-   - `priv/llm_db/snapshot.json`
-   - `lib/llm_db/generated/valid_providers.ex`
-3. If changes detected:
-   - Create branch: `metadata-update-YYYY-MM-DD`
-   - Commit changes with descriptive message
-   - Generate summary (provider count, model count, diff stats)
-   - Create PR with labels: `metadata-update`, `automated`
+2. Regenerate metadata using `mix llm_db.build`
+3. Reset `metadata-update` from `origin/main`
+4. If non-history metadata changes are detected:
+   - Commit metadata artifacts first
+   - Run `mix llm_db.history.sync --to HEAD`
+   - Commit history artifacts second
+   - Create or update the PR with `gh pr create` / `gh pr edit`
 
 **Output:**
 - Pull request with metadata changes for human review
 - Summary includes provider/model statistics and changed files
+- Metadata update PRs now contain two commits
+- Metadata update PRs must be merged with a merge commit, not squash-merged or rebase-merged
 
 ### 3. Publish Release (`publish-release.yml`)
 
@@ -110,7 +110,7 @@ These are configured in each workflow file and should work automatically.
 
 #### Cron Schedule
 
-To change the update frequency, edit `update-metadata.yml`:
+To change the update frequency, edit `build-metadata.yml`:
 
 ```yaml
 on:
@@ -125,12 +125,12 @@ Cron examples:
 
 #### PR Reviewers
 
-To auto-assign reviewers to metadata update PRs, modify the `Create Pull Request` step in `update-metadata.yml`:
+To auto-assign reviewers to metadata update PRs, modify the PR creation step in `build-metadata.yml`:
 
 ```bash
 gh pr create \
   --base main \
-  --head "${{ steps.commit.outputs.branch_name }}" \
+  --head "metadata-update" \
   --title "Update model metadata - $(date +%Y-%m-%d)" \
   --body-file "$SUMMARY_FILE" \
   --label "metadata-update" \
@@ -143,7 +143,7 @@ gh pr create \
 ### Manually Trigger Metadata Update
 
 1. Go to Actions tab in GitHub
-2. Select "Update Model Metadata" workflow
+2. Select "Refresh Upstream Metadata" workflow
 3. Click "Run workflow"
 4. Select branch (usually `main`)
 5. Click "Run workflow"
@@ -194,7 +194,7 @@ Generates GitHub release notes with:
 **Problem:** Publish workflow doesn't trigger after metadata merge
 
 **Solutions:**
-1. Verify `priv/llm_db/snapshot.json` was actually modified
+1. Verify provider metadata or generated artifacts were actually modified
 2. Check commit message contains "Update model metadata"
 3. Review workflow logs in Actions tab
 4. Ensure `HEX_API_KEY` secret is set correctly
@@ -221,10 +221,11 @@ Generates GitHub release notes with:
 ## Best Practices
 
 1. **Review All Metadata PRs**: Always review automated PRs before merging
-2. **Test Before Release**: CI runs automatically, but check test results
-3. **Monitor Releases**: Check Hex.pm after publish to verify release
-4. **Keep Secrets Secure**: Rotate `HEX_API_KEY` periodically
-5. **Update Dependencies**: Keep actions versions current (e.g., `@v4` → `@v5`)
+2. **Use Merge Commits for Metadata PRs**: Do not squash-merge or rebase-merge `metadata-update` PRs
+3. **Test Before Release**: CI runs automatically, but check test results
+4. **Monitor Releases**: Check Hex.pm after publish to verify release
+5. **Keep Secrets Secure**: Rotate `HEX_API_KEY` periodically
+6. **Update Dependencies**: Keep actions versions current (e.g., `@v4` → `@v5`)
 
 ## Development
 

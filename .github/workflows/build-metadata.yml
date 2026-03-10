@@ -4,16 +4,9 @@ on:
   schedule:
     - cron: "0 0 * * *"
   workflow_dispatch:
-    inputs:
-      force_update:
-        description: "Force"
-        required: false
-        type: boolean
-        default: false
 
 permissions:
   contents: write
-  pull-requests: write
 
 jobs:
   update-metadata:
@@ -25,14 +18,19 @@ jobs:
       cancel-in-progress: false
 
     steps:
-      - name: Checkout code
+      - name: Checkout main
         uses: actions/checkout@v4
         with:
-          token: ${{ secrets.GITHUB_TOKEN }}
+          ref: main
           fetch-depth: 0
 
       - name: Disable git hooks
         run: git config core.hooksPath /dev/null
+
+      - name: Configure git identity
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
 
       - name: Set up Elixir
         uses: erlef/setup-beam@v1
@@ -67,160 +65,61 @@ jobs:
           echo "Pulling latest LLM model metadata..."
           mix llm_db.pull
           mix llm_db.build
-          mix llm_db.history.sync
 
-      - name: Check for changes
-        id: changes
+      - name: Commit metadata artifacts
+        id: metadata_commit
         run: |
           set -euo pipefail
 
-          FORCE="${{ inputs.force_update || 'false' }}"
+          git add -A -- priv/llm_db lib/llm_db/generated
+          git restore --staged -- priv/llm_db/history
 
-          if [ "$FORCE" = "true" ]; then
-            echo "has_changes=true" >> "$GITHUB_OUTPUT"
-            echo "Force update enabled - proceeding with PR creation"
+          if git diff --cached --quiet; then
+            echo "created=false" >> "$GITHUB_OUTPUT"
+            echo "No non-history metadata changes detected."
             exit 0
           fi
 
-          if git status --porcelain priv/llm_db lib/llm_db/generated | grep -q .; then
-            echo "has_changes=true" >> "$GITHUB_OUTPUT"
-            echo "Changes detected in metadata files"
-          else
-            echo "has_changes=false" >> "$GITHUB_OUTPUT"
-            echo "No changes detected in metadata files"
-          fi
+          git commit -m "chore: refresh model metadata"
+          echo "created=true" >> "$GITHUB_OUTPUT"
 
-      - name: Generate summary
-        id: summary
-        if: steps.changes.outputs.has_changes == 'true'
+      - name: Sync history to committed metadata
+        run: |
+          set -euo pipefail
+          mix llm_db.history.sync --to HEAD
+
+      - name: Commit synced history
+        id: history_commit
         run: |
           set -euo pipefail
 
-          MANIFEST_FILE="priv/llm_db/manifest.json"
-          OUTPUT_FILE="${GITHUB_WORKSPACE}/metadata_summary.md"
-          COMMIT_FILE="${GITHUB_WORKSPACE}/commit_message.txt"
+          git add -A -- priv/llm_db/history
 
-          # Detect what changed
-          CHANGED_PROVIDERS=$(git diff --name-only priv/llm_db/providers/ 2>/dev/null | xargs -I{} basename {} .json | sort -u | head -10)
-          NEW_PROVIDERS=$(git diff --name-only --diff-filter=A priv/llm_db/providers/ 2>/dev/null | xargs -I{} basename {} .json | sort -u)
-          MODIFIED_PROVIDERS=$(git diff --name-only --diff-filter=M priv/llm_db/providers/ 2>/dev/null | xargs -I{} basename {} .json | sort -u)
-
-          # Count changes
-          NEW_COUNT=$(echo "$NEW_PROVIDERS" | grep -c . || echo 0)
-          MOD_COUNT=$(echo "$MODIFIED_PROVIDERS" | grep -c . || echo 0)
-          TOTAL_CHANGED=$(echo "$CHANGED_PROVIDERS" | grep -c . || echo 0)
-
-          # Build commit message (conventional format)
-          if [ "$NEW_COUNT" -gt 0 ] && [ "$MOD_COUNT" -gt 0 ]; then
-            COMMIT_TITLE="feat: update model metadata ($NEW_COUNT new, $MOD_COUNT updated)"
-          elif [ "$NEW_COUNT" -gt 0 ]; then
-            COMMIT_TITLE="feat: add $NEW_COUNT new provider(s)"
-          elif [ "$MOD_COUNT" -gt 0 ]; then
-            COMMIT_TITLE="fix: update model metadata for $MOD_COUNT provider(s)"
-          else
-            COMMIT_TITLE="chore: refresh model metadata"
+          if git diff --cached --quiet; then
+            echo "created=false" >> "$GITHUB_OUTPUT"
+            echo "No history changes detected."
+            exit 0
           fi
 
-          # Build commit body with details
-          echo "$COMMIT_TITLE" > "$COMMIT_FILE"
-          echo "" >> "$COMMIT_FILE"
+          git commit -m "chore: sync model history"
+          echo "created=true" >> "$GITHUB_OUTPUT"
 
-          if [ -n "$NEW_PROVIDERS" ] && [ "$NEW_PROVIDERS" != "" ]; then
-            echo "New providers:" >> "$COMMIT_FILE"
-            echo "$NEW_PROVIDERS" | head -5 | sed 's/^/- /' >> "$COMMIT_FILE"
-            [ "$NEW_COUNT" -gt 5 ] && echo "- ... and $((NEW_COUNT - 5)) more" >> "$COMMIT_FILE"
-            echo "" >> "$COMMIT_FILE"
-          fi
+      - name: Validate refreshed catalog
+        if: steps.metadata_commit.outputs.created == 'true' || steps.history_commit.outputs.created == 'true'
+        run: |
+          set -euo pipefail
+          mix llm_db.build --check
+          mix llm_db.history.check
+          mix test
 
-          if [ -n "$MODIFIED_PROVIDERS" ] && [ "$MODIFIED_PROVIDERS" != "" ]; then
-            echo "Updated providers:" >> "$COMMIT_FILE"
-            echo "$MODIFIED_PROVIDERS" | head -5 | sed 's/^/- /' >> "$COMMIT_FILE"
-            [ "$MOD_COUNT" -gt 5 ] && echo "- ... and $((MOD_COUNT - 5)) more" >> "$COMMIT_FILE"
-          fi
-
-          # Output for PR title and commit message
-          echo "commit_title=$COMMIT_TITLE" >> "$GITHUB_OUTPUT"
-
-          # Output multiline commit message for the action
-          {
-            echo 'commit_message<<EOF'
-            cat "$COMMIT_FILE"
-            echo 'EOF'
-          } >> "$GITHUB_OUTPUT"
-
-          # Build PR body
-          echo "## Model Metadata Update" > "$OUTPUT_FILE"
-          echo "" >> "$OUTPUT_FILE"
-          echo "Automated metadata update from upstream sources." >> "$OUTPUT_FILE"
-          echo "" >> "$OUTPUT_FILE"
-
-          if [ -f "$MANIFEST_FILE" ]; then
-            if jq empty "$MANIFEST_FILE" >/dev/null 2>&1; then
-              PROVIDER_COUNT=$(jq '.providers | length' "$MANIFEST_FILE")
-              GENERATED_AT=$(jq -r '.generated_at' "$MANIFEST_FILE" || echo "unknown")
-              MODEL_COUNT=$(find priv/llm_db/providers -name "*.json" -print0 \
-                | xargs -0 -r jq '.models | length' 2>/dev/null \
-                | awk '{s+=$1} END {print s+0}')
-
-              echo "### Summary" >> "$OUTPUT_FILE"
-              echo "" >> "$OUTPUT_FILE"
-              echo "| Metric | Count |" >> "$OUTPUT_FILE"
-              echo "|--------|-------|" >> "$OUTPUT_FILE"
-              echo "| Total Providers | $PROVIDER_COUNT |" >> "$OUTPUT_FILE"
-              echo "| Total Models | $MODEL_COUNT |" >> "$OUTPUT_FILE"
-              echo "| New Providers | $NEW_COUNT |" >> "$OUTPUT_FILE"
-              echo "| Updated Providers | $MOD_COUNT |" >> "$OUTPUT_FILE"
-              echo "" >> "$OUTPUT_FILE"
-              echo "Generated: $GENERATED_AT" >> "$OUTPUT_FILE"
-              echo "" >> "$OUTPUT_FILE"
-            fi
-          fi
-
-          if [ -n "$NEW_PROVIDERS" ] && [ "$NEW_PROVIDERS" != "" ]; then
-            echo "### New Providers" >> "$OUTPUT_FILE"
-            echo "" >> "$OUTPUT_FILE"
-            echo "$NEW_PROVIDERS" | sed 's/^/- `/' | sed 's/$/`/' >> "$OUTPUT_FILE"
-            echo "" >> "$OUTPUT_FILE"
-          fi
-
-          if [ -n "$MODIFIED_PROVIDERS" ] && [ "$MODIFIED_PROVIDERS" != "" ]; then
-            echo "### Updated Providers" >> "$OUTPUT_FILE"
-            echo "" >> "$OUTPUT_FILE"
-            echo "$MODIFIED_PROVIDERS" | head -20 | sed 's/^/- `/' | sed 's/$/`/' >> "$OUTPUT_FILE"
-            [ "$MOD_COUNT" -gt 20 ] && echo "- ... and $((MOD_COUNT - 20)) more" >> "$OUTPUT_FILE"
-            echo "" >> "$OUTPUT_FILE"
-          fi
-
-          echo "### Changed Files" >> "$OUTPUT_FILE"
-          echo "" >> "$OUTPUT_FILE"
-          echo "\`\`\`" >> "$OUTPUT_FILE"
-          git diff --stat priv/llm_db/ lib/llm_db/generated/ >> "$OUTPUT_FILE" || true
-          echo "\`\`\`" >> "$OUTPUT_FILE"
-
-          # Show summary in Actions UI
-          cat "$OUTPUT_FILE" >> "$GITHUB_STEP_SUMMARY"
-
-      - name: Create or update metadata PR
-        if: steps.changes.outputs.has_changes == 'true'
-        uses: peter-evans/create-pull-request@v6
-        with:
-          token: ${{ secrets.GITHUB_TOKEN }}
-          commit-message: ${{ steps.summary.outputs.commit_message }}
-          committer: "github-actions[bot] <github-actions[bot]@users.noreply.github.com>"
-          author: "github-actions[bot] <github-actions[bot]@users.noreply.github.com>"
-          title: "${{ steps.summary.outputs.commit_title }}"
-          body-path: "metadata_summary.md"
-          branch: "metadata-update"
-          base: "main"
-          add-paths: |
-            priv/llm_db/**
-            priv/llm_db/history/**
-            lib/llm_db/generated/**
+      - name: Push refreshed catalog to main
+        if: steps.metadata_commit.outputs.created == 'true' || steps.history_commit.outputs.created == 'true'
+        run: |
+          set -euo pipefail
+          git push origin HEAD:main
 
       - name: Report no changes
-        if: steps.changes.outputs.has_changes == 'false'
+        if: steps.metadata_commit.outputs.created != 'true' && steps.history_commit.outputs.created != 'true'
         run: |
-          echo "No metadata changes detected. Skipping PR creation."
-          echo "All model metadata is up to date."
+          echo "No metadata or history changes detected."
           echo "### No Changes Detected" >> "$GITHUB_STEP_SUMMARY"
-          echo "All model metadata is up to date." >> "$GITHUB_STEP_SUMMARY"
