@@ -440,10 +440,6 @@ defmodule LLMDB.History.Backfill do
     end)
   end
 
-  defp find_reachable_anchor_by_digest(_commits, _snapshot_digest) do
-    {:error, :missing_last_snapshot_digest}
-  end
-
   defp read_last_snapshot_digest(output_dir) do
     path = Path.join(output_dir, "snapshots.ndjson")
 
@@ -488,10 +484,6 @@ defmodule LLMDB.History.Backfill do
 
   defp metadata_history_range_error(from_ref) do
     "commit #{from_ref} is not reachable in the metadata history range."
-  end
-
-  defp unrecoverable_history_error(output_dir, :missing_last_snapshot) do
-    unrecoverable_history_error(output_dir, :missing_last_snapshot_digest)
   end
 
   defp unrecoverable_history_error(output_dir, :missing_last_snapshot_digest) do
