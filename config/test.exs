@@ -7,4 +7,6 @@ config :llm_db,
   # Use test-specific cache directory to avoid polluting production cache
   models_dev_cache_dir: "tmp/test/upstream",
   openrouter_cache_dir: "tmp/test/upstream",
+  llmfit_cache_dir: "tmp/test/upstream",
+  llmfit_enrichment: true,
   upstream_cache_dir: "tmp/test/upstream"
