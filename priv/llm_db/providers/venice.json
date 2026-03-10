@@ -1615,7 +1615,7 @@
       },
       "deprecated": false,
       "extra": {
-        "attachment": false,
+        "attachment": true,
         "family": "gpt",
         "open_weights": false,
         "structured_output": true,
@@ -1624,7 +1624,7 @@
       "family": null,
       "id": "openai-gpt-54",
       "knowledge": null,
-      "last_updated": "2026-03-06",
+      "last_updated": "2026-03-09",
       "lifecycle": null,
       "limits": {
         "context": 1000000,
@@ -1632,7 +1632,8 @@
       },
       "modalities": {
         "input": [
-          "text"
+          "text",
+          "image"
         ],
         "output": [
           "text"
@@ -1640,6 +1641,66 @@
       },
       "model": null,
       "name": "GPT-5.4",
+      "pricing": null,
+      "provider": "venice",
+      "provider_model_id": null,
+      "release_date": "2026-03-05",
+      "retired": false,
+      "tags": null
+    },
+    "openai-gpt-54-pro": {
+      "aliases": [],
+      "base_url": null,
+      "capabilities": {
+        "chat": true,
+        "embeddings": false,
+        "json": {
+          "native": false,
+          "schema": false,
+          "strict": false
+        },
+        "reasoning": {
+          "enabled": true
+        },
+        "streaming": {
+          "tool_calls": true
+        },
+        "tools": {
+          "enabled": true
+        }
+      },
+      "cost": {
+        "input": 37.5,
+        "output": 225
+      },
+      "deprecated": false,
+      "extra": {
+        "attachment": true,
+        "family": "gpt-pro",
+        "open_weights": false,
+        "structured_output": true,
+        "temperature": true
+      },
+      "family": null,
+      "id": "openai-gpt-54-pro",
+      "knowledge": null,
+      "last_updated": "2026-03-09",
+      "lifecycle": null,
+      "limits": {
+        "context": 1000000,
+        "output": 128000
+      },
+      "modalities": {
+        "input": [
+          "text",
+          "image"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "model": null,
+      "name": "GPT-5.4 Pro",
       "pricing": null,
       "provider": "venice",
       "provider_model_id": null,
@@ -1913,7 +1974,7 @@
       },
       "deprecated": false,
       "extra": {
-        "attachment": false,
+        "attachment": true,
         "family": "qwen",
         "open_weights": true,
         "structured_output": true,
@@ -1922,7 +1983,7 @@
       "family": null,
       "id": "qwen3-5-35b-a3b",
       "knowledge": null,
-      "last_updated": "2026-02-28",
+      "last_updated": "2026-03-09",
       "lifecycle": null,
       "limits": {
         "context": 256000,
@@ -1930,7 +1991,9 @@
       },
       "modalities": {
         "input": [
-          "text"
+          "text",
+          "image",
+          "video"
         ],
         "output": [
           "text"

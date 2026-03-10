@@ -26,6 +26,7 @@ defmodule LLMDB.Generated.ValidProviders do
     :berget,
     :cerebras,
     :chutes,
+    :clarifai,
     :cloudferro_sherlock,
     :cloudflare_ai_gateway,
     :cloudflare_workers_ai,
