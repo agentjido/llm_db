@@ -20,7 +20,7 @@ defmodule Mix.Tasks.LlmDb.History.Check do
   - `--allow-missing` - Treat missing history output as success (default: `false`)
   - `--output-dir` - History directory (default: `priv/llm_db/history`)
   - `--repo` - GitHub repository slug (default: `agentjido/llm_db`)
-  - `--index-tag` - Release tag holding mutable catalog assets (default: `catalog-index`)
+  - `--index-tag` - Deprecated compatibility option; ignored for immutable release lookup
   - `--cache-dir` - Local snapshot cache directory
   """
 

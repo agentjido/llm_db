@@ -26,11 +26,12 @@ Runs on every push and pull request to ensure code quality.
 
 ### 2. Publish Snapshot Catalog (`build-metadata.yml`)
 
-Automatically pulls latest upstream metadata, publishes a content-addressed snapshot,
-and rebuilds the published history bundle from the snapshot store.
+Automatically pulls latest upstream metadata, publishes a content-addressed
+snapshot release, and rebuilds the published history bundle from the snapshot
+store.
 
 **Triggers:**
-- **Schedule**: Every Monday at 00:00 UTC
+- **Schedule**: Daily at 00:00 UTC
 - **Manual**: Via workflow_dispatch in GitHub Actions UI
 
 **Jobs:**
@@ -41,8 +42,8 @@ and rebuilds the published history bundle from the snapshot store.
 5. Run the test suite against the resulting packaged snapshot
 
 **Output:**
-- Updated GitHub Releases snapshot assets
-- Updated `catalog-index` assets: `latest.json`, `snapshot-index.json`, `history.tar.gz`, and `history-meta.json`
+- Updated immutable `snapshot-<snapshot_id>` release assets
+- Updated immutable `history-<snapshot_id>` release assets for the latest published snapshot
 
 ### 3. Publish Release (`release.yml`)
 
@@ -202,11 +203,10 @@ Generates GitHub release notes with:
 ## Best Practices
 
 1. **Review All Metadata PRs**: Always review automated PRs before merging
-2. **Use Merge Commits for Metadata PRs**: Do not squash-merge or rebase-merge `metadata-update` PRs
-3. **Test Before Release**: CI runs automatically, but check test results
-4. **Monitor Releases**: Check Hex.pm after publish to verify release
-5. **Keep Secrets Secure**: Rotate `HEX_API_KEY` periodically
-6. **Update Dependencies**: Keep actions versions current (e.g., `@v4` → `@v5`)
+2. **Test Before Release**: CI runs automatically, but check test results
+3. **Monitor Releases**: Check Hex.pm after publish to verify release
+4. **Keep Secrets Secure**: Rotate `HEX_API_KEY` periodically
+5. **Update Dependencies**: Keep actions versions current (e.g., `@v4` → `@v5`)
 
 ## Development
 

@@ -11,9 +11,9 @@ defmodule Mix.Tasks.LlmDb.History.MigrateGit do
   content-addressed snapshots plus snapshot-based history artifacts.
 
   By default this writes local artifacts only. With `--publish`, it also seeds
-  GitHub Releases with all discovered immutable snapshots, publishes
-  `latest.json` and `snapshot-index.json` to the mutable `catalog-index`
-  release, and uploads a rebuilt `history.tar.gz` bundle.
+  GitHub Releases with all discovered immutable snapshots and uploads a rebuilt
+  `history.tar.gz` bundle to the immutable history release for the latest
+  migrated snapshot.
   """
 
   @impl Mix.Task
@@ -81,7 +81,6 @@ defmodule Mix.Tasks.LlmDb.History.MigrateGit do
       observations = read_snapshot_index!(summary.snapshot_index_path)
 
       publish_snapshots!(observations, summary.snapshots_dir, store_overrides)
-      publish_catalog_assets!(summary.latest_path, summary.snapshot_index_path, store_overrides)
 
       publish_history_bundle!(
         summary.output_dir,
@@ -115,13 +114,6 @@ defmodule Mix.Tasks.LlmDb.History.MigrateGit do
     end)
   end
 
-  defp publish_catalog_assets!(latest_path, snapshot_index_path, store_overrides) do
-    case ReleaseStore.publish_catalog_index([latest_path, snapshot_index_path], store_overrides) do
-      :ok -> :ok
-      {:error, reason} -> Mix.raise("Failed publishing snapshot index assets: #{inspect(reason)}")
-    end
-  end
-
   defp publish_history_bundle!(history_dir, observations, bundle_output_dir, store_overrides) do
     bundle_opts =
       []
@@ -131,8 +123,17 @@ defmodule Mix.Tasks.LlmDb.History.MigrateGit do
 
     case Bundle.bundle(bundle_opts) do
       {:ok, bundle} ->
-        case ReleaseStore.publish_catalog_index(
+        latest_snapshot_id =
+          observations
+          |> List.last()
+          |> case do
+            %{"snapshot_id" => snapshot_id} -> snapshot_id
+            _ -> Mix.raise("Failed publishing history bundle: missing latest snapshot_id")
+          end
+
+        case ReleaseStore.publish_history_release(
                [bundle.archive_path, bundle.metadata_path],
+               latest_snapshot_id,
                store_overrides
              ) do
           :ok -> :ok

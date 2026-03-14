@@ -9,7 +9,8 @@ defmodule Mix.Tasks.LlmDb.History.Rebuild do
   @moduledoc """
   Rebuilds local history artifacts from the published snapshot observation chain,
   then bundles the result and optionally republishes `history.tar.gz` plus
-  `history-meta.json` to the `catalog-index` release.
+  `history-meta.json` to an immutable `history-<snapshot_id>` release for the
+  latest snapshot in the chain.
   """
 
   @impl Mix.Task
@@ -85,9 +86,14 @@ defmodule Mix.Tasks.LlmDb.History.Rebuild do
       case Bundle.bundle(bundle_opts) do
         {:ok, bundle} ->
           if opts[:publish] do
+            to_snapshot_id =
+              summary.to_snapshot_id ||
+                raise "History rebuild failed: missing to_snapshot_id for publish"
+
             :ok =
-              ReleaseStore.publish_catalog_index(
+              ReleaseStore.publish_history_release(
                 [bundle.archive_path, bundle.metadata_path],
+                to_snapshot_id,
                 store_overrides
               )
           end
@@ -100,7 +106,9 @@ defmodule Mix.Tasks.LlmDb.History.Rebuild do
           Mix.shell().info("  events:      #{summary.events_written}")
 
           if opts[:publish] do
-            Mix.shell().info("  published to catalog index")
+            Mix.shell().info(
+              "  published history release: #{ReleaseStore.history_tag(summary.to_snapshot_id)}"
+            )
           end
 
         {:error, reason} ->
