@@ -66,6 +66,11 @@ jobs:
           mix deps.get
           MIX_ENV=dev mix deps.compile git_ops
 
+      - name: Fetch latest published snapshot
+        run: |
+          set -euo pipefail
+          mix llm_db.snapshot.fetch --ref latest --install
+
       - name: Run tests
         if: ${{ inputs.skip_tests != true }}
         run: |
@@ -125,6 +130,7 @@ jobs:
           fi
           echo "- Package: llm_db" >> "$GITHUB_STEP_SUMMARY"
           echo "- Version: ${{ steps.version.outputs.version }}" >> "$GITHUB_STEP_SUMMARY"
+          echo "- Snapshot: priv/llm_db/snapshot.json" >> "$GITHUB_STEP_SUMMARY"
 
       - name: Create GitHub release
         if: ${{ inputs.dry_run != true }}

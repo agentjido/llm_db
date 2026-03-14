@@ -1,25 +1,27 @@
 defmodule Mix.Tasks.LlmDb.History.Check do
   use Mix.Task
 
-  @shortdoc "Checks whether generated history is up to date with git metadata commits"
+  alias LLMDB.{History.Bundle, Snapshot.ReleaseStore}
+
+  @shortdoc "Checks whether local history matches the published history bundle"
 
   @moduledoc """
-  Checks whether `priv/llm_db/history` is current with provider metadata history.
-
-  Intended for CI drift detection after metadata changes.
+  Checks whether the local installed history bundle matches the published
+  history metadata in the snapshot store.
 
   ## Usage
 
       mix llm_db.history.check
-      mix llm_db.history.check --to HEAD
       mix llm_db.history.check --allow-missing
       mix llm_db.history.check --output-dir priv/llm_db/history
 
   ## Options
 
-  - `--to` - End commit SHA/ref to compare against (default: `HEAD`)
   - `--allow-missing` - Treat missing history output as success (default: `false`)
   - `--output-dir` - History directory (default: `priv/llm_db/history`)
+  - `--repo` - GitHub repository slug (default: `agentjido/llm_db`)
+  - `--index-tag` - Release tag holding mutable catalog assets (default: `catalog-index`)
+  - `--cache-dir` - Local snapshot cache directory
   """
 
   @impl Mix.Task
@@ -29,9 +31,11 @@ defmodule Mix.Tasks.LlmDb.History.Check do
     {opts, _, invalid} =
       OptionParser.parse(args,
         strict: [
-          to: :string,
           allow_missing: :boolean,
-          output_dir: :string
+          output_dir: :string,
+          repo: :string,
+          index_tag: :string,
+          cache_dir: :string
         ]
       )
 
@@ -39,29 +43,55 @@ defmodule Mix.Tasks.LlmDb.History.Check do
       Mix.raise("Invalid options: #{inspect(invalid)}")
     end
 
-    runtime_opts =
+    store_overrides =
       []
-      |> maybe_put(:to, opts[:to])
-      |> maybe_put(:output_dir, opts[:output_dir])
+      |> maybe_put(:repo, opts[:repo])
+      |> maybe_put(:index_tag, opts[:index_tag])
+      |> maybe_put(:cache_dir, opts[:cache_dir])
 
     allow_missing? = opts[:allow_missing] == true
+    output_dir = Bundle.history_dir(opts[:output_dir])
 
-    case LLMDB.History.Backfill.check(runtime_opts) do
-      {:ok, :up_to_date} ->
-        Mix.shell().info("✓ History is up to date")
+    with {:ok, remote_meta} <- ReleaseStore.fetch_history_meta(store_overrides) do
+      case Bundle.read_meta(output_dir) do
+        {:ok, local_meta} ->
+          if local_meta["to_snapshot_id"] == remote_meta["to_snapshot_id"] and
+               local_meta["event_count"] == remote_meta["event_count"] do
+            Mix.shell().info("✓ History is up to date")
+          else
+            Mix.raise("""
+            History check failed: local history bundle is outdated.
 
-      {:ok, :history_unavailable} when allow_missing? ->
-        Mix.shell().info("✓ History output unavailable (allowed)")
+            Local to_snapshot_id:  #{local_meta["to_snapshot_id"] || "missing"}
+            Remote to_snapshot_id: #{remote_meta["to_snapshot_id"] || "missing"}
 
-      {:ok, :history_unavailable} ->
-        Mix.raise(
-          "History check failed: history output is unavailable. Run mix llm_db.history.sync"
-        )
+            Run: mix llm_db.history.sync
+            """)
+          end
 
-      {:ok, {:outdated, %{new_commits: count, latest_commit: latest}}} ->
-        Mix.raise(
-          "History check failed: #{count} metadata commit(s) pending. Latest pending commit: #{latest}. Run mix llm_db.history.sync"
-        )
+        {:error, _reason} when allow_missing? ->
+          Mix.shell().info("✓ History output unavailable (allowed)")
+
+        {:error, _reason} ->
+          Mix.raise(
+            "History check failed: history output is unavailable. Run mix llm_db.history.sync"
+          )
+      end
+    else
+      {:error, :not_found} when allow_missing? ->
+        Mix.shell().info("✓ Published history metadata unavailable (allowed)")
+
+      {:error, :not_found} ->
+        Mix.raise("""
+        History check failed: no published history metadata was found.
+
+        Seed the snapshot store first with:
+
+            mix llm_db.history.migrate_git --publish
+        """)
+
+      {:error, _reason} when allow_missing? ->
+        Mix.shell().info("✓ Published history metadata unavailable (allowed)")
 
       {:error, reason} ->
         Mix.raise("History check failed: #{inspect(reason)}")

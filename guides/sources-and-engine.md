@@ -1,6 +1,6 @@
 # Sources and Engine
 
-The Engine runs a build-time ETL pipeline that loads data from sources, normalizes, validates, merges, enriches, and indexes it, then writes `priv/llm_db/snapshot.json`. Runtime only loads the snapshot.
+The Engine runs a build-time ETL pipeline that loads data from sources, normalizes, validates, merges, enriches, and indexes it, then builds a canonical `snapshot.json` artifact. Runtime only loads the packaged or explicitly fetched snapshot.
 
 ## Source Behaviour
 
@@ -87,7 +87,8 @@ Final check warns if zero providers/models.
 ## Mix Tasks
 
 - `mix llm_db.pull` - Fetch and cache remote sources
-- `mix llm_db.build` - Run ETL, write `priv/llm_db/snapshot.json` and `lib/llm_db/generated/valid_providers.ex`
+- `mix llm_db.build` - Run ETL and build canonical snapshot artifacts
+- `mix llm_db.snapshot.publish` - Publish an immutable content-addressed snapshot to GitHub Releases
 
 ## Custom Source Example
 

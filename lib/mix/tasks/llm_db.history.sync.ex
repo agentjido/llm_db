@@ -1,26 +1,26 @@
 defmodule Mix.Tasks.LlmDb.History.Sync do
   use Mix.Task
-  @dialyzer {:nowarn_function, run: 1}
 
-  @shortdoc "Incrementally syncs model history into priv/llm_db/history"
+  alias LLMDB.{History.Bundle, Snapshot.ReleaseStore}
+
+  @shortdoc "Installs the published history bundle into priv/llm_db/history"
 
   @moduledoc """
-  Incrementally syncs model history from committed provider snapshots.
-
-  This task reads `priv/llm_db/history/meta.json` when present and appends only
-  events for commits after `to_commit`. If history does not exist yet, it
-  performs an initial full backfill into the output directory.
+  Downloads the published history bundle from the snapshot store and extracts it
+  into the local history directory.
 
   ## Usage
 
       mix llm_db.history.sync
-      mix llm_db.history.sync --to HEAD
       mix llm_db.history.sync --output-dir priv/llm_db/history
+      mix llm_db.history.sync --repo agentjido/llm_db
 
   ## Options
 
-  - `--to` - End commit SHA/ref (default: `HEAD`)
   - `--output-dir` - Directory for generated history files (default: `priv/llm_db/history`)
+  - `--repo` - GitHub repository slug (default: `agentjido/llm_db`)
+  - `--index-tag` - Release tag holding mutable catalog assets (default: `catalog-index`)
+  - `--cache-dir` - Local snapshot cache directory
   """
 
   @impl Mix.Task
@@ -30,8 +30,10 @@ defmodule Mix.Tasks.LlmDb.History.Sync do
     {opts, _, invalid} =
       OptionParser.parse(args,
         strict: [
-          to: :string,
-          output_dir: :string
+          output_dir: :string,
+          repo: :string,
+          index_tag: :string,
+          cache_dir: :string
         ]
       )
 
@@ -39,23 +41,44 @@ defmodule Mix.Tasks.LlmDb.History.Sync do
       Mix.raise("Invalid options: #{inspect(invalid)}")
     end
 
-    runtime_opts =
+    output_dir = Bundle.history_dir(opts[:output_dir])
+    archive_path = Path.join(System.tmp_dir!(), "llm_db-history.tar.gz")
+
+    store_overrides =
       []
-      |> maybe_put(:to, opts[:to])
-      |> maybe_put(:output_dir, opts[:output_dir])
+      |> maybe_put(:repo, opts[:repo])
+      |> maybe_put(:index_tag, opts[:index_tag])
+      |> maybe_put(:cache_dir, opts[:cache_dir])
 
-    Mix.shell().info("Syncing model history from git...")
+    Mix.shell().info("Syncing published history bundle...")
 
-    case LLMDB.History.Backfill.sync(runtime_opts) do
-      {:ok, summary} ->
-        Mix.shell().info("✓ History sync complete")
-        Mix.shell().info("  commits scanned:   #{summary.commits_scanned}")
-        Mix.shell().info("  commits processed: #{summary.commits_processed}")
-        Mix.shell().info("  snapshots written: #{summary.snapshots_written}")
-        Mix.shell().info("  events written:    #{summary.events_written}")
-        Mix.shell().info("  output dir:        #{summary.output_dir}")
-        Mix.shell().info("  from commit:       #{summary.from_commit}")
-        Mix.shell().info("  to commit:         #{summary.to_commit}")
+    case ReleaseStore.download_history_archive(archive_path, store_overrides) do
+      :ok ->
+        case Bundle.install_archive(archive_path, output_dir) do
+          :ok ->
+            meta =
+              case ReleaseStore.fetch_history_meta(store_overrides) do
+                {:ok, meta} -> meta
+                _ -> %{}
+              end
+
+            Mix.shell().info("✓ History sync complete")
+            Mix.shell().info("  output dir:      #{output_dir}")
+            Mix.shell().info("  to snapshot:     #{meta["to_snapshot_id"] || "unknown"}")
+            Mix.shell().info("  generated at:    #{meta["generated_at"] || "unknown"}")
+
+          {:error, reason} ->
+            Mix.raise("History sync failed while extracting archive: #{inspect(reason)}")
+        end
+
+      {:error, :not_found} ->
+        Mix.raise("""
+        History sync failed: no published history bundle was found.
+
+        Seed the snapshot store first with:
+
+            mix llm_db.history.migrate_git --publish
+        """)
 
       {:error, reason} ->
         Mix.raise("History sync failed: #{inspect(reason)}")

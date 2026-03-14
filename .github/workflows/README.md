@@ -24,9 +24,10 @@ Runs on every push and pull request to ensure code quality.
 - OTP versions: 25, 26
 - Excludes: Elixir 1.14 with OTP 26 (compatibility)
 
-### 2. Refresh Upstream Metadata (`build-metadata.yml`)
+### 2. Publish Snapshot Catalog (`build-metadata.yml`)
 
-Automatically pulls latest LLM model metadata from upstream sources and creates PRs for review.
+Automatically pulls latest upstream metadata, publishes a content-addressed snapshot,
+and rebuilds the published history bundle from the snapshot store.
 
 **Triggers:**
 - **Schedule**: Every Monday at 00:00 UTC
@@ -34,33 +35,27 @@ Automatically pulls latest LLM model metadata from upstream sources and creates 
 
 **Jobs:**
 1. Pull latest metadata using `mix llm_db.pull`
-2. Regenerate metadata using `mix llm_db.build`
-3. Reset `metadata-update` from `origin/main`
-4. If non-history metadata changes are detected:
-   - Commit metadata artifacts first
-   - Run `mix llm_db.history.sync --to HEAD`
-   - Commit history artifacts second
-   - Create or update the PR with `gh pr create` / `gh pr edit`
+2. Publish the current canonical snapshot using `mix llm_db.snapshot.publish`
+3. Rebuild and publish `history.tar.gz` from the published snapshot chain using `mix llm_db.history.rebuild --publish`
+4. Validate the packaged snapshot with `mix llm_db.build --check --install`
+5. Run the test suite against the resulting packaged snapshot
 
 **Output:**
-- Pull request with metadata changes for human review
-- Summary includes provider/model statistics and changed files
-- Metadata update PRs now contain two commits
-- Metadata update PRs must be merged with a merge commit, not squash-merged or rebase-merged
+- Updated GitHub Releases snapshot assets
+- Updated `catalog-index` assets: `latest.json`, `snapshot-index.json`, `history.tar.gz`, and `history-meta.json`
 
-### 3. Publish Release (`publish-release.yml`)
+### 3. Publish Release (`release.yml`)
 
-Automatically publishes new Hex.pm releases when metadata updates are merged.
+Automatically publishes new Hex.pm releases from the latest published snapshot.
 
 **Triggers:**
 - Push to `main` branch
-- Only when `priv/llm_db/snapshot.json` changes
-- Only from metadata update merges
+- Release workflow fetches the latest published snapshot and packages it into `priv/llm_db/snapshot.json`
 
 **Jobs:**
-1. Verify trigger is from metadata update merge
+1. Fetch the latest published snapshot into `priv/llm_db/snapshot.json`
 2. Prepare release using `mix llm_db.release prepare`
-   - Determines version from snapshot timestamp (YYYY.MM.DD format)
+   - Determines version from the packaged snapshot timestamp (YYYY.MM.DD format)
    - Updates `mix.exs` version
 3. Run tests to ensure quality
 4. Build Hex package
@@ -123,40 +118,26 @@ Cron examples:
 - `'0 0 * * 0'` - Weekly on Sunday
 - `'0 0 1 * *'` - Monthly on the 1st
 
-#### PR Reviewers
-
-To auto-assign reviewers to metadata update PRs, modify the PR creation step in `build-metadata.yml`:
-
-```bash
-gh pr create \
-  --base main \
-  --head "metadata-update" \
-  --title "Update model metadata - $(date +%Y-%m-%d)" \
-  --body-file "$SUMMARY_FILE" \
-  --label "metadata-update" \
-  --label "automated" \
-  --reviewer "username1,username2"  # Add this line
-```
-
 ## Manual Operations
 
-### Manually Trigger Metadata Update
+### Manually Trigger Snapshot Publish
 
 1. Go to Actions tab in GitHub
-2. Select "Refresh Upstream Metadata" workflow
+2. Select "Publish Snapshot Catalog" workflow
 3. Click "Run workflow"
 4. Select branch (usually `main`)
 5. Click "Run workflow"
 
 ### Manually Create a Release
 
-Releases are automatically triggered when metadata updates merge to main. To manually release:
+Releases package the latest published snapshot. To manually release:
 
-1. Ensure snapshot is updated: `mix llm_db.pull`
-2. Prepare release: `mix llm_db.release prepare`
-3. Review version in `mix.exs`
-4. Commit and push to main
-5. Workflow will detect snapshot change and publish
+1. Ensure the latest snapshot has been published: `mix llm_db.snapshot.publish`
+2. Rebuild the published history bundle if needed: `mix llm_db.history.rebuild --publish`
+3. Prepare release: `mix llm_db.release prepare`
+4. Review version in `mix.exs`
+5. Commit and push to main
+6. Workflow will fetch the latest published snapshot and publish the package
 
 ## Workflow Scripts
 
@@ -166,8 +147,8 @@ Helper scripts in `.github/workflows/scripts/`:
 
 Generates PR description for metadata updates with:
 - Provider and model counts
+- Snapshot publication details
 - Generated timestamp
-- File diff statistics
 - Review checklist
 
 ### `generate_release_notes.sh`

@@ -17,12 +17,14 @@ config :llm_db,
   # Cache directory for remote sources
   models_dev_cache_dir: "priv/llm_db/upstream",
   openrouter_cache_dir: "priv/llm_db/upstream",
+  llmfit_cache_dir: "priv/llm_db/upstream",
   upstream_cache_dir: "priv/llm_db/upstream",
   openai_cache_dir: "priv/llm_db/remote",
   anthropic_cache_dir: "priv/llm_db/remote",
   google_cache_dir: "priv/llm_db/remote",
   xai_cache_dir: "priv/llm_db/remote",
   zenmux_cache_dir: "priv/llm_db/remote",
+  llmfit_enrichment: true,
   azure_foundry_cache_dir: "priv/llm_db/remote"
 
 if Mix.env() == :dev do
@@ -46,7 +48,7 @@ if Mix.env() == :dev do
       pre_commit: [
         tasks: [
           {:mix_task, :format, ["--check-formatted"]},
-          {:cmd, "mix llm_db.build --check"}
+          {:cmd, "mix llm_db.build --check --install"}
         ]
       ],
       pre_push: [

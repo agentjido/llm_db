@@ -11,8 +11,7 @@ defmodule Mix.Tasks.LlmDb.Pull do
   are skipped. Fetched data is saved to cache directories (typically `priv/llm_db/upstream/`
   or `priv/llm_db/remote/`).
 
-  To build the final snapshot and generate the `ValidProviders` module from fetched data,
-  run `mix llm_db.build`.
+  To build the final canonical snapshot from fetched data, run `mix llm_db.build`.
 
   ## Usage
 
@@ -22,7 +21,7 @@ defmodule Mix.Tasks.LlmDb.Pull do
 
   ## Switches
 
-  - `--source` - Pull from a specific source only (openai, anthropic, google, xai, models_dev, openrouter, zenmux, azure_foundry)
+  - `--source` - Pull from a specific source only (openai, anthropic, google, xai, models_dev, openrouter, zenmux, llmfit, azure_foundry)
 
   ## Configuration
 
@@ -57,7 +56,7 @@ defmodule Mix.Tasks.LlmDb.Pull do
 
       Summary: 1 updated, 1 unchanged, 1 skipped, 0 failed
 
-      Run 'mix llm_db.build' to generate snapshot.json and valid_providers.ex
+      Run 'mix llm_db.build' to generate the canonical snapshot artifact
   """
 
   @source_modules %{
@@ -68,6 +67,7 @@ defmodule Mix.Tasks.LlmDb.Pull do
     "models_dev" => LLMDB.Sources.ModelsDev,
     "openrouter" => LLMDB.Sources.OpenRouter,
     "zenmux" => LLMDB.Sources.Zenmux,
+    "llmfit" => LLMDB.Sources.Llmfit,
     "azure_foundry" => LLMDB.Enrich.AzureWireProtocol
   }
 
@@ -120,7 +120,7 @@ defmodule Mix.Tasks.LlmDb.Pull do
     results = pull_all_sources(sources)
     print_summary(results)
 
-    Mix.shell().info("\nRun 'mix llm_db.build' to generate snapshot.json and valid_providers.ex")
+    Mix.shell().info("\nRun 'mix llm_db.build' to generate the canonical snapshot artifact")
   end
 
   # Pull from all sources and return list of {module, result} tuples

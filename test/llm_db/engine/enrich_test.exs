@@ -6,6 +6,20 @@ defmodule LLMDB.Engine.EnrichTest do
 
   doctest LLMDB.Enrich
 
+  @llmfit_url "https://raw.githubusercontent.com/AlexsJones/llmfit/main/data/hf_models.json"
+
+  defp llmfit_cache_path(url) do
+    hash = :crypto.hash(:sha256, url) |> Base.encode16(case: :lower) |> binary_part(0, 8)
+    "tmp/test/upstream/llmfit-#{hash}.json"
+  end
+
+  defp write_llmfit_cache(rows, url \\ @llmfit_url) do
+    path = llmfit_cache_path(url)
+    File.mkdir_p!(Path.dirname(path))
+    File.write!(path, Jason.encode!(rows))
+    path
+  end
+
   describe "derive_family/1" do
     test "derives family from gpt-* models" do
       assert Enrich.derive_family("gpt-4o-mini") == "gpt-4o"
@@ -310,6 +324,147 @@ defmodule LLMDB.Engine.EnrichTest do
       assert canonical.provider_model_id == "test-model-v1"
       assert dated.cost == %{input: 1.0, output: 2.0}
       assert dated.provider_model_id == "test-model-v1-2024-07-18"
+    end
+  end
+
+  describe "llmfit enrichment" do
+    setup do
+      original_cache_dir = Application.get_env(:llm_db, :llmfit_cache_dir)
+      original_enabled = Application.get_env(:llm_db, :llmfit_enrichment)
+
+      File.rm_rf!("tmp/test/upstream")
+      Application.put_env(:llm_db, :llmfit_cache_dir, "tmp/test/upstream")
+      Application.put_env(:llm_db, :llmfit_enrichment, true)
+
+      on_exit(fn ->
+        File.rm_rf!("tmp/test/upstream")
+
+        if is_nil(original_cache_dir) do
+          Application.delete_env(:llm_db, :llmfit_cache_dir)
+        else
+          Application.put_env(:llm_db, :llmfit_cache_dir, original_cache_dir)
+        end
+
+        if is_nil(original_enabled) do
+          Application.delete_env(:llm_db, :llmfit_enrichment)
+        else
+          Application.put_env(:llm_db, :llmfit_enrichment, original_enabled)
+        end
+      end)
+
+      :ok
+    end
+
+    test "enriches models matched by extra.hugging_face_id" do
+      write_llmfit_cache([
+        %{
+          "name" => "Qwen/Qwen2.5-7B-Instruct",
+          "provider" => "Alibaba",
+          "parameter_count" => "7.6B",
+          "parameters_raw" => 7_600_000_000,
+          "context_length" => 32_768,
+          "pipeline_tag" => "text-generation",
+          "min_ram_gb" => 8.1,
+          "recommended_ram_gb" => 13.2,
+          "min_vram_gb" => 7.0,
+          "release_date" => "2024-09-01",
+          "hf_downloads" => 1_000_000
+        }
+      ])
+
+      models = [
+        %{
+          id: "openrouter/qwen2.5-7b",
+          provider: :openrouter,
+          extra: %{hugging_face_id: "Qwen/Qwen2.5-7B-Instruct"}
+        }
+      ]
+
+      [model] = Enrich.enrich_models(models)
+      assert model.release_date == "2024-09-01"
+      assert model.limits.context == 32_768
+      assert model.extra.llmfit.parameters_raw == 7_600_000_000
+      assert model.extra.llmfit.memory.min_ram_gb == 8.1
+      assert model.extra.llmfit.matched_hugging_face_id == "Qwen/Qwen2.5-7B-Instruct"
+    end
+
+    test "does not overwrite existing release_date or limits.context" do
+      write_llmfit_cache([
+        %{
+          "name" => "Qwen/Qwen2.5-7B-Instruct",
+          "provider" => "Alibaba",
+          "parameter_count" => "7.6B",
+          "parameters_raw" => 7_600_000_000,
+          "context_length" => 32_768,
+          "pipeline_tag" => "text-generation",
+          "release_date" => "2024-09-01"
+        }
+      ])
+
+      models = [
+        %{
+          id: "openrouter/qwen2.5-7b",
+          provider: :openrouter,
+          release_date: "2025-01-01",
+          limits: %{context: 131_072},
+          extra: %{hugging_face_id: "Qwen/Qwen2.5-7B-Instruct"}
+        }
+      ]
+
+      [model] = Enrich.enrich_models(models)
+      assert model.release_date == "2025-01-01"
+      assert model.limits.context == 131_072
+      assert model.extra.llmfit.parameters_raw == 7_600_000_000
+    end
+
+    test "matches by model id when hugging_face_id is absent" do
+      write_llmfit_cache([
+        %{
+          "name" => "deepseek-ai/DeepSeek-V3",
+          "provider" => "DeepSeek",
+          "parameter_count" => "685B",
+          "parameters_raw" => 685_000_000_000,
+          "context_length" => 131_072,
+          "pipeline_tag" => "text-generation"
+        }
+      ])
+
+      models = [
+        %{
+          id: "deepseek-ai/DeepSeek-V3",
+          provider: :huggingface
+        }
+      ]
+
+      [model] = Enrich.enrich_models(models)
+      assert model.extra.llmfit.model_id == "deepseek-ai/DeepSeek-V3"
+      assert model.limits.context == 131_072
+    end
+
+    test "skips llmfit metadata when enrichment is disabled" do
+      Application.put_env(:llm_db, :llmfit_enrichment, false)
+
+      write_llmfit_cache([
+        %{
+          "name" => "deepseek-ai/DeepSeek-V3",
+          "provider" => "DeepSeek",
+          "parameter_count" => "685B",
+          "parameters_raw" => 685_000_000_000,
+          "context_length" => 131_072,
+          "pipeline_tag" => "text-generation"
+        }
+      ])
+
+      models = [
+        %{
+          id: "deepseek-ai/DeepSeek-V3",
+          provider: :huggingface
+        }
+      ]
+
+      [model] = Enrich.enrich_models(models)
+      refute get_in(model, [:extra, :llmfit])
+      refute get_in(model, [:limits, :context])
     end
   end
 

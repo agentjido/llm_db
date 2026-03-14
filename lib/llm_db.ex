@@ -18,7 +18,8 @@ defmodule LLMDB do
   ## Two Phases
 
   **Phase 1 - Build Time** (Mix tasks):
-  - `mix llm_db.pull` - Pull sources and run ETL pipeline to generate snapshot.json
+  - `mix llm_db.pull` - Pull remote sources into local caches
+  - `mix llm_db.build` - Run ETL and build a canonical snapshot artifact
   - This is a development/CI operation that builds the complete catalog
 
   **Phase 2 - Runtime** (Consumer library):

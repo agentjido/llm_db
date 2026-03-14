@@ -10,10 +10,14 @@
 - **Format code**: `mix format`
 - **Compile**: `mix compile`
 - **Quality check**: `mix quality` (format, compile warnings, dialyzer, credo)
-- **Update model data**: `mix llm_db.pull` (fetches from configured remote sources and regenerates snapshot)
-- **Backfill model history (one-time)**: `mix llm_db.history.backfill --force` (generates `priv/llm_db/history/events/*.ndjson` from git snapshot history)
-- **Sync model history (incremental)**: `mix llm_db.history.sync`
-- **Check history drift**: `mix llm_db.history.check`
+- **Build local snapshot artifact**: `mix llm_db.build --install`
+- **Pull upstream metadata**: `mix llm_db.pull`
+- **Publish snapshot to GitHub Releases**: `mix llm_db.snapshot.publish`
+- **Fetch published snapshot locally**: `mix llm_db.snapshot.fetch --ref latest --install`
+- **Migrate reachable Git history (one-time)**: `mix llm_db.history.migrate_git --force`
+- **Rebuild/publish history bundle**: `mix llm_db.history.rebuild --publish`
+- **Sync published history bundle**: `mix llm_db.history.sync`
+- **Check published history drift**: `mix llm_db.history.check --allow-missing`
 - **Dependencies**: `mix deps.get`
 - **Release**: `mix llm_db.version && mix git_ops.release && git push && git push --tags` (bumps to date-based version, updates CHANGELOG, tags, and pushes)
 
@@ -61,7 +65,7 @@ config :llm_db,
 - **Type**: Elixir library providing fast, persistent_term-backed LLM model metadata catalog
 - **Core modules**: `LLMDB` (main API), `LLMDB.Engine` (ETL pipeline), `LLMDB.Store` (persistent_term storage)
 - **Data structures**: `LLMDB.Provider`, `LLMDB.Model` with Zoi validation schemas in `lib/llm_db/schema/`
-- **Storage**: O(1) lock-free queries via `:persistent_term`, snapshot in `priv/llm_db/snapshot.json`
+- **Storage**: O(1) lock-free queries via `:persistent_term`, packaged catalog snapshot in `priv/llm_db/snapshot.json`
 - **ETL Pipeline**: Ingest → Normalize → Validate → Merge → Enrich → Filter → Index + Publish (7 stages)
 - **Startup**: Catalog automatically loads on application start via `LLMDB.Application` (no manual `load()` needed in IEx or runtime)
 

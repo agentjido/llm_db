@@ -9,7 +9,8 @@ defmodule LLMDB.Loader do
   LLMDB module focused on the query API.
   """
 
-  alias LLMDB.{Engine, Merge, Model, Pricing, Provider, Runtime}
+  alias LLMDB.{Engine, Merge, Model, Packaged, Pricing, Provider, Runtime, Snapshot}
+  alias LLMDB.Snapshot.ReleaseStore
 
   require Logger
 
@@ -49,7 +50,7 @@ defmodule LLMDB.Loader do
   """
   @spec load(keyword()) :: {:ok, map()} | {:error, term()}
   def load(opts \\ []) do
-    with {:ok, {providers, models, generated_at}} <- load_packaged(),
+    with {:ok, {providers, models, generated_at, source_snapshot_id}} <- load_packaged(opts),
          runtime <- Runtime.compile(opts ++ [provider_ids: Enum.map(providers, & &1.id)]),
          :ok <- warn_unknown_providers(runtime.unknown, providers),
          {providers2, models2} <- merge_custom({providers, models}, runtime.custom),
@@ -57,7 +58,15 @@ defmodule LLMDB.Loader do
          models4 <- Pricing.apply_provider_defaults(providers2, models3),
          filtered_models <- Engine.apply_filters(models4, runtime.filters),
          :ok <- validate_not_empty(filtered_models, runtime),
-         snapshot <- build_snapshot(providers2, filtered_models, models4, runtime, generated_at) do
+         snapshot <-
+           build_snapshot(
+             providers2,
+             filtered_models,
+             models4,
+             runtime,
+             generated_at,
+             source_snapshot_id
+           ) do
       {:ok, snapshot}
     end
   end
@@ -87,6 +96,7 @@ defmodule LLMDB.Loader do
       meta: %{
         epoch: nil,
         source_generated_at: nil,
+        source_snapshot_id: nil,
         loaded_at: DateTime.utc_now() |> DateTime.to_iso8601(),
         digest: compute_digest([], [], runtime)
       }
@@ -129,32 +139,52 @@ defmodule LLMDB.Loader do
   end
 
   # Private helpers
-  defp load_packaged do
-    case apply(LLMDB.Packaged, :snapshot, []) do
+  defp load_packaged(opts) do
+    case load_snapshot_document(snapshot_source(opts)) do
       nil ->
         {:error, :no_snapshot}
 
-      %{version: 2, providers: nested_providers, generated_at: generated_at} ->
+      %{version: 2, providers: nested_providers, generated_at: generated_at} = snapshot ->
         # V2 snapshot with nested providers
         {providers, models} = flatten_nested_providers(nested_providers)
 
         {:ok,
          {deserialize_json_atoms(providers, :provider), deserialize_json_atoms(models, :model),
-          generated_at}}
+          generated_at, snapshot_snapshot_id(snapshot)}}
 
-      %{providers: providers, models: models, generated_at: generated_at}
+      %{"version" => 2, "providers" => nested_providers, "generated_at" => generated_at} =
+          snapshot ->
+        {providers, models} = flatten_nested_providers(nested_providers)
+
+        {:ok,
+         {deserialize_json_atoms(providers, :provider), deserialize_json_atoms(models, :model),
+          generated_at, snapshot_snapshot_id(snapshot)}}
+
+      %{providers: providers, models: models, generated_at: generated_at} = snapshot
       when is_list(providers) and is_list(models) ->
         # V1 snapshot with generated_at
         {:ok,
          {deserialize_json_atoms(providers, :provider), deserialize_json_atoms(models, :model),
-          generated_at}}
+          generated_at, snapshot_snapshot_id(snapshot)}}
 
-      %{providers: providers, models: models}
+      %{"providers" => providers, "models" => models, "generated_at" => generated_at} = snapshot
+      when is_list(providers) and is_list(models) ->
+        {:ok,
+         {deserialize_json_atoms(providers, :provider), deserialize_json_atoms(models, :model),
+          generated_at, snapshot_snapshot_id(snapshot)}}
+
+      %{providers: providers, models: models} = snapshot
       when is_list(providers) and is_list(models) ->
         # V1 snapshot without generated_at
         {:ok,
          {deserialize_json_atoms(providers, :provider), deserialize_json_atoms(models, :model),
-          nil}}
+          nil, snapshot_snapshot_id(snapshot)}}
+
+      %{"providers" => providers, "models" => models} = snapshot
+      when is_list(providers) and is_list(models) ->
+        {:ok,
+         {deserialize_json_atoms(providers, :provider), deserialize_json_atoms(models, :model),
+          nil, snapshot_snapshot_id(snapshot)}}
 
       _ ->
         {:error, :invalid_snapshot_format}
@@ -166,21 +196,21 @@ defmodule LLMDB.Loader do
       Enum.reduce(nested_providers, {[], []}, fn {_provider_id, provider_data},
                                                  {acc_providers, acc_models} ->
         # Extract provider without models key
-        provider = Map.delete(provider_data, :models)
+        provider = map_delete(provider_data, :models)
 
         # Get provider ID as string for models
         provider_id_str =
-          case provider_data[:id] do
+          case get_value(provider_data, :id) do
             a when is_atom(a) -> Atom.to_string(a)
             s when is_binary(s) -> s
           end
 
         # Extract models and ensure they have provider field
         models =
-          case Map.get(provider_data, :models) do
+          case get_value(provider_data, :models) do
             models when is_map(models) ->
               Enum.map(models, fn {_model_id, model_data} ->
-                Map.put_new(model_data, :provider, provider_id_str)
+                map_put_new(model_data, :provider, provider_id_str)
               end)
 
             _ ->
@@ -197,12 +227,15 @@ defmodule LLMDB.Loader do
     Enum.map(items, fn provider ->
       # Convert provider ID from JSON string to existing atom
       normalized_id =
-        case Map.get(provider, :id) do
+        case get_value(provider, :id) do
           id when is_atom(id) -> id
-          id when is_binary(id) -> String.to_existing_atom(id)
+          id when is_binary(id) -> provider_atom(id)
         end
 
-      provider_map = %{provider | id: normalized_id}
+      provider_map =
+        provider
+        |> deep_atomize_keys()
+        |> Map.put(:id, normalized_id)
 
       # Validate and create Provider struct
       case provider do
@@ -216,16 +249,22 @@ defmodule LLMDB.Loader do
     Enum.map(items, fn model ->
       # Convert provider from JSON string to existing atom
       normalized_provider =
-        case Map.get(model, :provider) do
+        case get_value(model, :provider) do
           p when is_atom(p) -> p
-          p when is_binary(p) -> String.to_existing_atom(p)
+          p when is_binary(p) -> provider_atom(p)
         end
 
       # Convert modality strings to existing atoms
       model_map =
-        case Map.get(model, :modalities) do
+        case get_value(model, :modalities) do
           %{input: input, output: output} ->
-            Map.put(model, :modalities, %{
+            put_value(model, :modalities, %{
+              input: deserialize_modality_list(input),
+              output: deserialize_modality_list(output)
+            })
+
+          %{"input" => input, "output" => output} ->
+            put_value(model, :modalities, %{
               input: deserialize_modality_list(input),
               output: deserialize_modality_list(output)
             })
@@ -234,7 +273,10 @@ defmodule LLMDB.Loader do
             model
         end
 
-      model_map = Map.put(model_map, :provider, normalized_provider)
+      model_map =
+        model_map
+        |> put_value(:provider, normalized_provider)
+        |> deep_atomize_keys()
 
       # Validate and create Model struct
       case model do
@@ -246,7 +288,7 @@ defmodule LLMDB.Loader do
 
   defp deserialize_modality_list(list) when is_list(list) do
     Enum.map(list, fn
-      s when is_binary(s) -> String.to_existing_atom(s)
+      s when is_binary(s) -> safe_existing_atom(s)
       a when is_atom(a) -> a
     end)
   end
@@ -307,7 +349,14 @@ defmodule LLMDB.Loader do
     end
   end
 
-  defp build_snapshot(providers, filtered_models, base_models, runtime, generated_at) do
+  defp build_snapshot(
+         providers,
+         filtered_models,
+         base_models,
+         runtime,
+         generated_at,
+         source_snapshot_id
+       ) do
     # Apply provider aliases AFTER all sources are loaded
     providers_with_aliases = apply_provider_aliases(providers)
 
@@ -323,6 +372,7 @@ defmodule LLMDB.Loader do
       meta: %{
         epoch: nil,
         source_generated_at: generated_at,
+        source_snapshot_id: source_snapshot_id,
         loaded_at: DateTime.utc_now() |> DateTime.to_iso8601(),
         digest: compute_digest(providers, base_models, runtime)
       }
@@ -389,4 +439,120 @@ defmodule LLMDB.Loader do
       inspect(filter)
     end
   end
+
+  defp snapshot_source(opts) do
+    base = LLMDB.Config.get()
+    Keyword.get(opts, :snapshot_source, base.snapshot_source)
+  end
+
+  defp load_snapshot_document(:packaged), do: Packaged.snapshot()
+
+  defp load_snapshot_document({:file, path}) when is_binary(path) do
+    case Snapshot.read(path) do
+      {:ok, snapshot} -> snapshot
+      {:error, _reason} -> nil
+    end
+  end
+
+  defp load_snapshot_document({:github_releases, store_opts}) do
+    {ref, overrides} = release_ref_and_overrides(store_opts)
+
+    case ReleaseStore.fetch_snapshot(ref, overrides) do
+      {:ok, %{snapshot: snapshot}} -> snapshot
+      {:error, _reason} -> nil
+    end
+  end
+
+  defp load_snapshot_document(other) when is_binary(other),
+    do: load_snapshot_document({:file, other})
+
+  defp load_snapshot_document(_), do: Packaged.snapshot()
+
+  defp release_ref_and_overrides(store_opts) do
+    normalized =
+      cond do
+        is_map(store_opts) -> store_opts
+        Keyword.keyword?(store_opts) -> Enum.into(store_opts, %{})
+        true -> %{}
+      end
+
+    ref =
+      Map.get(normalized, :ref) ||
+        Map.get(normalized, "ref") ||
+        :latest
+
+    overrides =
+      normalized
+      |> Map.delete(:ref)
+      |> Map.delete("ref")
+
+    {ref, overrides}
+  end
+
+  defp snapshot_snapshot_id(snapshot) when is_map(snapshot) do
+    snapshot["snapshot_id"] || snapshot[:snapshot_id]
+  end
+
+  defp provider_atom(provider) when is_binary(provider) do
+    safe_existing_atom(provider, true)
+  end
+
+  defp safe_existing_atom(value, allow_create \\ false)
+
+  defp safe_existing_atom(value, allow_create) when is_binary(value) do
+    String.to_existing_atom(value)
+  rescue
+    ArgumentError ->
+      _ = allow_create
+      String.to_atom(value)
+  end
+
+  defp get_value(map, key) when is_map(map) do
+    Map.get(map, key, Map.get(map, Atom.to_string(key)))
+  end
+
+  defp put_value(%_{} = struct, key, value), do: Map.put(struct, key, value)
+
+  defp put_value(map, key, value) when is_map(map) do
+    cond do
+      Map.has_key?(map, key) -> Map.put(map, key, value)
+      Map.has_key?(map, Atom.to_string(key)) -> Map.put(map, Atom.to_string(key), value)
+      true -> Map.put(map, key, value)
+    end
+  end
+
+  defp map_put_new(%_{} = struct, key, value), do: Map.put_new(struct, key, value)
+
+  defp map_put_new(map, key, value) when is_map(map) do
+    cond do
+      Map.has_key?(map, key) -> map
+      Map.has_key?(map, Atom.to_string(key)) -> map
+      true -> Map.put(map, key, value)
+    end
+  end
+
+  defp map_delete(%_{} = struct, key), do: Map.delete(struct, key)
+
+  defp map_delete(map, key) when is_map(map) do
+    map
+    |> Map.delete(key)
+    |> Map.delete(Atom.to_string(key))
+  end
+
+  defp deep_atomize_keys(%_{} = struct), do: struct
+
+  defp deep_atomize_keys(map) when is_map(map) do
+    Map.new(map, fn {key, value} ->
+      normalized_key =
+        case key do
+          key when is_atom(key) -> key
+          key when is_binary(key) -> safe_existing_atom(key, true)
+        end
+
+      {normalized_key, deep_atomize_keys(value)}
+    end)
+  end
+
+  defp deep_atomize_keys(list) when is_list(list), do: Enum.map(list, &deep_atomize_keys/1)
+  defp deep_atomize_keys(value), do: value
 end

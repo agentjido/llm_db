@@ -62,32 +62,24 @@ Pulling from configured sources...
 
 ```bash
 $ mix llm_db.build
-Running ETL pipeline...
-✓ Ingested 3 sources
-✓ Validated 450 models (3 invalid dropped)
-✓ Merged with precedence (last wins)
-✓ Filtered to 400 models (50 excluded by filters)
-✓ Enriched and indexed
-✓ Snapshot written to priv/llm_db/snapshot.json
-✓ Generated lib/llm_db/generated/valid_providers.ex
-
-Summary:
-  Providers: 12
-  Models: 400
-  Snapshot size: 1.2 MB
+$ mix llm_db.build --install
 ```
 
 **Outputs**:
 
-1. `priv/llm_db/snapshot.json` - V2 snapshot
-2. `lib/llm_db/generated/valid_providers.ex` - Pre-existing provider atoms (prevents atom leaks)
+1. `_build/llm_db/snapshot/snapshot.json` - Canonical snapshot artifact
+2. `_build/llm_db/snapshot/snapshot-meta.json` - Snapshot metadata
+3. `priv/llm_db/snapshot.json` - Installed packaged snapshot when `--install` is used
 
-### 3. Commit Changes
+### 3. Publish Snapshot Catalog Assets
 
 ```bash
-$ git add priv/llm_db/snapshot.json lib/llm_db/generated/valid_providers.ex
-$ git commit -m "Update model snapshot"
+$ mix llm_db.snapshot.publish
+$ mix llm_db.history.rebuild --publish
 ```
+
+This publishes immutable snapshot releases plus the mutable `catalog-index`
+assets: `latest.json`, `snapshot-index.json`, `history.tar.gz`, and `history-meta.json`.
 
 ## Versioning and Tagging
 
@@ -177,7 +169,7 @@ CI triggers on tag push: Hex.pm publish, GitHub release, HexDocs publish.
 - [ ] `mix llm_db.pull`
 - [ ] `mix llm_db.build`
 - [ ] `mix test`
-- [ ] Review `git diff priv/llm_db/snapshot.json`
+- [ ] Verify `mix llm_db.build --check --install`
 - [ ] Commit snapshot and generated files
 - [ ] `mix llm_db.version`
 - [ ] `mix git_ops.release`
