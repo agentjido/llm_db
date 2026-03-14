@@ -2,6 +2,7 @@ defmodule LLMDB.History.Bundle do
   @moduledoc """
   Snapshot-store helpers for local history bundles.
   """
+  @dialyzer {:nowarn_function, create_archive: 2}
 
   alias LLMDB.Snapshot
 

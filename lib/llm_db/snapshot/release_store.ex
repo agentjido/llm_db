@@ -45,7 +45,7 @@ defmodule LLMDB.Snapshot.ReleaseStore do
   @spec snapshot_tag(String.t()) :: String.t()
   def snapshot_tag(snapshot_id), do: "snapshot-#{snapshot_id}"
 
-  @spec index_asset_url(String.t(), String.t(), keyword() | map()) :: String.t()
+  @spec index_asset_url(String.t(), String.t() | nil, keyword() | map()) :: String.t()
   def index_asset_url(filename, store_file \\ nil, overrides \\ %{})
 
   def index_asset_url(filename, nil, overrides) do
@@ -184,6 +184,7 @@ defmodule LLMDB.Snapshot.ReleaseStore do
     Path.join([cache_dir, "snapshots", "#{snapshot_id}.json"])
   end
 
+  @spec fetch_json(String.t()) :: {:ok, term()} | {:error, term()}
   defp fetch_json(url) do
     with {:ok, content} <- download(url),
          {:ok, decoded} <- Jason.decode(content) do
@@ -191,6 +192,7 @@ defmodule LLMDB.Snapshot.ReleaseStore do
     end
   end
 
+  @spec download(String.t()) :: {:ok, binary()} | {:error, term()}
   defp download(url) do
     :ok = ensure_http_started()
 
@@ -243,6 +245,7 @@ defmodule LLMDB.Snapshot.ReleaseStore do
     end
   end
 
+  @spec ensure_http_started() :: :ok
   defp ensure_http_started do
     case Application.ensure_all_started(:req) do
       {:ok, _apps} -> :ok

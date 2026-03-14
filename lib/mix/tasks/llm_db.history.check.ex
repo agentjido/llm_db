@@ -55,7 +55,8 @@ defmodule Mix.Tasks.LlmDb.History.Check do
     with {:ok, remote_meta} <- ReleaseStore.fetch_history_meta(store_overrides) do
       case Bundle.read_meta(output_dir) do
         {:ok, local_meta} ->
-          if up_to_date?(local_meta, remote_meta) do
+          if local_meta["to_snapshot_id"] == remote_meta["to_snapshot_id"] and
+               local_meta["event_count"] == remote_meta["event_count"] do
             Mix.shell().info("✓ History is up to date")
           else
             Mix.raise("""
@@ -83,11 +84,6 @@ defmodule Mix.Tasks.LlmDb.History.Check do
       {:error, reason} ->
         Mix.raise("History check failed: #{inspect(reason)}")
     end
-  end
-
-  defp up_to_date?(local_meta, remote_meta) do
-    local_meta["to_snapshot_id"] == remote_meta["to_snapshot_id"] and
-      local_meta["event_count"] == remote_meta["event_count"]
   end
 
   defp maybe_put(opts, _key, nil), do: opts

@@ -1,5 +1,6 @@
 defmodule Mix.Tasks.LlmDb.History.MigrateGit do
   use Mix.Task
+  @dialyzer {:nowarn_function, publish_history_bundle!: 4}
 
   alias LLMDB.{History.Bundle, History.Migrator, Snapshot, Snapshot.ReleaseStore}
 

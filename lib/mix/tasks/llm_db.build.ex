@@ -1,5 +1,6 @@
 defmodule Mix.Tasks.LlmDb.Build do
   use Mix.Task
+  @dialyzer {:nowarn_function, run: 1}
 
   alias LLMDB.Snapshot.Builder
 

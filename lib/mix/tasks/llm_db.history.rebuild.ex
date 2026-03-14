@@ -1,5 +1,6 @@
 defmodule Mix.Tasks.LlmDb.History.Rebuild do
   use Mix.Task
+  @dialyzer {:nowarn_function, run: 1}
 
   alias LLMDB.{History.Bundle, History.Rebuilder, Snapshot.ReleaseStore}
 
