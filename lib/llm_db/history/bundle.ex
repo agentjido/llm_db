@@ -91,23 +91,17 @@ defmodule LLMDB.History.Bundle do
   end
 
   defp create_archive(history_dir, archive_path) do
-    files =
-      history_dir
-      |> Path.join("**/*")
-      |> Path.wildcard()
-      |> Enum.reject(&File.dir?/1)
-      |> Enum.map(&Path.relative_to(&1, history_dir))
+    case System.find_executable("tar") do
+      nil ->
+        {:error, :tar_unavailable}
 
-    case :erl_tar.create(
-           String.to_charlist(archive_path),
-           Enum.map(files, &String.to_charlist/1),
-           [
-             :compressed,
-             {:cwd, String.to_charlist(history_dir)}
-           ]
-         ) do
-      :ok -> :ok
-      {:error, reason} -> {:error, reason}
+      tar ->
+        case System.cmd(tar, ["-czf", archive_path, "-C", history_dir, "."],
+               stderr_to_stdout: true
+             ) do
+          {_output, 0} -> :ok
+          {output, _code} -> {:error, String.trim(output)}
+        end
     end
   end
 
