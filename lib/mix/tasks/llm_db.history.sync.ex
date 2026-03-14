@@ -71,6 +71,15 @@ defmodule Mix.Tasks.LlmDb.History.Sync do
             Mix.raise("History sync failed while extracting archive: #{inspect(reason)}")
         end
 
+      {:error, :not_found} ->
+        Mix.raise("""
+        History sync failed: no published history bundle was found.
+
+        Seed the snapshot store first with:
+
+            mix llm_db.history.migrate_git --publish
+        """)
+
       {:error, reason} ->
         Mix.raise("History sync failed: #{inspect(reason)}")
     end

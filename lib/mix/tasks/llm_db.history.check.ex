@@ -78,6 +78,18 @@ defmodule Mix.Tasks.LlmDb.History.Check do
           )
       end
     else
+      {:error, :not_found} when allow_missing? ->
+        Mix.shell().info("✓ Published history metadata unavailable (allowed)")
+
+      {:error, :not_found} ->
+        Mix.raise("""
+        History check failed: no published history metadata was found.
+
+        Seed the snapshot store first with:
+
+            mix llm_db.history.migrate_git --publish
+        """)
+
       {:error, _reason} when allow_missing? ->
         Mix.shell().info("✓ Published history metadata unavailable (allowed)")
 
