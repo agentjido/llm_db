@@ -441,6 +441,32 @@ defmodule LLMDB.Engine.EnrichTest do
       assert model.limits.context == 131_072
     end
 
+    test "matches llmfit metadata for validated model structs" do
+      write_llmfit_cache([
+        %{
+          "name" => "BAAI/bge-en-icl",
+          "provider" => "BAAI",
+          "parameter_count" => "7B",
+          "parameters_raw" => 7_000_000_000,
+          "context_length" => 32_768,
+          "pipeline_tag" => "feature-extraction"
+        }
+      ])
+
+      models = [
+        %LLMDB.Model{
+          id: "BAAI/bge-en-icl",
+          name: "BGE-ICL",
+          provider: :nebius,
+          extra: %{family: "text-embedding"}
+        }
+      ]
+
+      [model] = Enrich.enrich_models(models)
+      assert model.extra.llmfit.model_id == "BAAI/bge-en-icl"
+      assert model.limits.context == 32_768
+    end
+
     test "skips llmfit metadata when enrichment is disabled" do
       Application.put_env(:llm_db, :llmfit_enrichment, false)
 

@@ -217,14 +217,23 @@ defmodule LLMDB.Enrich do
   defp maybe_set_release_date(model, _), do: model
 
   defp find_hf_repo_id(model) do
-    from_extra = get_in(model, [:extra, :hugging_face_id])
+    from_extra =
+      model
+      |> Map.get(:extra, %{})
+      |> case do
+        extra when is_map(extra) ->
+          Map.get(extra, :hugging_face_id) || Map.get(extra, "hugging_face_id")
+
+        _ ->
+          nil
+      end
 
     cond do
       is_binary(from_extra) and byte_size(from_extra) > 0 ->
         from_extra
 
-      is_binary(model[:id]) and String.contains?(model.id, "/") ->
-        model.id
+      is_binary(model_id = Map.get(model, :id)) and String.contains?(model_id, "/") ->
+        model_id
 
       true ->
         nil
