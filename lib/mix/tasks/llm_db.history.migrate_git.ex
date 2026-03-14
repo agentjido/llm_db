@@ -105,7 +105,7 @@ defmodule Mix.Tasks.LlmDb.History.MigrateGit do
              snapshot_id,
              store_overrides
            ) do
-        :ok ->
+        {:ok, _tag} ->
           :ok
 
         {:error, reason} ->
@@ -136,7 +136,7 @@ defmodule Mix.Tasks.LlmDb.History.MigrateGit do
                latest_snapshot_id,
                store_overrides
              ) do
-          :ok -> :ok
+          {:ok, _tag} -> :ok
           {:error, reason} -> Mix.raise("Failed publishing history bundle: #{inspect(reason)}")
         end
 

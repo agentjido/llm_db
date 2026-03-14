@@ -68,7 +68,7 @@ defmodule Mix.Tasks.LlmDb.Snapshot.Publish do
         )
       end
 
-      :ok =
+      {:ok, snapshot_tag} =
         ReleaseStore.ensure_snapshot_release(
           artifact.snapshot_path,
           artifact.metadata_path,
@@ -82,13 +82,14 @@ defmodule Mix.Tasks.LlmDb.Snapshot.Publish do
         artifact.metadata
         |> Map.put("published_at", published_at)
         |> Map.put("parent_snapshot_id", latest_snapshot_id)
+        |> Map.put("tag", snapshot_tag)
         |> Map.put(
           "snapshot_url",
-          ReleaseStore.snapshot_asset_url(artifact.snapshot_id, store_overrides)
+          ReleaseStore.asset_url(snapshot_tag, Snapshot.snapshot_filename(), store_overrides)
         )
         |> Map.put(
           "snapshot_meta_url",
-          ReleaseStore.snapshot_meta_asset_url(artifact.snapshot_id, store_overrides)
+          ReleaseStore.asset_url(snapshot_tag, Snapshot.snapshot_meta_filename(), store_overrides)
         )
 
       {latest_to_publish, snapshots} =
@@ -109,7 +110,7 @@ defmodule Mix.Tasks.LlmDb.Snapshot.Publish do
       })
 
       Mix.shell().info("✓ Snapshot #{artifact.snapshot_id} published")
-      Mix.shell().info("  snapshot release: #{ReleaseStore.snapshot_tag(artifact.snapshot_id)}")
+      Mix.shell().info("  snapshot release: #{snapshot_tag}")
       Mix.shell().info("  latest index:     #{latest_path}")
       Mix.shell().info("  snapshot index:   #{index_path}")
     else

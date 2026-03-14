@@ -85,18 +85,21 @@ defmodule Mix.Tasks.LlmDb.History.Rebuild do
 
       case Bundle.bundle(bundle_opts) do
         {:ok, bundle} ->
-          if opts[:publish] do
-            to_snapshot_id =
-              summary.to_snapshot_id ||
-                raise "History rebuild failed: missing to_snapshot_id for publish"
+          history_release_tag =
+            if opts[:publish] do
+              to_snapshot_id =
+                summary.to_snapshot_id ||
+                  raise "History rebuild failed: missing to_snapshot_id for publish"
 
-            :ok =
-              ReleaseStore.publish_history_release(
-                [bundle.archive_path, bundle.metadata_path],
-                to_snapshot_id,
-                store_overrides
-              )
-          end
+              case ReleaseStore.publish_history_release(
+                     [bundle.archive_path, bundle.metadata_path],
+                     to_snapshot_id,
+                     store_overrides
+                   ) do
+                {:ok, tag} -> tag
+                {:error, reason} -> Mix.raise("History rebuild failed: #{inspect(reason)}")
+              end
+            end
 
           Mix.shell().info("✓ History rebuilt")
           Mix.shell().info("  history dir: #{summary.output_dir}")
@@ -106,9 +109,7 @@ defmodule Mix.Tasks.LlmDb.History.Rebuild do
           Mix.shell().info("  events:      #{summary.events_written}")
 
           if opts[:publish] do
-            Mix.shell().info(
-              "  published history release: #{ReleaseStore.history_tag(summary.to_snapshot_id)}"
-            )
+            Mix.shell().info("  published history release: #{history_release_tag}")
           end
 
         {:error, reason} ->
