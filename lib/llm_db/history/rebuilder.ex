@@ -209,6 +209,7 @@ defmodule LLMDB.History.Rebuilder do
       "unique_snapshots_written" =>
         observations |> Enum.map(& &1["snapshot_id"]) |> MapSet.new() |> MapSet.size(),
       "events_written" => result.events_written,
+      "event_count" => result.events_written,
       "from_snapshot_id" => observations |> List.first() |> snapshot_id_from_observation(),
       "to_snapshot_id" => observations |> List.last() |> snapshot_id_from_observation(),
       "snapshot_index_path" => snapshot_index_path
