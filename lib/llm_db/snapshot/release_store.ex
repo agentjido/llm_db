@@ -221,7 +221,10 @@ defmodule LLMDB.Snapshot.ReleaseStore do
         :ok
 
       {:error, _reason} ->
-        run_gh(["release", "create", tag, "--repo", repo, "--title", title, "--notes", ""])
+        case run_gh(["release", "create", tag, "--repo", repo, "--title", title, "--notes", ""]) do
+          {:ok, _output} -> :ok
+          {:error, reason} -> {:error, reason}
+        end
     end
   end
 
@@ -234,7 +237,10 @@ defmodule LLMDB.Snapshot.ReleaseStore do
         :ok
 
       _ ->
-        run_gh(["release", "upload", tag, "--repo", repo, "--clobber" | existing_assets])
+        case run_gh(["release", "upload", tag, "--repo", repo, "--clobber" | existing_assets]) do
+          {:ok, _output} -> :ok
+          {:error, reason} -> {:error, reason}
+        end
     end
   end
 
