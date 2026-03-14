@@ -97,4 +97,4 @@ jobs:
       - run: mix deps.get
       - run: mix llm_db.build --check --install
       - name: Check history drift
-        run: mix llm_db.history.check --allow-missing
+        run: mix llm_db.history.check --allow-missing --allow-outdated

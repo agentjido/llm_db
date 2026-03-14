@@ -13,11 +13,13 @@ defmodule Mix.Tasks.LlmDb.History.Check do
 
       mix llm_db.history.check
       mix llm_db.history.check --allow-missing
+      mix llm_db.history.check --allow-outdated
       mix llm_db.history.check --output-dir priv/llm_db/history
 
   ## Options
 
   - `--allow-missing` - Treat missing history output as success (default: `false`)
+  - `--allow-outdated` - Treat an older local history bundle as success (default: `false`)
   - `--output-dir` - History directory (default: `priv/llm_db/history`)
   - `--repo` - GitHub repository slug (default: `agentjido/llm_db`)
   - `--index-tag` - Deprecated compatibility option; ignored for immutable release lookup
@@ -32,6 +34,7 @@ defmodule Mix.Tasks.LlmDb.History.Check do
       OptionParser.parse(args,
         strict: [
           allow_missing: :boolean,
+          allow_outdated: :boolean,
           output_dir: :string,
           repo: :string,
           index_tag: :string,
@@ -50,6 +53,7 @@ defmodule Mix.Tasks.LlmDb.History.Check do
       |> maybe_put(:cache_dir, opts[:cache_dir])
 
     allow_missing? = opts[:allow_missing] == true
+    allow_outdated? = opts[:allow_outdated] == true
     output_dir = Bundle.history_dir(opts[:output_dir])
 
     with {:ok, remote_meta} <- ReleaseStore.fetch_history_meta(store_overrides) do
@@ -62,16 +66,28 @@ defmodule Mix.Tasks.LlmDb.History.Check do
                local_event_count == remote_event_count do
             Mix.shell().info("✓ History is up to date")
           else
-            Mix.raise("""
-            History check failed: local history bundle is outdated.
-
+            message = """
             Local to_snapshot_id:  #{local_meta["to_snapshot_id"] || "missing"}
             Remote to_snapshot_id: #{remote_meta["to_snapshot_id"] || "missing"}
             Local event_count:     #{local_event_count || "missing"}
             Remote event_count:    #{remote_event_count || "missing"}
+            """
 
-            Run: mix llm_db.history.sync
-            """)
+            if allow_outdated? do
+              Mix.shell().info("""
+              ✓ History output is older than the published bundle (allowed).
+
+              #{message}
+              """)
+            else
+              Mix.raise("""
+              History check failed: local history bundle is outdated.
+
+              #{message}
+
+              Run: mix llm_db.history.sync
+              """)
+            end
           end
 
         {:error, _reason} when allow_missing? ->

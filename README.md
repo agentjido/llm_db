@@ -276,6 +276,7 @@ mix llm_db.snapshot.publish
 mix llm_db.history.rebuild --publish
 mix llm_db.history.sync
 mix llm_db.history.check
+mix llm_db.history.check --allow-outdated
 ```
 
 For exceptional spec migrations (renames/provider moves that inference cannot match),
