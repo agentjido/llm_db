@@ -17,9 +17,6 @@ defmodule LLMDB.Application do
     # Ensure modality atoms exist before loading snapshot
     _ = LLMDB.Generated.ValidModalities.list()
 
-    # Ensure provider atoms exist before loading snapshot
-    _ = LLMDB.Generated.ValidProviders.list()
-
     if Application.get_env(:llm_db, :skip_packaged_load, false) do
       {:ok, self()}
     else

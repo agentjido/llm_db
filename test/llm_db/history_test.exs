@@ -179,15 +179,13 @@ defmodule LLMDB.HistoryTest do
     File.mkdir_p!(Path.join(dir, "events"))
 
     meta = %{
-      "commits_scanned" => 3,
-      "commits_processed" => 3,
       "snapshots_written" => 3,
+      "unique_snapshots_written" => 3,
       "events_written" => 3,
-      "output_dir" => dir,
-      "from_commit" => "a",
-      "to_commit" => "c",
+      "from_snapshot_id" => "a",
+      "to_snapshot_id" => "c",
       "generated_at" => "2026-02-25T00:00:00Z",
-      "source_repo" => "git@github.com:agentjido/llm_db.git"
+      "source" => "snapshot_store"
     }
 
     File.write!(Path.join(dir, "meta.json"), Jason.encode!(meta, pretty: true))

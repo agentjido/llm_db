@@ -172,6 +172,16 @@ defmodule LLMDB.History.Backfill do
     introduced ++ removed ++ changed
   end
 
+  @doc false
+  @spec snapshot_digest(%{optional(String.t()) => map()}) :: String.t()
+  def snapshot_digest(models) when is_map(models) do
+    models
+    |> canonical_digest_term()
+    |> :erlang.term_to_binary()
+    |> then(&:crypto.hash(:sha256, &1))
+    |> Base.encode16(case: :lower)
+  end
+
   # Internal pipeline
 
   defp sync_from_meta(meta, to_ref, output_dir, lineage_overrides) do
@@ -477,7 +487,7 @@ defmodule LLMDB.History.Backfill do
       {:ok,
        %{
          model_count: map_size(models),
-         digest: models_digest(models)
+         digest: snapshot_digest(models)
        }}
     end
   end
@@ -1127,7 +1137,7 @@ defmodule LLMDB.History.Backfill do
       captured_at: commit_date,
       manifest_generated_at: manifest_generated_at,
       model_count: map_size(models),
-      digest: models_digest(models),
+      digest: snapshot_digest(models),
       event_count: length(events)
     }
 
@@ -1251,12 +1261,28 @@ defmodule LLMDB.History.Backfill do
     File.write!(path, line, [:append])
   end
 
-  defp models_digest(models) do
-    models
-    |> :erlang.term_to_binary()
-    |> then(&:crypto.hash(:sha256, &1))
-    |> Base.encode16(case: :lower)
+  defp canonical_digest_term(value) when is_map(value) do
+    entries =
+      value
+      |> Enum.map(fn {key, nested} -> {key, canonical_digest_term(nested)} end)
+      |> Enum.sort_by(fn {key, _nested} -> canonical_sort_key(key) end)
+
+    {:map, entries}
   end
+
+  defp canonical_digest_term(value) when is_list(value) do
+    {:list, Enum.map(value, &canonical_digest_term/1)}
+  end
+
+  defp canonical_digest_term(value), do: value
+
+  defp canonical_sort_key(value) when is_binary(value), do: {0, value}
+  defp canonical_sort_key(value) when is_atom(value), do: {1, Atom.to_string(value)}
+  defp canonical_sort_key(value) when is_integer(value), do: {2, value}
+  defp canonical_sort_key(value) when is_float(value), do: {3, value}
+  defp canonical_sort_key(value) when is_boolean(value), do: {4, value}
+  defp canonical_sort_key(nil), do: {5, nil}
+  defp canonical_sort_key(value), do: {6, inspect(value)}
 
   defp commit_date_iso8601(sha) do
     case git(["show", "-s", "--format=%cI", sha]) do

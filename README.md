@@ -253,23 +253,27 @@ Snapshot is shipped with the library. To rebuild with fresh data:
 # Fetch upstream data (optional)
 mix llm_db.pull
 
-# Run ETL and write snapshot.json
+# Build canonical snapshot artifacts
 mix llm_db.build
+
+# Install the packaged snapshot for local runtime/package validation
+mix llm_db.build --install
 ```
 
-To generate historical change events from committed snapshot history (initial setup):
+To migrate legacy Git-tracked metadata history into the snapshot store (one-time maintainer task):
 
 ```bash
-mix llm_db.history.backfill --force
+mix llm_db.history.migrate_git
 ```
 
-This writes append-only NDJSON history artifacts under `priv/llm_db/history/`:
-`priv/llm_db/history/events/YYYY.ndjson`,
-`priv/llm_db/history/snapshots.ndjson`, and `priv/llm_db/history/meta.json`.
+This writes snapshot-based history artifacts under `priv/llm_db/history/` and
+materializes immutable historical snapshots under `_build/llm_db/snapshot_store/snapshots/`.
 
-For daily/incremental maintenance:
+For daily publication and local history maintenance:
 
 ```bash
+mix llm_db.snapshot.publish
+mix llm_db.history.rebuild --publish
 mix llm_db.history.sync
 mix llm_db.history.check
 ```
@@ -286,8 +290,8 @@ add optional lineage overrides in `priv/llm_db/history/lineage_overrides.json`:
 }
 ```
 
-History artifacts are intended for Git/path dependencies and local repo usage.
-Hex packages do not guarantee inclusion of `priv/llm_db/history/**`.
+History artifacts remain optional local/published data.
+Hex packages still only ship `priv/llm_db/snapshot.json`.
 
 See the [Sources & Engine](guides/sources-and-engine.md) guide for details.
 

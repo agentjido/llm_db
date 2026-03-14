@@ -83,6 +83,7 @@ defmodule LLMDB.Config do
 
   A map with keys:
   - `:compile_embed` - Whether to compile-time embed snapshot (default: false)
+  - `:snapshot_source` - Snapshot source descriptor (default: `:packaged`)
   - `:allow` - Allow patterns (`:all` or `%{provider => [patterns]}`)
   - `:deny` - Deny patterns (`%{provider => [patterns]}`)
   - `:prefer` - List of preferred provider atoms
@@ -99,6 +100,7 @@ defmodule LLMDB.Config do
 
     %{
       compile_embed: Keyword.get(config, :compile_embed, false),
+      snapshot_source: Keyword.get(config, :snapshot_source, :packaged),
       allow: allow,
       deny: deny,
       prefer: Keyword.get(config, :prefer, []),

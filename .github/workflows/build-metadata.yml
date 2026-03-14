@@ -1,4 +1,4 @@
-name: Refresh Upstream Metadata
+name: Publish Snapshot Catalog
 
 on:
   schedule:
@@ -9,13 +9,15 @@ permissions:
   contents: write
 
 jobs:
-  update-metadata:
-    name: Pull and update LLM model metadata
+  publish-snapshot:
+    name: Pull upstream metadata and publish snapshot
     runs-on: ubuntu-latest
     timeout-minutes: 30
     concurrency:
       group: llm-metadata
       cancel-in-progress: false
+    env:
+      GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
     steps:
       - name: Checkout main
@@ -64,62 +66,26 @@ jobs:
           set -euo pipefail
           echo "Pulling latest LLM model metadata..."
           mix llm_db.pull
-          mix llm_db.build
+          mix llm_db.snapshot.publish
 
-      - name: Commit metadata artifacts
-        id: metadata_commit
+      - name: Install packaged snapshot for validation
         run: |
           set -euo pipefail
+          mix llm_db.build --install
 
-          git add -A -- priv/llm_db lib/llm_db/generated
-          git restore --staged -- priv/llm_db/history
-
-          if git diff --cached --quiet; then
-            echo "created=false" >> "$GITHUB_OUTPUT"
-            echo "No non-history metadata changes detected."
-            exit 0
-          fi
-
-          git commit -m "chore: refresh model metadata"
-          echo "created=true" >> "$GITHUB_OUTPUT"
-
-      - name: Sync history to committed metadata
+      - name: Rebuild and publish history bundle
         run: |
           set -euo pipefail
-          mix llm_db.history.sync --to HEAD
+          mix llm_db.history.rebuild --publish
 
-      - name: Commit synced history
-        id: history_commit
+      - name: Validate published catalog
         run: |
           set -euo pipefail
-
-          git add -A -- priv/llm_db/history
-
-          if git diff --cached --quiet; then
-            echo "created=false" >> "$GITHUB_OUTPUT"
-            echo "No history changes detected."
-            exit 0
-          fi
-
-          git commit -m "chore: sync model history"
-          echo "created=true" >> "$GITHUB_OUTPUT"
-
-      - name: Validate refreshed catalog
-        if: steps.metadata_commit.outputs.created == 'true' || steps.history_commit.outputs.created == 'true'
-        run: |
-          set -euo pipefail
-          mix llm_db.build --check
-          mix llm_db.history.check
+          mix llm_db.build --check --install
+          mix llm_db.history.check --allow-missing
           mix test
 
-      - name: Push refreshed catalog to main
-        if: steps.metadata_commit.outputs.created == 'true' || steps.history_commit.outputs.created == 'true'
+      - name: Report success
         run: |
-          set -euo pipefail
-          git push origin HEAD:main
-
-      - name: Report no changes
-        if: steps.metadata_commit.outputs.created != 'true' && steps.history_commit.outputs.created != 'true'
-        run: |
-          echo "No metadata or history changes detected."
-          echo "### No Changes Detected" >> "$GITHUB_STEP_SUMMARY"
+          echo "### Snapshot Publish Complete" >> "$GITHUB_STEP_SUMMARY"
+          echo "- Snapshot release and catalog index updated" >> "$GITHUB_STEP_SUMMARY"

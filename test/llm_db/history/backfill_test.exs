@@ -81,6 +81,45 @@ defmodule LLMDB.History.BackfillTest do
     end
   end
 
+  describe "snapshot_digest/1" do
+    test "is stable for equivalent model maps regardless of map key order" do
+      models_a = %{
+        "openai:gpt-4o" => %{
+          "id" => "gpt-4o",
+          "provider" => "openai",
+          "pricing" => %{"output" => 2.5, "input" => 1.25},
+          "limits" => %{"max_output_tokens" => 16_384, "context" => 128_000},
+          "aliases" => ["chatgpt-4o-latest", "gpt-4o-latest"]
+        },
+        "anthropic:claude-sonnet-4" => %{
+          "provider" => "anthropic",
+          "id" => "claude-sonnet-4",
+          "limits" => %{"context" => 200_000, "max_output_tokens" => 8_192}
+        }
+      }
+
+      models_b = %{
+        "anthropic:claude-sonnet-4" => %{
+          "limits" => %{"max_output_tokens" => 8_192, "context" => 200_000},
+          "id" => "claude-sonnet-4",
+          "provider" => "anthropic"
+        },
+        "openai:gpt-4o" => %{
+          "aliases" => ["chatgpt-4o-latest", "gpt-4o-latest"],
+          "limits" => %{"context" => 128_000, "max_output_tokens" => 16_384},
+          "pricing" => %{"input" => 1.25, "output" => 2.5},
+          "provider" => "openai",
+          "id" => "gpt-4o"
+        }
+      }
+
+      assert Backfill.snapshot_digest(models_a) == Backfill.snapshot_digest(models_b)
+
+      assert Backfill.snapshot_digest(models_a) ==
+               "394e65bbcd07442b886d554fb25fddd33bf47393c9b7996e1c71a4f4dae892e0"
+    end
+  end
+
   describe "sync/1" do
     test "bootstraps on empty output directory and is idempotent" do
       output_dir = temp_output_dir()
