@@ -208,10 +208,10 @@ defmodule LLMDB.Sources.Zenmux do
     capabilities =
       cond do
         String.contains?(id, ["claude", "qwen"]) ->
-          Map.put(capabilities, :caching, %{type: :explicit})
+          Map.put(capabilities, :caching, %{type: "explicit"})
 
         String.contains?(id, ["gpt", "gemini", "deepseek", "grok"]) ->
-          Map.put(capabilities, :caching, %{type: :implicit})
+          Map.put(capabilities, :caching, %{type: "implicit"})
 
         true ->
           capabilities

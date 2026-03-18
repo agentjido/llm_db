@@ -1,6 +1,6 @@
 defmodule LLMDB.Sources.ZenmuxTest do
   use ExUnit.Case, async: true
-  alias LLMDB.Sources.Zenmux
+  alias LLMDB.{Sources.Zenmux, Validate}
 
   describe "transform/1" do
     test "correctly transforms basic model list" do
@@ -37,7 +37,9 @@ defmodule LLMDB.Sources.ZenmuxTest do
       result = Zenmux.transform(input)
       model = hd(result["zenmux"].models)
 
-      assert model.capabilities.caching.type == :implicit
+      assert model.capabilities.caching.type == "implicit"
+      assert {:ok, validated} = Validate.validate_model(model)
+      assert validated.capabilities.caching.type == "implicit"
     end
 
     test "infers explicit caching for Claude models" do
@@ -48,7 +50,9 @@ defmodule LLMDB.Sources.ZenmuxTest do
       result = Zenmux.transform(input)
       model = hd(result["zenmux"].models)
 
-      assert model.capabilities.caching.type == :explicit
+      assert model.capabilities.caching.type == "explicit"
+      assert {:ok, validated} = Validate.validate_model(model)
+      assert validated.capabilities.caching.type == "explicit"
     end
 
     test "infers image generation modality" do
