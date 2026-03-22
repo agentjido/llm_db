@@ -34,8 +34,17 @@ defmodule LLMDB.Application do
     env_path = Path.join(File.cwd!(), ".env")
 
     if File.exists?(env_path) and not File.dir?(env_path) do
-      vars = Dotenvy.source!(env_path)
-      System.put_env(vars)
+      case Dotenvy.source(env_path) do
+        {:ok, env_map} ->
+          Enum.each(env_map, fn {key, value} ->
+            if System.get_env(key) == nil do
+              System.put_env(key, value)
+            end
+          end)
+
+        {:error, _reason} ->
+          :ok
+      end
     end
   end
 end
