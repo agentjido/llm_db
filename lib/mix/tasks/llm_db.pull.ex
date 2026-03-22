@@ -260,19 +260,21 @@ defmodule Mix.Tasks.LlmDb.Pull do
   end
 
   defp load_dotenv do
-    env_path = Path.join(File.cwd!(), ".env")
+    if Application.get_env(:llm_db, :load_dotenv, true) do
+      env_path = Path.join(File.cwd!(), ".env")
 
-    if File.exists?(env_path) and not File.dir?(env_path) do
-      case Dotenvy.source(env_path) do
-        {:ok, env_map} ->
-          Enum.each(env_map, fn {key, value} ->
-            if System.get_env(key) == nil do
-              System.put_env(key, value)
-            end
-          end)
+      if File.exists?(env_path) and not File.dir?(env_path) do
+        case Dotenvy.source(env_path) do
+          {:ok, env_map} ->
+            Enum.each(env_map, fn {key, value} ->
+              if System.get_env(key) == nil do
+                System.put_env(key, value)
+              end
+            end)
 
-        {:error, _reason} ->
-          :ok
+          {:error, _reason} ->
+            :ok
+        end
       end
     end
   end

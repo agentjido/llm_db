@@ -148,6 +148,7 @@ The packaged snapshot loads automatically at app start. Optional runtime filters
 ```elixir
 # config/runtime.exs
 config :llm_db,
+  load_dotenv: true,                  # set false to skip .env loading
   filter: %{
     allow: :all,                     # :all or %{provider => [patterns]}
     deny: %{openai: ["*-preview"]}   # deny patterns override allow
@@ -164,6 +165,8 @@ config :llm_db,
     ]
   }
 ```
+
+**`.env` loading:** When `load_dotenv` is `true` (the default), LLM DB loads variables from a `.env` file at application start. Environment variables already set by the OS, shell, or tools like `direnv` are never overwritten. Set `load_dotenv: false` to skip `.env` loading entirely.
 
 ### Filter Examples
 
