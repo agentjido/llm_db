@@ -37,8 +37,8 @@ jobs:
       - name: Set up Elixir
         uses: erlef/setup-beam@v1
         with:
-          elixir-version: "1.16"
-          otp-version: "26"
+          elixir-version: "1.18"
+          otp-version: "27"
 
       - name: Restore dependencies cache
         uses: actions/cache@v4
@@ -46,9 +46,9 @@ jobs:
           path: |
             deps
             _build
-          key: mix-${{ runner.os }}-elixir-1.16-otp-26-${{ hashFiles('**/mix.lock') }}
+          key: mix-${{ runner.os }}-elixir-1.18-otp-27-${{ hashFiles('**/mix.lock') }}
           restore-keys: |
-            mix-${{ runner.os }}-elixir-1.16-otp-26-
+            mix-${{ runner.os }}-elixir-1.18-otp-27-
 
       - name: Install dependencies
         run: |
@@ -66,12 +66,34 @@ jobs:
           set -euo pipefail
           echo "Pulling latest LLM model metadata..."
           mix llm_db.pull
-          mix llm_db.snapshot.publish
 
-      - name: Install packaged snapshot for validation
+      - name: Build packaged snapshot from refreshed metadata
         run: |
           set -euo pipefail
           mix llm_db.build --install
+
+      - name: Commit refreshed metadata inputs
+        run: |
+          set -euo pipefail
+          if [ -z "$(git status --porcelain -- \
+            priv/llm_db/upstream \
+            priv/llm_db/remote \
+            priv/llm_db/snapshot.json)" ]; then
+            echo "No metadata changes to commit"
+            exit 0
+          fi
+
+          git add \
+            priv/llm_db/upstream \
+            priv/llm_db/remote \
+            priv/llm_db/snapshot.json
+          git commit -m "chore: refresh metadata caches and snapshot"
+          git push origin HEAD:main
+
+      - name: Publish snapshot from committed repo state
+        run: |
+          set -euo pipefail
+          mix llm_db.snapshot.publish
 
       - name: Rebuild and publish history bundle
         run: |

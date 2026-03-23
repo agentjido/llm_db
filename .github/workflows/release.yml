@@ -49,8 +49,8 @@ jobs:
       - name: Set up Elixir
         uses: erlef/setup-beam@v1
         with:
-          elixir-version: "1.16"
-          otp-version: "26"
+          elixir-version: "1.18"
+          otp-version: "27"
 
       - name: Restore dependencies cache
         uses: actions/cache@v4
@@ -58,9 +58,9 @@ jobs:
           path: |
             deps
             _build
-          key: mix-${{ runner.os }}-elixir-1.16-otp-26-${{ hashFiles('**/mix.lock') }}
+          key: mix-${{ runner.os }}-elixir-1.18-otp-27-${{ hashFiles('**/mix.lock') }}
           restore-keys: |
-            mix-${{ runner.os }}-elixir-1.16-otp-26-
+            mix-${{ runner.os }}-elixir-1.18-otp-27-
 
       - name: Install dependencies
         run: |
@@ -68,10 +68,10 @@ jobs:
           mix deps.get
           MIX_ENV=dev mix deps.compile git_ops
 
-      - name: Fetch latest published snapshot
+      - name: Validate committed snapshot
         run: |
           set -euo pipefail
-          mix llm_db.snapshot.fetch --ref latest --install
+          mix llm_db.build --check --install
 
       - name: Run tests
         if: ${{ inputs.skip_tests != true }}
