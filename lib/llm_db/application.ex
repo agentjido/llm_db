@@ -12,7 +12,7 @@ defmodule LLMDB.Application do
   @impl true
   def start(_type, _args) do
     # Load .env file if it exists
-    load_dotenv()
+    LLMDB.Dotenv.load!()
 
     # Ensure modality atoms exist before loading snapshot
     _ = LLMDB.Generated.ValidModalities.list()
@@ -26,26 +26,6 @@ defmodule LLMDB.Application do
 
         {:error, reason} ->
           {:error, reason}
-      end
-    end
-  end
-
-  defp load_dotenv do
-    if Application.get_env(:llm_db, :load_dotenv, true) do
-      env_path = Path.join(File.cwd!(), ".env")
-
-      if File.exists?(env_path) and not File.dir?(env_path) do
-        case Dotenvy.source(env_path) do
-          {:ok, env_map} ->
-            Enum.each(env_map, fn {key, value} ->
-              if System.get_env(key) == nil do
-                System.put_env(key, value)
-              end
-            end)
-
-          {:error, _reason} ->
-            :ok
-        end
       end
     end
   end
