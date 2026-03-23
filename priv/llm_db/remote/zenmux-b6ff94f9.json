@@ -589,7 +589,7 @@
           {
             "currency": "USD",
             "unit": "perCount",
-            "value": 0.014
+            "value": 0.01
           }
         ]
       }
@@ -633,11 +633,20 @@
             "unit": "perMTokens",
             "value": 2
           }
+        ],
+        "web_search": [
+          {
+            "currency": "USD",
+            "unit": "perCount",
+            "value": 0.025
+          }
         ]
       }
     },
     {
-      "capabilities": {},
+      "capabilities": {
+        "reasoning": false
+      },
       "context_length": 200000,
       "created": 1755152798,
       "display_name": "Anthropic: Claude 3.5 Haiku",
@@ -650,7 +659,37 @@
       "output_modalities": [
         "text"
       ],
-      "owned_by": "anthropic"
+      "owned_by": "anthropic",
+      "pricings": {
+        "completion": [
+          {
+            "currency": "USD",
+            "unit": "perMTokens",
+            "value": 4
+          }
+        ],
+        "input_cache_read": [
+          {
+            "currency": "USD",
+            "unit": "perMTokens",
+            "value": 0.08
+          }
+        ],
+        "input_cache_write_5_min": [
+          {
+            "currency": "USD",
+            "unit": "perMTokens",
+            "value": 1
+          }
+        ],
+        "prompt": [
+          {
+            "currency": "USD",
+            "unit": "perMTokens",
+            "value": 0.8
+          }
+        ]
+      }
     },
     {
       "capabilities": {
@@ -710,7 +749,9 @@
       }
     },
     {
-      "capabilities": {},
+      "capabilities": {
+        "reasoning": true
+      },
       "context_length": 200000,
       "created": 1755152713,
       "display_name": "Anthropic: Claude 3.7 Sonnet",
@@ -724,7 +765,37 @@
       "output_modalities": [
         "text"
       ],
-      "owned_by": "anthropic"
+      "owned_by": "anthropic",
+      "pricings": {
+        "completion": [
+          {
+            "currency": "USD",
+            "unit": "perMTokens",
+            "value": 15
+          }
+        ],
+        "input_cache_read": [
+          {
+            "currency": "USD",
+            "unit": "perMTokens",
+            "value": 0.3
+          }
+        ],
+        "input_cache_write_5_min": [
+          {
+            "currency": "USD",
+            "unit": "perMTokens",
+            "value": 3.75
+          }
+        ],
+        "prompt": [
+          {
+            "currency": "USD",
+            "unit": "perMTokens",
+            "value": 3
+          }
+        ]
+      }
     },
     {
       "capabilities": {
@@ -732,7 +803,7 @@
       },
       "context_length": 64000,
       "created": 1755162704,
-      "display_name": "DeepSeek: R1 0528",
+      "display_name": "DeepSeek: DeepSeek R1 0528",
       "id": "deepseek/deepseek-r1-0528",
       "input_modalities": [
         "text"
@@ -1026,7 +1097,7 @@
           {
             "currency": "USD",
             "unit": "perCount",
-            "value": 0.014
+            "value": 0.01
           }
         ]
       }
@@ -1693,6 +1764,11 @@
         "completion": [
           {
             "conditions": {
+              "completion_tokens": {
+                "gte": 0,
+                "lt": 0.2,
+                "unit": "kTokens"
+              },
               "prompt_tokens": {
                 "gte": 0,
                 "lt": 32,
@@ -1701,23 +1777,49 @@
             },
             "currency": "USD",
             "unit": "perMTokens",
-            "value": 0.56
+            "value": 0.2911
           },
           {
             "conditions": {
+              "completion_tokens": {
+                "gte": 0.2,
+                "unit": "kTokens"
+              },
               "prompt_tokens": {
-                "gte": 32,
+                "gte": 0,
+                "lt": 32,
                 "unit": "kTokens"
               }
             },
             "currency": "USD",
             "unit": "perMTokens",
-            "value": 1.12
+            "value": 0.8734
+          },
+          {
+            "conditions": {
+              "completion_tokens": {
+                "gte": 0,
+                "unit": "kTokens"
+              },
+              "prompt_tokens": {
+                "gte": 32,
+                "lt": 128,
+                "unit": "kTokens"
+              }
+            },
+            "currency": "USD",
+            "unit": "perMTokens",
+            "value": 1.1645
           }
         ],
         "input_cache_read": [
           {
             "conditions": {
+              "completion_tokens": {
+                "gte": 0,
+                "lt": 0.2,
+                "unit": "kTokens"
+              },
               "prompt_tokens": {
                 "gte": 0,
                 "lt": 32,
@@ -1726,23 +1828,49 @@
             },
             "currency": "USD",
             "unit": "perMTokens",
-            "value": 0.022
+            "value": 0.0233
           },
           {
             "conditions": {
+              "completion_tokens": {
+                "gte": 0.2,
+                "unit": "kTokens"
+              },
               "prompt_tokens": {
-                "gte": 32,
+                "gte": 0,
+                "lt": 32,
                 "unit": "kTokens"
               }
             },
             "currency": "USD",
             "unit": "perMTokens",
-            "value": 0.034
+            "value": 0.0233
+          },
+          {
+            "conditions": {
+              "completion_tokens": {
+                "gte": 0,
+                "unit": "kTokens"
+              },
+              "prompt_tokens": {
+                "gte": 32,
+                "lt": 128,
+                "unit": "kTokens"
+              }
+            },
+            "currency": "USD",
+            "unit": "perMTokens",
+            "value": 0.0349
           }
         ],
         "prompt": [
           {
             "conditions": {
+              "completion_tokens": {
+                "gte": 0,
+                "lt": 0.2,
+                "unit": "kTokens"
+              },
               "prompt_tokens": {
                 "gte": 0,
                 "lt": 32,
@@ -1751,18 +1879,39 @@
             },
             "currency": "USD",
             "unit": "perMTokens",
-            "value": 0.11
+            "value": 0.1165
           },
           {
             "conditions": {
+              "completion_tokens": {
+                "gte": 0.2,
+                "unit": "kTokens"
+              },
               "prompt_tokens": {
-                "gte": 32,
+                "gte": 0,
+                "lt": 32,
                 "unit": "kTokens"
               }
             },
             "currency": "USD",
             "unit": "perMTokens",
-            "value": 0.17
+            "value": 0.1165
+          },
+          {
+            "conditions": {
+              "completion_tokens": {
+                "gte": 0,
+                "unit": "kTokens"
+              },
+              "prompt_tokens": {
+                "gte": 32,
+                "lt": 128,
+                "unit": "kTokens"
+              }
+            },
+            "currency": "USD",
+            "unit": "perMTokens",
+            "value": 0.1747
           }
         ]
       }
@@ -2083,7 +2232,7 @@
           {
             "currency": "USD",
             "unit": "perMTokens",
-            "value": 2.5
+            "value": 2.33
           }
         ],
         "input_cache_read": [
@@ -2097,7 +2246,7 @@
           {
             "currency": "USD",
             "unit": "perMTokens",
-            "value": 0.6
+            "value": 0.58
           }
         ]
       }
@@ -2162,6 +2311,11 @@
         "completion": [
           {
             "conditions": {
+              "completion_tokens": {
+                "gte": 0,
+                "lt": 0.2,
+                "unit": "kTokens"
+              },
               "prompt_tokens": {
                 "gte": 0,
                 "lt": 32,
@@ -2170,23 +2324,49 @@
             },
             "currency": "USD",
             "unit": "perMTokens",
-            "value": 1.54
+            "value": 1.1645
           },
           {
             "conditions": {
+              "completion_tokens": {
+                "gte": 0.2,
+                "unit": "kTokens"
+              },
               "prompt_tokens": {
-                "gte": 32,
+                "gte": 0,
+                "lt": 32,
                 "unit": "kTokens"
               }
             },
             "currency": "USD",
             "unit": "perMTokens",
-            "value": 2.25
+            "value": 2.038
+          },
+          {
+            "conditions": {
+              "completion_tokens": {
+                "gte": 0,
+                "unit": "kTokens"
+              },
+              "prompt_tokens": {
+                "gte": 32,
+                "lt": 128,
+                "unit": "kTokens"
+              }
+            },
+            "currency": "USD",
+            "unit": "perMTokens",
+            "value": 2.3291
           }
         ],
         "input_cache_read": [
           {
             "conditions": {
+              "completion_tokens": {
+                "gte": 0,
+                "lt": 0.2,
+                "unit": "kTokens"
+              },
               "prompt_tokens": {
                 "gte": 0,
                 "lt": 32,
@@ -2195,23 +2375,49 @@
             },
             "currency": "USD",
             "unit": "perMTokens",
-            "value": 0.07
+            "value": 0.0582
           },
           {
             "conditions": {
+              "completion_tokens": {
+                "gte": 0.2,
+                "unit": "kTokens"
+              },
               "prompt_tokens": {
-                "gte": 32,
+                "gte": 0,
+                "lt": 32,
                 "unit": "kTokens"
               }
             },
             "currency": "USD",
             "unit": "perMTokens",
-            "value": 0.11
+            "value": 0.0873
+          },
+          {
+            "conditions": {
+              "completion_tokens": {
+                "gte": 0,
+                "unit": "kTokens"
+              },
+              "prompt_tokens": {
+                "gte": 32,
+                "lt": 128,
+                "unit": "kTokens"
+              }
+            },
+            "currency": "USD",
+            "unit": "perMTokens",
+            "value": 0.1165
           }
         ],
         "prompt": [
           {
             "conditions": {
+              "completion_tokens": {
+                "gte": 0,
+                "lt": 0.2,
+                "unit": "kTokens"
+              },
               "prompt_tokens": {
                 "gte": 0,
                 "lt": 32,
@@ -2220,18 +2426,39 @@
             },
             "currency": "USD",
             "unit": "perMTokens",
-            "value": 0.35
+            "value": 0.2911
           },
           {
             "conditions": {
+              "completion_tokens": {
+                "gte": 0.2,
+                "unit": "kTokens"
+              },
               "prompt_tokens": {
-                "gte": 32,
+                "gte": 0,
+                "lt": 32,
                 "unit": "kTokens"
               }
             },
             "currency": "USD",
             "unit": "perMTokens",
-            "value": 0.56
+            "value": 0.4367
+          },
+          {
+            "conditions": {
+              "completion_tokens": {
+                "gte": 0,
+                "unit": "kTokens"
+              },
+              "prompt_tokens": {
+                "gte": 32,
+                "lt": 128,
+                "unit": "kTokens"
+              }
+            },
+            "currency": "USD",
+            "unit": "perMTokens",
+            "value": 0.5823
           }
         ]
       }
@@ -2854,6 +3081,11 @@
         "completion": [
           {
             "conditions": {
+              "completion_tokens": {
+                "gte": 0,
+                "lt": 0.2,
+                "unit": "kTokens"
+              },
               "prompt_tokens": {
                 "gte": 0,
                 "lt": 32,
@@ -2862,23 +3094,49 @@
             },
             "currency": "USD",
             "unit": "perMTokens",
-            "value": 1.54
+            "value": 1.1599
           },
           {
             "conditions": {
+              "completion_tokens": {
+                "gte": 0.2,
+                "unit": "kTokens"
+              },
               "prompt_tokens": {
-                "gte": 32,
+                "gte": 0,
+                "lt": 32,
                 "unit": "kTokens"
               }
             },
             "currency": "USD",
             "unit": "perMTokens",
-            "value": 2.25
+            "value": 2.0298
+          },
+          {
+            "conditions": {
+              "completion_tokens": {
+                "gte": 0,
+                "unit": "kTokens"
+              },
+              "prompt_tokens": {
+                "gte": 32,
+                "lte": 200,
+                "unit": "kTokens"
+              }
+            },
+            "currency": "USD",
+            "unit": "perMTokens",
+            "value": 2.3198
           }
         ],
         "input_cache_read": [
           {
             "conditions": {
+              "completion_tokens": {
+                "gte": 0,
+                "lt": 0.2,
+                "unit": "kTokens"
+              },
               "prompt_tokens": {
                 "gte": 0,
                 "lt": 32,
@@ -2887,23 +3145,49 @@
             },
             "currency": "USD",
             "unit": "perMTokens",
-            "value": 0.07
+            "value": 0.058
           },
           {
             "conditions": {
+              "completion_tokens": {
+                "gte": 0.2,
+                "unit": "kTokens"
+              },
               "prompt_tokens": {
-                "gte": 32,
+                "gte": 0,
+                "lt": 32,
                 "unit": "kTokens"
               }
             },
             "currency": "USD",
             "unit": "perMTokens",
-            "value": 0.11
+            "value": 0.087
+          },
+          {
+            "conditions": {
+              "completion_tokens": {
+                "gte": 0,
+                "unit": "kTokens"
+              },
+              "prompt_tokens": {
+                "gte": 32,
+                "lte": 200,
+                "unit": "kTokens"
+              }
+            },
+            "currency": "USD",
+            "unit": "perMTokens",
+            "value": 0.116
           }
         ],
         "prompt": [
           {
             "conditions": {
+              "completion_tokens": {
+                "gte": 0,
+                "lt": 0.2,
+                "unit": "kTokens"
+              },
               "prompt_tokens": {
                 "gte": 0,
                 "lt": 32,
@@ -2912,18 +3196,39 @@
             },
             "currency": "USD",
             "unit": "perMTokens",
-            "value": 0.35
+            "value": 0.29
           },
           {
             "conditions": {
+              "completion_tokens": {
+                "gte": 0.2,
+                "unit": "kTokens"
+              },
               "prompt_tokens": {
-                "gte": 32,
+                "gte": 0,
+                "lt": 32,
                 "unit": "kTokens"
               }
             },
             "currency": "USD",
             "unit": "perMTokens",
-            "value": 0.56
+            "value": 0.435
+          },
+          {
+            "conditions": {
+              "completion_tokens": {
+                "gte": 0,
+                "unit": "kTokens"
+              },
+              "prompt_tokens": {
+                "gte": 32,
+                "lte": 200,
+                "unit": "kTokens"
+              }
+            },
+            "currency": "USD",
+            "unit": "perMTokens",
+            "value": 0.5799
           }
         ]
       }
@@ -2944,29 +3249,7 @@
         "text"
       ],
       "owned_by": "inclusionai",
-      "pricings": {
-        "completion": [
-          {
-            "currency": "USD",
-            "unit": "perMTokens",
-            "value": 2.24
-          }
-        ],
-        "input_cache_read": [
-          {
-            "currency": "USD",
-            "unit": "perMTokens",
-            "value": 0.112
-          }
-        ],
-        "prompt": [
-          {
-            "currency": "USD",
-            "unit": "perMTokens",
-            "value": 0.56
-          }
-        ]
-      }
+      "pricings": {}
     },
     {
       "capabilities": {
@@ -3829,7 +4112,7 @@
     },
     {
       "capabilities": {
-        "reasoning": false
+        "reasoning": true
       },
       "context_length": 128000,
       "created": 1763084760,
@@ -3882,7 +4165,7 @@
       },
       "context_length": 32000,
       "created": 1762832198,
-      "display_name": "Qwen: Qwen3 14B",
+      "display_name": "Qwen: Qwen3-14B",
       "id": "qwen/qwen3-14b",
       "input_modalities": [
         "text"
@@ -4066,9 +4349,7 @@
       }
     },
     {
-      "capabilities": {
-        "reasoning": true
-      },
+      "capabilities": {},
       "context_length": 400000,
       "created": 1763084610,
       "display_name": "OpenAI: GPT-5.1",
@@ -4082,37 +4363,7 @@
       "output_modalities": [
         "text"
       ],
-      "owned_by": "openai",
-      "pricings": {
-        "completion": [
-          {
-            "currency": "USD",
-            "unit": "perMTokens",
-            "value": 10
-          }
-        ],
-        "input_cache_read": [
-          {
-            "currency": "USD",
-            "unit": "perMTokens",
-            "value": 0.125
-          }
-        ],
-        "prompt": [
-          {
-            "currency": "USD",
-            "unit": "perMTokens",
-            "value": 1.25
-          }
-        ],
-        "web_search": [
-          {
-            "currency": "USD",
-            "unit": "perCount",
-            "value": 0.01
-          }
-        ]
-      }
+      "owned_by": "openai"
     },
     {
       "capabilities": {
@@ -4588,6 +4839,13 @@
             "value": 0.096
           }
         ],
+        "input_cache_read": [
+          {
+            "currency": "USD",
+            "unit": "perMTokens",
+            "value": 0.0048
+          }
+        ],
         "prompt": [
           {
             "currency": "USD",
@@ -4661,10 +4919,8 @@
       }
     },
     {
-      "capabilities": {
-        "reasoning": true
-      },
-      "context_length": 163840,
+      "capabilities": {},
+      "context_length": 160000,
       "created": 1764137601,
       "display_name": "DeepSeek: DeepSeek-V3.2-Exp",
       "id": "deepseek/deepseek-v3.2-exp",
@@ -4675,23 +4931,7 @@
       "output_modalities": [
         "text"
       ],
-      "owned_by": "deepseek",
-      "pricings": {
-        "completion": [
-          {
-            "currency": "USD",
-            "unit": "perMTokens",
-            "value": 0.328
-          }
-        ],
-        "prompt": [
-          {
-            "currency": "USD",
-            "unit": "perMTokens",
-            "value": 0.216
-          }
-        ]
-      }
+      "owned_by": "deepseek"
     },
     {
       "capabilities": {
@@ -4761,9 +5001,7 @@
       }
     },
     {
-      "capabilities": {
-        "reasoning": false
-      },
+      "capabilities": {},
       "context_length": 131072,
       "created": 1764732046,
       "display_name": "Meta: Llama 4 Scout Instruct",
@@ -4776,23 +5014,7 @@
       "output_modalities": [
         "text"
       ],
-      "owned_by": "meta",
-      "pricings": {
-        "completion": [
-          {
-            "currency": "USD",
-            "unit": "perMTokens",
-            "value": 0.4
-          }
-        ],
-        "prompt": [
-          {
-            "currency": "USD",
-            "unit": "perMTokens",
-            "value": 0.08
-          }
-        ]
-      }
+      "owned_by": "meta"
     },
     {
       "capabilities": {
@@ -4857,7 +5079,7 @@
             },
             "currency": "USD",
             "unit": "perMTokens",
-            "value": 0.21
+            "value": 0.2184
           },
           {
             "conditions": {
@@ -4868,7 +5090,7 @@
             },
             "currency": "USD",
             "unit": "perMTokens",
-            "value": 0.43
+            "value": 0.4367
           }
         ],
         "input_cache_read": [
@@ -4881,7 +5103,7 @@
             },
             "currency": "USD",
             "unit": "perMTokens",
-            "value": 0.0043
+            "value": 0.0044
           },
           {
             "conditions": {
@@ -4893,7 +5115,7 @@
             },
             "currency": "USD",
             "unit": "perMTokens",
-            "value": 0.0043
+            "value": 0.0044
           }
         ],
         "prompt": [
@@ -4907,7 +5129,7 @@
             },
             "currency": "USD",
             "unit": "perMTokens",
-            "value": 0.021
+            "value": 0.0218
           },
           {
             "conditions": {
@@ -4918,7 +5140,7 @@
             },
             "currency": "USD",
             "unit": "perMTokens",
-            "value": 0.043
+            "value": 0.0437
           }
         ]
       }
@@ -4953,7 +5175,7 @@
             },
             "currency": "USD",
             "unit": "perMTokens",
-            "value": 0.42
+            "value": 0.4367
           },
           {
             "conditions": {
@@ -4964,7 +5186,7 @@
             },
             "currency": "USD",
             "unit": "perMTokens",
-            "value": 0.85
+            "value": 0.8734
           }
         ],
         "input_cache_read": [
@@ -4978,7 +5200,7 @@
             },
             "currency": "USD",
             "unit": "perMTokens",
-            "value": 0.028
+            "value": 0.0291
           },
           {
             "conditions": {
@@ -4989,7 +5211,7 @@
             },
             "currency": "USD",
             "unit": "perMTokens",
-            "value": 0.057
+            "value": 0.0582
           }
         ],
         "prompt": [
@@ -5003,7 +5225,7 @@
             },
             "currency": "USD",
             "unit": "perMTokens",
-            "value": 0.14
+            "value": 0.1456
           },
           {
             "conditions": {
@@ -5014,15 +5236,13 @@
             },
             "currency": "USD",
             "unit": "perMTokens",
-            "value": 0.28
+            "value": 0.2911
           }
         ]
       }
     },
     {
-      "capabilities": {
-        "reasoning": true
-      },
+      "capabilities": {},
       "context_length": 128000,
       "created": 1765179897,
       "display_name": "DeepSeek: DeepSeek V3.2",
@@ -5034,23 +5254,7 @@
       "output_modalities": [
         "text"
       ],
-      "owned_by": "deepseek",
-      "pricings": {
-        "completion": [
-          {
-            "currency": "USD",
-            "unit": "perMTokens",
-            "value": 0.43
-          }
-        ],
-        "prompt": [
-          {
-            "currency": "USD",
-            "unit": "perMTokens",
-            "value": 0.28
-          }
-        ]
-      }
+      "owned_by": "deepseek"
     },
     {
       "capabilities": {
@@ -5144,9 +5348,7 @@
       }
     },
     {
-      "capabilities": {
-        "reasoning": true
-      },
+      "capabilities": {},
       "context_length": 128000,
       "created": 1765504224,
       "display_name": "OpenAI: GPT-5.2 Chat",
@@ -5160,37 +5362,7 @@
       "output_modalities": [
         "text"
       ],
-      "owned_by": "openai",
-      "pricings": {
-        "completion": [
-          {
-            "currency": "USD",
-            "unit": "perMTokens",
-            "value": 14
-          }
-        ],
-        "input_cache_read": [
-          {
-            "currency": "USD",
-            "unit": "perMTokens",
-            "value": 0.175
-          }
-        ],
-        "prompt": [
-          {
-            "currency": "USD",
-            "unit": "perMTokens",
-            "value": 1.75
-          }
-        ],
-        "web_search": [
-          {
-            "currency": "USD",
-            "unit": "perCount",
-            "value": 0.01
-          }
-        ]
-      }
+      "owned_by": "openai"
     },
     {
       "capabilities": {
@@ -5365,46 +5537,6 @@
             "currency": "USD",
             "unit": "perMTokens",
             "value": 0.57
-          }
-        ]
-      }
-    },
-    {
-      "capabilities": {
-        "reasoning": false
-      },
-      "context_length": 32000,
-      "created": 1766135034,
-      "display_name": "inclusionAI: LLaDA2-flash-CAP",
-      "id": "inclusionai/llada2.0-flash-cap",
-      "input_modalities": [
-        "text"
-      ],
-      "object": "model",
-      "output_modalities": [
-        "text"
-      ],
-      "owned_by": "inclusionai",
-      "pricings": {
-        "completion": [
-          {
-            "currency": "USD",
-            "unit": "perMTokens",
-            "value": 2.85
-          }
-        ],
-        "input_cache_read": [
-          {
-            "currency": "USD",
-            "unit": "perMTokens",
-            "value": 0.057
-          }
-        ],
-        "prompt": [
-          {
-            "currency": "USD",
-            "unit": "perMTokens",
-            "value": 0.28
           }
         ]
       }
@@ -5884,21 +6016,21 @@
           {
             "currency": "USD",
             "unit": "perMTokens",
-            "value": 0.425
+            "value": 0.4367
           }
         ],
         "input_cache_read": [
           {
             "currency": "USD",
             "unit": "perMTokens",
-            "value": 0.014
+            "value": 0.0146
           }
         ],
         "prompt": [
           {
             "currency": "USD",
             "unit": "perMTokens",
-            "value": 0.0715
+            "value": 0.0728
           }
         ]
       }
@@ -6006,127 +6138,37 @@
       "pricings": {
         "completion": [
           {
-            "conditions": {
-              "prompt_tokens": {
-                "gte": 0,
-                "lt": 200,
-                "unit": "kTokens"
-              }
-            },
             "currency": "USD",
             "unit": "perMTokens",
             "value": 25
-          },
-          {
-            "conditions": {
-              "prompt_tokens": {
-                "gte": 200,
-                "unit": "kTokens"
-              }
-            },
-            "currency": "USD",
-            "unit": "perMTokens",
-            "value": 37.5
           }
         ],
         "input_cache_read": [
           {
-            "conditions": {
-              "prompt_tokens": {
-                "gte": 0,
-                "lt": 200,
-                "unit": "kTokens"
-              }
-            },
             "currency": "USD",
             "unit": "perMTokens",
             "value": 0.5
-          },
-          {
-            "conditions": {
-              "prompt_tokens": {
-                "gte": 200,
-                "unit": "kTokens"
-              }
-            },
-            "currency": "USD",
-            "unit": "perMTokens",
-            "value": 1
           }
         ],
         "input_cache_write_1_h": [
           {
-            "conditions": {
-              "prompt_tokens": {
-                "gte": 0,
-                "lt": 200,
-                "unit": "kTokens"
-              }
-            },
             "currency": "USD",
             "unit": "perMTokens",
             "value": 10
-          },
-          {
-            "conditions": {
-              "prompt_tokens": {
-                "gte": 200,
-                "unit": "kTokens"
-              }
-            },
-            "currency": "USD",
-            "unit": "perMTokens",
-            "value": 20
           }
         ],
         "input_cache_write_5_min": [
           {
-            "conditions": {
-              "prompt_tokens": {
-                "gte": 0,
-                "lt": 200,
-                "unit": "kTokens"
-              }
-            },
             "currency": "USD",
             "unit": "perMTokens",
             "value": 6.25
-          },
-          {
-            "conditions": {
-              "prompt_tokens": {
-                "gte": 200,
-                "unit": "kTokens"
-              }
-            },
-            "currency": "USD",
-            "unit": "perMTokens",
-            "value": 12.5
           }
         ],
         "prompt": [
           {
-            "conditions": {
-              "prompt_tokens": {
-                "gte": 0,
-                "lt": 200,
-                "unit": "kTokens"
-              }
-            },
             "currency": "USD",
             "unit": "perMTokens",
             "value": 5
-          },
-          {
-            "conditions": {
-              "prompt_tokens": {
-                "gte": 200,
-                "unit": "kTokens"
-              }
-            },
-            "currency": "USD",
-            "unit": "perMTokens",
-            "value": 10
           }
         ],
         "web_search": [
@@ -6251,7 +6293,7 @@
           {
             "currency": "USD",
             "unit": "perCount",
-            "value": 0.014
+            "value": 0.01
           }
         ]
       }
@@ -7379,127 +7421,37 @@
       "pricings": {
         "completion": [
           {
-            "conditions": {
-              "prompt_tokens": {
-                "gte": 0,
-                "lt": 200,
-                "unit": "kTokens"
-              }
-            },
             "currency": "USD",
             "unit": "perMTokens",
             "value": 15
-          },
-          {
-            "conditions": {
-              "prompt_tokens": {
-                "gte": 200,
-                "unit": "kTokens"
-              }
-            },
-            "currency": "USD",
-            "unit": "perMTokens",
-            "value": 22.5
           }
         ],
         "input_cache_read": [
           {
-            "conditions": {
-              "prompt_tokens": {
-                "gte": 0,
-                "lt": 200,
-                "unit": "kTokens"
-              }
-            },
             "currency": "USD",
             "unit": "perMTokens",
             "value": 0.3
-          },
-          {
-            "conditions": {
-              "prompt_tokens": {
-                "gte": 200,
-                "unit": "kTokens"
-              }
-            },
-            "currency": "USD",
-            "unit": "perMTokens",
-            "value": 0.6
           }
         ],
         "input_cache_write_1_h": [
           {
-            "conditions": {
-              "prompt_tokens": {
-                "gte": 0,
-                "lt": 200,
-                "unit": "kTokens"
-              }
-            },
             "currency": "USD",
             "unit": "perMTokens",
             "value": 6
-          },
-          {
-            "conditions": {
-              "prompt_tokens": {
-                "gte": 200,
-                "unit": "kTokens"
-              }
-            },
-            "currency": "USD",
-            "unit": "perMTokens",
-            "value": 12
           }
         ],
         "input_cache_write_5_min": [
           {
-            "conditions": {
-              "prompt_tokens": {
-                "gte": 0,
-                "lt": 200,
-                "unit": "kTokens"
-              }
-            },
             "currency": "USD",
             "unit": "perMTokens",
             "value": 3.75
-          },
-          {
-            "conditions": {
-              "prompt_tokens": {
-                "gte": 200,
-                "unit": "kTokens"
-              }
-            },
-            "currency": "USD",
-            "unit": "perMTokens",
-            "value": 7.5
           }
         ],
         "prompt": [
           {
-            "conditions": {
-              "prompt_tokens": {
-                "gte": 0,
-                "lt": 200,
-                "unit": "kTokens"
-              }
-            },
             "currency": "USD",
             "unit": "perMTokens",
             "value": 3
-          },
-          {
-            "conditions": {
-              "prompt_tokens": {
-                "gte": 200,
-                "unit": "kTokens"
-              }
-            },
-            "currency": "USD",
-            "unit": "perMTokens",
-            "value": 6
           }
         ],
         "web_search": [
@@ -8018,6 +7970,517 @@
             "currency": "USD",
             "unit": "perMTokens",
             "value": 60
+          }
+        ],
+        "web_search": [
+          {
+            "currency": "USD",
+            "unit": "perCount",
+            "value": 0.01
+          }
+        ]
+      }
+    },
+    {
+      "capabilities": {
+        "reasoning": true
+      },
+      "context_length": 400000,
+      "created": 1773801523,
+      "display_name": "OpenAI: GPT-5.4 Nano",
+      "id": "openai/gpt-5.4-nano",
+      "input_modalities": [
+        "text",
+        "image",
+        "file"
+      ],
+      "object": "model",
+      "output_modalities": [
+        "text"
+      ],
+      "owned_by": "openai",
+      "pricings": {
+        "completion": [
+          {
+            "currency": "USD",
+            "unit": "perMTokens",
+            "value": 1.25
+          }
+        ],
+        "input_cache_read": [
+          {
+            "currency": "USD",
+            "unit": "perMTokens",
+            "value": 0.02
+          }
+        ],
+        "prompt": [
+          {
+            "currency": "USD",
+            "unit": "perMTokens",
+            "value": 0.2
+          }
+        ],
+        "web_search": [
+          {
+            "currency": "USD",
+            "unit": "perCount",
+            "value": 0.01
+          }
+        ]
+      }
+    },
+    {
+      "capabilities": {
+        "reasoning": false
+      },
+      "context_length": 32000,
+      "created": 1773648925,
+      "display_name": "inclusionAI: LLaDA2.1-flash",
+      "id": "inclusionai/llada2.1-flash",
+      "input_modalities": [
+        "text"
+      ],
+      "object": "model",
+      "output_modalities": [
+        "text"
+      ],
+      "owned_by": "inclusionai",
+      "pricings": {
+        "completion": [
+          {
+            "currency": "USD",
+            "unit": "perMTokens",
+            "value": 2.85
+          }
+        ],
+        "input_cache_read": [
+          {
+            "currency": "USD",
+            "unit": "perMTokens",
+            "value": 0.057
+          }
+        ],
+        "prompt": [
+          {
+            "currency": "USD",
+            "unit": "perMTokens",
+            "value": 0.28
+          }
+        ]
+      }
+    },
+    {
+      "capabilities": {
+        "reasoning": true
+      },
+      "context_length": 204800,
+      "created": 1773815507,
+      "display_name": "MiniMax: MiniMax M2.7",
+      "id": "minimax/minimax-m2.7",
+      "input_modalities": [
+        "text"
+      ],
+      "object": "model",
+      "output_modalities": [
+        "text"
+      ],
+      "owned_by": "minimax",
+      "pricings": {
+        "completion": [
+          {
+            "currency": "USD",
+            "unit": "perMTokens",
+            "value": 1.2219
+          }
+        ],
+        "input_cache_read": [
+          {
+            "currency": "USD",
+            "unit": "perMTokens",
+            "value": 0.0611
+          }
+        ],
+        "input_cache_write": [
+          {
+            "currency": "USD",
+            "unit": "perMTokens",
+            "value": 0.3819
+          }
+        ],
+        "prompt": [
+          {
+            "currency": "USD",
+            "unit": "perMTokens",
+            "value": 0.3055
+          }
+        ]
+      }
+    },
+    {
+      "capabilities": {
+        "reasoning": true
+      },
+      "context_length": 204800,
+      "created": 1773815758,
+      "display_name": "MiniMax: MiniMax M2.7 highspeed",
+      "id": "minimax/minimax-m2.7-highspeed",
+      "input_modalities": [
+        "text"
+      ],
+      "object": "model",
+      "output_modalities": [
+        "text"
+      ],
+      "owned_by": "minimax",
+      "pricings": {
+        "completion": [
+          {
+            "currency": "USD",
+            "unit": "perMTokens",
+            "value": 2.4439
+          }
+        ],
+        "input_cache_read": [
+          {
+            "currency": "USD",
+            "unit": "perMTokens",
+            "value": 0.0611
+          }
+        ],
+        "input_cache_write": [
+          {
+            "currency": "USD",
+            "unit": "perMTokens",
+            "value": 0.3819
+          }
+        ],
+        "prompt": [
+          {
+            "currency": "USD",
+            "unit": "perMTokens",
+            "value": 0.611
+          }
+        ]
+      }
+    },
+    {
+      "capabilities": {
+        "reasoning": true
+      },
+      "context_length": 256000,
+      "created": 1773997404,
+      "display_name": "Sapiens AI: Agnes-1.5-Pro",
+      "id": "sapiens-ai/agnes-1.5-pro",
+      "input_modalities": [
+        "text"
+      ],
+      "object": "model",
+      "output_modalities": [
+        "text"
+      ],
+      "owned_by": "sapiens-ai",
+      "pricings": {
+        "completion": [
+          {
+            "currency": "USD",
+            "unit": "perMTokens",
+            "value": 0
+          }
+        ],
+        "prompt": [
+          {
+            "currency": "USD",
+            "unit": "perMTokens",
+            "value": 0
+          }
+        ]
+      }
+    },
+    {
+      "capabilities": {
+        "reasoning": true
+      },
+      "context_length": 1000000,
+      "created": 1773889364,
+      "display_name": "Xiaomi: MiMo-V2-Pro",
+      "id": "xiaomi/mimo-v2-pro",
+      "input_modalities": [
+        "text"
+      ],
+      "object": "model",
+      "output_modalities": [
+        "text"
+      ],
+      "owned_by": "xiaomi",
+      "pricings": {
+        "completion": [
+          {
+            "conditions": {
+              "prompt_tokens": {
+                "gte": 0,
+                "lte": 256,
+                "unit": "kTokens"
+              }
+            },
+            "currency": "USD",
+            "unit": "perMTokens",
+            "value": 3
+          },
+          {
+            "conditions": {
+              "prompt_tokens": {
+                "gt": 256,
+                "unit": "kTokens"
+              }
+            },
+            "currency": "USD",
+            "unit": "perMTokens",
+            "value": 6
+          }
+        ],
+        "input_cache_read": [
+          {
+            "conditions": {
+              "prompt_tokens": {
+                "gte": 0,
+                "lte": 256,
+                "unit": "kTokens"
+              }
+            },
+            "currency": "USD",
+            "unit": "perMTokens",
+            "value": 0.2
+          },
+          {
+            "conditions": {
+              "prompt_tokens": {
+                "gt": 256,
+                "unit": "kTokens"
+              }
+            },
+            "currency": "USD",
+            "unit": "perMTokens",
+            "value": 0.4
+          }
+        ],
+        "prompt": [
+          {
+            "conditions": {
+              "prompt_tokens": {
+                "gte": 0,
+                "lte": 256,
+                "unit": "kTokens"
+              }
+            },
+            "currency": "USD",
+            "unit": "perMTokens",
+            "value": 1
+          },
+          {
+            "conditions": {
+              "prompt_tokens": {
+                "gt": 256,
+                "unit": "kTokens"
+              }
+            },
+            "currency": "USD",
+            "unit": "perMTokens",
+            "value": 2
+          }
+        ],
+        "web_search": [
+          {
+            "currency": "USD",
+            "unit": "perCount",
+            "value": 0.005
+          }
+        ]
+      }
+    },
+    {
+      "capabilities": {
+        "reasoning": true
+      },
+      "context_length": 200000,
+      "created": 1773648679,
+      "display_name": "Z.ai: GLM 5 Turbo",
+      "id": "z-ai/glm-5-turbo",
+      "input_modalities": [
+        "text"
+      ],
+      "object": "model",
+      "output_modalities": [
+        "text"
+      ],
+      "owned_by": "z-ai",
+      "pricings": {
+        "completion": [
+          {
+            "conditions": {
+              "prompt_tokens": {
+                "gte": 0,
+                "lt": 32,
+                "unit": "kTokens"
+              }
+            },
+            "currency": "USD",
+            "unit": "perMTokens",
+            "value": 3.19
+          },
+          {
+            "conditions": {
+              "prompt_tokens": {
+                "gte": 32,
+                "unit": "kTokens"
+              }
+            },
+            "currency": "USD",
+            "unit": "perMTokens",
+            "value": 3.77
+          }
+        ],
+        "input_cache_read": [
+          {
+            "conditions": {
+              "prompt_tokens": {
+                "gte": 0,
+                "lt": 32,
+                "unit": "kTokens"
+              }
+            },
+            "currency": "USD",
+            "unit": "perMTokens",
+            "value": 0.174
+          },
+          {
+            "conditions": {
+              "prompt_tokens": {
+                "gte": 32,
+                "unit": "kTokens"
+              }
+            },
+            "currency": "USD",
+            "unit": "perMTokens",
+            "value": 0.261
+          }
+        ],
+        "prompt": [
+          {
+            "conditions": {
+              "prompt_tokens": {
+                "gte": 0,
+                "lt": 32,
+                "unit": "kTokens"
+              }
+            },
+            "currency": "USD",
+            "unit": "perMTokens",
+            "value": 0.73
+          },
+          {
+            "conditions": {
+              "prompt_tokens": {
+                "gte": 32,
+                "unit": "kTokens"
+              }
+            },
+            "currency": "USD",
+            "unit": "perMTokens",
+            "value": 1.02
+          }
+        ]
+      }
+    },
+    {
+      "capabilities": {
+        "reasoning": true
+      },
+      "context_length": 265000,
+      "created": 1773885633,
+      "display_name": "Xiaomi: MiMo-V2-Omni",
+      "id": "xiaomi/mimo-v2-omni",
+      "input_modalities": [
+        "text",
+        "image",
+        "audio",
+        "video",
+        "file"
+      ],
+      "object": "model",
+      "output_modalities": [
+        "text"
+      ],
+      "owned_by": "xiaomi",
+      "pricings": {
+        "completion": [
+          {
+            "currency": "USD",
+            "unit": "perMTokens",
+            "value": 2
+          }
+        ],
+        "input_cache_read": [
+          {
+            "currency": "USD",
+            "unit": "perMTokens",
+            "value": 0.08
+          }
+        ],
+        "prompt": [
+          {
+            "currency": "USD",
+            "unit": "perMTokens",
+            "value": 0.4
+          }
+        ],
+        "web_search": [
+          {
+            "currency": "USD",
+            "unit": "perCount",
+            "value": 0.005
+          }
+        ]
+      }
+    },
+    {
+      "capabilities": {
+        "reasoning": true
+      },
+      "context_length": 400000,
+      "created": 1773799869,
+      "display_name": "OpenAI: GPT-5.4 Mini",
+      "id": "openai/gpt-5.4-mini",
+      "input_modalities": [
+        "text",
+        "image",
+        "file"
+      ],
+      "object": "model",
+      "output_modalities": [
+        "text"
+      ],
+      "owned_by": "openai",
+      "pricings": {
+        "completion": [
+          {
+            "currency": "USD",
+            "unit": "perMTokens",
+            "value": 4.5
+          }
+        ],
+        "input_cache_read": [
+          {
+            "currency": "USD",
+            "unit": "perMTokens",
+            "value": 0.075
+          }
+        ],
+        "prompt": [
+          {
+            "currency": "USD",
+            "unit": "perMTokens",
+            "value": 0.75
           }
         ],
         "web_search": [
