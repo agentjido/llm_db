@@ -12,6 +12,22 @@ defmodule LLMDB.Validate do
 
   @type validation_error :: term()
 
+  @execution_operations [:text, :object, :embed, :image, :transcription, :speech, :realtime]
+  @execution_families [
+    "openai_chat_compatible",
+    "openai_responses_compatible",
+    "openai_embeddings",
+    "openai_images",
+    "openai_transcription",
+    "openai_speech",
+    "openai_realtime",
+    "anthropic_messages",
+    "google_generate_content",
+    "cohere_chat",
+    "elevenlabs_speech",
+    "elevenlabs_transcription"
+  ]
+
   @doc """
   Validates a single provider map against the Provider schema.
 
@@ -107,6 +123,32 @@ defmodule LLMDB.Validate do
   end
 
   @doc """
+  Validates typed provider runtime and model execution metadata after merge/enrichment.
+
+  This validator is migration-safe:
+  - providers without `runtime` are accepted for now
+  - models without `execution` are accepted for now
+  - once typed metadata is present, invalid declarations fail
+  - `catalog_only: true` opts a provider or model out of execution requirements
+  """
+  @spec validate_runtime_contract([Provider.t()], [Model.t()]) ::
+          :ok | {:error, {:invalid_runtime_contract, [map()]}}
+  def validate_runtime_contract(providers, models)
+      when is_list(providers) and is_list(models) do
+    provider_lookup = Map.new(providers, &{&1.id, &1})
+
+    errors =
+      Enum.flat_map(providers, &provider_runtime_errors/1) ++
+        Enum.flat_map(models, &model_execution_errors(&1, Map.get(provider_lookup, &1.provider)))
+
+    if errors == [] do
+      :ok
+    else
+      {:error, {:invalid_runtime_contract, errors}}
+    end
+  end
+
+  @doc """
   Ensures that we have at least one provider and one model for a viable catalog.
 
   Returns :ok if both lists are non-empty, otherwise returns an error.
@@ -131,4 +173,217 @@ defmodule LLMDB.Validate do
       {:error, :empty_catalog}
     end
   end
+
+  defp provider_runtime_errors(%Provider{catalog_only: true}), do: []
+
+  defp provider_runtime_errors(%Provider{id: provider_id, runtime: runtime})
+       when is_map(runtime) do
+    auth = Map.get(runtime, :auth)
+
+    []
+    |> maybe_add_error(is_nil(Map.get(runtime, :base_url)), %{
+      scope: :provider,
+      provider: provider_id,
+      error: :missing_runtime_base_url
+    })
+    |> maybe_add_error(is_nil(auth), %{
+      scope: :provider,
+      provider: provider_id,
+      error: :missing_runtime_auth
+    })
+    |> maybe_add_error(not valid_auth?(auth), %{
+      scope: :provider,
+      provider: provider_id,
+      error: :invalid_runtime_auth,
+      auth: auth
+    })
+  end
+
+  defp provider_runtime_errors(%Provider{}), do: []
+
+  defp model_execution_errors(%Model{catalog_only: true}, _provider), do: []
+
+  defp model_execution_errors(%Model{execution: execution} = model, provider)
+       when is_map(execution) do
+    implied = implied_operations(model)
+
+    entry_errors =
+      Enum.flat_map(@execution_operations, fn operation ->
+        case Map.get(execution, operation) do
+          nil ->
+            if operation in implied do
+              [
+                %{
+                  scope: :model,
+                  provider: model.provider,
+                  model_id: model.id,
+                  operation: operation,
+                  error: :missing_execution_entry
+                }
+              ]
+            else
+              []
+            end
+
+          entry when is_map(entry) ->
+            execution_entry_errors(model, operation, entry, provider)
+        end
+      end)
+
+    provider_errors =
+      if executable_model?(execution) and is_nil(provider_runtime(provider)) and
+           not catalog_only?(provider) do
+        [
+          %{
+            scope: :model,
+            provider: model.provider,
+            model_id: model.id,
+            error: :provider_runtime_required_for_execution
+          }
+        ]
+      else
+        []
+      end
+
+    entry_errors ++ provider_errors
+  end
+
+  defp model_execution_errors(%Model{}, _provider), do: []
+
+  defp execution_entry_errors(model, operation, entry, _provider) do
+    supported? = Map.get(entry, :supported) == true
+    family = Map.get(entry, :family)
+
+    []
+    |> maybe_add_error(supported? and is_nil(family), %{
+      scope: :model,
+      provider: model.provider,
+      model_id: model.id,
+      operation: operation,
+      error: :missing_execution_family
+    })
+    |> maybe_add_error(
+      supported? and is_binary(family) and family not in @execution_families,
+      %{
+        scope: :model,
+        provider: model.provider,
+        model_id: model.id,
+        operation: operation,
+        error: :unknown_execution_family,
+        family: family
+      }
+    )
+  end
+
+  defp implied_operations(%Model{} = model) do
+    []
+    |> maybe_add_operation(text_like?(model), :text)
+    |> maybe_add_operation(text_like?(model), :object)
+    |> maybe_add_operation(embeddings?(model), :embed)
+    |> maybe_add_operation(image_generation?(model), :image)
+    |> maybe_add_operation(transcription?(model), :transcription)
+    |> maybe_add_operation(speech?(model), :speech)
+    |> maybe_add_operation(realtime?(model), :realtime)
+  end
+
+  defp text_like?(%Model{capabilities: nil}), do: true
+
+  defp text_like?(%Model{capabilities: capabilities}) when is_map(capabilities) do
+    Map.get(capabilities, :chat) == true
+  end
+
+  defp embeddings?(%Model{capabilities: capabilities}) when is_map(capabilities) do
+    case Map.get(capabilities, :embeddings) do
+      true -> true
+      embeddings when is_map(embeddings) -> true
+      _other -> false
+    end
+  end
+
+  defp embeddings?(_model), do: false
+
+  defp image_generation?(%Model{modalities: %{output: output}}) when is_list(output),
+    do: :image in output
+
+  defp image_generation?(%Model{extra: extra}) when is_map(extra) do
+    Map.get(extra, :api) == "images" or get_in(extra, [:wire, :protocol]) == "openai_images"
+  end
+
+  defp image_generation?(_model), do: false
+
+  defp transcription?(%Model{modalities: %{input: input, output: output}})
+       when is_list(input) and is_list(output),
+       do: :audio in input and :text in output
+
+  defp transcription?(%Model{extra: extra}) when is_map(extra) do
+    Map.get(extra, :api) in ["audio.transcriptions", "audio.translation"]
+  end
+
+  defp transcription?(_model), do: false
+
+  defp speech?(%Model{modalities: %{input: input, output: output}})
+       when is_list(input) and is_list(output),
+       do: :text in input and :audio in output
+
+  defp speech?(%Model{extra: extra}) when is_map(extra) do
+    Map.get(extra, :api) == "audio.speech"
+  end
+
+  defp speech?(_model), do: false
+
+  defp realtime?(%Model{extra: extra}) when is_map(extra) do
+    Map.get(extra, :api) == "realtime" or get_in(extra, [:wire, :protocol]) == "openai_realtime"
+  end
+
+  defp realtime?(_model), do: false
+
+  defp executable_model?(execution) when is_map(execution) do
+    Enum.any?(@execution_operations, fn operation ->
+      case Map.get(execution, operation) do
+        %{supported: true} -> true
+        _other -> false
+      end
+    end)
+  end
+
+  defp catalog_only?(%Provider{catalog_only: value}), do: value == true
+  defp catalog_only?(_provider), do: false
+
+  defp provider_runtime(%Provider{runtime: runtime}) when is_map(runtime), do: runtime
+  defp provider_runtime(_provider), do: nil
+
+  defp valid_auth?(nil), do: false
+
+  defp valid_auth?(auth) when is_map(auth) do
+    type = Map.get(auth, :type)
+    env = Map.get(auth, :env, [])
+    header_name = Map.get(auth, :header_name)
+    query_name = Map.get(auth, :query_name)
+    headers = Map.get(auth, :headers, [])
+
+    cond do
+      type in ["bearer", "x_api_key"] ->
+        is_list(env) and env != []
+
+      type == "header" ->
+        is_binary(header_name) and is_list(env) and env != []
+
+      type == "query" ->
+        is_binary(query_name) and is_list(env) and env != []
+
+      type == "multi_header" ->
+        is_list(headers) and headers != []
+
+      true ->
+        false
+    end
+  end
+
+  defp valid_auth?(_auth), do: false
+
+  defp maybe_add_error(errors, true, error), do: [error | errors]
+  defp maybe_add_error(errors, false, _error), do: errors
+
+  defp maybe_add_operation(operations, true, operation), do: [operation | operations]
+  defp maybe_add_operation(operations, false, _operation), do: operations
 end

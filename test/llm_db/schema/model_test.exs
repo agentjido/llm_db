@@ -24,6 +24,7 @@ defmodule LLMDB.Schema.ModelTest do
         provider_model_id: "gpt-4o-mini-2024-07-18",
         name: "GPT-4o Mini",
         family: "gpt-4o",
+        doc_url: "https://platform.openai.com/docs/models/gpt-4o-mini",
         release_date: "2024-07-18",
         last_updated: "2024-10-01",
         knowledge: "2023-10",
@@ -37,6 +38,21 @@ defmodule LLMDB.Schema.ModelTest do
           chat: true,
           tools: %{enabled: true, streaming: true}
         },
+        execution: %{
+          text: %{
+            supported: true,
+            family: "openai_chat_compatible",
+            wire_protocol: "openai_chat",
+            transport: "http_request",
+            path: "/chat/completions"
+          },
+          object: %{
+            supported: true,
+            family: "openai_chat_compatible",
+            wire_protocol: "openai_chat",
+            transport: "http_request"
+          }
+        },
         tags: ["fast", "cheap"],
         deprecated: false,
         aliases: ["gpt-4o-mini-latest"],
@@ -49,6 +65,7 @@ defmodule LLMDB.Schema.ModelTest do
       assert result.provider_model_id == "gpt-4o-mini-2024-07-18"
       assert result.name == "GPT-4o Mini"
       assert result.family == "gpt-4o"
+      assert result.doc_url == "https://platform.openai.com/docs/models/gpt-4o-mini"
       assert result.release_date == "2024-07-18"
       assert result.last_updated == "2024-10-01"
       assert result.knowledge == "2023-10"
@@ -61,10 +78,34 @@ defmodule LLMDB.Schema.ModelTest do
       assert result.capabilities.chat == true
       assert result.capabilities.tools.enabled == true
       assert result.capabilities.tools.streaming == true
+      assert result.execution.text.supported == true
+      assert result.execution.text.family == "openai_chat_compatible"
+      assert result.execution.text.wire_protocol == "openai_chat"
+      assert result.execution.text.transport == "http_request"
       assert result.tags == ["fast", "cheap"]
       assert result.deprecated == false
       assert result.aliases == ["gpt-4o-mini-latest"]
       assert result.extra == %{"custom" => "value"}
+    end
+
+    test "normalizes execution atoms through Model.new/1" do
+      input = %{
+        id: "gpt-4o-mini",
+        provider: :openai,
+        execution: %{
+          text: %{
+            supported: true,
+            family: :openai_chat_compatible,
+            wire_protocol: :openai_chat,
+            transport: :http_request
+          }
+        }
+      }
+
+      assert {:ok, result} = Model.new(input)
+      assert result.execution.text.family == "openai_chat_compatible"
+      assert result.execution.text.wire_protocol == "openai_chat"
+      assert result.execution.text.transport == "http_request"
     end
   end
 
@@ -165,6 +206,12 @@ defmodule LLMDB.Schema.ModelTest do
       input = %{id: "gpt-4o", provider: :openai}
       assert {:ok, result} = Zoi.parse(Model.schema(), input)
       assert result.extra == nil
+    end
+
+    test "catalog_only defaults to false" do
+      input = %{id: "gpt-4o", provider: :openai}
+      assert {:ok, result} = Zoi.parse(Model.schema(), input)
+      assert result.catalog_only == false
     end
   end
 

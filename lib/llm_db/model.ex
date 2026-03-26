@@ -153,6 +153,26 @@ defmodule LLMDB.Model do
                        default_dimensions: Zoi.integer() |> Zoi.min(1) |> Zoi.nullish()
                      })
 
+  @execution_operation_schema Zoi.object(%{
+                                supported: Zoi.boolean() |> Zoi.default(false),
+                                family: Zoi.string() |> Zoi.nullish(),
+                                wire_protocol: Zoi.string() |> Zoi.nullish(),
+                                transport: Zoi.string() |> Zoi.nullish(),
+                                provider_model_id: Zoi.string() |> Zoi.nullish(),
+                                base_url: Zoi.string() |> Zoi.nullish(),
+                                path: Zoi.string() |> Zoi.nullish()
+                              })
+
+  @execution_schema Zoi.object(%{
+                      text: @execution_operation_schema |> Zoi.nullish(),
+                      object: @execution_operation_schema |> Zoi.nullish(),
+                      embed: @execution_operation_schema |> Zoi.nullish(),
+                      image: @execution_operation_schema |> Zoi.nullish(),
+                      transcription: @execution_operation_schema |> Zoi.nullish(),
+                      speech: @execution_operation_schema |> Zoi.nullish(),
+                      realtime: @execution_operation_schema |> Zoi.nullish()
+                    })
+
   @capabilities_schema Zoi.object(%{
                          chat: Zoi.boolean() |> Zoi.default(true),
                          embeddings:
@@ -182,6 +202,7 @@ defmodule LLMDB.Model do
              :provider_model_id,
              :name,
              :family,
+             :doc_url,
              :release_date,
              :last_updated,
              :knowledge,
@@ -195,6 +216,8 @@ defmodule LLMDB.Model do
              :deprecated,
              :retired,
              :lifecycle,
+             :execution,
+             :catalog_only,
              :aliases,
              :extra
            ]}
@@ -208,6 +231,7 @@ defmodule LLMDB.Model do
               provider_model_id: Zoi.string() |> Zoi.nullish(),
               name: Zoi.string() |> Zoi.nullish(),
               family: Zoi.string() |> Zoi.nullish(),
+              doc_url: Zoi.string() |> Zoi.nullish(),
               release_date: Zoi.string() |> Zoi.nullish(),
               last_updated: Zoi.string() |> Zoi.nullish(),
               knowledge: Zoi.string() |> Zoi.nullish(),
@@ -226,6 +250,8 @@ defmodule LLMDB.Model do
               deprecated: Zoi.boolean() |> Zoi.default(false),
               retired: Zoi.boolean() |> Zoi.default(false),
               lifecycle: @lifecycle_schema |> Zoi.nullish(),
+              execution: @execution_schema |> Zoi.nullish(),
+              catalog_only: Zoi.boolean() |> Zoi.default(false),
               aliases: Zoi.array(Zoi.string()) |> Zoi.default([]),
               extra: Zoi.map() |> Zoi.nullish()
             },
@@ -253,7 +279,11 @@ defmodule LLMDB.Model do
   """
   @spec new(map()) :: {:ok, t()} | {:error, term()}
   def new(attrs) when is_map(attrs) do
-    attrs = sync_id_model_fields(attrs)
+    attrs =
+      attrs
+      |> sync_id_model_fields()
+      |> normalize_execution_attrs()
+
     Zoi.parse(@schema, attrs)
   end
 
@@ -305,6 +335,51 @@ defmodule LLMDB.Model do
     attrs
     |> Map.put(key, value)
     |> Map.put(to_string(key), value)
+  end
+
+  defp normalize_execution_attrs(attrs) do
+    update_in_nested_map(attrs, :execution, fn execution ->
+      Enum.reduce(
+        [:text, :object, :embed, :image, :transcription, :speech, :realtime],
+        execution,
+        fn key, acc ->
+          update_in_nested_map(acc, key, fn operation ->
+            operation
+            |> normalize_string_field(:family)
+            |> normalize_string_field(:wire_protocol)
+            |> normalize_string_field(:transport)
+          end)
+        end
+      )
+    end)
+  end
+
+  defp update_in_nested_map(attrs, key, fun) when is_map(attrs) do
+    case Map.get(attrs, key) || Map.get(attrs, to_string(key)) do
+      nested when is_map(nested) ->
+        normalized = fun.(nested)
+
+        attrs
+        |> Map.put(key, normalized)
+        |> Map.put(to_string(key), normalized)
+
+      _other ->
+        attrs
+    end
+  end
+
+  defp normalize_string_field(map, key) when is_map(map) do
+    value = Map.get(map, key) || Map.get(map, to_string(key))
+
+    normalized =
+      case value do
+        atom when is_atom(atom) -> Atom.to_string(atom)
+        other -> other
+      end
+
+    map
+    |> Map.put(key, normalized)
+    |> Map.put(to_string(key), normalized)
   end
 
   @doc """

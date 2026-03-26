@@ -9,6 +9,23 @@ LLM model metadata catalog with fast, capability-aware lookups. Use simple `"pro
 - **Fast O(1) reads** via `:persistent_term`
 - **Minimal dependencies** 
 
+## Runtime Metadata Contract
+
+`LLMDB` now distinguishes between descriptive catalog metadata and typed execution
+metadata.
+
+- `LLMDB.Provider.runtime` declares provider-wide execution defaults such as
+  `base_url`, auth strategy, default headers/query params, config schema, and
+  runtime docs
+- `LLMDB.Model.execution` declares operation-specific support and the canonical
+  API family used to execute that operation
+- `catalog_only: true` marks packaged entries that are intentionally
+  non-executable
+
+Legacy fields like `base_url`, `doc`, and `extra` remain available during
+migration, but `runtime` and `execution` are the intended source of truth for
+downstream runtime consumers.
+
 ## Installation
 
 
@@ -114,6 +131,15 @@ See the full function docs in [hexdocs](https://hexdocs.pm/llm_db).
   base_url: "https://api.openai.com",
   env: ["OPENAI_API_KEY"],
   doc: "https://platform.openai.com/docs",
+  runtime: %{
+    base_url: "https://api.openai.com/v1",
+    auth: %{type: "bearer", env: ["OPENAI_API_KEY"]},
+    default_headers: %{},
+    default_query: %{},
+    config_schema: [],
+    doc_url: "https://platform.openai.com/docs/api-reference"
+  },
+  catalog_only: false,
   extra: %{}
 }
 ```
@@ -126,6 +152,7 @@ See the full function docs in [hexdocs](https://hexdocs.pm/llm_db).
   provider: :openai,
   name: "GPT-4o mini",
   family: "gpt-4o",
+  doc_url: "https://platform.openai.com/docs/models/gpt-4o-mini",
   limits: %{context: 128_000, output: 16_384},
   cost: %{input: 0.15, output: 0.60},
   capabilities: %{
@@ -134,6 +161,16 @@ See the full function docs in [hexdocs](https://hexdocs.pm/llm_db).
     json: %{native: true, schema: true},
     streaming: %{text: true, tool_calls: true}
   },
+  execution: %{
+    text: %{supported: true, family: "openai_chat_compatible"},
+    object: %{supported: true, family: "openai_chat_compatible"},
+    embed: nil,
+    image: nil,
+    transcription: nil,
+    speech: nil,
+    realtime: nil
+  },
+  catalog_only: false,
   tags: [],
   deprecated?: false,
   aliases: [],

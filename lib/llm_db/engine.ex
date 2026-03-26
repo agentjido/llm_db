@@ -80,6 +80,7 @@ defmodule LLMDB.Engine do
          {:ok, validated} <- validate_layers(normalized),
          {:ok, merged} <- merge_layers(validated),
          {:ok, snapshot} <- finalize(merged),
+         :ok <- validate_runtime_contract(snapshot),
          :ok <- ensure_viable(snapshot) do
       {:ok, snapshot}
     end
@@ -228,6 +229,17 @@ defmodule LLMDB.Engine do
     end
 
     :ok
+  end
+
+  defp validate_runtime_contract(%{providers: providers}) when is_map(providers) do
+    provider_list = Map.values(providers)
+
+    model_list =
+      providers
+      |> Map.values()
+      |> Enum.flat_map(fn provider -> Map.values(provider.models) end)
+
+    Validate.validate_runtime_contract(provider_list, model_list)
   end
 
   @doc """
