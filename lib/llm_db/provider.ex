@@ -81,6 +81,31 @@ defmodule LLMDB.Provider do
                              components: Zoi.array(@pricing_component_schema) |> Zoi.default([])
                            })
 
+  @runtime_auth_header_schema Zoi.object(%{
+                                name: Zoi.string(),
+                                env: Zoi.string() |> Zoi.nullish(),
+                                value: Zoi.string() |> Zoi.nullish()
+                              })
+
+  @runtime_auth_schema Zoi.object(%{
+                         type:
+                           Zoi.enum(["bearer", "x_api_key", "header", "query", "multi_header"])
+                           |> Zoi.nullish(),
+                         env: Zoi.array(Zoi.string()) |> Zoi.default([]),
+                         header_name: Zoi.string() |> Zoi.nullish(),
+                         query_name: Zoi.string() |> Zoi.nullish(),
+                         headers: Zoi.array(@runtime_auth_header_schema) |> Zoi.default([])
+                       })
+
+  @runtime_schema Zoi.object(%{
+                    base_url: Zoi.string() |> Zoi.nullish(),
+                    auth: @runtime_auth_schema |> Zoi.nullish(),
+                    default_headers: Zoi.map() |> Zoi.default(%{}),
+                    default_query: Zoi.map() |> Zoi.default(%{}),
+                    config_schema: Zoi.array(@config_field_schema) |> Zoi.nullish(),
+                    doc_url: Zoi.string() |> Zoi.nullish()
+                  })
+
   @schema Zoi.struct(
             __MODULE__,
             %{
@@ -92,6 +117,8 @@ defmodule LLMDB.Provider do
               doc: Zoi.string() |> Zoi.nullish(),
               exclude_models: Zoi.array(Zoi.string()) |> Zoi.default([]) |> Zoi.nullish(),
               pricing_defaults: @pricing_defaults_schema |> Zoi.nullish(),
+              runtime: @runtime_schema |> Zoi.nullish(),
+              catalog_only: Zoi.boolean() |> Zoi.default(false),
               extra: Zoi.map() |> Zoi.nullish(),
               alias_of: Zoi.atom() |> Zoi.nullish()
             },
@@ -119,6 +146,10 @@ defmodule LLMDB.Provider do
   """
   @spec new(map()) :: {:ok, t()} | {:error, term()}
   def new(attrs) when is_map(attrs) do
+    attrs =
+      attrs
+      |> normalize_runtime_attrs()
+
     Zoi.parse(@schema, attrs)
   end
 
@@ -136,6 +167,42 @@ defmodule LLMDB.Provider do
       {:ok, provider} -> provider
       {:error, reason} -> raise ArgumentError, "Invalid provider: #{inspect(reason)}"
     end
+  end
+
+  defp normalize_runtime_attrs(attrs) do
+    update_in_nested_map(attrs, :runtime, fn runtime ->
+      update_in_nested_map(runtime, :auth, fn auth ->
+        normalize_string_enum(auth, :type)
+      end)
+    end)
+  end
+
+  defp update_in_nested_map(attrs, key, fun) when is_map(attrs) do
+    case Map.get(attrs, key) || Map.get(attrs, to_string(key)) do
+      nested when is_map(nested) ->
+        normalized = fun.(nested)
+
+        attrs
+        |> Map.put(key, normalized)
+        |> Map.put(to_string(key), normalized)
+
+      _other ->
+        attrs
+    end
+  end
+
+  defp normalize_string_enum(map, key) when is_map(map) do
+    value = Map.get(map, key) || Map.get(map, to_string(key))
+
+    normalized =
+      case value do
+        atom when is_atom(atom) -> Atom.to_string(atom)
+        other -> other
+      end
+
+    map
+    |> Map.put(key, normalized)
+    |> Map.put(to_string(key), normalized)
   end
 end
 

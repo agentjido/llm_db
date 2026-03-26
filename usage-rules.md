@@ -8,6 +8,7 @@ This document defines how AI coding assistants should interact with the `llm_db`
 2. **Explicit Over Implicit**: No automatic updates, no magic—everything is manual and predictable
 3. **Stability First**: The packaged snapshot is stable and version-pinned; sources are optional overlays
 4. **Performance**: All runtime queries are O(1) lock-free reads from `:persistent_term`
+5. **Execution Metadata Lives Upstream**: Typed provider runtime and model execution metadata belong in `LLMDB`, not in downstream runtime heuristics
 
 ## Build-Time Operations
 
@@ -62,6 +63,30 @@ config :llm_db,
 ```
 
 **Important:** The packaged snapshot is NOT a source—it's the final output that ships with the Hex package.
+
+### Typed Runtime Metadata
+
+Packaged providers and models can carry typed execution metadata:
+
+- `LLMDB.Provider.runtime`
+  - `base_url`
+  - `auth`
+  - `default_headers`
+  - `default_query`
+  - `config_schema`
+  - `doc_url`
+- `LLMDB.Model.execution`
+  - `text`
+  - `object`
+  - `embed`
+  - `image`
+  - `transcription`
+  - `speech`
+  - `realtime`
+
+These fields are the source of truth for executable support. Legacy fields such
+as `base_url` and free-form `extra` metadata may still exist during migration,
+but downstream runtimes should prefer the typed contract when it is present.
 
 ### Versioning and Release
 

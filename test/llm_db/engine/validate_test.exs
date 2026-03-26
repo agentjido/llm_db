@@ -594,4 +594,114 @@ defmodule LLMDB.Engine.ValidateTest do
       assert {:error, :empty_catalog} = Validate.ensure_viable(providers, models)
     end
   end
+
+  describe "validate_runtime_contract/2" do
+    test "accepts legacy providers and models without typed runtime metadata" do
+      providers = [LLMDB.Provider.new!(%{id: :openai, name: "OpenAI"})]
+      models = [LLMDB.Model.new!(%{id: "gpt-4o-mini", provider: :openai})]
+
+      assert :ok = Validate.validate_runtime_contract(providers, models)
+    end
+
+    test "rejects providers with incomplete runtime metadata" do
+      providers = [
+        LLMDB.Provider.new!(%{
+          id: :openai,
+          runtime: %{
+            auth: %{type: "bearer", env: ["OPENAI_API_KEY"]}
+          }
+        })
+      ]
+
+      assert {:error, {:invalid_runtime_contract, errors}} =
+               Validate.validate_runtime_contract(providers, [])
+
+      assert %{scope: :provider, provider: :openai, error: :missing_runtime_base_url} in errors
+    end
+
+    test "rejects executable models without required execution entries" do
+      providers = [
+        LLMDB.Provider.new!(%{
+          id: :openai,
+          runtime: %{
+            base_url: "https://api.openai.com/v1",
+            auth: %{type: "bearer", env: ["OPENAI_API_KEY"]}
+          }
+        })
+      ]
+
+      models = [
+        LLMDB.Model.new!(%{
+          id: "gpt-4o-mini",
+          provider: :openai,
+          capabilities: %{chat: true},
+          execution: %{
+            text: %{supported: true, family: "openai_chat_compatible"}
+          }
+        })
+      ]
+
+      assert {:error, {:invalid_runtime_contract, errors}} =
+               Validate.validate_runtime_contract(providers, models)
+
+      assert %{
+               scope: :model,
+               provider: :openai,
+               model_id: "gpt-4o-mini",
+               operation: :object,
+               error: :missing_execution_entry
+             } in errors
+    end
+
+    test "rejects unknown execution families" do
+      providers = [
+        LLMDB.Provider.new!(%{
+          id: :openai,
+          runtime: %{
+            base_url: "https://api.openai.com/v1",
+            auth: %{type: "bearer", env: ["OPENAI_API_KEY"]}
+          }
+        })
+      ]
+
+      models = [
+        LLMDB.Model.new!(%{
+          id: "gpt-4o-mini",
+          provider: :openai,
+          capabilities: %{chat: true},
+          execution: %{
+            text: %{supported: true, family: "totally_unknown_family"},
+            object: %{supported: true, family: "openai_chat_compatible"}
+          }
+        })
+      ]
+
+      assert {:error, {:invalid_runtime_contract, errors}} =
+               Validate.validate_runtime_contract(providers, models)
+
+      assert %{
+               scope: :model,
+               provider: :openai,
+               model_id: "gpt-4o-mini",
+               operation: :text,
+               error: :unknown_execution_family,
+               family: "totally_unknown_family"
+             } in errors
+    end
+
+    test "allows catalog_only providers and models to skip execution requirements" do
+      providers = [LLMDB.Provider.new!(%{id: :docs_only, catalog_only: true})]
+
+      models = [
+        LLMDB.Model.new!(%{
+          id: "docs-only-model",
+          provider: :docs_only,
+          catalog_only: true,
+          capabilities: %{chat: true}
+        })
+      ]
+
+      assert :ok = Validate.validate_runtime_contract(providers, models)
+    end
+  end
 end

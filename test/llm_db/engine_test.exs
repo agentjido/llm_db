@@ -156,6 +156,36 @@ defmodule LLMDB.EngineTest do
       assert Map.has_key?(snapshot.providers, :test_provider)
       assert Map.has_key?(snapshot.providers[:test_provider].models, "test-model")
     end
+
+    test "rejects snapshots with invalid typed runtime metadata" do
+      overrides = %{
+        providers: [
+          %{
+            id: :test_provider,
+            runtime: %{
+              auth: %{type: "bearer", env: ["TEST_PROVIDER_API_KEY"]}
+            }
+          }
+        ],
+        models: [
+          %{
+            id: "test-model",
+            provider: :test_provider,
+            capabilities: %{chat: true},
+            execution: %{
+              text: %{supported: true, family: "openai_chat_compatible"},
+              object: %{supported: true, family: "openai_chat_compatible"}
+            }
+          }
+        ]
+      }
+
+      sources = [{LLMDB.Sources.Config, %{overrides: overrides}}]
+
+      assert {:error, {:invalid_runtime_contract, errors}} = Engine.run(sources: sources)
+
+      assert %{scope: :provider, provider: :test_provider, error: :missing_runtime_base_url} in errors
+    end
   end
 
   describe "apply_filters/2" do

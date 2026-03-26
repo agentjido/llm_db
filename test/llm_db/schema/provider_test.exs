@@ -38,6 +38,47 @@ defmodule LLMDB.Schema.ProviderTest do
       assert {:ok, result} = Zoi.parse(Provider.schema(), input)
       assert result.env == ["ANTHROPIC_API_KEY", "ANTHROPIC_ORG_ID"]
     end
+
+    test "parses typed runtime metadata" do
+      input = %{
+        id: :openai,
+        runtime: %{
+          base_url: "https://api.openai.com/v1",
+          auth: %{
+            type: "bearer",
+            env: ["OPENAI_API_KEY"]
+          },
+          default_headers: %{"openai-beta" => "responses=v1"},
+          default_query: %{"project" => "demo"},
+          config_schema: [
+            %{name: "project", type: "string", required: false, doc: "OpenAI project override"}
+          ],
+          doc_url: "https://platform.openai.com/docs/api-reference"
+        }
+      }
+
+      assert {:ok, result} = Zoi.parse(Provider.schema(), input)
+      assert result.runtime.base_url == "https://api.openai.com/v1"
+      assert result.runtime.auth.type == "bearer"
+      assert result.runtime.auth.env == ["OPENAI_API_KEY"]
+      assert result.runtime.default_headers["openai-beta"] == "responses=v1"
+      assert result.runtime.default_query["project"] == "demo"
+      assert hd(result.runtime.config_schema).name == "project"
+      assert result.runtime.doc_url == "https://platform.openai.com/docs/api-reference"
+    end
+
+    test "normalizes auth type atoms through Provider.new/1" do
+      input = %{
+        id: :openai,
+        runtime: %{
+          base_url: "https://api.openai.com/v1",
+          auth: %{type: :bearer, env: ["OPENAI_API_KEY"]}
+        }
+      }
+
+      assert {:ok, result} = Provider.new(input)
+      assert result.runtime.auth.type == "bearer"
+    end
   end
 
   describe "optional fields" do
@@ -69,6 +110,12 @@ defmodule LLMDB.Schema.ProviderTest do
       input = %{id: :openai}
       assert {:ok, result} = Zoi.parse(Provider.schema(), input)
       assert result.extra == nil
+    end
+
+    test "catalog_only defaults to false" do
+      input = %{id: :openai}
+      assert {:ok, result} = Zoi.parse(Provider.schema(), input)
+      assert result.catalog_only == false
     end
   end
 
