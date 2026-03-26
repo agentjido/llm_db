@@ -256,6 +256,20 @@ defmodule LLMDB.Snapshot do
     |> Map.new()
   end
 
+  defp json_safe(%LLMDB.Provider{} = value) do
+    value
+    |> Map.from_struct()
+    |> drop_empty_snapshot_fields(runtime: nil, catalog_only: false)
+    |> json_safe()
+  end
+
+  defp json_safe(%LLMDB.Model{} = value) do
+    value
+    |> Map.from_struct()
+    |> drop_empty_snapshot_fields(doc_url: nil, execution: nil, catalog_only: false)
+    |> json_safe()
+  end
+
   defp json_safe(%_{} = value) do
     value
     |> Map.from_struct()
@@ -302,6 +316,16 @@ defmodule LLMDB.Snapshot do
   end
 
   defp canonical_digest_term(value), do: value
+
+  defp drop_empty_snapshot_fields(map, fields) when is_map(map) and is_list(fields) do
+    Enum.reduce(fields, map, fn {key, empty_value}, acc ->
+      if Map.get(acc, key) == empty_value do
+        Map.delete(acc, key)
+      else
+        acc
+      end
+    end)
+  end
 
   defp expand_path(path) when is_binary(path) do
     if Path.type(path) == :absolute do
