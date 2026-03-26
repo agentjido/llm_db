@@ -26,6 +26,13 @@ Legacy fields like `base_url`, `doc`, and `extra` remain available during
 migration, but `runtime` and `execution` are the intended source of truth for
 downstream runtime consumers.
 
+The packaged snapshot is enriched at build time:
+
+- providers with a stable runtime contract gain typed `runtime` metadata
+- models with a safe canonical execution lane gain typed `execution` metadata
+- remaining packaged entries are marked `catalog_only: true` rather than
+  forcing downstream consumers to guess
+
 ## Installation
 
 

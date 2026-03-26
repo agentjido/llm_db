@@ -13,6 +13,27 @@ defmodule LLMDB.Validate do
   @type validation_error :: term()
 
   @execution_operations [:text, :object, :embed, :image, :transcription, :speech, :realtime]
+
+  @openai_compatible_providers MapSet.new([
+                                 :openai,
+                                 :openrouter,
+                                 :groq,
+                                 :xai,
+                                 :zenmux,
+                                 :mistral,
+                                 :togetherai,
+                                 :github_models,
+                                 :perplexity,
+                                 :cloudflare_workers_ai,
+                                 :fireworks_ai,
+                                 :friendli,
+                                 :ollama_cloud,
+                                 :deepseek,
+                                 :alibaba,
+                                 :venice,
+                                 :cerebras,
+                                 :zai
+                               ])
   @execution_families [
     "openai_chat_compatible",
     "openai_responses_compatible",
@@ -286,10 +307,23 @@ defmodule LLMDB.Validate do
     |> maybe_add_operation(realtime?(model), :realtime)
   end
 
-  defp text_like?(%Model{capabilities: nil}), do: true
+  defp text_like?(%Model{} = model) do
+    cond do
+      exclusive_media_model?(model) ->
+        false
 
-  defp text_like?(%Model{capabilities: capabilities}) when is_map(capabilities) do
-    Map.get(capabilities, :chat) == true
+      chat_capability?(model) ->
+        true
+
+      text_input?(model) and text_output?(model) ->
+        true
+
+      no_capability_or_modality_metadata?(model) ->
+        true
+
+      true ->
+        false
+    end
   end
 
   defp embeddings?(%Model{capabilities: capabilities}) when is_map(capabilities) do
@@ -302,8 +336,10 @@ defmodule LLMDB.Validate do
 
   defp embeddings?(_model), do: false
 
-  defp image_generation?(%Model{modalities: %{output: output}}) when is_list(output),
-    do: :image in output
+  defp image_generation?(%Model{provider: provider, modalities: %{output: output}})
+       when is_list(output) do
+    provider in @openai_compatible_providers and :image in output
+  end
 
   defp image_generation?(%Model{extra: extra}) when is_map(extra) do
     Map.get(extra, :api) == "images" or get_in(extra, [:wire, :protocol]) == "openai_images"
@@ -311,31 +347,102 @@ defmodule LLMDB.Validate do
 
   defp image_generation?(_model), do: false
 
-  defp transcription?(%Model{modalities: %{input: input, output: output}})
-       when is_list(input) and is_list(output),
-       do: :audio in input and :text in output
-
-  defp transcription?(%Model{extra: extra}) when is_map(extra) do
-    Map.get(extra, :api) in ["audio.transcriptions", "audio.translation"]
+  defp transcription?(%Model{} = model) do
+    exclusive_transcription_model?(model) or explicit_transcription_model?(model)
   end
 
-  defp transcription?(_model), do: false
+  defp explicit_transcription_model?(%Model{id: id, extra: extra}) do
+    normalized_id = String.downcase(id)
 
-  defp speech?(%Model{modalities: %{input: input, output: output}})
-       when is_list(input) and is_list(output),
-       do: :text in input and :audio in output
+    api =
+      case extra do
+        map when is_map(map) -> Map.get(map, :api)
+        _other -> nil
+      end
 
-  defp speech?(%Model{extra: extra}) when is_map(extra) do
-    Map.get(extra, :api) == "audio.speech"
+    api in ["audio.transcriptions", "audio.translation"] or
+      String.contains?(normalized_id, "transcribe") or
+      String.contains?(normalized_id, "whisper")
   end
 
-  defp speech?(_model), do: false
+  defp explicit_transcription_model?(_model), do: false
 
-  defp realtime?(%Model{extra: extra}) when is_map(extra) do
-    Map.get(extra, :api) == "realtime" or get_in(extra, [:wire, :protocol]) == "openai_realtime"
+  defp speech?(%Model{} = model) do
+    exclusive_speech_model?(model) or explicit_speech_model?(model)
+  end
+
+  defp explicit_speech_model?(%Model{id: id, extra: extra}) do
+    normalized_id = String.downcase(id)
+
+    api =
+      case extra do
+        map when is_map(map) -> Map.get(map, :api)
+        _other -> nil
+      end
+
+    api == "audio.speech" or
+      String.starts_with?(normalized_id, "tts-") or
+      String.contains?(normalized_id, "-tts")
+  end
+
+  defp explicit_speech_model?(_model), do: false
+
+  defp realtime?(%Model{provider: provider, id: id, extra: extra}) do
+    extra_realtime? =
+      case extra do
+        map when is_map(map) ->
+          Map.get(map, :api) == "realtime" or get_in(map, [:wire, :protocol]) == "openai_realtime"
+
+        _other ->
+          false
+      end
+
+    extra_realtime? or
+      (provider == :openai and String.contains?(String.downcase(id), "realtime"))
   end
 
   defp realtime?(_model), do: false
+
+  defp exclusive_media_model?(%Model{} = model) do
+    embeddings?(model) or image_generation?(model) or realtime?(model) or
+      exclusive_transcription_model?(model) or explicit_transcription_model?(model) or
+      exclusive_speech_model?(model) or explicit_speech_model?(model)
+  end
+
+  defp exclusive_transcription_model?(%Model{} = model) do
+    audio_input?(model) and text_output?(model) and not chat_capability?(model) and
+      not text_input?(model)
+  end
+
+  defp exclusive_speech_model?(%Model{} = model) do
+    text_input?(model) and audio_output?(model) and not chat_capability?(model) and
+      not text_output?(model)
+  end
+
+  defp chat_capability?(%Model{capabilities: capabilities}) when is_map(capabilities) do
+    Map.get(capabilities, :chat) == true
+  end
+
+  defp chat_capability?(_model), do: false
+
+  defp no_capability_or_modality_metadata?(%Model{capabilities: nil, modalities: nil}), do: true
+  defp no_capability_or_modality_metadata?(_model), do: false
+
+  defp text_input?(%Model{modalities: %{input: input}}) when is_list(input), do: :text in input
+  defp text_input?(_model), do: false
+
+  defp text_output?(%Model{modalities: %{output: output}}) when is_list(output),
+    do: :text in output
+
+  defp text_output?(_model), do: false
+
+  defp audio_input?(%Model{modalities: %{input: input}}) when is_list(input), do: :audio in input
+  defp audio_input?(_model), do: false
+
+  defp audio_output?(%Model{modalities: %{output: output}}) when is_list(output),
+    do: :audio in output
+
+  defp audio_output?(_model), do: false
 
   defp executable_model?(execution) when is_map(execution) do
     Enum.any?(@execution_operations, fn operation ->

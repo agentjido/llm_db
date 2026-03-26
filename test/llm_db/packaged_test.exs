@@ -52,5 +52,35 @@ defmodule LLMDB.PackagedTest do
         end
       end
     end
+
+    test "snapshot carries representative provider runtime metadata" do
+      snapshot = Packaged.snapshot()
+
+      if snapshot do
+        openai = snapshot["providers"]["openai"]
+        anthropic = snapshot["providers"]["anthropic"]
+
+        assert openai["runtime"]["auth"]["type"] == "bearer"
+        assert openai["runtime"]["base_url"] == "https://api.openai.com/v1"
+        assert anthropic["runtime"]["auth"]["type"] == "x_api_key"
+        assert anthropic["runtime"]["auth"]["header_name"] == "x-api-key"
+      end
+    end
+
+    test "snapshot carries representative model execution metadata" do
+      snapshot = Packaged.snapshot()
+
+      if snapshot do
+        responses_model = snapshot["providers"]["openai"]["models"]["gpt-4.1"]
+        speech_model = snapshot["providers"]["openai"]["models"]["gpt-4o-mini-tts"]
+        google_model = snapshot["providers"]["google"]["models"]["gemini-2.5-pro"]
+        elevenlabs_model = snapshot["providers"]["elevenlabs"]["models"]["eleven_flash_v2_5"]
+
+        assert responses_model["execution"]["text"]["family"] == "openai_responses_compatible"
+        assert speech_model["execution"]["speech"]["family"] == "openai_speech"
+        assert google_model["execution"]["text"]["family"] == "google_generate_content"
+        assert elevenlabs_model["execution"]["speech"]["family"] == "elevenlabs_speech"
+      end
+    end
   end
 end

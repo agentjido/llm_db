@@ -88,6 +88,10 @@ These fields are the source of truth for executable support. Legacy fields such
 as `base_url` and free-form `extra` metadata may still exist during migration,
 but downstream runtimes should prefer the typed contract when it is present.
 
+Snapshot builds should enrich these fields deterministically. If a packaged
+provider or model cannot be executed safely, mark it `catalog_only: true`
+instead of relying on downstream heuristics.
+
 ### Versioning and Release
 
 ```bash
