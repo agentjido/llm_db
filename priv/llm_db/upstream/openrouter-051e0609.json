@@ -94,8 +94,9 @@
       "name": "Z.ai: GLM 5.1",
       "per_request_limits": null,
       "pricing": {
-        "completion": "0.00000396",
-        "prompt": "0.00000126"
+        "completion": "0.0000044",
+        "input_cache_read": "0.00000026",
+        "prompt": "0.000001395"
       },
       "supported_parameters": [
         "frequency_penalty",
@@ -121,7 +122,7 @@
       "top_provider": {
         "context_length": 202752,
         "is_moderated": false,
-        "max_completion_tokens": null
+        "max_completion_tokens": 131072
       }
     },
     {
@@ -1092,6 +1093,7 @@
       },
       "supported_parameters": [
         "include_reasoning",
+        "max_completion_tokens",
         "max_tokens",
         "reasoning",
         "response_format",
@@ -1149,6 +1151,7 @@
       },
       "supported_parameters": [
         "include_reasoning",
+        "max_completion_tokens",
         "max_tokens",
         "reasoning",
         "response_format",
@@ -1215,6 +1218,7 @@
         "temperature",
         "tool_choice",
         "tools",
+        "top_k",
         "top_p"
       ],
       "top_provider": {
@@ -1566,6 +1570,7 @@
       },
       "supported_parameters": [
         "include_reasoning",
+        "max_completion_tokens",
         "max_tokens",
         "reasoning",
         "response_format",
@@ -1623,6 +1628,7 @@
       },
       "supported_parameters": [
         "include_reasoning",
+        "max_completion_tokens",
         "max_tokens",
         "reasoning",
         "response_format",
@@ -1734,6 +1740,7 @@
         "web_search": "0.1"
       },
       "supported_parameters": [
+        "max_completion_tokens",
         "max_tokens",
         "response_format",
         "seed",
@@ -2336,6 +2343,7 @@
       },
       "supported_parameters": [
         "include_reasoning",
+        "max_completion_tokens",
         "max_tokens",
         "reasoning",
         "response_format",
@@ -2503,6 +2511,7 @@
       },
       "supported_parameters": [
         "include_reasoning",
+        "max_completion_tokens",
         "max_tokens",
         "reasoning",
         "response_format",
@@ -2917,6 +2926,7 @@
       },
       "supported_parameters": [
         "include_reasoning",
+        "max_completion_tokens",
         "max_tokens",
         "reasoning",
         "response_format",
@@ -3065,56 +3075,6 @@
         "tokenizer": "Other"
       },
       "canonical_slug": "stepfun/step-3.5-flash",
-      "context_length": 256000,
-      "created": 1769728337,
-      "default_parameters": {
-        "frequency_penalty": null,
-        "temperature": null,
-        "top_p": null
-      },
-      "description": "Step 3.5 Flash is StepFun's most capable open-source foundation model. Built on a sparse Mixture of Experts (MoE) architecture, it selectively activates only 11B of its 196B parameters per token....",
-      "expiration_date": null,
-      "hugging_face_id": "stepfun-ai/Step-3.5-Flash",
-      "id": "stepfun/step-3.5-flash:free",
-      "knowledge_cutoff": null,
-      "links": {
-        "details": "/api/v1/models/stepfun/step-3.5-flash/endpoints"
-      },
-      "name": "StepFun: Step 3.5 Flash (free)",
-      "per_request_limits": null,
-      "pricing": {
-        "completion": "0",
-        "prompt": "0"
-      },
-      "supported_parameters": [
-        "frequency_penalty",
-        "include_reasoning",
-        "max_tokens",
-        "reasoning",
-        "stop",
-        "temperature",
-        "tools",
-        "top_p"
-      ],
-      "top_provider": {
-        "context_length": 256000,
-        "is_moderated": false,
-        "max_completion_tokens": 256000
-      }
-    },
-    {
-      "architecture": {
-        "input_modalities": [
-          "text"
-        ],
-        "instruct_type": null,
-        "modality": "text->text",
-        "output_modalities": [
-          "text"
-        ],
-        "tokenizer": "Other"
-      },
-      "canonical_slug": "stepfun/step-3.5-flash",
       "context_length": 262144,
       "created": 1769728337,
       "default_parameters": {
@@ -3183,7 +3143,7 @@
         "top_p": 0.8
       },
       "description": "Trinity-Large-Preview is a frontier-scale open-weight language model from Arcee, built as a 400B-parameter sparse Mixture-of-Experts with 13B active parameters per token using 4-of-256 expert routing. It excels in creative writing,...",
-      "expiration_date": null,
+      "expiration_date": "2026-04-22",
       "hugging_face_id": "arcee-ai/Trinity-Large-Preview",
       "id": "arcee-ai/trinity-large-preview:free",
       "knowledge_cutoff": null,
@@ -3744,6 +3704,7 @@
       },
       "supported_parameters": [
         "include_reasoning",
+        "max_completion_tokens",
         "max_tokens",
         "reasoning",
         "response_format",
@@ -3956,8 +3917,8 @@
       "per_request_limits": null,
       "pricing": {
         "completion": "0.00000095",
-        "input_cache_read": "0.0000000290000007",
-        "prompt": "0.00000027"
+        "input_cache_read": "0.00000003",
+        "prompt": "0.00000029"
       },
       "supported_parameters": [
         "frequency_penalty",
@@ -3983,7 +3944,7 @@
       "top_provider": {
         "context_length": 196608,
         "is_moderated": false,
-        "max_completion_tokens": null
+        "max_completion_tokens": 196608
       }
     },
     {
@@ -4361,6 +4322,7 @@
         "web_search": "0.01"
       },
       "supported_parameters": [
+        "max_completion_tokens",
         "max_tokens",
         "response_format",
         "seed",
@@ -4470,6 +4432,7 @@
       },
       "supported_parameters": [
         "include_reasoning",
+        "max_completion_tokens",
         "max_tokens",
         "reasoning",
         "response_format",
@@ -4836,6 +4799,7 @@
       },
       "supported_parameters": [
         "include_reasoning",
+        "max_completion_tokens",
         "max_tokens",
         "reasoning",
         "response_format",
@@ -5747,6 +5711,7 @@
       },
       "supported_parameters": [
         "include_reasoning",
+        "max_completion_tokens",
         "max_tokens",
         "reasoning",
         "response_format",
@@ -5800,6 +5765,7 @@
         "web_search": "0.01"
       },
       "supported_parameters": [
+        "max_completion_tokens",
         "max_tokens",
         "response_format",
         "seed",
@@ -5854,6 +5820,7 @@
       },
       "supported_parameters": [
         "include_reasoning",
+        "max_completion_tokens",
         "max_tokens",
         "reasoning",
         "response_format",
@@ -5909,6 +5876,7 @@
       },
       "supported_parameters": [
         "include_reasoning",
+        "max_completion_tokens",
         "max_tokens",
         "reasoning",
         "response_format",
@@ -5936,7 +5904,7 @@
         "tokenizer": "Other"
       },
       "canonical_slug": "moonshotai/kimi-k2-thinking-20251106",
-      "context_length": 131072,
+      "context_length": 262144,
       "created": 1762440622,
       "default_parameters": {
         "frequency_penalty": null,
@@ -5954,9 +5922,8 @@
       "name": "MoonshotAI: Kimi K2 Thinking",
       "per_request_limits": null,
       "pricing": {
-        "completion": "0.000002",
-        "input_cache_read": "0.000000141",
-        "prompt": "0.00000047"
+        "completion": "0.0000025",
+        "prompt": "0.0000006"
       },
       "supported_parameters": [
         "frequency_penalty",
@@ -5978,7 +5945,7 @@
         "top_p"
       ],
       "top_provider": {
-        "context_length": 131072,
+        "context_length": 262144,
         "is_moderated": false,
         "max_completion_tokens": null
       }
@@ -8513,7 +8480,7 @@
         "tokenizer": "Other"
       },
       "canonical_slug": "moonshotai/kimi-k2-0905",
-      "context_length": 131072,
+      "context_length": 262144,
       "created": 1757021147,
       "default_parameters": {},
       "description": "Kimi K2 0905 is the September update of [Kimi K2 0711](moonshotai/kimi-k2). It is a large-scale Mixture-of-Experts (MoE) language model developed by Moonshot AI, featuring 1 trillion total parameters with 32...",
@@ -8528,7 +8495,6 @@
       "per_request_limits": null,
       "pricing": {
         "completion": "0.000002",
-        "input_cache_read": "0.00000015",
         "prompt": "0.0000004"
       },
       "supported_parameters": [
@@ -8551,9 +8517,9 @@
         "top_p"
       ],
       "top_provider": {
-        "context_length": 131072,
+        "context_length": 262144,
         "is_moderated": false,
-        "max_completion_tokens": null
+        "max_completion_tokens": 262144
       }
     },
     {
@@ -9226,6 +9192,7 @@
       },
       "supported_parameters": [
         "include_reasoning",
+        "max_completion_tokens",
         "max_tokens",
         "reasoning",
         "response_format",
@@ -9283,6 +9250,7 @@
       },
       "supported_parameters": [
         "include_reasoning",
+        "max_completion_tokens",
         "max_tokens",
         "reasoning",
         "response_format",
@@ -9340,6 +9308,7 @@
       },
       "supported_parameters": [
         "include_reasoning",
+        "max_completion_tokens",
         "max_tokens",
         "reasoning",
         "response_format",
@@ -12671,6 +12640,7 @@
         "web_search": "0.01"
       },
       "supported_parameters": [
+        "max_completion_tokens",
         "max_tokens",
         "response_format",
         "seed",
@@ -12721,6 +12691,7 @@
         "web_search": "0.01"
       },
       "supported_parameters": [
+        "max_completion_tokens",
         "max_tokens",
         "response_format",
         "seed",
@@ -12771,6 +12742,7 @@
         "web_search": "0.01"
       },
       "supported_parameters": [
+        "max_completion_tokens",
         "max_tokens",
         "response_format",
         "seed",
@@ -15211,6 +15183,7 @@
       "supported_parameters": [
         "frequency_penalty",
         "include_reasoning",
+        "max_completion_tokens",
         "max_tokens",
         "presence_penalty",
         "reasoning",
@@ -16355,19 +16328,19 @@
         ],
         "tokenizer": "Other"
       },
-      "canonical_slug": "inflection/inflection-3-pi",
+      "canonical_slug": "inflection/inflection-3-productivity",
       "context_length": 8000,
       "created": 1728604800,
       "default_parameters": {},
-      "description": "Inflection 3 Pi powers Inflection's [Pi](https://pi.ai) chatbot, including backstory, emotional intelligence, productivity, and safety. It has access to recent news, and excels in scenarios like customer support and roleplay. Pi...",
+      "description": "Inflection 3 Productivity is optimized for following instructions. It is better for tasks requiring JSON output or precise adherence to provided guidelines. It has access to recent news. For emotional...",
       "expiration_date": null,
       "hugging_face_id": null,
-      "id": "inflection/inflection-3-pi",
+      "id": "inflection/inflection-3-productivity",
       "knowledge_cutoff": "2024-10-31",
       "links": {
-        "details": "/api/v1/models/inflection/inflection-3-pi/endpoints"
+        "details": "/api/v1/models/inflection/inflection-3-productivity/endpoints"
       },
-      "name": "Inflection: Inflection 3 Pi",
+      "name": "Inflection: Inflection 3 Productivity",
       "per_request_limits": null,
       "pricing": {
         "completion": "0.00001",
@@ -16397,19 +16370,19 @@
         ],
         "tokenizer": "Other"
       },
-      "canonical_slug": "inflection/inflection-3-productivity",
+      "canonical_slug": "inflection/inflection-3-pi",
       "context_length": 8000,
       "created": 1728604800,
       "default_parameters": {},
-      "description": "Inflection 3 Productivity is optimized for following instructions. It is better for tasks requiring JSON output or precise adherence to provided guidelines. It has access to recent news. For emotional...",
+      "description": "Inflection 3 Pi powers Inflection's [Pi](https://pi.ai) chatbot, including backstory, emotional intelligence, productivity, and safety. It has access to recent news, and excels in scenarios like customer support and roleplay. Pi...",
       "expiration_date": null,
       "hugging_face_id": null,
-      "id": "inflection/inflection-3-productivity",
+      "id": "inflection/inflection-3-pi",
       "knowledge_cutoff": "2024-10-31",
       "links": {
-        "details": "/api/v1/models/inflection/inflection-3-productivity/endpoints"
+        "details": "/api/v1/models/inflection/inflection-3-pi/endpoints"
       },
-      "name": "Inflection: Inflection 3 Productivity",
+      "name": "Inflection: Inflection 3 Pi",
       "per_request_limits": null,
       "pricing": {
         "completion": "0.00001",
@@ -16732,23 +16705,23 @@
         ],
         "tokenizer": "Cohere"
       },
-      "canonical_slug": "cohere/command-r-08-2024",
+      "canonical_slug": "cohere/command-r-plus-08-2024",
       "context_length": 128000,
       "created": 1724976000,
       "default_parameters": {},
-      "description": "command-r-08-2024 is an update of the [Command R](/models/cohere/command-r) with improved performance for multilingual retrieval-augmented generation (RAG) and tool use. More broadly, it is better at math, code and reasoning and...",
+      "description": "command-r-plus-08-2024 is an update of the [Command R+](/models/cohere/command-r-plus) with roughly 50% higher throughput and 25% lower latencies as compared to the previous Command R+ version, while keeping the hardware footprint...",
       "expiration_date": null,
       "hugging_face_id": null,
-      "id": "cohere/command-r-08-2024",
+      "id": "cohere/command-r-plus-08-2024",
       "knowledge_cutoff": "2024-03-31",
       "links": {
-        "details": "/api/v1/models/cohere/command-r-08-2024/endpoints"
+        "details": "/api/v1/models/cohere/command-r-plus-08-2024/endpoints"
       },
-      "name": "Cohere: Command R (08-2024)",
+      "name": "Cohere: Command R+ (08-2024)",
       "per_request_limits": null,
       "pricing": {
-        "completion": "0.0000006",
-        "prompt": "0.00000015"
+        "completion": "0.00001",
+        "prompt": "0.0000025"
       },
       "supported_parameters": [
         "frequency_penalty",
@@ -16782,23 +16755,23 @@
         ],
         "tokenizer": "Cohere"
       },
-      "canonical_slug": "cohere/command-r-plus-08-2024",
+      "canonical_slug": "cohere/command-r-08-2024",
       "context_length": 128000,
       "created": 1724976000,
       "default_parameters": {},
-      "description": "command-r-plus-08-2024 is an update of the [Command R+](/models/cohere/command-r-plus) with roughly 50% higher throughput and 25% lower latencies as compared to the previous Command R+ version, while keeping the hardware footprint...",
+      "description": "command-r-08-2024 is an update of the [Command R](/models/cohere/command-r) with improved performance for multilingual retrieval-augmented generation (RAG) and tool use. More broadly, it is better at math, code and reasoning and...",
       "expiration_date": null,
       "hugging_face_id": null,
-      "id": "cohere/command-r-plus-08-2024",
+      "id": "cohere/command-r-08-2024",
       "knowledge_cutoff": "2024-03-31",
       "links": {
-        "details": "/api/v1/models/cohere/command-r-plus-08-2024/endpoints"
+        "details": "/api/v1/models/cohere/command-r-08-2024/endpoints"
       },
-      "name": "Cohere: Command R+ (08-2024)",
+      "name": "Cohere: Command R (08-2024)",
       "per_request_limits": null,
       "pricing": {
-        "completion": "0.00001",
-        "prompt": "0.0000025"
+        "completion": "0.0000006",
+        "prompt": "0.00000015"
       },
       "supported_parameters": [
         "frequency_penalty",
@@ -17101,6 +17074,7 @@
         "frequency_penalty",
         "logit_bias",
         "logprobs",
+        "max_completion_tokens",
         "max_tokens",
         "presence_penalty",
         "response_format",
@@ -17372,6 +17346,7 @@
         "frequency_penalty",
         "logit_bias",
         "logprobs",
+        "max_completion_tokens",
         "max_tokens",
         "presence_penalty",
         "response_format",
@@ -17594,6 +17569,62 @@
         ],
         "tokenizer": "GPT"
       },
+      "canonical_slug": "openai/gpt-4o-2024-05-13",
+      "context_length": 128000,
+      "created": 1715558400,
+      "default_parameters": {},
+      "description": "GPT-4o (\"o\" for \"omni\") is OpenAI's latest AI model, supporting both text and image inputs with text outputs. It maintains the intelligence level of [GPT-4 Turbo](/models/openai/gpt-4-turbo) while being twice as...",
+      "expiration_date": null,
+      "hugging_face_id": null,
+      "id": "openai/gpt-4o-2024-05-13",
+      "knowledge_cutoff": "2023-10-31",
+      "links": {
+        "details": "/api/v1/models/openai/gpt-4o-2024-05-13/endpoints"
+      },
+      "name": "OpenAI: GPT-4o (2024-05-13)",
+      "per_request_limits": null,
+      "pricing": {
+        "completion": "0.000015",
+        "prompt": "0.000005"
+      },
+      "supported_parameters": [
+        "frequency_penalty",
+        "logit_bias",
+        "logprobs",
+        "max_completion_tokens",
+        "max_tokens",
+        "presence_penalty",
+        "response_format",
+        "seed",
+        "stop",
+        "structured_outputs",
+        "temperature",
+        "tool_choice",
+        "tools",
+        "top_logprobs",
+        "top_p",
+        "web_search_options"
+      ],
+      "top_provider": {
+        "context_length": 128000,
+        "is_moderated": true,
+        "max_completion_tokens": 4096
+      }
+    },
+    {
+      "architecture": {
+        "input_modalities": [
+          "text",
+          "image",
+          "file"
+        ],
+        "instruct_type": null,
+        "modality": "text+image+file->text",
+        "output_modalities": [
+          "text"
+        ],
+        "tokenizer": "GPT"
+      },
       "canonical_slug": "openai/gpt-4o",
       "context_length": 128000,
       "created": 1715558400,
@@ -17617,6 +17648,7 @@
         "frequency_penalty",
         "logit_bias",
         "logprobs",
+        "max_completion_tokens",
         "max_tokens",
         "presence_penalty",
         "response_format",
@@ -17689,61 +17721,6 @@
         "context_length": 128000,
         "is_moderated": true,
         "max_completion_tokens": 64000
-      }
-    },
-    {
-      "architecture": {
-        "input_modalities": [
-          "text",
-          "image",
-          "file"
-        ],
-        "instruct_type": null,
-        "modality": "text+image+file->text",
-        "output_modalities": [
-          "text"
-        ],
-        "tokenizer": "GPT"
-      },
-      "canonical_slug": "openai/gpt-4o-2024-05-13",
-      "context_length": 128000,
-      "created": 1715558400,
-      "default_parameters": {},
-      "description": "GPT-4o (\"o\" for \"omni\") is OpenAI's latest AI model, supporting both text and image inputs with text outputs. It maintains the intelligence level of [GPT-4 Turbo](/models/openai/gpt-4-turbo) while being twice as...",
-      "expiration_date": null,
-      "hugging_face_id": null,
-      "id": "openai/gpt-4o-2024-05-13",
-      "knowledge_cutoff": "2023-10-31",
-      "links": {
-        "details": "/api/v1/models/openai/gpt-4o-2024-05-13/endpoints"
-      },
-      "name": "OpenAI: GPT-4o (2024-05-13)",
-      "per_request_limits": null,
-      "pricing": {
-        "completion": "0.000015",
-        "prompt": "0.000005"
-      },
-      "supported_parameters": [
-        "frequency_penalty",
-        "logit_bias",
-        "logprobs",
-        "max_tokens",
-        "presence_penalty",
-        "response_format",
-        "seed",
-        "stop",
-        "structured_outputs",
-        "temperature",
-        "tool_choice",
-        "tools",
-        "top_logprobs",
-        "top_p",
-        "web_search_options"
-      ],
-      "top_provider": {
-        "context_length": 128000,
-        "is_moderated": true,
-        "max_completion_tokens": 4096
       }
     },
     {
@@ -18109,58 +18086,6 @@
         ],
         "tokenizer": "GPT"
       },
-      "canonical_slug": "openai/gpt-3.5-turbo-0613",
-      "context_length": 4095,
-      "created": 1706140800,
-      "default_parameters": {},
-      "description": "GPT-3.5 Turbo is OpenAI's fastest model. It can understand and generate natural language or code, and is optimized for chat and traditional completion tasks.\n\nTraining data up to Sep 2021.",
-      "expiration_date": null,
-      "hugging_face_id": null,
-      "id": "openai/gpt-3.5-turbo-0613",
-      "knowledge_cutoff": "2021-09-30",
-      "links": {
-        "details": "/api/v1/models/openai/gpt-3.5-turbo-0613/endpoints"
-      },
-      "name": "OpenAI: GPT-3.5 Turbo (older v0613)",
-      "per_request_limits": null,
-      "pricing": {
-        "completion": "0.000002",
-        "prompt": "0.000001"
-      },
-      "supported_parameters": [
-        "frequency_penalty",
-        "logit_bias",
-        "logprobs",
-        "max_tokens",
-        "presence_penalty",
-        "response_format",
-        "seed",
-        "stop",
-        "structured_outputs",
-        "temperature",
-        "tool_choice",
-        "tools",
-        "top_logprobs",
-        "top_p"
-      ],
-      "top_provider": {
-        "context_length": 4095,
-        "is_moderated": false,
-        "max_completion_tokens": 4096
-      }
-    },
-    {
-      "architecture": {
-        "input_modalities": [
-          "text"
-        ],
-        "instruct_type": null,
-        "modality": "text->text",
-        "output_modalities": [
-          "text"
-        ],
-        "tokenizer": "GPT"
-      },
       "canonical_slug": "openai/gpt-4-turbo-preview",
       "context_length": 128000,
       "created": 1706140800,
@@ -18198,6 +18123,58 @@
       "top_provider": {
         "context_length": 128000,
         "is_moderated": true,
+        "max_completion_tokens": 4096
+      }
+    },
+    {
+      "architecture": {
+        "input_modalities": [
+          "text"
+        ],
+        "instruct_type": null,
+        "modality": "text->text",
+        "output_modalities": [
+          "text"
+        ],
+        "tokenizer": "GPT"
+      },
+      "canonical_slug": "openai/gpt-3.5-turbo-0613",
+      "context_length": 4095,
+      "created": 1706140800,
+      "default_parameters": {},
+      "description": "GPT-3.5 Turbo is OpenAI's fastest model. It can understand and generate natural language or code, and is optimized for chat and traditional completion tasks.\n\nTraining data up to Sep 2021.",
+      "expiration_date": null,
+      "hugging_face_id": null,
+      "id": "openai/gpt-3.5-turbo-0613",
+      "knowledge_cutoff": "2021-09-30",
+      "links": {
+        "details": "/api/v1/models/openai/gpt-3.5-turbo-0613/endpoints"
+      },
+      "name": "OpenAI: GPT-3.5 Turbo (older v0613)",
+      "per_request_limits": null,
+      "pricing": {
+        "completion": "0.000002",
+        "prompt": "0.000001"
+      },
+      "supported_parameters": [
+        "frequency_penalty",
+        "logit_bias",
+        "logprobs",
+        "max_completion_tokens",
+        "presence_penalty",
+        "response_format",
+        "seed",
+        "stop",
+        "structured_outputs",
+        "temperature",
+        "tool_choice",
+        "tools",
+        "top_logprobs",
+        "top_p"
+      ],
+      "top_provider": {
+        "context_length": 4095,
+        "is_moderated": false,
         "max_completion_tokens": 4096
       }
     },
@@ -18352,6 +18329,7 @@
         "include_reasoning",
         "logit_bias",
         "logprobs",
+        "max_completion_tokens",
         "max_tokens",
         "min_p",
         "presence_penalty",
@@ -18433,54 +18411,6 @@
         "input_modalities": [
           "text"
         ],
-        "instruct_type": "mistral",
-        "modality": "text->text",
-        "output_modalities": [
-          "text"
-        ],
-        "tokenizer": "Mistral"
-      },
-      "canonical_slug": "mistralai/mistral-7b-instruct-v0.1",
-      "context_length": 2824,
-      "created": 1695859200,
-      "default_parameters": {
-        "temperature": 0.3
-      },
-      "description": "A 7.3B parameter model that outperforms Llama 2 13B on all benchmarks, with optimizations for speed and context length.",
-      "expiration_date": null,
-      "hugging_face_id": "mistralai/Mistral-7B-Instruct-v0.1",
-      "id": "mistralai/mistral-7b-instruct-v0.1",
-      "knowledge_cutoff": "2023-09-30",
-      "links": {
-        "details": "/api/v1/models/mistralai/mistral-7b-instruct-v0.1/endpoints"
-      },
-      "name": "Mistral: Mistral 7B Instruct v0.1",
-      "per_request_limits": null,
-      "pricing": {
-        "completion": "0.00000019",
-        "prompt": "0.00000011"
-      },
-      "supported_parameters": [
-        "frequency_penalty",
-        "max_tokens",
-        "presence_penalty",
-        "repetition_penalty",
-        "seed",
-        "temperature",
-        "top_k",
-        "top_p"
-      ],
-      "top_provider": {
-        "context_length": 2824,
-        "is_moderated": false,
-        "max_completion_tokens": null
-      }
-    },
-    {
-      "architecture": {
-        "input_modalities": [
-          "text"
-        ],
         "instruct_type": "chatml",
         "modality": "text->text",
         "output_modalities": [
@@ -18531,6 +18461,54 @@
         "input_modalities": [
           "text"
         ],
+        "instruct_type": "mistral",
+        "modality": "text->text",
+        "output_modalities": [
+          "text"
+        ],
+        "tokenizer": "Mistral"
+      },
+      "canonical_slug": "mistralai/mistral-7b-instruct-v0.1",
+      "context_length": 2824,
+      "created": 1695859200,
+      "default_parameters": {
+        "temperature": 0.3
+      },
+      "description": "A 7.3B parameter model that outperforms Llama 2 13B on all benchmarks, with optimizations for speed and context length.",
+      "expiration_date": null,
+      "hugging_face_id": "mistralai/Mistral-7B-Instruct-v0.1",
+      "id": "mistralai/mistral-7b-instruct-v0.1",
+      "knowledge_cutoff": "2023-09-30",
+      "links": {
+        "details": "/api/v1/models/mistralai/mistral-7b-instruct-v0.1/endpoints"
+      },
+      "name": "Mistral: Mistral 7B Instruct v0.1",
+      "per_request_limits": null,
+      "pricing": {
+        "completion": "0.00000019",
+        "prompt": "0.00000011"
+      },
+      "supported_parameters": [
+        "frequency_penalty",
+        "max_tokens",
+        "presence_penalty",
+        "repetition_penalty",
+        "seed",
+        "temperature",
+        "top_k",
+        "top_p"
+      ],
+      "top_provider": {
+        "context_length": 2824,
+        "is_moderated": false,
+        "max_completion_tokens": null
+      }
+    },
+    {
+      "architecture": {
+        "input_modalities": [
+          "text"
+        ],
         "instruct_type": null,
         "modality": "text->text",
         "output_modalities": [
@@ -18560,6 +18538,7 @@
         "frequency_penalty",
         "logit_bias",
         "logprobs",
+        "max_completion_tokens",
         "max_tokens",
         "presence_penalty",
         "response_format",
@@ -18803,6 +18782,59 @@
         ],
         "tokenizer": "GPT"
       },
+      "canonical_slug": "openai/gpt-4",
+      "context_length": 8191,
+      "created": 1685232000,
+      "default_parameters": {},
+      "description": "OpenAI's flagship model, GPT-4 is a large-scale multimodal language model capable of solving difficult problems with greater accuracy than previous models due to its broader general knowledge and advanced reasoning...",
+      "expiration_date": null,
+      "hugging_face_id": null,
+      "id": "openai/gpt-4",
+      "knowledge_cutoff": "2021-09-30",
+      "links": {
+        "details": "/api/v1/models/openai/gpt-4/endpoints"
+      },
+      "name": "OpenAI: GPT-4",
+      "per_request_limits": null,
+      "pricing": {
+        "completion": "0.00006",
+        "prompt": "0.00003"
+      },
+      "supported_parameters": [
+        "frequency_penalty",
+        "logit_bias",
+        "logprobs",
+        "max_completion_tokens",
+        "max_tokens",
+        "presence_penalty",
+        "response_format",
+        "seed",
+        "stop",
+        "structured_outputs",
+        "temperature",
+        "tool_choice",
+        "tools",
+        "top_logprobs",
+        "top_p"
+      ],
+      "top_provider": {
+        "context_length": 8191,
+        "is_moderated": true,
+        "max_completion_tokens": 4096
+      }
+    },
+    {
+      "architecture": {
+        "input_modalities": [
+          "text"
+        ],
+        "instruct_type": null,
+        "modality": "text->text",
+        "output_modalities": [
+          "text"
+        ],
+        "tokenizer": "GPT"
+      },
       "canonical_slug": "openai/gpt-3.5-turbo",
       "context_length": 16385,
       "created": 1685232000,
@@ -18839,58 +18871,6 @@
       ],
       "top_provider": {
         "context_length": 16385,
-        "is_moderated": true,
-        "max_completion_tokens": 4096
-      }
-    },
-    {
-      "architecture": {
-        "input_modalities": [
-          "text"
-        ],
-        "instruct_type": null,
-        "modality": "text->text",
-        "output_modalities": [
-          "text"
-        ],
-        "tokenizer": "GPT"
-      },
-      "canonical_slug": "openai/gpt-4",
-      "context_length": 8191,
-      "created": 1685232000,
-      "default_parameters": {},
-      "description": "OpenAI's flagship model, GPT-4 is a large-scale multimodal language model capable of solving difficult problems with greater accuracy than previous models due to its broader general knowledge and advanced reasoning...",
-      "expiration_date": null,
-      "hugging_face_id": null,
-      "id": "openai/gpt-4",
-      "knowledge_cutoff": "2021-09-30",
-      "links": {
-        "details": "/api/v1/models/openai/gpt-4/endpoints"
-      },
-      "name": "OpenAI: GPT-4",
-      "per_request_limits": null,
-      "pricing": {
-        "completion": "0.00006",
-        "prompt": "0.00003"
-      },
-      "supported_parameters": [
-        "frequency_penalty",
-        "logit_bias",
-        "logprobs",
-        "max_tokens",
-        "presence_penalty",
-        "response_format",
-        "seed",
-        "stop",
-        "structured_outputs",
-        "temperature",
-        "tool_choice",
-        "tools",
-        "top_logprobs",
-        "top_p"
-      ],
-      "top_provider": {
-        "context_length": 8191,
         "is_moderated": true,
         "max_completion_tokens": 4096
       }
