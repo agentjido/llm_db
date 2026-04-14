@@ -80,7 +80,8 @@ defmodule LLMDB.Engine do
          {:ok, normalized} <- normalize_layers(layers_data),
          {:ok, validated} <- validate_layers(normalized),
          {:ok, merged} <- merge_layers(validated),
-         {:ok, snapshot} <- finalize(merged),
+         {:ok, merged_validated} <- validate_merged(merged),
+         {:ok, snapshot} <- finalize(merged_validated),
          :ok <- validate_runtime_contract(snapshot),
          :ok <- ensure_viable(snapshot) do
       {:ok, snapshot}
@@ -95,6 +96,7 @@ defmodule LLMDB.Engine do
         nil -> Config.sources!()
         sources when is_list(sources) -> sources
       end
+      |> prioritize_source_precedence()
 
     # Warn if no sources provided
     if sources_list == [] do
@@ -145,12 +147,14 @@ defmodule LLMDB.Engine do
     {:ok, %{layers: normalized_layers}}
   end
 
-  # Stage 3: Validate - apply to each layer and log results
+  # Stage 3: Validate - apply to each layer and preserve sparse overlay intent
   defp validate_layers(normalized) do
     validated_layers =
       Enum.map(normalized.layers, fn layer ->
-        {:ok, providers, providers_dropped} = Validate.validate_providers(layer.providers)
-        {:ok, models, models_dropped} = Validate.validate_models(layer.models)
+        {:ok, providers, providers_dropped} =
+          Validate.validate_providers_for_merge(layer.providers)
+
+        {:ok, models, models_dropped} = Validate.validate_models_for_merge(layer.models)
 
         if providers_dropped > 0 do
           Logger.warning(
@@ -196,6 +200,21 @@ defmodule LLMDB.Engine do
     filtered_models = Merge.merge_models(models, [], excludes)
 
     {:ok, %{providers: providers, models: filtered_models}}
+  end
+
+  defp validate_merged(merged) do
+    {:ok, providers, providers_dropped} = Validate.validate_providers(merged.providers)
+    {:ok, models, models_dropped} = Validate.validate_models(merged.models)
+
+    if providers_dropped > 0 do
+      Logger.warning("Dropped #{providers_dropped} invalid provider(s) after merge")
+    end
+
+    if models_dropped > 0 do
+      Logger.warning("Dropped #{models_dropped} invalid model(s) after merge")
+    end
+
+    {:ok, %{providers: providers, models: models}}
   end
 
   # Stage 5: Finalize (Enrich → Nest)
@@ -362,5 +381,16 @@ defmodule LLMDB.Engine do
 
       {[provider | provs_acc], models ++ mods_acc}
     end)
+  end
+
+  # Local TOML overlays are the highest-precedence source regardless of config order.
+  defp prioritize_source_precedence(sources) when is_list(sources) do
+    {locals, non_locals} =
+      Enum.split_with(sources, fn
+        {LLMDB.Sources.Local, _opts} -> true
+        _other -> false
+      end)
+
+    non_locals ++ locals
   end
 end

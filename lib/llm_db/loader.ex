@@ -9,7 +9,7 @@ defmodule LLMDB.Loader do
   LLMDB module focused on the query API.
   """
 
-  alias LLMDB.{Engine, Merge, Model, Packaged, Pricing, Provider, Runtime, Snapshot}
+  alias LLMDB.{Engine, Merge, Model, Packaged, Pricing, Provider, Runtime, Snapshot, Validate}
   alias LLMDB.Snapshot.ReleaseStore
 
   require Logger
@@ -225,21 +225,11 @@ defmodule LLMDB.Loader do
 
   defp deserialize_json_atoms(items, :provider) do
     Enum.map(items, fn provider ->
-      # Convert provider ID from JSON string to existing atom
-      normalized_id =
-        case get_value(provider, :id) do
-          id when is_atom(id) -> id
-          id when is_binary(id) -> provider_atom(id)
-        end
-
-      provider_map =
-        provider
-        |> deep_atomize_keys()
-        |> Map.put(:id, normalized_id)
+      provider_map = normalize_provider_item(provider)
 
       # Validate and create Provider struct
-      case provider do
-        %Provider{} -> %{provider | id: normalized_id}
+      case provider_map do
+        %Provider{} = normalized -> normalized
         _ -> Provider.new!(provider_map)
       end
     end)
@@ -247,40 +237,11 @@ defmodule LLMDB.Loader do
 
   defp deserialize_json_atoms(items, :model) do
     Enum.map(items, fn model ->
-      # Convert provider from JSON string to existing atom
-      normalized_provider =
-        case get_value(model, :provider) do
-          p when is_atom(p) -> p
-          p when is_binary(p) -> provider_atom(p)
-        end
-
-      # Convert modality strings to existing atoms
-      model_map =
-        case get_value(model, :modalities) do
-          %{input: input, output: output} ->
-            put_value(model, :modalities, %{
-              input: deserialize_modality_list(input),
-              output: deserialize_modality_list(output)
-            })
-
-          %{"input" => input, "output" => output} ->
-            put_value(model, :modalities, %{
-              input: deserialize_modality_list(input),
-              output: deserialize_modality_list(output)
-            })
-
-          _ ->
-            model
-        end
-
-      model_map =
-        model_map
-        |> put_value(:provider, normalized_provider)
-        |> deep_atomize_keys()
+      model_map = normalize_model_item(model)
 
       # Validate and create Model struct
-      case model do
-        %Model{} -> model_map
+      case model_map do
+        %Model{} = normalized -> normalized
         _ -> Model.new!(model_map)
       end
     end)
@@ -301,27 +262,58 @@ defmodule LLMDB.Loader do
   end
 
   defp merge_custom({providers, models}, custom) do
-    # Deserialize custom providers and models (convert JSON strings to atoms)
-    custom_providers = deserialize_json_atoms(custom.providers, :provider)
-    custom_models = deserialize_json_atoms(custom.models, :model)
+    custom_providers = validate_custom_overlays!(custom.providers, :provider)
+    custom_models = validate_custom_overlays!(custom.models, :model)
 
-    # Merge providers (last wins by ID)
-    merged_providers = Merge.merge_providers(providers, custom_providers)
+    merged_providers =
+      providers
+      |> Merge.merge_providers(custom_providers)
+      |> revalidate_merged!(&Validate.validate_provider/1, "custom provider")
 
-    # Merge models (last wins by provider + id)
-    merged_models = merge_models(models, custom_models)
+    merged_models =
+      models
+      |> Merge.merge_models(custom_models, %{})
+      |> revalidate_merged!(&Validate.validate_model/1, "custom model")
 
     {merged_providers, merged_models}
   end
 
-  defp merge_models(base_models, custom_models) do
-    # Build map by {provider, id} for efficient merging
-    base_map = Map.new(base_models, fn m -> {{m.provider, m.id}, m} end)
-    custom_map = Map.new(custom_models, fn m -> {{m.provider, m.id}, m} end)
+  defp validate_custom_overlays!(items, :provider) when is_list(items) do
+    Enum.map(items, fn provider ->
+      provider
+      |> normalize_provider_item()
+      |> validate_custom_overlay!(&Validate.validate_provider_overlay/1, "custom provider")
+    end)
+  end
 
-    # Merge with custom winning
-    Map.merge(base_map, custom_map)
-    |> Map.values()
+  defp validate_custom_overlays!(items, :model) when is_list(items) do
+    Enum.map(items, fn model ->
+      model
+      |> normalize_model_item()
+      |> validate_custom_overlay!(&Validate.validate_model_overlay/1, "custom model")
+    end)
+  end
+
+  defp validate_custom_overlay!(item, validator, label) do
+    case validator.(item) do
+      {:ok, overlay} ->
+        overlay
+
+      {:error, reason} ->
+        raise ArgumentError, "Invalid #{label}: #{inspect(reason)}"
+    end
+  end
+
+  defp revalidate_merged!(items, validator, label) when is_list(items) do
+    Enum.map(items, fn item ->
+      case validator.(item) do
+        {:ok, validated} ->
+          validated
+
+        {:error, reason} ->
+          raise ArgumentError, "Invalid #{label} after merge: #{inspect(reason)}"
+      end
+    end)
   end
 
   defp warn_unknown_providers([], _providers), do: :ok
@@ -495,6 +487,53 @@ defmodule LLMDB.Loader do
 
   defp provider_atom(provider) when is_binary(provider) do
     safe_existing_atom(provider, true)
+  end
+
+  defp normalize_provider_item(provider) do
+    normalized_id =
+      case get_value(provider, :id) do
+        id when is_atom(id) -> id
+        id when is_binary(id) -> provider_atom(id)
+      end
+
+    provider
+    |> deep_atomize_keys()
+    |> Map.put(:id, normalized_id)
+  end
+
+  defp normalize_model_item(model) do
+    normalized_provider =
+      case get_value(model, :provider) do
+        provider when is_atom(provider) -> provider
+        provider when is_binary(provider) -> provider_atom(provider)
+      end
+
+    model
+    |> normalize_model_modalities()
+    |> put_value(:provider, normalized_provider)
+    |> deep_atomize_keys()
+  end
+
+  defp normalize_model_modalities(model) do
+    case get_value(model, :modalities) do
+      modalities when is_map(modalities) ->
+        normalized =
+          modalities
+          |> maybe_normalize_modality(:input)
+          |> maybe_normalize_modality(:output)
+
+        put_value(model, :modalities, normalized)
+
+      _other ->
+        model
+    end
+  end
+
+  defp maybe_normalize_modality(modalities, key) do
+    case get_value(modalities, key) do
+      list when is_list(list) -> put_value(modalities, key, deserialize_modality_list(list))
+      _other -> modalities
+    end
   end
 
   defp safe_existing_atom(value, allow_create \\ false)

@@ -376,6 +376,52 @@ defmodule LLMDB.EngineOverrideTest do
       # Output should be preserved from base
       assert model.modalities.output == [:text]
     end
+
+    test "preserves lower-precedence capability groups when overlay only sets json schema" do
+      base = %{
+        providers: [%{id: :openai, name: "OpenAI"}],
+        models: [
+          %{
+            id: "gpt-5-mini",
+            provider: :openai,
+            name: "GPT-5 Mini",
+            capabilities: %{
+              chat: true,
+              reasoning: %{enabled: true},
+              tools: %{enabled: true, strict: true},
+              streaming: %{tool_calls: true}
+            }
+          }
+        ]
+      }
+
+      override = %{
+        providers: [],
+        models: [
+          %{
+            id: "gpt-5-mini",
+            provider: :openai,
+            capabilities: %{
+              json: %{schema: true}
+            }
+          }
+        ]
+      }
+
+      sources = [
+        {LLMDB.Sources.Config, %{overrides: base}},
+        {LLMDB.Sources.Config, %{overrides: override}}
+      ]
+
+      assert {:ok, _snapshot} = run_and_store(sources)
+
+      {:ok, model} = LLMDB.model(:openai, "gpt-5-mini")
+      assert model.capabilities.reasoning.enabled == true
+      assert model.capabilities.tools.enabled == true
+      assert model.capabilities.tools.strict == true
+      assert model.capabilities.streaming.tool_calls == true
+      assert model.capabilities.json.schema == true
+    end
   end
 
   describe "unknown field pass-through" do
@@ -789,6 +835,58 @@ defmodule LLMDB.EngineOverrideTest do
       assert model.limits.context == 128_000
       assert model.limits.output == 4096
     end
+
+    test "local TOML source keeps highest precedence regardless of source order" do
+      local_dir = tmp_local_source_dir!()
+
+      on_exit(fn ->
+        File.rm_rf!(local_dir)
+      end)
+
+      write_local_source!(
+        local_dir,
+        :openai,
+        """
+        id = "openai"
+        name = "OpenAI Local"
+        """,
+        %{
+          "gpt-4.toml" => """
+          id = "gpt-4"
+          name = "GPT-4 Local"
+
+          [capabilities]
+          chat = true
+          """
+        }
+      )
+
+      remote = %{
+        providers: [%{id: :openai, name: "OpenAI Remote"}],
+        models: [
+          %{
+            id: "gpt-4",
+            provider: :openai,
+            name: "GPT-4 Remote",
+            capabilities: %{chat: true}
+          }
+        ]
+      }
+
+      # Deliberately put Local first; engine should still treat it as highest precedence.
+      sources = [
+        {LLMDB.Sources.Local, %{dir: local_dir}},
+        {LLMDB.Sources.Config, %{overrides: remote}}
+      ]
+
+      assert {:ok, _snapshot} = run_and_store(sources)
+
+      {:ok, provider} = LLMDB.provider(:openai)
+      {:ok, model} = LLMDB.model(:openai, "gpt-4")
+
+      assert provider.name == "OpenAI Local"
+      assert model.name == "GPT-4 Local"
+    end
   end
 
   defp build_aliases_index(models) do
@@ -803,5 +901,21 @@ defmodule LLMDB.EngineOverrideTest do
       end)
     end)
     |> Map.new()
+  end
+
+  defp tmp_local_source_dir! do
+    dir = Path.join(System.tmp_dir!(), "llm_db-local-#{System.unique_integer([:positive])}")
+    File.mkdir_p!(dir)
+    dir
+  end
+
+  defp write_local_source!(root, provider_id, provider_toml, model_files) do
+    provider_dir = Path.join(root, Atom.to_string(provider_id))
+    File.mkdir_p!(provider_dir)
+    File.write!(Path.join(provider_dir, "provider.toml"), provider_toml)
+
+    Enum.each(model_files, fn {filename, contents} ->
+      File.write!(Path.join(provider_dir, filename), contents)
+    end)
   end
 end
