@@ -9,7 +9,7 @@ defmodule LLMDB.Loader do
   LLMDB module focused on the query API.
   """
 
-  alias LLMDB.{Engine, Merge, Model, Packaged, Pricing, Provider, Runtime, Snapshot}
+  alias LLMDB.{Engine, Merge, Model, Packaged, Pricing, Provider, Runtime, Snapshot, Validate}
   alias LLMDB.Snapshot.ReleaseStore
 
   require Logger
@@ -301,27 +301,51 @@ defmodule LLMDB.Loader do
   end
 
   defp merge_custom({providers, models}, custom) do
-    # Deserialize custom providers and models (convert JSON strings to atoms)
-    custom_providers = deserialize_json_atoms(custom.providers, :provider)
-    custom_models = deserialize_json_atoms(custom.models, :model)
+    custom_providers =
+      Enum.map(custom.providers, fn provider ->
+        case Validate.validate_provider_overlay(provider) do
+          {:ok, overlay} ->
+            overlay
 
-    # Merge providers (last wins by ID)
-    merged_providers = Merge.merge_providers(providers, custom_providers)
+          {:error, reason} ->
+            raise ArgumentError, "Invalid custom provider: #{inspect(reason)}"
+        end
+      end)
 
-    # Merge models (last wins by provider + id)
-    merged_models = merge_models(models, custom_models)
+    custom_models =
+      Enum.map(custom.models, fn model ->
+        case Validate.validate_model_overlay(model) do
+          {:ok, overlay} ->
+            overlay
+
+          {:error, reason} ->
+            raise ArgumentError, "Invalid custom model: #{inspect(reason)}"
+        end
+      end)
+
+    merged_providers =
+      providers
+      |> Merge.merge_providers(custom_providers)
+      |> revalidate_merged!(&Validate.validate_provider/1, "custom provider")
+
+    merged_models =
+      models
+      |> Merge.merge_models(custom_models, %{})
+      |> revalidate_merged!(&Validate.validate_model/1, "custom model")
 
     {merged_providers, merged_models}
   end
 
-  defp merge_models(base_models, custom_models) do
-    # Build map by {provider, id} for efficient merging
-    base_map = Map.new(base_models, fn m -> {{m.provider, m.id}, m} end)
-    custom_map = Map.new(custom_models, fn m -> {{m.provider, m.id}, m} end)
+  defp revalidate_merged!(items, validator, label) when is_list(items) do
+    Enum.map(items, fn item ->
+      case validator.(item) do
+        {:ok, validated} ->
+          validated
 
-    # Merge with custom winning
-    Map.merge(base_map, custom_map)
-    |> Map.values()
+        {:error, reason} ->
+          raise ArgumentError, "Invalid #{label} after merge: #{inspect(reason)}"
+      end
+    end)
   end
 
   defp warn_unknown_providers([], _providers), do: :ok

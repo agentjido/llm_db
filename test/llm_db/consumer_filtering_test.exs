@@ -1,6 +1,7 @@
 defmodule LLMDB.ConsumerFilteringTest do
   use ExUnit.Case, async: false
 
+  alias LLMDB.{Engine, Snapshot}
   alias LLMDB.Sources.Config, as: ConfigSource
 
   setup do
@@ -246,9 +247,71 @@ defmodule LLMDB.ConsumerFilteringTest do
       local_models = LLMDB.models(:local_llm)
       assert length(local_models) == 2
     end
+
+    test "deep merges partial custom model overlays without losing packaged metadata" do
+      snapshot_path =
+        write_test_snapshot!(%{
+          providers: [%{id: :openai, name: "OpenAI"}],
+          models: [
+            %{
+              id: "gpt-5-mini",
+              provider: :openai,
+              name: "GPT-5 Mini",
+              cost: %{input: 0.25, output: 2.0},
+              capabilities: %{
+                chat: true,
+                reasoning: %{enabled: true},
+                tools: %{enabled: true, strict: true},
+                streaming: %{tool_calls: true}
+              }
+            }
+          ]
+        })
+
+      on_exit(fn ->
+        File.rm_rf!(snapshot_path)
+      end)
+
+      Application.put_env(:llm_db, :snapshot_path, snapshot_path)
+
+      {:ok, _snapshot} =
+        LLMDB.load(
+          custom: %{
+            openai: [
+              models: %{
+                "gpt-5-mini" => %{
+                  capabilities: %{
+                    json: %{schema: true}
+                  }
+                }
+              }
+            ]
+          }
+        )
+
+      assert {:ok, model} = LLMDB.model(:openai, "gpt-5-mini")
+      assert model.name == "GPT-5 Mini"
+      assert model.cost.input == 0.25
+      assert model.capabilities.reasoning.enabled == true
+      assert model.capabilities.tools.enabled == true
+      assert model.capabilities.tools.strict == true
+      assert model.capabilities.streaming.tool_calls == true
+      assert model.capabilities.json.schema == true
+    end
   end
 
   defp capture_log(fun) do
     ExUnit.CaptureLog.capture_log(fun)
+  end
+
+  defp write_test_snapshot!(overrides) do
+    {:ok, engine_snapshot} = Engine.run(sources: [{ConfigSource, %{overrides: overrides}}])
+
+    snapshot_path =
+      Path.join(System.tmp_dir!(), "llm_db-snapshot-#{System.unique_integer([:positive])}.json")
+
+    snapshot = Snapshot.from_engine_snapshot(engine_snapshot)
+    Snapshot.write!(snapshot_path, snapshot)
+    snapshot_path
   end
 end
