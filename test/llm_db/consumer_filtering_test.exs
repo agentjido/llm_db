@@ -248,6 +248,28 @@ defmodule LLMDB.ConsumerFilteringTest do
       assert length(local_models) == 2
     end
 
+    test "normalizes string modality names in custom models before validation" do
+      Application.put_env(:llm_db, :custom, %{
+        local_llm: [
+          name: "Local LLM Server",
+          models: %{
+            "llama-3-8b" => %{
+              modalities: %{
+                input: ["text"],
+                output: ["text"]
+              }
+            }
+          }
+        ]
+      })
+
+      {:ok, _snapshot} = LLMDB.load()
+
+      assert {:ok, model} = LLMDB.model(:local_llm, "llama-3-8b")
+      assert model.modalities.input == [:text]
+      assert model.modalities.output == [:text]
+    end
+
     test "deep merges partial custom model overlays without losing packaged metadata" do
       snapshot_path =
         write_test_snapshot!(%{

@@ -86,22 +86,16 @@ defmodule LLMDB.Validate do
   explicitly supplied fields plus required identity.
   """
   @spec validate_provider_overlay(map()) :: {:ok, map()} | {:error, validation_error()}
-  def validate_provider_overlay(map) when is_map(map) do
-    with {:ok, provider} <- validate_provider(map) do
-      {:ok, sparse_overlay(provider, map, [:id])}
-    end
-  end
+  def validate_provider_overlay(map) when is_map(map),
+    do: validate_overlay(map, &validate_provider/1, [:id])
 
   @doc """
   Validates a model map and returns a sparse overlay that preserves only the
   explicitly supplied fields plus required identity.
   """
   @spec validate_model_overlay(map()) :: {:ok, map()} | {:error, validation_error()}
-  def validate_model_overlay(map) when is_map(map) do
-    with {:ok, model} <- validate_model(map) do
-      {:ok, sparse_overlay(model, map, [:id, :provider])}
-    end
-  end
+  def validate_model_overlay(map) when is_map(map),
+    do: validate_overlay(map, &validate_model/1, [:id, :provider])
 
   @doc """
   Validates a list of provider maps, collecting valid ones and counting invalid.
@@ -115,33 +109,14 @@ defmodule LLMDB.Validate do
       {:ok, [%{id: :openai}, %{id: :anthropic}], 1}
   """
   @spec validate_providers([map()]) :: {:ok, [Provider.t()], non_neg_integer()}
-  def validate_providers(maps) when is_list(maps) do
-    {valid, invalid_count} =
-      Enum.reduce(maps, {[], 0}, fn map, {valid_acc, invalid_acc} ->
-        case validate_provider(map) do
-          {:ok, provider} -> {[provider | valid_acc], invalid_acc}
-          {:error, _} -> {valid_acc, invalid_acc + 1}
-        end
-      end)
-
-    {:ok, Enum.reverse(valid), invalid_count}
-  end
+  def validate_providers(maps) when is_list(maps), do: validate_many(maps, &validate_provider/1)
 
   @doc """
   Validates a list of provider maps and returns sparse overlays suitable for merge.
   """
   @spec validate_providers_for_merge([map()]) :: {:ok, [map()], non_neg_integer()}
-  def validate_providers_for_merge(maps) when is_list(maps) do
-    {valid, invalid_count} =
-      Enum.reduce(maps, {[], 0}, fn map, {valid_acc, invalid_acc} ->
-        case validate_provider_overlay(map) do
-          {:ok, provider} -> {[provider | valid_acc], invalid_acc}
-          {:error, _} -> {valid_acc, invalid_acc + 1}
-        end
-      end)
-
-    {:ok, Enum.reverse(valid), invalid_count}
-  end
+  def validate_providers_for_merge(maps) when is_list(maps),
+    do: validate_many(maps, &validate_provider_overlay/1)
 
   @doc """
   Validates a list of model maps, collecting valid ones and counting invalid.
@@ -159,53 +134,15 @@ defmodule LLMDB.Validate do
       {:ok, [%{id: "gpt-4o", ...}, %{id: "claude-3", ...}], 1}
   """
   @spec validate_models([map()]) :: {:ok, [Model.t()], non_neg_integer()}
-  def validate_models(maps) when is_list(maps) do
-    {valid, invalid_count} =
-      Enum.reduce(maps, {[], 0}, fn map, {valid_acc, invalid_acc} ->
-        case validate_model(map) do
-          {:ok, model} ->
-            {[model | valid_acc], invalid_acc}
-
-          {:error, error} ->
-            model_id = Map.get(map, :id, Map.get(map, "id", "unknown"))
-            provider = Map.get(map, :provider, Map.get(map, "provider", "unknown"))
-
-            Logger.warning(
-              "Validation failed for model #{inspect(provider)}:#{inspect(model_id)}: #{inspect(error)}"
-            )
-
-            {valid_acc, invalid_acc + 1}
-        end
-      end)
-
-    {:ok, Enum.reverse(valid), invalid_count}
-  end
+  def validate_models(maps) when is_list(maps),
+    do: validate_many(maps, &validate_model/1, &log_model_validation_error/2)
 
   @doc """
   Validates a list of model maps and returns sparse overlays suitable for merge.
   """
   @spec validate_models_for_merge([map()]) :: {:ok, [map()], non_neg_integer()}
-  def validate_models_for_merge(maps) when is_list(maps) do
-    {valid, invalid_count} =
-      Enum.reduce(maps, {[], 0}, fn map, {valid_acc, invalid_acc} ->
-        case validate_model_overlay(map) do
-          {:ok, model} ->
-            {[model | valid_acc], invalid_acc}
-
-          {:error, error} ->
-            model_id = Map.get(map, :id, Map.get(map, "id", "unknown"))
-            provider = Map.get(map, :provider, Map.get(map, "provider", "unknown"))
-
-            Logger.warning(
-              "Validation failed for model #{inspect(provider)}:#{inspect(model_id)}: #{inspect(error)}"
-            )
-
-            {valid_acc, invalid_acc + 1}
-        end
-      end)
-
-    {:ok, Enum.reverse(valid), invalid_count}
-  end
+  def validate_models_for_merge(maps) when is_list(maps),
+    do: validate_many(maps, &validate_model_overlay/1, &log_model_validation_error/2)
 
   @doc """
   Validates typed provider runtime and model execution metadata after merge/enrichment.
@@ -557,6 +494,37 @@ defmodule LLMDB.Validate do
 
   defp maybe_add_operation(operations, true, operation), do: [operation | operations]
   defp maybe_add_operation(operations, false, _operation), do: operations
+
+  defp validate_overlay(map, validator, required_keys) when is_map(map) do
+    with {:ok, parsed} <- validator.(map) do
+      {:ok, sparse_overlay(parsed, map, required_keys)}
+    end
+  end
+
+  defp validate_many(maps, validator, on_error \\ fn _, _ -> :ok end) when is_list(maps) do
+    {valid, invalid_count} =
+      Enum.reduce(maps, {[], 0}, fn map, {valid_acc, invalid_acc} ->
+        case validator.(map) do
+          {:ok, item} ->
+            {[item | valid_acc], invalid_acc}
+
+          {:error, error} ->
+            on_error.(map, error)
+            {valid_acc, invalid_acc + 1}
+        end
+      end)
+
+    {:ok, Enum.reverse(valid), invalid_count}
+  end
+
+  defp log_model_validation_error(map, error) do
+    model_id = Map.get(map, :id, Map.get(map, "id", "unknown"))
+    provider = Map.get(map, :provider, Map.get(map, "provider", "unknown"))
+
+    Logger.warning(
+      "Validation failed for model #{inspect(provider)}:#{inspect(model_id)}: #{inspect(error)}"
+    )
+  end
 
   defp sparse_overlay(parsed, raw, required_keys) when is_map(raw) do
     parsed_map =
