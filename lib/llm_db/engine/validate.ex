@@ -616,10 +616,10 @@ defmodule LLMDB.Validate do
 
       is_binary(raw_key) ->
         case maybe_existing_atom(raw_key) do
-          atom_key when is_atom(atom_key) ->
+          {:ok, atom_key} ->
             if Map.has_key?(parsed_map, atom_key), do: atom_key
 
-          _ ->
+          :error ->
             nil
         end
 
@@ -637,9 +637,9 @@ defmodule LLMDB.Validate do
 
   defp maybe_existing_atom(key) when is_binary(key) do
     try do
-      String.to_existing_atom(key)
+      {:ok, String.to_existing_atom(key)}
     rescue
-      ArgumentError -> nil
+      ArgumentError -> :error
     end
   end
 end
