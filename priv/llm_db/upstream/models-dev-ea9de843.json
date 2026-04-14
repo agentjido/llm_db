@@ -40172,6 +40172,35 @@
         "temperature": false,
         "tool_call": true
       },
+      "openrouter/elephant-alpha": {
+        "attachment": false,
+        "cost": {
+          "input": 0,
+          "output": 0
+        },
+        "family": "elephant",
+        "id": "openrouter/elephant-alpha",
+        "last_updated": "2026-04-13",
+        "limit": {
+          "context": 262144,
+          "output": 32768
+        },
+        "modalities": {
+          "input": [
+            "text"
+          ],
+          "output": [
+            "text"
+          ]
+        },
+        "name": "Elephant (free)",
+        "open_weights": false,
+        "reasoning": true,
+        "release_date": "2026-04-13",
+        "structured_output": true,
+        "temperature": true,
+        "tool_call": true
+      },
       "anthropic/claude-3.7-sonnet": {
         "attachment": true,
         "cost": {
@@ -40869,35 +40898,6 @@
         "structured_output": true,
         "temperature": true,
         "tool_call": false
-      },
-      "stepfun/step-3.5-flash:free": {
-        "attachment": false,
-        "cost": {
-          "input": 0,
-          "output": 0
-        },
-        "family": "step",
-        "id": "stepfun/step-3.5-flash:free",
-        "knowledge": "2025-01",
-        "last_updated": "2026-01-29",
-        "limit": {
-          "context": 256000,
-          "output": 256000
-        },
-        "modalities": {
-          "input": [
-            "text"
-          ],
-          "output": [
-            "text"
-          ]
-        },
-        "name": "Step 3.5 Flash (free)",
-        "open_weights": true,
-        "reasoning": true,
-        "release_date": "2026-01-29",
-        "temperature": true,
-        "tool_call": true
       },
       "anthropic/claude-sonnet-4.6": {
         "attachment": true,
@@ -79916,6 +79916,39 @@
         "temperature": true,
         "tool_call": true
       },
+      "MiniMaxAI/MiniMax-M2.7": {
+        "attachment": false,
+        "cost": {
+          "cache_read": 0.06,
+          "input": 0.3,
+          "output": 1.2
+        },
+        "family": "minimax",
+        "id": "MiniMaxAI/MiniMax-M2.7",
+        "interleaved": {
+          "field": "reasoning_content"
+        },
+        "last_updated": "2026-03-18",
+        "limit": {
+          "context": 204800,
+          "output": 131072
+        },
+        "modalities": {
+          "input": [
+            "text"
+          ],
+          "output": [
+            "text"
+          ]
+        },
+        "name": "MiniMax-M2.7",
+        "open_weights": true,
+        "reasoning": true,
+        "release_date": "2026-03-18",
+        "structured_output": true,
+        "temperature": true,
+        "tool_call": true
+      },
       "Qwen/Qwen3-235B-A22B-Thinking-2507": {
         "attachment": false,
         "cost": {
@@ -85330,6 +85363,36 @@
         "open_weights": true,
         "reasoning": true,
         "release_date": "2026-02-12",
+        "temperature": true,
+        "tool_call": true
+      },
+      "MiniMaxAI/MiniMax-M2.7": {
+        "attachment": false,
+        "cost": {
+          "cache_read": 0.06,
+          "input": 0.3,
+          "output": 1.2
+        },
+        "family": "minimax",
+        "id": "MiniMaxAI/MiniMax-M2.7",
+        "last_updated": "2026-03-18",
+        "limit": {
+          "context": 202752,
+          "output": 131072
+        },
+        "modalities": {
+          "input": [
+            "text"
+          ],
+          "output": [
+            "text"
+          ]
+        },
+        "name": "MiniMax-M2.7",
+        "open_weights": true,
+        "reasoning": true,
+        "release_date": "2026-03-18",
+        "structured_output": true,
         "temperature": true,
         "tool_call": true
       },
@@ -102359,6 +102422,39 @@
         "open_weights": true,
         "reasoning": true,
         "release_date": "2026-02-12",
+        "structured_output": true,
+        "temperature": true,
+        "tool_call": true
+      },
+      "hf:zai-org/GLM-5.1": {
+        "attachment": false,
+        "cost": {
+          "cache_read": 1,
+          "input": 1,
+          "output": 3
+        },
+        "family": "glm",
+        "id": "hf:zai-org/GLM-5.1",
+        "interleaved": {
+          "field": "reasoning_content"
+        },
+        "last_updated": "2026-04-12",
+        "limit": {
+          "context": 196608,
+          "output": 65536
+        },
+        "modalities": {
+          "input": [
+            "text"
+          ],
+          "output": [
+            "text"
+          ]
+        },
+        "name": "GLM 5.1",
+        "open_weights": true,
+        "reasoning": true,
+        "release_date": "2026-03-27",
         "structured_output": true,
         "temperature": true,
         "tool_call": true
@@ -124501,35 +124597,6 @@
     ],
     "id": "venice",
     "models": {
-      "aion-labs.aion-2-0": {
-        "attachment": false,
-        "cost": {
-          "cache_read": 0.25,
-          "input": 1,
-          "output": 2
-        },
-        "family": "o",
-        "id": "aion-labs.aion-2-0",
-        "last_updated": "2026-03-31",
-        "limit": {
-          "context": 128000,
-          "output": 32768
-        },
-        "modalities": {
-          "input": [
-            "text"
-          ],
-          "output": [
-            "text"
-          ]
-        },
-        "name": "Aion 2.0",
-        "open_weights": false,
-        "reasoning": true,
-        "release_date": "2026-03-24",
-        "temperature": true,
-        "tool_call": false
-      },
       "mistral-small-2603": {
         "attachment": true,
         "cost": {
@@ -124589,6 +124656,38 @@
         "temperature": true,
         "tool_call": true
       },
+      "claude-opus-4-5": {
+        "attachment": true,
+        "cost": {
+          "cache_read": 0.6,
+          "cache_write": 7.5,
+          "input": 6,
+          "output": 30
+        },
+        "family": "claude-opus",
+        "id": "claude-opus-4-5",
+        "last_updated": "2026-04-12",
+        "limit": {
+          "context": 198000,
+          "output": 32768
+        },
+        "modalities": {
+          "input": [
+            "text",
+            "image"
+          ],
+          "output": [
+            "text"
+          ]
+        },
+        "name": "Claude Opus 4.5",
+        "open_weights": false,
+        "reasoning": true,
+        "release_date": "2025-12-06",
+        "structured_output": true,
+        "temperature": true,
+        "tool_call": true
+      },
       "qwen3-5-9b": {
         "attachment": true,
         "cost": {
@@ -124615,68 +124714,6 @@
         "open_weights": true,
         "reasoning": true,
         "release_date": "2026-03-05",
-        "structured_output": true,
-        "temperature": true,
-        "tool_call": true
-      },
-      "google.gemma-4-26b-a4b-it": {
-        "attachment": true,
-        "cost": {
-          "input": 0.1625,
-          "output": 0.5
-        },
-        "family": "gemma",
-        "id": "google.gemma-4-26b-a4b-it",
-        "last_updated": "2026-04-09",
-        "limit": {
-          "context": 256000,
-          "output": 8192
-        },
-        "modalities": {
-          "input": [
-            "text",
-            "image",
-            "video"
-          ],
-          "output": [
-            "text"
-          ]
-        },
-        "name": "Google Gemma 4 26B A4B Instruct",
-        "open_weights": true,
-        "reasoning": true,
-        "release_date": "2026-04-02",
-        "structured_output": true,
-        "temperature": true,
-        "tool_call": true
-      },
-      "google.gemma-4-31b-it": {
-        "attachment": true,
-        "cost": {
-          "input": 0.175,
-          "output": 0.5
-        },
-        "family": "gemma",
-        "id": "google.gemma-4-31b-it",
-        "last_updated": "2026-04-09",
-        "limit": {
-          "context": 256000,
-          "output": 8192
-        },
-        "modalities": {
-          "input": [
-            "text",
-            "image",
-            "video"
-          ],
-          "output": [
-            "text"
-          ]
-        },
-        "name": "Google Gemma 4 31B Instruct",
-        "open_weights": true,
-        "reasoning": true,
-        "release_date": "2026-04-03",
         "structured_output": true,
         "temperature": true,
         "tool_call": true
@@ -124722,7 +124759,7 @@
         },
         "family": "minimax",
         "id": "minimax-m27",
-        "last_updated": "2026-03-18",
+        "last_updated": "2026-04-12",
         "limit": {
           "context": 198000,
           "output": 32768
@@ -124736,7 +124773,7 @@
           ]
         },
         "name": "MiniMax M2.7",
-        "open_weights": true,
+        "open_weights": false,
         "reasoning": true,
         "release_date": "2026-03-18",
         "temperature": true,
@@ -124810,6 +124847,8 @@
           "cache_read": 0.0625,
           "cache_write": 0.78,
           "context_over_200k": {
+            "cache_read": 0.0625,
+            "cache_write": 0.78,
             "input": 2.5,
             "output": 7.5
           },
@@ -124818,7 +124857,7 @@
         },
         "family": "qwen",
         "id": "qwen-3-6-plus",
-        "last_updated": "2026-04-09",
+        "last_updated": "2026-04-12",
         "limit": {
           "context": 1000000,
           "output": 65536
@@ -124837,6 +124876,73 @@
         "open_weights": false,
         "reasoning": true,
         "release_date": "2026-04-06",
+        "structured_output": true,
+        "temperature": true,
+        "tool_call": true
+      },
+      "google-gemma-4-31b-it": {
+        "attachment": true,
+        "cost": {
+          "input": 0.175,
+          "output": 0.5
+        },
+        "family": "gemma",
+        "id": "google-gemma-4-31b-it",
+        "last_updated": "2026-04-12",
+        "limit": {
+          "context": 256000,
+          "output": 8192
+        },
+        "modalities": {
+          "input": [
+            "text",
+            "image",
+            "video"
+          ],
+          "output": [
+            "text"
+          ]
+        },
+        "name": "Google Gemma 4 31B Instruct",
+        "open_weights": true,
+        "reasoning": true,
+        "release_date": "2026-04-03",
+        "structured_output": true,
+        "temperature": true,
+        "tool_call": true
+      },
+      "grok-4-20": {
+        "attachment": true,
+        "cost": {
+          "cache_read": 0.23,
+          "context_over_200k": {
+            "cache_read": 0.23,
+            "input": 4.53,
+            "output": 13.6
+          },
+          "input": 2.27,
+          "output": 6.8
+        },
+        "family": "grok",
+        "id": "grok-4-20",
+        "last_updated": "2026-04-12",
+        "limit": {
+          "context": 2000000,
+          "output": 128000
+        },
+        "modalities": {
+          "input": [
+            "text",
+            "image"
+          ],
+          "output": [
+            "text"
+          ]
+        },
+        "name": "Grok 4.20",
+        "open_weights": false,
+        "reasoning": true,
+        "release_date": "2026-03-12",
         "structured_output": true,
         "temperature": true,
         "tool_call": true
@@ -124900,6 +125006,38 @@
         "temperature": true,
         "tool_call": true
       },
+      "claude-sonnet-4-5": {
+        "attachment": true,
+        "cost": {
+          "cache_read": 0.375,
+          "cache_write": 4.69,
+          "input": 3.75,
+          "output": 18.75
+        },
+        "family": "claude-sonnet",
+        "id": "claude-sonnet-4-5",
+        "last_updated": "2026-04-12",
+        "limit": {
+          "context": 198000,
+          "output": 64000
+        },
+        "modalities": {
+          "input": [
+            "text",
+            "image"
+          ],
+          "output": [
+            "text"
+          ]
+        },
+        "name": "Claude Sonnet 4.5",
+        "open_weights": false,
+        "reasoning": true,
+        "release_date": "2025-01-15",
+        "structured_output": true,
+        "temperature": true,
+        "tool_call": true
+      },
       "zai-org-glm-4.7": {
         "attachment": false,
         "cost": {
@@ -124930,6 +125068,67 @@
         "open_weights": true,
         "reasoning": true,
         "release_date": "2025-12-24",
+        "structured_output": true,
+        "temperature": true,
+        "tool_call": true
+      },
+      "z-ai-glm-5v-turbo": {
+        "attachment": true,
+        "cost": {
+          "cache_read": 0.3,
+          "input": 1.5,
+          "output": 5
+        },
+        "family": "glmv",
+        "id": "z-ai-glm-5v-turbo",
+        "last_updated": "2026-04-12",
+        "limit": {
+          "context": 200000,
+          "output": 32768
+        },
+        "modalities": {
+          "input": [
+            "text",
+            "image"
+          ],
+          "output": [
+            "text"
+          ]
+        },
+        "name": "GLM 5V Turbo",
+        "open_weights": false,
+        "reasoning": true,
+        "release_date": "2026-04-01",
+        "structured_output": true,
+        "temperature": true,
+        "tool_call": true
+      },
+      "z-ai-glm-5-turbo": {
+        "attachment": false,
+        "cost": {
+          "cache_read": 0.24,
+          "input": 1.2,
+          "output": 4
+        },
+        "family": "glm",
+        "id": "z-ai-glm-5-turbo",
+        "last_updated": "2026-04-12",
+        "limit": {
+          "context": 200000,
+          "output": 32768
+        },
+        "modalities": {
+          "input": [
+            "text"
+          ],
+          "output": [
+            "text"
+          ]
+        },
+        "name": "GLM 5 Turbo",
+        "open_weights": true,
+        "reasoning": true,
+        "release_date": "2026-03-15",
         "structured_output": true,
         "temperature": true,
         "tool_call": true
@@ -124993,42 +125192,6 @@
         "temperature": true,
         "tool_call": true
       },
-      "claude-sonnet-45": {
-        "attachment": true,
-        "cost": {
-          "cache_read": 0.375,
-          "cache_write": 4.69,
-          "input": 3.75,
-          "output": 18.75
-        },
-        "family": "claude-sonnet",
-        "id": "claude-sonnet-45",
-        "interleaved": {
-          "field": "reasoning_content"
-        },
-        "knowledge": "2025-09",
-        "last_updated": "2026-01-28",
-        "limit": {
-          "context": 198000,
-          "output": 49500
-        },
-        "modalities": {
-          "input": [
-            "text",
-            "image"
-          ],
-          "output": [
-            "text"
-          ]
-        },
-        "name": "Claude Sonnet 4.5",
-        "open_weights": false,
-        "reasoning": true,
-        "release_date": "2025-01-15",
-        "structured_output": true,
-        "temperature": true,
-        "tool_call": true
-      },
       "openai-gpt-54": {
         "attachment": true,
         "cost": {
@@ -125073,7 +125236,7 @@
           "field": "reasoning_content"
         },
         "knowledge": "2024-04",
-        "last_updated": "2026-03-16",
+        "last_updated": "2026-04-12",
         "limit": {
           "context": 256000,
           "output": 65536
@@ -125088,7 +125251,7 @@
           ]
         },
         "name": "Kimi K2.5",
-        "open_weights": true,
+        "open_weights": false,
         "reasoning": true,
         "release_date": "2026-01-27",
         "structured_output": true,
@@ -125180,76 +125343,6 @@
         "open_weights": true,
         "reasoning": false,
         "release_date": "2025-11-06",
-        "temperature": true,
-        "tool_call": true
-      },
-      "claude-opus-45": {
-        "attachment": true,
-        "cost": {
-          "cache_read": 0.6,
-          "cache_write": 7.5,
-          "input": 6,
-          "output": 30
-        },
-        "family": "claude-opus",
-        "id": "claude-opus-45",
-        "knowledge": "2025-03",
-        "last_updated": "2026-01-28",
-        "limit": {
-          "context": 198000,
-          "output": 49500
-        },
-        "modalities": {
-          "input": [
-            "text",
-            "image",
-            "pdf"
-          ],
-          "output": [
-            "text"
-          ]
-        },
-        "name": "Claude Opus 4.5",
-        "open_weights": false,
-        "reasoning": true,
-        "release_date": "2025-12-06",
-        "structured_output": true,
-        "temperature": true,
-        "tool_call": true
-      },
-      "grok-4-20-beta": {
-        "attachment": true,
-        "cost": {
-          "cache_read": 0.23,
-          "context_over_200k": {
-            "cache_read": 0.23,
-            "input": 4.53,
-            "output": 13.6
-          },
-          "input": 2.27,
-          "output": 6.8
-        },
-        "family": "grok-beta",
-        "id": "grok-4-20-beta",
-        "last_updated": "2026-04-09",
-        "limit": {
-          "context": 2000000,
-          "output": 128000
-        },
-        "modalities": {
-          "input": [
-            "text",
-            "image"
-          ],
-          "output": [
-            "text"
-          ]
-        },
-        "name": "Grok 4.20 Beta",
-        "open_weights": false,
-        "reasoning": true,
-        "release_date": "2026-03-12",
-        "structured_output": true,
         "temperature": true,
         "tool_call": true
       },
@@ -125877,42 +125970,6 @@
         "temperature": true,
         "tool_call": true
       },
-      "grok-4-20-multi-agent-beta": {
-        "attachment": true,
-        "cost": {
-          "cache_read": 0.23,
-          "context_over_200k": {
-            "cache_read": 0.23,
-            "input": 4.53,
-            "output": 13.6
-          },
-          "input": 2.27,
-          "output": 6.8
-        },
-        "family": "grok-beta",
-        "id": "grok-4-20-multi-agent-beta",
-        "last_updated": "2026-04-09",
-        "limit": {
-          "context": 2000000,
-          "output": 128000
-        },
-        "modalities": {
-          "input": [
-            "text",
-            "image"
-          ],
-          "output": [
-            "text"
-          ]
-        },
-        "name": "Grok 4.20 Multi-Agent Beta",
-        "open_weights": false,
-        "reasoning": true,
-        "release_date": "2026-03-12",
-        "structured_output": true,
-        "temperature": true,
-        "tool_call": false
-      },
       "zai-org-glm-4.6": {
         "attachment": false,
         "cost": {
@@ -125978,6 +126035,42 @@
         "temperature": true,
         "tool_call": true
       },
+      "grok-4-20-multi-agent": {
+        "attachment": true,
+        "cost": {
+          "cache_read": 0.23,
+          "context_over_200k": {
+            "cache_read": 0.23,
+            "input": 4.53,
+            "output": 13.6
+          },
+          "input": 2.27,
+          "output": 6.8
+        },
+        "family": "grok",
+        "id": "grok-4-20-multi-agent",
+        "last_updated": "2026-04-12",
+        "limit": {
+          "context": 2000000,
+          "output": 128000
+        },
+        "modalities": {
+          "input": [
+            "text",
+            "image"
+          ],
+          "output": [
+            "text"
+          ]
+        },
+        "name": "Grok 4.20 Multi-Agent",
+        "open_weights": false,
+        "reasoning": true,
+        "release_date": "2026-03-12",
+        "structured_output": true,
+        "temperature": true,
+        "tool_call": false
+      },
       "minimax-m25": {
         "attachment": false,
         "cost": {
@@ -125990,7 +126083,7 @@
         "interleaved": {
           "field": "reasoning_content"
         },
-        "last_updated": "2026-03-16",
+        "last_updated": "2026-04-12",
         "limit": {
           "context": 198000,
           "output": 32768
@@ -126004,7 +126097,7 @@
           ]
         },
         "name": "MiniMax M2.5",
-        "open_weights": true,
+        "open_weights": false,
         "reasoning": true,
         "release_date": "2026-02-12",
         "temperature": true,
@@ -126102,6 +126195,35 @@
         "temperature": true,
         "tool_call": true
       },
+      "aion-labs-aion-2-0": {
+        "attachment": false,
+        "cost": {
+          "cache_read": 0.25,
+          "input": 1,
+          "output": 2
+        },
+        "family": "o",
+        "id": "aion-labs-aion-2-0",
+        "last_updated": "2026-04-12",
+        "limit": {
+          "context": 128000,
+          "output": 32768
+        },
+        "modalities": {
+          "input": [
+            "text"
+          ],
+          "output": [
+            "text"
+          ]
+        },
+        "name": "Aion 2.0",
+        "open_weights": false,
+        "reasoning": true,
+        "release_date": "2026-03-24",
+        "temperature": true,
+        "tool_call": false
+      },
       "qwen3-235b-a22b-thinking-2507": {
         "attachment": false,
         "cost": {
@@ -126175,7 +126297,7 @@
         },
         "family": "qwen",
         "id": "qwen3-5-35b-a3b",
-        "last_updated": "2026-03-09",
+        "last_updated": "2026-04-12",
         "limit": {
           "context": 256000,
           "output": 65536
@@ -126191,7 +126313,7 @@
           ]
         },
         "name": "Qwen 3.5 35B A3B",
-        "open_weights": true,
+        "open_weights": false,
         "reasoning": true,
         "release_date": "2026-02-25",
         "structured_output": true,
@@ -126227,6 +126349,37 @@
         "open_weights": true,
         "reasoning": true,
         "release_date": "2025-12-01",
+        "structured_output": true,
+        "temperature": true,
+        "tool_call": true
+      },
+      "google-gemma-4-26b-a4b-it": {
+        "attachment": true,
+        "cost": {
+          "input": 0.1625,
+          "output": 0.5
+        },
+        "family": "gemma",
+        "id": "google-gemma-4-26b-a4b-it",
+        "last_updated": "2026-04-12",
+        "limit": {
+          "context": 256000,
+          "output": 8192
+        },
+        "modalities": {
+          "input": [
+            "text",
+            "image",
+            "video"
+          ],
+          "output": [
+            "text"
+          ]
+        },
+        "name": "Google Gemma 4 26B A4B Instruct",
+        "open_weights": true,
+        "reasoning": true,
+        "release_date": "2026-04-02",
         "structured_output": true,
         "temperature": true,
         "tool_call": true

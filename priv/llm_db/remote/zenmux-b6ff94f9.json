@@ -327,36 +327,9 @@
         ],
         "web_search": [
           {
-            "conditions": {
-              "web_search_type": "search_std"
-            },
             "currency": "USD",
             "unit": "perCount",
-            "value": 0.0015
-          },
-          {
-            "conditions": {
-              "web_search_type": "search_pro"
-            },
-            "currency": "USD",
-            "unit": "perCount",
-            "value": 0.0044
-          },
-          {
-            "conditions": {
-              "web_search_type": "search_pro_sogou"
-            },
-            "currency": "USD",
-            "unit": "perCount",
-            "value": 0.0073
-          },
-          {
-            "conditions": {
-              "web_search_type": "search_pro_quark"
-            },
-            "currency": "USD",
-            "unit": "perCount",
-            "value": 0.0073
+            "value": 0.01
           }
         ]
       }
@@ -942,6 +915,13 @@
             "currency": "USD",
             "unit": "perMTokens",
             "value": 1.02
+          }
+        ],
+        "web_search": [
+          {
+            "currency": "USD",
+            "unit": "perCount",
+            "value": 0.01
           }
         ]
       }
@@ -2509,6 +2489,13 @@
             "unit": "perMTokens",
             "value": 0.87
           }
+        ],
+        "web_search": [
+          {
+            "currency": "USD",
+            "unit": "perCount",
+            "value": 0.01
+          }
         ]
       }
     },
@@ -2672,39 +2659,6 @@
             "currency": "USD",
             "unit": "perCount",
             "value": 0.01
-          }
-        ]
-      }
-    },
-    {
-      "capabilities": {
-        "reasoning": true
-      },
-      "context_length": 256000,
-      "created": 1770013641,
-      "display_name": "StepFun: Step 3.5 Flash (Free)",
-      "id": "stepfun/step-3.5-flash-free",
-      "input_modalities": [
-        "text"
-      ],
-      "object": "model",
-      "output_modalities": [
-        "text"
-      ],
-      "owned_by": "stepfun",
-      "pricings": {
-        "completion": [
-          {
-            "currency": "USD",
-            "unit": "perMTokens",
-            "value": 0
-          }
-        ],
-        "prompt": [
-          {
-            "currency": "USD",
-            "unit": "perMTokens",
-            "value": 0
           }
         ]
       }
@@ -3106,6 +3060,13 @@
             "unit": "perMTokens",
             "value": 0
           }
+        ],
+        "web_search": [
+          {
+            "currency": "USD",
+            "unit": "perCount",
+            "value": 0
+          }
         ]
       }
     },
@@ -3145,6 +3106,13 @@
             "currency": "USD",
             "unit": "perMTokens",
             "value": 0.0728
+          }
+        ],
+        "web_search": [
+          {
+            "currency": "USD",
+            "unit": "perCount",
+            "value": 0.01
           }
         ]
       }
@@ -3231,7 +3199,7 @@
             },
             "currency": "USD",
             "unit": "perMTokens",
-            "value": 1.14
+            "value": 1.1645
           },
           {
             "conditions": {
@@ -3247,7 +3215,7 @@
             },
             "currency": "USD",
             "unit": "perMTokens",
-            "value": 1.99
+            "value": 2.038
           },
           {
             "conditions": {
@@ -3257,12 +3225,13 @@
               },
               "prompt_tokens": {
                 "gte": 32,
+                "lt": 200,
                 "unit": "kTokens"
               }
             },
             "currency": "USD",
             "unit": "perMTokens",
-            "value": 2.27
+            "value": 2.3291
           }
         ],
         "input_cache_read": [
@@ -3281,7 +3250,7 @@
             },
             "currency": "USD",
             "unit": "perMTokens",
-            "value": 0.057
+            "value": 0.0582
           },
           {
             "conditions": {
@@ -3297,7 +3266,7 @@
             },
             "currency": "USD",
             "unit": "perMTokens",
-            "value": 0.085
+            "value": 0.0873
           },
           {
             "conditions": {
@@ -3307,12 +3276,13 @@
               },
               "prompt_tokens": {
                 "gte": 32,
+                "lt": 200,
                 "unit": "kTokens"
               }
             },
             "currency": "USD",
             "unit": "perMTokens",
-            "value": 0.11
+            "value": 0.1165
           }
         ],
         "prompt": [
@@ -3331,7 +3301,7 @@
             },
             "currency": "USD",
             "unit": "perMTokens",
-            "value": 0.28
+            "value": 0.2911
           },
           {
             "conditions": {
@@ -3347,7 +3317,7 @@
             },
             "currency": "USD",
             "unit": "perMTokens",
-            "value": 0.43
+            "value": 0.4367
           },
           {
             "conditions": {
@@ -3357,12 +3327,20 @@
               },
               "prompt_tokens": {
                 "gte": 32,
+                "lt": 200,
                 "unit": "kTokens"
               }
             },
             "currency": "USD",
             "unit": "perMTokens",
-            "value": 0.57
+            "value": 0.5823
+          }
+        ],
+        "web_search": [
+          {
+            "currency": "USD",
+            "unit": "perCount",
+            "value": 0.01
           }
         ]
       }
@@ -3840,7 +3818,8 @@
           {
             "conditions": {
               "prompt_tokens": {
-                "gte": 32,
+                "gte": 0,
+                "lt": 32,
                 "unit": "kTokens"
               }
             },
@@ -3851,13 +3830,19 @@
           {
             "conditions": {
               "prompt_tokens": {
-                "gte": 0,
-                "lt": 32,
+                "gte": 32,
                 "unit": "kTokens"
               }
             },
             "currency": "USD",
             "unit": "perMTokens",
+            "value": 0
+          }
+        ],
+        "web_search": [
+          {
+            "currency": "USD",
+            "unit": "perCount",
             "value": 0
           }
         ]
@@ -3911,7 +3896,8 @@
           {
             "conditions": {
               "prompt_tokens": {
-                "gte": 32,
+                "gte": 0,
+                "lt": 32,
                 "unit": "kTokens"
               }
             },
@@ -3922,8 +3908,7 @@
           {
             "conditions": {
               "prompt_tokens": {
-                "gte": 0,
-                "lt": 32,
+                "gte": 32,
                 "unit": "kTokens"
               }
             },
@@ -3955,6 +3940,13 @@
             "currency": "USD",
             "unit": "perMTokens",
             "value": 0.0437
+          }
+        ],
+        "web_search": [
+          {
+            "currency": "USD",
+            "unit": "perCount",
+            "value": 0.01
           }
         ]
       }
@@ -4051,6 +4043,13 @@
             "currency": "USD",
             "unit": "perMTokens",
             "value": 0.2911
+          }
+        ],
+        "web_search": [
+          {
+            "currency": "USD",
+            "unit": "perCount",
+            "value": 0.01
           }
         ]
       }
@@ -5376,7 +5375,7 @@
             },
             "currency": "USD",
             "unit": "perMTokens",
-            "value": 1.1599
+            "value": 1.1645
           },
           {
             "conditions": {
@@ -5392,7 +5391,7 @@
             },
             "currency": "USD",
             "unit": "perMTokens",
-            "value": 2.0298
+            "value": 2.038
           },
           {
             "conditions": {
@@ -5402,13 +5401,13 @@
               },
               "prompt_tokens": {
                 "gte": 32,
-                "lte": 200,
+                "lt": 200,
                 "unit": "kTokens"
               }
             },
             "currency": "USD",
             "unit": "perMTokens",
-            "value": 2.3198
+            "value": 2.3291
           }
         ],
         "input_cache_read": [
@@ -5427,7 +5426,7 @@
             },
             "currency": "USD",
             "unit": "perMTokens",
-            "value": 0.058
+            "value": 0.0582
           },
           {
             "conditions": {
@@ -5443,7 +5442,7 @@
             },
             "currency": "USD",
             "unit": "perMTokens",
-            "value": 0.087
+            "value": 0.0873
           },
           {
             "conditions": {
@@ -5453,13 +5452,13 @@
               },
               "prompt_tokens": {
                 "gte": 32,
-                "lte": 200,
+                "lt": 200,
                 "unit": "kTokens"
               }
             },
             "currency": "USD",
             "unit": "perMTokens",
-            "value": 0.116
+            "value": 0.1165
           }
         ],
         "prompt": [
@@ -5478,7 +5477,7 @@
             },
             "currency": "USD",
             "unit": "perMTokens",
-            "value": 0.29
+            "value": 0.2911
           },
           {
             "conditions": {
@@ -5494,7 +5493,7 @@
             },
             "currency": "USD",
             "unit": "perMTokens",
-            "value": 0.435
+            "value": 0.4367
           },
           {
             "conditions": {
@@ -5504,13 +5503,20 @@
               },
               "prompt_tokens": {
                 "gte": 32,
-                "lte": 200,
+                "lt": 200,
                 "unit": "kTokens"
               }
             },
             "currency": "USD",
             "unit": "perMTokens",
-            "value": 0.5799
+            "value": 0.5823
+          }
+        ],
+        "web_search": [
+          {
+            "currency": "USD",
+            "unit": "perCount",
+            "value": 0.01
           }
         ]
       }
@@ -6970,6 +6976,13 @@
             "unit": "perMTokens",
             "value": 0.1747
           }
+        ],
+        "web_search": [
+          {
+            "currency": "USD",
+            "unit": "perCount",
+            "value": 0.01
+          }
         ]
       }
     },
@@ -7141,6 +7154,13 @@
             "currency": "USD",
             "unit": "perMTokens",
             "value": 0.5823
+          }
+        ],
+        "web_search": [
+          {
+            "currency": "USD",
+            "unit": "perCount",
+            "value": 0.01
           }
         ]
       }
