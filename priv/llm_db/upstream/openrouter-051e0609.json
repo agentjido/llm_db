@@ -512,6 +512,7 @@
       "per_request_limits": null,
       "pricing": {
         "completion": "0.00000195",
+        "input_cache_write": "0.00000040625",
         "prompt": "0.000000325"
       },
       "supported_parameters": [
@@ -1510,6 +1511,7 @@
       "supported_parameters": [
         "frequency_penalty",
         "include_reasoning",
+        "logit_bias",
         "max_tokens",
         "min_p",
         "presence_penalty",
@@ -2287,6 +2289,7 @@
       "per_request_limits": null,
       "pricing": {
         "completion": "0.00000026",
+        "input_cache_write": "0.00000008125",
         "prompt": "0.000000065"
       },
       "supported_parameters": [
@@ -2689,6 +2692,7 @@
       "per_request_limits": null,
       "pricing": {
         "completion": "0.00000156",
+        "input_cache_write": "0.000000325",
         "prompt": "0.00000026"
       },
       "supported_parameters": [
@@ -2747,12 +2751,14 @@
       "per_request_limits": null,
       "pricing": {
         "completion": "0.00000234",
+        "input_cache_read": "0.000000195",
         "prompt": "0.00000039"
       },
       "supported_parameters": [
         "frequency_penalty",
         "include_reasoning",
         "logit_bias",
+        "logprobs",
         "max_tokens",
         "min_p",
         "presence_penalty",
@@ -2766,6 +2772,7 @@
         "tool_choice",
         "tools",
         "top_k",
+        "top_logprobs",
         "top_p"
       ],
       "top_provider": {
@@ -7758,6 +7765,7 @@
       "pricing": {
         "completion": "0.0000039",
         "input_cache_read": "0.000000156",
+        "input_cache_write": "0.000000975",
         "prompt": "0.00000078"
       },
       "supported_parameters": [
@@ -7809,6 +7817,7 @@
       "pricing": {
         "completion": "0.00000325",
         "input_cache_read": "0.00000013",
+        "input_cache_write": "0.0000008125",
         "prompt": "0.00000065"
       },
       "supported_parameters": [
@@ -8094,6 +8103,7 @@
       "pricing": {
         "completion": "0.000000975",
         "input_cache_read": "0.000000039",
+        "input_cache_write": "0.00000024375",
         "prompt": "0.000000195"
       },
       "supported_parameters": [
@@ -8305,6 +8315,7 @@
       "per_request_limits": null,
       "pricing": {
         "completion": "0.00000078",
+        "input_cache_write": "0.000000325",
         "prompt": "0.00000026"
       },
       "supported_parameters": [
@@ -8358,6 +8369,7 @@
       "per_request_limits": null,
       "pricing": {
         "completion": "0.00000078",
+        "input_cache_write": "0.000000325",
         "prompt": "0.00000026"
       },
       "supported_parameters": [
@@ -8518,7 +8530,9 @@
       },
       "supported_parameters": [
         "frequency_penalty",
+        "logit_bias",
         "max_tokens",
+        "min_p",
         "presence_penalty",
         "repetition_penalty",
         "response_format",
@@ -9952,7 +9966,7 @@
         "tokenizer": "Qwen3"
       },
       "canonical_slug": "qwen/qwen3-235b-a22b-thinking-2507",
-      "context_length": 131072,
+      "context_length": 262144,
       "created": 1753449557,
       "default_parameters": {
         "frequency_penalty": null,
@@ -9970,8 +9984,8 @@
       "name": "Qwen: Qwen3 235B A22B Thinking 2507",
       "per_request_limits": null,
       "pricing": {
-        "completion": "0.000001495",
-        "prompt": "0.0000001495"
+        "completion": "0.0000006",
+        "prompt": "0.00000013"
       },
       "supported_parameters": [
         "frequency_penalty",
@@ -9993,9 +10007,9 @@
         "top_p"
       ],
       "top_provider": {
-        "context_length": 131072,
+        "context_length": 262144,
         "is_moderated": false,
-        "max_completion_tokens": null
+        "max_completion_tokens": 262144
       }
     },
     {
@@ -10394,15 +10408,19 @@
       },
       "supported_parameters": [
         "frequency_penalty",
+        "logprobs",
         "max_tokens",
         "presence_penalty",
         "repetition_penalty",
+        "response_format",
         "seed",
         "stop",
+        "structured_outputs",
         "temperature",
         "tool_choice",
         "tools",
         "top_k",
+        "top_logprobs",
         "top_p"
       ],
       "top_provider": {
@@ -13140,43 +13158,6 @@
     {
       "architecture": {
         "input_modalities": [
-          "text"
-        ],
-        "instruct_type": null,
-        "modality": "text->text",
-        "output_modalities": [
-          "text"
-        ],
-        "tokenizer": "Other"
-      },
-      "canonical_slug": "allenai/olmo-2-0325-32b-instruct",
-      "context_length": 128000,
-      "created": 1741988556,
-      "default_parameters": {},
-      "description": "OLMo-2 32B Instruct is a supervised instruction-finetuned variant of the OLMo-2 32B March 2025 base model. It excels in complex reasoning and instruction-following tasks across diverse benchmarks such as GSM8K,...",
-      "expiration_date": null,
-      "hugging_face_id": "allenai/OLMo-2-0325-32B-Instruct",
-      "id": "allenai/olmo-2-0325-32b-instruct",
-      "knowledge_cutoff": "2024-10-31",
-      "links": {
-        "details": "/api/v1/models/allenai/olmo-2-0325-32b-instruct/endpoints"
-      },
-      "name": "AllenAI: Olmo 2 32B Instruct",
-      "per_request_limits": null,
-      "pricing": {
-        "completion": "0.0000002",
-        "prompt": "0.00000005"
-      },
-      "supported_parameters": [],
-      "top_provider": {
-        "context_length": 128000,
-        "is_moderated": false,
-        "max_completion_tokens": null
-      }
-    },
-    {
-      "architecture": {
-        "input_modalities": [
           "text",
           "image"
         ],
@@ -14569,7 +14550,7 @@
         "tokenizer": "Qwen"
       },
       "canonical_slug": "qwen/qwen2.5-vl-72b-instruct",
-      "context_length": 32768,
+      "context_length": 32000,
       "created": 1738410311,
       "default_parameters": {},
       "description": "Qwen2.5-VL is proficient in recognizing common objects such as flowers, birds, fish, and insects. It is also highly capable of analyzing texts, charts, icons, graphics, and layouts within images.",
@@ -14583,8 +14564,8 @@
       "name": "Qwen: Qwen2.5 VL 72B Instruct",
       "per_request_limits": null,
       "pricing": {
-        "completion": "0.0000008",
-        "prompt": "0.0000008"
+        "completion": "0.00000075",
+        "prompt": "0.00000025"
       },
       "supported_parameters": [
         "frequency_penalty",
@@ -14601,9 +14582,9 @@
         "top_p"
       ],
       "top_provider": {
-        "context_length": 32768,
+        "context_length": 32000,
         "is_moderated": false,
-        "max_completion_tokens": 32768
+        "max_completion_tokens": null
       }
     },
     {
@@ -14635,6 +14616,7 @@
       "pricing": {
         "completion": "0.00000078",
         "input_cache_read": "0.000000052",
+        "input_cache_write": "0.000000325",
         "prompt": "0.00000026"
       },
       "supported_parameters": [
