@@ -178,6 +178,7 @@ defmodule LLMDB.Model do
                          embeddings:
                            Zoi.union([Zoi.boolean(), @embeddings_schema]) |> Zoi.default(false),
                          reasoning: @reasoning_schema |> Zoi.default(%{enabled: false}),
+                         rerank: Zoi.boolean() |> Zoi.default(false),
                          tools:
                            @tools_schema
                            |> Zoi.default(%{
