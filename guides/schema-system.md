@@ -276,6 +276,7 @@ The capabilities schema uses granular nested objects to accurately represent rea
 %{
   "chat" => true,
   "embeddings" => false,
+  "rerank" => false,
   "reasoning" => %{
     "enabled" => true,
     "token_budget" => 10000
