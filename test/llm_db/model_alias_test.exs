@@ -116,10 +116,22 @@ defmodule LLMDB.ModelAliasTest do
       assert model.capabilities.reasoning.enabled == false
     end
 
+    test "preserves flat rerank capability" do
+      {:ok, model} =
+        Model.new(%{
+          id: "jina-reranker-v3",
+          provider: :jina,
+          capabilities: %{rerank: true}
+        })
+
+      assert model.capabilities.rerank == true
+    end
+
     test "capabilities defaults are applied correctly" do
       {:ok, model} = Model.new(%{id: "gpt-4o", provider: :openai, capabilities: %{}})
 
       assert model.capabilities.chat == true
+      assert model.capabilities.rerank == false
       assert model.capabilities.tools.enabled == false
       assert model.capabilities.reasoning.enabled == false
     end

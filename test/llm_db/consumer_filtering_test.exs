@@ -1,29 +1,18 @@
 defmodule LLMDB.ConsumerFilteringTest do
   use ExUnit.Case, async: false
 
-  alias LLMDB.{Engine, Snapshot}
+  alias LLMDB.{Engine, Snapshot, Store}
   alias LLMDB.Sources.Config, as: ConfigSource
 
   setup do
-    # Save original config
     original_config = Application.get_all_env(:llm_db)
-
-    Application.delete_env(:llm_db, :allow)
-    Application.delete_env(:llm_db, :deny)
-    Application.delete_env(:llm_db, :prefer)
+    clear_test_config!()
+    Store.clear!()
 
     on_exit(fn ->
-      # Clear test config
-      Application.delete_env(:llm_db, :filter)
-      Application.delete_env(:llm_db, :custom)
-      Application.delete_env(:llm_db, :allow)
-      Application.delete_env(:llm_db, :deny)
-      Application.delete_env(:llm_db, :prefer)
-
-      # Restore original config
-      Application.put_all_env(llm_db: original_config)
-
-      # Reload with default config
+      clear_test_config!()
+      Store.clear!()
+      restore_config!(original_config)
       LLMDB.load()
     end)
 
@@ -324,6 +313,20 @@ defmodule LLMDB.ConsumerFilteringTest do
 
   defp capture_log(fun) do
     ExUnit.CaptureLog.capture_log(fun)
+  end
+
+  defp clear_test_config! do
+    Enum.each([:filter, :custom, :allow, :deny, :prefer, :snapshot_path], fn key ->
+      Application.delete_env(:llm_db, key)
+    end)
+  end
+
+  defp restore_config!(original_config) do
+    Enum.each(Keyword.keys(Application.get_all_env(:llm_db)), fn key ->
+      Application.delete_env(:llm_db, key)
+    end)
+
+    Application.put_all_env(llm_db: original_config)
   end
 
   defp write_test_snapshot!(overrides) do
