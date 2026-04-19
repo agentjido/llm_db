@@ -8,7 +8,7 @@ defmodule LLMDB.Enrich.RuntimeContract do
   between descriptive and executable entries without ad hoc heuristics.
   """
 
-  alias LLMDB.{Model, Provider}
+  alias LLMDB.{Merge, Model, Provider}
 
   @provider_runtime_defaults %{
     openai: %{
@@ -176,6 +176,16 @@ defmodule LLMDB.Enrich.RuntimeContract do
     "elevenlabs_transcription" => "/v1/speech-to-text"
   }
 
+  @rerank_capabilities %{
+    chat: false,
+    embeddings: false,
+    reasoning: %{enabled: false},
+    rerank: true,
+    tools: %{enabled: false, streaming: false, strict: false, parallel: false},
+    json: %{native: false, schema: false, strict: false},
+    streaming: %{text: false, tool_calls: false}
+  }
+
   @spec enrich([Provider.t()], [Model.t()]) :: {[Provider.t()], [Model.t()]}
   def enrich(providers, models) when is_list(providers) and is_list(models) do
     enriched_providers = Enum.map(providers, &enrich_provider/1)
@@ -210,6 +220,9 @@ defmodule LLMDB.Enrich.RuntimeContract do
       |> merge_execution(model.execution)
       |> normalize_execution()
 
+    capabilities =
+      merge_capabilities(model.capabilities, derive_capabilities(model))
+
     catalog_only =
       model.catalog_only or
         is_nil(provider) or
@@ -218,6 +231,7 @@ defmodule LLMDB.Enrich.RuntimeContract do
 
     model
     |> Map.put(:execution, execution)
+    |> Map.put(:capabilities, capabilities)
     |> Map.put(:catalog_only, catalog_only)
   end
 
@@ -452,8 +466,20 @@ defmodule LLMDB.Enrich.RuntimeContract do
     methods = supported_generation_methods(model)
 
     MapSet.disjoint?(@cohere_embedding_methods, methods) == false or
-      MapSet.disjoint?(@cohere_rerank_methods, methods) == false or
+      rerank_model?(model) or
       embedding_model?(model)
+  end
+
+  defp derive_capabilities(model) do
+    if rerank_model?(model), do: @rerank_capabilities
+  end
+
+  defp merge_capabilities(nil, nil), do: nil
+  defp merge_capabilities(nil, derived), do: derived
+  defp merge_capabilities(existing, nil), do: existing
+
+  defp merge_capabilities(existing, derived) when is_map(existing) and is_map(derived) do
+    Merge.merge(existing, derived, :higher)
   end
 
   defp google_embedding_model?(model) do
@@ -585,6 +611,39 @@ defmodule LLMDB.Enrich.RuntimeContract do
   end
 
   defp supported_generation_methods(_model), do: MapSet.new()
+
+  defp rerank_model?(model) do
+    rerank_capability?(model) or
+      rerank_type?(model) or
+      rerank_generation_method?(model) or
+      rerank_named_model?(model)
+  end
+
+  defp rerank_capability?(%Model{capabilities: %{rerank: true}}), do: true
+  defp rerank_capability?(_model), do: false
+
+  defp rerank_type?(%Model{extra: extra}) when is_map(extra) do
+    normalize_string(Map.get(extra, :type) || Map.get(extra, "type")) == "rerank"
+  end
+
+  defp rerank_type?(_model), do: false
+
+  defp rerank_generation_method?(model) do
+    methods = supported_generation_methods(model)
+    MapSet.disjoint?(@cohere_rerank_methods, methods) == false
+  end
+
+  defp rerank_named_model?(%Model{id: id, name: name}) do
+    rerank_name?(id) or rerank_name?(name)
+  end
+
+  defp rerank_name?(value) when is_binary(value) do
+    value
+    |> String.downcase()
+    |> String.contains?("rerank")
+  end
+
+  defp rerank_name?(_value), do: false
 
   defp chat_generation_model?(model) do
     cond do

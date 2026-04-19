@@ -138,5 +138,46 @@ defmodule LLMDB.Enrich.RuntimeContractTest do
       assert enriched.catalog_only == true
       assert enriched.execution == nil
     end
+
+    test "derives rerank capability metadata from explicit rerank source hints" do
+      provider =
+        Provider.new!(%{id: :cohere, env: ["COHERE_API_KEY"]})
+        |> RuntimeContract.enrich_provider()
+
+      model =
+        Model.new!(%{
+          id: "rerank-v3.5",
+          provider: :cohere,
+          extra: %{type: "rerank", supported_generation_methods: ["rerank"]}
+        })
+
+      enriched = RuntimeContract.enrich_model(model, provider)
+
+      assert enriched.catalog_only == true
+      assert enriched.execution == nil
+      assert enriched.capabilities.chat == false
+      assert enriched.capabilities.rerank == true
+      assert enriched.capabilities.streaming.text == false
+    end
+
+    test "derives rerank capability metadata from reranker ids on catalog-only providers" do
+      provider =
+        Provider.new!(%{id: :berget})
+        |> RuntimeContract.enrich_provider()
+
+      model =
+        Model.new!(%{
+          id: "BAAI/bge-reranker-v2-m3",
+          provider: :berget,
+          name: "bge-reranker-v2-m3",
+          modalities: %{input: [:text], output: [:text]}
+        })
+
+      enriched = RuntimeContract.enrich_model(model, provider)
+
+      assert enriched.catalog_only == true
+      assert enriched.capabilities.chat == false
+      assert enriched.capabilities.rerank == true
+    end
   end
 end

@@ -13,7 +13,8 @@ defmodule LLMDB.APITest do
     # Load minimal test data
     providers = [
       %{id: :openai, name: "OpenAI"},
-      %{id: :anthropic, name: "Anthropic"}
+      %{id: :anthropic, name: "Anthropic"},
+      %{id: :cohere, name: "Cohere"}
     ]
 
     # Models need to be normalized (provider as atom)
@@ -32,6 +33,11 @@ defmodule LLMDB.APITest do
         id: "claude-3-5-sonnet-20241022",
         provider: :anthropic,
         capabilities: %{chat: true, tools: %{enabled: true}, json: %{native: false}}
+      },
+      %{
+        id: "rerank-v3.5",
+        provider: :cohere,
+        capabilities: %{chat: false, rerank: true, streaming: %{text: false}}
       }
     ]
 
@@ -67,9 +73,9 @@ defmodule LLMDB.APITest do
       providers = LLMDB.providers()
 
       assert is_list(providers)
-      assert length(providers) == 2
+      assert length(providers) == 3
       assert Enum.all?(providers, &match?(%LLMDB.Provider{}, &1))
-      assert Enum.map(providers, & &1.id) |> Enum.sort() == [:anthropic, :openai]
+      assert Enum.map(providers, & &1.id) |> Enum.sort() == [:anthropic, :cohere, :openai]
     end
   end
 
@@ -78,7 +84,7 @@ defmodule LLMDB.APITest do
       models = LLMDB.models()
 
       assert is_list(models)
-      assert length(models) == 3
+      assert length(models) == 4
       assert Enum.all?(models, &match?(%LLMDB.Model{}, &1))
     end
   end
@@ -94,6 +100,10 @@ defmodule LLMDB.APITest do
       anthropic_models = LLMDB.models(:anthropic)
       assert length(anthropic_models) == 1
       assert hd(anthropic_models).provider == :anthropic
+
+      cohere_models = LLMDB.models(:cohere)
+      assert length(cohere_models) == 1
+      assert hd(cohere_models).provider == :cohere
     end
 
     test "returns empty list for unknown provider" do
@@ -143,6 +153,12 @@ defmodule LLMDB.APITest do
       candidates = LLMDB.candidates(require: [embeddings: true])
 
       assert candidates == []
+    end
+
+    test "filters by rerank capability" do
+      candidates = LLMDB.candidates(require: [rerank: true])
+
+      assert candidates == [{:cohere, "rerank-v3.5"}]
     end
   end
 
