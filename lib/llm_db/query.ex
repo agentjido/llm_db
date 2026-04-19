@@ -21,6 +21,7 @@ defmodule LLMDB.Query do
     chat: [:chat],
     embeddings: [:embeddings],
     reasoning: [:reasoning, :enabled],
+    rerank: [:rerank],
     tools: [:tools, :enabled],
     tools_streaming: [:tools, :streaming],
     tools_strict: [:tools, :strict],

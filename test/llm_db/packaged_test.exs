@@ -82,5 +82,24 @@ defmodule LLMDB.PackagedTest do
         assert elevenlabs_model["execution"]["speech"]["family"] == "elevenlabs_speech"
       end
     end
+
+    test "snapshot carries rerank capability metadata for packaged rerank models" do
+      snapshot = Packaged.snapshot()
+
+      if snapshot do
+        cohere_rerank = snapshot["providers"]["cohere"]["models"]["rerank-v3.5"]
+        berget_rerank = snapshot["providers"]["berget"]["models"]["BAAI/bge-reranker-v2-m3"]
+
+        cloudflare_rerank =
+          snapshot["providers"]["cloudflare_ai_gateway"]["models"][
+            "workers-ai/@cf/baai/bge-reranker-base"
+          ]
+
+        assert cohere_rerank["capabilities"]["rerank"] == true
+        assert cohere_rerank["capabilities"]["chat"] == false
+        assert berget_rerank["capabilities"]["rerank"] == true
+        assert cloudflare_rerank["capabilities"]["rerank"] == true
+      end
+    end
   end
 end
