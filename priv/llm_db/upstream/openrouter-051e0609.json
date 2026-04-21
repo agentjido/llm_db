@@ -11,6 +11,69 @@
         "output_modalities": [
           "text"
         ],
+        "tokenizer": "Other"
+      },
+      "canonical_slug": "moonshotai/kimi-k2.6-20260420",
+      "context_length": 262144,
+      "created": 1776699402,
+      "default_parameters": {
+        "frequency_penalty": null,
+        "presence_penalty": null,
+        "repetition_penalty": null,
+        "temperature": null,
+        "top_k": null,
+        "top_p": null
+      },
+      "description": "Kimi K2.6 is Moonshot AI's next-generation multimodal model, designed for long-horizon coding, coding-driven UI/UX generation, and multi-agent orchestration. It handles complex end-to-end coding tasks across Python, Rust, and Go, and...",
+      "expiration_date": null,
+      "hugging_face_id": "moonshotai/Kimi-K2.6",
+      "id": "moonshotai/kimi-k2.6",
+      "knowledge_cutoff": null,
+      "links": {
+        "details": "/api/v1/models/moonshotai/kimi-k2.6-20260420/endpoints"
+      },
+      "name": "MoonshotAI: Kimi K2.6",
+      "per_request_limits": null,
+      "pricing": {
+        "completion": "0.0000028",
+        "input_cache_read": "0.0000002",
+        "prompt": "0.0000006"
+      },
+      "supported_parameters": [
+        "frequency_penalty",
+        "include_reasoning",
+        "logit_bias",
+        "max_tokens",
+        "presence_penalty",
+        "reasoning",
+        "repetition_penalty",
+        "response_format",
+        "seed",
+        "stop",
+        "structured_outputs",
+        "temperature",
+        "tool_choice",
+        "tools",
+        "top_k",
+        "top_p"
+      ],
+      "top_provider": {
+        "context_length": 262144,
+        "is_moderated": false,
+        "max_completion_tokens": 262144
+      }
+    },
+    {
+      "architecture": {
+        "input_modalities": [
+          "text",
+          "image"
+        ],
+        "instruct_type": null,
+        "modality": "text+image->text",
+        "output_modalities": [
+          "text"
+        ],
         "tokenizer": "Claude"
       },
       "canonical_slug": "anthropic/claude-4.7-opus-20260416",
@@ -204,9 +267,9 @@
       "name": "Z.ai: GLM 5.1",
       "per_request_limits": null,
       "pricing": {
-        "completion": "0.00000315",
-        "input_cache_read": "0.000000475",
-        "prompt": "0.00000095"
+        "completion": "0.0000035",
+        "input_cache_read": "0.000000525",
+        "prompt": "0.00000105"
       },
       "supported_parameters": [
         "frequency_penalty",
@@ -1924,7 +1987,8 @@
         "input_cache_read": "0.000000025",
         "input_cache_write": "0.00000008333333333333334",
         "internal_reasoning": "0.0000015",
-        "prompt": "0.00000025"
+        "prompt": "0.00000025",
+        "web_search": "0.014"
       },
       "supported_parameters": [
         "include_reasoning",
@@ -2037,7 +2101,8 @@
       "per_request_limits": null,
       "pricing": {
         "completion": "0.000003",
-        "prompt": "0.0000005"
+        "prompt": "0.0000005",
+        "web_search": "0.014"
       },
       "supported_parameters": [
         "include_reasoning",
@@ -2406,7 +2471,8 @@
         "input_cache_read": "0.0000002",
         "input_cache_write": "0.000000375",
         "internal_reasoning": "0.000012",
-        "prompt": "0.000002"
+        "prompt": "0.000002",
+        "web_search": "0.014"
       },
       "supported_parameters": [
         "include_reasoning",
@@ -2574,7 +2640,8 @@
         "input_cache_read": "0.0000002",
         "input_cache_write": "0.000000375",
         "internal_reasoning": "0.000012",
-        "prompt": "0.000002"
+        "prompt": "0.000002",
+        "web_search": "0.014"
       },
       "supported_parameters": [
         "include_reasoning",
@@ -2867,9 +2934,9 @@
       "name": "MiniMax: MiniMax M2.5",
       "per_request_limits": null,
       "pricing": {
-        "completion": "0.00000099",
-        "input_cache_read": "0.000000059",
-        "prompt": "0.000000118"
+        "completion": "0.0000012",
+        "input_cache_read": "0.000000075",
+        "prompt": "0.00000015"
       },
       "supported_parameters": [
         "frequency_penalty",
@@ -3321,7 +3388,10 @@
       "created": 1769487076,
       "default_parameters": {
         "frequency_penalty": null,
+        "presence_penalty": null,
+        "repetition_penalty": null,
         "temperature": null,
+        "top_k": null,
         "top_p": null
       },
       "description": "Kimi K2.5 is Moonshot AI's native multimodal model, delivering state-of-the-art visual coding capability and a self-directed agent swarm paradigm. Built on Kimi K2 with continued pretraining over approximately 15T mixed...",
@@ -3335,9 +3405,9 @@
       "name": "MoonshotAI: Kimi K2.5",
       "per_request_limits": null,
       "pricing": {
-        "completion": "0.00000172",
-        "input_cache_read": "0.00000019135",
-        "prompt": "0.0000003827"
+        "completion": "0.000002",
+        "input_cache_read": "0.00000022",
+        "prompt": "0.00000044"
       },
       "supported_parameters": [
         "frequency_penalty",
@@ -4107,9 +4177,8 @@
       "name": "Z.ai: GLM 4.7",
       "per_request_limits": null,
       "pricing": {
-        "completion": "0.00000175",
-        "input_cache_read": "0.000000195",
-        "prompt": "0.00000039"
+        "completion": "0.00000174",
+        "prompt": "0.00000038"
       },
       "supported_parameters": [
         "frequency_penalty",
@@ -4135,7 +4204,7 @@
       "top_provider": {
         "context_length": 202752,
         "is_moderated": false,
-        "max_completion_tokens": 65535
+        "max_completion_tokens": null
       }
     },
     {
@@ -4179,7 +4248,8 @@
         "input_cache_read": "0.00000005",
         "input_cache_write": "0.00000008333333333333334",
         "internal_reasoning": "0.000003",
-        "prompt": "0.0000005"
+        "prompt": "0.0000005",
+        "web_search": "0.014"
       },
       "supported_parameters": [
         "include_reasoning",
@@ -5347,7 +5417,7 @@
         "tokenizer": "DeepSeek"
       },
       "canonical_slug": "deepseek/deepseek-v3.2-20251201",
-      "context_length": 163840,
+      "context_length": 131072,
       "created": 1764594642,
       "default_parameters": {
         "frequency_penalty": null,
@@ -5368,9 +5438,9 @@
       "name": "DeepSeek: DeepSeek V3.2",
       "per_request_limits": null,
       "pricing": {
-        "completion": "0.00000042",
-        "input_cache_read": "0.000000135",
-        "prompt": "0.000000259"
+        "completion": "0.000000378",
+        "input_cache_read": "0.0000000252",
+        "prompt": "0.000000252"
       },
       "supported_parameters": [
         "frequency_penalty",
@@ -5379,6 +5449,7 @@
         "logprobs",
         "max_tokens",
         "min_p",
+        "parallel_tool_calls",
         "presence_penalty",
         "reasoning",
         "repetition_penalty",
@@ -5394,9 +5465,9 @@
         "top_p"
       ],
       "top_provider": {
-        "context_length": 163840,
+        "context_length": 131072,
         "is_moderated": false,
-        "max_completion_tokens": 163840
+        "max_completion_tokens": 32768
       }
     },
     {
@@ -5610,7 +5681,8 @@
         "input_cache_read": "0.0000002",
         "input_cache_write": "0.000000375",
         "internal_reasoning": "0.000012",
-        "prompt": "0.000002"
+        "prompt": "0.000002",
+        "web_search": "0.014"
       },
       "supported_parameters": [
         "include_reasoning",
@@ -7077,7 +7149,8 @@
         "input_cache_read": "0.00000003",
         "input_cache_write": "0.00000008333333333333334",
         "internal_reasoning": "0.0000025",
-        "prompt": "0.0000003"
+        "prompt": "0.0000003",
+        "web_search": "0.014"
       },
       "supported_parameters": [
         "max_tokens",
@@ -7590,7 +7663,8 @@
         "input_cache_read": "0.00000001",
         "input_cache_write": "0.00000008333333333333334",
         "internal_reasoning": "0.0000004",
-        "prompt": "0.0000001"
+        "prompt": "0.0000001",
+        "web_search": "0.014"
       },
       "supported_parameters": [
         "include_reasoning",
@@ -10249,7 +10323,8 @@
         "input_cache_read": "0.00000001",
         "input_cache_write": "0.00000008333333333333334",
         "internal_reasoning": "0.0000004",
-        "prompt": "0.0000001"
+        "prompt": "0.0000001",
+        "web_search": "0.014"
       },
       "supported_parameters": [
         "include_reasoning",
@@ -11116,7 +11191,8 @@
         "input_cache_read": "0.00000003",
         "input_cache_write": "0.00000008333333333333334",
         "internal_reasoning": "0.0000025",
-        "prompt": "0.0000003"
+        "prompt": "0.0000003",
+        "web_search": "0.014"
       },
       "supported_parameters": [
         "include_reasoning",
@@ -11178,7 +11254,8 @@
         "input_cache_read": "0.000000125",
         "input_cache_write": "0.000000375",
         "internal_reasoning": "0.00001",
-        "prompt": "0.00000125"
+        "prompt": "0.00000125",
+        "web_search": "0.014"
       },
       "supported_parameters": [
         "include_reasoning",
@@ -11398,7 +11475,8 @@
         "input_cache_read": "0.000000125",
         "input_cache_write": "0.000000375",
         "internal_reasoning": "0.00001",
-        "prompt": "0.00000125"
+        "prompt": "0.00000125",
+        "web_search": "0.014"
       },
       "supported_parameters": [
         "include_reasoning",
@@ -11782,7 +11860,8 @@
         "input_cache_read": "0.000000125",
         "input_cache_write": "0.000000375",
         "internal_reasoning": "0.00001",
-        "prompt": "0.00000125"
+        "prompt": "0.00000125",
+        "web_search": "0.014"
       },
       "supported_parameters": [
         "include_reasoning",
@@ -13810,7 +13889,8 @@
         "completion": "0.0000003",
         "image": "0.000000075",
         "internal_reasoning": "0.0000003",
-        "prompt": "0.000000075"
+        "prompt": "0.000000075",
+        "web_search": "0.014"
       },
       "supported_parameters": [
         "max_tokens",
@@ -14113,7 +14193,7 @@
         "tokenizer": "Gemini"
       },
       "canonical_slug": "google/gemini-2.0-flash-001",
-      "context_length": 1000000,
+      "context_length": 1048576,
       "created": 1738769413,
       "default_parameters": {
         "frequency_penalty": null,
@@ -14137,7 +14217,8 @@
         "input_cache_read": "0.000000025",
         "input_cache_write": "0.00000008333333333333334",
         "internal_reasoning": "0.0000004",
-        "prompt": "0.0000001"
+        "prompt": "0.0000001",
+        "web_search": "0.014"
       },
       "supported_parameters": [
         "max_tokens",
@@ -14151,7 +14232,7 @@
         "top_p"
       ],
       "top_provider": {
-        "context_length": 1000000,
+        "context_length": 1048576,
         "is_moderated": false,
         "max_completion_tokens": 8192
       }
