@@ -3,6 +3,228 @@
     {
       "architecture": {
         "input_modalities": [
+          "image",
+          "text",
+          "file"
+        ],
+        "instruct_type": null,
+        "modality": "text+image+file->text+image",
+        "output_modalities": [
+          "image",
+          "text"
+        ],
+        "tokenizer": "GPT"
+      },
+      "canonical_slug": "openai/gpt-5.4-image-2-20260421",
+      "context_length": 272000,
+      "created": 1776797528,
+      "default_parameters": {
+        "frequency_penalty": null,
+        "presence_penalty": null,
+        "repetition_penalty": null,
+        "temperature": null,
+        "top_k": null,
+        "top_p": null
+      },
+      "description": "[GPT-5.4](https://openrouter.ai/openai/gpt-5.4) Image 2 combines OpenAI's GPT-5.4 model with state-of-the-art image generation capabilities from GPT Image 2. It enables rich multimodal workflows, allowing users to seamlessly move between reasoning, coding, and...",
+      "expiration_date": null,
+      "hugging_face_id": "",
+      "id": "openai/gpt-5.4-image-2",
+      "knowledge_cutoff": null,
+      "links": {
+        "details": "/api/v1/models/openai/gpt-5.4-image-2-20260421/endpoints"
+      },
+      "name": "OpenAI: GPT-5.4 Image 2",
+      "per_request_limits": null,
+      "pricing": {
+        "completion": "0.000015",
+        "input_cache_read": "0.000002",
+        "prompt": "0.000008",
+        "web_search": "0.01"
+      },
+      "supported_parameters": [
+        "frequency_penalty",
+        "include_reasoning",
+        "logit_bias",
+        "logprobs",
+        "max_tokens",
+        "presence_penalty",
+        "reasoning",
+        "response_format",
+        "seed",
+        "stop",
+        "structured_outputs",
+        "top_logprobs"
+      ],
+      "top_provider": {
+        "context_length": 272000,
+        "is_moderated": true,
+        "max_completion_tokens": 128000
+      }
+    },
+    {
+      "architecture": {
+        "input_modalities": [
+          "text"
+        ],
+        "instruct_type": null,
+        "modality": "text->text",
+        "output_modalities": [
+          "text"
+        ],
+        "tokenizer": "Other"
+      },
+      "canonical_slug": "inclusionai/ling-2.6-flash-20260421",
+      "context_length": 262144,
+      "created": 1776795886,
+      "default_parameters": {
+        "frequency_penalty": null,
+        "presence_penalty": null,
+        "repetition_penalty": null,
+        "temperature": null,
+        "top_k": null,
+        "top_p": null
+      },
+      "description": "Ling-2.6-flash is an instant (instruct) model from inclusionAI with 104B total parameters and 7.4B active parameters, designed for real-world agents that require fast responses, strong execution, and high token efficiency....",
+      "expiration_date": null,
+      "hugging_face_id": "",
+      "id": "inclusionai/ling-2.6-flash:free",
+      "knowledge_cutoff": null,
+      "links": {
+        "details": "/api/v1/models/inclusionai/ling-2.6-flash-20260421/endpoints"
+      },
+      "name": "inclusionAI: Ling-2.6-flash (free)",
+      "per_request_limits": null,
+      "pricing": {
+        "completion": "0",
+        "prompt": "0"
+      },
+      "supported_parameters": [
+        "frequency_penalty",
+        "max_tokens",
+        "presence_penalty",
+        "repetition_penalty",
+        "response_format",
+        "seed",
+        "stop",
+        "structured_outputs",
+        "temperature",
+        "tool_choice",
+        "tools",
+        "top_k",
+        "top_p"
+      ],
+      "top_provider": {
+        "context_length": 262144,
+        "is_moderated": false,
+        "max_completion_tokens": 32768
+      }
+    },
+    {
+      "architecture": {
+        "input_modalities": [
+          "text",
+          "image"
+        ],
+        "instruct_type": null,
+        "modality": "text+image->text",
+        "output_modalities": [
+          "text"
+        ],
+        "tokenizer": "Router"
+      },
+      "canonical_slug": "~anthropic/claude-opus-latest",
+      "context_length": 1000000,
+      "created": 1776795361,
+      "default_parameters": {
+        "frequency_penalty": null,
+        "presence_penalty": null,
+        "repetition_penalty": null,
+        "temperature": null,
+        "top_k": null,
+        "top_p": null
+      },
+      "description": "This model always redirects to the latest model in the Claude Opus family.",
+      "expiration_date": null,
+      "hugging_face_id": "",
+      "id": "~anthropic/claude-opus-latest",
+      "knowledge_cutoff": null,
+      "links": {
+        "details": "/api/v1/models/~anthropic/claude-opus-latest/endpoints"
+      },
+      "name": "Anthropic: Claude Opus Latest",
+      "per_request_limits": null,
+      "pricing": {
+        "completion": "0.000025",
+        "input_cache_read": "0.0000005",
+        "input_cache_write": "0.00000625",
+        "prompt": "0.000005",
+        "web_search": "0.01"
+      },
+      "supported_parameters": [
+        "include_reasoning",
+        "max_tokens",
+        "reasoning",
+        "response_format",
+        "stop",
+        "structured_outputs",
+        "tool_choice",
+        "tools",
+        "verbosity"
+      ],
+      "top_provider": {
+        "context_length": 1000000,
+        "is_moderated": true,
+        "max_completion_tokens": 128000
+      }
+    },
+    {
+      "architecture": {
+        "input_modalities": [
+          "text"
+        ],
+        "instruct_type": null,
+        "modality": "text->text",
+        "output_modalities": [
+          "text"
+        ],
+        "tokenizer": "Router"
+      },
+      "canonical_slug": "openrouter/pareto-code",
+      "context_length": 200000,
+      "created": 1776747900,
+      "default_parameters": {
+        "frequency_penalty": null,
+        "presence_penalty": null,
+        "repetition_penalty": null,
+        "temperature": null,
+        "top_k": null,
+        "top_p": null
+      },
+      "description": "The Pareto Router is a way to have OpenRouter always pick a strong coding model for your needs without committing to a specific one. You express a single `min_coding_score` preference...",
+      "expiration_date": null,
+      "hugging_face_id": "",
+      "id": "openrouter/pareto-code",
+      "knowledge_cutoff": null,
+      "links": {
+        "details": "/api/v1/models/openrouter/pareto-code/endpoints"
+      },
+      "name": "Pareto Code Router",
+      "per_request_limits": null,
+      "pricing": {
+        "completion": "-1",
+        "prompt": "-1"
+      },
+      "supported_parameters": [],
+      "top_provider": {
+        "context_length": null,
+        "is_moderated": false,
+        "max_completion_tokens": null
+      }
+    },
+    {
+      "architecture": {
+        "input_modalities": [
           "text",
           "image"
         ],
@@ -35,9 +257,9 @@
       "name": "MoonshotAI: Kimi K2.6",
       "per_request_limits": null,
       "pricing": {
-        "completion": "0.0000028",
+        "completion": "0.0000035",
         "input_cache_read": "0.0000002",
-        "prompt": "0.0000006"
+        "prompt": "0.0000008"
       },
       "supported_parameters": [
         "frequency_penalty",
@@ -119,58 +341,6 @@
         "context_length": 1000000,
         "is_moderated": true,
         "max_completion_tokens": 128000
-      }
-    },
-    {
-      "architecture": {
-        "input_modalities": [
-          "text"
-        ],
-        "instruct_type": null,
-        "modality": "text->text",
-        "output_modalities": [
-          "text"
-        ],
-        "tokenizer": "Other"
-      },
-      "canonical_slug": "openrouter/elephant-alpha",
-      "context_length": 262144,
-      "created": 1776052598,
-      "default_parameters": {
-        "frequency_penalty": null,
-        "presence_penalty": null,
-        "repetition_penalty": null,
-        "temperature": null,
-        "top_k": null,
-        "top_p": null
-      },
-      "description": "Elephant Alpha is a 100B-parameter text model focused on intelligence efficiency, delivering strong performance while minimizing token usage. It supports a 256K context window with up to 32K output tokens,...",
-      "expiration_date": null,
-      "hugging_face_id": null,
-      "id": "openrouter/elephant-alpha",
-      "knowledge_cutoff": null,
-      "links": {
-        "details": "/api/v1/models/openrouter/elephant-alpha/endpoints"
-      },
-      "name": "Elephant",
-      "per_request_limits": null,
-      "pricing": {
-        "completion": "0",
-        "prompt": "0"
-      },
-      "supported_parameters": [
-        "max_tokens",
-        "response_format",
-        "structured_outputs",
-        "temperature",
-        "tool_choice",
-        "tools",
-        "top_p"
-      ],
-      "top_provider": {
-        "context_length": 262144,
-        "is_moderated": false,
-        "max_completion_tokens": 32768
       }
     },
     {
@@ -387,8 +557,8 @@
       "per_request_limits": null,
       "pricing": {
         "completion": "0.00000035",
-        "input_cache_read": "0.00000001",
-        "prompt": "0.00000008"
+        "input_cache_read": "0.00000004",
+        "prompt": "0.00000007"
       },
       "supported_parameters": [
         "frequency_penalty",
@@ -414,7 +584,7 @@
       "top_provider": {
         "context_length": 262144,
         "is_moderated": false,
-        "max_completion_tokens": null
+        "max_completion_tokens": 262144
       }
     },
     {
@@ -2980,7 +3150,7 @@
         "tokenizer": "Other"
       },
       "canonical_slug": "z-ai/glm-5-20260211",
-      "context_length": 80000,
+      "context_length": 202752,
       "created": 1770829182,
       "default_parameters": {
         "frequency_penalty": null,
@@ -2998,8 +3168,9 @@
       "name": "Z.ai: GLM 5",
       "per_request_limits": null,
       "pricing": {
-        "completion": "0.0000023",
-        "prompt": "0.00000072"
+        "completion": "0.00000208",
+        "input_cache_read": "0.00000013",
+        "prompt": "0.00000065"
       },
       "supported_parameters": [
         "frequency_penalty",
@@ -3008,6 +3179,7 @@
         "logprobs",
         "max_tokens",
         "min_p",
+        "parallel_tool_calls",
         "presence_penalty",
         "reasoning",
         "repetition_penalty",
@@ -3023,9 +3195,9 @@
         "top_p"
       ],
       "top_provider": {
-        "context_length": 80000,
+        "context_length": 202752,
         "is_moderated": false,
-        "max_completion_tokens": 131072
+        "max_completion_tokens": null
       }
     },
     {
@@ -3175,7 +3347,7 @@
       "per_request_limits": null,
       "pricing": {
         "completion": "0.0000008",
-        "input_cache_read": "0.00000012",
+        "input_cache_read": "0.00000011",
         "prompt": "0.00000015"
       },
       "supported_parameters": [
@@ -6638,8 +6810,6 @@
         "stop",
         "structured_outputs",
         "temperature",
-        "tool_choice",
-        "tools",
         "top_logprobs",
         "top_p"
       ],
@@ -6869,8 +7039,6 @@
         "stop",
         "structured_outputs",
         "temperature",
-        "tool_choice",
-        "tools",
         "top_logprobs",
         "top_p"
       ],
@@ -14193,7 +14361,7 @@
         "tokenizer": "Gemini"
       },
       "canonical_slug": "google/gemini-2.0-flash-001",
-      "context_length": 1048576,
+      "context_length": 1000000,
       "created": 1738769413,
       "default_parameters": {
         "frequency_penalty": null,
@@ -14232,7 +14400,7 @@
         "top_p"
       ],
       "top_provider": {
-        "context_length": 1048576,
+        "context_length": 1000000,
         "is_moderated": false,
         "max_completion_tokens": 8192
       }
@@ -15397,8 +15565,8 @@
       "name": "Meta: Llama 3.3 70B Instruct",
       "per_request_limits": null,
       "pricing": {
-        "completion": "0.00000038",
-        "prompt": "0.00000012"
+        "completion": "0.00000032",
+        "prompt": "0.0000001"
       },
       "supported_parameters": [
         "frequency_penalty",
@@ -15420,7 +15588,7 @@
       "top_provider": {
         "context_length": 131072,
         "is_moderated": false,
-        "max_completion_tokens": 131072
+        "max_completion_tokens": 16384
       }
     },
     {
@@ -17971,10 +18139,13 @@
       "created": 1699401600,
       "default_parameters": {
         "frequency_penalty": null,
+        "presence_penalty": null,
+        "repetition_penalty": null,
         "temperature": null,
+        "top_k": null,
         "top_p": null
       },
-      "description": "Your prompt will be processed by a meta-model and routed to one of dozens of models (see below), optimizing for the best possible output. To see which model was used,...",
+      "description": "\"Your prompt will be processed by a meta-model and routed to one of dozens of models (see below), optimizing for the best possible output. To see which model was used,...",
       "expiration_date": null,
       "hugging_face_id": null,
       "id": "openrouter/auto",
