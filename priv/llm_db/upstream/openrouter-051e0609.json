@@ -3388,8 +3388,8 @@
       "name": "MiniMax: MiniMax M2.5",
       "per_request_limits": null,
       "pricing": {
-        "completion": "0.0000012",
-        "input_cache_read": "0.000000075",
+        "completion": "0.00000115",
+        "input_cache_read": "0.00000003",
         "prompt": "0.00000015"
       },
       "supported_parameters": [
@@ -3418,7 +3418,7 @@
       "top_provider": {
         "context_length": 196608,
         "is_moderated": false,
-        "max_completion_tokens": 65536
+        "max_completion_tokens": null
       }
     },
     {
@@ -3453,8 +3453,8 @@
       "per_request_limits": null,
       "pricing": {
         "completion": "0.00000208",
-        "input_cache_read": "0.00000013",
-        "prompt": "0.00000065"
+        "input_cache_read": "0.00000012",
+        "prompt": "0.0000006"
       },
       "supported_parameters": [
         "frequency_penalty",
@@ -5239,14 +5239,11 @@
         "frequency_penalty",
         "include_reasoning",
         "max_tokens",
-        "min_p",
         "presence_penalty",
         "reasoning",
         "repetition_penalty",
-        "response_format",
         "seed",
         "stop",
-        "structured_outputs",
         "temperature",
         "tool_choice",
         "tools",
@@ -5899,7 +5896,6 @@
         "frequency_penalty",
         "include_reasoning",
         "logit_bias",
-        "logprobs",
         "max_tokens",
         "min_p",
         "presence_penalty",
@@ -5913,7 +5909,6 @@
         "tool_choice",
         "tools",
         "top_k",
-        "top_logprobs",
         "top_p"
       ],
       "top_provider": {
@@ -6212,6 +6207,62 @@
         "context_length": 2000000,
         "is_moderated": false,
         "max_completion_tokens": 30000
+      }
+    },
+    {
+      "architecture": {
+        "input_modalities": [
+          "text"
+        ],
+        "instruct_type": null,
+        "modality": "text->text",
+        "output_modalities": [
+          "text"
+        ],
+        "tokenizer": "Other"
+      },
+      "canonical_slug": "deepcogito/cogito-v2.1-671b-20251118",
+      "context_length": 128000,
+      "created": 1763071233,
+      "default_parameters": {
+        "frequency_penalty": null,
+        "temperature": null,
+        "top_p": null
+      },
+      "description": "Cogito v2.1 671B MoE represents one of the strongest open models globally, matching performance of frontier closed and open models. This model is trained using self play with reinforcement learning...",
+      "expiration_date": null,
+      "hugging_face_id": "",
+      "id": "deepcogito/cogito-v2.1-671b",
+      "knowledge_cutoff": null,
+      "links": {
+        "details": "/api/v1/models/deepcogito/cogito-v2.1-671b-20251118/endpoints"
+      },
+      "name": "Deep Cogito: Cogito v2.1 671B",
+      "per_request_limits": null,
+      "pricing": {
+        "completion": "0.00000125",
+        "prompt": "0.00000125"
+      },
+      "supported_parameters": [
+        "frequency_penalty",
+        "include_reasoning",
+        "logit_bias",
+        "max_tokens",
+        "min_p",
+        "presence_penalty",
+        "reasoning",
+        "repetition_penalty",
+        "response_format",
+        "stop",
+        "structured_outputs",
+        "temperature",
+        "top_k",
+        "top_p"
+      ],
+      "top_provider": {
+        "context_length": 128000,
+        "is_moderated": false,
+        "max_completion_tokens": null
       }
     },
     {
