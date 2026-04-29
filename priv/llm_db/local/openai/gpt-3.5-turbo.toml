@@ -1,7 +1,14 @@
 id = "gpt-3.5-turbo"
 
+aliases = ["gpt-3.5-turbo-completions"]
 [extra.wire]
 protocol = "openai_chat"
 
 [extra]
 api = "chat"
+
+[lifecycle]
+status = "deprecated"
+deprecated_at = "2026-04-22"
+retires_at = "2026-10-23"
+replacement = "gpt-4.1-mini"
