@@ -35,14 +35,10 @@
         "attachment": false,
         "family": "deepseek-thinking",
         "id": "deepseek-v4-pro",
-        "interleaved": {
-          "field": "reasoning_content"
-        },
-        "knowledge": "2025-05",
         "last_updated": "2026-04-24",
         "limit": {
-          "context": 1000000,
-          "output": 384000
+          "context": 1048576,
+          "output": 1048576
         },
         "modalities": {
           "input": [
@@ -56,8 +52,6 @@
         "open_weights": true,
         "reasoning": true,
         "release_date": "2026-04-24",
-        "structured_output": true,
-        "temperature": true,
         "tool_call": true
       },
       "deepseek-v3.2": {
@@ -4348,6 +4342,40 @@
         "structured_output": true,
         "temperature": true,
         "tool_call": true
+      },
+      "zai-org/GLM-5.1": {
+        "attachment": false,
+        "cost": {
+          "cache_read": 0.26,
+          "cache_write": 0,
+          "input": 1.4,
+          "output": 4.4
+        },
+        "family": "glm",
+        "id": "zai-org/GLM-5.1",
+        "interleaved": {
+          "field": "reasoning_content"
+        },
+        "last_updated": "2026-03-27",
+        "limit": {
+          "context": 200000,
+          "output": 131072
+        },
+        "modalities": {
+          "input": [
+            "text"
+          ],
+          "output": [
+            "text"
+          ]
+        },
+        "name": "GLM-5.1",
+        "open_weights": false,
+        "reasoning": true,
+        "release_date": "2026-03-27",
+        "structured_output": true,
+        "temperature": true,
+        "tool_call": true
       }
     },
     "name": "Weights & Biases",
@@ -8141,6 +8169,43 @@
         "temperature": false,
         "tool_call": false
       },
+      "gpt-5.5-pro": {
+        "attachment": true,
+        "cost": {
+          "context_over_200k": {
+            "input": 60,
+            "output": 270
+          },
+          "input": 30,
+          "output": 180
+        },
+        "family": "gpt-pro",
+        "id": "gpt-5.5-pro",
+        "knowledge": "2025-12-01",
+        "last_updated": "2026-04-23",
+        "limit": {
+          "context": 1050000,
+          "input": 922000,
+          "output": 128000
+        },
+        "modalities": {
+          "input": [
+            "text",
+            "image",
+            "pdf"
+          ],
+          "output": [
+            "text"
+          ]
+        },
+        "name": "GPT-5.5 Pro",
+        "open_weights": false,
+        "reasoning": true,
+        "release_date": "2026-04-23",
+        "structured_output": true,
+        "temperature": false,
+        "tool_call": true
+      },
       "gpt-5.3-chat-latest": {
         "attachment": true,
         "cost": {
@@ -8578,6 +8643,40 @@
         "open_weights": true,
         "reasoning": true,
         "release_date": "2026-02-01",
+        "temperature": true,
+        "tool_call": true
+      },
+      "deepseek-ai/DeepSeek-V4-Pro": {
+        "attachment": false,
+        "cost": {
+          "cache_read": 0.145,
+          "input": 1.74,
+          "output": 3.48
+        },
+        "family": "deepseek-thinking",
+        "id": "deepseek-ai/DeepSeek-V4-Pro",
+        "interleaved": {
+          "field": "reasoning_content"
+        },
+        "knowledge": "2025-05",
+        "last_updated": "2026-04-24",
+        "limit": {
+          "context": 65536,
+          "output": 65536
+        },
+        "modalities": {
+          "input": [
+            "text"
+          ],
+          "output": [
+            "text"
+          ]
+        },
+        "name": "DeepSeek V4 Pro",
+        "open_weights": true,
+        "reasoning": true,
+        "release_date": "2026-04-24",
+        "structured_output": true,
         "temperature": true,
         "tool_call": true
       },
@@ -42958,6 +43057,43 @@
         "temperature": true,
         "tool_call": true
       },
+      "openai/gpt-5.5-pro": {
+        "attachment": true,
+        "cost": {
+          "context_over_200k": {
+            "input": 60,
+            "output": 270
+          },
+          "input": 30,
+          "output": 180
+        },
+        "family": "gpt-pro",
+        "id": "openai/gpt-5.5-pro",
+        "knowledge": "2025-12-01",
+        "last_updated": "2026-04-23",
+        "limit": {
+          "context": 1050000,
+          "input": 922000,
+          "output": 128000
+        },
+        "modalities": {
+          "input": [
+            "text",
+            "image",
+            "pdf"
+          ],
+          "output": [
+            "text"
+          ]
+        },
+        "name": "GPT-5.5 Pro",
+        "open_weights": false,
+        "reasoning": true,
+        "release_date": "2026-04-23",
+        "structured_output": true,
+        "temperature": false,
+        "tool_call": true
+      },
       "deepseek/deepseek-r1-distill-llama-70b": {
         "attachment": false,
         "cost": {
@@ -44604,6 +44740,38 @@
         "open_weights": true,
         "reasoning": true,
         "release_date": "2025-08-11",
+        "structured_output": true,
+        "temperature": true,
+        "tool_call": true
+      },
+      "nvidia/nemotron-3-nano-omni-30b-a3b-reasoning:free": {
+        "attachment": true,
+        "cost": {
+          "input": 0,
+          "output": 0
+        },
+        "family": "nemotron",
+        "id": "nvidia/nemotron-3-nano-omni-30b-a3b-reasoning:free",
+        "last_updated": "2026-04-28",
+        "limit": {
+          "context": 256000,
+          "output": 65536
+        },
+        "modalities": {
+          "input": [
+            "text",
+            "image",
+            "video",
+            "audio"
+          ],
+          "output": [
+            "text"
+          ]
+        },
+        "name": "Nemotron 3 Nano Omni (free)",
+        "open_weights": true,
+        "reasoning": true,
+        "release_date": "2026-04-28",
         "structured_output": true,
         "temperature": true,
         "tool_call": true
@@ -51484,6 +51652,10 @@
       "gpt-5.4-pro": {
         "attachment": true,
         "cost": {
+          "context_over_200k": {
+            "input": 60,
+            "output": 270
+          },
           "input": 30,
           "output": 180
         },
@@ -51492,8 +51664,8 @@
         "knowledge": "2025-08-31",
         "last_updated": "2026-03-05",
         "limit": {
-          "context": 400000,
-          "input": 272000,
+          "context": 1050000,
+          "input": 922000,
           "output": 128000
         },
         "modalities": {
@@ -53521,6 +53693,43 @@
         "release_date": "2024-01-25",
         "tool_call": false
       },
+      "kimi-k2.6": {
+        "attachment": false,
+        "cost": {
+          "input": 0.95,
+          "output": 4
+        },
+        "family": "kimi",
+        "id": "kimi-k2.6",
+        "interleaved": true,
+        "knowledge": "2025-01",
+        "last_updated": "2026-04-22",
+        "limit": {
+          "context": 262144,
+          "output": 262144
+        },
+        "modalities": {
+          "input": [
+            "text",
+            "image"
+          ],
+          "output": [
+            "text"
+          ]
+        },
+        "name": "Kimi K2.6",
+        "open_weights": true,
+        "provider": {
+          "api": "https://${AZURE_RESOURCE_NAME}.services.ai.azure.com/models",
+          "npm": "@ai-sdk/openai-compatible",
+          "shape": "completions"
+        },
+        "reasoning": true,
+        "release_date": "2026-04-22",
+        "structured_output": true,
+        "temperature": true,
+        "tool_call": true
+      },
       "phi-4-multimodal": {
         "attachment": true,
         "cost": {
@@ -54110,6 +54319,11 @@
         "attachment": true,
         "cost": {
           "cache_read": 0.25,
+          "context_over_200k": {
+            "cache_read": 0.5,
+            "input": 5,
+            "output": 22.5
+          },
           "input": 2.5,
           "output": 15
         },
@@ -54118,8 +54332,8 @@
         "knowledge": "2025-08-31",
         "last_updated": "2026-03-05",
         "limit": {
-          "context": 400000,
-          "input": 272000,
+          "context": 1050000,
+          "input": 922000,
           "output": 128000
         },
         "modalities": {
@@ -68831,6 +69045,40 @@
         "temperature": true,
         "tool_call": true
       },
+      "accounts/fireworks/models/deepseek-v4-pro": {
+        "attachment": false,
+        "cost": {
+          "cache_read": 0.15,
+          "input": 1.74,
+          "output": 3.48
+        },
+        "family": "deepseek-thinking",
+        "id": "accounts/fireworks/models/deepseek-v4-pro",
+        "interleaved": {
+          "field": "reasoning_content"
+        },
+        "knowledge": "2025-05",
+        "last_updated": "2026-04-24",
+        "limit": {
+          "context": 1000000,
+          "output": 384000
+        },
+        "modalities": {
+          "input": [
+            "text"
+          ],
+          "output": [
+            "text"
+          ]
+        },
+        "name": "DeepSeek V4 Pro",
+        "open_weights": true,
+        "reasoning": true,
+        "release_date": "2026-04-24",
+        "structured_output": true,
+        "temperature": true,
+        "tool_call": true
+      },
       "accounts/fireworks/models/glm-4p5": {
         "attachment": false,
         "cost": {
@@ -69608,6 +69856,40 @@
         "reasoning": true,
         "release_date": "2025-12-01",
         "status": "deprecated",
+        "temperature": true,
+        "tool_call": true
+      },
+      "deepseek-ai/DeepSeek-V4-Pro": {
+        "attachment": false,
+        "cost": {
+          "cache_read": 0.15,
+          "input": 1.74,
+          "output": 3.48
+        },
+        "family": "deepseek-thinking",
+        "id": "deepseek-ai/DeepSeek-V4-Pro",
+        "interleaved": {
+          "field": "reasoning_content"
+        },
+        "knowledge": "2025-05",
+        "last_updated": "2026-04-24",
+        "limit": {
+          "context": 1000000,
+          "output": 384000
+        },
+        "modalities": {
+          "input": [
+            "text"
+          ],
+          "output": [
+            "text"
+          ]
+        },
+        "name": "DeepSeek V4 Pro",
+        "open_weights": true,
+        "reasoning": true,
+        "release_date": "2026-04-24",
+        "structured_output": true,
         "temperature": true,
         "tool_call": true
       },
@@ -72453,6 +72735,43 @@
         "temperature": false,
         "tool_call": true
       },
+      "xiaomi/mimo-v2.5": {
+        "attachment": true,
+        "cost": {
+          "cache_read": 0.08,
+          "context_over_200k": {
+            "cache_read": 0.16,
+            "input": 0.8,
+            "output": 4
+          },
+          "input": 0.4,
+          "output": 2
+        },
+        "id": "xiaomi/mimo-v2.5",
+        "interleaved": {
+          "field": "reasoning_content"
+        },
+        "knowledge": "2024-12",
+        "last_updated": "2026-04-22",
+        "limit": {
+          "context": 1048576,
+          "output": 131072
+        },
+        "modalities": {
+          "input": [
+            "text"
+          ],
+          "output": [
+            "text"
+          ]
+        },
+        "name": "Xiaomi: MiMo-V2.5",
+        "open_weights": false,
+        "reasoning": true,
+        "release_date": "2026-04-22",
+        "temperature": true,
+        "tool_call": true
+      },
       "mistralai/devstral-medium": {
         "attachment": false,
         "cost": {
@@ -72702,6 +73021,43 @@
         "reasoning": true,
         "release_date": "2025-12-11",
         "temperature": false,
+        "tool_call": true
+      },
+      "xiaomi/mimo-v2.5-pro": {
+        "attachment": true,
+        "cost": {
+          "cache_read": 0.2,
+          "context_over_200k": {
+            "cache_read": 0.4,
+            "input": 2,
+            "output": 6
+          },
+          "input": 1,
+          "output": 3
+        },
+        "id": "xiaomi/mimo-v2.5-pro",
+        "interleaved": {
+          "field": "reasoning_content"
+        },
+        "knowledge": "2024-12",
+        "last_updated": "2026-04-22",
+        "limit": {
+          "context": 1048576,
+          "output": 128000
+        },
+        "modalities": {
+          "input": [
+            "text"
+          ],
+          "output": [
+            "text"
+          ]
+        },
+        "name": "Xiaomi: MiMo V2.5 Pro",
+        "open_weights": true,
+        "reasoning": true,
+        "release_date": "2026-04-22",
+        "temperature": true,
         "tool_call": true
       },
       "z-ai/glm-5": {
@@ -81663,6 +82019,42 @@
         "reasoning": true,
         "release_date": "2026-03-27",
         "structured_output": true,
+        "temperature": true,
+        "tool_call": true
+      },
+      "glm-5v-turbo": {
+        "attachment": true,
+        "cost": {
+          "cache_read": 0,
+          "cache_write": 0,
+          "input": 0,
+          "output": 0
+        },
+        "family": "glm",
+        "id": "glm-5v-turbo",
+        "interleaved": {
+          "field": "reasoning_content"
+        },
+        "last_updated": "2026-04-01",
+        "limit": {
+          "context": 200000,
+          "output": 131072
+        },
+        "modalities": {
+          "input": [
+            "text",
+            "image",
+            "video",
+            "pdf"
+          ],
+          "output": [
+            "text"
+          ]
+        },
+        "name": "glm-5v-turbo",
+        "open_weights": false,
+        "reasoning": true,
+        "release_date": "2026-04-01",
         "temperature": true,
         "tool_call": true
       }
@@ -99273,6 +99665,38 @@
         "temperature": true,
         "tool_call": true
       },
+      "nvidia/nemotron-3-nano-omni-30b-a3b-reasoning": {
+        "attachment": true,
+        "cost": {
+          "input": 0,
+          "output": 0
+        },
+        "family": "nemotron",
+        "id": "nvidia/nemotron-3-nano-omni-30b-a3b-reasoning",
+        "last_updated": "2026-04-28",
+        "limit": {
+          "context": 256000,
+          "output": 65536
+        },
+        "modalities": {
+          "input": [
+            "text",
+            "image",
+            "video",
+            "audio"
+          ],
+          "output": [
+            "text"
+          ]
+        },
+        "name": "Nemotron 3 Nano Omni",
+        "open_weights": true,
+        "reasoning": true,
+        "release_date": "2026-04-28",
+        "structured_output": true,
+        "temperature": true,
+        "tool_call": true
+      },
       "nvidia/nvidia-nemotron-nano-9b-v2": {
         "attachment": false,
         "cost": {
@@ -103610,6 +104034,10 @@
       "gpt-5.4-pro": {
         "attachment": true,
         "cost": {
+          "context_over_200k": {
+            "input": 60,
+            "output": 270
+          },
           "input": 30,
           "output": 180
         },
@@ -103618,8 +104046,8 @@
         "knowledge": "2025-08-31",
         "last_updated": "2026-03-05",
         "limit": {
-          "context": 400000,
-          "input": 272000,
+          "context": 1050000,
+          "input": 922000,
           "output": 128000
         },
         "modalities": {
@@ -106010,6 +106438,11 @@
         "attachment": true,
         "cost": {
           "cache_read": 0.25,
+          "context_over_200k": {
+            "cache_read": 0.5,
+            "input": 5,
+            "output": 22.5
+          },
           "input": 2.5,
           "output": 15
         },
@@ -106018,8 +106451,8 @@
         "knowledge": "2025-08-31",
         "last_updated": "2026-03-05",
         "limit": {
-          "context": 400000,
-          "input": 272000,
+          "context": 1050000,
+          "input": 922000,
           "output": 128000
         },
         "modalities": {
@@ -119671,6 +120104,44 @@
         "temperature": true,
         "tool_call": true
       },
+      "xiaomi/mimo-v2.5": {
+        "attachment": true,
+        "cost": {
+          "cache_read": 0.08,
+          "context_over_200k": {
+            "cache_read": 0.16,
+            "input": 0.8,
+            "output": 4
+          },
+          "input": 0.4,
+          "output": 2
+        },
+        "family": "mimo",
+        "id": "xiaomi/mimo-v2.5",
+        "interleaved": {
+          "field": "reasoning_content"
+        },
+        "knowledge": "2024-12",
+        "last_updated": "2026-04-22",
+        "limit": {
+          "context": 1048576,
+          "output": 131072
+        },
+        "modalities": {
+          "input": [
+            "text"
+          ],
+          "output": [
+            "text"
+          ]
+        },
+        "name": "MiMo-V2.5",
+        "open_weights": false,
+        "reasoning": true,
+        "release_date": "2026-04-22",
+        "temperature": true,
+        "tool_call": true
+      },
       "x-ai/grok-4.1-fast": {
         "attachment": true,
         "cost": {
@@ -119734,6 +120205,48 @@
         "reasoning": true,
         "release_date": "2025-12-11",
         "temperature": false,
+        "tool_call": true
+      },
+      "xiaomi/mimo-v2.5-pro": {
+        "attachment": true,
+        "cost": {
+          "cache_read": 0.2,
+          "context_over_200k": {
+            "cache_read": 0.4,
+            "input": 2,
+            "output": 6
+          },
+          "input": 1,
+          "output": 3
+        },
+        "family": "mimo",
+        "id": "xiaomi/mimo-v2.5-pro",
+        "interleaved": {
+          "field": "reasoning_content"
+        },
+        "knowledge": "2024-12",
+        "last_updated": "2026-04-22",
+        "limit": {
+          "context": 1048576,
+          "output": 131072
+        },
+        "modalities": {
+          "input": [
+            "text",
+            "image",
+            "audio",
+            "video",
+            "pdf"
+          ],
+          "output": [
+            "text"
+          ]
+        },
+        "name": "MiMo-V2.5-Pro",
+        "open_weights": false,
+        "reasoning": true,
+        "release_date": "2026-04-22",
+        "temperature": true,
         "tool_call": true
       },
       "z-ai/glm-5": {
@@ -120605,6 +121118,36 @@
         "temperature": true,
         "tool_call": true
       },
+      "tencent/hy3-preview": {
+        "attachment": false,
+        "cost": {
+          "cache_read": 0.058,
+          "cache_write": 0,
+          "input": 0.172,
+          "output": 0.572
+        },
+        "family": "Hy",
+        "id": "tencent/hy3-preview",
+        "last_updated": "2026-04-20",
+        "limit": {
+          "context": 256000,
+          "output": 64000
+        },
+        "modalities": {
+          "input": [
+            "text"
+          ],
+          "output": [
+            "text"
+          ]
+        },
+        "name": "Hy3 preview",
+        "open_weights": true,
+        "reasoning": true,
+        "release_date": "2026-04-20",
+        "temperature": true,
+        "tool_call": true
+      },
       "z-ai/glm-4.6": {
         "attachment": false,
         "cost": {
@@ -120827,6 +121370,95 @@
         "reasoning": true,
         "release_date": "2026-02-18",
         "temperature": true,
+        "tool_call": true
+      },
+      "deepseek/deepseek-v4-flash": {
+        "attachment": false,
+        "cost": {
+          "cache_read": 0.028,
+          "input": 0.14,
+          "output": 0.28
+        },
+        "family": "deepseek-flash",
+        "id": "deepseek/deepseek-v4-flash",
+        "interleaved": {
+          "field": "reasoning_content"
+        },
+        "knowledge": "2025-05",
+        "last_updated": "2026-04-24",
+        "limit": {
+          "context": 1000000,
+          "output": 384000
+        },
+        "modalities": {
+          "input": [
+            "text"
+          ],
+          "output": [
+            "text"
+          ]
+        },
+        "name": "DeepSeek V4 Flash",
+        "open_weights": true,
+        "reasoning": true,
+        "release_date": "2026-04-24",
+        "structured_output": true,
+        "temperature": true,
+        "tool_call": true
+      },
+      "openai/gpt-5.5": {
+        "attachment": true,
+        "cost": {
+          "cache_read": 0.5,
+          "context_over_200k": {
+            "cache_read": 1,
+            "input": 10,
+            "output": 45
+          },
+          "input": 5,
+          "output": 30
+        },
+        "experimental": {
+          "modes": {
+            "fast": {
+              "cost": {
+                "cache_read": 1.25,
+                "input": 12.5,
+                "output": 75
+              },
+              "provider": {
+                "body": {
+                  "service_tier": "priority"
+                }
+              }
+            }
+          }
+        },
+        "family": "gpt",
+        "id": "openai/gpt-5.5",
+        "knowledge": "2025-12-01",
+        "last_updated": "2026-04-23",
+        "limit": {
+          "context": 1050000,
+          "input": 922000,
+          "output": 128000
+        },
+        "modalities": {
+          "input": [
+            "text",
+            "image",
+            "pdf"
+          ],
+          "output": [
+            "text"
+          ]
+        },
+        "name": "GPT-5.5",
+        "open_weights": false,
+        "reasoning": true,
+        "release_date": "2026-04-23",
+        "structured_output": true,
+        "temperature": false,
         "tool_call": true
       },
       "qwen/qwen3.5-plus": {
@@ -121167,6 +121799,43 @@
         "reasoning": true,
         "release_date": "2025-08-26",
         "temperature": true,
+        "tool_call": true
+      },
+      "openai/gpt-5.5-pro": {
+        "attachment": true,
+        "cost": {
+          "context_over_200k": {
+            "input": 60,
+            "output": 270
+          },
+          "input": 30,
+          "output": 180
+        },
+        "family": "gpt-pro",
+        "id": "openai/gpt-5.5-pro",
+        "knowledge": "2025-12-01",
+        "last_updated": "2026-04-23",
+        "limit": {
+          "context": 1050000,
+          "input": 922000,
+          "output": 128000
+        },
+        "modalities": {
+          "input": [
+            "text",
+            "image",
+            "pdf"
+          ],
+          "output": [
+            "text"
+          ]
+        },
+        "name": "GPT-5.5 Pro",
+        "open_weights": false,
+        "reasoning": true,
+        "release_date": "2026-04-23",
+        "structured_output": true,
+        "temperature": false,
         "tool_call": true
       },
       "moonshotai/kimi-k2.5": {
@@ -122037,6 +122706,40 @@
         },
         "reasoning": false,
         "release_date": "2025-10-15",
+        "temperature": true,
+        "tool_call": true
+      },
+      "deepseek/deepseek-v4-pro": {
+        "attachment": false,
+        "cost": {
+          "cache_read": 0.145,
+          "input": 1.74,
+          "output": 3.48
+        },
+        "family": "deepseek-thinking",
+        "id": "deepseek/deepseek-v4-pro",
+        "interleaved": {
+          "field": "reasoning_content"
+        },
+        "knowledge": "2025-05",
+        "last_updated": "2026-04-24",
+        "limit": {
+          "context": 1000000,
+          "output": 384000
+        },
+        "modalities": {
+          "input": [
+            "text"
+          ],
+          "output": [
+            "text"
+          ]
+        },
+        "name": "DeepSeek V4 Pro",
+        "open_weights": true,
+        "reasoning": true,
+        "release_date": "2026-04-24",
+        "structured_output": true,
         "temperature": true,
         "tool_call": true
       },
