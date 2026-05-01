@@ -4,6 +4,186 @@
       "architecture": {
         "input_modalities": [
           "text",
+          "image"
+        ],
+        "instruct_type": null,
+        "modality": "text+image->text",
+        "output_modalities": [
+          "text"
+        ],
+        "tokenizer": "Grok"
+      },
+      "canonical_slug": "x-ai/grok-4.3-20260430",
+      "context_length": 1000000,
+      "created": 1777591821,
+      "default_parameters": {
+        "frequency_penalty": null,
+        "presence_penalty": null,
+        "repetition_penalty": null,
+        "temperature": null,
+        "top_k": null,
+        "top_p": null
+      },
+      "description": "Grok 4.3 is a reasoning model from xAI. It accepts text and image inputs with text output, and is suited for agentic workflows, instruction-following tasks, and applications requiring high factual...",
+      "expiration_date": null,
+      "hugging_face_id": null,
+      "id": "x-ai/grok-4.3",
+      "knowledge_cutoff": null,
+      "links": {
+        "details": "/api/v1/models/x-ai/grok-4.3-20260430/endpoints"
+      },
+      "name": "xAI: Grok 4.3",
+      "per_request_limits": null,
+      "pricing": {
+        "completion": "0.0000025",
+        "input_cache_read": "0.0000002",
+        "prompt": "0.00000125",
+        "web_search": "0.005"
+      },
+      "supported_parameters": [
+        "frequency_penalty",
+        "include_reasoning",
+        "logprobs",
+        "max_tokens",
+        "presence_penalty",
+        "reasoning",
+        "response_format",
+        "seed",
+        "stop",
+        "structured_outputs",
+        "temperature",
+        "tool_choice",
+        "tools",
+        "top_logprobs",
+        "top_p"
+      ],
+      "top_provider": {
+        "context_length": 1000000,
+        "is_moderated": false,
+        "max_completion_tokens": null
+      }
+    },
+    {
+      "architecture": {
+        "input_modalities": [
+          "text"
+        ],
+        "instruct_type": null,
+        "modality": "text->text",
+        "output_modalities": [
+          "text"
+        ],
+        "tokenizer": "Other"
+      },
+      "canonical_slug": "ibm-granite/granite-4.1-8b-20260429",
+      "context_length": 131072,
+      "created": 1777577071,
+      "default_parameters": {
+        "frequency_penalty": null,
+        "presence_penalty": null,
+        "repetition_penalty": null,
+        "temperature": null,
+        "top_k": null,
+        "top_p": null
+      },
+      "description": "Granite 4.1 8B is a dense, decoder-only 8-billion-parameter language model from IBM, part of the Granite 4.1 family. It supports a 131K-token context window and is designed for enterprise tasks...",
+      "expiration_date": null,
+      "hugging_face_id": "ibm-granite/granite-4.1-8b",
+      "id": "ibm-granite/granite-4.1-8b",
+      "knowledge_cutoff": null,
+      "links": {
+        "details": "/api/v1/models/ibm-granite/granite-4.1-8b-20260429/endpoints"
+      },
+      "name": "IBM: Granite 4.1 8B",
+      "per_request_limits": null,
+      "pricing": {
+        "completion": "0.0000001",
+        "input_cache_read": "0.00000005",
+        "prompt": "0.00000005"
+      },
+      "supported_parameters": [
+        "frequency_penalty",
+        "max_tokens",
+        "presence_penalty",
+        "repetition_penalty",
+        "response_format",
+        "seed",
+        "stop",
+        "structured_outputs",
+        "temperature",
+        "tool_choice",
+        "tools",
+        "top_k",
+        "top_p"
+      ],
+      "top_provider": {
+        "context_length": 131072,
+        "is_moderated": false,
+        "max_completion_tokens": 131072
+      }
+    },
+    {
+      "architecture": {
+        "input_modalities": [
+          "text"
+        ],
+        "instruct_type": null,
+        "modality": "text->text",
+        "output_modalities": [
+          "text"
+        ],
+        "tokenizer": "Other"
+      },
+      "canonical_slug": "openrouter/owl-alpha",
+      "context_length": 1048756,
+      "created": 1777398589,
+      "default_parameters": {
+        "frequency_penalty": null,
+        "presence_penalty": null,
+        "repetition_penalty": null,
+        "temperature": null,
+        "top_k": null,
+        "top_p": null
+      },
+      "description": "Owl Alpha is a high-performance foundation model designed for agentic workloads. Natively supports tool use, and long-context tasks, with strong performance in code generation, automated workflows, and complex instruction execution....",
+      "expiration_date": null,
+      "hugging_face_id": null,
+      "id": "openrouter/owl-alpha",
+      "knowledge_cutoff": null,
+      "links": {
+        "details": "/api/v1/models/openrouter/owl-alpha/endpoints"
+      },
+      "name": "Owl Alpha",
+      "per_request_limits": null,
+      "pricing": {
+        "completion": "0",
+        "prompt": "0"
+      },
+      "supported_parameters": [
+        "frequency_penalty",
+        "logit_bias",
+        "max_tokens",
+        "presence_penalty",
+        "repetition_penalty",
+        "response_format",
+        "seed",
+        "stop",
+        "structured_outputs",
+        "temperature",
+        "tools",
+        "top_k",
+        "top_p"
+      ],
+      "top_provider": {
+        "context_length": 1048756,
+        "is_moderated": false,
+        "max_completion_tokens": 262144
+      }
+    },
+    {
+      "architecture": {
+        "input_modalities": [
+          "text",
           "audio",
           "image",
           "video"
@@ -356,7 +536,7 @@
         "tokenizer": "Router"
       },
       "canonical_slug": "~moonshotai/kimi-latest",
-      "context_length": 256000,
+      "context_length": 262142,
       "created": 1777318428,
       "default_parameters": {
         "frequency_penalty": null,
@@ -377,9 +557,9 @@
       "name": "MoonshotAI Kimi Latest",
       "per_request_limits": null,
       "pricing": {
-        "completion": "0.000004655",
-        "input_cache_read": "0.0000001463",
-        "prompt": "0.0000007448"
+        "completion": "0.00000349",
+        "input_cache_read": "0.00000014",
+        "prompt": "0.00000074"
       },
       "supported_parameters": [
         "frequency_penalty",
@@ -405,9 +585,9 @@
         "top_p"
       ],
       "top_provider": {
-        "context_length": 256000,
+        "context_length": 262142,
         "is_moderated": false,
-        "max_completion_tokens": 65536
+        "max_completion_tokens": 262142
       }
     },
     {
@@ -1260,7 +1440,7 @@
       },
       "description": "MiMo-V2.5-Pro is Xiaomi’s flagship model, delivering strong performance in general agentic capabilities, complex software engineering, and long-horizon tasks, with top rankings on benchmarks such as ClawEval, GDPVal, and SWE-bench Pro....",
       "expiration_date": null,
-      "hugging_face_id": null,
+      "hugging_face_id": "XiaomiMiMo/MiMo-V2.5-Pro",
       "id": "xiaomi/mimo-v2.5-pro",
       "knowledge_cutoff": null,
       "links": {
@@ -1320,7 +1500,7 @@
       },
       "description": "MiMo-V2.5 is a native omnimodal model by Xiaomi. It delivers Pro-level agentic performance at roughly half the inference cost, while surpassing MiMo-V2-Omni in multimodal perception across image and video understanding...",
       "expiration_date": null,
-      "hugging_face_id": null,
+      "hugging_face_id": "XiaomiMiMo/MiMo-V2.5",
       "id": "xiaomi/mimo-v2.5",
       "knowledge_cutoff": null,
       "links": {
@@ -1645,7 +1825,7 @@
         "tokenizer": "Other"
       },
       "canonical_slug": "moonshotai/kimi-k2.6-20260420",
-      "context_length": 256000,
+      "context_length": 262142,
       "created": 1776699402,
       "default_parameters": {
         "frequency_penalty": null,
@@ -1666,9 +1846,9 @@
       "name": "MoonshotAI: Kimi K2.6",
       "per_request_limits": null,
       "pricing": {
-        "completion": "0.000004655",
-        "input_cache_read": "0.0000001463",
-        "prompt": "0.0000007448"
+        "completion": "0.00000349",
+        "input_cache_read": "0.00000014",
+        "prompt": "0.00000074"
       },
       "supported_parameters": [
         "frequency_penalty",
@@ -1694,9 +1874,9 @@
         "top_p"
       ],
       "top_provider": {
-        "context_length": 256000,
+        "context_length": 262142,
         "is_moderated": false,
-        "max_completion_tokens": 65536
+        "max_completion_tokens": 262142
       }
     },
     {
@@ -2394,9 +2574,9 @@
       "name": "xAI: Grok 4.20",
       "per_request_limits": null,
       "pricing": {
-        "completion": "0.000006",
+        "completion": "0.0000025",
         "input_cache_read": "0.0000002",
-        "prompt": "0.000002",
+        "prompt": "0.00000125",
         "web_search": "0.005"
       },
       "supported_parameters": [
@@ -4763,8 +4943,8 @@
       "per_request_limits": null,
       "pricing": {
         "completion": "0.0000008",
-        "input_cache_read": "0.00000009",
-        "prompt": "0.00000014"
+        "input_cache_read": "0.00000007",
+        "prompt": "0.00000012"
       },
       "supported_parameters": [
         "frequency_penalty",
@@ -5530,7 +5710,7 @@
         "top_p": 0.95
       },
       "description": "Olmo 3.1 32B Instruct is a large-scale, 32-billion-parameter instruction-tuned language model engineered for high-performance conversational AI, multi-turn dialogue, and practical instruction following. As part of the Olmo 3.1 family, this...",
-      "expiration_date": null,
+      "expiration_date": "2026-05-07",
       "hugging_face_id": "allenai/Olmo-3.1-32B-Instruct",
       "id": "allenai/olmo-3.1-32b-instruct",
       "knowledge_cutoff": null,
@@ -7932,7 +8112,7 @@
         "top_p": null
       },
       "description": "NVIDIA Nemotron Nano 2 VL is a 12-billion-parameter open multimodal reasoning model designed for video understanding and document intelligence. It introduces a hybrid Transformer-Mamba architecture, combining transformer-level accuracy with Mamba’s...",
-      "expiration_date": null,
+      "expiration_date": "2026-05-07",
       "hugging_face_id": "nvidia/NVIDIA-Nemotron-Nano-12B-v2-VL-BF16",
       "id": "nvidia/nemotron-nano-12b-v2-vl",
       "knowledge_cutoff": null,
@@ -11056,7 +11236,7 @@
       "name": "OpenAI: gpt-oss-120b",
       "per_request_limits": null,
       "pricing": {
-        "completion": "0.00000019",
+        "completion": "0.00000018",
         "prompt": "0.000000039"
       },
       "supported_parameters": [
@@ -11083,7 +11263,7 @@
       "top_provider": {
         "context_length": 131072,
         "is_moderated": false,
-        "max_completion_tokens": 131072
+        "max_completion_tokens": null
       }
     },
     {
@@ -11179,7 +11359,6 @@
         "min_p",
         "presence_penalty",
         "reasoning",
-        "reasoning_effort",
         "repetition_penalty",
         "response_format",
         "seed",
@@ -15708,7 +15887,7 @@
         "tokenizer": "Gemini"
       },
       "canonical_slug": "google/gemini-2.0-flash-001",
-      "context_length": 1048576,
+      "context_length": 1000000,
       "created": 1738769413,
       "default_parameters": {
         "frequency_penalty": null,
@@ -15747,7 +15926,7 @@
         "top_p"
       ],
       "top_provider": {
-        "context_length": 1048576,
+        "context_length": 1000000,
         "is_moderated": false,
         "max_completion_tokens": 8192
       }
@@ -17570,7 +17749,7 @@
       "created": 1728950400,
       "default_parameters": {},
       "description": "NVIDIA's Llama 3.1 Nemotron 70B is a language model designed for generating precise and useful responses. Leveraging [Llama 3.1 70B](/models/meta-llama/llama-3.1-70b-instruct) architecture and Reinforcement Learning from Human Feedback (RLHF), it excels...",
-      "expiration_date": null,
+      "expiration_date": "2026-05-08",
       "hugging_face_id": "nvidia/Llama-3.1-Nemotron-70B-Instruct-HF",
       "id": "nvidia/llama-3.1-nemotron-70b-instruct",
       "knowledge_cutoff": "2023-12-31",
@@ -18946,7 +19125,7 @@
       "created": 1713398400,
       "default_parameters": {},
       "description": "Meta's latest class of model (Llama 3) launched with a variety of sizes & flavors. This 8B instruct-tuned version was optimized for high quality dialogue usecases. It has demonstrated strong...",
-      "expiration_date": null,
+      "expiration_date": "2026-05-07",
       "hugging_face_id": "meta-llama/Meta-Llama-3-8B-Instruct",
       "id": "meta-llama/llama-3-8b-instruct",
       "knowledge_cutoff": "2023-12-31",
@@ -19403,7 +19582,7 @@
         "temperature": 0.3
       },
       "description": "Mixtral 8x7B Instruct is a pretrained generative Sparse Mixture of Experts, by Mistral AI, for chat and instruction use. Incorporates 8 experts (feed-forward networks) for a total of 47 billion...",
-      "expiration_date": null,
+      "expiration_date": "2026-05-08",
       "hugging_face_id": "mistralai/Mixtral-8x7B-Instruct-v0.1",
       "id": "mistralai/mixtral-8x7b-instruct",
       "knowledge_cutoff": "2023-12-31",
