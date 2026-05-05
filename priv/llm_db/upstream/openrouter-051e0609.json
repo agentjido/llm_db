@@ -57,6 +57,7 @@
         "top_logprobs",
         "top_p"
       ],
+      "supported_voices": null,
       "top_provider": {
         "context_length": 1000000,
         "is_moderated": false,
@@ -116,10 +117,71 @@
         "top_k",
         "top_p"
       ],
+      "supported_voices": null,
       "top_provider": {
         "context_length": 131072,
         "is_moderated": false,
         "max_completion_tokens": 131072
+      }
+    },
+    {
+      "architecture": {
+        "input_modalities": [
+          "text",
+          "image"
+        ],
+        "instruct_type": null,
+        "modality": "text+image->text",
+        "output_modalities": [
+          "text"
+        ],
+        "tokenizer": "Mistral"
+      },
+      "canonical_slug": "mistralai/mistral-medium-3.5-20260430",
+      "context_length": 262144,
+      "created": 1777570439,
+      "default_parameters": {
+        "frequency_penalty": null,
+        "presence_penalty": null,
+        "repetition_penalty": null,
+        "temperature": null,
+        "top_k": null,
+        "top_p": null
+      },
+      "description": "Mistral Medium 3.5 is a dense 128B instruction-following model from Mistral AI. It supports text and image inputs with text output, and is designed for agentic workflows, coding, and complex...",
+      "expiration_date": null,
+      "hugging_face_id": null,
+      "id": "mistralai/mistral-medium-3-5",
+      "knowledge_cutoff": null,
+      "links": {
+        "details": "/api/v1/models/mistralai/mistral-medium-3.5-20260430/endpoints"
+      },
+      "name": "Mistral: Mistral Medium 3.5",
+      "per_request_limits": null,
+      "pricing": {
+        "completion": "0.0000075",
+        "prompt": "0.0000015"
+      },
+      "supported_parameters": [
+        "frequency_penalty",
+        "include_reasoning",
+        "max_tokens",
+        "presence_penalty",
+        "reasoning",
+        "response_format",
+        "seed",
+        "stop",
+        "structured_outputs",
+        "temperature",
+        "tool_choice",
+        "tools",
+        "top_p"
+      ],
+      "supported_voices": null,
+      "top_provider": {
+        "context_length": 262144,
+        "is_moderated": false,
+        "max_completion_tokens": null
       }
     },
     {
@@ -174,6 +236,7 @@
         "top_k",
         "top_p"
       ],
+      "supported_voices": null,
       "top_provider": {
         "context_length": 1048756,
         "is_moderated": false,
@@ -230,6 +293,7 @@
         "tools",
         "top_p"
       ],
+      "supported_voices": null,
       "top_provider": {
         "context_length": 256000,
         "is_moderated": false,
@@ -281,6 +345,7 @@
         "tool_choice",
         "tools"
       ],
+      "supported_voices": null,
       "top_provider": {
         "context_length": 131072,
         "is_moderated": false,
@@ -332,6 +397,7 @@
         "tool_choice",
         "tools"
       ],
+      "supported_voices": null,
       "top_provider": {
         "context_length": 131072,
         "is_moderated": false,
@@ -392,6 +458,7 @@
         "top_k",
         "top_p"
       ],
+      "supported_voices": null,
       "top_provider": {
         "context_length": 200000,
         "is_moderated": true,
@@ -450,6 +517,7 @@
         "tool_choice",
         "tools"
       ],
+      "supported_voices": null,
       "top_provider": {
         "context_length": 400000,
         "is_moderated": false,
@@ -516,6 +584,7 @@
         "tools",
         "top_p"
       ],
+      "supported_voices": null,
       "top_provider": {
         "context_length": 1048576,
         "is_moderated": false,
@@ -584,6 +653,7 @@
         "top_logprobs",
         "top_p"
       ],
+      "supported_voices": null,
       "top_provider": {
         "context_length": 262142,
         "is_moderated": false,
@@ -650,6 +720,7 @@
         "tools",
         "top_p"
       ],
+      "supported_voices": null,
       "top_provider": {
         "context_length": 1048576,
         "is_moderated": false,
@@ -712,6 +783,7 @@
         "top_p",
         "verbosity"
       ],
+      "supported_voices": null,
       "top_provider": {
         "context_length": 1000000,
         "is_moderated": true,
@@ -770,6 +842,7 @@
         "tool_choice",
         "tools"
       ],
+      "supported_voices": null,
       "top_provider": {
         "context_length": 1050000,
         "is_moderated": true,
@@ -821,6 +894,7 @@
         "tools",
         "top_p"
       ],
+      "supported_voices": null,
       "top_provider": {
         "context_length": 1000000,
         "is_moderated": false,
@@ -873,6 +947,7 @@
         "tools",
         "top_p"
       ],
+      "supported_voices": null,
       "top_provider": {
         "context_length": 1000000,
         "is_moderated": false,
@@ -912,9 +987,9 @@
       "name": "Qwen: Qwen3.6 35B A3B",
       "per_request_limits": null,
       "pricing": {
-        "completion": "0.00000096525",
-        "input_cache_read": "0.0000001612",
-        "prompt": "0.0000001612"
+        "completion": "0.000001",
+        "input_cache_read": "0.00000005",
+        "prompt": "0.00000015"
       },
       "supported_parameters": [
         "frequency_penalty",
@@ -930,13 +1005,16 @@
         "stop",
         "structured_outputs",
         "temperature",
+        "tool_choice",
+        "tools",
         "top_k",
         "top_p"
       ],
+      "supported_voices": null,
       "top_provider": {
         "context_length": 262144,
         "is_moderated": false,
-        "max_completion_tokens": 65536
+        "max_completion_tokens": 262144
       }
     },
     {
@@ -985,6 +1063,7 @@
         "top_logprobs",
         "top_p"
       ],
+      "supported_voices": null,
       "top_provider": {
         "context_length": 262144,
         "is_moderated": false,
@@ -1051,6 +1130,7 @@
         "top_logprobs",
         "top_p"
       ],
+      "supported_voices": null,
       "top_provider": {
         "context_length": 262144,
         "is_moderated": false,
@@ -1107,6 +1187,7 @@
         "tool_choice",
         "tools"
       ],
+      "supported_voices": null,
       "top_provider": {
         "context_length": 1050000,
         "is_moderated": true,
@@ -1165,6 +1246,7 @@
         "tool_choice",
         "tools"
       ],
+      "supported_voices": null,
       "top_provider": {
         "context_length": 1050000,
         "is_moderated": true,
@@ -1230,6 +1312,7 @@
         "top_logprobs",
         "top_p"
       ],
+      "supported_voices": null,
       "top_provider": {
         "context_length": 1048576,
         "is_moderated": false,
@@ -1295,6 +1378,7 @@
         "top_logprobs",
         "top_p"
       ],
+      "supported_voices": null,
       "top_provider": {
         "context_length": 1048576,
         "is_moderated": false,
@@ -1353,6 +1437,7 @@
         "top_k",
         "top_p"
       ],
+      "supported_voices": null,
       "top_provider": {
         "context_length": 262144,
         "is_moderated": false,
@@ -1409,6 +1494,7 @@
         "top_k",
         "top_p"
       ],
+      "supported_voices": null,
       "top_provider": {
         "context_length": 262144,
         "is_moderated": false,
@@ -1466,6 +1552,7 @@
         "tools",
         "top_p"
       ],
+      "supported_voices": null,
       "top_provider": {
         "context_length": 1048576,
         "is_moderated": false,
@@ -1526,6 +1613,7 @@
         "tools",
         "top_p"
       ],
+      "supported_voices": null,
       "top_provider": {
         "context_length": 1048576,
         "is_moderated": false,
@@ -1588,6 +1676,7 @@
         "structured_outputs",
         "top_logprobs"
       ],
+      "supported_voices": null,
       "top_provider": {
         "context_length": 272000,
         "is_moderated": true,
@@ -1647,6 +1736,7 @@
         "top_k",
         "top_p"
       ],
+      "supported_voices": null,
       "top_provider": {
         "context_length": 262144,
         "is_moderated": false,
@@ -1705,6 +1795,7 @@
         "tools",
         "verbosity"
       ],
+      "supported_voices": null,
       "top_provider": {
         "context_length": 1000000,
         "is_moderated": false,
@@ -1749,6 +1840,7 @@
         "prompt": "-1"
       },
       "supported_parameters": [],
+      "supported_voices": null,
       "top_provider": {
         "context_length": null,
         "is_moderated": false,
@@ -1805,6 +1897,7 @@
         "temperature",
         "top_p"
       ],
+      "supported_voices": null,
       "top_provider": {
         "context_length": 65536,
         "is_moderated": false,
@@ -1873,6 +1966,7 @@
         "top_logprobs",
         "top_p"
       ],
+      "supported_voices": null,
       "top_provider": {
         "context_length": 262142,
         "is_moderated": false,
@@ -1931,6 +2025,7 @@
         "tools",
         "verbosity"
       ],
+      "supported_voices": null,
       "top_provider": {
         "context_length": 1000000,
         "is_moderated": false,
@@ -1991,6 +2086,7 @@
         "top_p",
         "verbosity"
       ],
+      "supported_voices": null,
       "top_provider": {
         "context_length": 1000000,
         "is_moderated": true,
@@ -2058,6 +2154,7 @@
         "top_logprobs",
         "top_p"
       ],
+      "supported_voices": null,
       "top_provider": {
         "context_length": 202752,
         "is_moderated": false,
@@ -2111,6 +2208,7 @@
         "tools",
         "top_p"
       ],
+      "supported_voices": null,
       "top_provider": {
         "context_length": 262144,
         "is_moderated": false,
@@ -2174,6 +2272,7 @@
         "top_logprobs",
         "top_p"
       ],
+      "supported_voices": null,
       "top_provider": {
         "context_length": 262144,
         "is_moderated": false,
@@ -2230,6 +2329,7 @@
         "tools",
         "top_p"
       ],
+      "supported_voices": null,
       "top_provider": {
         "context_length": 262144,
         "is_moderated": false,
@@ -2296,6 +2396,7 @@
         "top_logprobs",
         "top_p"
       ],
+      "supported_voices": null,
       "top_provider": {
         "context_length": 262144,
         "is_moderated": false,
@@ -2355,6 +2456,7 @@
         "tools",
         "top_p"
       ],
+      "supported_voices": null,
       "top_provider": {
         "context_length": 1000000,
         "is_moderated": false,
@@ -2411,6 +2513,7 @@
         "tools",
         "top_p"
       ],
+      "supported_voices": null,
       "top_provider": {
         "context_length": 202752,
         "is_moderated": false,
@@ -2473,6 +2576,7 @@
         "top_k",
         "top_p"
       ],
+      "supported_voices": null,
       "top_provider": {
         "context_length": 262144,
         "is_moderated": false,
@@ -2532,6 +2636,7 @@
         "top_logprobs",
         "top_p"
       ],
+      "supported_voices": null,
       "top_provider": {
         "context_length": 2000000,
         "is_moderated": false,
@@ -2593,6 +2698,7 @@
         "top_logprobs",
         "top_p"
       ],
+      "supported_voices": null,
       "top_provider": {
         "context_length": 2000000,
         "is_moderated": false,
@@ -2645,6 +2751,7 @@
         "temperature",
         "top_p"
       ],
+      "supported_voices": null,
       "top_provider": {
         "context_length": 1048576,
         "is_moderated": false,
@@ -2697,6 +2804,7 @@
         "temperature",
         "top_p"
       ],
+      "supported_voices": null,
       "top_provider": {
         "context_length": 1048576,
         "is_moderated": false,
@@ -2758,6 +2866,7 @@
         "top_k",
         "top_p"
       ],
+      "supported_voices": null,
       "top_provider": {
         "context_length": 256000,
         "is_moderated": false,
@@ -2816,6 +2925,7 @@
         "top_k",
         "top_p"
       ],
+      "supported_voices": null,
       "top_provider": {
         "context_length": 16384,
         "is_moderated": false,
@@ -2876,6 +2986,7 @@
         "tools",
         "top_p"
       ],
+      "supported_voices": null,
       "top_provider": {
         "context_length": 262144,
         "is_moderated": false,
@@ -2933,6 +3044,7 @@
         "tools",
         "top_p"
       ],
+      "supported_voices": null,
       "top_provider": {
         "context_length": 1048576,
         "is_moderated": false,
@@ -2997,6 +3109,7 @@
         "top_logprobs",
         "top_p"
       ],
+      "supported_voices": null,
       "top_provider": {
         "context_length": 196608,
         "is_moderated": false,
@@ -3055,6 +3168,7 @@
         "tool_choice",
         "tools"
       ],
+      "supported_voices": null,
       "top_provider": {
         "context_length": 400000,
         "is_moderated": false,
@@ -3113,6 +3227,7 @@
         "tool_choice",
         "tools"
       ],
+      "supported_voices": null,
       "top_provider": {
         "context_length": 400000,
         "is_moderated": false,
@@ -3174,6 +3289,7 @@
         "top_k",
         "top_p"
       ],
+      "supported_voices": null,
       "top_provider": {
         "context_length": 262144,
         "is_moderated": false,
@@ -3236,6 +3352,7 @@
         "top_k",
         "top_p"
       ],
+      "supported_voices": null,
       "top_provider": {
         "context_length": 202752,
         "is_moderated": false,
@@ -3291,6 +3408,7 @@
         "tools",
         "top_p"
       ],
+      "supported_voices": null,
       "top_provider": {
         "context_length": 262144,
         "is_moderated": false,
@@ -3338,6 +3456,7 @@
         "frequency_penalty",
         "include_reasoning",
         "logit_bias",
+        "logprobs",
         "max_tokens",
         "min_p",
         "presence_penalty",
@@ -3350,8 +3469,10 @@
         "tool_choice",
         "tools",
         "top_k",
+        "top_logprobs",
         "top_p"
       ],
+      "supported_voices": null,
       "top_provider": {
         "context_length": 262144,
         "is_moderated": false,
@@ -3410,6 +3531,7 @@
         "tools",
         "top_p"
       ],
+      "supported_voices": null,
       "top_provider": {
         "context_length": 262144,
         "is_moderated": false,
@@ -3475,6 +3597,7 @@
         "top_logprobs",
         "top_p"
       ],
+      "supported_voices": null,
       "top_provider": {
         "context_length": 262144,
         "is_moderated": false,
@@ -3532,6 +3655,7 @@
         "tool_choice",
         "tools"
       ],
+      "supported_voices": null,
       "top_provider": {
         "context_length": 1050000,
         "is_moderated": false,
@@ -3590,6 +3714,7 @@
         "tool_choice",
         "tools"
       ],
+      "supported_voices": null,
       "top_provider": {
         "context_length": 1050000,
         "is_moderated": false,
@@ -3645,6 +3770,7 @@
         "tool_choice",
         "tools"
       ],
+      "supported_voices": null,
       "top_provider": {
         "context_length": 128000,
         "is_moderated": false,
@@ -3701,6 +3827,7 @@
         "tool_choice",
         "tools"
       ],
+      "supported_voices": null,
       "top_provider": {
         "context_length": 128000,
         "is_moderated": true,
@@ -3767,6 +3894,7 @@
         "tools",
         "top_p"
       ],
+      "supported_voices": null,
       "top_provider": {
         "context_length": 1048576,
         "is_moderated": false,
@@ -3822,6 +3950,7 @@
         "tools",
         "top_p"
       ],
+      "supported_voices": null,
       "top_provider": {
         "context_length": 262144,
         "is_moderated": false,
@@ -3879,6 +4008,7 @@
         "temperature",
         "top_p"
       ],
+      "supported_voices": null,
       "top_provider": {
         "context_length": 65536,
         "is_moderated": false,
@@ -3921,8 +4051,9 @@
       "name": "Qwen: Qwen3.5-35B-A3B",
       "per_request_limits": null,
       "pricing": {
-        "completion": "0.0000013",
-        "prompt": "0.0000001625"
+        "completion": "0.000001",
+        "input_cache_read": "0.00000005",
+        "prompt": "0.00000015"
       },
       "supported_parameters": [
         "frequency_penalty",
@@ -3945,10 +4076,11 @@
         "top_logprobs",
         "top_p"
       ],
+      "supported_voices": null,
       "top_provider": {
         "context_length": 262144,
         "is_moderated": false,
-        "max_completion_tokens": 65536
+        "max_completion_tokens": 262144
       }
     },
     {
@@ -4011,6 +4143,7 @@
         "top_logprobs",
         "top_p"
       ],
+      "supported_voices": null,
       "top_provider": {
         "context_length": 262144,
         "is_moderated": false,
@@ -4077,6 +4210,7 @@
         "top_logprobs",
         "top_p"
       ],
+      "supported_voices": null,
       "top_provider": {
         "context_length": 262144,
         "is_moderated": false,
@@ -4133,6 +4267,7 @@
         "tools",
         "top_p"
       ],
+      "supported_voices": null,
       "top_provider": {
         "context_length": 1000000,
         "is_moderated": false,
@@ -4188,6 +4323,7 @@
         "top_k",
         "top_p"
       ],
+      "supported_voices": null,
       "top_provider": {
         "context_length": 32768,
         "is_moderated": false,
@@ -4251,6 +4387,7 @@
         "tools",
         "top_p"
       ],
+      "supported_voices": null,
       "top_provider": {
         "context_length": 1048576,
         "is_moderated": false,
@@ -4309,6 +4446,7 @@
         "tool_choice",
         "tools"
       ],
+      "supported_voices": null,
       "top_provider": {
         "context_length": 400000,
         "is_moderated": true,
@@ -4357,6 +4495,7 @@
         "temperature",
         "top_p"
       ],
+      "supported_voices": null,
       "top_provider": {
         "context_length": 131072,
         "is_moderated": false,
@@ -4423,6 +4562,7 @@
         "tools",
         "top_p"
       ],
+      "supported_voices": null,
       "top_provider": {
         "context_length": 1048576,
         "is_moderated": false,
@@ -4485,6 +4625,7 @@
         "top_p",
         "verbosity"
       ],
+      "supported_voices": null,
       "top_provider": {
         "context_length": 1000000,
         "is_moderated": true,
@@ -4541,6 +4682,7 @@
         "tools",
         "top_p"
       ],
+      "supported_voices": null,
       "top_provider": {
         "context_length": 1000000,
         "is_moderated": false,
@@ -4608,6 +4750,7 @@
         "top_logprobs",
         "top_p"
       ],
+      "supported_voices": null,
       "top_provider": {
         "context_length": 262144,
         "is_moderated": false,
@@ -4661,6 +4804,7 @@
         "temperature",
         "tools"
       ],
+      "supported_voices": null,
       "top_provider": {
         "context_length": 196608,
         "is_moderated": true,
@@ -4728,6 +4872,7 @@
         "top_logprobs",
         "top_p"
       ],
+      "supported_voices": null,
       "top_provider": {
         "context_length": 196608,
         "is_moderated": false,
@@ -4790,6 +4935,7 @@
         "top_logprobs",
         "top_p"
       ],
+      "supported_voices": null,
       "top_provider": {
         "context_length": 202752,
         "is_moderated": false,
@@ -4843,6 +4989,7 @@
         "tools",
         "top_p"
       ],
+      "supported_voices": null,
       "top_provider": {
         "context_length": 262144,
         "is_moderated": false,
@@ -4905,6 +5052,7 @@
         "top_p",
         "verbosity"
       ],
+      "supported_voices": null,
       "top_provider": {
         "context_length": 1000000,
         "is_moderated": false,
@@ -4963,6 +5111,7 @@
         "top_k",
         "top_p"
       ],
+      "supported_voices": null,
       "top_provider": {
         "context_length": 262144,
         "is_moderated": false,
@@ -5022,6 +5171,7 @@
         "top_k",
         "top_p"
       ],
+      "supported_voices": null,
       "top_provider": {
         "context_length": null,
         "is_moderated": false,
@@ -5080,6 +5230,7 @@
         "top_k",
         "top_p"
       ],
+      "supported_voices": null,
       "top_provider": {
         "context_length": 262144,
         "is_moderated": false,
@@ -5132,6 +5283,7 @@
         "top_k",
         "top_p"
       ],
+      "supported_voices": null,
       "top_provider": {
         "context_length": 131000,
         "is_moderated": false,
@@ -5199,6 +5351,7 @@
         "top_logprobs",
         "top_p"
       ],
+      "supported_voices": null,
       "top_provider": {
         "context_length": 262144,
         "is_moderated": false,
@@ -5253,6 +5406,7 @@
         "tool_choice",
         "tools"
       ],
+      "supported_voices": null,
       "top_provider": {
         "context_length": 128000,
         "is_moderated": false,
@@ -5299,6 +5453,7 @@
         "temperature",
         "top_p"
       ],
+      "supported_voices": null,
       "top_provider": {
         "context_length": 65536,
         "is_moderated": false,
@@ -5346,6 +5501,7 @@
         "top_k",
         "top_p"
       ],
+      "supported_voices": null,
       "top_provider": {
         "context_length": 1040000,
         "is_moderated": true,
@@ -5400,6 +5556,7 @@
         "top_k",
         "top_p"
       ],
+      "supported_voices": null,
       "top_provider": {
         "context_length": 32768,
         "is_moderated": false,
@@ -5452,6 +5609,7 @@
         "top_k",
         "top_p"
       ],
+      "supported_voices": null,
       "top_provider": {
         "context_length": 32768,
         "is_moderated": false,
@@ -5511,6 +5669,7 @@
         "top_logprobs",
         "top_p"
       ],
+      "supported_voices": null,
       "top_provider": {
         "context_length": 128000,
         "is_moderated": true,
@@ -5570,6 +5729,7 @@
         "top_logprobs",
         "top_p"
       ],
+      "supported_voices": null,
       "top_provider": {
         "context_length": 128000,
         "is_moderated": true,
@@ -5630,6 +5790,7 @@
         "top_k",
         "top_p"
       ],
+      "supported_voices": null,
       "top_provider": {
         "context_length": 202752,
         "is_moderated": false,
@@ -5683,6 +5844,7 @@
         "tool_choice",
         "tools"
       ],
+      "supported_voices": null,
       "top_provider": {
         "context_length": 400000,
         "is_moderated": false,
@@ -5740,6 +5902,7 @@
         "top_k",
         "top_p"
       ],
+      "supported_voices": null,
       "top_provider": {
         "context_length": 65536,
         "is_moderated": false,
@@ -5795,6 +5958,7 @@
         "tools",
         "top_p"
       ],
+      "supported_voices": null,
       "top_provider": {
         "context_length": 262144,
         "is_moderated": false,
@@ -5850,6 +6014,7 @@
         "tools",
         "top_p"
       ],
+      "supported_voices": null,
       "top_provider": {
         "context_length": 262144,
         "is_moderated": false,
@@ -5910,6 +6075,7 @@
         "top_k",
         "top_p"
       ],
+      "supported_voices": null,
       "top_provider": {
         "context_length": 196608,
         "is_moderated": false,
@@ -5971,6 +6137,7 @@
         "top_logprobs",
         "top_p"
       ],
+      "supported_voices": null,
       "top_provider": {
         "context_length": 202752,
         "is_moderated": false,
@@ -6037,6 +6204,7 @@
         "tools",
         "top_p"
       ],
+      "supported_voices": null,
       "top_provider": {
         "context_length": 1048576,
         "is_moderated": false,
@@ -6095,6 +6263,7 @@
         "top_k",
         "top_p"
       ],
+      "supported_voices": null,
       "top_provider": {
         "context_length": 262144,
         "is_moderated": false,
@@ -6145,6 +6314,7 @@
         "tools",
         "top_p"
       ],
+      "supported_voices": null,
       "top_provider": {
         "context_length": 256000,
         "is_moderated": false,
@@ -6203,6 +6373,7 @@
         "top_k",
         "top_p"
       ],
+      "supported_voices": null,
       "top_provider": {
         "context_length": 262144,
         "is_moderated": false,
@@ -6255,6 +6426,7 @@
         "tool_choice",
         "tools"
       ],
+      "supported_voices": null,
       "top_provider": {
         "context_length": 128000,
         "is_moderated": false,
@@ -6308,6 +6480,7 @@
         "tool_choice",
         "tools"
       ],
+      "supported_voices": null,
       "top_provider": {
         "context_length": 400000,
         "is_moderated": true,
@@ -6365,6 +6538,7 @@
         "tool_choice",
         "tools"
       ],
+      "supported_voices": null,
       "top_provider": {
         "context_length": 400000,
         "is_moderated": false,
@@ -6419,6 +6593,7 @@
         "tools",
         "top_p"
       ],
+      "supported_voices": null,
       "top_provider": {
         "context_length": 262144,
         "is_moderated": false,
@@ -6468,6 +6643,7 @@
         "tools",
         "top_p"
       ],
+      "supported_voices": null,
       "top_provider": {
         "context_length": 256000,
         "is_moderated": false,
@@ -6526,6 +6702,7 @@
         "top_k",
         "top_p"
       ],
+      "supported_voices": null,
       "top_provider": {
         "context_length": 131072,
         "is_moderated": false,
@@ -6577,6 +6754,7 @@
         "top_k",
         "top_p"
       ],
+      "supported_voices": null,
       "top_provider": {
         "context_length": 131072,
         "is_moderated": false,
@@ -6633,6 +6811,7 @@
         "top_k",
         "top_p"
       ],
+      "supported_voices": null,
       "top_provider": {
         "context_length": 32768,
         "is_moderated": false,
@@ -6674,6 +6853,7 @@
         "prompt": "-1"
       },
       "supported_parameters": [],
+      "supported_voices": null,
       "top_provider": {
         "context_length": null,
         "is_moderated": false,
@@ -6731,6 +6911,7 @@
         "tool_choice",
         "tools"
       ],
+      "supported_voices": null,
       "top_provider": {
         "context_length": 400000,
         "is_moderated": true,
@@ -6785,6 +6966,7 @@
         "top_k",
         "top_p"
       ],
+      "supported_voices": null,
       "top_provider": {
         "context_length": 1000000,
         "is_moderated": true,
@@ -6843,6 +7025,7 @@
         "top_logprobs",
         "top_p"
       ],
+      "supported_voices": null,
       "top_provider": {
         "context_length": 262144,
         "is_moderated": false,
@@ -6901,6 +7084,7 @@
         "top_logprobs",
         "top_p"
       ],
+      "supported_voices": null,
       "top_provider": {
         "context_length": 262144,
         "is_moderated": false,
@@ -6959,6 +7143,7 @@
         "top_logprobs",
         "top_p"
       ],
+      "supported_voices": null,
       "top_provider": {
         "context_length": 131072,
         "is_moderated": false,
@@ -7014,6 +7199,7 @@
         "tools",
         "top_p"
       ],
+      "supported_voices": null,
       "top_provider": {
         "context_length": 262144,
         "is_moderated": false,
@@ -7067,6 +7253,7 @@
         "tools",
         "top_p"
       ],
+      "supported_voices": null,
       "top_provider": {
         "context_length": 131072,
         "is_moderated": false,
@@ -7125,6 +7312,7 @@
         "top_k",
         "top_p"
       ],
+      "supported_voices": null,
       "top_provider": {
         "context_length": 163840,
         "is_moderated": false,
@@ -7188,6 +7376,7 @@
         "top_k",
         "top_p"
       ],
+      "supported_voices": null,
       "top_provider": {
         "context_length": 131072,
         "is_moderated": false,
@@ -7243,6 +7432,7 @@
         "top_k",
         "top_p"
       ],
+      "supported_voices": null,
       "top_provider": {
         "context_length": 131072,
         "is_moderated": false,
@@ -7304,6 +7494,7 @@
         "top_k",
         "verbosity"
       ],
+      "supported_voices": null,
       "top_provider": {
         "context_length": 200000,
         "is_moderated": true,
@@ -7360,6 +7551,7 @@
         "top_k",
         "top_p"
       ],
+      "supported_voices": null,
       "top_provider": {
         "context_length": 65536,
         "is_moderated": false,
@@ -7419,6 +7611,7 @@
         "temperature",
         "top_p"
       ],
+      "supported_voices": null,
       "top_provider": {
         "context_length": 65536,
         "is_moderated": false,
@@ -7451,7 +7644,7 @@
         "top_p": 0.95
       },
       "description": "Grok 4.1 Fast is xAI's best agentic tool calling model that shines in real-world use cases like customer support and deep research. 2M context window. Reasoning can be enabled/disabled using...",
-      "expiration_date": null,
+      "expiration_date": "2026-06-01",
       "hugging_face_id": "",
       "id": "x-ai/grok-4.1-fast",
       "knowledge_cutoff": null,
@@ -7480,6 +7673,7 @@
         "top_logprobs",
         "top_p"
       ],
+      "supported_voices": null,
       "top_provider": {
         "context_length": 2000000,
         "is_moderated": false,
@@ -7536,6 +7730,7 @@
         "top_k",
         "top_p"
       ],
+      "supported_voices": null,
       "top_provider": {
         "context_length": 128000,
         "is_moderated": false,
@@ -7593,6 +7788,7 @@
         "tool_choice",
         "tools"
       ],
+      "supported_voices": null,
       "top_provider": {
         "context_length": 400000,
         "is_moderated": false,
@@ -7646,6 +7842,7 @@
         "tool_choice",
         "tools"
       ],
+      "supported_voices": null,
       "top_provider": {
         "context_length": 128000,
         "is_moderated": true,
@@ -7702,6 +7899,7 @@
         "tool_choice",
         "tools"
       ],
+      "supported_voices": null,
       "top_provider": {
         "context_length": 400000,
         "is_moderated": true,
@@ -7758,6 +7956,7 @@
         "tool_choice",
         "tools"
       ],
+      "supported_voices": null,
       "top_provider": {
         "context_length": 400000,
         "is_moderated": false,
@@ -7818,6 +8017,7 @@
         "top_k",
         "top_p"
       ],
+      "supported_voices": null,
       "top_provider": {
         "context_length": 262144,
         "is_moderated": false,
@@ -7868,6 +8068,7 @@
         "top_k",
         "top_p"
       ],
+      "supported_voices": null,
       "top_provider": {
         "context_length": 1000000,
         "is_moderated": true,
@@ -7922,6 +8123,7 @@
         "top_p",
         "web_search_options"
       ],
+      "supported_voices": null,
       "top_provider": {
         "context_length": 200000,
         "is_moderated": false,
@@ -7978,6 +8180,7 @@
         "tools",
         "top_p"
       ],
+      "supported_voices": null,
       "top_provider": {
         "context_length": 32000,
         "is_moderated": false,
@@ -8031,6 +8234,7 @@
         "tools",
         "top_p"
       ],
+      "supported_voices": null,
       "top_provider": {
         "context_length": 131072,
         "is_moderated": false,
@@ -8083,6 +8287,7 @@
         "tools",
         "top_p"
       ],
+      "supported_voices": null,
       "top_provider": {
         "context_length": 128000,
         "is_moderated": false,
@@ -8141,6 +8346,7 @@
         "top_k",
         "top_p"
       ],
+      "supported_voices": null,
       "top_provider": {
         "context_length": 131072,
         "is_moderated": false,
@@ -8201,6 +8407,7 @@
         "top_k",
         "top_p"
       ],
+      "supported_voices": null,
       "top_provider": {
         "context_length": 196608,
         "is_moderated": false,
@@ -8255,6 +8462,7 @@
         "tools",
         "top_p"
       ],
+      "supported_voices": null,
       "top_provider": {
         "context_length": 131072,
         "is_moderated": false,
@@ -8305,6 +8513,7 @@
         "top_k",
         "top_p"
       ],
+      "supported_voices": null,
       "top_provider": {
         "context_length": 131000,
         "is_moderated": false,
@@ -8366,6 +8575,7 @@
         "top_logprobs",
         "top_p"
       ],
+      "supported_voices": null,
       "top_provider": {
         "context_length": 400000,
         "is_moderated": true,
@@ -8426,6 +8636,7 @@
         "top_k",
         "top_p"
       ],
+      "supported_voices": null,
       "top_provider": {
         "context_length": 200000,
         "is_moderated": true,
@@ -8479,6 +8690,7 @@
         "tools",
         "top_p"
       ],
+      "supported_voices": null,
       "top_provider": {
         "context_length": 131072,
         "is_moderated": false,
@@ -8537,6 +8749,7 @@
         "top_k",
         "top_p"
       ],
+      "supported_voices": null,
       "top_provider": {
         "context_length": 131072,
         "is_moderated": false,
@@ -8598,6 +8811,7 @@
         "top_logprobs",
         "top_p"
       ],
+      "supported_voices": null,
       "top_provider": {
         "context_length": 400000,
         "is_moderated": true,
@@ -8660,6 +8874,7 @@
         "top_logprobs",
         "top_p"
       ],
+      "supported_voices": null,
       "top_provider": {
         "context_length": 200000,
         "is_moderated": true,
@@ -8722,6 +8937,7 @@
         "top_logprobs",
         "top_p"
       ],
+      "supported_voices": null,
       "top_provider": {
         "context_length": 200000,
         "is_moderated": true,
@@ -8783,6 +8999,7 @@
         "top_k",
         "top_p"
       ],
+      "supported_voices": null,
       "top_provider": {
         "context_length": 131072,
         "is_moderated": false,
@@ -8836,6 +9053,7 @@
         "top_k",
         "top_p"
       ],
+      "supported_voices": null,
       "top_provider": {
         "context_length": 131072,
         "is_moderated": false,
@@ -8893,6 +9111,7 @@
         "temperature",
         "top_p"
       ],
+      "supported_voices": null,
       "top_provider": {
         "context_length": 32768,
         "is_moderated": false,
@@ -8954,6 +9173,7 @@
         "top_k",
         "top_p"
       ],
+      "supported_voices": null,
       "top_provider": {
         "context_length": 131072,
         "is_moderated": false,
@@ -9015,6 +9235,7 @@
         "top_k",
         "top_p"
       ],
+      "supported_voices": null,
       "top_provider": {
         "context_length": 131072,
         "is_moderated": false,
@@ -9068,6 +9289,7 @@
         "tool_choice",
         "tools"
       ],
+      "supported_voices": null,
       "top_provider": {
         "context_length": 400000,
         "is_moderated": true,
@@ -9130,6 +9352,7 @@
         "top_k",
         "top_p"
       ],
+      "supported_voices": null,
       "top_provider": {
         "context_length": 204800,
         "is_moderated": false,
@@ -9191,6 +9414,7 @@
         "top_k",
         "top_p"
       ],
+      "supported_voices": null,
       "top_provider": {
         "context_length": 1000000,
         "is_moderated": true,
@@ -9250,6 +9474,7 @@
         "top_k",
         "top_p"
       ],
+      "supported_voices": null,
       "top_provider": {
         "context_length": 163840,
         "is_moderated": false,
@@ -9303,6 +9528,7 @@
         "top_k",
         "top_p"
       ],
+      "supported_voices": null,
       "top_provider": {
         "context_length": 131072,
         "is_moderated": false,
@@ -9348,6 +9574,7 @@
         "seed",
         "stop"
       ],
+      "supported_voices": null,
       "top_provider": {
         "context_length": 256000,
         "is_moderated": false,
@@ -9411,6 +9638,7 @@
         "tools",
         "top_p"
       ],
+      "supported_voices": null,
       "top_provider": {
         "context_length": 1048576,
         "is_moderated": false,
@@ -9471,6 +9699,7 @@
         "top_k",
         "top_p"
       ],
+      "supported_voices": null,
       "top_provider": {
         "context_length": 131072,
         "is_moderated": false,
@@ -9530,6 +9759,7 @@
         "top_k",
         "top_p"
       ],
+      "supported_voices": null,
       "top_provider": {
         "context_length": 262144,
         "is_moderated": false,
@@ -9582,6 +9812,7 @@
         "tools",
         "top_p"
       ],
+      "supported_voices": null,
       "top_provider": {
         "context_length": 262144,
         "is_moderated": false,
@@ -9635,6 +9866,7 @@
         "tools",
         "top_p"
       ],
+      "supported_voices": null,
       "top_provider": {
         "context_length": 1000000,
         "is_moderated": false,
@@ -9687,6 +9919,7 @@
         "tool_choice",
         "tools"
       ],
+      "supported_voices": null,
       "top_provider": {
         "context_length": 400000,
         "is_moderated": true,
@@ -9747,6 +9980,7 @@
         "top_k",
         "top_p"
       ],
+      "supported_voices": null,
       "top_provider": {
         "context_length": 163840,
         "is_moderated": false,
@@ -9779,7 +10013,7 @@
         "top_p": null
       },
       "description": "Grok 4 Fast is xAI's latest multimodal model with SOTA cost-efficiency and a 2M token context window. It comes in two flavors: non-reasoning and reasoning. Read more about the model...",
-      "expiration_date": null,
+      "expiration_date": "2026-06-01",
       "hugging_face_id": "",
       "id": "x-ai/grok-4-fast",
       "knowledge_cutoff": "2025-09-30",
@@ -9808,6 +10042,7 @@
         "top_logprobs",
         "top_p"
       ],
+      "supported_voices": null,
       "top_provider": {
         "context_length": 2000000,
         "is_moderated": false,
@@ -9868,6 +10103,7 @@
         "top_k",
         "top_p"
       ],
+      "supported_voices": null,
       "top_provider": {
         "context_length": 131072,
         "is_moderated": false,
@@ -9920,6 +10156,7 @@
         "tools",
         "top_p"
       ],
+      "supported_voices": null,
       "top_provider": {
         "context_length": 1000000,
         "is_moderated": false,
@@ -9979,6 +10216,7 @@
         "top_k",
         "top_p"
       ],
+      "supported_voices": null,
       "top_provider": {
         "context_length": 131072,
         "is_moderated": false,
@@ -10028,6 +10266,7 @@
         "top_k",
         "top_p"
       ],
+      "supported_voices": null,
       "top_provider": {
         "context_length": 262144,
         "is_moderated": false,
@@ -10081,6 +10320,7 @@
         "top_k",
         "top_p"
       ],
+      "supported_voices": null,
       "top_provider": {
         "context_length": 262144,
         "is_moderated": false,
@@ -10135,6 +10375,7 @@
         "tools",
         "top_p"
       ],
+      "supported_voices": null,
       "top_provider": {
         "context_length": 1000000,
         "is_moderated": false,
@@ -10187,6 +10428,7 @@
         "tools",
         "top_p"
       ],
+      "supported_voices": null,
       "top_provider": {
         "context_length": 1000000,
         "is_moderated": false,
@@ -10239,6 +10481,7 @@
         "tools",
         "top_p"
       ],
+      "supported_voices": null,
       "top_provider": {
         "context_length": 128000,
         "is_moderated": false,
@@ -10297,6 +10540,7 @@
         "top_k",
         "top_p"
       ],
+      "supported_voices": null,
       "top_provider": {
         "context_length": 131072,
         "is_moderated": false,
@@ -10350,6 +10594,7 @@
         "top_k",
         "top_p"
       ],
+      "supported_voices": null,
       "top_provider": {
         "context_length": 262144,
         "is_moderated": false,
@@ -10406,6 +10651,7 @@
         "top_k",
         "top_p"
       ],
+      "supported_voices": null,
       "top_provider": {
         "context_length": 131072,
         "is_moderated": false,
@@ -10429,7 +10675,7 @@
       "created": 1756238927,
       "default_parameters": {},
       "description": "Grok Code Fast 1 is a speedy and economical reasoning model that excels at agentic coding. With reasoning traces visible in the response, developers can steer Grok Code for high-quality...",
-      "expiration_date": null,
+      "expiration_date": "2026-06-01",
       "hugging_face_id": "",
       "id": "x-ai/grok-code-fast-1",
       "knowledge_cutoff": "2025-09-30",
@@ -10459,6 +10705,7 @@
         "top_logprobs",
         "top_p"
       ],
+      "supported_voices": null,
       "top_provider": {
         "context_length": 256000,
         "is_moderated": false,
@@ -10507,6 +10754,7 @@
         "top_k",
         "top_p"
       ],
+      "supported_voices": null,
       "top_provider": {
         "context_length": 131072,
         "is_moderated": false,
@@ -10555,6 +10803,7 @@
         "top_k",
         "top_p"
       ],
+      "supported_voices": null,
       "top_provider": {
         "context_length": 131072,
         "is_moderated": false,
@@ -10612,6 +10861,7 @@
         "top_logprobs",
         "top_p"
       ],
+      "supported_voices": null,
       "top_provider": {
         "context_length": 32768,
         "is_moderated": false,
@@ -10671,6 +10921,7 @@
         "top_logprobs",
         "top_p"
       ],
+      "supported_voices": null,
       "top_provider": {
         "context_length": 128000,
         "is_moderated": true,
@@ -10724,6 +10975,7 @@
         "tools",
         "top_p"
       ],
+      "supported_voices": null,
       "top_provider": {
         "context_length": 131072,
         "is_moderated": false,
@@ -10777,6 +11029,7 @@
         "top_k",
         "top_p"
       ],
+      "supported_voices": null,
       "top_provider": {
         "context_length": 120000,
         "is_moderated": false,
@@ -10829,6 +11082,7 @@
         "top_k",
         "top_p"
       ],
+      "supported_voices": null,
       "top_provider": {
         "context_length": 30000,
         "is_moderated": false,
@@ -10886,6 +11140,7 @@
         "top_k",
         "top_p"
       ],
+      "supported_voices": null,
       "top_provider": {
         "context_length": 65536,
         "is_moderated": false,
@@ -10931,6 +11186,7 @@
         "tools",
         "top_p"
       ],
+      "supported_voices": null,
       "top_provider": {
         "context_length": 256000,
         "is_moderated": false,
@@ -10977,6 +11233,7 @@
         "seed",
         "structured_outputs"
       ],
+      "supported_voices": null,
       "top_provider": {
         "context_length": 128000,
         "is_moderated": true,
@@ -11034,6 +11291,7 @@
         "tool_choice",
         "tools"
       ],
+      "supported_voices": null,
       "top_provider": {
         "context_length": 400000,
         "is_moderated": false,
@@ -11092,6 +11350,7 @@
         "tool_choice",
         "tools"
       ],
+      "supported_voices": null,
       "top_provider": {
         "context_length": 400000,
         "is_moderated": true,
@@ -11149,6 +11408,7 @@
         "tool_choice",
         "tools"
       ],
+      "supported_voices": null,
       "top_provider": {
         "context_length": 400000,
         "is_moderated": false,
@@ -11199,6 +11459,7 @@
         "tool_choice",
         "tools"
       ],
+      "supported_voices": null,
       "top_provider": {
         "context_length": 131072,
         "is_moderated": true,
@@ -11260,6 +11521,7 @@
         "top_logprobs",
         "top_p"
       ],
+      "supported_voices": null,
       "top_provider": {
         "context_length": 131072,
         "is_moderated": false,
@@ -11310,6 +11572,7 @@
         "tool_choice",
         "tools"
       ],
+      "supported_voices": null,
       "top_provider": {
         "context_length": 131072,
         "is_moderated": true,
@@ -11371,6 +11634,7 @@
         "top_logprobs",
         "top_p"
       ],
+      "supported_voices": null,
       "top_provider": {
         "context_length": 131072,
         "is_moderated": false,
@@ -11432,6 +11696,7 @@
         "top_k",
         "top_p"
       ],
+      "supported_voices": null,
       "top_provider": {
         "context_length": 200000,
         "is_moderated": false,
@@ -11484,6 +11749,7 @@
         "tools",
         "top_p"
       ],
+      "supported_voices": null,
       "top_provider": {
         "context_length": 256000,
         "is_moderated": false,
@@ -11535,6 +11801,7 @@
         "top_k",
         "top_p"
       ],
+      "supported_voices": null,
       "top_provider": {
         "context_length": 160000,
         "is_moderated": false,
@@ -11588,6 +11855,7 @@
         "top_k",
         "top_p"
       ],
+      "supported_voices": null,
       "top_provider": {
         "context_length": 262144,
         "is_moderated": false,
@@ -11645,6 +11913,7 @@
         "top_k",
         "top_p"
       ],
+      "supported_voices": null,
       "top_provider": {
         "context_length": 131072,
         "is_moderated": false,
@@ -11694,6 +11963,7 @@
         "tools",
         "top_p"
       ],
+      "supported_voices": null,
       "top_provider": {
         "context_length": 131072,
         "is_moderated": false,
@@ -11750,6 +12020,7 @@
         "top_k",
         "top_p"
       ],
+      "supported_voices": null,
       "top_provider": {
         "context_length": 131072,
         "is_moderated": false,
@@ -11809,6 +12080,7 @@
         "top_k",
         "top_p"
       ],
+      "supported_voices": null,
       "top_provider": {
         "context_length": 131072,
         "is_moderated": false,
@@ -11856,6 +12128,7 @@
         "tools",
         "top_p"
       ],
+      "supported_voices": null,
       "top_provider": {
         "context_length": 128000,
         "is_moderated": false,
@@ -11903,6 +12176,7 @@
         "top_k",
         "top_p"
       ],
+      "supported_voices": null,
       "top_provider": {
         "context_length": 262000,
         "is_moderated": false,
@@ -11956,6 +12230,7 @@
         "top_k",
         "top_p"
       ],
+      "supported_voices": null,
       "top_provider": {
         "context_length": 262144,
         "is_moderated": false,
@@ -12006,6 +12281,7 @@
         "top_k",
         "top_p"
       ],
+      "supported_voices": null,
       "top_provider": {
         "context_length": 128000,
         "is_moderated": false,
@@ -12069,6 +12345,7 @@
         "tools",
         "top_p"
       ],
+      "supported_voices": null,
       "top_provider": {
         "context_length": 1048576,
         "is_moderated": false,
@@ -12124,6 +12401,7 @@
         "top_logprobs",
         "top_p"
       ],
+      "supported_voices": null,
       "top_provider": {
         "context_length": 262144,
         "is_moderated": false,
@@ -12170,6 +12448,7 @@
         "top_k",
         "top_p"
       ],
+      "supported_voices": null,
       "top_provider": {
         "context_length": 131072,
         "is_moderated": false,
@@ -12219,6 +12498,7 @@
         "top_k",
         "top_p"
       ],
+      "supported_voices": null,
       "top_provider": {
         "context_length": 131072,
         "is_moderated": false,
@@ -12271,6 +12551,7 @@
         "tools",
         "top_p"
       ],
+      "supported_voices": null,
       "top_provider": {
         "context_length": 131072,
         "is_moderated": false,
@@ -12323,6 +12604,7 @@
         "tools",
         "top_p"
       ],
+      "supported_voices": null,
       "top_provider": {
         "context_length": 131072,
         "is_moderated": false,
@@ -12370,6 +12652,7 @@
         "top_k",
         "top_p"
       ],
+      "supported_voices": null,
       "top_provider": {
         "context_length": 32768,
         "is_moderated": false,
@@ -12402,7 +12685,7 @@
         "top_p": null
       },
       "description": "Grok 4 is xAI's latest reasoning model with a 256k context window. It supports parallel tool calling, structured outputs, and both image and text inputs. Note that reasoning is not...",
-      "expiration_date": null,
+      "expiration_date": "2026-06-01",
       "hugging_face_id": "",
       "id": "x-ai/grok-4",
       "knowledge_cutoff": "2025-07-31",
@@ -12431,6 +12714,7 @@
         "top_logprobs",
         "top_p"
       ],
+      "supported_voices": null,
       "top_provider": {
         "context_length": 256000,
         "is_moderated": false,
@@ -12474,6 +12758,7 @@
         "temperature",
         "top_p"
       ],
+      "supported_voices": null,
       "top_provider": {
         "context_length": 8192,
         "is_moderated": false,
@@ -12521,6 +12806,7 @@
         "top_k",
         "top_p"
       ],
+      "supported_voices": null,
       "top_provider": {
         "context_length": 131072,
         "is_moderated": false,
@@ -12575,6 +12861,7 @@
         "top_k",
         "top_p"
       ],
+      "supported_voices": null,
       "top_provider": {
         "context_length": 163840,
         "is_moderated": false,
@@ -12620,6 +12907,7 @@
         "stop",
         "temperature"
       ],
+      "supported_voices": null,
       "top_provider": {
         "context_length": 262144,
         "is_moderated": false,
@@ -12665,6 +12953,7 @@
         "stop",
         "temperature"
       ],
+      "supported_voices": null,
       "top_provider": {
         "context_length": 81920,
         "is_moderated": false,
@@ -12715,6 +13004,7 @@
         "top_k",
         "top_p"
       ],
+      "supported_voices": null,
       "top_provider": {
         "context_length": 123000,
         "is_moderated": false,
@@ -12762,6 +13052,7 @@
         "top_k",
         "top_p"
       ],
+      "supported_voices": null,
       "top_provider": {
         "context_length": 123000,
         "is_moderated": false,
@@ -12818,6 +13109,7 @@
         "top_k",
         "top_p"
       ],
+      "supported_voices": null,
       "top_provider": {
         "context_length": 128000,
         "is_moderated": false,
@@ -12873,6 +13165,7 @@
         "top_k",
         "top_p"
       ],
+      "supported_voices": null,
       "top_provider": {
         "context_length": 1000000,
         "is_moderated": false,
@@ -12936,6 +13229,7 @@
         "tools",
         "top_p"
       ],
+      "supported_voices": null,
       "top_provider": {
         "context_length": 1048576,
         "is_moderated": false,
@@ -12999,6 +13293,7 @@
         "tools",
         "top_p"
       ],
+      "supported_voices": null,
       "top_provider": {
         "context_length": 1048576,
         "is_moderated": false,
@@ -13052,6 +13347,7 @@
         "tool_choice",
         "tools"
       ],
+      "supported_voices": null,
       "top_provider": {
         "context_length": 200000,
         "is_moderated": true,
@@ -13079,7 +13375,7 @@
         "top_p": null
       },
       "description": "A lightweight model that thinks before responding. Fast, smart, and great for logic-based tasks that do not require deep domain knowledge. The raw thinking traces are accessible.",
-      "expiration_date": null,
+      "expiration_date": "2026-06-01",
       "hugging_face_id": "",
       "id": "x-ai/grok-3-mini",
       "knowledge_cutoff": "2025-02-28",
@@ -13109,6 +13405,7 @@
         "top_logprobs",
         "top_p"
       ],
+      "supported_voices": null,
       "top_provider": {
         "context_length": 131072,
         "is_moderated": false,
@@ -13132,7 +13429,7 @@
       "created": 1749582908,
       "default_parameters": {},
       "description": "Grok 3 is the latest model from xAI. It's their flagship model that excels at enterprise use cases like data extraction, coding, and text summarization. Possesses deep domain knowledge in...",
-      "expiration_date": null,
+      "expiration_date": "2026-06-01",
       "hugging_face_id": "",
       "id": "x-ai/grok-3",
       "knowledge_cutoff": "2025-02-28",
@@ -13162,6 +13459,7 @@
         "top_logprobs",
         "top_p"
       ],
+      "supported_voices": null,
       "top_provider": {
         "context_length": 131072,
         "is_moderated": false,
@@ -13220,6 +13518,7 @@
         "tools",
         "top_p"
       ],
+      "supported_voices": null,
       "top_provider": {
         "context_length": 1048576,
         "is_moderated": false,
@@ -13280,6 +13579,7 @@
         "top_k",
         "top_p"
       ],
+      "supported_voices": null,
       "top_provider": {
         "context_length": 163840,
         "is_moderated": false,
@@ -13339,6 +13639,7 @@
         "top_k",
         "top_p"
       ],
+      "supported_voices": null,
       "top_provider": {
         "context_length": 200000,
         "is_moderated": false,
@@ -13398,6 +13699,7 @@
         "top_k",
         "top_p"
       ],
+      "supported_voices": null,
       "top_provider": {
         "context_length": 1000000,
         "is_moderated": false,
@@ -13441,6 +13743,7 @@
         "temperature",
         "top_p"
       ],
+      "supported_voices": null,
       "top_provider": {
         "context_length": 8192,
         "is_moderated": false,
@@ -13489,6 +13792,7 @@
         "top_k",
         "top_p"
       ],
+      "supported_voices": null,
       "top_provider": {
         "context_length": 32768,
         "is_moderated": false,
@@ -13542,6 +13846,7 @@
         "tools",
         "top_p"
       ],
+      "supported_voices": null,
       "top_provider": {
         "context_length": 131072,
         "is_moderated": false,
@@ -13605,6 +13910,7 @@
         "tools",
         "top_p"
       ],
+      "supported_voices": null,
       "top_provider": {
         "context_length": 1048576,
         "is_moderated": false,
@@ -13654,6 +13960,7 @@
         "top_k",
         "top_p"
       ],
+      "supported_voices": null,
       "top_provider": {
         "context_length": 131072,
         "is_moderated": false,
@@ -13702,6 +14009,7 @@
         "top_k",
         "top_p"
       ],
+      "supported_voices": null,
       "top_provider": {
         "context_length": 131072,
         "is_moderated": false,
@@ -13752,6 +14060,7 @@
         "top_k",
         "top_p"
       ],
+      "supported_voices": null,
       "top_provider": {
         "context_length": 131072,
         "is_moderated": false,
@@ -13800,6 +14109,7 @@
         "top_k",
         "top_p"
       ],
+      "supported_voices": null,
       "top_provider": {
         "context_length": 32768,
         "is_moderated": false,
@@ -13851,6 +14161,7 @@
         "top_k",
         "top_p"
       ],
+      "supported_voices": null,
       "top_provider": {
         "context_length": 163840,
         "is_moderated": false,
@@ -13912,6 +14223,7 @@
         "top_logprobs",
         "top_p"
       ],
+      "supported_voices": null,
       "top_provider": {
         "context_length": 40960,
         "is_moderated": false,
@@ -13975,6 +14287,7 @@
         "top_k",
         "top_p"
       ],
+      "supported_voices": null,
       "top_provider": {
         "context_length": 40960,
         "is_moderated": false,
@@ -14032,6 +14345,7 @@
         "top_logprobs",
         "top_p"
       ],
+      "supported_voices": null,
       "top_provider": {
         "context_length": 40960,
         "is_moderated": false,
@@ -14088,6 +14402,7 @@
         "top_k",
         "top_p"
       ],
+      "supported_voices": null,
       "top_provider": {
         "context_length": 40960,
         "is_moderated": false,
@@ -14136,6 +14451,7 @@
         "tools",
         "top_p"
       ],
+      "supported_voices": null,
       "top_provider": {
         "context_length": 131072,
         "is_moderated": false,
@@ -14190,6 +14506,7 @@
         "tool_choice",
         "tools"
       ],
+      "supported_voices": null,
       "top_provider": {
         "context_length": 200000,
         "is_moderated": true,
@@ -14240,6 +14557,7 @@
         "tool_choice",
         "tools"
       ],
+      "supported_voices": null,
       "top_provider": {
         "context_length": 200000,
         "is_moderated": true,
@@ -14290,6 +14608,7 @@
         "tool_choice",
         "tools"
       ],
+      "supported_voices": null,
       "top_provider": {
         "context_length": 200000,
         "is_moderated": true,
@@ -14340,6 +14659,7 @@
         "tools",
         "top_p"
       ],
+      "supported_voices": null,
       "top_provider": {
         "context_length": 1047576,
         "is_moderated": false,
@@ -14391,6 +14711,7 @@
         "tools",
         "top_p"
       ],
+      "supported_voices": null,
       "top_provider": {
         "context_length": 1047576,
         "is_moderated": true,
@@ -14442,6 +14763,7 @@
         "tools",
         "top_p"
       ],
+      "supported_voices": null,
       "top_provider": {
         "context_length": 1047576,
         "is_moderated": true,
@@ -14490,6 +14812,7 @@
         "top_k",
         "top_p"
       ],
+      "supported_voices": null,
       "top_provider": {
         "context_length": 4096,
         "is_moderated": false,
@@ -14517,7 +14840,7 @@
         "top_p": null
       },
       "description": "Grok 3 Mini is a lightweight, smaller thinking model. Unlike traditional models that generate answers immediately, Grok 3 Mini thinks before responding. It’s ideal for reasoning-heavy tasks that don’t demand...",
-      "expiration_date": null,
+      "expiration_date": "2026-06-01",
       "hugging_face_id": "",
       "id": "x-ai/grok-3-mini-beta",
       "knowledge_cutoff": "2025-02-28",
@@ -14546,6 +14869,7 @@
         "top_logprobs",
         "top_p"
       ],
+      "supported_voices": null,
       "top_provider": {
         "context_length": 131072,
         "is_moderated": false,
@@ -14569,7 +14893,7 @@
       "created": 1744240068,
       "default_parameters": {},
       "description": "Grok 3 is the latest model from xAI. It's their flagship model that excels at enterprise use cases like data extraction, coding, and text summarization. Possesses deep domain knowledge in...",
-      "expiration_date": null,
+      "expiration_date": "2026-06-01",
       "hugging_face_id": "",
       "id": "x-ai/grok-3-beta",
       "knowledge_cutoff": "2025-02-28",
@@ -14598,6 +14922,7 @@
         "top_logprobs",
         "top_p"
       ],
+      "supported_voices": null,
       "top_provider": {
         "context_length": 131072,
         "is_moderated": false,
@@ -14650,6 +14975,7 @@
         "top_k",
         "top_p"
       ],
+      "supported_voices": null,
       "top_provider": {
         "context_length": 1048576,
         "is_moderated": false,
@@ -14704,6 +15030,7 @@
         "top_k",
         "top_p"
       ],
+      "supported_voices": null,
       "top_provider": {
         "context_length": 327680,
         "is_moderated": false,
@@ -14758,6 +15085,7 @@
         "top_k",
         "top_p"
       ],
+      "supported_voices": null,
       "top_provider": {
         "context_length": 163840,
         "is_moderated": false,
@@ -14804,6 +15132,7 @@
         "seed",
         "structured_outputs"
       ],
+      "supported_voices": null,
       "top_provider": {
         "context_length": 200000,
         "is_moderated": true,
@@ -14853,6 +15182,7 @@
         "top_k",
         "top_p"
       ],
+      "supported_voices": null,
       "top_provider": {
         "context_length": 128000,
         "is_moderated": false,
@@ -14898,6 +15228,7 @@
         "temperature",
         "top_p"
       ],
+      "supported_voices": null,
       "top_provider": {
         "context_length": 32768,
         "is_moderated": false,
@@ -14950,6 +15281,7 @@
         "top_k",
         "top_p"
       ],
+      "supported_voices": null,
       "top_provider": {
         "context_length": 131072,
         "is_moderated": false,
@@ -14994,6 +15326,7 @@
         "temperature",
         "top_p"
       ],
+      "supported_voices": null,
       "top_provider": {
         "context_length": 32768,
         "is_moderated": false,
@@ -15048,6 +15381,7 @@
         "top_k",
         "top_p"
       ],
+      "supported_voices": null,
       "top_provider": {
         "context_length": 131072,
         "is_moderated": false,
@@ -15096,6 +15430,7 @@
         "top_k",
         "top_p"
       ],
+      "supported_voices": null,
       "top_provider": {
         "context_length": 256000,
         "is_moderated": true,
@@ -15139,6 +15474,7 @@
         "structured_outputs",
         "web_search_options"
       ],
+      "supported_voices": null,
       "top_provider": {
         "context_length": 128000,
         "is_moderated": true,
@@ -15182,6 +15518,7 @@
         "structured_outputs",
         "web_search_options"
       ],
+      "supported_voices": null,
       "top_provider": {
         "context_length": 128000,
         "is_moderated": true,
@@ -15237,6 +15574,7 @@
         "top_k",
         "top_p"
       ],
+      "supported_voices": null,
       "top_provider": {
         "context_length": 65536,
         "is_moderated": false,
@@ -15286,6 +15624,7 @@
         "temperature",
         "top_p"
       ],
+      "supported_voices": null,
       "top_provider": {
         "context_length": 131072,
         "is_moderated": false,
@@ -15344,6 +15683,7 @@
         "top_k",
         "top_p"
       ],
+      "supported_voices": null,
       "top_provider": {
         "context_length": 131072,
         "is_moderated": false,
@@ -15393,6 +15733,7 @@
         "top_k",
         "top_p"
       ],
+      "supported_voices": null,
       "top_provider": {
         "context_length": 32768,
         "is_moderated": false,
@@ -15442,6 +15783,7 @@
         "top_p",
         "web_search_options"
       ],
+      "supported_voices": null,
       "top_provider": {
         "context_length": 128000,
         "is_moderated": false,
@@ -15489,6 +15831,7 @@
         "top_p",
         "web_search_options"
       ],
+      "supported_voices": null,
       "top_provider": {
         "context_length": 200000,
         "is_moderated": false,
@@ -15538,6 +15881,7 @@
         "top_p",
         "web_search_options"
       ],
+      "supported_voices": null,
       "top_provider": {
         "context_length": 128000,
         "is_moderated": false,
@@ -15597,6 +15941,7 @@
         "tools",
         "top_p"
       ],
+      "supported_voices": null,
       "top_provider": {
         "context_length": 1048576,
         "is_moderated": false,
@@ -15629,7 +15974,7 @@
         "top_p": null
       },
       "description": "Claude 3.7 Sonnet is an advanced large language model with improved reasoning, coding, and problem-solving capabilities. It introduces a hybrid reasoning approach, allowing users to choose between rapid responses and...",
-      "expiration_date": "2026-05-05",
+      "expiration_date": "2026-05-11",
       "hugging_face_id": "",
       "id": "anthropic/claude-3.7-sonnet",
       "knowledge_cutoff": "2024-10-31",
@@ -15653,13 +15998,13 @@
         "temperature",
         "tool_choice",
         "tools",
-        "top_k",
         "top_p"
       ],
+      "supported_voices": null,
       "top_provider": {
         "context_length": 200000,
-        "is_moderated": true,
-        "max_completion_tokens": 128000
+        "is_moderated": false,
+        "max_completion_tokens": 64000
       }
     },
     {
@@ -15688,7 +16033,7 @@
         "top_p": null
       },
       "description": "Claude 3.7 Sonnet is an advanced large language model with improved reasoning, coding, and problem-solving capabilities. It introduces a hybrid reasoning approach, allowing users to choose between rapid responses and...",
-      "expiration_date": "2026-05-05",
+      "expiration_date": "2026-05-11",
       "hugging_face_id": "",
       "id": "anthropic/claude-3.7-sonnet:thinking",
       "knowledge_cutoff": "2024-10-31",
@@ -15714,6 +16059,7 @@
         "tools",
         "top_p"
       ],
+      "supported_voices": null,
       "top_provider": {
         "context_length": 200000,
         "is_moderated": false,
@@ -15766,6 +16112,7 @@
         "tools",
         "top_p"
       ],
+      "supported_voices": null,
       "top_provider": {
         "context_length": 32768,
         "is_moderated": false,
@@ -15812,6 +16159,7 @@
         "top_k",
         "top_p"
       ],
+      "supported_voices": null,
       "top_provider": {
         "context_length": 131072,
         "is_moderated": false,
@@ -15864,6 +16212,7 @@
         "tool_choice",
         "tools"
       ],
+      "supported_voices": null,
       "top_provider": {
         "context_length": 200000,
         "is_moderated": true,
@@ -15925,6 +16274,7 @@
         "tools",
         "top_p"
       ],
+      "supported_voices": null,
       "top_provider": {
         "context_length": 1048576,
         "is_moderated": false,
@@ -15971,6 +16321,7 @@
         "temperature",
         "top_p"
       ],
+      "supported_voices": null,
       "top_provider": {
         "context_length": 131072,
         "is_moderated": false,
@@ -16014,6 +16365,7 @@
         "temperature",
         "top_p"
       ],
+      "supported_voices": null,
       "top_provider": {
         "context_length": 131072,
         "is_moderated": false,
@@ -16057,6 +16409,7 @@
         "temperature",
         "top_p"
       ],
+      "supported_voices": null,
       "top_provider": {
         "context_length": 131072,
         "is_moderated": false,
@@ -16098,6 +16451,7 @@
         "temperature",
         "top_p"
       ],
+      "supported_voices": null,
       "top_provider": {
         "context_length": 32768,
         "is_moderated": false,
@@ -16149,6 +16503,7 @@
         "tools",
         "top_p"
       ],
+      "supported_voices": null,
       "top_provider": {
         "context_length": 131072,
         "is_moderated": false,
@@ -16196,6 +16551,7 @@
         "tools",
         "top_p"
       ],
+      "supported_voices": null,
       "top_provider": {
         "context_length": 131072,
         "is_moderated": false,
@@ -16247,6 +16603,7 @@
         "top_k",
         "top_p"
       ],
+      "supported_voices": null,
       "top_provider": {
         "context_length": 32000,
         "is_moderated": false,
@@ -16295,6 +16652,7 @@
         "tools",
         "top_p"
       ],
+      "supported_voices": null,
       "top_provider": {
         "context_length": 1000000,
         "is_moderated": false,
@@ -16342,6 +16700,7 @@
         "tools",
         "top_p"
       ],
+      "supported_voices": null,
       "top_provider": {
         "context_length": 32768,
         "is_moderated": false,
@@ -16397,6 +16756,7 @@
         "tool_choice",
         "tools"
       ],
+      "supported_voices": null,
       "top_provider": {
         "context_length": 200000,
         "is_moderated": true,
@@ -16452,6 +16812,7 @@
         "top_k",
         "top_p"
       ],
+      "supported_voices": null,
       "top_provider": {
         "context_length": 32768,
         "is_moderated": false,
@@ -16504,6 +16865,7 @@
         "top_logprobs",
         "top_p"
       ],
+      "supported_voices": null,
       "top_provider": {
         "context_length": 32768,
         "is_moderated": false,
@@ -16551,6 +16913,7 @@
         "top_p",
         "web_search_options"
       ],
+      "supported_voices": null,
       "top_provider": {
         "context_length": 127072,
         "is_moderated": false,
@@ -16603,6 +16966,7 @@
         "top_k",
         "top_p"
       ],
+      "supported_voices": null,
       "top_provider": {
         "context_length": 131072,
         "is_moderated": false,
@@ -16662,6 +17026,7 @@
         "top_k",
         "top_p"
       ],
+      "supported_voices": null,
       "top_provider": {
         "context_length": 64000,
         "is_moderated": false,
@@ -16708,6 +17073,7 @@
         "temperature",
         "top_p"
       ],
+      "supported_voices": null,
       "top_provider": {
         "context_length": 1000192,
         "is_moderated": false,
@@ -16761,6 +17127,7 @@
         "top_logprobs",
         "top_p"
       ],
+      "supported_voices": null,
       "top_provider": {
         "context_length": 16384,
         "is_moderated": false,
@@ -16810,6 +17177,7 @@
         "top_k",
         "top_p"
       ],
+      "supported_voices": null,
       "top_provider": {
         "context_length": 16000,
         "is_moderated": false,
@@ -16856,12 +17224,14 @@
         "response_format",
         "seed",
         "stop",
+        "structured_outputs",
         "temperature",
         "tool_choice",
         "tools",
         "top_k",
         "top_p"
       ],
+      "supported_voices": null,
       "top_provider": {
         "context_length": 163840,
         "is_moderated": false,
@@ -16915,6 +17285,7 @@
         "top_logprobs",
         "top_p"
       ],
+      "supported_voices": null,
       "top_provider": {
         "context_length": 131072,
         "is_moderated": false,
@@ -16971,6 +17342,7 @@
         "tool_choice",
         "tools"
       ],
+      "supported_voices": null,
       "top_provider": {
         "context_length": 200000,
         "is_moderated": true,
@@ -17019,6 +17391,7 @@
         "top_k",
         "top_p"
       ],
+      "supported_voices": null,
       "top_provider": {
         "context_length": 128000,
         "is_moderated": true,
@@ -17066,6 +17439,7 @@
         "top_k",
         "top_p"
       ],
+      "supported_voices": null,
       "top_provider": {
         "context_length": 65536,
         "is_moderated": false,
@@ -17119,6 +17493,7 @@
         "top_k",
         "top_p"
       ],
+      "supported_voices": null,
       "top_provider": {
         "context_length": 131072,
         "is_moderated": false,
@@ -17164,6 +17539,7 @@
         "top_k",
         "top_p"
       ],
+      "supported_voices": null,
       "top_provider": {
         "context_length": 300000,
         "is_moderated": true,
@@ -17208,6 +17584,7 @@
         "top_k",
         "top_p"
       ],
+      "supported_voices": null,
       "top_provider": {
         "context_length": 128000,
         "is_moderated": true,
@@ -17253,6 +17630,7 @@
         "top_k",
         "top_p"
       ],
+      "supported_voices": null,
       "top_provider": {
         "context_length": 300000,
         "is_moderated": true,
@@ -17309,6 +17687,7 @@
         "top_p",
         "web_search_options"
       ],
+      "supported_voices": null,
       "top_provider": {
         "context_length": 128000,
         "is_moderated": true,
@@ -17361,6 +17740,7 @@
         "tools",
         "top_p"
       ],
+      "supported_voices": null,
       "top_provider": {
         "context_length": 131072,
         "is_moderated": false,
@@ -17413,6 +17793,7 @@
         "tools",
         "top_p"
       ],
+      "supported_voices": null,
       "top_provider": {
         "context_length": 131072,
         "is_moderated": false,
@@ -17466,6 +17847,7 @@
         "tools",
         "top_p"
       ],
+      "supported_voices": null,
       "top_provider": {
         "context_length": 131072,
         "is_moderated": false,
@@ -17512,6 +17894,7 @@
         "top_k",
         "top_p"
       ],
+      "supported_voices": null,
       "top_provider": {
         "context_length": 32768,
         "is_moderated": false,
@@ -17564,6 +17947,7 @@
         "top_logprobs",
         "top_p"
       ],
+      "supported_voices": null,
       "top_provider": {
         "context_length": 32768,
         "is_moderated": false,
@@ -17617,6 +18001,7 @@
         "top_k",
         "top_p"
       ],
+      "supported_voices": null,
       "top_provider": {
         "context_length": 200000,
         "is_moderated": true,
@@ -17670,6 +18055,7 @@
         "top_logprobs",
         "top_p"
       ],
+      "supported_voices": null,
       "top_provider": {
         "context_length": 16384,
         "is_moderated": false,
@@ -17726,6 +18112,7 @@
         "top_k",
         "top_p"
       ],
+      "supported_voices": null,
       "top_provider": {
         "context_length": 32768,
         "is_moderated": false,
@@ -17778,52 +18165,11 @@
         "top_k",
         "top_p"
       ],
+      "supported_voices": null,
       "top_provider": {
         "context_length": 131072,
         "is_moderated": false,
         "max_completion_tokens": 16384
-      }
-    },
-    {
-      "architecture": {
-        "input_modalities": [
-          "text"
-        ],
-        "instruct_type": null,
-        "modality": "text->text",
-        "output_modalities": [
-          "text"
-        ],
-        "tokenizer": "Other"
-      },
-      "canonical_slug": "inflection/inflection-3-pi",
-      "context_length": 8000,
-      "created": 1728604800,
-      "default_parameters": {},
-      "description": "Inflection 3 Pi powers Inflection's [Pi](https://pi.ai) chatbot, including backstory, emotional intelligence, productivity, and safety. It has access to recent news, and excels in scenarios like customer support and roleplay. Pi...",
-      "expiration_date": null,
-      "hugging_face_id": null,
-      "id": "inflection/inflection-3-pi",
-      "knowledge_cutoff": "2024-10-31",
-      "links": {
-        "details": "/api/v1/models/inflection/inflection-3-pi/endpoints"
-      },
-      "name": "Inflection: Inflection 3 Pi",
-      "per_request_limits": null,
-      "pricing": {
-        "completion": "0.00001",
-        "prompt": "0.0000025"
-      },
-      "supported_parameters": [
-        "max_tokens",
-        "stop",
-        "temperature",
-        "top_p"
-      ],
-      "top_provider": {
-        "context_length": 8000,
-        "is_moderated": false,
-        "max_completion_tokens": 1024
       }
     },
     {
@@ -17862,6 +18208,50 @@
         "temperature",
         "top_p"
       ],
+      "supported_voices": null,
+      "top_provider": {
+        "context_length": 8000,
+        "is_moderated": false,
+        "max_completion_tokens": 1024
+      }
+    },
+    {
+      "architecture": {
+        "input_modalities": [
+          "text"
+        ],
+        "instruct_type": null,
+        "modality": "text->text",
+        "output_modalities": [
+          "text"
+        ],
+        "tokenizer": "Other"
+      },
+      "canonical_slug": "inflection/inflection-3-pi",
+      "context_length": 8000,
+      "created": 1728604800,
+      "default_parameters": {},
+      "description": "Inflection 3 Pi powers Inflection's [Pi](https://pi.ai) chatbot, including backstory, emotional intelligence, productivity, and safety. It has access to recent news, and excels in scenarios like customer support and roleplay. Pi...",
+      "expiration_date": null,
+      "hugging_face_id": null,
+      "id": "inflection/inflection-3-pi",
+      "knowledge_cutoff": "2024-10-31",
+      "links": {
+        "details": "/api/v1/models/inflection/inflection-3-pi/endpoints"
+      },
+      "name": "Inflection: Inflection 3 Pi",
+      "per_request_limits": null,
+      "pricing": {
+        "completion": "0.00001",
+        "prompt": "0.0000025"
+      },
+      "supported_parameters": [
+        "max_tokens",
+        "stop",
+        "temperature",
+        "top_p"
+      ],
+      "supported_voices": null,
       "top_provider": {
         "context_length": 8000,
         "is_moderated": false,
@@ -17917,10 +18307,104 @@
         "top_logprobs",
         "top_p"
       ],
+      "supported_voices": null,
       "top_provider": {
         "context_length": 32768,
         "is_moderated": false,
         "max_completion_tokens": 32768
+      }
+    },
+    {
+      "architecture": {
+        "input_modalities": [
+          "text"
+        ],
+        "instruct_type": "llama3",
+        "modality": "text->text",
+        "output_modalities": [
+          "text"
+        ],
+        "tokenizer": "Llama3"
+      },
+      "canonical_slug": "meta-llama/llama-3.2-3b-instruct",
+      "context_length": 131072,
+      "created": 1727222400,
+      "default_parameters": {},
+      "description": "Llama 3.2 3B is a 3-billion-parameter multilingual large language model, optimized for advanced natural language processing tasks like dialogue generation, reasoning, and summarization. Designed with the latest transformer architecture, it...",
+      "expiration_date": null,
+      "hugging_face_id": "meta-llama/Llama-3.2-3B-Instruct",
+      "id": "meta-llama/llama-3.2-3b-instruct:free",
+      "knowledge_cutoff": "2023-12-31",
+      "links": {
+        "details": "/api/v1/models/meta-llama/llama-3.2-3b-instruct/endpoints"
+      },
+      "name": "Meta: Llama 3.2 3B Instruct (free)",
+      "per_request_limits": null,
+      "pricing": {
+        "completion": "0",
+        "prompt": "0"
+      },
+      "supported_parameters": [
+        "frequency_penalty",
+        "max_tokens",
+        "presence_penalty",
+        "stop",
+        "temperature",
+        "top_k",
+        "top_p"
+      ],
+      "supported_voices": null,
+      "top_provider": {
+        "context_length": 131072,
+        "is_moderated": false,
+        "max_completion_tokens": null
+      }
+    },
+    {
+      "architecture": {
+        "input_modalities": [
+          "text"
+        ],
+        "instruct_type": "llama3",
+        "modality": "text->text",
+        "output_modalities": [
+          "text"
+        ],
+        "tokenizer": "Llama3"
+      },
+      "canonical_slug": "meta-llama/llama-3.2-3b-instruct",
+      "context_length": 80000,
+      "created": 1727222400,
+      "default_parameters": {},
+      "description": "Llama 3.2 3B is a 3-billion-parameter multilingual large language model, optimized for advanced natural language processing tasks like dialogue generation, reasoning, and summarization. Designed with the latest transformer architecture, it...",
+      "expiration_date": null,
+      "hugging_face_id": "meta-llama/Llama-3.2-3B-Instruct",
+      "id": "meta-llama/llama-3.2-3b-instruct",
+      "knowledge_cutoff": "2023-12-31",
+      "links": {
+        "details": "/api/v1/models/meta-llama/llama-3.2-3b-instruct/endpoints"
+      },
+      "name": "Meta: Llama 3.2 3B Instruct",
+      "per_request_limits": null,
+      "pricing": {
+        "completion": "0.00000034",
+        "prompt": "0.000000051"
+      },
+      "supported_parameters": [
+        "frequency_penalty",
+        "max_tokens",
+        "presence_penalty",
+        "repetition_penalty",
+        "seed",
+        "temperature",
+        "top_k",
+        "top_p"
+      ],
+      "supported_voices": null,
+      "top_provider": {
+        "context_length": 80000,
+        "is_moderated": false,
+        "max_completion_tokens": null
       }
     },
     {
@@ -17963,6 +18447,7 @@
         "top_k",
         "top_p"
       ],
+      "supported_voices": null,
       "top_provider": {
         "context_length": 60000,
         "is_moderated": false,
@@ -18014,101 +18499,11 @@
         "top_k",
         "top_p"
       ],
+      "supported_voices": null,
       "top_provider": {
         "context_length": 131072,
         "is_moderated": false,
         "max_completion_tokens": 16384
-      }
-    },
-    {
-      "architecture": {
-        "input_modalities": [
-          "text"
-        ],
-        "instruct_type": "llama3",
-        "modality": "text->text",
-        "output_modalities": [
-          "text"
-        ],
-        "tokenizer": "Llama3"
-      },
-      "canonical_slug": "meta-llama/llama-3.2-3b-instruct",
-      "context_length": 131072,
-      "created": 1727222400,
-      "default_parameters": {},
-      "description": "Llama 3.2 3B is a 3-billion-parameter multilingual large language model, optimized for advanced natural language processing tasks like dialogue generation, reasoning, and summarization. Designed with the latest transformer architecture, it...",
-      "expiration_date": null,
-      "hugging_face_id": "meta-llama/Llama-3.2-3B-Instruct",
-      "id": "meta-llama/llama-3.2-3b-instruct:free",
-      "knowledge_cutoff": "2023-12-31",
-      "links": {
-        "details": "/api/v1/models/meta-llama/llama-3.2-3b-instruct/endpoints"
-      },
-      "name": "Meta: Llama 3.2 3B Instruct (free)",
-      "per_request_limits": null,
-      "pricing": {
-        "completion": "0",
-        "prompt": "0"
-      },
-      "supported_parameters": [
-        "frequency_penalty",
-        "max_tokens",
-        "presence_penalty",
-        "stop",
-        "temperature",
-        "top_k",
-        "top_p"
-      ],
-      "top_provider": {
-        "context_length": 131072,
-        "is_moderated": false,
-        "max_completion_tokens": null
-      }
-    },
-    {
-      "architecture": {
-        "input_modalities": [
-          "text"
-        ],
-        "instruct_type": "llama3",
-        "modality": "text->text",
-        "output_modalities": [
-          "text"
-        ],
-        "tokenizer": "Llama3"
-      },
-      "canonical_slug": "meta-llama/llama-3.2-3b-instruct",
-      "context_length": 80000,
-      "created": 1727222400,
-      "default_parameters": {},
-      "description": "Llama 3.2 3B is a 3-billion-parameter multilingual large language model, optimized for advanced natural language processing tasks like dialogue generation, reasoning, and summarization. Designed with the latest transformer architecture, it...",
-      "expiration_date": null,
-      "hugging_face_id": "meta-llama/Llama-3.2-3B-Instruct",
-      "id": "meta-llama/llama-3.2-3b-instruct",
-      "knowledge_cutoff": "2023-12-31",
-      "links": {
-        "details": "/api/v1/models/meta-llama/llama-3.2-3b-instruct/endpoints"
-      },
-      "name": "Meta: Llama 3.2 3B Instruct",
-      "per_request_limits": null,
-      "pricing": {
-        "completion": "0.00000034",
-        "prompt": "0.000000051"
-      },
-      "supported_parameters": [
-        "frequency_penalty",
-        "max_tokens",
-        "presence_penalty",
-        "repetition_penalty",
-        "seed",
-        "temperature",
-        "top_k",
-        "top_p"
-      ],
-      "top_provider": {
-        "context_length": 80000,
-        "is_moderated": false,
-        "max_completion_tokens": null
       }
     },
     {
@@ -18158,60 +18553,11 @@
         "top_k",
         "top_p"
       ],
+      "supported_voices": null,
       "top_provider": {
         "context_length": 32768,
         "is_moderated": false,
         "max_completion_tokens": 16384
-      }
-    },
-    {
-      "architecture": {
-        "input_modalities": [
-          "text"
-        ],
-        "instruct_type": null,
-        "modality": "text->text",
-        "output_modalities": [
-          "text"
-        ],
-        "tokenizer": "Cohere"
-      },
-      "canonical_slug": "cohere/command-r-08-2024",
-      "context_length": 128000,
-      "created": 1724976000,
-      "default_parameters": {},
-      "description": "command-r-08-2024 is an update of the [Command R](/models/cohere/command-r) with improved performance for multilingual retrieval-augmented generation (RAG) and tool use. More broadly, it is better at math, code and reasoning and...",
-      "expiration_date": null,
-      "hugging_face_id": null,
-      "id": "cohere/command-r-08-2024",
-      "knowledge_cutoff": "2024-03-31",
-      "links": {
-        "details": "/api/v1/models/cohere/command-r-08-2024/endpoints"
-      },
-      "name": "Cohere: Command R (08-2024)",
-      "per_request_limits": null,
-      "pricing": {
-        "completion": "0.0000006",
-        "prompt": "0.00000015"
-      },
-      "supported_parameters": [
-        "frequency_penalty",
-        "max_tokens",
-        "presence_penalty",
-        "response_format",
-        "seed",
-        "stop",
-        "structured_outputs",
-        "temperature",
-        "tool_choice",
-        "tools",
-        "top_k",
-        "top_p"
-      ],
-      "top_provider": {
-        "context_length": 128000,
-        "is_moderated": true,
-        "max_completion_tokens": 4000
       }
     },
     {
@@ -18258,6 +18604,58 @@
         "top_k",
         "top_p"
       ],
+      "supported_voices": null,
+      "top_provider": {
+        "context_length": 128000,
+        "is_moderated": true,
+        "max_completion_tokens": 4000
+      }
+    },
+    {
+      "architecture": {
+        "input_modalities": [
+          "text"
+        ],
+        "instruct_type": null,
+        "modality": "text->text",
+        "output_modalities": [
+          "text"
+        ],
+        "tokenizer": "Cohere"
+      },
+      "canonical_slug": "cohere/command-r-08-2024",
+      "context_length": 128000,
+      "created": 1724976000,
+      "default_parameters": {},
+      "description": "command-r-08-2024 is an update of the [Command R](/models/cohere/command-r) with improved performance for multilingual retrieval-augmented generation (RAG) and tool use. More broadly, it is better at math, code and reasoning and...",
+      "expiration_date": null,
+      "hugging_face_id": null,
+      "id": "cohere/command-r-08-2024",
+      "knowledge_cutoff": "2024-03-31",
+      "links": {
+        "details": "/api/v1/models/cohere/command-r-08-2024/endpoints"
+      },
+      "name": "Cohere: Command R (08-2024)",
+      "per_request_limits": null,
+      "pricing": {
+        "completion": "0.0000006",
+        "prompt": "0.00000015"
+      },
+      "supported_parameters": [
+        "frequency_penalty",
+        "max_tokens",
+        "presence_penalty",
+        "response_format",
+        "seed",
+        "stop",
+        "structured_outputs",
+        "temperature",
+        "tool_choice",
+        "tools",
+        "top_k",
+        "top_p"
+      ],
+      "supported_voices": null,
       "top_provider": {
         "context_length": 128000,
         "is_moderated": true,
@@ -18311,6 +18709,7 @@
         "top_k",
         "top_p"
       ],
+      "supported_voices": null,
       "top_provider": {
         "context_length": 131072,
         "is_moderated": false,
@@ -18362,6 +18761,7 @@
         "top_k",
         "top_p"
       ],
+      "supported_voices": null,
       "top_provider": {
         "context_length": 131072,
         "is_moderated": false,
@@ -18407,6 +18807,7 @@
         "top_k",
         "top_p"
       ],
+      "supported_voices": null,
       "top_provider": {
         "context_length": 131072,
         "is_moderated": false,
@@ -18458,6 +18859,7 @@
         "top_k",
         "top_p"
       ],
+      "supported_voices": null,
       "top_provider": {
         "context_length": 131072,
         "is_moderated": false,
@@ -18509,6 +18911,7 @@
         "top_k",
         "top_p"
       ],
+      "supported_voices": null,
       "top_provider": {
         "context_length": 8192,
         "is_moderated": false,
@@ -18566,6 +18969,7 @@
         "top_p",
         "web_search_options"
       ],
+      "supported_voices": null,
       "top_provider": {
         "context_length": 128000,
         "is_moderated": false,
@@ -18621,6 +19025,7 @@
         "top_logprobs",
         "top_p"
       ],
+      "supported_voices": null,
       "top_provider": {
         "context_length": 16384,
         "is_moderated": false,
@@ -18674,6 +19079,7 @@
         "top_k",
         "top_p"
       ],
+      "supported_voices": null,
       "top_provider": {
         "context_length": 131072,
         "is_moderated": false,
@@ -18731,6 +19137,7 @@
         "top_logprobs",
         "top_p"
       ],
+      "supported_voices": null,
       "top_provider": {
         "context_length": 131072,
         "is_moderated": false,
@@ -18787,6 +19194,7 @@
         "top_p",
         "web_search_options"
       ],
+      "supported_voices": null,
       "top_provider": {
         "context_length": 128000,
         "is_moderated": true,
@@ -18844,6 +19252,7 @@
         "top_p",
         "web_search_options"
       ],
+      "supported_voices": null,
       "top_provider": {
         "context_length": 128000,
         "is_moderated": false,
@@ -18892,6 +19301,7 @@
         "temperature",
         "top_p"
       ],
+      "supported_voices": null,
       "top_provider": {
         "context_length": 8192,
         "is_moderated": false,
@@ -18941,6 +19351,7 @@
         "top_k",
         "top_p"
       ],
+      "supported_voices": null,
       "top_provider": {
         "context_length": 8192,
         "is_moderated": false,
@@ -18990,66 +19401,11 @@
         "top_k",
         "top_p"
       ],
+      "supported_voices": null,
       "top_provider": {
         "context_length": 8192,
         "is_moderated": false,
         "max_completion_tokens": 8192
-      }
-    },
-    {
-      "architecture": {
-        "input_modalities": [
-          "text",
-          "image",
-          "file"
-        ],
-        "instruct_type": null,
-        "modality": "text+image+file->text",
-        "output_modalities": [
-          "text"
-        ],
-        "tokenizer": "GPT"
-      },
-      "canonical_slug": "openai/gpt-4o",
-      "context_length": 128000,
-      "created": 1715558400,
-      "default_parameters": {},
-      "description": "GPT-4o (\"o\" for \"omni\") is OpenAI's latest AI model, supporting both text and image inputs with text outputs. It maintains the intelligence level of [GPT-4 Turbo](/models/openai/gpt-4-turbo) while being twice as...",
-      "expiration_date": null,
-      "hugging_face_id": null,
-      "id": "openai/gpt-4o",
-      "knowledge_cutoff": "2023-10-31",
-      "links": {
-        "details": "/api/v1/models/openai/gpt-4o/endpoints"
-      },
-      "name": "OpenAI: GPT-4o",
-      "per_request_limits": null,
-      "pricing": {
-        "completion": "0.00001",
-        "prompt": "0.0000025"
-      },
-      "supported_parameters": [
-        "frequency_penalty",
-        "logit_bias",
-        "logprobs",
-        "max_completion_tokens",
-        "max_tokens",
-        "presence_penalty",
-        "response_format",
-        "seed",
-        "stop",
-        "structured_outputs",
-        "temperature",
-        "tool_choice",
-        "tools",
-        "top_logprobs",
-        "top_p",
-        "web_search_options"
-      ],
-      "top_provider": {
-        "context_length": 128000,
-        "is_moderated": false,
-        "max_completion_tokens": 16384
       }
     },
     {
@@ -19102,6 +19458,7 @@
         "top_p",
         "web_search_options"
       ],
+      "supported_voices": null,
       "top_provider": {
         "context_length": 128000,
         "is_moderated": false,
@@ -19111,48 +19468,58 @@
     {
       "architecture": {
         "input_modalities": [
-          "text"
+          "text",
+          "image",
+          "file"
         ],
-        "instruct_type": "llama3",
-        "modality": "text->text",
+        "instruct_type": null,
+        "modality": "text+image+file->text",
         "output_modalities": [
           "text"
         ],
-        "tokenizer": "Llama3"
+        "tokenizer": "GPT"
       },
-      "canonical_slug": "meta-llama/llama-3-70b-instruct",
-      "context_length": 8192,
-      "created": 1713398400,
+      "canonical_slug": "openai/gpt-4o",
+      "context_length": 128000,
+      "created": 1715558400,
       "default_parameters": {},
-      "description": "Meta's latest class of model (Llama 3) launched with a variety of sizes & flavors. This 70B instruct-tuned version was optimized for high quality dialogue usecases. It has demonstrated strong...",
+      "description": "GPT-4o (\"o\" for \"omni\") is OpenAI's latest AI model, supporting both text and image inputs with text outputs. It maintains the intelligence level of [GPT-4 Turbo](/models/openai/gpt-4-turbo) while being twice as...",
       "expiration_date": null,
-      "hugging_face_id": "meta-llama/Meta-Llama-3-70B-Instruct",
-      "id": "meta-llama/llama-3-70b-instruct",
-      "knowledge_cutoff": "2023-12-31",
+      "hugging_face_id": null,
+      "id": "openai/gpt-4o",
+      "knowledge_cutoff": "2023-10-31",
       "links": {
-        "details": "/api/v1/models/meta-llama/llama-3-70b-instruct/endpoints"
+        "details": "/api/v1/models/openai/gpt-4o/endpoints"
       },
-      "name": "Meta: Llama 3 70B Instruct",
+      "name": "OpenAI: GPT-4o",
       "per_request_limits": null,
       "pricing": {
-        "completion": "0.00000074",
-        "prompt": "0.00000051"
+        "completion": "0.00001",
+        "prompt": "0.0000025"
       },
       "supported_parameters": [
         "frequency_penalty",
+        "logit_bias",
+        "logprobs",
+        "max_completion_tokens",
         "max_tokens",
         "presence_penalty",
-        "repetition_penalty",
+        "response_format",
         "seed",
         "stop",
+        "structured_outputs",
         "temperature",
-        "top_k",
-        "top_p"
+        "tool_choice",
+        "tools",
+        "top_logprobs",
+        "top_p",
+        "web_search_options"
       ],
+      "supported_voices": null,
       "top_provider": {
-        "context_length": 8192,
+        "context_length": 128000,
         "is_moderated": false,
-        "max_completion_tokens": 8000
+        "max_completion_tokens": 16384
       }
     },
     {
@@ -19201,10 +19568,59 @@
         "top_k",
         "top_p"
       ],
+      "supported_voices": null,
       "top_provider": {
         "context_length": 8192,
         "is_moderated": false,
         "max_completion_tokens": 16384
+      }
+    },
+    {
+      "architecture": {
+        "input_modalities": [
+          "text"
+        ],
+        "instruct_type": "llama3",
+        "modality": "text->text",
+        "output_modalities": [
+          "text"
+        ],
+        "tokenizer": "Llama3"
+      },
+      "canonical_slug": "meta-llama/llama-3-70b-instruct",
+      "context_length": 8192,
+      "created": 1713398400,
+      "default_parameters": {},
+      "description": "Meta's latest class of model (Llama 3) launched with a variety of sizes & flavors. This 70B instruct-tuned version was optimized for high quality dialogue usecases. It has demonstrated strong...",
+      "expiration_date": null,
+      "hugging_face_id": "meta-llama/Meta-Llama-3-70B-Instruct",
+      "id": "meta-llama/llama-3-70b-instruct",
+      "knowledge_cutoff": "2023-12-31",
+      "links": {
+        "details": "/api/v1/models/meta-llama/llama-3-70b-instruct/endpoints"
+      },
+      "name": "Meta: Llama 3 70B Instruct",
+      "per_request_limits": null,
+      "pricing": {
+        "completion": "0.00000074",
+        "prompt": "0.00000051"
+      },
+      "supported_parameters": [
+        "frequency_penalty",
+        "max_tokens",
+        "presence_penalty",
+        "repetition_penalty",
+        "seed",
+        "stop",
+        "temperature",
+        "top_k",
+        "top_p"
+      ],
+      "supported_voices": null,
+      "top_provider": {
+        "context_length": 8192,
+        "is_moderated": false,
+        "max_completion_tokens": 8000
       }
     },
     {
@@ -19253,6 +19669,7 @@
         "tools",
         "top_p"
       ],
+      "supported_voices": null,
       "top_provider": {
         "context_length": 65536,
         "is_moderated": false,
@@ -19300,6 +19717,7 @@
         "top_k",
         "top_p"
       ],
+      "supported_voices": null,
       "top_provider": {
         "context_length": 65535,
         "is_moderated": false,
@@ -19353,6 +19771,7 @@
         "top_logprobs",
         "top_p"
       ],
+      "supported_voices": null,
       "top_provider": {
         "context_length": 128000,
         "is_moderated": true,
@@ -19401,6 +19820,7 @@
         "top_k",
         "top_p"
       ],
+      "supported_voices": null,
       "top_provider": {
         "context_length": 200000,
         "is_moderated": true,
@@ -19453,6 +19873,7 @@
         "tools",
         "top_p"
       ],
+      "supported_voices": null,
       "top_provider": {
         "context_length": 128000,
         "is_moderated": false,
@@ -19505,6 +19926,7 @@
         "top_logprobs",
         "top_p"
       ],
+      "supported_voices": null,
       "top_provider": {
         "context_length": 128000,
         "is_moderated": true,
@@ -19557,6 +19979,7 @@
         "top_logprobs",
         "top_p"
       ],
+      "supported_voices": null,
       "top_provider": {
         "context_length": 4095,
         "is_moderated": false,
@@ -19612,6 +20035,7 @@
         "top_k",
         "top_p"
       ],
+      "supported_voices": null,
       "top_provider": {
         "context_length": 32768,
         "is_moderated": false,
@@ -19665,6 +20089,7 @@
         "top_logprobs",
         "top_p"
       ],
+      "supported_voices": null,
       "top_provider": {
         "context_length": 6144,
         "is_moderated": false,
@@ -19736,6 +20161,7 @@
         "top_p",
         "web_search_options"
       ],
+      "supported_voices": null,
       "top_provider": {
         "context_length": null,
         "is_moderated": false,
@@ -19788,6 +20214,7 @@
         "top_logprobs",
         "top_p"
       ],
+      "supported_voices": null,
       "top_provider": {
         "context_length": 128000,
         "is_moderated": true,
@@ -19838,6 +20265,7 @@
         "top_logprobs",
         "top_p"
       ],
+      "supported_voices": null,
       "top_provider": {
         "context_length": 4095,
         "is_moderated": true,
@@ -19886,6 +20314,7 @@
         "top_k",
         "top_p"
       ],
+      "supported_voices": null,
       "top_provider": {
         "context_length": 2824,
         "is_moderated": false,
@@ -19939,6 +20368,7 @@
         "top_logprobs",
         "top_p"
       ],
+      "supported_voices": null,
       "top_provider": {
         "context_length": 16385,
         "is_moderated": true,
@@ -19992,6 +20422,7 @@
         "top_logprobs",
         "top_p"
       ],
+      "supported_voices": null,
       "top_provider": {
         "context_length": 8000,
         "is_moderated": false,
@@ -20046,6 +20477,7 @@
         "top_logprobs",
         "top_p"
       ],
+      "supported_voices": null,
       "top_provider": {
         "context_length": 6144,
         "is_moderated": false,
@@ -20100,9 +20532,63 @@
         "top_logprobs",
         "top_p"
       ],
+      "supported_voices": null,
       "top_provider": {
         "context_length": 4096,
         "is_moderated": false,
+        "max_completion_tokens": 4096
+      }
+    },
+    {
+      "architecture": {
+        "input_modalities": [
+          "text"
+        ],
+        "instruct_type": null,
+        "modality": "text->text",
+        "output_modalities": [
+          "text"
+        ],
+        "tokenizer": "GPT"
+      },
+      "canonical_slug": "openai/gpt-4-0314",
+      "context_length": 8191,
+      "created": 1685232000,
+      "default_parameters": {},
+      "description": "GPT-4-0314 is the first version of GPT-4 released, with a context length of 8,192 tokens, and was supported until June 14. Training data: up to Sep 2021.",
+      "expiration_date": null,
+      "hugging_face_id": null,
+      "id": "openai/gpt-4-0314",
+      "knowledge_cutoff": "2021-09-30",
+      "links": {
+        "details": "/api/v1/models/openai/gpt-4-0314/endpoints"
+      },
+      "name": "OpenAI: GPT-4 (older v0314)",
+      "per_request_limits": null,
+      "pricing": {
+        "completion": "0.00006",
+        "prompt": "0.00003"
+      },
+      "supported_parameters": [
+        "frequency_penalty",
+        "logit_bias",
+        "logprobs",
+        "max_tokens",
+        "presence_penalty",
+        "response_format",
+        "seed",
+        "stop",
+        "structured_outputs",
+        "temperature",
+        "tool_choice",
+        "tools",
+        "top_logprobs",
+        "top_p"
+      ],
+      "supported_voices": null,
+      "top_provider": {
+        "context_length": 8191,
+        "is_moderated": true,
         "max_completion_tokens": 4096
       }
     },
@@ -20153,6 +20639,7 @@
         "top_logprobs",
         "top_p"
       ],
+      "supported_voices": null,
       "top_provider": {
         "context_length": 8191,
         "is_moderated": true,
@@ -20205,60 +20692,9 @@
         "top_logprobs",
         "top_p"
       ],
+      "supported_voices": null,
       "top_provider": {
         "context_length": 16385,
-        "is_moderated": true,
-        "max_completion_tokens": 4096
-      }
-    },
-    {
-      "architecture": {
-        "input_modalities": [
-          "text"
-        ],
-        "instruct_type": null,
-        "modality": "text->text",
-        "output_modalities": [
-          "text"
-        ],
-        "tokenizer": "GPT"
-      },
-      "canonical_slug": "openai/gpt-4-0314",
-      "context_length": 8191,
-      "created": 1685232000,
-      "default_parameters": {},
-      "description": "GPT-4-0314 is the first version of GPT-4 released, with a context length of 8,192 tokens, and was supported until June 14. Training data: up to Sep 2021.",
-      "expiration_date": null,
-      "hugging_face_id": null,
-      "id": "openai/gpt-4-0314",
-      "knowledge_cutoff": "2021-09-30",
-      "links": {
-        "details": "/api/v1/models/openai/gpt-4-0314/endpoints"
-      },
-      "name": "OpenAI: GPT-4 (older v0314)",
-      "per_request_limits": null,
-      "pricing": {
-        "completion": "0.00006",
-        "prompt": "0.00003"
-      },
-      "supported_parameters": [
-        "frequency_penalty",
-        "logit_bias",
-        "logprobs",
-        "max_tokens",
-        "presence_penalty",
-        "response_format",
-        "seed",
-        "stop",
-        "structured_outputs",
-        "temperature",
-        "tool_choice",
-        "tools",
-        "top_logprobs",
-        "top_p"
-      ],
-      "top_provider": {
-        "context_length": 8191,
         "is_moderated": true,
         "max_completion_tokens": 4096
       }
