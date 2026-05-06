@@ -157,7 +157,7 @@
         "last_updated": "2026-04-07",
         "limit": {
           "context": 202752,
-          "output": 202752
+          "output": 131072
         },
         "modalities": {
           "input": [
@@ -325,7 +325,7 @@
         "last_updated": "2026-02-17",
         "limit": {
           "context": 262144,
-          "output": 262144
+          "output": 65536
         },
         "modalities": {
           "input": [
@@ -8823,6 +8823,40 @@
         "open_weights": true,
         "reasoning": false,
         "release_date": "2025-07-11",
+        "temperature": true,
+        "tool_call": true
+      },
+      "deepseek-ai/DeepSeek-V4-Flash": {
+        "attachment": false,
+        "cost": {
+          "cache_read": 0.028,
+          "input": 0.14,
+          "output": 0.28
+        },
+        "family": "deepseek-flash",
+        "id": "deepseek-ai/DeepSeek-V4-Flash",
+        "interleaved": {
+          "field": "reasoning_content"
+        },
+        "knowledge": "2025-05",
+        "last_updated": "2026-04-24",
+        "limit": {
+          "context": 1000000,
+          "output": 384000
+        },
+        "modalities": {
+          "input": [
+            "text"
+          ],
+          "output": [
+            "text"
+          ]
+        },
+        "name": "DeepSeek V4 Flash",
+        "open_weights": true,
+        "reasoning": true,
+        "release_date": "2026-04-24",
+        "structured_output": true,
         "temperature": true,
         "tool_call": true
       },
@@ -38777,7 +38811,10 @@
         },
         "modalities": {
           "input": [
-            "text"
+            "text",
+            "image",
+            "audio",
+            "video"
           ],
           "output": [
             "text"
@@ -38970,11 +39007,7 @@
         },
         "modalities": {
           "input": [
-            "text",
-            "image",
-            "audio",
-            "video",
-            "pdf"
+            "text"
           ],
           "output": [
             "text"
@@ -40768,6 +40801,38 @@
         "release_date": "2025-07-09",
         "temperature": true,
         "tool_call": false
+      },
+      "qwen/qwen-3.6-27b": {
+        "attachment": true,
+        "cost": {
+          "input": 0.195,
+          "output": 1.56
+        },
+        "family": "qwen",
+        "id": "qwen/qwen-3.6-27b",
+        "knowledge": "2025-04",
+        "last_updated": "2026-04-22",
+        "limit": {
+          "context": 262144,
+          "output": 81920
+        },
+        "modalities": {
+          "input": [
+            "text",
+            "image",
+            "video"
+          ],
+          "output": [
+            "text"
+          ]
+        },
+        "name": "Qwen3.6 27B",
+        "open_weights": true,
+        "reasoning": false,
+        "release_date": "2026-04-22",
+        "structured_output": true,
+        "temperature": true,
+        "tool_call": true
       },
       "google/gemma-3-12b-it": {
         "attachment": true,
@@ -50268,6 +50333,40 @@
         "open_weights": false,
         "reasoning": true,
         "release_date": "2026-03-17",
+        "structured_output": true,
+        "temperature": false,
+        "tool_call": true
+      },
+      "kimi-k2.6": {
+        "attachment": true,
+        "cost": {
+          "input": 0.95,
+          "output": 4
+        },
+        "family": "kimi",
+        "id": "kimi-k2.6",
+        "interleaved": {
+          "field": "reasoning_content"
+        },
+        "knowledge": "2025-01",
+        "last_updated": "2026-04-21",
+        "limit": {
+          "context": 262144,
+          "output": 262144
+        },
+        "modalities": {
+          "input": [
+            "text",
+            "image"
+          ],
+          "output": [
+            "text"
+          ]
+        },
+        "name": "Kimi K2.6",
+        "open_weights": true,
+        "reasoning": true,
+        "release_date": "2026-04-21",
         "structured_output": true,
         "temperature": false,
         "tool_call": true
@@ -68315,7 +68414,7 @@
             "text",
             "image",
             "audio",
-            "pdf"
+            "video"
           ],
           "output": [
             "text"
@@ -68832,7 +68931,10 @@
         },
         "modalities": {
           "input": [
-            "text"
+            "text",
+            "image",
+            "audio",
+            "video"
           ],
           "output": [
             "text"
@@ -68870,11 +68972,7 @@
         },
         "modalities": {
           "input": [
-            "text",
-            "image",
-            "audio",
-            "video",
-            "pdf"
+            "text"
           ],
           "output": [
             "text"
@@ -121235,6 +121333,657 @@
     ],
     "id": "google-vertex",
     "models": {
+      "gemini-2.0-flash-lite": {
+        "attachment": true,
+        "cost": {
+          "input": 0.075,
+          "output": 0.3
+        },
+        "family": "gemini-flash-lite",
+        "id": "gemini-2.0-flash-lite",
+        "knowledge": "2024-06",
+        "last_updated": "2024-12-11",
+        "limit": {
+          "context": 1048576,
+          "output": 8192
+        },
+        "modalities": {
+          "input": [
+            "text",
+            "image",
+            "audio",
+            "video",
+            "pdf"
+          ],
+          "output": [
+            "text"
+          ]
+        },
+        "name": "Gemini 2.0 Flash Lite",
+        "open_weights": false,
+        "reasoning": false,
+        "release_date": "2024-12-11",
+        "temperature": true,
+        "tool_call": true
+      },
+      "moonshotai/kimi-k2-thinking-maas": {
+        "attachment": false,
+        "cost": {
+          "input": 0.6,
+          "output": 2.5
+        },
+        "family": "kimi-thinking",
+        "id": "moonshotai/kimi-k2-thinking-maas",
+        "interleaved": {
+          "field": "reasoning_content"
+        },
+        "knowledge": "2024-08",
+        "last_updated": "2025-11-13",
+        "limit": {
+          "context": 262144,
+          "output": 262144
+        },
+        "modalities": {
+          "input": [
+            "text"
+          ],
+          "output": [
+            "text"
+          ]
+        },
+        "name": "Kimi K2 Thinking",
+        "open_weights": true,
+        "provider": {
+          "api": "https://${GOOGLE_VERTEX_ENDPOINT}/v1/projects/${GOOGLE_VERTEX_PROJECT}/locations/${GOOGLE_VERTEX_LOCATION}/endpoints/openapi",
+          "npm": "@ai-sdk/openai-compatible"
+        },
+        "reasoning": true,
+        "release_date": "2025-11-13",
+        "structured_output": true,
+        "temperature": true,
+        "tool_call": true
+      },
+      "gemini-2.5-flash-lite": {
+        "attachment": true,
+        "cost": {
+          "cache_read": 0.025,
+          "input": 0.1,
+          "output": 0.4
+        },
+        "family": "gemini-flash-lite",
+        "id": "gemini-2.5-flash-lite",
+        "knowledge": "2025-01",
+        "last_updated": "2025-06-17",
+        "limit": {
+          "context": 1048576,
+          "output": 65536
+        },
+        "modalities": {
+          "input": [
+            "text",
+            "image",
+            "audio",
+            "video",
+            "pdf"
+          ],
+          "output": [
+            "text"
+          ]
+        },
+        "name": "Gemini 2.5 Flash Lite",
+        "open_weights": false,
+        "reasoning": true,
+        "release_date": "2025-06-17",
+        "temperature": true,
+        "tool_call": true
+      },
+      "gemini-3.1-flash-lite-preview": {
+        "attachment": true,
+        "cost": {
+          "cache_read": 0.025,
+          "cache_write": 1,
+          "input": 0.25,
+          "output": 1.5
+        },
+        "family": "gemini-flash-lite",
+        "id": "gemini-3.1-flash-lite-preview",
+        "knowledge": "2025-01",
+        "last_updated": "2026-03-03",
+        "limit": {
+          "context": 1048576,
+          "output": 65536
+        },
+        "modalities": {
+          "input": [
+            "text",
+            "image",
+            "video",
+            "audio",
+            "pdf"
+          ],
+          "output": [
+            "text"
+          ]
+        },
+        "name": "Gemini 3.1 Flash Lite Preview",
+        "open_weights": false,
+        "reasoning": true,
+        "release_date": "2026-03-03",
+        "structured_output": true,
+        "temperature": true,
+        "tool_call": true
+      },
+      "zai-org/glm-5-maas": {
+        "attachment": false,
+        "cost": {
+          "cache_read": 0.1,
+          "input": 1,
+          "output": 3.2
+        },
+        "family": "glm",
+        "id": "zai-org/glm-5-maas",
+        "interleaved": {
+          "field": "reasoning_content"
+        },
+        "last_updated": "2026-02-11",
+        "limit": {
+          "context": 202752,
+          "output": 131072
+        },
+        "modalities": {
+          "input": [
+            "text"
+          ],
+          "output": [
+            "text"
+          ]
+        },
+        "name": "GLM-5",
+        "open_weights": true,
+        "provider": {
+          "api": "https://${GOOGLE_VERTEX_ENDPOINT}/v1/projects/${GOOGLE_VERTEX_PROJECT}/locations/${GOOGLE_VERTEX_LOCATION}/endpoints/openapi",
+          "npm": "@ai-sdk/openai-compatible"
+        },
+        "reasoning": true,
+        "release_date": "2026-02-11",
+        "temperature": true,
+        "tool_call": true
+      },
+      "claude-opus-4@20250514": {
+        "attachment": true,
+        "cost": {
+          "cache_read": 1.5,
+          "cache_write": 18.75,
+          "input": 15,
+          "output": 75
+        },
+        "family": "claude-opus",
+        "id": "claude-opus-4@20250514",
+        "knowledge": "2025-03-31",
+        "last_updated": "2025-05-22",
+        "limit": {
+          "context": 200000,
+          "output": 32000
+        },
+        "modalities": {
+          "input": [
+            "text",
+            "image",
+            "pdf"
+          ],
+          "output": [
+            "text"
+          ]
+        },
+        "name": "Claude Opus 4",
+        "open_weights": false,
+        "provider": {
+          "npm": "@ai-sdk/google-vertex/anthropic"
+        },
+        "reasoning": true,
+        "release_date": "2025-05-22",
+        "temperature": true,
+        "tool_call": true
+      },
+      "claude-sonnet-4-6@default": {
+        "attachment": true,
+        "cost": {
+          "cache_read": 0.3,
+          "cache_write": 3.75,
+          "context_over_200k": {
+            "cache_read": 0.6,
+            "cache_write": 7.5,
+            "input": 6,
+            "output": 22.5
+          },
+          "input": 3,
+          "output": 15
+        },
+        "family": "claude-sonnet",
+        "id": "claude-sonnet-4-6@default",
+        "knowledge": "2025-08-31",
+        "last_updated": "2026-03-13",
+        "limit": {
+          "context": 200000,
+          "output": 64000
+        },
+        "modalities": {
+          "input": [
+            "text",
+            "image",
+            "pdf"
+          ],
+          "output": [
+            "text"
+          ]
+        },
+        "name": "Claude Sonnet 4.6",
+        "open_weights": false,
+        "provider": {
+          "npm": "@ai-sdk/google-vertex/anthropic"
+        },
+        "reasoning": true,
+        "release_date": "2026-02-17",
+        "temperature": true,
+        "tool_call": true
+      },
+      "gemini-flash-latest": {
+        "attachment": true,
+        "cost": {
+          "cache_read": 0.075,
+          "cache_write": 0.383,
+          "input": 0.3,
+          "output": 2.5
+        },
+        "family": "gemini-flash",
+        "id": "gemini-flash-latest",
+        "knowledge": "2025-01",
+        "last_updated": "2025-09-25",
+        "limit": {
+          "context": 1048576,
+          "output": 65536
+        },
+        "modalities": {
+          "input": [
+            "text",
+            "image",
+            "audio",
+            "video",
+            "pdf"
+          ],
+          "output": [
+            "text"
+          ]
+        },
+        "name": "Gemini Flash Latest",
+        "open_weights": false,
+        "reasoning": true,
+        "release_date": "2025-09-25",
+        "temperature": true,
+        "tool_call": true
+      },
+      "gemini-2.5-flash": {
+        "attachment": true,
+        "cost": {
+          "cache_read": 0.075,
+          "cache_write": 0.383,
+          "input": 0.3,
+          "output": 2.5
+        },
+        "family": "gemini-flash",
+        "id": "gemini-2.5-flash",
+        "knowledge": "2025-01",
+        "last_updated": "2025-06-17",
+        "limit": {
+          "context": 1048576,
+          "output": 65536
+        },
+        "modalities": {
+          "input": [
+            "text",
+            "image",
+            "audio",
+            "video",
+            "pdf"
+          ],
+          "output": [
+            "text"
+          ]
+        },
+        "name": "Gemini 2.5 Flash",
+        "open_weights": false,
+        "reasoning": true,
+        "release_date": "2025-06-17",
+        "temperature": true,
+        "tool_call": true
+      },
+      "gemini-2.5-flash-preview-05-20": {
+        "attachment": true,
+        "cost": {
+          "cache_read": 0.0375,
+          "input": 0.15,
+          "output": 0.6
+        },
+        "family": "gemini-flash",
+        "id": "gemini-2.5-flash-preview-05-20",
+        "knowledge": "2025-01",
+        "last_updated": "2025-05-20",
+        "limit": {
+          "context": 1048576,
+          "output": 65536
+        },
+        "modalities": {
+          "input": [
+            "text",
+            "image",
+            "audio",
+            "video",
+            "pdf"
+          ],
+          "output": [
+            "text"
+          ]
+        },
+        "name": "Gemini 2.5 Flash Preview 05-20",
+        "open_weights": false,
+        "reasoning": true,
+        "release_date": "2025-05-20",
+        "temperature": true,
+        "tool_call": true
+      },
+      "qwen/qwen3-235b-a22b-instruct-2507-maas": {
+        "attachment": false,
+        "cost": {
+          "input": 0.22,
+          "output": 0.88
+        },
+        "family": "qwen",
+        "id": "qwen/qwen3-235b-a22b-instruct-2507-maas",
+        "last_updated": "2025-08-13",
+        "limit": {
+          "context": 262144,
+          "output": 16384
+        },
+        "modalities": {
+          "input": [
+            "text"
+          ],
+          "output": [
+            "text"
+          ]
+        },
+        "name": "Qwen3 235B A22B Instruct",
+        "open_weights": true,
+        "provider": {
+          "api": "https://${GOOGLE_VERTEX_ENDPOINT}/v1/projects/${GOOGLE_VERTEX_PROJECT}/locations/${GOOGLE_VERTEX_LOCATION}/endpoints/openapi",
+          "npm": "@ai-sdk/openai-compatible"
+        },
+        "reasoning": true,
+        "release_date": "2025-08-13",
+        "structured_output": true,
+        "temperature": true,
+        "tool_call": true
+      },
+      "gemini-2.5-pro-preview-06-05": {
+        "attachment": true,
+        "cost": {
+          "cache_read": 0.31,
+          "input": 1.25,
+          "output": 10
+        },
+        "family": "gemini-pro",
+        "id": "gemini-2.5-pro-preview-06-05",
+        "knowledge": "2025-01",
+        "last_updated": "2025-06-05",
+        "limit": {
+          "context": 1048576,
+          "output": 65536
+        },
+        "modalities": {
+          "input": [
+            "text",
+            "image",
+            "audio",
+            "video",
+            "pdf"
+          ],
+          "output": [
+            "text"
+          ]
+        },
+        "name": "Gemini 2.5 Pro Preview 06-05",
+        "open_weights": false,
+        "reasoning": true,
+        "release_date": "2025-06-05",
+        "temperature": true,
+        "tool_call": true
+      },
+      "claude-3-5-sonnet@20241022": {
+        "attachment": true,
+        "cost": {
+          "cache_read": 0.3,
+          "cache_write": 3.75,
+          "input": 3,
+          "output": 15
+        },
+        "family": "claude-sonnet",
+        "id": "claude-3-5-sonnet@20241022",
+        "knowledge": "2024-04-30",
+        "last_updated": "2024-10-22",
+        "limit": {
+          "context": 200000,
+          "output": 8192
+        },
+        "modalities": {
+          "input": [
+            "text",
+            "image",
+            "pdf"
+          ],
+          "output": [
+            "text"
+          ]
+        },
+        "name": "Claude Sonnet 3.5 v2",
+        "open_weights": false,
+        "provider": {
+          "npm": "@ai-sdk/google-vertex/anthropic"
+        },
+        "reasoning": false,
+        "release_date": "2024-10-22",
+        "temperature": true,
+        "tool_call": true
+      },
+      "claude-opus-4-7@default": {
+        "attachment": true,
+        "cost": {
+          "cache_read": 0.5,
+          "cache_write": 6.25,
+          "context_over_200k": {
+            "cache_read": 1,
+            "cache_write": 12.5,
+            "input": 10,
+            "output": 37.5
+          },
+          "input": 5,
+          "output": 25
+        },
+        "family": "claude-opus",
+        "id": "claude-opus-4-7@default",
+        "knowledge": "2026-01-31",
+        "last_updated": "2026-04-16",
+        "limit": {
+          "context": 1000000,
+          "output": 128000
+        },
+        "modalities": {
+          "input": [
+            "text",
+            "image",
+            "pdf"
+          ],
+          "output": [
+            "text"
+          ]
+        },
+        "name": "Claude Opus 4.7",
+        "open_weights": false,
+        "provider": {
+          "npm": "@ai-sdk/google-vertex/anthropic"
+        },
+        "reasoning": true,
+        "release_date": "2026-04-16",
+        "temperature": false,
+        "tool_call": true
+      },
+      "claude-opus-4-5@20251101": {
+        "attachment": true,
+        "cost": {
+          "cache_read": 0.5,
+          "cache_write": 6.25,
+          "input": 5,
+          "output": 25
+        },
+        "family": "claude-opus",
+        "id": "claude-opus-4-5@20251101",
+        "knowledge": "2025-03-31",
+        "last_updated": "2025-11-01",
+        "limit": {
+          "context": 200000,
+          "output": 64000
+        },
+        "modalities": {
+          "input": [
+            "text",
+            "image",
+            "pdf"
+          ],
+          "output": [
+            "text"
+          ]
+        },
+        "name": "Claude Opus 4.5",
+        "open_weights": false,
+        "provider": {
+          "npm": "@ai-sdk/google-vertex/anthropic"
+        },
+        "reasoning": true,
+        "release_date": "2025-11-01",
+        "temperature": true,
+        "tool_call": true
+      },
+      "meta/llama-3.3-70b-instruct-maas": {
+        "attachment": false,
+        "cost": {
+          "input": 0.72,
+          "output": 0.72
+        },
+        "family": "llama",
+        "id": "meta/llama-3.3-70b-instruct-maas",
+        "knowledge": "2023-12",
+        "last_updated": "2025-04-29",
+        "limit": {
+          "context": 128000,
+          "output": 8192
+        },
+        "modalities": {
+          "input": [
+            "text"
+          ],
+          "output": [
+            "text"
+          ]
+        },
+        "name": "Llama 3.3 70B Instruct",
+        "open_weights": true,
+        "provider": {
+          "api": "https://${GOOGLE_VERTEX_ENDPOINT}/v1/projects/${GOOGLE_VERTEX_PROJECT}/locations/${GOOGLE_VERTEX_LOCATION}/endpoints/openapi",
+          "npm": "@ai-sdk/openai-compatible"
+        },
+        "reasoning": false,
+        "release_date": "2025-04-29",
+        "structured_output": true,
+        "temperature": true,
+        "tool_call": true
+      },
+      "zai-org/glm-4.7-maas": {
+        "attachment": false,
+        "cost": {
+          "input": 0.6,
+          "output": 2.2
+        },
+        "family": "glm",
+        "id": "zai-org/glm-4.7-maas",
+        "interleaved": {
+          "field": "reasoning_content"
+        },
+        "knowledge": "2025-04",
+        "last_updated": "2026-01-06",
+        "limit": {
+          "context": 200000,
+          "output": 128000
+        },
+        "modalities": {
+          "input": [
+            "text",
+            "pdf"
+          ],
+          "output": [
+            "text"
+          ]
+        },
+        "name": "GLM-4.7",
+        "open_weights": true,
+        "provider": {
+          "api": "https://${GOOGLE_VERTEX_ENDPOINT}/v1/projects/${GOOGLE_VERTEX_PROJECT}/locations/${GOOGLE_VERTEX_LOCATION}/endpoints/openapi",
+          "npm": "@ai-sdk/openai-compatible"
+        },
+        "reasoning": true,
+        "release_date": "2026-01-06",
+        "structured_output": true,
+        "temperature": true,
+        "tool_call": true
+      },
+      "gemini-3.1-pro-preview-customtools": {
+        "attachment": true,
+        "cost": {
+          "cache_read": 0.2,
+          "context_over_200k": {
+            "cache_read": 0.4,
+            "input": 4,
+            "output": 18
+          },
+          "input": 2,
+          "output": 12
+        },
+        "family": "gemini-pro",
+        "id": "gemini-3.1-pro-preview-customtools",
+        "knowledge": "2025-01",
+        "last_updated": "2026-02-19",
+        "limit": {
+          "context": 1048576,
+          "output": 65536
+        },
+        "modalities": {
+          "input": [
+            "text",
+            "image",
+            "video",
+            "audio",
+            "pdf"
+          ],
+          "output": [
+            "text"
+          ]
+        },
+        "name": "Gemini 3.1 Pro Preview Custom Tools",
+        "open_weights": false,
+        "reasoning": true,
+        "release_date": "2026-02-19",
+        "structured_output": true,
+        "temperature": true,
+        "tool_call": true
+      },
       "deepseek-ai/deepseek-v3.1-maas": {
         "attachment": false,
         "cost": {
@@ -121338,75 +122087,49 @@
         "temperature": true,
         "tool_call": true
       },
-      "gemini-2.0-flash-lite": {
+      "claude-opus-4-6@default": {
         "attachment": true,
         "cost": {
-          "input": 0.075,
-          "output": 0.3
+          "cache_read": 0.5,
+          "cache_write": 6.25,
+          "context_over_200k": {
+            "cache_read": 1,
+            "cache_write": 12.5,
+            "input": 10,
+            "output": 37.5
+          },
+          "input": 5,
+          "output": 25
         },
-        "family": "gemini-flash-lite",
-        "id": "gemini-2.0-flash-lite",
-        "knowledge": "2024-06",
-        "last_updated": "2024-12-11",
+        "family": "claude-opus",
+        "id": "claude-opus-4-6@default",
+        "knowledge": "2025-05-31",
+        "last_updated": "2026-03-13",
         "limit": {
-          "context": 1048576,
-          "output": 8192
+          "context": 1000000,
+          "output": 128000
         },
         "modalities": {
           "input": [
             "text",
             "image",
-            "audio",
-            "video",
             "pdf"
           ],
           "output": [
             "text"
           ]
         },
-        "name": "Gemini 2.0 Flash Lite",
+        "name": "Claude Opus 4.6",
         "open_weights": false,
-        "reasoning": false,
-        "release_date": "2024-12-11",
-        "temperature": true,
-        "tool_call": true
-      },
-      "gemini-2.5-flash": {
-        "attachment": true,
-        "cost": {
-          "cache_read": 0.075,
-          "cache_write": 0.383,
-          "input": 0.3,
-          "output": 2.5
+        "provider": {
+          "npm": "@ai-sdk/google-vertex/anthropic"
         },
-        "family": "gemini-flash",
-        "id": "gemini-2.5-flash",
-        "knowledge": "2025-01",
-        "last_updated": "2025-06-17",
-        "limit": {
-          "context": 1048576,
-          "output": 65536
-        },
-        "modalities": {
-          "input": [
-            "text",
-            "image",
-            "audio",
-            "video",
-            "pdf"
-          ],
-          "output": [
-            "text"
-          ]
-        },
-        "name": "Gemini 2.5 Flash",
-        "open_weights": false,
         "reasoning": true,
-        "release_date": "2025-06-17",
+        "release_date": "2026-02-05",
         "temperature": true,
         "tool_call": true
       },
-      "gemini-2.5-flash-lite": {
+      "gemini-flash-lite-latest": {
         "attachment": true,
         "cost": {
           "cache_read": 0.025,
@@ -121414,75 +122137,7 @@
           "output": 0.4
         },
         "family": "gemini-flash-lite",
-        "id": "gemini-2.5-flash-lite",
-        "knowledge": "2025-01",
-        "last_updated": "2025-06-17",
-        "limit": {
-          "context": 1048576,
-          "output": 65536
-        },
-        "modalities": {
-          "input": [
-            "text",
-            "image",
-            "audio",
-            "video",
-            "pdf"
-          ],
-          "output": [
-            "text"
-          ]
-        },
-        "name": "Gemini 2.5 Flash Lite",
-        "open_weights": false,
-        "reasoning": true,
-        "release_date": "2025-06-17",
-        "temperature": true,
-        "tool_call": true
-      },
-      "gemini-2.5-flash-lite-preview-06-17": {
-        "attachment": true,
-        "cost": {
-          "cache_read": 0.025,
-          "input": 0.1,
-          "output": 0.4
-        },
-        "family": "gemini-flash-lite",
-        "id": "gemini-2.5-flash-lite-preview-06-17",
-        "knowledge": "2025-01",
-        "last_updated": "2025-06-17",
-        "limit": {
-          "context": 65536,
-          "output": 65536
-        },
-        "modalities": {
-          "input": [
-            "text",
-            "image",
-            "audio",
-            "video",
-            "pdf"
-          ],
-          "output": [
-            "text"
-          ]
-        },
-        "name": "Gemini 2.5 Flash Lite Preview 06-17",
-        "open_weights": false,
-        "reasoning": true,
-        "release_date": "2025-06-17",
-        "temperature": true,
-        "tool_call": true
-      },
-      "gemini-2.5-flash-lite-preview-09-2025": {
-        "attachment": true,
-        "cost": {
-          "cache_read": 0.025,
-          "input": 0.1,
-          "output": 0.4
-        },
-        "family": "gemini-flash-lite",
-        "id": "gemini-2.5-flash-lite-preview-09-2025",
+        "id": "gemini-flash-lite-latest",
         "knowledge": "2025-01",
         "last_updated": "2025-09-25",
         "limit": {
@@ -121501,58 +122156,65 @@
             "text"
           ]
         },
-        "name": "Gemini 2.5 Flash Lite Preview 09-25",
+        "name": "Gemini Flash-Lite Latest",
         "open_weights": false,
         "reasoning": true,
         "release_date": "2025-09-25",
         "temperature": true,
         "tool_call": true
       },
-      "gemini-2.5-flash-preview-04-17": {
+      "claude-sonnet-4-5@20250929": {
         "attachment": true,
         "cost": {
-          "cache_read": 0.0375,
-          "input": 0.15,
-          "output": 0.6
+          "cache_read": 0.3,
+          "cache_write": 3.75,
+          "input": 3,
+          "output": 15
         },
-        "family": "gemini-flash",
-        "id": "gemini-2.5-flash-preview-04-17",
-        "knowledge": "2025-01",
-        "last_updated": "2025-04-17",
+        "family": "claude-sonnet",
+        "id": "claude-sonnet-4-5@20250929",
+        "knowledge": "2025-07-31",
+        "last_updated": "2025-09-29",
         "limit": {
-          "context": 1048576,
-          "output": 65536
+          "context": 200000,
+          "output": 64000
         },
         "modalities": {
           "input": [
             "text",
             "image",
-            "audio",
-            "video",
             "pdf"
           ],
           "output": [
             "text"
           ]
         },
-        "name": "Gemini 2.5 Flash Preview 04-17",
+        "name": "Claude Sonnet 4.5",
         "open_weights": false,
+        "provider": {
+          "npm": "@ai-sdk/google-vertex/anthropic"
+        },
         "reasoning": true,
-        "release_date": "2025-04-17",
+        "release_date": "2025-09-29",
         "temperature": true,
         "tool_call": true
       },
-      "gemini-2.5-flash-preview-05-20": {
+      "gemini-3-flash-preview": {
         "attachment": true,
         "cost": {
-          "cache_read": 0.0375,
-          "input": 0.15,
-          "output": 0.6
+          "cache_read": 0.05,
+          "context_over_200k": {
+            "cache_read": 0.05,
+            "input": 0.5,
+            "output": 3
+          },
+          "input": 0.5,
+          "output": 3
         },
         "family": "gemini-flash",
-        "id": "gemini-2.5-flash-preview-05-20",
+        "id": "gemini-3-flash-preview",
         "knowledge": "2025-01",
-        "last_updated": "2025-05-20",
+        "last_updated": "2025-12-17",
         "limit": {
           "context": 1048576,
           "output": 65536
@@ -121561,18 +122223,94 @@
           "input": [
             "text",
             "image",
-            "audio",
             "video",
+            "audio",
             "pdf"
           ],
           "output": [
             "text"
           ]
         },
-        "name": "Gemini 2.5 Flash Preview 05-20",
+        "name": "Gemini 3 Flash Preview",
         "open_weights": false,
         "reasoning": true,
-        "release_date": "2025-05-20",
+        "release_date": "2025-12-17",
+        "structured_output": true,
+        "temperature": true,
+        "tool_call": true
+      },
+      "meta/llama-4-maverick-17b-128e-instruct-maas": {
+        "attachment": true,
+        "cost": {
+          "input": 0.35,
+          "output": 1.15
+        },
+        "family": "llama",
+        "id": "meta/llama-4-maverick-17b-128e-instruct-maas",
+        "knowledge": "2024-08",
+        "last_updated": "2025-04-29",
+        "limit": {
+          "context": 524288,
+          "output": 8192
+        },
+        "modalities": {
+          "input": [
+            "text",
+            "image"
+          ],
+          "output": [
+            "text"
+          ]
+        },
+        "name": "Llama 4 Maverick 17B 128E Instruct",
+        "open_weights": true,
+        "provider": {
+          "api": "https://${GOOGLE_VERTEX_ENDPOINT}/v1/projects/${GOOGLE_VERTEX_PROJECT}/locations/${GOOGLE_VERTEX_LOCATION}/endpoints/openapi",
+          "npm": "@ai-sdk/openai-compatible"
+        },
+        "reasoning": false,
+        "release_date": "2025-04-29",
+        "structured_output": true,
+        "temperature": true,
+        "tool_call": true
+      },
+      "gemini-3-pro-preview": {
+        "attachment": true,
+        "cost": {
+          "cache_read": 0.2,
+          "context_over_200k": {
+            "cache_read": 0.4,
+            "input": 4,
+            "output": 18
+          },
+          "input": 2,
+          "output": 12
+        },
+        "family": "gemini-pro",
+        "id": "gemini-3-pro-preview",
+        "knowledge": "2025-01",
+        "last_updated": "2025-11-18",
+        "limit": {
+          "context": 1048576,
+          "output": 65536
+        },
+        "modalities": {
+          "input": [
+            "text",
+            "image",
+            "video",
+            "audio",
+            "pdf"
+          ],
+          "output": [
+            "text"
+          ]
+        },
+        "name": "Gemini 3 Pro Preview",
+        "open_weights": false,
+        "reasoning": true,
+        "release_date": "2025-11-18",
+        "structured_output": true,
         "temperature": true,
         "tool_call": true
       },
@@ -121605,6 +122343,169 @@
           ]
         },
         "name": "Gemini 2.5 Flash Preview 09-25",
+        "open_weights": false,
+        "reasoning": true,
+        "release_date": "2025-09-25",
+        "temperature": true,
+        "tool_call": true
+      },
+      "gemini-embedding-001": {
+        "attachment": false,
+        "cost": {
+          "input": 0.15,
+          "output": 0
+        },
+        "family": "gemini",
+        "id": "gemini-embedding-001",
+        "knowledge": "2025-05",
+        "last_updated": "2025-05-20",
+        "limit": {
+          "context": 2048,
+          "output": 3072
+        },
+        "modalities": {
+          "input": [
+            "text"
+          ],
+          "output": [
+            "text"
+          ]
+        },
+        "name": "Gemini Embedding 001",
+        "open_weights": false,
+        "reasoning": false,
+        "release_date": "2025-05-20",
+        "temperature": false,
+        "tool_call": false
+      },
+      "openai/gpt-oss-20b-maas": {
+        "attachment": false,
+        "cost": {
+          "input": 0.07,
+          "output": 0.25
+        },
+        "family": "gpt-oss",
+        "id": "openai/gpt-oss-20b-maas",
+        "last_updated": "2025-08-05",
+        "limit": {
+          "context": 131072,
+          "output": 32768
+        },
+        "modalities": {
+          "input": [
+            "text"
+          ],
+          "output": [
+            "text"
+          ]
+        },
+        "name": "GPT OSS 20B",
+        "open_weights": true,
+        "reasoning": true,
+        "release_date": "2025-08-05",
+        "temperature": true,
+        "tool_call": true
+      },
+      "claude-sonnet-4@20250514": {
+        "attachment": true,
+        "cost": {
+          "cache_read": 0.3,
+          "cache_write": 3.75,
+          "input": 3,
+          "output": 15
+        },
+        "family": "claude-sonnet",
+        "id": "claude-sonnet-4@20250514",
+        "knowledge": "2025-03-31",
+        "last_updated": "2025-05-22",
+        "limit": {
+          "context": 200000,
+          "output": 64000
+        },
+        "modalities": {
+          "input": [
+            "text",
+            "image",
+            "pdf"
+          ],
+          "output": [
+            "text"
+          ]
+        },
+        "name": "Claude Sonnet 4",
+        "open_weights": false,
+        "provider": {
+          "npm": "@ai-sdk/google-vertex/anthropic"
+        },
+        "reasoning": true,
+        "release_date": "2025-05-22",
+        "temperature": true,
+        "tool_call": true
+      },
+      "claude-3-5-haiku@20241022": {
+        "attachment": true,
+        "cost": {
+          "cache_read": 0.08,
+          "cache_write": 1,
+          "input": 0.8,
+          "output": 4
+        },
+        "family": "claude-haiku",
+        "id": "claude-3-5-haiku@20241022",
+        "knowledge": "2024-07-31",
+        "last_updated": "2024-10-22",
+        "limit": {
+          "context": 200000,
+          "output": 8192
+        },
+        "modalities": {
+          "input": [
+            "text",
+            "image",
+            "pdf"
+          ],
+          "output": [
+            "text"
+          ]
+        },
+        "name": "Claude Haiku 3.5",
+        "open_weights": false,
+        "provider": {
+          "npm": "@ai-sdk/google-vertex/anthropic"
+        },
+        "reasoning": false,
+        "release_date": "2024-10-22",
+        "temperature": true,
+        "tool_call": true
+      },
+      "gemini-2.5-flash-lite-preview-09-2025": {
+        "attachment": true,
+        "cost": {
+          "cache_read": 0.025,
+          "input": 0.1,
+          "output": 0.4
+        },
+        "family": "gemini-flash-lite",
+        "id": "gemini-2.5-flash-lite-preview-09-2025",
+        "knowledge": "2025-01",
+        "last_updated": "2025-09-25",
+        "limit": {
+          "context": 1048576,
+          "output": 65536
+        },
+        "modalities": {
+          "input": [
+            "text",
+            "image",
+            "audio",
+            "video",
+            "pdf"
+          ],
+          "output": [
+            "text"
+          ]
+        },
+        "name": "Gemini 2.5 Flash Lite Preview 09-25",
         "open_weights": false,
         "reasoning": true,
         "release_date": "2025-09-25",
@@ -121650,6 +122551,42 @@
         "temperature": true,
         "tool_call": true
       },
+      "claude-haiku-4-5@20251001": {
+        "attachment": true,
+        "cost": {
+          "cache_read": 0.1,
+          "cache_write": 1.25,
+          "input": 1,
+          "output": 5
+        },
+        "family": "claude-haiku",
+        "id": "claude-haiku-4-5@20251001",
+        "knowledge": "2025-02-28",
+        "last_updated": "2025-10-15",
+        "limit": {
+          "context": 200000,
+          "output": 64000
+        },
+        "modalities": {
+          "input": [
+            "text",
+            "image",
+            "pdf"
+          ],
+          "output": [
+            "text"
+          ]
+        },
+        "name": "Claude Haiku 4.5",
+        "open_weights": false,
+        "provider": {
+          "npm": "@ai-sdk/google-vertex/anthropic"
+        },
+        "reasoning": true,
+        "release_date": "2025-10-15",
+        "temperature": true,
+        "tool_call": true
+      },
       "gemini-2.5-pro-preview-05-06": {
         "attachment": true,
         "cost": {
@@ -121684,153 +122621,39 @@
         "temperature": true,
         "tool_call": true
       },
-      "gemini-2.5-pro-preview-06-05": {
+      "claude-3-7-sonnet@20250219": {
         "attachment": true,
         "cost": {
-          "cache_read": 0.31,
-          "input": 1.25,
-          "output": 10
+          "cache_read": 0.3,
+          "cache_write": 3.75,
+          "input": 3,
+          "output": 15
         },
-        "family": "gemini-pro",
-        "id": "gemini-2.5-pro-preview-06-05",
-        "knowledge": "2025-01",
-        "last_updated": "2025-06-05",
+        "family": "claude-sonnet",
+        "id": "claude-3-7-sonnet@20250219",
+        "knowledge": "2024-10-31",
+        "last_updated": "2025-02-19",
         "limit": {
-          "context": 1048576,
-          "output": 65536
+          "context": 200000,
+          "output": 64000
         },
         "modalities": {
           "input": [
             "text",
             "image",
-            "audio",
-            "video",
             "pdf"
           ],
           "output": [
             "text"
           ]
         },
-        "name": "Gemini 2.5 Pro Preview 06-05",
+        "name": "Claude Sonnet 3.7",
         "open_weights": false,
+        "provider": {
+          "npm": "@ai-sdk/google-vertex/anthropic"
+        },
         "reasoning": true,
-        "release_date": "2025-06-05",
-        "temperature": true,
-        "tool_call": true
-      },
-      "gemini-3-flash-preview": {
-        "attachment": true,
-        "cost": {
-          "cache_read": 0.05,
-          "context_over_200k": {
-            "cache_read": 0.05,
-            "input": 0.5,
-            "output": 3
-          },
-          "input": 0.5,
-          "output": 3
-        },
-        "family": "gemini-flash",
-        "id": "gemini-3-flash-preview",
-        "knowledge": "2025-01",
-        "last_updated": "2025-12-17",
-        "limit": {
-          "context": 1048576,
-          "output": 65536
-        },
-        "modalities": {
-          "input": [
-            "text",
-            "image",
-            "video",
-            "audio",
-            "pdf"
-          ],
-          "output": [
-            "text"
-          ]
-        },
-        "name": "Gemini 3 Flash Preview",
-        "open_weights": false,
-        "reasoning": true,
-        "release_date": "2025-12-17",
-        "structured_output": true,
-        "temperature": true,
-        "tool_call": true
-      },
-      "gemini-3-pro-preview": {
-        "attachment": true,
-        "cost": {
-          "cache_read": 0.2,
-          "context_over_200k": {
-            "cache_read": 0.4,
-            "input": 4,
-            "output": 18
-          },
-          "input": 2,
-          "output": 12
-        },
-        "family": "gemini-pro",
-        "id": "gemini-3-pro-preview",
-        "knowledge": "2025-01",
-        "last_updated": "2025-11-18",
-        "limit": {
-          "context": 1048576,
-          "output": 65536
-        },
-        "modalities": {
-          "input": [
-            "text",
-            "image",
-            "video",
-            "audio",
-            "pdf"
-          ],
-          "output": [
-            "text"
-          ]
-        },
-        "name": "Gemini 3 Pro Preview",
-        "open_weights": false,
-        "reasoning": true,
-        "release_date": "2025-11-18",
-        "structured_output": true,
-        "temperature": true,
-        "tool_call": true
-      },
-      "gemini-3.1-flash-lite-preview": {
-        "attachment": true,
-        "cost": {
-          "cache_read": 0.025,
-          "cache_write": 1,
-          "input": 0.25,
-          "output": 1.5
-        },
-        "family": "gemini-flash-lite",
-        "id": "gemini-3.1-flash-lite-preview",
-        "knowledge": "2025-01",
-        "last_updated": "2026-03-03",
-        "limit": {
-          "context": 1048576,
-          "output": 65536
-        },
-        "modalities": {
-          "input": [
-            "text",
-            "image",
-            "video",
-            "audio",
-            "pdf"
-          ],
-          "output": [
-            "text"
-          ]
-        },
-        "name": "Gemini 3.1 Flash Lite Preview",
-        "open_weights": false,
-        "reasoning": true,
-        "release_date": "2026-03-03",
-        "structured_output": true,
+        "release_date": "2025-02-19",
         "temperature": true,
         "tool_call": true
       },
@@ -121874,87 +122697,17 @@
         "temperature": true,
         "tool_call": true
       },
-      "gemini-3.1-pro-preview-customtools": {
+      "gemini-2.5-flash-preview-04-17": {
         "attachment": true,
         "cost": {
-          "cache_read": 0.2,
-          "context_over_200k": {
-            "cache_read": 0.4,
-            "input": 4,
-            "output": 18
-          },
-          "input": 2,
-          "output": 12
-        },
-        "family": "gemini-pro",
-        "id": "gemini-3.1-pro-preview-customtools",
-        "knowledge": "2025-01",
-        "last_updated": "2026-02-19",
-        "limit": {
-          "context": 1048576,
-          "output": 65536
-        },
-        "modalities": {
-          "input": [
-            "text",
-            "image",
-            "video",
-            "audio",
-            "pdf"
-          ],
-          "output": [
-            "text"
-          ]
-        },
-        "name": "Gemini 3.1 Pro Preview Custom Tools",
-        "open_weights": false,
-        "reasoning": true,
-        "release_date": "2026-02-19",
-        "structured_output": true,
-        "temperature": true,
-        "tool_call": true
-      },
-      "gemini-embedding-001": {
-        "attachment": false,
-        "cost": {
+          "cache_read": 0.0375,
           "input": 0.15,
-          "output": 0
-        },
-        "family": "gemini",
-        "id": "gemini-embedding-001",
-        "knowledge": "2025-05",
-        "last_updated": "2025-05-20",
-        "limit": {
-          "context": 2048,
-          "output": 3072
-        },
-        "modalities": {
-          "input": [
-            "text"
-          ],
-          "output": [
-            "text"
-          ]
-        },
-        "name": "Gemini Embedding 001",
-        "open_weights": false,
-        "reasoning": false,
-        "release_date": "2025-05-20",
-        "temperature": false,
-        "tool_call": false
-      },
-      "gemini-flash-latest": {
-        "attachment": true,
-        "cost": {
-          "cache_read": 0.075,
-          "cache_write": 0.383,
-          "input": 0.3,
-          "output": 2.5
+          "output": 0.6
         },
         "family": "gemini-flash",
-        "id": "gemini-flash-latest",
+        "id": "gemini-2.5-flash-preview-04-17",
         "knowledge": "2025-01",
-        "last_updated": "2025-09-25",
+        "last_updated": "2025-04-17",
         "limit": {
           "context": 1048576,
           "output": 65536
@@ -121971,150 +122724,10 @@
             "text"
           ]
         },
-        "name": "Gemini Flash Latest",
+        "name": "Gemini 2.5 Flash Preview 04-17",
         "open_weights": false,
         "reasoning": true,
-        "release_date": "2025-09-25",
-        "temperature": true,
-        "tool_call": true
-      },
-      "gemini-flash-lite-latest": {
-        "attachment": true,
-        "cost": {
-          "cache_read": 0.025,
-          "input": 0.1,
-          "output": 0.4
-        },
-        "family": "gemini-flash-lite",
-        "id": "gemini-flash-lite-latest",
-        "knowledge": "2025-01",
-        "last_updated": "2025-09-25",
-        "limit": {
-          "context": 1048576,
-          "output": 65536
-        },
-        "modalities": {
-          "input": [
-            "text",
-            "image",
-            "audio",
-            "video",
-            "pdf"
-          ],
-          "output": [
-            "text"
-          ]
-        },
-        "name": "Gemini Flash-Lite Latest",
-        "open_weights": false,
-        "reasoning": true,
-        "release_date": "2025-09-25",
-        "temperature": true,
-        "tool_call": true
-      },
-      "meta/llama-3.3-70b-instruct-maas": {
-        "attachment": false,
-        "cost": {
-          "input": 0.72,
-          "output": 0.72
-        },
-        "family": "llama",
-        "id": "meta/llama-3.3-70b-instruct-maas",
-        "knowledge": "2023-12",
-        "last_updated": "2025-04-29",
-        "limit": {
-          "context": 128000,
-          "output": 8192
-        },
-        "modalities": {
-          "input": [
-            "text"
-          ],
-          "output": [
-            "text"
-          ]
-        },
-        "name": "Llama 3.3 70B Instruct",
-        "open_weights": true,
-        "provider": {
-          "api": "https://${GOOGLE_VERTEX_ENDPOINT}/v1/projects/${GOOGLE_VERTEX_PROJECT}/locations/${GOOGLE_VERTEX_LOCATION}/endpoints/openapi",
-          "npm": "@ai-sdk/openai-compatible"
-        },
-        "reasoning": false,
-        "release_date": "2025-04-29",
-        "structured_output": true,
-        "temperature": true,
-        "tool_call": true
-      },
-      "meta/llama-4-maverick-17b-128e-instruct-maas": {
-        "attachment": true,
-        "cost": {
-          "input": 0.35,
-          "output": 1.15
-        },
-        "family": "llama",
-        "id": "meta/llama-4-maverick-17b-128e-instruct-maas",
-        "knowledge": "2024-08",
-        "last_updated": "2025-04-29",
-        "limit": {
-          "context": 524288,
-          "output": 8192
-        },
-        "modalities": {
-          "input": [
-            "text",
-            "image"
-          ],
-          "output": [
-            "text"
-          ]
-        },
-        "name": "Llama 4 Maverick 17B 128E Instruct",
-        "open_weights": true,
-        "provider": {
-          "api": "https://${GOOGLE_VERTEX_ENDPOINT}/v1/projects/${GOOGLE_VERTEX_PROJECT}/locations/${GOOGLE_VERTEX_LOCATION}/endpoints/openapi",
-          "npm": "@ai-sdk/openai-compatible"
-        },
-        "reasoning": false,
-        "release_date": "2025-04-29",
-        "structured_output": true,
-        "temperature": true,
-        "tool_call": true
-      },
-      "moonshotai/kimi-k2-thinking-maas": {
-        "attachment": false,
-        "cost": {
-          "input": 0.6,
-          "output": 2.5
-        },
-        "family": "kimi-thinking",
-        "id": "moonshotai/kimi-k2-thinking-maas",
-        "interleaved": {
-          "field": "reasoning_content"
-        },
-        "knowledge": "2024-08",
-        "last_updated": "2025-11-13",
-        "limit": {
-          "context": 262144,
-          "output": 262144
-        },
-        "modalities": {
-          "input": [
-            "text"
-          ],
-          "output": [
-            "text"
-          ]
-        },
-        "name": "Kimi K2 Thinking",
-        "open_weights": true,
-        "provider": {
-          "api": "https://${GOOGLE_VERTEX_ENDPOINT}/v1/projects/${GOOGLE_VERTEX_PROJECT}/locations/${GOOGLE_VERTEX_LOCATION}/endpoints/openapi",
-          "npm": "@ai-sdk/openai-compatible"
-        },
-        "reasoning": true,
-        "release_date": "2025-11-13",
-        "structured_output": true,
+        "release_date": "2025-04-17",
         "temperature": true,
         "tool_call": true
       },
@@ -122146,138 +122759,73 @@
         "temperature": true,
         "tool_call": true
       },
-      "openai/gpt-oss-20b-maas": {
-        "attachment": false,
+      "gemini-2.5-flash-lite-preview-06-17": {
+        "attachment": true,
         "cost": {
-          "input": 0.07,
-          "output": 0.25
+          "cache_read": 0.025,
+          "input": 0.1,
+          "output": 0.4
         },
-        "family": "gpt-oss",
-        "id": "openai/gpt-oss-20b-maas",
-        "last_updated": "2025-08-05",
+        "family": "gemini-flash-lite",
+        "id": "gemini-2.5-flash-lite-preview-06-17",
+        "knowledge": "2025-01",
+        "last_updated": "2025-06-17",
         "limit": {
-          "context": 131072,
-          "output": 32768
-        },
-        "modalities": {
-          "input": [
-            "text"
-          ],
-          "output": [
-            "text"
-          ]
-        },
-        "name": "GPT OSS 20B",
-        "open_weights": true,
-        "reasoning": true,
-        "release_date": "2025-08-05",
-        "temperature": true,
-        "tool_call": true
-      },
-      "qwen/qwen3-235b-a22b-instruct-2507-maas": {
-        "attachment": false,
-        "cost": {
-          "input": 0.22,
-          "output": 0.88
-        },
-        "family": "qwen",
-        "id": "qwen/qwen3-235b-a22b-instruct-2507-maas",
-        "last_updated": "2025-08-13",
-        "limit": {
-          "context": 262144,
-          "output": 16384
-        },
-        "modalities": {
-          "input": [
-            "text"
-          ],
-          "output": [
-            "text"
-          ]
-        },
-        "name": "Qwen3 235B A22B Instruct",
-        "open_weights": true,
-        "provider": {
-          "api": "https://${GOOGLE_VERTEX_ENDPOINT}/v1/projects/${GOOGLE_VERTEX_PROJECT}/locations/${GOOGLE_VERTEX_LOCATION}/endpoints/openapi",
-          "npm": "@ai-sdk/openai-compatible"
-        },
-        "reasoning": true,
-        "release_date": "2025-08-13",
-        "structured_output": true,
-        "temperature": true,
-        "tool_call": true
-      },
-      "zai-org/glm-4.7-maas": {
-        "attachment": false,
-        "cost": {
-          "input": 0.6,
-          "output": 2.2
-        },
-        "family": "glm",
-        "id": "zai-org/glm-4.7-maas",
-        "interleaved": {
-          "field": "reasoning_content"
-        },
-        "knowledge": "2025-04",
-        "last_updated": "2026-01-06",
-        "limit": {
-          "context": 200000,
-          "output": 128000
+          "context": 65536,
+          "output": 65536
         },
         "modalities": {
           "input": [
             "text",
+            "image",
+            "audio",
+            "video",
             "pdf"
           ],
           "output": [
             "text"
           ]
         },
-        "name": "GLM-4.7",
-        "open_weights": true,
-        "provider": {
-          "api": "https://${GOOGLE_VERTEX_ENDPOINT}/v1/projects/${GOOGLE_VERTEX_PROJECT}/locations/${GOOGLE_VERTEX_LOCATION}/endpoints/openapi",
-          "npm": "@ai-sdk/openai-compatible"
-        },
+        "name": "Gemini 2.5 Flash Lite Preview 06-17",
+        "open_weights": false,
         "reasoning": true,
-        "release_date": "2026-01-06",
-        "structured_output": true,
+        "release_date": "2025-06-17",
         "temperature": true,
         "tool_call": true
       },
-      "zai-org/glm-5-maas": {
-        "attachment": false,
+      "claude-opus-4-1@20250805": {
+        "attachment": true,
         "cost": {
-          "cache_read": 0.1,
-          "input": 1,
-          "output": 3.2
+          "cache_read": 1.5,
+          "cache_write": 18.75,
+          "input": 15,
+          "output": 75
         },
-        "family": "glm",
-        "id": "zai-org/glm-5-maas",
-        "interleaved": {
-          "field": "reasoning_content"
-        },
-        "last_updated": "2026-02-11",
+        "family": "claude-opus",
+        "id": "claude-opus-4-1@20250805",
+        "knowledge": "2025-03-31",
+        "last_updated": "2025-08-05",
         "limit": {
-          "context": 202752,
-          "output": 131072
+          "context": 200000,
+          "output": 32000
         },
         "modalities": {
           "input": [
-            "text"
+            "text",
+            "image",
+            "pdf"
           ],
           "output": [
             "text"
           ]
         },
-        "name": "GLM-5",
-        "open_weights": true,
+        "name": "Claude Opus 4.1",
+        "open_weights": false,
         "provider": {
-          "api": "https://${GOOGLE_VERTEX_ENDPOINT}/v1/projects/${GOOGLE_VERTEX_PROJECT}/locations/${GOOGLE_VERTEX_LOCATION}/endpoints/openapi",
-          "npm": "@ai-sdk/openai-compatible"
+          "npm": "@ai-sdk/google-vertex/anthropic"
         },
         "reasoning": true,
-        "release_date": "2026-02-11",
+        "release_date": "2025-08-05",
         "temperature": true,
         "tool_call": true
       }
@@ -122815,7 +123363,10 @@
         },
         "modalities": {
           "input": [
-            "text"
+            "text",
+            "image",
+            "audio",
+            "video"
           ],
           "output": [
             "text"
@@ -122918,11 +123469,7 @@
         },
         "modalities": {
           "input": [
-            "text",
-            "image",
-            "audio",
-            "video",
-            "pdf"
+            "text"
           ],
           "output": [
             "text"
@@ -126705,7 +127252,8 @@
           "input": [
             "text",
             "image",
-            "pdf"
+            "audio",
+            "video"
           ],
           "output": [
             "text"
@@ -126873,9 +127421,7 @@
         },
         "modalities": {
           "input": [
-            "text",
-            "image",
-            "pdf"
+            "text"
           ],
           "output": [
             "text"
@@ -133777,7 +134323,7 @@
         "family": "claude-sonnet",
         "id": "claude-sonnet-4-6@default",
         "knowledge": "2025-08-31",
-        "last_updated": "2026-02-17",
+        "last_updated": "2026-03-13",
         "limit": {
           "context": 200000,
           "output": 64000
