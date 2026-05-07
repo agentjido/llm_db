@@ -1,0 +1,29 @@
+id = "grok-4.20-non-reasoning"
+name = "Grok 4.20 Non-Reasoning"
+provider_model_id = "grok-4.20-non-reasoning"
+release_date = "2026-03-09"
+last_updated = "2026-05-07"
+
+[limits]
+context = 2000000
+output = 30000
+
+[cost]
+input = 2
+output = 6
+cache_read = 0.2
+
+[modalities]
+input = ["text", "image"]
+output = ["text"]
+
+[capabilities.reasoning]
+enabled = false
+
+[capabilities.tools]
+enabled = true
+
+[extra]
+attachment = true
+open_weights = false
+temperature = true

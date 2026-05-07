@@ -19,10 +19,16 @@ input = ["text"]
 output = ["text"]
 
 [capabilities.reasoning]
-enabled = false
+enabled = true
 
 [capabilities.tools]
 enabled = true
+
+[lifecycle]
+status = "deprecated"
+deprecated_at = "2026-05-07"
+retires_at = "2026-05-15T19:00:00Z"
+replacement = "grok-4.3"
 
 [extra]
 attachment = false
