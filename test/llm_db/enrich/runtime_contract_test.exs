@@ -160,6 +160,47 @@ defmodule LLMDB.Enrich.RuntimeContractTest do
       assert enriched.capabilities.streaming.text == false
     end
 
+    test "derives embed execution for openrouter model with :embeddings plural in output modalities" do
+      provider =
+        Provider.new!(%{id: :openrouter, env: ["OPENROUTER_API_KEY"]})
+        |> RuntimeContract.enrich_provider()
+
+      model =
+        Model.new!(%{
+          id: "baai/bge-m3",
+          provider: :openrouter,
+          modalities: %{input: [:text], output: [:embeddings]}
+        })
+
+      enriched = RuntimeContract.enrich_model(model, provider)
+
+      assert enriched.catalog_only == false
+      assert Map.has_key?(enriched.execution, :embed)
+      assert enriched.execution.embed.family == "openai_embeddings"
+      refute Map.has_key?(enriched.execution, :text)
+      refute Map.has_key?(enriched.execution, :object)
+    end
+
+    test "derives embed execution for openrouter model with :embedding singular in output modalities" do
+      provider =
+        Provider.new!(%{id: :openrouter, env: ["OPENROUTER_API_KEY"]})
+        |> RuntimeContract.enrich_provider()
+
+      model =
+        Model.new!(%{
+          id: "openai/text-embedding-ada-002",
+          provider: :openrouter,
+          modalities: %{input: [:text], output: [:embedding]}
+        })
+
+      enriched = RuntimeContract.enrich_model(model, provider)
+
+      assert enriched.catalog_only == false
+      assert Map.has_key?(enriched.execution, :embed)
+      assert enriched.execution.embed.family == "openai_embeddings"
+      refute Map.has_key?(enriched.execution, :text)
+    end
+
     test "derives rerank capability metadata from reranker ids on catalog-only providers" do
       provider =
         Provider.new!(%{id: :berget})

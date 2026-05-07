@@ -423,6 +423,14 @@ defmodule LLMDB.Sources.OpenRouter do
         capabilities
       end
 
+    capabilities =
+      if is_list(get_in(source, ["architecture", "output_modalities"])) and
+           "embedding" in get_in(source, ["architecture", "output_modalities"]) do
+        Map.put(capabilities, :embeddings, true)
+      else
+        capabilities
+      end
+
     if map_size(capabilities) > 0 do
       Map.put(model, :capabilities, capabilities)
     else
