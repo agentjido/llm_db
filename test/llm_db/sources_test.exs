@@ -151,6 +151,20 @@ defmodule LLMDB.SourcesTest do
       assert embeddings[:default_dimensions] == 1536
     end
 
+    test "google/gemini-embedding-001 has flexible dimensions up to 3072" do
+      {:ok, data} = Local.load(%{dir: "priv/llm_db/local"})
+
+      model =
+        data["openrouter"].models
+        |> Enum.find(&(&1.id == "google/gemini-embedding-001"))
+
+      assert model
+      embeddings = get_in(model, [:capabilities, :embeddings])
+      assert embeddings[:min_dimensions] == 128
+      assert embeddings[:max_dimensions] == 3072
+      assert embeddings[:default_dimensions] == 3072
+    end
+
     test "baai/bge-m3 has correct fixed dimensions" do
       {:ok, data} = Local.load(%{dir: "priv/llm_db/local"})
       model = Enum.find(data["openrouter"].models, &(&1.id == "baai/bge-m3"))
