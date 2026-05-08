@@ -121,6 +121,107 @@ defmodule LLMDB.SourcesTest do
     end
   end
 
+  describe "OpenRouter embedding dimension overlays" do
+    test "openai/text-embedding-3-large has correct dimension range" do
+      {:ok, data} = Local.load(%{dir: "priv/llm_db/local"})
+      openrouter = data["openrouter"]
+      assert openrouter, "openrouter provider should be present in local overlays"
+
+      model = Enum.find(openrouter.models, fn m -> m.id == "openai/text-embedding-3-large" end)
+      assert model, "openai/text-embedding-3-large overlay should exist"
+
+      embeddings = get_in(model, [:capabilities, :embeddings])
+      assert is_map(embeddings), "capabilities.embeddings should be a map"
+      assert embeddings[:min_dimensions] == 1
+      assert embeddings[:max_dimensions] == 3072
+      assert embeddings[:default_dimensions] == 3072
+    end
+
+    test "openai/text-embedding-3-small has correct dimension range" do
+      {:ok, data} = Local.load(%{dir: "priv/llm_db/local"})
+
+      model =
+        data["openrouter"].models
+        |> Enum.find(&(&1.id == "openai/text-embedding-3-small"))
+
+      assert model
+      embeddings = get_in(model, [:capabilities, :embeddings])
+      assert embeddings[:min_dimensions] == 1
+      assert embeddings[:max_dimensions] == 1536
+      assert embeddings[:default_dimensions] == 1536
+    end
+
+    test "google/gemini-embedding-001 has flexible dimensions up to 3072" do
+      {:ok, data} = Local.load(%{dir: "priv/llm_db/local"})
+
+      model =
+        data["openrouter"].models
+        |> Enum.find(&(&1.id == "google/gemini-embedding-001"))
+
+      assert model
+      embeddings = get_in(model, [:capabilities, :embeddings])
+      assert embeddings[:min_dimensions] == 128
+      assert embeddings[:max_dimensions] == 3072
+      assert embeddings[:default_dimensions] == 3072
+    end
+
+    test "baai/bge-m3 has correct fixed dimensions" do
+      {:ok, data} = Local.load(%{dir: "priv/llm_db/local"})
+      model = Enum.find(data["openrouter"].models, &(&1.id == "baai/bge-m3"))
+
+      assert model
+      embeddings = get_in(model, [:capabilities, :embeddings])
+      assert embeddings[:min_dimensions] == 1024
+      assert embeddings[:max_dimensions] == 1024
+      assert embeddings[:default_dimensions] == 1024
+    end
+
+    test "all 25 openrouter embedding overlays have required dimension fields" do
+      {:ok, data} = Local.load(%{dir: "priv/llm_db/local"})
+
+      expected_ids = ~w[
+        openai/text-embedding-3-large
+        openai/text-embedding-3-small
+        openai/text-embedding-ada-002
+        baai/bge-m3
+        baai/bge-base-en-v1.5
+        baai/bge-large-en-v1.5
+        google/gemini-embedding-001
+        google/gemini-embedding-2-preview
+        intfloat/e5-base-v2
+        intfloat/e5-large-v2
+        intfloat/multilingual-e5-large
+        mistralai/codestral-embed-2505
+        mistralai/mistral-embed-2312
+        nvidia/llama-nemotron-embed-vl-1b-v2:free
+        perplexity/pplx-embed-v1-0.6b
+        perplexity/pplx-embed-v1-4b
+        qwen/qwen3-embedding-4b
+        qwen/qwen3-embedding-8b
+        sentence-transformers/all-minilm-l12-v2
+        sentence-transformers/all-minilm-l6-v2
+        sentence-transformers/all-mpnet-base-v2
+        sentence-transformers/multi-qa-mpnet-base-dot-v1
+        sentence-transformers/paraphrase-minilm-l6-v2
+        thenlper/gte-base
+        thenlper/gte-large
+      ]
+
+      models_by_id = Map.new(data["openrouter"].models, &{&1.id, &1})
+
+      Enum.each(expected_ids, fn id ->
+        model = models_by_id[id]
+        assert model, "overlay for #{id} should be present"
+
+        embeddings = get_in(model, [:capabilities, :embeddings])
+        assert is_map(embeddings), "#{id} should have capabilities.embeddings map"
+        assert is_integer(embeddings[:min_dimensions]), "#{id} should have min_dimensions"
+        assert is_integer(embeddings[:max_dimensions]), "#{id} should have max_dimensions"
+        assert is_integer(embeddings[:default_dimensions]), "#{id} should have default_dimensions"
+      end)
+    end
+  end
+
   describe "Source behavior contract" do
     test "all sources return {:ok, data} format with nested structure" do
       # Config

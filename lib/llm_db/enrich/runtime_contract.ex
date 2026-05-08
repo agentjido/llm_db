@@ -680,7 +680,7 @@ defmodule LLMDB.Enrich.RuntimeContract do
   defp text_output?(_model), do: false
 
   defp embedding_model?(%Model{modalities: %{output: output}}) when is_list(output),
-    do: :embedding in output
+    do: :embedding in output or :embeddings in output
 
   defp embedding_model?(%Model{capabilities: capabilities}) when is_map(capabilities) do
     case Map.get(capabilities, :embeddings) do

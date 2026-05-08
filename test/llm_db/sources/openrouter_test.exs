@@ -304,6 +304,98 @@ defmodule LLMDB.Sources.OpenRouterTest do
     end
   end
 
+  describe "output_modalities embedding detection" do
+    test "sets embeddings capability when output_modalities contains 'embedding'" do
+      input = %{
+        "data" => [
+          %{
+            "id" => "baai/bge-m3",
+            "name" => "BGE-M3",
+            "architecture" => %{
+              "modality" => "text->text",
+              "output_modalities" => ["embedding"]
+            }
+          }
+        ]
+      }
+
+      result = OpenRouter.transform(input)
+      model = hd(result["openrouter"][:models])
+
+      assert model[:capabilities][:embeddings] == true
+    end
+
+    test "does not set embeddings capability when output_modalities lacks 'embedding'" do
+      input = %{
+        "data" => [
+          %{
+            "id" => "openai/gpt-4",
+            "name" => "GPT-4",
+            "architecture" => %{
+              "modality" => "text->text",
+              "output_modalities" => ["text"]
+            }
+          }
+        ]
+      }
+
+      result = OpenRouter.transform(input)
+      model = hd(result["openrouter"][:models])
+
+      refute get_in(model, [:capabilities, :embeddings])
+    end
+
+    test "does not set embeddings capability when architecture has no output_modalities" do
+      input = %{
+        "data" => [
+          %{
+            "id" => "openai/gpt-4",
+            "name" => "GPT-4",
+            "architecture" => %{"modality" => "text->text"}
+          }
+        ]
+      }
+
+      result = OpenRouter.transform(input)
+      model = hd(result["openrouter"][:models])
+
+      refute get_in(model, [:capabilities, :embeddings])
+    end
+
+    test "does not set embeddings capability when architecture is nil" do
+      input = %{
+        "data" => [%{"id" => "openai/gpt-4", "name" => "GPT-4"}]
+      }
+
+      result = OpenRouter.transform(input)
+      model = hd(result["openrouter"][:models])
+
+      refute get_in(model, [:capabilities, :embeddings])
+    end
+
+    test "sets both tools and embeddings capabilities together" do
+      input = %{
+        "data" => [
+          %{
+            "id" => "some/embed-tools-model",
+            "name" => "Embed Tools Model",
+            "architecture" => %{
+              "modality" => "text->text",
+              "output_modalities" => ["embedding"]
+            },
+            "supported_parameters" => ["tools"]
+          }
+        ]
+      }
+
+      result = OpenRouter.transform(input)
+      model = hd(result["openrouter"][:models])
+
+      assert model[:capabilities][:embeddings] == true
+      assert model[:capabilities][:tools][:enabled] == true
+    end
+  end
+
   describe "transform/1" do
     test "transforms minimal model correctly" do
       input = %{
