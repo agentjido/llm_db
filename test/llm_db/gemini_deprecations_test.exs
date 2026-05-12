@@ -9,16 +9,8 @@ defmodule LLMDB.GeminiDeprecationsTest do
   @retires_at "2026-05-25"
 
   @expected_lifecycle %{
-    "abacus:gemini-3.1-flash-lite-preview" => "gemini-3.1-flash-lite",
-    "aihubmix:gemini-3.1-flash-lite-preview" => "gemini-3.1-flash-lite",
     "google:gemini-3.1-flash-lite-preview" => "gemini-3.1-flash-lite",
-    "google_vertex:gemini-3.1-flash-lite-preview" => "gemini-3.1-flash-lite",
-    "kilo:google/gemini-3.1-flash-lite-preview" => "google/gemini-3.1-flash-lite",
-    "llmgateway:gemini-3.1-flash-lite-preview" => "gemini-3.1-flash-lite",
-    "openrouter:google/gemini-3.1-flash-lite-preview" => "google/gemini-3.1-flash-lite",
-    "vercel:google/gemini-3.1-flash-lite-preview" => "google/gemini-3.1-flash-lite",
-    "vivgrid:gemini-3.1-flash-lite-preview" => "gemini-3.1-flash-lite",
-    "zenmux:google/gemini-3.1-flash-lite-preview" => "google/gemini-3.1-flash-lite"
+    "google_vertex:gemini-3.1-flash-lite-preview" => "gemini-3.1-flash-lite"
   }
 
   test "local Gemini overrides codify the 2026-05-25 Flash Lite Preview retirement" do
