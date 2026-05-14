@@ -1683,6 +1683,56 @@
         "tokenizer": "DeepSeek"
       },
       "canonical_slug": "deepseek/deepseek-v4-flash-20260423",
+      "context_length": 256000,
+      "created": 1777000666,
+      "default_parameters": {
+        "frequency_penalty": null,
+        "presence_penalty": null,
+        "repetition_penalty": null,
+        "temperature": null,
+        "top_k": null,
+        "top_p": null
+      },
+      "description": "DeepSeek V4 Flash is an efficiency-optimized Mixture-of-Experts model from DeepSeek with 284B total parameters and 13B activated parameters, supporting a 1M-token context window. It is designed for fast inference and...",
+      "expiration_date": null,
+      "hugging_face_id": "deepseek-ai/DeepSeek-V4-Flash",
+      "id": "deepseek/deepseek-v4-flash:free",
+      "knowledge_cutoff": null,
+      "links": {
+        "details": "/api/v1/models/deepseek/deepseek-v4-flash-20260423/endpoints"
+      },
+      "name": "DeepSeek: DeepSeek V4 Flash (free)",
+      "per_request_limits": null,
+      "pricing": {
+        "completion": "0",
+        "prompt": "0"
+      },
+      "supported_parameters": [
+        "include_reasoning",
+        "reasoning",
+        "tool_choice",
+        "tools"
+      ],
+      "supported_voices": null,
+      "top_provider": {
+        "context_length": 256000,
+        "is_moderated": false,
+        "max_completion_tokens": 256000
+      }
+    },
+    {
+      "architecture": {
+        "input_modalities": [
+          "text"
+        ],
+        "instruct_type": null,
+        "modality": "text->text",
+        "output_modalities": [
+          "text"
+        ],
+        "tokenizer": "DeepSeek"
+      },
+      "canonical_slug": "deepseek/deepseek-v4-flash-20260423",
       "context_length": 1048576,
       "created": 1777000666,
       "default_parameters": {
@@ -1704,9 +1754,9 @@
       "name": "DeepSeek: DeepSeek V4 Flash",
       "per_request_limits": null,
       "pricing": {
-        "completion": "0.00000028",
-        "input_cache_read": "0.0000000028",
-        "prompt": "0.00000014"
+        "completion": "0.000000252",
+        "input_cache_read": "0.0000000252",
+        "prompt": "0.000000126"
       },
       "supported_parameters": [
         "frequency_penalty",
@@ -1733,7 +1783,7 @@
       "top_provider": {
         "context_length": 1048576,
         "is_moderated": false,
-        "max_completion_tokens": 384000
+        "max_completion_tokens": 131072
       }
     },
     {
@@ -4247,7 +4297,7 @@
       "supported_voices": null,
       "top_provider": {
         "context_length": 128000,
-        "is_moderated": true,
+        "is_moderated": false,
         "max_completion_tokens": 16384
       }
     },
@@ -9660,7 +9710,7 @@
         "tokenizer": "Other"
       },
       "canonical_slug": "z-ai/glm-4.6",
-      "context_length": 204800,
+      "context_length": 202752,
       "created": 1759235576,
       "default_parameters": {
         "frequency_penalty": null,
@@ -9671,7 +9721,7 @@
         "top_p": null
       },
       "description": "Compared with GLM-4.5, this generation brings several key improvements: Longer context window: The context window has been expanded from 128K to 200K tokens, enabling the model to handle more complex...",
-      "expiration_date": "2026-05-14",
+      "expiration_date": null,
       "hugging_face_id": "zai-org/GLM-4.6",
       "id": "z-ai/glm-4.6",
       "knowledge_cutoff": "2025-03-31",
@@ -9681,8 +9731,9 @@
       "name": "Z.ai: GLM 4.6",
       "per_request_limits": null,
       "pricing": {
-        "completion": "0.0000019",
-        "prompt": "0.00000039"
+        "completion": "0.00000174",
+        "input_cache_read": "0.00000008",
+        "prompt": "0.00000043"
       },
       "supported_parameters": [
         "frequency_penalty",
@@ -9705,9 +9756,9 @@
       ],
       "supported_voices": null,
       "top_provider": {
-        "context_length": 204800,
+        "context_length": 202752,
         "is_moderated": false,
-        "max_completion_tokens": 204800
+        "max_completion_tokens": 131072
       }
     },
     {
@@ -10915,7 +10966,7 @@
       "created": 1757021147,
       "default_parameters": {},
       "description": "Kimi K2 0905 is the September update of [Kimi K2 0711](moonshotai/kimi-k2). It is a large-scale Mixture-of-Experts (MoE) language model developed by Moonshot AI, featuring 1 trillion total parameters with 32...",
-      "expiration_date": "2026-05-14",
+      "expiration_date": null,
       "hugging_face_id": "moonshotai/Kimi-K2-Instruct-0905",
       "id": "moonshotai/kimi-k2-0905",
       "knowledge_cutoff": "2024-12-31",
@@ -10925,8 +10976,8 @@
       "name": "MoonshotAI: Kimi K2 0905",
       "per_request_limits": null,
       "pricing": {
-        "completion": "0.000002",
-        "prompt": "0.0000004"
+        "completion": "0.0000025",
+        "prompt": "0.0000006"
       },
       "supported_parameters": [
         "frequency_penalty",
