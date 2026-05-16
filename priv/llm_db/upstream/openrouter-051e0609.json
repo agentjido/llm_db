@@ -143,16 +143,17 @@
       "description": "Ring-2.6-1T is a 1T-parameter-scale thinking model with 63B active parameters, built for real-world agent workflows that require both strong capability and operational efficiency. It is optimized for coding agents, tool...",
       "expiration_date": null,
       "hugging_face_id": null,
-      "id": "inclusionai/ring-2.6-1t:free",
+      "id": "inclusionai/ring-2.6-1t",
       "knowledge_cutoff": null,
       "links": {
         "details": "/api/v1/models/inclusionai/ring-2.6-1t-20260508/endpoints"
       },
-      "name": "inclusionAI: Ring-2.6-1T (free)",
+      "name": "inclusionAI: Ring-2.6-1T",
       "per_request_limits": null,
       "pricing": {
-        "completion": "0",
-        "prompt": "0"
+        "completion": "0.000000625",
+        "input_cache_read": "0.000000015",
+        "prompt": "0.000000075"
       },
       "supported_parameters": [
         "frequency_penalty",
@@ -161,6 +162,7 @@
         "presence_penalty",
         "reasoning",
         "repetition_penalty",
+        "response_format",
         "seed",
         "stop",
         "temperature",
@@ -956,7 +958,7 @@
         "tokenizer": "Router"
       },
       "canonical_slug": "~moonshotai/kimi-latest",
-      "context_length": 262142,
+      "context_length": 262144,
       "created": 1777318428,
       "default_parameters": {
         "frequency_penalty": null,
@@ -1755,9 +1757,9 @@
       "name": "DeepSeek: DeepSeek V4 Flash",
       "per_request_limits": null,
       "pricing": {
-        "completion": "0.000000252",
-        "input_cache_read": "0.0000000252",
-        "prompt": "0.000000126"
+        "completion": "0.000000224",
+        "input_cache_read": "0.000000022",
+        "prompt": "0.000000112"
       },
       "supported_parameters": [
         "frequency_penalty",
@@ -1782,9 +1784,9 @@
       ],
       "supported_voices": null,
       "top_provider": {
-        "context_length": 1048576,
+        "context_length": 1048575,
         "is_moderated": false,
-        "max_completion_tokens": 131072
+        "max_completion_tokens": null
       }
     },
     {
@@ -2329,7 +2331,7 @@
         "tokenizer": "Other"
       },
       "canonical_slug": "moonshotai/kimi-k2.6-20260420",
-      "context_length": 262142,
+      "context_length": 262144,
       "created": 1776699402,
       "default_parameters": {
         "frequency_penalty": null,
@@ -3531,7 +3533,7 @@
         "tokenizer": "Other"
       },
       "canonical_slug": "minimax/minimax-m2.7-20260318",
-      "context_length": 196608,
+      "context_length": 204800,
       "created": 1773836697,
       "default_parameters": {
         "frequency_penalty": null,
@@ -3839,7 +3841,7 @@
         "tokenizer": "Other"
       },
       "canonical_slug": "nvidia/nemotron-3-super-120b-a12b-20230311",
-      "context_length": 262144,
+      "context_length": 1000000,
       "created": 1773245239,
       "default_parameters": {
         "frequency_penalty": null,
@@ -3895,7 +3897,7 @@
         "tokenizer": "Other"
       },
       "canonical_slug": "nvidia/nemotron-3-super-120b-a12b-20230311",
-      "context_length": 262144,
+      "context_length": 1000000,
       "created": 1773245239,
       "default_parameters": {
         "frequency_penalty": null,
@@ -4440,7 +4442,7 @@
         "tokenizer": "Gemini"
       },
       "canonical_slug": "google/gemini-3.1-flash-image-preview-20260226",
-      "context_length": 65536,
+      "context_length": 131072,
       "created": 1772119558,
       "default_parameters": {
         "frequency_penalty": null,
@@ -4755,7 +4757,7 @@
         "tokenizer": "Other"
       },
       "canonical_slug": "liquid/lfm-2-24b-a2b-20260224",
-      "context_length": 32768,
+      "context_length": 128000,
       "created": 1772048711,
       "default_parameters": {
         "frequency_penalty": null,
@@ -4815,7 +4817,7 @@
         "tokenizer": "Gemini"
       },
       "canonical_slug": "google/gemini-3.1-pro-preview-customtools-20260219",
-      "context_length": 1048576,
+      "context_length": 1048756,
       "created": 1772045923,
       "default_parameters": {
         "frequency_penalty": null,
@@ -5239,7 +5241,7 @@
         "tokenizer": "Other"
       },
       "canonical_slug": "minimax/minimax-m2.5-20260211",
-      "context_length": 196608,
+      "context_length": 204800,
       "created": 1770908502,
       "default_parameters": {
         "frequency_penalty": null,
@@ -5293,7 +5295,7 @@
         "tokenizer": "Other"
       },
       "canonical_slug": "minimax/minimax-m2.5-20260211",
-      "context_length": 196608,
+      "context_length": 204800,
       "created": 1770908502,
       "default_parameters": {
         "frequency_penalty": null,
@@ -6442,7 +6444,7 @@
         "tokenizer": "Other"
       },
       "canonical_slug": "minimax/minimax-m2.1",
-      "context_length": 196608,
+      "context_length": 204800,
       "created": 1766454997,
       "default_parameters": {
         "frequency_penalty": null,
@@ -8031,68 +8033,6 @@
     {
       "architecture": {
         "input_modalities": [
-          "text",
-          "image",
-          "file"
-        ],
-        "instruct_type": null,
-        "modality": "text+image+file->text",
-        "output_modalities": [
-          "text"
-        ],
-        "tokenizer": "Grok"
-      },
-      "canonical_slug": "x-ai/grok-4.1-fast",
-      "context_length": 2000000,
-      "created": 1763587502,
-      "default_parameters": {
-        "frequency_penalty": null,
-        "presence_penalty": null,
-        "repetition_penalty": null,
-        "temperature": 0.7,
-        "top_k": null,
-        "top_p": 0.95
-      },
-      "description": "Grok 4.1 Fast is xAI's best agentic tool calling model that shines in real-world use cases like customer support and deep research. 2M context window. Reasoning can be enabled/disabled using...",
-      "expiration_date": "2026-05-15",
-      "hugging_face_id": "",
-      "id": "x-ai/grok-4.1-fast",
-      "knowledge_cutoff": null,
-      "links": {
-        "details": "/api/v1/models/x-ai/grok-4.1-fast/endpoints"
-      },
-      "name": "xAI: Grok 4.1 Fast",
-      "per_request_limits": null,
-      "pricing": {
-        "completion": "0.0000005",
-        "input_cache_read": "0.00000005",
-        "prompt": "0.0000002",
-        "web_search": "0.005"
-      },
-      "supported_parameters": [
-        "include_reasoning",
-        "logprobs",
-        "max_tokens",
-        "reasoning",
-        "response_format",
-        "seed",
-        "structured_outputs",
-        "temperature",
-        "tool_choice",
-        "tools",
-        "top_logprobs",
-        "top_p"
-      ],
-      "supported_voices": null,
-      "top_provider": {
-        "context_length": 2000000,
-        "is_moderated": false,
-        "max_completion_tokens": 30000
-      }
-    },
-    {
-      "architecture": {
-        "input_modalities": [
           "text"
         ],
         "instruct_type": null,
@@ -8405,7 +8345,6 @@
       "per_request_limits": null,
       "pricing": {
         "completion": "0.0000025",
-        "input_cache_read": "0.00000015",
         "prompt": "0.0000006"
       },
       "supported_parameters": [
@@ -8718,7 +8657,7 @@
         "tokenizer": "Other"
       },
       "canonical_slug": "minimax/minimax-m2",
-      "context_length": 196608,
+      "context_length": 204800,
       "created": 1761252093,
       "default_parameters": {
         "frequency_penalty": null,
@@ -8780,7 +8719,7 @@
         "tokenizer": "Qwen"
       },
       "canonical_slug": "qwen/qwen3-vl-32b-instruct",
-      "context_length": 131072,
+      "context_length": 262144,
       "created": 1761231332,
       "default_parameters": {
         "frequency_penalty": null,
@@ -8852,7 +8791,7 @@
       "name": "IBM: Granite 4.0 Micro",
       "per_request_limits": null,
       "pricing": {
-        "completion": "0.00000011",
+        "completion": "0.000000112",
         "prompt": "0.000000017"
       },
       "supported_parameters": [
@@ -8885,7 +8824,7 @@
         "tokenizer": "Other"
       },
       "canonical_slug": "microsoft/phi-4-mini-instruct",
-      "context_length": 128000,
+      "context_length": 131072,
       "created": 1760726049,
       "default_parameters": {},
       "description": "Phi-4-mini-instruct is a lightweight open model built upon synthetic data and filtered publicly available websites - with a focus on high-quality, reasoning dense data. The model belongs to the Phi-4...",
@@ -9061,7 +9000,7 @@
         "tokenizer": "Qwen3"
       },
       "canonical_slug": "qwen/qwen3-vl-8b-thinking",
-      "context_length": 131072,
+      "context_length": 256000,
       "created": 1760463746,
       "default_parameters": {
         "temperature": 1,
@@ -9115,7 +9054,7 @@
         "tokenizer": "Qwen3"
       },
       "canonical_slug": "qwen/qwen3-vl-8b-instruct",
-      "context_length": 131072,
+      "context_length": 256000,
       "created": 1760463308,
       "default_parameters": {
         "frequency_penalty": null,
@@ -9598,7 +9537,7 @@
         "tokenizer": "Qwen3"
       },
       "canonical_slug": "qwen/qwen3-vl-30b-a3b-instruct",
-      "context_length": 131072,
+      "context_length": 262144,
       "created": 1759794476,
       "default_parameters": {
         "frequency_penalty": null,
@@ -10395,68 +10334,6 @@
     {
       "architecture": {
         "input_modalities": [
-          "text",
-          "image",
-          "file"
-        ],
-        "instruct_type": null,
-        "modality": "text+image+file->text",
-        "output_modalities": [
-          "text"
-        ],
-        "tokenizer": "Grok"
-      },
-      "canonical_slug": "x-ai/grok-4-fast",
-      "context_length": 2000000,
-      "created": 1758240090,
-      "default_parameters": {
-        "frequency_penalty": null,
-        "presence_penalty": null,
-        "repetition_penalty": null,
-        "temperature": null,
-        "top_k": null,
-        "top_p": null
-      },
-      "description": "Grok 4 Fast is xAI's latest multimodal model with SOTA cost-efficiency and a 2M token context window. It comes in two flavors: non-reasoning and reasoning. Read more about the model...",
-      "expiration_date": "2026-05-15",
-      "hugging_face_id": "",
-      "id": "x-ai/grok-4-fast",
-      "knowledge_cutoff": "2025-09-30",
-      "links": {
-        "details": "/api/v1/models/x-ai/grok-4-fast/endpoints"
-      },
-      "name": "xAI: Grok 4 Fast",
-      "per_request_limits": null,
-      "pricing": {
-        "completion": "0.0000005",
-        "input_cache_read": "0.00000005",
-        "prompt": "0.0000002",
-        "web_search": "0.005"
-      },
-      "supported_parameters": [
-        "include_reasoning",
-        "logprobs",
-        "max_tokens",
-        "reasoning",
-        "response_format",
-        "seed",
-        "structured_outputs",
-        "temperature",
-        "tool_choice",
-        "tools",
-        "top_logprobs",
-        "top_p"
-      ],
-      "supported_voices": null,
-      "top_provider": {
-        "context_length": 2000000,
-        "is_moderated": false,
-        "max_completion_tokens": 30000
-      }
-    },
-    {
-      "architecture": {
-        "input_modalities": [
           "text"
         ],
         "instruct_type": null,
@@ -10581,7 +10458,7 @@
         "tokenizer": "Qwen3"
       },
       "canonical_slug": "qwen/qwen3-next-80b-a3b-thinking-2509",
-      "context_length": 131072,
+      "context_length": 262144,
       "created": 1757612284,
       "default_parameters": {
         "frequency_penalty": null,
@@ -11073,67 +10950,6 @@
         "output_modalities": [
           "text"
         ],
-        "tokenizer": "Grok"
-      },
-      "canonical_slug": "x-ai/grok-code-fast-1",
-      "context_length": 256000,
-      "created": 1756238927,
-      "default_parameters": {
-        "frequency_penalty": null,
-        "presence_penalty": null,
-        "repetition_penalty": null,
-        "temperature": null,
-        "top_k": null,
-        "top_p": null
-      },
-      "description": "Grok Code Fast 1 is a speedy and economical reasoning model that excels at agentic coding. With reasoning traces visible in the response, developers can steer Grok Code for high-quality...",
-      "expiration_date": "2026-05-15",
-      "hugging_face_id": "",
-      "id": "x-ai/grok-code-fast-1",
-      "knowledge_cutoff": "2025-09-30",
-      "links": {
-        "details": "/api/v1/models/x-ai/grok-code-fast-1/endpoints"
-      },
-      "name": "xAI: Grok Code Fast 1",
-      "per_request_limits": null,
-      "pricing": {
-        "completion": "0.0000015",
-        "input_cache_read": "0.00000002",
-        "prompt": "0.0000002",
-        "web_search": "0.005"
-      },
-      "supported_parameters": [
-        "include_reasoning",
-        "logprobs",
-        "max_tokens",
-        "reasoning",
-        "response_format",
-        "seed",
-        "stop",
-        "structured_outputs",
-        "temperature",
-        "tool_choice",
-        "tools",
-        "top_logprobs",
-        "top_p"
-      ],
-      "supported_voices": null,
-      "top_provider": {
-        "context_length": 256000,
-        "is_moderated": false,
-        "max_completion_tokens": 10000
-      }
-    },
-    {
-      "architecture": {
-        "input_modalities": [
-          "text"
-        ],
-        "instruct_type": null,
-        "modality": "text->text",
-        "output_modalities": [
-          "text"
-        ],
         "tokenizer": "Llama3"
       },
       "canonical_slug": "nousresearch/hermes-4-70b",
@@ -11407,7 +11223,7 @@
         "tokenizer": "Other"
       },
       "canonical_slug": "baidu/ernie-4.5-21b-a3b",
-      "context_length": 120000,
+      "context_length": 131072,
       "created": 1755034167,
       "default_parameters": {
         "frequency_penalty": null,
@@ -11462,7 +11278,7 @@
         "tokenizer": "Other"
       },
       "canonical_slug": "baidu/ernie-4.5-vl-28b-a3b",
-      "context_length": 30000,
+      "context_length": 131072,
       "created": 1755032836,
       "default_parameters": {},
       "description": "A powerful multimodal Mixture-of-Experts chat model featuring 28B total parameters with 3B activated per token, delivering exceptional text and vision understanding through its innovative heterogeneous MoE structure with modality-isolated routing....",
@@ -11544,6 +11360,7 @@
         "presence_penalty",
         "reasoning",
         "repetition_penalty",
+        "response_format",
         "seed",
         "stop",
         "temperature",
@@ -12453,7 +12270,7 @@
         "tokenizer": "Qwen3"
       },
       "canonical_slug": "qwen/qwen3-235b-a22b-thinking-2507",
-      "context_length": 131072,
+      "context_length": 262144,
       "created": 1753449557,
       "default_parameters": {
         "frequency_penalty": null,
@@ -12561,7 +12378,7 @@
         "tokenizer": "Qwen3"
       },
       "canonical_slug": "qwen/qwen3-coder-480b-a35b-07-25",
-      "context_length": 262000,
+      "context_length": 1048576,
       "created": 1753230546,
       "default_parameters": {},
       "description": "Qwen3-Coder-480B-A35B-Instruct is a Mixture-of-Experts (MoE) code generation model developed by the Qwen team. It is optimized for agentic coding tasks such as function calling, tool use, and long-context reasoning over...",
@@ -12609,7 +12426,7 @@
         "tokenizer": "Qwen3"
       },
       "canonical_slug": "qwen/qwen3-coder-480b-a35b-07-25",
-      "context_length": 262144,
+      "context_length": 1048576,
       "created": 1753230546,
       "default_parameters": {},
       "description": "Qwen3-Coder-480B-A35B-Instruct is a Mixture-of-Experts (MoE) code generation model developed by the Qwen team. It is optimized for agentic coding tasks such as function calling, tool use, and long-context reasoning over...",
@@ -13077,68 +12894,6 @@
     {
       "architecture": {
         "input_modalities": [
-          "image",
-          "text",
-          "file"
-        ],
-        "instruct_type": null,
-        "modality": "text+image+file->text",
-        "output_modalities": [
-          "text"
-        ],
-        "tokenizer": "Grok"
-      },
-      "canonical_slug": "x-ai/grok-4-07-09",
-      "context_length": 256000,
-      "created": 1752087689,
-      "default_parameters": {
-        "frequency_penalty": null,
-        "presence_penalty": null,
-        "repetition_penalty": null,
-        "temperature": null,
-        "top_k": null,
-        "top_p": null
-      },
-      "description": "Grok 4 is xAI's latest reasoning model with a 256k context window. It supports parallel tool calling, structured outputs, and both image and text inputs. Note that reasoning is not...",
-      "expiration_date": "2026-05-15",
-      "hugging_face_id": "",
-      "id": "x-ai/grok-4",
-      "knowledge_cutoff": "2025-07-31",
-      "links": {
-        "details": "/api/v1/models/x-ai/grok-4-07-09/endpoints"
-      },
-      "name": "xAI: Grok 4",
-      "per_request_limits": null,
-      "pricing": {
-        "completion": "0.000015",
-        "input_cache_read": "0.00000075",
-        "prompt": "0.000003",
-        "web_search": "0.005"
-      },
-      "supported_parameters": [
-        "include_reasoning",
-        "logprobs",
-        "max_tokens",
-        "reasoning",
-        "response_format",
-        "seed",
-        "structured_outputs",
-        "temperature",
-        "tool_choice",
-        "tools",
-        "top_logprobs",
-        "top_p"
-      ],
-      "supported_voices": null,
-      "top_provider": {
-        "context_length": 256000,
-        "is_moderated": false,
-        "max_completion_tokens": null
-      }
-    },
-    {
-      "architecture": {
-        "input_modalities": [
           "text"
         ],
         "instruct_type": null,
@@ -13290,7 +13045,7 @@
         "tokenizer": "Other"
       },
       "canonical_slug": "baidu/ernie-4.5-vl-424b-a47b",
-      "context_length": 123000,
+      "context_length": 131072,
       "created": 1751300903,
       "default_parameters": {},
       "description": "ERNIE-4.5-VL-424B-A47B is a multimodal Mixture-of-Experts (MoE) model from Baidu’s ERNIE 4.5 series, featuring 424B total parameters with 47B active per token. It is trained jointly on text and image data...",
@@ -13340,7 +13095,7 @@
         "tokenizer": "Other"
       },
       "canonical_slug": "baidu/ernie-4.5-300b-a47b",
-      "context_length": 123000,
+      "context_length": 131072,
       "created": 1751300139,
       "default_parameters": {},
       "description": "ERNIE-4.5-300B-A47B is a 300B parameter Mixture-of-Experts (MoE) language model developed by Baidu as part of the ERNIE 4.5 series. It activates 47B parameters per token and supports text generation in...",
@@ -13362,6 +13117,7 @@
         "max_tokens",
         "presence_penalty",
         "repetition_penalty",
+        "response_format",
         "seed",
         "stop",
         "temperature",
@@ -13668,118 +13424,6 @@
         "context_length": 200000,
         "is_moderated": true,
         "max_completion_tokens": 100000
-      }
-    },
-    {
-      "architecture": {
-        "input_modalities": [
-          "text"
-        ],
-        "instruct_type": null,
-        "modality": "text->text",
-        "output_modalities": [
-          "text"
-        ],
-        "tokenizer": "Grok"
-      },
-      "canonical_slug": "x-ai/grok-3-mini",
-      "context_length": 131072,
-      "created": 1749583245,
-      "default_parameters": {
-        "frequency_penalty": null,
-        "temperature": null,
-        "top_p": null
-      },
-      "description": "A lightweight model that thinks before responding. Fast, smart, and great for logic-based tasks that do not require deep domain knowledge. The raw thinking traces are accessible.",
-      "expiration_date": "2026-05-15",
-      "hugging_face_id": "",
-      "id": "x-ai/grok-3-mini",
-      "knowledge_cutoff": "2025-02-28",
-      "links": {
-        "details": "/api/v1/models/x-ai/grok-3-mini/endpoints"
-      },
-      "name": "xAI: Grok 3 Mini",
-      "per_request_limits": null,
-      "pricing": {
-        "completion": "0.0000005",
-        "input_cache_read": "0.000000075",
-        "prompt": "0.0000003",
-        "web_search": "0.005"
-      },
-      "supported_parameters": [
-        "include_reasoning",
-        "logprobs",
-        "max_tokens",
-        "reasoning",
-        "response_format",
-        "seed",
-        "stop",
-        "structured_outputs",
-        "temperature",
-        "tool_choice",
-        "tools",
-        "top_logprobs",
-        "top_p"
-      ],
-      "supported_voices": null,
-      "top_provider": {
-        "context_length": 131072,
-        "is_moderated": false,
-        "max_completion_tokens": null
-      }
-    },
-    {
-      "architecture": {
-        "input_modalities": [
-          "text"
-        ],
-        "instruct_type": null,
-        "modality": "text->text",
-        "output_modalities": [
-          "text"
-        ],
-        "tokenizer": "Grok"
-      },
-      "canonical_slug": "x-ai/grok-3",
-      "context_length": 131072,
-      "created": 1749582908,
-      "default_parameters": {},
-      "description": "Grok 3 is the latest model from xAI. It's their flagship model that excels at enterprise use cases like data extraction, coding, and text summarization. Possesses deep domain knowledge in...",
-      "expiration_date": "2026-05-15",
-      "hugging_face_id": "",
-      "id": "x-ai/grok-3",
-      "knowledge_cutoff": "2025-02-28",
-      "links": {
-        "details": "/api/v1/models/x-ai/grok-3/endpoints"
-      },
-      "name": "xAI: Grok 3",
-      "per_request_limits": null,
-      "pricing": {
-        "completion": "0.000015",
-        "input_cache_read": "0.00000075",
-        "prompt": "0.000003",
-        "web_search": "0.005"
-      },
-      "supported_parameters": [
-        "frequency_penalty",
-        "logprobs",
-        "max_tokens",
-        "presence_penalty",
-        "response_format",
-        "seed",
-        "stop",
-        "structured_outputs",
-        "temperature",
-        "tool_choice",
-        "tools",
-        "top_logprobs",
-        "top_p"
-      ],
-      "supported_voices": null,
-      "top_provider": {
-        "context_length": 131072,
-        "is_moderated": false,
-        "max_completion_tokens": null
       }
     },
     {
@@ -14454,7 +14098,7 @@
         "tokenizer": "Qwen3"
       },
       "canonical_slug": "qwen/qwen3-30b-a3b-04-28",
-      "context_length": 40960,
+      "context_length": 131072,
       "created": 1745878604,
       "default_parameters": {
         "frequency_penalty": null,
@@ -14516,7 +14160,7 @@
         "tokenizer": "Qwen3"
       },
       "canonical_slug": "qwen/qwen3-8b-04-28",
-      "context_length": 40960,
+      "context_length": 131072,
       "created": 1745876632,
       "default_parameters": {
         "frequency_penalty": null,
@@ -14580,7 +14224,7 @@
         "tokenizer": "Qwen3"
       },
       "canonical_slug": "qwen/qwen3-14b-04-28",
-      "context_length": 40960,
+      "context_length": 131702,
       "created": 1745876478,
       "default_parameters": {},
       "description": "Qwen3-14B is a dense 14.8B parameter causal language model from the Qwen3 series, designed for both complex reasoning and efficient dialogue. It supports seamless switching between a \"thinking\" mode for...",
@@ -14638,7 +14282,7 @@
         "tokenizer": "Qwen3"
       },
       "canonical_slug": "qwen/qwen3-32b-04-28",
-      "context_length": 40960,
+      "context_length": 131072,
       "created": 1745875945,
       "default_parameters": {},
       "description": "Qwen3-32B is a dense 32.8B parameter causal language model from the Qwen3 series, optimized for both complex reasoning and efficient dialogue. It supports seamless switching between a \"thinking\" mode for...",
@@ -15094,116 +14738,6 @@
     {
       "architecture": {
         "input_modalities": [
-          "text"
-        ],
-        "instruct_type": null,
-        "modality": "text->text",
-        "output_modalities": [
-          "text"
-        ],
-        "tokenizer": "Grok"
-      },
-      "canonical_slug": "x-ai/grok-3-mini-beta",
-      "context_length": 131072,
-      "created": 1744240195,
-      "default_parameters": {
-        "frequency_penalty": null,
-        "temperature": null,
-        "top_p": null
-      },
-      "description": "Grok 3 Mini is a lightweight, smaller thinking model. Unlike traditional models that generate answers immediately, Grok 3 Mini thinks before responding. It’s ideal for reasoning-heavy tasks that don’t demand...",
-      "expiration_date": "2026-05-15",
-      "hugging_face_id": "",
-      "id": "x-ai/grok-3-mini-beta",
-      "knowledge_cutoff": "2025-02-28",
-      "links": {
-        "details": "/api/v1/models/x-ai/grok-3-mini-beta/endpoints"
-      },
-      "name": "xAI: Grok 3 Mini Beta",
-      "per_request_limits": null,
-      "pricing": {
-        "completion": "0.0000005",
-        "input_cache_read": "0.000000075",
-        "prompt": "0.0000003",
-        "web_search": "0.005"
-      },
-      "supported_parameters": [
-        "include_reasoning",
-        "logprobs",
-        "max_tokens",
-        "reasoning",
-        "response_format",
-        "seed",
-        "stop",
-        "temperature",
-        "tool_choice",
-        "tools",
-        "top_logprobs",
-        "top_p"
-      ],
-      "supported_voices": null,
-      "top_provider": {
-        "context_length": 131072,
-        "is_moderated": false,
-        "max_completion_tokens": null
-      }
-    },
-    {
-      "architecture": {
-        "input_modalities": [
-          "text"
-        ],
-        "instruct_type": null,
-        "modality": "text->text",
-        "output_modalities": [
-          "text"
-        ],
-        "tokenizer": "Grok"
-      },
-      "canonical_slug": "x-ai/grok-3-beta",
-      "context_length": 131072,
-      "created": 1744240068,
-      "default_parameters": {},
-      "description": "Grok 3 is the latest model from xAI. It's their flagship model that excels at enterprise use cases like data extraction, coding, and text summarization. Possesses deep domain knowledge in...",
-      "expiration_date": "2026-05-15",
-      "hugging_face_id": "",
-      "id": "x-ai/grok-3-beta",
-      "knowledge_cutoff": "2025-02-28",
-      "links": {
-        "details": "/api/v1/models/x-ai/grok-3-beta/endpoints"
-      },
-      "name": "xAI: Grok 3 Beta",
-      "per_request_limits": null,
-      "pricing": {
-        "completion": "0.000015",
-        "input_cache_read": "0.00000075",
-        "prompt": "0.000003",
-        "web_search": "0.005"
-      },
-      "supported_parameters": [
-        "frequency_penalty",
-        "logprobs",
-        "max_tokens",
-        "presence_penalty",
-        "response_format",
-        "seed",
-        "stop",
-        "temperature",
-        "tool_choice",
-        "tools",
-        "top_logprobs",
-        "top_p"
-      ],
-      "supported_voices": null,
-      "top_provider": {
-        "context_length": 131072,
-        "is_moderated": false,
-        "max_completion_tokens": null
-      }
-    },
-    {
-      "architecture": {
-        "input_modalities": [
           "text",
           "image"
         ],
@@ -15268,7 +14802,7 @@
         "tokenizer": "Llama4"
       },
       "canonical_slug": "meta-llama/llama-4-scout-17b-16e-instruct",
-      "context_length": 327680,
+      "context_length": 10000000,
       "created": 1743881519,
       "default_parameters": {},
       "description": "Llama 4 Scout 17B Instruct (16E) is a mixture-of-experts (MoE) language model developed by Meta, activating 17 billion parameters out of a total of 109B. It supports native multimodal input...",
@@ -15441,8 +14975,8 @@
       "name": "Mistral: Mistral Small 3.1 24B",
       "per_request_limits": null,
       "pricing": {
-        "completion": "0.00000056",
-        "prompt": "0.00000035"
+        "completion": "0.000000555",
+        "prompt": "0.000000351"
       },
       "supported_parameters": [
         "frequency_penalty",
@@ -16161,7 +15695,7 @@
       "per_request_limits": null,
       "pricing": {
         "completion": "0.00000003",
-        "prompt": "0.00000048"
+        "prompt": "0.000000484"
       },
       "supported_parameters": [
         "frequency_penalty",
@@ -16439,7 +15973,7 @@
         "tokenizer": "Qwen"
       },
       "canonical_slug": "qwen/qwen2.5-vl-72b-instruct",
-      "context_length": 32000,
+      "context_length": 131072,
       "created": 1738410311,
       "default_parameters": {},
       "description": "Qwen2.5-VL is proficient in recognizing common objects such as flowers, birds, fish, and insects. It is also highly capable of analyzing texts, charts, icons, graphics, and layouts within images.",
@@ -16651,7 +16185,7 @@
         "tokenizer": "Qwen"
       },
       "canonical_slug": "deepseek/deepseek-r1-distill-qwen-32b",
-      "context_length": 32768,
+      "context_length": 128000,
       "created": 1738194830,
       "default_parameters": {},
       "description": "DeepSeek R1 Distill Qwen 32B is a distilled large language model based on [Qwen 2.5 32B](https://huggingface.co/Qwen/Qwen2.5-32B), using outputs from [DeepSeek R1](/deepseek/deepseek-r1). It outperforms OpenAI's o1-mini across various benchmarks, achieving new...",
@@ -16805,7 +16339,7 @@
         "tokenizer": "DeepSeek"
       },
       "canonical_slug": "deepseek/deepseek-r1",
-      "context_length": 64000,
+      "context_length": 163840,
       "created": 1737381095,
       "default_parameters": {
         "frequency_penalty": null,
@@ -16837,8 +16371,10 @@
         "presence_penalty",
         "reasoning",
         "repetition_penalty",
+        "response_format",
         "seed",
         "stop",
+        "structured_outputs",
         "temperature",
         "tool_choice",
         "tools",
@@ -17227,7 +16763,7 @@
         "tokenizer": "Llama3"
       },
       "canonical_slug": "meta-llama/llama-3.3-70b-instruct",
-      "context_length": 65536,
+      "context_length": 131072,
       "created": 1733506137,
       "default_parameters": {},
       "description": "The Meta Llama 3.3 multilingual large language model (LLM) is a pretrained and instruction tuned generative model in 70B (text in/text out). The Llama 3.3 instruction tuned text only model...",
@@ -17686,7 +17222,7 @@
         "tokenizer": "Qwen"
       },
       "canonical_slug": "qwen/qwen-2.5-coder-32b-instruct",
-      "context_length": 32768,
+      "context_length": 128000,
       "created": 1731368400,
       "default_parameters": {},
       "description": "Qwen2.5-Coder is the latest series of Code-Specific Qwen large language models (formerly known as CodeQwen). Qwen2.5-Coder brings the following improvements upon CodeQwen1.5: - Significantly improvements in **code generation**, **code reasoning**...",
@@ -17840,7 +17376,7 @@
         "tokenizer": "Qwen"
       },
       "canonical_slug": "anthracite-org/magnum-v4-72b",
-      "context_length": 16384,
+      "context_length": 32768,
       "created": 1729555200,
       "default_parameters": {},
       "description": "This is a series of models designed to replicate the prose quality of the Claude 3 models, specifically Sonnet(https://openrouter.ai/anthropic/claude-3.5-sonnet) and Opus(https://openrouter.ai/anthropic/claude-3-opus).\n\nThe model is fine-tuned on top of [Qwen2.5 72B](https://openrouter.ai/qwen/qwen-2.5-72b-instruct).",
@@ -17894,7 +17430,7 @@
         "tokenizer": "Qwen"
       },
       "canonical_slug": "qwen/qwen-2.5-7b-instruct",
-      "context_length": 32768,
+      "context_length": 131072,
       "created": 1729036800,
       "default_parameters": {
         "frequency_penalty": null,
@@ -18083,6 +17619,58 @@
     {
       "architecture": {
         "input_modalities": [
+          "text",
+          "image"
+        ],
+        "instruct_type": "llama3",
+        "modality": "text+image->text",
+        "output_modalities": [
+          "text"
+        ],
+        "tokenizer": "Llama3"
+      },
+      "canonical_slug": "meta-llama/llama-3.2-11b-vision-instruct",
+      "context_length": 131072,
+      "created": 1727222400,
+      "default_parameters": {},
+      "description": "Llama 3.2 11B Vision is a multimodal model with 11 billion parameters, designed to handle tasks combining visual and textual data. It excels in tasks such as image captioning and...",
+      "expiration_date": null,
+      "hugging_face_id": "meta-llama/Llama-3.2-11B-Vision-Instruct",
+      "id": "meta-llama/llama-3.2-11b-vision-instruct",
+      "knowledge_cutoff": "2023-12-31",
+      "links": {
+        "details": "/api/v1/models/meta-llama/llama-3.2-11b-vision-instruct/endpoints"
+      },
+      "name": "Meta: Llama 3.2 11B Vision Instruct",
+      "per_request_limits": null,
+      "pricing": {
+        "completion": "0.000000245",
+        "prompt": "0.000000245"
+      },
+      "supported_parameters": [
+        "frequency_penalty",
+        "logit_bias",
+        "max_tokens",
+        "min_p",
+        "presence_penalty",
+        "repetition_penalty",
+        "response_format",
+        "seed",
+        "stop",
+        "temperature",
+        "top_k",
+        "top_p"
+      ],
+      "supported_voices": null,
+      "top_provider": {
+        "context_length": 131072,
+        "is_moderated": false,
+        "max_completion_tokens": 16384
+      }
+    },
+    {
+      "architecture": {
+        "input_modalities": [
           "text"
         ],
         "instruct_type": "llama3",
@@ -18093,7 +17681,7 @@
         "tokenizer": "Llama3"
       },
       "canonical_slug": "meta-llama/llama-3.2-1b-instruct",
-      "context_length": 60000,
+      "context_length": 131072,
       "created": 1727222400,
       "default_parameters": {},
       "description": "Llama 3.2 1B is a 1-billion-parameter language model focused on efficiently performing natural language tasks, such as summarization, dialogue, and multilingual text analysis. Its smaller size allows it to operate...",
@@ -18107,7 +17695,7 @@
       "name": "Meta: Llama 3.2 1B Instruct",
       "per_request_limits": null,
       "pricing": {
-        "completion": "0.0000002",
+        "completion": "0.000000201",
         "prompt": "0.000000027"
       },
       "supported_parameters": [
@@ -18186,7 +17774,7 @@
         "tokenizer": "Llama3"
       },
       "canonical_slug": "meta-llama/llama-3.2-3b-instruct",
-      "context_length": 80000,
+      "context_length": 131072,
       "created": 1727222400,
       "default_parameters": {},
       "description": "Llama 3.2 3B is a 3-billion-parameter multilingual large language model, optimized for advanced natural language processing tasks like dialogue generation, reasoning, and summarization. Designed with the latest transformer architecture, it...",
@@ -18200,8 +17788,8 @@
       "name": "Meta: Llama 3.2 3B Instruct",
       "per_request_limits": null,
       "pricing": {
-        "completion": "0.00000034",
-        "prompt": "0.000000051"
+        "completion": "0.000000335",
+        "prompt": "0.0000000509"
       },
       "supported_parameters": [
         "frequency_penalty",
@@ -18223,58 +17811,6 @@
     {
       "architecture": {
         "input_modalities": [
-          "text",
-          "image"
-        ],
-        "instruct_type": "llama3",
-        "modality": "text+image->text",
-        "output_modalities": [
-          "text"
-        ],
-        "tokenizer": "Llama3"
-      },
-      "canonical_slug": "meta-llama/llama-3.2-11b-vision-instruct",
-      "context_length": 131072,
-      "created": 1727222400,
-      "default_parameters": {},
-      "description": "Llama 3.2 11B Vision is a multimodal model with 11 billion parameters, designed to handle tasks combining visual and textual data. It excels in tasks such as image captioning and...",
-      "expiration_date": null,
-      "hugging_face_id": "meta-llama/Llama-3.2-11B-Vision-Instruct",
-      "id": "meta-llama/llama-3.2-11b-vision-instruct",
-      "knowledge_cutoff": "2023-12-31",
-      "links": {
-        "details": "/api/v1/models/meta-llama/llama-3.2-11b-vision-instruct/endpoints"
-      },
-      "name": "Meta: Llama 3.2 11B Vision Instruct",
-      "per_request_limits": null,
-      "pricing": {
-        "completion": "0.000000245",
-        "prompt": "0.000000245"
-      },
-      "supported_parameters": [
-        "frequency_penalty",
-        "logit_bias",
-        "max_tokens",
-        "min_p",
-        "presence_penalty",
-        "repetition_penalty",
-        "response_format",
-        "seed",
-        "stop",
-        "temperature",
-        "top_k",
-        "top_p"
-      ],
-      "supported_voices": null,
-      "top_provider": {
-        "context_length": 131072,
-        "is_moderated": false,
-        "max_completion_tokens": 16384
-      }
-    },
-    {
-      "architecture": {
-        "input_modalities": [
           "text"
         ],
         "instruct_type": "chatml",
@@ -18285,7 +17821,7 @@
         "tokenizer": "Qwen"
       },
       "canonical_slug": "qwen/qwen-2.5-72b-instruct",
-      "context_length": 32768,
+      "context_length": 131072,
       "created": 1726704000,
       "default_parameters": {},
       "description": "Qwen2.5 72B is the latest series of Qwen large language models. Qwen2.5 brings the following improvements upon Qwen2: - Significantly more knowledge and has greatly improved capabilities in coding and...",
@@ -18809,7 +18345,7 @@
         "tokenizer": "Llama3"
       },
       "canonical_slug": "meta-llama/llama-3.1-8b-instruct",
-      "context_length": 16384,
+      "context_length": 131072,
       "created": 1721692800,
       "default_parameters": {},
       "description": "Meta's latest class of model (Llama 3.1) launched with a variety of sizes & flavors. This 8B instruct-tuned version is fast and efficient. It has demonstrated strong performance compared to...",
@@ -19300,56 +18836,6 @@
         ],
         "tokenizer": "Llama3"
       },
-      "canonical_slug": "meta-llama/llama-3-8b-instruct",
-      "context_length": 8192,
-      "created": 1713398400,
-      "default_parameters": {},
-      "description": "Meta's latest class of model (Llama 3) launched with a variety of sizes & flavors. This 8B instruct-tuned version was optimized for high quality dialogue usecases. It has demonstrated strong...",
-      "expiration_date": null,
-      "hugging_face_id": "meta-llama/Meta-Llama-3-8B-Instruct",
-      "id": "meta-llama/llama-3-8b-instruct",
-      "knowledge_cutoff": "2023-12-31",
-      "links": {
-        "details": "/api/v1/models/meta-llama/llama-3-8b-instruct/endpoints"
-      },
-      "name": "Meta: Llama 3 8B Instruct",
-      "per_request_limits": null,
-      "pricing": {
-        "completion": "0.00000004",
-        "prompt": "0.00000004"
-      },
-      "supported_parameters": [
-        "frequency_penalty",
-        "logit_bias",
-        "max_tokens",
-        "min_p",
-        "presence_penalty",
-        "repetition_penalty",
-        "seed",
-        "stop",
-        "temperature",
-        "top_k",
-        "top_p"
-      ],
-      "supported_voices": null,
-      "top_provider": {
-        "context_length": 8192,
-        "is_moderated": false,
-        "max_completion_tokens": 8192
-      }
-    },
-    {
-      "architecture": {
-        "input_modalities": [
-          "text"
-        ],
-        "instruct_type": "llama3",
-        "modality": "text->text",
-        "output_modalities": [
-          "text"
-        ],
-        "tokenizer": "Llama3"
-      },
       "canonical_slug": "meta-llama/llama-3-70b-instruct",
       "context_length": 8192,
       "created": 1713398400,
@@ -19375,6 +18861,7 @@
         "repetition_penalty",
         "seed",
         "stop",
+        "structured_outputs",
         "temperature",
         "top_k",
         "top_p"
@@ -19384,6 +18871,57 @@
         "context_length": 8192,
         "is_moderated": false,
         "max_completion_tokens": 8000
+      }
+    },
+    {
+      "architecture": {
+        "input_modalities": [
+          "text"
+        ],
+        "instruct_type": "llama3",
+        "modality": "text->text",
+        "output_modalities": [
+          "text"
+        ],
+        "tokenizer": "Llama3"
+      },
+      "canonical_slug": "meta-llama/llama-3-8b-instruct",
+      "context_length": 8192,
+      "created": 1713398400,
+      "default_parameters": {},
+      "description": "Meta's latest class of model (Llama 3) launched with a variety of sizes & flavors. This 8B instruct-tuned version was optimized for high quality dialogue usecases. It has demonstrated strong...",
+      "expiration_date": null,
+      "hugging_face_id": "meta-llama/Meta-Llama-3-8B-Instruct",
+      "id": "meta-llama/llama-3-8b-instruct",
+      "knowledge_cutoff": "2023-12-31",
+      "links": {
+        "details": "/api/v1/models/meta-llama/llama-3-8b-instruct/endpoints"
+      },
+      "name": "Meta: Llama 3 8B Instruct",
+      "per_request_limits": null,
+      "pricing": {
+        "completion": "0.00000004",
+        "prompt": "0.00000004"
+      },
+      "supported_parameters": [
+        "frequency_penalty",
+        "logit_bias",
+        "max_tokens",
+        "min_p",
+        "presence_penalty",
+        "repetition_penalty",
+        "response_format",
+        "seed",
+        "stop",
+        "temperature",
+        "top_k",
+        "top_p"
+      ],
+      "supported_voices": null,
+      "top_provider": {
+        "context_length": 8192,
+        "is_moderated": false,
+        "max_completion_tokens": 8192
       }
     },
     {
@@ -19453,7 +18991,7 @@
         "tokenizer": "Mistral"
       },
       "canonical_slug": "microsoft/wizardlm-2-8x22b",
-      "context_length": 65535,
+      "context_length": 65536,
       "created": 1713225600,
       "default_parameters": {},
       "description": "WizardLM-2 8x22B is Microsoft AI's most advanced Wizard model. It demonstrates highly competitive performance compared to leading proprietary models, and it consistently outperforms all existing state-of-the-art opensource models. It is...",
@@ -19475,6 +19013,7 @@
         "max_tokens",
         "presence_penalty",
         "repetition_penalty",
+        "response_format",
         "seed",
         "stop",
         "temperature",
@@ -19657,59 +19196,6 @@
         ],
         "tokenizer": "GPT"
       },
-      "canonical_slug": "openai/gpt-3.5-turbo-0613",
-      "context_length": 4095,
-      "created": 1706140800,
-      "default_parameters": {},
-      "description": "GPT-3.5 Turbo is OpenAI's fastest model. It can understand and generate natural language or code, and is optimized for chat and traditional completion tasks.\n\nTraining data up to Sep 2021.",
-      "expiration_date": null,
-      "hugging_face_id": null,
-      "id": "openai/gpt-3.5-turbo-0613",
-      "knowledge_cutoff": "2021-09-30",
-      "links": {
-        "details": "/api/v1/models/openai/gpt-3.5-turbo-0613/endpoints"
-      },
-      "name": "OpenAI: GPT-3.5 Turbo (older v0613)",
-      "per_request_limits": null,
-      "pricing": {
-        "completion": "0.000002",
-        "prompt": "0.000001"
-      },
-      "supported_parameters": [
-        "frequency_penalty",
-        "logit_bias",
-        "logprobs",
-        "max_completion_tokens",
-        "presence_penalty",
-        "response_format",
-        "seed",
-        "stop",
-        "structured_outputs",
-        "temperature",
-        "tool_choice",
-        "tools",
-        "top_logprobs",
-        "top_p"
-      ],
-      "supported_voices": null,
-      "top_provider": {
-        "context_length": 4095,
-        "is_moderated": false,
-        "max_completion_tokens": 4096
-      }
-    },
-    {
-      "architecture": {
-        "input_modalities": [
-          "text"
-        ],
-        "instruct_type": null,
-        "modality": "text->text",
-        "output_modalities": [
-          "text"
-        ],
-        "tokenizer": "GPT"
-      },
       "canonical_slug": "openai/gpt-4-turbo-preview",
       "context_length": 128000,
       "created": 1706140800,
@@ -19748,6 +19234,59 @@
       "top_provider": {
         "context_length": 128000,
         "is_moderated": true,
+        "max_completion_tokens": 4096
+      }
+    },
+    {
+      "architecture": {
+        "input_modalities": [
+          "text"
+        ],
+        "instruct_type": null,
+        "modality": "text->text",
+        "output_modalities": [
+          "text"
+        ],
+        "tokenizer": "GPT"
+      },
+      "canonical_slug": "openai/gpt-3.5-turbo-0613",
+      "context_length": 4095,
+      "created": 1706140800,
+      "default_parameters": {},
+      "description": "GPT-3.5 Turbo is OpenAI's fastest model. It can understand and generate natural language or code, and is optimized for chat and traditional completion tasks.\n\nTraining data up to Sep 2021.",
+      "expiration_date": null,
+      "hugging_face_id": null,
+      "id": "openai/gpt-3.5-turbo-0613",
+      "knowledge_cutoff": "2021-09-30",
+      "links": {
+        "details": "/api/v1/models/openai/gpt-3.5-turbo-0613/endpoints"
+      },
+      "name": "OpenAI: GPT-3.5 Turbo (older v0613)",
+      "per_request_limits": null,
+      "pricing": {
+        "completion": "0.000002",
+        "prompt": "0.000001"
+      },
+      "supported_parameters": [
+        "frequency_penalty",
+        "logit_bias",
+        "logprobs",
+        "max_completion_tokens",
+        "presence_penalty",
+        "response_format",
+        "seed",
+        "stop",
+        "structured_outputs",
+        "temperature",
+        "tool_choice",
+        "tools",
+        "top_logprobs",
+        "top_p"
+      ],
+      "supported_voices": null,
+      "top_provider": {
+        "context_length": 4095,
+        "is_moderated": false,
         "max_completion_tokens": 4096
       }
     },
@@ -19889,7 +19428,7 @@
         "tokenizer": "Mistral"
       },
       "canonical_slug": "mistralai/mistral-7b-instruct-v0.1",
-      "context_length": 2824,
+      "context_length": 4096,
       "created": 1695859200,
       "default_parameters": {
         "temperature": 0.3
@@ -20259,6 +19798,59 @@
         ],
         "tokenizer": "GPT"
       },
+      "canonical_slug": "openai/gpt-3.5-turbo",
+      "context_length": 16385,
+      "created": 1685232000,
+      "default_parameters": {},
+      "description": "GPT-3.5 Turbo is OpenAI's fastest model. It can understand and generate natural language or code, and is optimized for chat and traditional completion tasks.\n\nTraining data up to Sep 2021.",
+      "expiration_date": null,
+      "hugging_face_id": null,
+      "id": "openai/gpt-3.5-turbo",
+      "knowledge_cutoff": "2021-09-30",
+      "links": {
+        "details": "/api/v1/models/openai/gpt-3.5-turbo/endpoints"
+      },
+      "name": "OpenAI: GPT-3.5 Turbo",
+      "per_request_limits": null,
+      "pricing": {
+        "completion": "0.0000015",
+        "prompt": "0.0000005"
+      },
+      "supported_parameters": [
+        "frequency_penalty",
+        "logit_bias",
+        "logprobs",
+        "max_tokens",
+        "presence_penalty",
+        "response_format",
+        "seed",
+        "stop",
+        "structured_outputs",
+        "temperature",
+        "tool_choice",
+        "tools",
+        "top_logprobs",
+        "top_p"
+      ],
+      "supported_voices": null,
+      "top_provider": {
+        "context_length": 16385,
+        "is_moderated": true,
+        "max_completion_tokens": 4096
+      }
+    },
+    {
+      "architecture": {
+        "input_modalities": [
+          "text"
+        ],
+        "instruct_type": null,
+        "modality": "text->text",
+        "output_modalities": [
+          "text"
+        ],
+        "tokenizer": "GPT"
+      },
       "canonical_slug": "openai/gpt-4",
       "context_length": 8191,
       "created": 1685232000,
@@ -20297,59 +19889,6 @@
       "supported_voices": null,
       "top_provider": {
         "context_length": 8191,
-        "is_moderated": true,
-        "max_completion_tokens": 4096
-      }
-    },
-    {
-      "architecture": {
-        "input_modalities": [
-          "text"
-        ],
-        "instruct_type": null,
-        "modality": "text->text",
-        "output_modalities": [
-          "text"
-        ],
-        "tokenizer": "GPT"
-      },
-      "canonical_slug": "openai/gpt-3.5-turbo",
-      "context_length": 16385,
-      "created": 1685232000,
-      "default_parameters": {},
-      "description": "GPT-3.5 Turbo is OpenAI's fastest model. It can understand and generate natural language or code, and is optimized for chat and traditional completion tasks.\n\nTraining data up to Sep 2021.",
-      "expiration_date": null,
-      "hugging_face_id": null,
-      "id": "openai/gpt-3.5-turbo",
-      "knowledge_cutoff": "2021-09-30",
-      "links": {
-        "details": "/api/v1/models/openai/gpt-3.5-turbo/endpoints"
-      },
-      "name": "OpenAI: GPT-3.5 Turbo",
-      "per_request_limits": null,
-      "pricing": {
-        "completion": "0.0000015",
-        "prompt": "0.0000005"
-      },
-      "supported_parameters": [
-        "frequency_penalty",
-        "logit_bias",
-        "logprobs",
-        "max_tokens",
-        "presence_penalty",
-        "response_format",
-        "seed",
-        "stop",
-        "structured_outputs",
-        "temperature",
-        "tool_choice",
-        "tools",
-        "top_logprobs",
-        "top_p"
-      ],
-      "supported_voices": null,
-      "top_provider": {
-        "context_length": 16385,
         "is_moderated": true,
         "max_completion_tokens": 4096
       }
