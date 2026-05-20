@@ -118,6 +118,7 @@ defmodule Mix.Tasks.LlmDb.Pull do
 
     results = pull_all_sources(sources)
     print_summary(results)
+    ensure_no_failed_sources!(results)
 
     Mix.shell().info("\nRun 'mix llm_db.build' to generate the canonical snapshot artifact")
   end
@@ -128,6 +129,29 @@ defmodule Mix.Tasks.LlmDb.Pull do
     # can disable dotenv loading for this task.
     Mix.Task.run("app.config")
     LLMDB.Dotenv.load!(override: true)
+  end
+
+  @doc false
+  def ensure_no_failed_sources!(results) when is_list(results) do
+    failures =
+      Enum.filter(results, fn
+        {_module, {:error, :no_api_key}} -> false
+        {_module, {:error, _reason}} -> true
+        _other -> false
+      end)
+
+    if failures != [] do
+      formatted =
+        failures
+        |> Enum.map(fn {module, {:error, reason}} ->
+          "#{inspect(module)} (#{format_error(reason)})"
+        end)
+        |> Enum.join(", ")
+
+      Mix.raise("Source pull failed for #{length(failures)} source(s): #{formatted}")
+    end
+
+    :ok
   end
 
   # Pull from all sources and return list of {module, result} tuples

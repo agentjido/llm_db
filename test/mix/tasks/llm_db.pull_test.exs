@@ -30,6 +30,30 @@ defmodule Mix.Tasks.LlmDb.PullTest do
     end
   end
 
+  test "ensure_no_failed_sources! accepts skips and successful pulls" do
+    results = [
+      {LLMDB.Sources.Google, {:ok, "priv/llm_db/remote/google.json"}},
+      {LLMDB.Sources.OpenAI, {:error, :no_api_key}},
+      {LLMDB.Sources.Local, :no_callback},
+      {LLMDB.Sources.OpenRouter, :not_modified}
+    ]
+
+    assert :ok = Mix.Tasks.LlmDb.Pull.ensure_no_failed_sources!(results)
+  end
+
+  test "ensure_no_failed_sources! raises on real pull failures" do
+    results = [
+      {LLMDB.Sources.Google, {:error, {:http_status, 400}}},
+      {LLMDB.Sources.OpenAI, {:error, :no_api_key}}
+    ]
+
+    assert_raise Mix.Error,
+                 ~r/Source pull failed for 1 source\(s\): LLMDB.Sources.Google \(HTTP 400\)/,
+                 fn ->
+                   Mix.Tasks.LlmDb.Pull.ensure_no_failed_sources!(results)
+                 end
+  end
+
   defp dotenv_file do
     case File.read(@dotenv_path) do
       {:ok, contents} -> {:ok, contents}
