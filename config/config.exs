@@ -34,7 +34,7 @@ if Mix.env() == :dev do
     repository_url: "https://github.com/agentjido/llm_db",
     manage_mix_version?: false,
     manage_readme_version: false,
-    version_tag_prefix: "v"
+    version_tag_prefix: ""
 
   config :git_hooks,
     auto_install: true,

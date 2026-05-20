@@ -16,6 +16,13 @@ defmodule LLMDB.Engine.NormalizeTest do
                Normalize.normalize_provider_id("anthropic-vertex", unsafe: true)
     end
 
+    test "converts binary provider ID with dots to atom with underscores" do
+      assert {:ok, :wafer_ai} = Normalize.normalize_provider_id("wafer.ai", unsafe: true)
+
+      assert {:ok, :vendor_api_proxy} =
+               Normalize.normalize_provider_id("vendor.api-proxy", unsafe: true)
+    end
+
     test "converts binary provider ID with underscores to atom" do
       assert {:ok, :google_vertex} =
                Normalize.normalize_provider_id("google_vertex", unsafe: true)
@@ -40,7 +47,6 @@ defmodule LLMDB.Engine.NormalizeTest do
       assert {:error, :bad_provider} = Normalize.normalize_provider_id("")
       assert {:error, :bad_provider} = Normalize.normalize_provider_id("has spaces")
       assert {:error, :bad_provider} = Normalize.normalize_provider_id("has@special")
-      assert {:error, :bad_provider} = Normalize.normalize_provider_id("has.dot")
     end
 
     test "returns error for excessively long strings" do

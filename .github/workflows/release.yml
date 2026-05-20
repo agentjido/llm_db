@@ -79,6 +79,11 @@ jobs:
           set -euo pipefail
           mix test
 
+      - name: Run quality checks
+        run: |
+          set -euo pipefail
+          mix quality
+
       - name: Configure git
         run: |
           set -euo pipefail

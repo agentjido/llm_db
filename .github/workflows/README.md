@@ -13,16 +13,13 @@ Runs on every push and pull request to ensure code quality.
 - Pull requests to `main` branch
 
 **Jobs:**
-- Install dependencies and cache them
-- Check code formatting (`mix format --check-formatted`)
-- Compile with warnings as errors
-- Run test suite
-- Generate coverage report (on Elixir 1.16/OTP 26 only)
+- Lint job: format check, compile with warnings as errors, Credo, Dialyzer, unused dependency check, Hex audit
+- Test job: compile and run the test suite across the supported Elixir/OTP matrix
+- Build check job: verify the packaged snapshot is up to date and check history drift
 
 **Matrix Testing:**
-- Elixir versions: 1.14, 1.15, 1.16
-- OTP versions: 25, 26
-- Excludes: Elixir 1.14 with OTP 26 (compatibility)
+- Elixir versions: 1.18, 1.19
+- OTP versions: 27, 28
 
 ### 2. Publish Snapshot Catalog (`build-metadata.yml`)
 
@@ -36,40 +33,35 @@ store.
 
 **Jobs:**
 1. Pull latest metadata using `mix llm_db.pull`
-2. Publish the current canonical snapshot using `mix llm_db.snapshot.publish`
-3. Rebuild and publish `history.tar.gz` from the published snapshot chain using `mix llm_db.history.rebuild --publish`
-4. Validate the packaged snapshot with `mix llm_db.build --check --install`
-5. Run the test suite against the resulting packaged snapshot
+2. Build the packaged snapshot from refreshed metadata
+3. Validate the packaged snapshot with `mix llm_db.build --check --install`, `mix test`, and `mix quality`
+4. Commit refreshed metadata inputs back to `main` when they changed
+5. Publish the current canonical snapshot using `mix llm_db.snapshot.publish`
+6. Rebuild and publish `history.tar.gz` from the published snapshot chain using `mix llm_db.history.rebuild --publish`
+7. Validate the published history bundle
 
 **Output:**
 - Updated immutable `snapshot-<snapshot_id>` release assets
 - Updated immutable `history-<snapshot_id>` release assets for the latest published snapshot
 
-### 3. Publish Release (`release.yml`)
+### 3. Release to Hex (`release.yml`)
 
-Automatically publishes new Hex.pm releases from the latest published snapshot.
+Manually publishes a new Hex.pm release from the committed snapshot on `main`.
 
 **Triggers:**
-- Push to `main` branch
-- Release workflow fetches the latest published snapshot and packages it into `priv/llm_db/snapshot.json`
+- Manual workflow dispatch
 
 **Jobs:**
-1. Fetch the latest published snapshot into `priv/llm_db/snapshot.json`
-2. Prepare release using `mix llm_db.release prepare`
-   - Determines version from the packaged snapshot timestamp (YYYY.MM.DD format)
-   - Updates `mix.exs` version
-3. Run tests to ensure quality
-4. Build Hex package
-5. Publish to Hex.pm
-6. Create git tag (e.g., `v2024.11.06`)
-7. Create GitHub release with:
-   - Provider and model statistics
-   - Installation instructions
-   - Generated release notes
+1. Validate the committed snapshot with `mix llm_db.build --check --install`
+2. Run tests and quality checks
+3. Bump `mix.exs` to the current CalVer release
+4. Generate the changelog and tag using `git_ops`
+5. Push release commits and tags
+6. Publish to Hex.pm
+7. Create a GitHub release
 
 **Version Format:**
-- Date-based: `YYYY.MM.DD`
-- Multiple releases same day: `YYYY.MM.DD.N` (e.g., `2024.11.06.1`)
+- Date-based CalVer: `YYYY.M.N` (for example, `2026.5.1`)
 
 ## Setup Instructions
 

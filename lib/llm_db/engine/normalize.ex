@@ -3,7 +3,7 @@ defmodule LLMDB.Normalize do
   Complete normalization utilities for raw data into consistent formats.
 
   This module handles ALL normalization in one place:
-  - Provider IDs: string → atom (with hyphen → underscore conversion)
+  - Provider IDs: string → atom (with separator → underscore conversion)
   - Model providers: string → atom
   - Modalities: string → atom (from valid set)
   - Tags: map → list, nil → []
@@ -17,8 +17,8 @@ defmodule LLMDB.Normalize do
   @doc """
   Normalizes a provider ID to an atom.
 
-  Converts binary provider IDs to atoms, handling hyphens by converting them
-  to underscores. Uses String.to_existing_atom/1 to prevent atom leaking
+  Converts binary provider IDs to atoms, handling hyphens and dots by converting
+  them to underscores. Uses String.to_existing_atom/1 to prevent atom leaking
   at runtime. During activation task, unsafe conversion is allowed.
 
   ## Examples
@@ -42,7 +42,7 @@ defmodule LLMDB.Normalize do
 
   def normalize_provider_id(provider_id, opts) when is_binary(provider_id) do
     if valid_provider_string?(provider_id) do
-      normalized_str = String.replace(provider_id, "-", "_")
+      normalized_str = String.replace(provider_id, ["-", "."], "_")
       convert_to_atom(normalized_str, opts)
     else
       {:error, :bad_provider}
@@ -173,7 +173,7 @@ defmodule LLMDB.Normalize do
   defp valid_provider_string?(str) when is_binary(str) do
     byte_size(str) > 0 and
       byte_size(str) <= 255 and
-      String.match?(str, ~r/^[a-z0-9_-]+$/i)
+      String.match?(str, ~r/^[a-z0-9_.-]+$/i)
   end
 
   defp normalize_provider(%{id: id} = provider) do

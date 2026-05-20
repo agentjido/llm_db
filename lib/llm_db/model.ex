@@ -534,6 +534,15 @@ defmodule LLMDB.Model do
   def spec(%__MODULE__{provider: provider, id: id}, format \\ nil) do
     LLMDB.Spec.format_spec({provider, id}, format)
   end
+
+  @doc """
+  Formats a model as a spec string in the given format.
+
+  Compatibility wrapper for `spec/2`.
+  """
+  @spec format_spec(t()) :: String.t()
+  @spec format_spec(t(), atom() | nil) :: String.t()
+  def format_spec(%__MODULE__{} = model, format \\ nil), do: spec(model, format)
 end
 
 defimpl DeepMerge.Resolver, for: LLMDB.Model do

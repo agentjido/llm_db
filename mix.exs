@@ -16,6 +16,7 @@ defmodule LLMDB.MixProject do
       description: @description,
       package: package(),
       elixirc_paths: elixirc_paths(Mix.env()),
+      test_coverage: [summary: [threshold: 50]],
 
       # Dialyzer configuration
       dialyzer: [
@@ -26,11 +27,12 @@ defmodule LLMDB.MixProject do
       name: "LLM DB",
       source_url: @source_url,
       homepage_url: @source_url,
-      source_ref: "v#{@version}",
+      source_ref: @version,
       docs: [
         main: "readme",
         extras: [
           "README.md",
+          "guides/consumer-integration.md",
           "guides/model-spec-formats.md",
           "guides/pricing-and-billing.md",
           "guides/schema-system.md",
@@ -90,7 +92,7 @@ defmodule LLMDB.MixProject do
         "Website" => "https://agentjido.xyz"
       },
       files:
-        ~w(config lib priv/llm_db/snapshot.json mix.exs LICENSE README.md CHANGELOG.md AGENTS.md usage-rules.md .formatter.exs)
+        ~w(config guides lib priv/llm_db/snapshot.json mix.exs LICENSE README.md CHANGELOG.md AGENTS.md usage-rules.md .formatter.exs)
     ]
   end
 
