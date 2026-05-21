@@ -4,6 +4,70 @@
       "architecture": {
         "input_modalities": [
           "text",
+          "image"
+        ],
+        "instruct_type": null,
+        "modality": "text+image->text",
+        "output_modalities": [
+          "text"
+        ],
+        "tokenizer": "Grok"
+      },
+      "canonical_slug": "x-ai/grok-build-0.1-20260520",
+      "context_length": 256000,
+      "created": 1779298123,
+      "default_parameters": {
+        "frequency_penalty": null,
+        "presence_penalty": null,
+        "repetition_penalty": null,
+        "temperature": null,
+        "top_k": null,
+        "top_p": null
+      },
+      "description": "Grok Build 0.1 is xAI’s fast coding model trained specifically for agentic software engineering workflows. It supports text and image inputs with text output, and is optimized for interactive coding...",
+      "expiration_date": null,
+      "hugging_face_id": null,
+      "id": "x-ai/grok-build-0.1",
+      "knowledge_cutoff": null,
+      "links": {
+        "details": "/api/v1/models/x-ai/grok-build-0.1-20260520/endpoints"
+      },
+      "name": "xAI: Grok Build 0.1",
+      "per_request_limits": null,
+      "pricing": {
+        "completion": "0.000002",
+        "input_cache_read": "0.0000002",
+        "prompt": "0.000001",
+        "web_search": "0.005"
+      },
+      "supported_parameters": [
+        "frequency_penalty",
+        "include_reasoning",
+        "logprobs",
+        "max_tokens",
+        "presence_penalty",
+        "reasoning",
+        "response_format",
+        "seed",
+        "stop",
+        "structured_outputs",
+        "temperature",
+        "tool_choice",
+        "tools",
+        "top_logprobs",
+        "top_p"
+      ],
+      "supported_voices": null,
+      "top_provider": {
+        "context_length": 256000,
+        "is_moderated": false,
+        "max_completion_tokens": null
+      }
+    },
+    {
+      "architecture": {
+        "input_modalities": [
+          "text",
           "image",
           "video",
           "file",
@@ -5256,7 +5320,6 @@
       "per_request_limits": null,
       "pricing": {
         "completion": "0.00000234",
-        "input_cache_read": "0.000000195",
         "prompt": "0.00000039"
       },
       "supported_parameters": [
@@ -5738,7 +5801,8 @@
       "per_request_limits": null,
       "pricing": {
         "completion": "0.0000003",
-        "prompt": "0.0000001"
+        "input_cache_read": "0.00000002",
+        "prompt": "0.00000009"
       },
       "supported_parameters": [
         "frequency_penalty",
@@ -5762,7 +5826,7 @@
       "top_provider": {
         "context_length": 262144,
         "is_moderated": false,
-        "max_completion_tokens": 65536
+        "max_completion_tokens": 16384
       }
     },
     {
@@ -6358,7 +6422,8 @@
       "pricing": {
         "completion": "0.000014",
         "input_cache_read": "0.000000175",
-        "prompt": "0.00000175"
+        "prompt": "0.00000175",
+        "web_search": "0.01"
       },
       "supported_parameters": [
         "include_reasoning",
@@ -6884,7 +6949,8 @@
       "pricing": {
         "completion": "0.000014",
         "input_cache_read": "0.000000175",
-        "prompt": "0.00000175"
+        "prompt": "0.00000175",
+        "web_search": "0.01"
       },
       "supported_parameters": [
         "max_completion_tokens",
@@ -6994,7 +7060,8 @@
       "pricing": {
         "completion": "0.000014",
         "input_cache_read": "0.000000175",
-        "prompt": "0.00000175"
+        "prompt": "0.00000175",
+        "web_search": "0.01"
       },
       "supported_parameters": [
         "include_reasoning",
@@ -8185,7 +8252,8 @@
       "pricing": {
         "completion": "0.00001",
         "input_cache_read": "0.00000013",
-        "prompt": "0.00000125"
+        "prompt": "0.00000125",
+        "web_search": "0.01"
       },
       "supported_parameters": [
         "include_reasoning",
@@ -8296,7 +8364,8 @@
       "pricing": {
         "completion": "0.00001",
         "input_cache_read": "0.000000125",
-        "prompt": "0.00000125"
+        "prompt": "0.00000125",
+        "web_search": "0.01"
       },
       "supported_parameters": [
         "include_reasoning",
@@ -8353,7 +8422,8 @@
       "pricing": {
         "completion": "0.000002",
         "input_cache_read": "0.00000003",
-        "prompt": "0.00000025"
+        "prompt": "0.00000025",
+        "web_search": "0.01"
       },
       "supported_parameters": [
         "include_reasoning",
@@ -10314,7 +10384,8 @@
       "pricing": {
         "completion": "0.00001",
         "input_cache_read": "0.000000125",
-        "prompt": "0.00000125"
+        "prompt": "0.00000125",
+        "web_search": "0.01"
       },
       "supported_parameters": [
         "include_reasoning",
@@ -11570,7 +11641,8 @@
       "pricing": {
         "completion": "0.00001",
         "input_cache_read": "0.000000125",
-        "prompt": "0.00000125"
+        "prompt": "0.00000125",
+        "web_search": "0.01"
       },
       "supported_parameters": [
         "include_reasoning",
@@ -11687,7 +11759,8 @@
       "pricing": {
         "completion": "0.0000004",
         "input_cache_read": "0.00000001",
-        "prompt": "0.00000005"
+        "prompt": "0.00000005",
+        "web_search": "0.01"
       },
       "supported_parameters": [
         "include_reasoning",
@@ -14625,7 +14698,8 @@
       "pricing": {
         "completion": "0.000008",
         "input_cache_read": "0.0000005",
-        "prompt": "0.000002"
+        "prompt": "0.000002",
+        "web_search": "0.01"
       },
       "supported_parameters": [
         "max_completion_tokens",
@@ -14991,7 +15065,8 @@
       "per_request_limits": null,
       "pricing": {
         "completion": "0.0006",
-        "prompt": "0.00015"
+        "prompt": "0.00015",
+        "web_search": "0.01"
       },
       "supported_parameters": [
         "include_reasoning",
@@ -15817,7 +15892,8 @@
       "pricing": {
         "completion": "0.0000044",
         "input_cache_read": "0.00000055",
-        "prompt": "0.0000011"
+        "prompt": "0.0000011",
+        "web_search": "0.01"
       },
       "supported_parameters": [
         "include_reasoning",
@@ -16166,7 +16242,8 @@
       "pricing": {
         "completion": "0.0000044",
         "input_cache_read": "0.00000055",
-        "prompt": "0.0000011"
+        "prompt": "0.0000011",
+        "web_search": "0.01"
       },
       "supported_parameters": [
         "include_reasoning",
@@ -16751,7 +16828,8 @@
       "pricing": {
         "completion": "0.00006",
         "input_cache_read": "0.0000075",
-        "prompt": "0.000015"
+        "prompt": "0.000015",
+        "web_search": "0.01"
       },
       "supported_parameters": [
         "include_reasoning",
@@ -19466,7 +19544,8 @@
       "per_request_limits": null,
       "pricing": {
         "completion": "0.00003",
-        "prompt": "0.00001"
+        "prompt": "0.00001",
+        "web_search": "0.01"
       },
       "supported_parameters": [
         "frequency_penalty",
