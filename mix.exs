@@ -82,7 +82,7 @@ defmodule LLMDB.MixProject do
   defp package do
     [
       description: @description,
-      licenses: ["MIT"],
+      licenses: ["Apache-2.0"],
       maintainers: ["Mike Hostetler"],
       links: %{
         "Changelog" => "https://hexdocs.pm/llm_db/changelog.html",

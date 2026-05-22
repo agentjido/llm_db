@@ -219,7 +219,7 @@ See `guides/model-spec-formats.md` for the complete data format reference.
 
 ## License
 
-By contributing to LLM DB, you agree that your contributions will be licensed under the MIT License.
+By contributing to LLM DB, you agree that your contributions will be licensed under the Apache-2.0 License.
 
 ---
 
