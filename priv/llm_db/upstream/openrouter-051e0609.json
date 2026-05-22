@@ -3,6 +3,66 @@
     {
       "architecture": {
         "input_modalities": [
+          "text"
+        ],
+        "instruct_type": null,
+        "modality": "text->text",
+        "output_modalities": [
+          "text"
+        ],
+        "tokenizer": "Qwen"
+      },
+      "canonical_slug": "qwen/qwen3.7-max-20260520",
+      "context_length": 1000000,
+      "created": 1779376861,
+      "default_parameters": {
+        "frequency_penalty": null,
+        "presence_penalty": null,
+        "repetition_penalty": null,
+        "temperature": null,
+        "top_k": null,
+        "top_p": null
+      },
+      "description": "Qwen3.7-Max is the flagship model in Alibaba's Qwen3.7 series. It supports text input and output and is designed for agent-centric workloads, with particular strengths in coding, office and productivity tasks,...",
+      "expiration_date": null,
+      "hugging_face_id": null,
+      "id": "qwen/qwen3.7-max",
+      "knowledge_cutoff": null,
+      "links": {
+        "details": "/api/v1/models/qwen/qwen3.7-max-20260520/endpoints"
+      },
+      "name": "Qwen: Qwen3.7 Max",
+      "per_request_limits": null,
+      "pricing": {
+        "completion": "0.0000075",
+        "input_cache_write": "0.000003125",
+        "prompt": "0.0000025"
+      },
+      "supported_parameters": [
+        "include_reasoning",
+        "logprobs",
+        "max_tokens",
+        "presence_penalty",
+        "reasoning",
+        "response_format",
+        "seed",
+        "structured_outputs",
+        "temperature",
+        "tool_choice",
+        "tools",
+        "top_logprobs",
+        "top_p"
+      ],
+      "supported_voices": null,
+      "top_provider": {
+        "context_length": 1000000,
+        "is_moderated": false,
+        "max_completion_tokens": 65536
+      }
+    },
+    {
+      "architecture": {
+        "input_modalities": [
           "text",
           "image"
         ],
@@ -1408,9 +1468,9 @@
       "name": "Qwen: Qwen3.6 Flash",
       "per_request_limits": null,
       "pricing": {
-        "completion": "0.000001125",
-        "input_cache_write": "0.000000234375",
-        "prompt": "0.0000001875"
+        "completion": "0.0000007425",
+        "input_cache_write": "0.0000001545",
+        "prompt": "0.00000012375"
       },
       "supported_parameters": [
         "include_reasoning",
@@ -1466,7 +1526,8 @@
       "per_request_limits": null,
       "pricing": {
         "completion": "0.000001",
-        "prompt": "0.000000149"
+        "input_cache_read": "0.00000005",
+        "prompt": "0.00000015"
       },
       "supported_parameters": [
         "frequency_penalty",
@@ -1493,7 +1554,7 @@
       "top_provider": {
         "context_length": 262144,
         "is_moderated": false,
-        "max_completion_tokens": null
+        "max_completion_tokens": 262144
       }
     },
     {
@@ -1586,7 +1647,7 @@
       "per_request_limits": null,
       "pricing": {
         "completion": "0.0000032",
-        "prompt": "0.00000032"
+        "prompt": "0.0000003"
       },
       "supported_parameters": [
         "frequency_penalty",
@@ -1613,7 +1674,7 @@
       "top_provider": {
         "context_length": 262144,
         "is_moderated": false,
-        "max_completion_tokens": 81920
+        "max_completion_tokens": 262144
       }
     },
     {
@@ -2410,7 +2471,7 @@
         "top_p": null
       },
       "description": "Qianfan-OCR-Fast is a domain-specific multimodal large model purpose-built for OCR. By leveraging specialized OCR training data while preserving versatile multimodal intelligence, it provides a powerful performance upgrade over Qianfan-OCR.",
-      "expiration_date": null,
+      "expiration_date": "2026-05-28",
       "hugging_face_id": "",
       "id": "baidu/qianfan-ocr-fast",
       "knowledge_cutoff": null,
@@ -2646,7 +2707,7 @@
         "tokenizer": "Other"
       },
       "canonical_slug": "z-ai/glm-5.1-20260406",
-      "context_length": 202800,
+      "context_length": 202752,
       "created": 1775578025,
       "default_parameters": {
         "frequency_penalty": null,
@@ -2667,8 +2728,9 @@
       "name": "Z.ai: GLM 5.1",
       "per_request_limits": null,
       "pricing": {
-        "completion": "0",
-        "prompt": "0"
+        "completion": "0.00000308",
+        "input_cache_read": "0.000000182",
+        "prompt": "0.00000098"
       },
       "supported_parameters": [
         "frequency_penalty",
@@ -2695,9 +2757,9 @@
       ],
       "supported_voices": null,
       "top_provider": {
-        "context_length": 202800,
+        "context_length": 202752,
         "is_moderated": false,
-        "max_completion_tokens": 202800
+        "max_completion_tokens": null
       }
     },
     {
@@ -2978,9 +3040,9 @@
       "name": "Qwen: Qwen3.6 Plus",
       "per_request_limits": null,
       "pricing": {
-        "completion": "0.00000195",
-        "input_cache_write": "0.00000040625",
-        "prompt": "0.000000325"
+        "completion": "0.00000107315",
+        "input_cache_write": "0.0000002236",
+        "prompt": "0.0000001794"
       },
       "supported_parameters": [
         "include_reasoning",
@@ -5827,59 +5889,6 @@
         "context_length": 262144,
         "is_moderated": false,
         "max_completion_tokens": 16384
-      }
-    },
-    {
-      "architecture": {
-        "input_modalities": [
-          "text"
-        ],
-        "instruct_type": null,
-        "modality": "text->text",
-        "output_modalities": [
-          "text"
-        ],
-        "tokenizer": "Other"
-      },
-      "canonical_slug": "arcee-ai/trinity-large-preview",
-      "context_length": 131000,
-      "created": 1769552670,
-      "default_parameters": {
-        "frequency_penalty": null,
-        "presence_penalty": null,
-        "repetition_penalty": null,
-        "temperature": 0.8,
-        "top_k": null,
-        "top_p": 0.8
-      },
-      "description": "Trinity-Large-Preview is a frontier-scale open-weight language model from Arcee, built as a 400B-parameter sparse Mixture-of-Experts with 13B active parameters per token using 4-of-256 expert routing. It excels in creative writing,...",
-      "expiration_date": "2026-05-21",
-      "hugging_face_id": "arcee-ai/Trinity-Large-Preview",
-      "id": "arcee-ai/trinity-large-preview",
-      "knowledge_cutoff": null,
-      "links": {
-        "details": "/api/v1/models/arcee-ai/trinity-large-preview/endpoints"
-      },
-      "name": "Arcee AI: Trinity Large Preview",
-      "per_request_limits": null,
-      "pricing": {
-        "completion": "0.00000045",
-        "prompt": "0.00000015"
-      },
-      "supported_parameters": [
-        "max_tokens",
-        "response_format",
-        "structured_outputs",
-        "temperature",
-        "tools",
-        "top_k",
-        "top_p"
-      ],
-      "supported_voices": null,
-      "top_provider": {
-        "context_length": 131000,
-        "is_moderated": false,
-        "max_completion_tokens": null
       }
     },
     {
