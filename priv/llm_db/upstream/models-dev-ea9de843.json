@@ -7226,6 +7226,7 @@
       "gpt-5-chat-latest": {
         "attachment": true,
         "cost": {
+          "cache_read": 0.125,
           "input": 1.25,
           "output": 10
         },
@@ -7258,7 +7259,7 @@
       "gpt-4.1-nano": {
         "attachment": true,
         "cost": {
-          "cache_read": 0.03,
+          "cache_read": 0.025,
           "input": 0.1,
           "output": 0.4
         },
@@ -7386,7 +7387,7 @@
       "gpt-5.1": {
         "attachment": true,
         "cost": {
-          "cache_read": 0.13,
+          "cache_read": 0.125,
           "input": 1.25,
           "output": 10
         },
@@ -7558,7 +7559,7 @@
       "gpt-4o-mini": {
         "attachment": true,
         "cost": {
-          "cache_read": 0.08,
+          "cache_read": 0.075,
           "input": 0.15,
           "output": 0.6
         },
@@ -7815,7 +7816,7 @@
       "gpt-3.5-turbo": {
         "attachment": false,
         "cost": {
-          "cache_read": 1.25,
+          "cache_read": 0,
           "input": 0.5,
           "output": 1.5
         },
@@ -8729,7 +8730,7 @@
       "o4-mini": {
         "attachment": true,
         "cost": {
-          "cache_read": 0.28,
+          "cache_read": 0.275,
           "input": 1.1,
           "output": 4.4
         },
@@ -41515,9 +41516,9 @@
       "xiaomi/mimo-v2.5": {
         "attachment": true,
         "cost": {
-          "cache_read": 0.08,
-          "input": 0.4,
-          "output": 2
+          "cache_read": 0.0028,
+          "input": 0.14,
+          "output": 0.28
         },
         "family": "mimo",
         "id": "xiaomi/mimo-v2.5",
@@ -41769,9 +41770,9 @@
       "xiaomi/mimo-v2.5-pro": {
         "attachment": false,
         "cost": {
-          "cache_read": 0.2,
-          "input": 1,
-          "output": 3
+          "cache_read": 0.0036,
+          "input": 0.435,
+          "output": 0.87
         },
         "family": "mimo",
         "id": "xiaomi/mimo-v2.5-pro",
@@ -41782,7 +41783,7 @@
         "last_updated": "2026-04-22",
         "limit": {
           "context": 1048576,
-          "output": 16384
+          "output": 131072
         },
         "modalities": {
           "input": [
@@ -44972,35 +44973,6 @@
         "structured_output": false,
         "temperature": true,
         "tool_call": false
-      },
-      "arcee-ai/trinity-large-thinking:free": {
-        "attachment": false,
-        "cost": {
-          "input": 0,
-          "output": 0
-        },
-        "family": "trinity",
-        "id": "arcee-ai/trinity-large-thinking:free",
-        "last_updated": "2026-04-01",
-        "limit": {
-          "context": 262144,
-          "output": 80000
-        },
-        "modalities": {
-          "input": [
-            "text"
-          ],
-          "output": [
-            "text"
-          ]
-        },
-        "name": "Trinity Large Thinking (free)",
-        "open_weights": true,
-        "reasoning": true,
-        "release_date": "2026-04-01",
-        "structured_output": false,
-        "temperature": true,
-        "tool_call": true
       },
       "deepseek/deepseek-r1-distill-qwen-32b": {
         "attachment": false,
@@ -50976,8 +50948,8 @@
         },
         "last_updated": "2026-04-28",
         "limit": {
-          "context": 131072,
-          "output": 8192
+          "context": 262144,
+          "output": 32768
         },
         "modalities": {
           "input": [
@@ -51335,15 +51307,16 @@
       "qwen/qwen3.6-27b": {
         "attachment": true,
         "cost": {
+          "cache_read": 0.15,
           "input": 0.3,
-          "output": 3.2
+          "output": 2
         },
         "family": "qwen3.6",
         "id": "qwen/qwen3.6-27b",
         "last_updated": "2026-04-27",
         "limit": {
           "context": 262144,
-          "output": 262144
+          "output": 65536
         },
         "modalities": {
           "input": [
@@ -58285,7 +58258,7 @@
       "gpt-4.1-nano": {
         "attachment": true,
         "cost": {
-          "cache_read": 0.03,
+          "cache_read": 0.025,
           "input": 0.1,
           "output": 0.4
         },
@@ -58749,7 +58722,7 @@
       "gpt-4o-mini": {
         "attachment": true,
         "cost": {
-          "cache_read": 0.08,
+          "cache_read": 0.075,
           "input": 0.15,
           "output": 0.6
         },
@@ -60912,7 +60885,7 @@
       "o4-mini": {
         "attachment": true,
         "cost": {
-          "cache_read": 0.28,
+          "cache_read": 0.275,
           "input": 1.1,
           "output": 4.4
         },
@@ -69297,6 +69270,7 @@
       "gpt-5-chat-latest": {
         "attachment": true,
         "cost": {
+          "cache_read": 0.125,
           "input": 1.25,
           "output": 10
         },
@@ -69392,7 +69366,7 @@
       "gpt-4.1-nano": {
         "attachment": true,
         "cost": {
-          "cache_read": 0.03,
+          "cache_read": 0.025,
           "input": 0.1,
           "output": 0.4
         },
@@ -69761,7 +69735,7 @@
       "gpt-5.1": {
         "attachment": true,
         "cost": {
-          "cache_read": 0.13,
+          "cache_read": 0.125,
           "input": 1.25,
           "output": 10
         },
@@ -70468,7 +70442,7 @@
       "gpt-4o-mini": {
         "attachment": true,
         "cost": {
-          "cache_read": 0.08,
+          "cache_read": 0.075,
           "input": 0.15,
           "output": 0.6
         },
@@ -71351,7 +71325,7 @@
       "gpt-3.5-turbo": {
         "attachment": false,
         "cost": {
-          "cache_read": 1.25,
+          "cache_read": 0,
           "input": 0.5,
           "output": 1.5
         },
@@ -74677,7 +74651,7 @@
       "o4-mini": {
         "attachment": true,
         "cost": {
-          "cache_read": 0.28,
+          "cache_read": 0.275,
           "input": 1.1,
           "output": 4.4
         },
@@ -77230,6 +77204,39 @@
         "release_date": "2026-04-02",
         "temperature": true,
         "tool_call": true
+      },
+      "qwen3.7-max": {
+        "attachment": false,
+        "cost": {
+          "cache_read": 0.5,
+          "cache_write": 3.125,
+          "input": 2.5,
+          "output": 7.5
+        },
+        "family": "qwen3.7-max",
+        "id": "qwen3.7-max",
+        "last_updated": "2026-05-21",
+        "limit": {
+          "context": 1000000,
+          "output": 65536
+        },
+        "modalities": {
+          "input": [
+            "text"
+          ],
+          "output": [
+            "text"
+          ]
+        },
+        "name": "Qwen3.7 Max",
+        "open_weights": false,
+        "provider": {
+          "npm": "@ai-sdk/anthropic"
+        },
+        "reasoning": true,
+        "release_date": "2026-05-21",
+        "temperature": true,
+        "tool_call": true
       }
     },
     "name": "OpenCode Go",
@@ -79016,7 +79023,7 @@
       "openai/gpt-4o-mini": {
         "attachment": true,
         "cost": {
-          "cache_read": 0.08,
+          "cache_read": 0.075,
           "input": 0.15,
           "output": 0.6
         },
@@ -79664,6 +79671,7 @@
       "openai/gpt-5-chat-latest": {
         "attachment": true,
         "cost": {
+          "cache_read": 0.125,
           "input": 1.25,
           "output": 10
         },
@@ -79981,7 +79989,7 @@
       "openai/gpt-4.1-nano": {
         "attachment": true,
         "cost": {
-          "cache_read": 0.03,
+          "cache_read": 0.025,
           "input": 0.1,
           "output": 0.4
         },
@@ -81141,7 +81149,7 @@
       "openai/gpt-3.5-turbo": {
         "attachment": false,
         "cost": {
-          "cache_read": 1.25,
+          "cache_read": 0,
           "input": 0.5,
           "output": 1.5
         },
@@ -81503,7 +81511,7 @@
       "openai/gpt-5.1": {
         "attachment": true,
         "cost": {
-          "cache_read": 0.13,
+          "cache_read": 0.125,
           "input": 1.25,
           "output": 10
         },
@@ -116041,7 +116049,7 @@
         "last_updated": "2026-03-27",
         "limit": {
           "context": 202752,
-          "output": 202752
+          "output": 65536
         },
         "modalities": {
           "input": [
@@ -116075,7 +116083,7 @@
         "last_updated": "2026-03-27",
         "limit": {
           "context": 202752,
-          "output": 202752
+          "output": 65536
         },
         "modalities": {
           "input": [
@@ -116195,6 +116203,57 @@
         "reasoning": true,
         "release_date": "2026-04-21",
         "structured_output": true,
+        "temperature": true,
+        "tool_call": true
+      },
+      "route/mimo-v2.5": {
+        "attachment": true,
+        "cost": {
+          "cache_read": 0.2,
+          "context_over_200k": {
+            "cache_read": 0.4,
+            "input": 2,
+            "output": 6
+          },
+          "input": 0.45,
+          "output": 1.35,
+          "tiers": [
+            {
+              "cache_read": 0.4,
+              "input": 2,
+              "output": 6,
+              "tier": {
+                "size": 256000,
+                "type": "context"
+              }
+            }
+          ]
+        },
+        "family": "mimo",
+        "id": "route/mimo-v2.5",
+        "interleaved": {
+          "field": "reasoning_content"
+        },
+        "knowledge": "2024-12",
+        "last_updated": "2026-04-22",
+        "limit": {
+          "context": 1000000,
+          "output": 262144
+        },
+        "modalities": {
+          "input": [
+            "text",
+            "image",
+            "video"
+          ],
+          "output": [
+            "text"
+          ]
+        },
+        "name": "MiMo V2.5",
+        "open_weights": true,
+        "reasoning": true,
+        "release_date": "2026-04-22",
         "temperature": true,
         "tool_call": true
       },
@@ -116518,7 +116577,7 @@
         "tool_call": true
       },
       "route/qwen3.6-27b": {
-        "attachment": true,
+        "attachment": false,
         "cost": {
           "input": 1.1,
           "output": 3.3
@@ -116527,20 +116586,47 @@
         "id": "route/qwen3.6-27b",
         "last_updated": "2026-04-22",
         "limit": {
-          "context": 262144,
-          "output": 262144
+          "context": 202000,
+          "output": 32768
         },
         "modalities": {
           "input": [
-            "text",
-            "image",
-            "video"
+            "text"
           ],
           "output": [
             "text"
           ]
         },
         "name": "Qwen3.6 27B",
+        "open_weights": true,
+        "reasoning": false,
+        "release_date": "2026-04-22",
+        "structured_output": true,
+        "temperature": true,
+        "tool_call": true
+      },
+      "route/qwen3.6-27b-202k": {
+        "attachment": false,
+        "cost": {
+          "input": 1.1,
+          "output": 3.3
+        },
+        "family": "qwen",
+        "id": "route/qwen3.6-27b-202k",
+        "last_updated": "2026-04-22",
+        "limit": {
+          "context": 202000,
+          "output": 32768
+        },
+        "modalities": {
+          "input": [
+            "text"
+          ],
+          "output": [
+            "text"
+          ]
+        },
+        "name": "Qwen3.6 27B 202K",
         "open_weights": true,
         "reasoning": false,
         "release_date": "2026-04-22",
@@ -117489,7 +117575,7 @@
       "gpt-4.1-nano": {
         "attachment": true,
         "cost": {
-          "cache_read": 0.03,
+          "cache_read": 0.025,
           "input": 0.1,
           "output": 0.4
         },
@@ -117953,7 +118039,7 @@
       "gpt-4o-mini": {
         "attachment": true,
         "cost": {
-          "cache_read": 0.08,
+          "cache_read": 0.075,
           "input": 0.15,
           "output": 0.6
         },
@@ -119890,7 +119976,7 @@
       "o4-mini": {
         "attachment": true,
         "cost": {
-          "cache_read": 0.28,
+          "cache_read": 0.275,
           "input": 1.1,
           "output": 4.4
         },
@@ -123426,7 +123512,7 @@
       "databricks-gpt-5-1": {
         "attachment": true,
         "cost": {
-          "cache_read": 0.13,
+          "cache_read": 0.125,
           "input": 1.25,
           "output": 10
         },
@@ -133218,7 +133304,7 @@
       "openai/o4-mini": {
         "attachment": true,
         "cost": {
-          "cache_read": 0.28,
+          "cache_read": 0.275,
           "input": 1.1,
           "output": 4.4
         },
@@ -133250,7 +133336,7 @@
       "openai/gpt-4.1-nano": {
         "attachment": true,
         "cost": {
-          "cache_read": 0.03,
+          "cache_read": 0.025,
           "input": 0.1,
           "output": 0.4
         },
@@ -133851,7 +133937,7 @@
       "openai/gpt-5.1": {
         "attachment": true,
         "cost": {
-          "cache_read": 0.13,
+          "cache_read": 0.125,
           "input": 1.25,
           "output": 10
         },
@@ -141052,7 +141138,7 @@
       "openai/gpt-4o-mini": {
         "attachment": true,
         "cost": {
-          "cache_read": 0.08,
+          "cache_read": 0.075,
           "input": 0.15,
           "output": 0.6
         },
@@ -142974,7 +143060,7 @@
       "openai/o4-mini": {
         "attachment": true,
         "cost": {
-          "cache_read": 0.28,
+          "cache_read": 0.275,
           "input": 1.1,
           "output": 4.4
         },
@@ -143186,7 +143272,7 @@
       "openai/gpt-4.1-nano": {
         "attachment": true,
         "cost": {
-          "cache_read": 0.03,
+          "cache_read": 0.025,
           "input": 0.1,
           "output": 0.4
         },

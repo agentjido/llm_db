@@ -2,6 +2,54 @@
   "data": [
     {
       "capabilities": {
+        "reasoning": false
+      },
+      "context_length": 256000,
+      "created": 1779791265,
+      "display_name": "xAI: Grok Build 0.1",
+      "id": "x-ai/grok-build-0.1",
+      "input_modalities": [
+        "text",
+        "image"
+      ],
+      "object": "model",
+      "output_modalities": [
+        "text"
+      ],
+      "owned_by": "x-ai",
+      "pricings": {
+        "completion": [
+          {
+            "currency": "USD",
+            "unit": "perMTokens",
+            "value": 2
+          }
+        ],
+        "input_cache_read": [
+          {
+            "currency": "USD",
+            "unit": "perMTokens",
+            "value": 0.2
+          }
+        ],
+        "prompt": [
+          {
+            "currency": "USD",
+            "unit": "perMTokens",
+            "value": 1
+          }
+        ],
+        "web_search": [
+          {
+            "currency": "USD",
+            "unit": "perCount",
+            "value": 0.005
+          }
+        ]
+      }
+    },
+    {
+      "capabilities": {
         "reasoning": true
       },
       "context_length": 1000000,
@@ -1043,28 +1091,14 @@
           {
             "conditions": {
               "prompt_tokens": {
-                "gte": 0,
-                "lte": 256,
-                "unit": "kTokens"
-              }
-            },
-            "currency": "USD",
-            "unit": "perMTokens",
-            "value": 3
-          },
-          {
-            "conditions": {
-              "prompt_tokens": {
                 "gt": 256,
                 "unit": "kTokens"
               }
             },
             "currency": "USD",
             "unit": "perMTokens",
-            "value": 6
-          }
-        ],
-        "input_cache_read": [
+            "value": 0.88
+          },
           {
             "conditions": {
               "prompt_tokens": {
@@ -1075,8 +1109,10 @@
             },
             "currency": "USD",
             "unit": "perMTokens",
-            "value": 0.2
-          },
+            "value": 0.88
+          }
+        ],
+        "input_cache_read": [
           {
             "conditions": {
               "prompt_tokens": {
@@ -1086,7 +1122,19 @@
             },
             "currency": "USD",
             "unit": "perMTokens",
-            "value": 0.4
+            "value": 0.0037
+          },
+          {
+            "conditions": {
+              "prompt_tokens": {
+                "gte": 0,
+                "lte": 256,
+                "unit": "kTokens"
+              }
+            },
+            "currency": "USD",
+            "unit": "perMTokens",
+            "value": 0.0037
           }
         ],
         "prompt": [
@@ -1100,7 +1148,7 @@
             },
             "currency": "USD",
             "unit": "perMTokens",
-            "value": 1
+            "value": 0.44
           },
           {
             "conditions": {
@@ -1111,7 +1159,7 @@
             },
             "currency": "USD",
             "unit": "perMTokens",
-            "value": 2
+            "value": 0.44
           }
         ],
         "web_search": [
@@ -1284,7 +1332,7 @@
             },
             "currency": "USD",
             "unit": "perMTokens",
-            "value": 2
+            "value": 0.29
           },
           {
             "conditions": {
@@ -1295,7 +1343,7 @@
             },
             "currency": "USD",
             "unit": "perMTokens",
-            "value": 4
+            "value": 0.29
           }
         ],
         "input_cache_read": [
@@ -1309,7 +1357,7 @@
             },
             "currency": "USD",
             "unit": "perMTokens",
-            "value": 0.08
+            "value": 0.0029
           },
           {
             "conditions": {
@@ -1320,7 +1368,7 @@
             },
             "currency": "USD",
             "unit": "perMTokens",
-            "value": 0.16
+            "value": 0.0029
           }
         ],
         "prompt": [
@@ -1334,7 +1382,7 @@
             },
             "currency": "USD",
             "unit": "perMTokens",
-            "value": 0.4
+            "value": 0.15
           },
           {
             "conditions": {
@@ -1345,7 +1393,7 @@
             },
             "currency": "USD",
             "unit": "perMTokens",
-            "value": 0.8
+            "value": 0.15
           }
         ],
         "web_search": [
@@ -5270,7 +5318,7 @@
       "capabilities": {
         "reasoning": true
       },
-      "context_length": 262144,
+      "context_length": 256000,
       "created": 1765943626,
       "display_name": "Xiaomi: MiMo-V2-Flash",
       "id": "xiaomi/mimo-v2-flash",

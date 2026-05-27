@@ -34,9 +34,10 @@
       "name": "Qwen: Qwen3.7 Max",
       "per_request_limits": null,
       "pricing": {
-        "completion": "0.0000075",
-        "input_cache_write": "0.000003125",
-        "prompt": "0.0000025"
+        "completion": "0.00000375",
+        "input_cache_read": "0.00000025",
+        "input_cache_write": "0.0000015625",
+        "prompt": "0.00000125"
       },
       "supported_parameters": [
         "include_reasoning",
@@ -453,7 +454,7 @@
       "created": 1778035480,
       "default_parameters": {},
       "description": "CoBuddy is a code generation model from Baidu, optimized for coding tasks and AI Agent workflows. It features high inference throughput and low end-to-end latency, with native support for tool...",
-      "expiration_date": null,
+      "expiration_date": "2026-05-27",
       "hugging_face_id": null,
       "id": "baidu/cobuddy:free",
       "knowledge_cutoff": null,
@@ -901,7 +902,7 @@
         "tokenizer": "Other"
       },
       "canonical_slug": "poolside/laguna-m.1-20260312",
-      "context_length": 131072,
+      "context_length": 262144,
       "created": 1777388504,
       "default_parameters": {
         "frequency_penalty": null,
@@ -935,9 +936,9 @@
       ],
       "supported_voices": null,
       "top_provider": {
-        "context_length": 131072,
+        "context_length": 262144,
         "is_moderated": false,
-        "max_completion_tokens": 8192
+        "max_completion_tokens": 32768
       }
     },
     {
@@ -1417,6 +1418,7 @@
       "per_request_limits": null,
       "pricing": {
         "completion": "0.0000018",
+        "input_cache_write": "0.000000375",
         "prompt": "0.0000003"
       },
       "supported_parameters": [
@@ -1526,6 +1528,7 @@
       "per_request_limits": null,
       "pricing": {
         "completion": "0.000001",
+        "input_cache_read": "0.00000005",
         "prompt": "0.00000015"
       },
       "supported_parameters": [
@@ -1551,9 +1554,9 @@
       ],
       "supported_voices": null,
       "top_provider": {
-        "context_length": 262140,
+        "context_length": 262144,
         "is_moderated": false,
-        "max_completion_tokens": 262140
+        "max_completion_tokens": 262144
       }
     },
     {
@@ -1645,7 +1648,8 @@
       "name": "Qwen: Qwen3.6 27B",
       "per_request_limits": null,
       "pricing": {
-        "completion": "0.0000032",
+        "completion": "0.000002",
+        "input_cache_read": "0.00000015",
         "prompt": "0.0000003"
       },
       "supported_parameters": [
@@ -1673,7 +1677,7 @@
       "top_provider": {
         "context_length": 262144,
         "is_moderated": false,
-        "max_completion_tokens": 262144
+        "max_completion_tokens": 65536
       }
     },
     {
@@ -2126,9 +2130,9 @@
       "name": "Xiaomi: MiMo-V2.5-Pro",
       "per_request_limits": null,
       "pricing": {
-        "completion": "0.000003",
-        "input_cache_read": "0.0000002",
-        "prompt": "0.000001"
+        "completion": "0.00000087",
+        "input_cache_read": "0.0000000036",
+        "prompt": "0.000000435"
       },
       "supported_parameters": [
         "frequency_penalty",
@@ -2153,7 +2157,7 @@
       "top_provider": {
         "context_length": 1048576,
         "is_moderated": false,
-        "max_completion_tokens": 16384
+        "max_completion_tokens": 131072
       }
     },
     {
@@ -2193,9 +2197,9 @@
       "name": "Xiaomi: MiMo-V2.5",
       "per_request_limits": null,
       "pricing": {
-        "completion": "0.000002",
-        "input_cache_read": "0.00000008",
-        "prompt": "0.0000004"
+        "completion": "0.00000028",
+        "input_cache_read": "0.0000000028",
+        "prompt": "0.00000014"
       },
       "supported_parameters": [
         "frequency_penalty",
@@ -3118,60 +3122,6 @@
         "context_length": 202752,
         "is_moderated": false,
         "max_completion_tokens": 131072
-      }
-    },
-    {
-      "architecture": {
-        "input_modalities": [
-          "text"
-        ],
-        "instruct_type": null,
-        "modality": "text->text",
-        "output_modalities": [
-          "text"
-        ],
-        "tokenizer": "Other"
-      },
-      "canonical_slug": "arcee-ai/trinity-large-thinking",
-      "context_length": 262144,
-      "created": 1775058318,
-      "default_parameters": {
-        "frequency_penalty": null,
-        "presence_penalty": null,
-        "repetition_penalty": null,
-        "temperature": 0.3,
-        "top_k": null,
-        "top_p": 0.8
-      },
-      "description": "Trinity Large Thinking is a powerful open source reasoning model from the team at Arcee AI. It shows strong performance in PinchBench, agentic workloads, and reasoning tasks. Launch video: https://youtu.be/Gc82AXLa0Rg?si=4RLn6WBz33qT--B7...",
-      "expiration_date": null,
-      "hugging_face_id": "arcee-ai/Trinity-Large-Thinking",
-      "id": "arcee-ai/trinity-large-thinking:free",
-      "knowledge_cutoff": null,
-      "links": {
-        "details": "/api/v1/models/arcee-ai/trinity-large-thinking/endpoints"
-      },
-      "name": "Arcee AI: Trinity Large Thinking (free)",
-      "per_request_limits": null,
-      "pricing": {
-        "completion": "0",
-        "prompt": "0"
-      },
-      "supported_parameters": [
-        "include_reasoning",
-        "max_tokens",
-        "reasoning",
-        "temperature",
-        "tool_choice",
-        "tools",
-        "top_k",
-        "top_p"
-      ],
-      "supported_voices": null,
-      "top_provider": {
-        "context_length": 262144,
-        "is_moderated": false,
-        "max_completion_tokens": 80000
       }
     },
     {
@@ -4905,7 +4855,6 @@
       "per_request_limits": null,
       "pricing": {
         "completion": "0.00000026",
-        "input_cache_write": "0.00000008125",
         "prompt": "0.000000065"
       },
       "supported_parameters": [
@@ -5321,7 +5270,6 @@
       "per_request_limits": null,
       "pricing": {
         "completion": "0.00000156",
-        "input_cache_write": "0.000000325",
         "prompt": "0.00000026"
       },
       "supported_parameters": [
@@ -10777,7 +10725,6 @@
       "per_request_limits": null,
       "pricing": {
         "completion": "0.00000078",
-        "input_cache_write": "0.000000325",
         "prompt": "0.00000026"
       },
       "supported_parameters": [
@@ -12314,9 +12261,8 @@
       "name": "Z.ai: GLM 4.5 Air",
       "per_request_limits": null,
       "pricing": {
-        "completion": "0.00000085",
-        "input_cache_read": "0.000000025",
-        "prompt": "0.00000013"
+        "completion": "0.00000084",
+        "prompt": "0.000000125"
       },
       "supported_parameters": [
         "frequency_penalty",
@@ -12336,9 +12282,9 @@
       ],
       "supported_voices": null,
       "top_provider": {
-        "context_length": 131072,
+        "context_length": 131070,
         "is_moderated": false,
-        "max_completion_tokens": 98304
+        "max_completion_tokens": 131070
       }
     },
     {
@@ -13349,7 +13295,10 @@
       "created": 1750172488,
       "default_parameters": {
         "frequency_penalty": null,
+        "presence_penalty": null,
+        "repetition_penalty": null,
         "temperature": null,
+        "top_k": null,
         "top_p": null
       },
       "description": "Gemini 2.5 Flash is Google's state-of-the-art workhorse model, specifically designed for advanced reasoning, coding, mathematics, and scientific tasks. It includes built-in \"thinking\" capabilities, enabling it to provide responses with greater...",
@@ -14190,7 +14139,7 @@
         "top_p": null
       },
       "description": "Qwen3, the latest generation in the Qwen large language model series, features both dense and mixture-of-experts (MoE) architectures to excel in reasoning, multilingual support, and advanced agent tasks. Its unique...",
-      "expiration_date": null,
+      "expiration_date": "2026-06-05",
       "hugging_face_id": "Qwen/Qwen3-30B-A3B",
       "id": "qwen/qwen3-30b-a3b",
       "knowledge_cutoff": "2025-03-31",
@@ -18729,7 +18678,7 @@
       "created": 1718668800,
       "default_parameters": {},
       "description": "Euryale 70B v2.1 is a model focused on creative roleplay from [Sao10k](https://ko-fi.com/sao10k). - Better prompt adherence. - Better anatomy / spatial awareness. - Adapts much better to unique and custom...",
-      "expiration_date": null,
+      "expiration_date": "2026-06-05",
       "hugging_face_id": "Sao10K/L3-70B-Euryale-v2.1",
       "id": "sao10k/l3-euryale-70b",
       "knowledge_cutoff": "2023-12-31",
@@ -18779,7 +18728,7 @@
       "created": 1716768000,
       "default_parameters": {},
       "description": "Hermes 2 Pro is an upgraded, retrained version of Nous Hermes 2, consisting of an updated and cleaned version of the OpenHermes 2.5 Dataset, as well as a newly introduced...",
-      "expiration_date": null,
+      "expiration_date": "2026-06-05",
       "hugging_face_id": "NousResearch/Hermes-2-Pro-Llama-3-8B",
       "id": "nousresearch/hermes-2-pro-llama-3-8b",
       "knowledge_cutoff": "2023-12-31",
