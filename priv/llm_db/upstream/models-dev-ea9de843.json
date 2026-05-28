@@ -10348,39 +10348,6 @@
     ],
     "id": "xiaomi-token-plan-ams",
     "models": {
-      "mimo-v2-flash": {
-        "attachment": false,
-        "cost": {
-          "cache_read": 0,
-          "input": 0,
-          "output": 0
-        },
-        "family": "mimo",
-        "id": "mimo-v2-flash",
-        "interleaved": {
-          "field": "reasoning_content"
-        },
-        "knowledge": "2024-12-01",
-        "last_updated": "2026-02-04",
-        "limit": {
-          "context": 262144,
-          "output": 65536
-        },
-        "modalities": {
-          "input": [
-            "text"
-          ],
-          "output": [
-            "text"
-          ]
-        },
-        "name": "MiMo-V2-Flash",
-        "open_weights": true,
-        "reasoning": true,
-        "release_date": "2025-12-16",
-        "temperature": true,
-        "tool_call": true
-      },
       "mimo-v2-omni": {
         "attachment": true,
         "cost": {
@@ -10462,7 +10429,7 @@
         "last_updated": "2026-03-18",
         "limit": {
           "context": 8192,
-          "output": 16384
+          "output": 8192
         },
         "modalities": {
           "input": [
@@ -10546,6 +10513,87 @@
         "release_date": "2026-04-22",
         "temperature": true,
         "tool_call": true
+      },
+      "mimo-v2.5-tts": {
+        "attachment": false,
+        "cost": {
+          "input": 0,
+          "output": 0
+        },
+        "family": "mimo",
+        "id": "mimo-v2.5-tts",
+        "last_updated": "2026-04-22",
+        "limit": {
+          "context": 8192,
+          "output": 8192
+        },
+        "modalities": {
+          "input": [
+            "text"
+          ],
+          "output": [
+            "audio"
+          ]
+        },
+        "name": "MiMo-V2.5-TTS",
+        "open_weights": true,
+        "reasoning": false,
+        "release_date": "2026-04-22",
+        "tool_call": false
+      },
+      "mimo-v2.5-tts-voiceclone": {
+        "attachment": false,
+        "cost": {
+          "input": 0,
+          "output": 0
+        },
+        "family": "mimo",
+        "id": "mimo-v2.5-tts-voiceclone",
+        "last_updated": "2026-04-22",
+        "limit": {
+          "context": 8192,
+          "output": 8192
+        },
+        "modalities": {
+          "input": [
+            "text"
+          ],
+          "output": [
+            "audio"
+          ]
+        },
+        "name": "MiMo-V2.5-TTS-VoiceClone",
+        "open_weights": true,
+        "reasoning": false,
+        "release_date": "2026-04-22",
+        "tool_call": false
+      },
+      "mimo-v2.5-tts-voicedesign": {
+        "attachment": false,
+        "cost": {
+          "input": 0,
+          "output": 0
+        },
+        "family": "mimo",
+        "id": "mimo-v2.5-tts-voicedesign",
+        "last_updated": "2026-04-22",
+        "limit": {
+          "context": 8192,
+          "output": 8192
+        },
+        "modalities": {
+          "input": [
+            "text"
+          ],
+          "output": [
+            "audio"
+          ]
+        },
+        "name": "MiMo-V2.5-TTS-VoiceDesign",
+        "open_weights": true,
+        "reasoning": false,
+        "release_date": "2026-04-22",
+        "tool_call": false
       }
     },
     "name": "Xiaomi Token Plan (Europe)",
@@ -15509,6 +15557,37 @@
         "temperature": true,
         "tool_call": true
       },
+      "qwen/qwen3.7-max": {
+        "attachment": false,
+        "cost": {
+          "cache_read": 0.125,
+          "cache_write": 1.5625,
+          "input": 1.25,
+          "output": 3.75
+        },
+        "family": "qwen",
+        "id": "qwen/qwen3.7-max",
+        "last_updated": "2026-05-27",
+        "limit": {
+          "context": 1000000,
+          "output": 65536
+        },
+        "modalities": {
+          "input": [
+            "text"
+          ],
+          "output": [
+            "text"
+          ]
+        },
+        "name": "Qwen3.7-Max",
+        "open_weights": false,
+        "reasoning": true,
+        "release_date": "2026-05-21",
+        "structured_output": true,
+        "temperature": true,
+        "tool_call": true
+      },
       "qwen/qwen3-omni-30b-a3b-instruct": {
         "attachment": true,
         "cost": {
@@ -16120,6 +16199,36 @@
         "open_weights": true,
         "reasoning": false,
         "release_date": "2025-09-24",
+        "structured_output": true,
+        "temperature": true,
+        "tool_call": true
+      },
+      "inclusionai/ring-2.6-1t": {
+        "attachment": false,
+        "cost": {
+          "cache_read": 0.06,
+          "input": 0.3,
+          "output": 2.5
+        },
+        "family": "ring",
+        "id": "inclusionai/ring-2.6-1t",
+        "last_updated": "2026-05-27",
+        "limit": {
+          "context": 262144,
+          "output": 65536
+        },
+        "modalities": {
+          "input": [
+            "text"
+          ],
+          "output": [
+            "text"
+          ]
+        },
+        "name": "Ring-2.6-1T",
+        "open_weights": false,
+        "reasoning": true,
+        "release_date": "2026-05-08",
         "structured_output": true,
         "temperature": true,
         "tool_call": true
@@ -17168,6 +17277,56 @@
         "temperature": true,
         "tool_call": true
       },
+      "xiaomimimo/mimo-v2-pro": {
+        "attachment": false,
+        "cost": {
+          "cache_read": 0.4,
+          "context_over_200k": {
+            "cache_read": 0.4,
+            "input": 2,
+            "output": 6
+          },
+          "input": 2,
+          "output": 6,
+          "tiers": [
+            {
+              "cache_read": 0.4,
+              "input": 2,
+              "output": 6,
+              "tier": {
+                "size": 256000,
+                "type": "context"
+              }
+            }
+          ]
+        },
+        "family": "mimo",
+        "id": "xiaomimimo/mimo-v2-pro",
+        "interleaved": {
+          "field": "reasoning_content"
+        },
+        "knowledge": "2024-12",
+        "last_updated": "2026-05-27",
+        "limit": {
+          "context": 1048576,
+          "output": 131072
+        },
+        "modalities": {
+          "input": [
+            "text"
+          ],
+          "output": [
+            "text"
+          ]
+        },
+        "name": "MiMo-V2-Pro",
+        "open_weights": false,
+        "reasoning": true,
+        "release_date": "2026-03-18",
+        "structured_output": true,
+        "temperature": true,
+        "tool_call": true
+      },
       "baidu/ernie-4.5-vl-28b-a3b": {
         "attachment": true,
         "cost": {
@@ -17281,6 +17440,37 @@
         "open_weights": true,
         "reasoning": false,
         "release_date": "2025-07-23",
+        "structured_output": true,
+        "temperature": true,
+        "tool_call": true
+      },
+      "minimax/minimax-m2.7-highspeed": {
+        "attachment": false,
+        "cost": {
+          "cache_read": 0.06,
+          "cache_write": 0.375,
+          "input": 0.6,
+          "output": 2.4
+        },
+        "family": "minimax",
+        "id": "minimax/minimax-m2.7-highspeed",
+        "last_updated": "2026-05-27",
+        "limit": {
+          "context": 204800,
+          "output": 131072
+        },
+        "modalities": {
+          "input": [
+            "text"
+          ],
+          "output": [
+            "text"
+          ]
+        },
+        "name": "MiniMax-M2.7-highspeed",
+        "open_weights": true,
+        "reasoning": true,
+        "release_date": "2026-03-18",
         "structured_output": true,
         "temperature": true,
         "tool_call": true
@@ -17520,6 +17710,56 @@
         "open_weights": true,
         "reasoning": false,
         "release_date": "2025-10-17",
+        "structured_output": true,
+        "temperature": true,
+        "tool_call": true
+      },
+      "xiaomimimo/mimo-v2.5-pro": {
+        "attachment": false,
+        "cost": {
+          "cache_read": 0.4,
+          "context_over_200k": {
+            "cache_read": 0.4,
+            "input": 2,
+            "output": 6
+          },
+          "input": 2,
+          "output": 6,
+          "tiers": [
+            {
+              "cache_read": 0.4,
+              "input": 2,
+              "output": 6,
+              "tier": {
+                "size": 256000,
+                "type": "context"
+              }
+            }
+          ]
+        },
+        "family": "mimo",
+        "id": "xiaomimimo/mimo-v2.5-pro",
+        "interleaved": {
+          "field": "reasoning_content"
+        },
+        "knowledge": "2024-12",
+        "last_updated": "2026-05-27",
+        "limit": {
+          "context": 1048576,
+          "output": 131072
+        },
+        "modalities": {
+          "input": [
+            "text"
+          ],
+          "output": [
+            "text"
+          ]
+        },
+        "name": "MiMo-V2.5-Pro",
+        "open_weights": true,
+        "reasoning": true,
+        "release_date": "2026-04-22",
         "structured_output": true,
         "temperature": true,
         "tool_call": true
@@ -36864,13 +37104,14 @@
       "moonshotai/kimi-k2-instruct-0905": {
         "attachment": false,
         "cost": {
+          "cache_read": 0.5,
           "input": 1,
           "output": 3
         },
         "family": "kimi",
         "id": "moonshotai/kimi-k2-instruct-0905",
         "knowledge": "2024-10",
-        "last_updated": "2025-09-05",
+        "last_updated": "2026-05-27",
         "limit": {
           "context": 262144,
           "output": 16384
@@ -36894,12 +37135,13 @@
       "openai/gpt-oss-120b": {
         "attachment": false,
         "cost": {
+          "cache_read": 0.075,
           "input": 0.15,
           "output": 0.6
         },
         "family": "gpt-oss",
         "id": "openai/gpt-oss-120b",
-        "last_updated": "2025-08-05",
+        "last_updated": "2026-05-27",
         "limit": {
           "context": 131072,
           "output": 65536
@@ -36923,12 +37165,13 @@
       "openai/gpt-oss-20b": {
         "attachment": false,
         "cost": {
+          "cache_read": 0.0375,
           "input": 0.075,
           "output": 0.3
         },
         "family": "gpt-oss",
         "id": "openai/gpt-oss-20b",
-        "last_updated": "2025-08-05",
+        "last_updated": "2026-05-27",
         "limit": {
           "context": 131072,
           "output": 65536
@@ -40165,7 +40408,7 @@
       "openai/gpt-5.1-chat": {
         "attachment": true,
         "cost": {
-          "cache_read": 0.125,
+          "cache_read": 0.13,
           "input": 1.25,
           "output": 10
         },
@@ -40175,7 +40418,7 @@
         "last_updated": "2025-11-13",
         "limit": {
           "context": 128000,
-          "output": 16384
+          "output": 32000
         },
         "modalities": {
           "input": [
@@ -40712,7 +40955,6 @@
       "qwen/qwen-plus-2025-07-28": {
         "attachment": false,
         "cost": {
-          "cache_write": 0.325,
           "input": 0.26,
           "output": 0.78
         },
@@ -41484,7 +41726,7 @@
       "openai/gpt-5.1-codex-mini": {
         "attachment": true,
         "cost": {
-          "cache_read": 0.03,
+          "cache_read": 0.025,
           "input": 0.25,
           "output": 2
         },
@@ -41494,7 +41736,7 @@
         "last_updated": "2025-11-13",
         "limit": {
           "context": 400000,
-          "output": 128000
+          "output": 100000
         },
         "modalities": {
           "input": [
@@ -42304,7 +42546,7 @@
       "qwen/qwen3.6-35b-a3b": {
         "attachment": true,
         "cost": {
-          "input": 0.15,
+          "input": 0.14,
           "output": 1
         },
         "family": "qwen3.6",
@@ -42527,9 +42769,10 @@
       "qwen/qwen3.7-max": {
         "attachment": false,
         "cost": {
-          "cache_write": 3.125,
-          "input": 2.5,
-          "output": 7.5
+          "cache_read": 0.25,
+          "cache_write": 1.5625,
+          "input": 1.25,
+          "output": 3.75
         },
         "family": "qwen",
         "id": "qwen/qwen3.7-max",
@@ -42842,8 +43085,8 @@
         },
         "last_updated": "2026-04-28",
         "limit": {
-          "context": 131072,
-          "output": 8192
+          "context": 262144,
+          "output": 32768
         },
         "modalities": {
           "input": [
@@ -42864,6 +43107,7 @@
       "qwen/qwen3.5-plus-20260420": {
         "attachment": true,
         "cost": {
+          "cache_write": 0.375,
           "input": 0.3,
           "output": 1.8
         },
@@ -43100,7 +43344,7 @@
         },
         "last_updated": "2026-02-12",
         "limit": {
-          "context": 196608,
+          "context": 262144,
           "output": 8192
         },
         "modalities": {
@@ -44727,7 +44971,7 @@
       "openai/gpt-5.1-codex": {
         "attachment": true,
         "cost": {
-          "cache_read": 0.125,
+          "cache_read": 0.13,
           "input": 1.25,
           "output": 10
         },
@@ -45575,9 +45819,9 @@
       "tencent/hy3-preview": {
         "attachment": false,
         "cost": {
-          "cache_read": 0.029,
-          "input": 0.066,
-          "output": 0.26
+          "cache_read": 0.021,
+          "input": 0.063,
+          "output": 0.21
         },
         "family": "Hy",
         "id": "tencent/hy3-preview",
@@ -46267,34 +46511,6 @@
         "release_date": "2025-06-05",
         "structured_output": true,
         "temperature": true,
-        "tool_call": true
-      },
-      "baidu/cobuddy:free": {
-        "attachment": false,
-        "cost": {
-          "input": 0,
-          "output": 0
-        },
-        "id": "baidu/cobuddy:free",
-        "last_updated": "2026-05-06",
-        "limit": {
-          "context": 131072,
-          "output": 65536
-        },
-        "modalities": {
-          "input": [
-            "text"
-          ],
-          "output": [
-            "text"
-          ]
-        },
-        "name": "CoBuddy (free)",
-        "open_weights": false,
-        "reasoning": true,
-        "release_date": "2026-05-06",
-        "structured_output": false,
-        "temperature": false,
         "tool_call": true
       },
       "perceptron/perceptron-mk1": {
@@ -47556,6 +47772,40 @@
         "temperature": true,
         "tool_call": true
       },
+      "moonshotai/kimi-k2.6:free": {
+        "attachment": true,
+        "cost": {
+          "input": 0,
+          "output": 0
+        },
+        "family": "kimi-k2.6",
+        "id": "moonshotai/kimi-k2.6:free",
+        "interleaved": {
+          "field": "reasoning_content"
+        },
+        "knowledge": "2025-01",
+        "last_updated": "2026-04-21",
+        "limit": {
+          "context": 262144,
+          "output": 262144
+        },
+        "modalities": {
+          "input": [
+            "text",
+            "image"
+          ],
+          "output": [
+            "text"
+          ]
+        },
+        "name": "Kimi K2.6 (free)",
+        "open_weights": true,
+        "reasoning": true,
+        "release_date": "2026-04-21",
+        "structured_output": false,
+        "temperature": false,
+        "tool_call": true
+      },
       "microsoft/wizardlm-2-8x22b": {
         "attachment": false,
         "cost": {
@@ -47740,7 +47990,6 @@
       "qwen/qwen3.5-plus-02-15": {
         "attachment": true,
         "cost": {
-          "cache_write": 0.325,
           "input": 0.26,
           "output": 1.56
         },
@@ -47863,7 +48112,6 @@
       "qwen/qwen3.5-flash-02-23": {
         "attachment": true,
         "cost": {
-          "cache_write": 0.08125,
           "input": 0.065,
           "output": 0.26
         },
@@ -48291,7 +48539,7 @@
         "last_updated": "2025-12-10",
         "limit": {
           "context": 128000,
-          "output": 32000
+          "output": 16384
         },
         "modalities": {
           "input": [
@@ -50073,8 +50321,8 @@
       "z-ai/glm-4.5-air": {
         "attachment": false,
         "cost": {
-          "cache_read": 0.025,
-          "input": 0.13,
+          "cache_read": 0.06,
+          "input": 0.125,
           "output": 0.85
         },
         "family": "glm-air",
@@ -50082,8 +50330,8 @@
         "knowledge": "2025-04",
         "last_updated": "2025-07-28",
         "limit": {
-          "context": 131072,
-          "output": 98304
+          "context": 131070,
+          "output": 131070
         },
         "modalities": {
           "input": [
@@ -50595,35 +50843,6 @@
         "structured_output": true,
         "temperature": true,
         "tool_call": true
-      },
-      "baidu/qianfan-ocr-fast": {
-        "attachment": true,
-        "cost": {
-          "input": 0.68,
-          "output": 2.81
-        },
-        "id": "baidu/qianfan-ocr-fast",
-        "last_updated": "2026-04-20",
-        "limit": {
-          "context": 65536,
-          "output": 28672
-        },
-        "modalities": {
-          "input": [
-            "image",
-            "text"
-          ],
-          "output": [
-            "text"
-          ]
-        },
-        "name": "Qianfan-OCR-Fast",
-        "open_weights": false,
-        "reasoning": true,
-        "release_date": "2026-04-20",
-        "structured_output": false,
-        "temperature": true,
-        "tool_call": false
       },
       "microsoft/phi-4-mini-instruct": {
         "attachment": false,
@@ -51307,16 +51526,15 @@
       "qwen/qwen3.6-27b": {
         "attachment": true,
         "cost": {
-          "cache_read": 0.15,
-          "input": 0.3,
-          "output": 2
+          "input": 0.29,
+          "output": 3.2
         },
         "family": "qwen3.6",
         "id": "qwen/qwen3.6-27b",
         "last_updated": "2026-04-27",
         "limit": {
-          "context": 262144,
-          "output": 65536
+          "context": 262140,
+          "output": 262140
         },
         "modalities": {
           "input": [
@@ -54153,16 +54371,16 @@
       "mistral-small": {
         "attachment": false,
         "cost": {
-          "input": 75,
-          "output": 200
+          "input": 0.075,
+          "output": 0.2
         },
         "family": "mistral-small",
         "id": "mistral-small",
-        "knowledge": "2024-02",
-        "last_updated": "2024-02-26",
+        "knowledge": "2025-03",
+        "last_updated": "2025-06-20",
         "limit": {
           "context": 128000,
-          "output": 128000
+          "output": 16384
         },
         "modalities": {
           "input": [
@@ -54173,12 +54391,12 @@
             "text"
           ]
         },
-        "name": "Mistral Small",
-        "open_weights": false,
+        "name": "Mistral Small 3.2",
+        "open_weights": true,
         "reasoning": false,
-        "release_date": "2024-02-26",
+        "release_date": "2025-06-20",
         "temperature": true,
-        "tool_call": false
+        "tool_call": true
       },
       "sonar-reasoning-pro": {
         "attachment": false,
@@ -64696,6 +64914,42 @@
         "structured_output": true,
         "temperature": false,
         "tool_call": true
+      },
+      "mimo-v2.5-free": {
+        "attachment": true,
+        "cost": {
+          "cache_read": 0,
+          "input": 0,
+          "output": 0
+        },
+        "family": "mimo-v2.5-free",
+        "id": "mimo-v2.5-free",
+        "interleaved": {
+          "field": "reasoning_content"
+        },
+        "knowledge": "2024-12",
+        "last_updated": "2026-04-24",
+        "limit": {
+          "context": 1000000,
+          "output": 128000
+        },
+        "modalities": {
+          "input": [
+            "text",
+            "image",
+            "audio",
+            "video"
+          ],
+          "output": [
+            "text"
+          ]
+        },
+        "name": "MiMo V2.5 Free",
+        "open_weights": true,
+        "reasoning": true,
+        "release_date": "2026-04-24",
+        "temperature": true,
+        "tool_call": true
       }
     },
     "name": "OpenCode Zen",
@@ -68483,6 +68737,58 @@
         "open_weights": false,
         "reasoning": true,
         "release_date": "2026-04-16",
+        "temperature": false,
+        "tool_call": true
+      },
+      "claude-opus-4-8": {
+        "attachment": true,
+        "cost": {
+          "cache_read": 0.5,
+          "cache_write": 6.25,
+          "input": 5,
+          "output": 25
+        },
+        "experimental": {
+          "modes": {
+            "fast": {
+              "cost": {
+                "cache_read": 1,
+                "cache_write": 12.5,
+                "input": 10,
+                "output": 50
+              },
+              "provider": {
+                "body": {
+                  "speed": "fast"
+                },
+                "headers": {
+                  "anthropic-beta": "fast-mode-2026-02-01"
+                }
+              }
+            }
+          }
+        },
+        "family": "claude-opus",
+        "id": "claude-opus-4-8",
+        "last_updated": "2026-05-28",
+        "limit": {
+          "context": 1000000,
+          "output": 128000
+        },
+        "modalities": {
+          "input": [
+            "text",
+            "image",
+            "pdf"
+          ],
+          "output": [
+            "text"
+          ]
+        },
+        "name": "Claude Opus 4.8",
+        "open_weights": false,
+        "reasoning": true,
+        "release_date": "2026-05-28",
         "temperature": false,
         "tool_call": true
       },
@@ -76969,25 +77275,9 @@
       "mimo-v2.5": {
         "attachment": true,
         "cost": {
-          "cache_read": 0.08,
-          "context_over_200k": {
-            "cache_read": 0.16,
-            "input": 0.8,
-            "output": 4
-          },
-          "input": 0.4,
-          "output": 2,
-          "tiers": [
-            {
-              "cache_read": 0.16,
-              "input": 0.8,
-              "output": 4,
-              "tier": {
-                "size": 256000,
-                "type": "context"
-              }
-            }
-          ]
+          "cache_read": 0.0028,
+          "input": 0.14,
+          "output": 0.28
         },
         "family": "mimo-v2.5",
         "id": "mimo-v2.5",
@@ -77021,25 +77311,9 @@
       "mimo-v2.5-pro": {
         "attachment": true,
         "cost": {
-          "cache_read": 0.2,
-          "context_over_200k": {
-            "cache_read": 0.4,
-            "input": 2,
-            "output": 6
-          },
-          "input": 1,
-          "output": 3,
-          "tiers": [
-            {
-              "cache_read": 0.4,
-              "input": 2,
-              "output": 6,
-              "tier": {
-                "size": 256000,
-                "type": "context"
-              }
-            }
-          ]
+          "cache_read": 0.0145,
+          "input": 1.74,
+          "output": 3.48
         },
         "family": "mimo-v2.5-pro",
         "id": "mimo-v2.5-pro",
@@ -83667,33 +83941,6 @@
         "temperature": true,
         "tool_call": true
       },
-      "deepseek/deepseek-v4-flash:free": {
-        "attachment": false,
-        "cost": {
-          "input": 0,
-          "output": 0
-        },
-        "id": "deepseek/deepseek-v4-flash:free",
-        "last_updated": "2026-05-16",
-        "limit": {
-          "context": 1048576,
-          "output": 384000
-        },
-        "modalities": {
-          "input": [
-            "text"
-          ],
-          "output": [
-            "text"
-          ]
-        },
-        "name": "DeepSeek: DeepSeek V4 Flash (free)",
-        "open_weights": false,
-        "reasoning": true,
-        "release_date": "2026-04-24",
-        "temperature": false,
-        "tool_call": true
-      },
       "kilo-auto/small": {
         "attachment": true,
         "cost": {
@@ -85363,6 +85610,35 @@
         "temperature": true,
         "tool_call": true
       },
+      "qwen/qwen3.7-max": {
+        "attachment": false,
+        "cost": {
+          "cache_read": 0.1625,
+          "cache_write": 2.03125,
+          "input": 1.625,
+          "output": 4.875
+        },
+        "id": "qwen/qwen3.7-max",
+        "last_updated": "2026-05-27",
+        "limit": {
+          "context": 1000000,
+          "output": 65536
+        },
+        "modalities": {
+          "input": [
+            "text"
+          ],
+          "output": [
+            "text"
+          ]
+        },
+        "name": "Qwen: Qwen3.7 Max",
+        "open_weights": false,
+        "reasoning": true,
+        "release_date": "2025-08-26",
+        "temperature": true,
+        "tool_call": true
+      },
       "ibm-granite/granite-4.1-8b": {
         "attachment": false,
         "cost": {
@@ -85639,33 +85915,6 @@
         "open_weights": false,
         "reasoning": true,
         "release_date": "2026-04-28",
-        "temperature": true,
-        "tool_call": true
-      },
-      "x-ai/grok-code-fast-1:optimized:free": {
-        "attachment": false,
-        "cost": {
-          "input": 0,
-          "output": 0
-        },
-        "id": "x-ai/grok-code-fast-1:optimized:free",
-        "last_updated": "2026-03-15",
-        "limit": {
-          "context": 256000,
-          "output": 10000
-        },
-        "modalities": {
-          "input": [
-            "text"
-          ],
-          "output": [
-            "text"
-          ]
-        },
-        "name": "xAI: Grok Code Fast 1 Optimized (experimental, free)",
-        "open_weights": false,
-        "reasoning": true,
-        "release_date": "2025-08-27",
         "temperature": true,
         "tool_call": true
       },
@@ -86566,6 +86815,37 @@
         "reasoning": true,
         "release_date": "2026-05-12",
         "temperature": false,
+        "tool_call": true
+      },
+      "stealth/claude-opus-4.6": {
+        "attachment": true,
+        "cost": {
+          "cache_read": 0.4,
+          "cache_write": 5,
+          "input": 4,
+          "output": 20
+        },
+        "id": "stealth/claude-opus-4.6",
+        "last_updated": "2026-05-27",
+        "limit": {
+          "context": 1000000,
+          "output": 128000
+        },
+        "modalities": {
+          "input": [
+            "image",
+            "pdf",
+            "text"
+          ],
+          "output": [
+            "text"
+          ]
+        },
+        "name": "Stealth: Claude Opus 4.6 (20% off)",
+        "open_weights": false,
+        "reasoning": true,
+        "release_date": "2026-02-05",
+        "temperature": true,
         "tool_call": true
       },
       "mistralai/pixtral-large-2411": {
@@ -87897,6 +88177,37 @@
         "temperature": true,
         "tool_call": true
       },
+      "stealth/claude-sonnet-4.6": {
+        "attachment": true,
+        "cost": {
+          "cache_read": 0.24,
+          "cache_write": 3,
+          "input": 2.4,
+          "output": 12
+        },
+        "id": "stealth/claude-sonnet-4.6",
+        "last_updated": "2026-05-27",
+        "limit": {
+          "context": 1000000,
+          "output": 64000
+        },
+        "modalities": {
+          "input": [
+            "image",
+            "pdf",
+            "text"
+          ],
+          "output": [
+            "text"
+          ]
+        },
+        "name": "Stealth: Claude Sonnet 4.6 (20% off)",
+        "open_weights": false,
+        "reasoning": true,
+        "release_date": "2026-02-17",
+        "temperature": true,
+        "tool_call": true
+      },
       "openai/gpt-4-1106-preview": {
         "attachment": false,
         "cost": {
@@ -88553,33 +88864,6 @@
         "temperature": true,
         "tool_call": false
       },
-      "stepfun/step-3.5-flash:free": {
-        "attachment": false,
-        "cost": {
-          "input": 0,
-          "output": 0
-        },
-        "id": "stepfun/step-3.5-flash:free",
-        "last_updated": "2026-05-01",
-        "limit": {
-          "context": 262144,
-          "output": 262144
-        },
-        "modalities": {
-          "input": [
-            "text"
-          ],
-          "output": [
-            "text"
-          ]
-        },
-        "name": "StepFun: Step 3.5 Flash (free)",
-        "open_weights": false,
-        "reasoning": true,
-        "release_date": "2025-08-26",
-        "temperature": true,
-        "tool_call": true
-      },
       "google/gemini-2.5-pro-preview": {
         "attachment": true,
         "cost": {
@@ -89032,6 +89316,37 @@
         "temperature": true,
         "tool_call": true
       },
+      "stealth/claude-opus-4.7": {
+        "attachment": true,
+        "cost": {
+          "cache_read": 0.4,
+          "cache_write": 5,
+          "input": 4,
+          "output": 20
+        },
+        "id": "stealth/claude-opus-4.7",
+        "last_updated": "2026-05-27",
+        "limit": {
+          "context": 1000000,
+          "output": 128000
+        },
+        "modalities": {
+          "input": [
+            "image",
+            "pdf",
+            "text"
+          ],
+          "output": [
+            "text"
+          ]
+        },
+        "name": "Stealth: Claude Opus 4.7 (20% off)",
+        "open_weights": false,
+        "reasoning": true,
+        "release_date": "2026-04-16",
+        "temperature": false,
+        "tool_call": true
+      },
       "qwen/qwen3.5-35b-a3b": {
         "attachment": true,
         "cost": {
@@ -89461,6 +89776,35 @@
         "open_weights": true,
         "reasoning": true,
         "release_date": "2026-04-01",
+        "temperature": true,
+        "tool_call": true
+      },
+      "x-ai/grok-build-0.1": {
+        "attachment": true,
+        "cost": {
+          "cache_read": 0.2,
+          "input": 1,
+          "output": 2
+        },
+        "id": "x-ai/grok-build-0.1",
+        "last_updated": "2026-05-27",
+        "limit": {
+          "context": 256000,
+          "output": 256000
+        },
+        "modalities": {
+          "input": [
+            "image",
+            "text"
+          ],
+          "output": [
+            "text"
+          ]
+        },
+        "name": "xAI: Grok Build 0.1",
+        "open_weights": false,
+        "reasoning": true,
+        "release_date": "2026-05-20",
         "temperature": true,
         "tool_call": true
       },
@@ -90796,33 +91140,6 @@
         "open_weights": false,
         "reasoning": false,
         "release_date": "2023-03-01",
-        "temperature": true,
-        "tool_call": true
-      },
-      "arcee-ai/trinity-large-preview": {
-        "attachment": false,
-        "cost": {
-          "input": 0.15,
-          "output": 0.45
-        },
-        "id": "arcee-ai/trinity-large-preview",
-        "last_updated": "2026-05-01",
-        "limit": {
-          "context": 131000,
-          "output": 32768
-        },
-        "modalities": {
-          "input": [
-            "text"
-          ],
-          "output": [
-            "text"
-          ]
-        },
-        "name": "Arcee AI: Trinity Large Preview",
-        "open_weights": false,
-        "reasoning": false,
-        "release_date": "2026-01-28",
         "temperature": true,
         "tool_call": true
       },
@@ -92747,33 +93064,6 @@
         "temperature": true,
         "tool_call": true
       },
-      "alibaba/tongyi-deepresearch-30b-a3b": {
-        "attachment": false,
-        "cost": {
-          "input": 0.09,
-          "output": 0.45
-        },
-        "id": "alibaba/tongyi-deepresearch-30b-a3b",
-        "last_updated": "2026-03-15",
-        "limit": {
-          "context": 131072,
-          "output": 131072
-        },
-        "modalities": {
-          "input": [
-            "text"
-          ],
-          "output": [
-            "text"
-          ]
-        },
-        "name": "Tongyi DeepResearch 30B A3B",
-        "open_weights": false,
-        "reasoning": true,
-        "release_date": "2025-09-18",
-        "temperature": true,
-        "tool_call": true
-      },
       "qwen/qwen3-vl-8b-thinking": {
         "attachment": true,
         "cost": {
@@ -92997,6 +93287,40 @@
         "release_date": "2023-03-01",
         "temperature": true,
         "tool_call": false
+      },
+      "google/gemini-3.5-flash": {
+        "attachment": true,
+        "cost": {
+          "cache_read": 0.15,
+          "cache_write": 0.08333,
+          "input": 1.5,
+          "output": 9,
+          "reasoning": 9
+        },
+        "id": "google/gemini-3.5-flash",
+        "last_updated": "2026-05-27",
+        "limit": {
+          "context": 1048576,
+          "output": 65536
+        },
+        "modalities": {
+          "input": [
+            "audio",
+            "image",
+            "pdf",
+            "text",
+            "video"
+          ],
+          "output": [
+            "text"
+          ]
+        },
+        "name": "Google: Gemini 3.5 Flash",
+        "open_weights": false,
+        "reasoning": true,
+        "release_date": "2026-05-19",
+        "temperature": true,
+        "tool_call": true
       },
       "rekaai/reka-flash-3": {
         "attachment": false,
@@ -99320,39 +99644,6 @@
     ],
     "id": "xiaomi-token-plan-cn",
     "models": {
-      "mimo-v2-flash": {
-        "attachment": false,
-        "cost": {
-          "cache_read": 0,
-          "input": 0,
-          "output": 0
-        },
-        "family": "mimo",
-        "id": "mimo-v2-flash",
-        "interleaved": {
-          "field": "reasoning_content"
-        },
-        "knowledge": "2024-12-01",
-        "last_updated": "2026-02-04",
-        "limit": {
-          "context": 262144,
-          "output": 65536
-        },
-        "modalities": {
-          "input": [
-            "text"
-          ],
-          "output": [
-            "text"
-          ]
-        },
-        "name": "MiMo-V2-Flash",
-        "open_weights": true,
-        "reasoning": true,
-        "release_date": "2025-12-16",
-        "temperature": true,
-        "tool_call": true
-      },
       "mimo-v2-omni": {
         "attachment": true,
         "cost": {
@@ -99434,7 +99725,7 @@
         "last_updated": "2026-03-18",
         "limit": {
           "context": 8192,
-          "output": 16384
+          "output": 8192
         },
         "modalities": {
           "input": [
@@ -99518,6 +99809,87 @@
         "release_date": "2026-04-22",
         "temperature": true,
         "tool_call": true
+      },
+      "mimo-v2.5-tts": {
+        "attachment": false,
+        "cost": {
+          "input": 0,
+          "output": 0
+        },
+        "family": "mimo",
+        "id": "mimo-v2.5-tts",
+        "last_updated": "2026-04-22",
+        "limit": {
+          "context": 8192,
+          "output": 8192
+        },
+        "modalities": {
+          "input": [
+            "text"
+          ],
+          "output": [
+            "audio"
+          ]
+        },
+        "name": "MiMo-V2.5-TTS",
+        "open_weights": true,
+        "reasoning": false,
+        "release_date": "2026-04-22",
+        "tool_call": false
+      },
+      "mimo-v2.5-tts-voiceclone": {
+        "attachment": false,
+        "cost": {
+          "input": 0,
+          "output": 0
+        },
+        "family": "mimo",
+        "id": "mimo-v2.5-tts-voiceclone",
+        "last_updated": "2026-04-22",
+        "limit": {
+          "context": 8192,
+          "output": 8192
+        },
+        "modalities": {
+          "input": [
+            "text"
+          ],
+          "output": [
+            "audio"
+          ]
+        },
+        "name": "MiMo-V2.5-TTS-VoiceClone",
+        "open_weights": true,
+        "reasoning": false,
+        "release_date": "2026-04-22",
+        "tool_call": false
+      },
+      "mimo-v2.5-tts-voicedesign": {
+        "attachment": false,
+        "cost": {
+          "input": 0,
+          "output": 0
+        },
+        "family": "mimo",
+        "id": "mimo-v2.5-tts-voicedesign",
+        "last_updated": "2026-04-22",
+        "limit": {
+          "context": 8192,
+          "output": 8192
+        },
+        "modalities": {
+          "input": [
+            "text"
+          ],
+          "output": [
+            "audio"
+          ]
+        },
+        "name": "MiMo-V2.5-TTS-VoiceDesign",
+        "open_weights": true,
+        "reasoning": false,
+        "release_date": "2026-04-22",
+        "tool_call": false
       }
     },
     "name": "Xiaomi Token Plan (China)",
@@ -103013,35 +103385,6 @@
         "open_weights": true,
         "reasoning": false,
         "release_date": "2025-01-01",
-        "temperature": true,
-        "tool_call": true
-      },
-      "qwen-3-235b-a22b-instruct-2507": {
-        "attachment": false,
-        "cost": {
-          "input": 0.6,
-          "output": 1.2
-        },
-        "family": "qwen",
-        "id": "qwen-3-235b-a22b-instruct-2507",
-        "knowledge": "2025-04",
-        "last_updated": "2025-07-22",
-        "limit": {
-          "context": 131000,
-          "output": 32000
-        },
-        "modalities": {
-          "input": [
-            "text"
-          ],
-          "output": [
-            "text"
-          ]
-        },
-        "name": "Qwen 3 235B Instruct",
-        "open_weights": true,
-        "reasoning": false,
-        "release_date": "2025-07-22",
         "temperature": true,
         "tool_call": true
       },
@@ -126574,6 +126917,38 @@
         "temperature": true,
         "tool_call": true
       },
+      "anthropic.claude-opus-4-8": {
+        "attachment": true,
+        "cost": {
+          "cache_read": 0.5,
+          "cache_write": 6.25,
+          "input": 5,
+          "output": 25
+        },
+        "family": "claude-opus",
+        "id": "anthropic.claude-opus-4-8",
+        "last_updated": "2026-05-28",
+        "limit": {
+          "context": 1000000,
+          "output": 128000
+        },
+        "modalities": {
+          "input": [
+            "text",
+            "image",
+            "pdf"
+          ],
+          "output": [
+            "text"
+          ]
+        },
+        "name": "Claude Opus 4.8",
+        "open_weights": false,
+        "reasoning": true,
+        "release_date": "2026-05-28",
+        "temperature": false,
+        "tool_call": true
+      },
       "qwen.qwen3-vl-235b-a22b": {
         "attachment": true,
         "cost": {
@@ -128179,39 +128554,6 @@
     ],
     "id": "xiaomi-token-plan-sgp",
     "models": {
-      "mimo-v2-flash": {
-        "attachment": false,
-        "cost": {
-          "cache_read": 0,
-          "input": 0,
-          "output": 0
-        },
-        "family": "mimo",
-        "id": "mimo-v2-flash",
-        "interleaved": {
-          "field": "reasoning_content"
-        },
-        "knowledge": "2024-12-01",
-        "last_updated": "2026-02-04",
-        "limit": {
-          "context": 262144,
-          "output": 65536
-        },
-        "modalities": {
-          "input": [
-            "text"
-          ],
-          "output": [
-            "text"
-          ]
-        },
-        "name": "MiMo-V2-Flash",
-        "open_weights": true,
-        "reasoning": true,
-        "release_date": "2025-12-16",
-        "temperature": true,
-        "tool_call": true
-      },
       "mimo-v2-omni": {
         "attachment": true,
         "cost": {
@@ -128293,7 +128635,7 @@
         "last_updated": "2026-03-18",
         "limit": {
           "context": 8192,
-          "output": 16384
+          "output": 8192
         },
         "modalities": {
           "input": [
@@ -128377,6 +128719,87 @@
         "release_date": "2026-04-22",
         "temperature": true,
         "tool_call": true
+      },
+      "mimo-v2.5-tts": {
+        "attachment": false,
+        "cost": {
+          "input": 0,
+          "output": 0
+        },
+        "family": "mimo",
+        "id": "mimo-v2.5-tts",
+        "last_updated": "2026-04-22",
+        "limit": {
+          "context": 8192,
+          "output": 8192
+        },
+        "modalities": {
+          "input": [
+            "text"
+          ],
+          "output": [
+            "audio"
+          ]
+        },
+        "name": "MiMo-V2.5-TTS",
+        "open_weights": true,
+        "reasoning": false,
+        "release_date": "2026-04-22",
+        "tool_call": false
+      },
+      "mimo-v2.5-tts-voiceclone": {
+        "attachment": false,
+        "cost": {
+          "input": 0,
+          "output": 0
+        },
+        "family": "mimo",
+        "id": "mimo-v2.5-tts-voiceclone",
+        "last_updated": "2026-04-22",
+        "limit": {
+          "context": 8192,
+          "output": 8192
+        },
+        "modalities": {
+          "input": [
+            "text"
+          ],
+          "output": [
+            "audio"
+          ]
+        },
+        "name": "MiMo-V2.5-TTS-VoiceClone",
+        "open_weights": true,
+        "reasoning": false,
+        "release_date": "2026-04-22",
+        "tool_call": false
+      },
+      "mimo-v2.5-tts-voicedesign": {
+        "attachment": false,
+        "cost": {
+          "input": 0,
+          "output": 0
+        },
+        "family": "mimo",
+        "id": "mimo-v2.5-tts-voicedesign",
+        "last_updated": "2026-04-22",
+        "limit": {
+          "context": 8192,
+          "output": 8192
+        },
+        "modalities": {
+          "input": [
+            "text"
+          ],
+          "output": [
+            "audio"
+          ]
+        },
+        "name": "MiMo-V2.5-TTS-VoiceDesign",
+        "open_weights": true,
+        "reasoning": false,
+        "release_date": "2026-04-22",
+        "tool_call": false
       }
     },
     "name": "Xiaomi Token Plan (Singapore)",
@@ -136518,6 +136941,59 @@
         "release_date": "2025-04-29",
         "structured_output": true,
         "temperature": true,
+        "tool_call": true
+      },
+      "claude-opus-4-8@default": {
+        "attachment": true,
+        "cost": {
+          "cache_read": 0.5,
+          "cache_write": 6.25,
+          "context_over_200k": {
+            "cache_read": 1,
+            "cache_write": 12.5,
+            "input": 10,
+            "output": 37.5
+          },
+          "input": 5,
+          "output": 25,
+          "tiers": [
+            {
+              "cache_read": 1,
+              "cache_write": 12.5,
+              "input": 10,
+              "output": 37.5,
+              "tier": {
+                "size": 200000,
+                "type": "context"
+              }
+            }
+          ]
+        },
+        "family": "claude-opus",
+        "id": "claude-opus-4-8@default",
+        "last_updated": "2026-05-28",
+        "limit": {
+          "context": 1000000,
+          "output": 128000
+        },
+        "modalities": {
+          "input": [
+            "text",
+            "image",
+            "pdf"
+          ],
+          "output": [
+            "text"
+          ]
+        },
+        "name": "Claude Opus 4.8",
+        "open_weights": false,
+        "provider": {
+          "npm": "@ai-sdk/google-vertex/anthropic"
+        },
+        "reasoning": true,
+        "release_date": "2026-05-28",
+        "temperature": false,
         "tool_call": true
       },
       "zai-org/glm-4.7-maas": {
@@ -148978,6 +149454,56 @@
         "open_weights": false,
         "reasoning": true,
         "release_date": "2026-04-16",
+        "temperature": false,
+        "tool_call": true
+      },
+      "claude-opus-4-8@default": {
+        "attachment": true,
+        "cost": {
+          "cache_read": 0.5,
+          "cache_write": 6.25,
+          "context_over_200k": {
+            "cache_read": 1,
+            "cache_write": 12.5,
+            "input": 10,
+            "output": 37.5
+          },
+          "input": 5,
+          "output": 25,
+          "tiers": [
+            {
+              "cache_read": 1,
+              "cache_write": 12.5,
+              "input": 10,
+              "output": 37.5,
+              "tier": {
+                "size": 200000,
+                "type": "context"
+              }
+            }
+          ]
+        },
+        "family": "claude-opus",
+        "id": "claude-opus-4-8@default",
+        "last_updated": "2026-05-28",
+        "limit": {
+          "context": 1000000,
+          "output": 128000
+        },
+        "modalities": {
+          "input": [
+            "text",
+            "image",
+            "pdf"
+          ],
+          "output": [
+            "text"
+          ]
+        },
+        "name": "Claude Opus 4.8",
+        "open_weights": false,
+        "reasoning": true,
+        "release_date": "2026-05-28",
         "temperature": false,
         "tool_call": true
       },

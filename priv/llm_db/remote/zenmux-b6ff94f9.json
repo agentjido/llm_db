@@ -2,48 +2,63 @@
   "data": [
     {
       "capabilities": {
-        "reasoning": false
+        "reasoning": true
       },
-      "context_length": 256000,
-      "created": 1779791265,
-      "display_name": "xAI: Grok Build 0.1",
-      "id": "x-ai/grok-build-0.1",
+      "context_length": 1000000,
+      "created": 1779988110,
+      "display_name": "Anthropic: Claude Opus 4.8",
+      "id": "anthropic/claude-opus-4.8",
       "input_modalities": [
         "text",
-        "image"
+        "image",
+        "file"
       ],
       "object": "model",
       "output_modalities": [
         "text"
       ],
-      "owned_by": "x-ai",
+      "owned_by": "anthropic",
       "pricings": {
         "completion": [
           {
             "currency": "USD",
             "unit": "perMTokens",
-            "value": 2
+            "value": 25
           }
         ],
         "input_cache_read": [
           {
             "currency": "USD",
             "unit": "perMTokens",
-            "value": 0.2
+            "value": 0.5
+          }
+        ],
+        "input_cache_write_1_h": [
+          {
+            "currency": "USD",
+            "unit": "perMTokens",
+            "value": 10
+          }
+        ],
+        "input_cache_write_5_min": [
+          {
+            "currency": "USD",
+            "unit": "perMTokens",
+            "value": 6.25
           }
         ],
         "prompt": [
           {
             "currency": "USD",
             "unit": "perMTokens",
-            "value": 1
+            "value": 5
           }
         ],
         "web_search": [
           {
             "currency": "USD",
             "unit": "perCount",
-            "value": 0.005
+            "value": 0.01
           }
         ]
       }
@@ -146,63 +161,6 @@
         "reasoning": true
       },
       "context_length": 1048576,
-      "created": 1779195792,
-      "display_name": "Google: Gemini 3.5 Flash Free",
-      "id": "google/gemini-3.5-flash-free",
-      "input_modalities": [
-        "file",
-        "image",
-        "audio",
-        "video"
-      ],
-      "object": "model",
-      "output_modalities": [
-        "text"
-      ],
-      "owned_by": "google",
-      "pricings": {
-        "completion": [
-          {
-            "currency": "USD",
-            "unit": "perMTokens",
-            "value": 0
-          }
-        ],
-        "input_cache_read": [
-          {
-            "currency": "USD",
-            "unit": "perMTokens",
-            "value": 0
-          }
-        ],
-        "input_cache_write_1_h": [
-          {
-            "currency": "USD",
-            "unit": "perMTokens",
-            "value": 0
-          }
-        ],
-        "prompt": [
-          {
-            "currency": "USD",
-            "unit": "perMTokens",
-            "value": 0
-          }
-        ],
-        "web_search": [
-          {
-            "currency": "USD",
-            "unit": "perCount",
-            "value": 0
-          }
-        ]
-      }
-    },
-    {
-      "capabilities": {
-        "reasoning": true
-      },
-      "context_length": 1048576,
       "created": 1779195056,
       "display_name": "Google: Gemini 3.5 Flash",
       "id": "google/gemini-3.5-flash",
@@ -210,7 +168,8 @@
         "file",
         "image",
         "audio",
-        "video"
+        "video",
+        "text"
       ],
       "object": "model",
       "output_modalities": [
