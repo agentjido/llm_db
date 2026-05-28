@@ -7,6 +7,15 @@ This project uses [Calendar Versioning](https://calver.org/) with the format `YY
 
 <!-- changelog -->
 
+## [2026.5.2](https://github.com/agentjido/llm_db/compare/2026.5.2...2026.5.2) (2026-05-28)
+
+
+
+
+### Bug Fixes:
+
+* clean release hygiene by github-actions[bot]
+
 ## [2026.5.1](https://github.com/agentjido/llm_db/compare/v2026.5.1...2026.5.1) (2026-05-20)
 
 
