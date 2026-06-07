@@ -19,7 +19,7 @@
 - **Sync published history bundle**: `mix llm_db.history.sync`
 - **Check published history drift**: `mix llm_db.history.check --allow-missing`
 - **Dependencies**: `mix deps.get`
-- **Release**: `mix llm_db.version && mix git_ops.release && git push && git push --tags` (bumps to date-based version, updates CHANGELOG, tags, and pushes)
+- **Release**: `mix llm_db.version && mix git_ops.release && git push && git push --tags` (bumps to date-based version, generates release notes from Git history, tags, and pushes)
 
 ## Git Hooks
 
@@ -32,6 +32,7 @@ Hooks auto-install via `git_hooks` on `mix compile` in dev:
 | **pre-push** | `mix quality` |
 
 Conventional commit types: `feat`, `fix`, `docs`, `style`, `refactor`, `perf`, `test`, `build`, `ci`, `chore`, `revert`
+- Do not modify `CHANGELOG.md`; release notes are generated from Git history during release, so keep changes focused on proper Conventional Commits.
 
 ## Configuration
 
