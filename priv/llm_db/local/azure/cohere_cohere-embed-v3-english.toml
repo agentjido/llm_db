@@ -1,5 +1,8 @@
 id = "cohere-embed-v3-english"
 
+[capabilities]
+chat = false
+
 [capabilities.embeddings]
 min_dimensions = 1024
 max_dimensions = 1024
@@ -7,7 +10,7 @@ default_dimensions = 1024
 
 [modalities]
 input = ["text"]
-output = ["text", "embedding"]
+output = ["embedding"]
 
 [extra]
 type = "embedding"
