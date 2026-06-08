@@ -1,0 +1,83 @@
+id = "gemini-3.1-flash-image"
+release_date = "2026-05-28"
+last_updated = "2026-02"
+knowledge = "2025-01"
+
+[limits]
+context = 131072
+output = 32768
+
+[cost]
+input = 0.5
+output = 3.0
+
+[pricing]
+currency = "USD"
+merge = "merge_by_id"
+
+[[pricing.components]]
+id = "image.output.0.5k"
+kind = "image"
+unit = "image"
+per = 1
+rate = 0.045
+size_class = "0.5K"
+notes = "512px output image"
+
+[[pricing.components]]
+id = "image.output.1k"
+kind = "image"
+unit = "image"
+per = 1
+rate = 0.067
+size_class = "1K"
+notes = "1024x1024 output image"
+
+[[pricing.components]]
+id = "image.output.2k"
+kind = "image"
+unit = "image"
+per = 1
+rate = 0.101
+size_class = "2K"
+notes = "2048x2048 output image"
+
+[[pricing.components]]
+id = "image.output.4k"
+kind = "image"
+unit = "image"
+per = 1
+rate = 0.151
+size_class = "4K"
+notes = "4096x4096 output image"
+
+[modalities]
+input = ["text", "image", "pdf"]
+output = ["text", "image"]
+
+[capabilities]
+chat = true
+embeddings = false
+
+[capabilities.json]
+native = false
+schema = false
+strict = false
+
+[capabilities.reasoning]
+enabled = true
+
+[capabilities.streaming]
+text = true
+tool_calls = false
+
+[capabilities.tools]
+enabled = false
+parallel = false
+streaming = false
+strict = false
+
+[extra]
+attachment = true
+family = "gemini-flash-image"
+open_weights = false

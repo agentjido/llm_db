@@ -1,0 +1,74 @@
+id = "gemini-3-pro-image"
+release_date = "2026-05-28"
+last_updated = "2025-11"
+knowledge = "2025-01"
+
+[limits]
+context = 65536
+output = 32768
+
+[cost]
+input = 2.0
+output = 12.0
+
+[pricing]
+currency = "USD"
+merge = "merge_by_id"
+
+[[pricing.components]]
+id = "image.input"
+kind = "image"
+unit = "image"
+per = 1
+rate = 0.0011
+notes = "560 tokens per input image"
+
+[[pricing.components]]
+id = "image.output.1024x1024-2048x2048"
+kind = "image"
+unit = "image"
+per = 1
+rate = 0.134
+size_class = "1024x1024-2048x2048"
+notes = "1K/2K output image (1120 tokens)"
+
+[[pricing.components]]
+id = "image.output.4096x4096"
+kind = "image"
+unit = "image"
+per = 1
+rate = 0.24
+size_class = "4096x4096"
+notes = "4K output image (2000 tokens)"
+
+[modalities]
+input = ["text", "image"]
+output = ["text", "image"]
+
+[capabilities]
+chat = true
+embeddings = false
+
+[capabilities.json]
+native = false
+schema = true
+strict = false
+
+[capabilities.reasoning]
+enabled = true
+
+[capabilities.streaming]
+text = true
+tool_calls = false
+
+[capabilities.tools]
+enabled = false
+parallel = false
+streaming = false
+strict = false
+
+[extra]
+attachment = true
+family = "gemini-pro-image"
+open_weights = false
+structured_output = true
