@@ -9,16 +9,12 @@ provider_model_id = "us.meta.llama3-3-70b-instruct-v1:0"
 
 # Inference profile aliases
 aliases = [
-  "us.meta.llama3-3-70b-instruct-v1:0",
-  "eu.meta.llama3-3-70b-instruct-v1:0",
-  "ap.meta.llama3-3-70b-instruct-v1:0",
-  "ca.meta.llama3-3-70b-instruct-v1:0",
-  "global.meta.llama3-3-70b-instruct-v1:0"
+  "us.meta.llama3-3-70b-instruct-v1:0"
 ]
 
 [limits]
 context = 128000
-output = 2048
+output = 4096
 
 [cost]
 input = 0.265
@@ -50,6 +46,8 @@ tool_calls = false  # Can't stream tool calls
 
 [extra]
 requires_converse = true
+aws_lifecycle = "active"
+eol_date = "No sooner than 12/19/2025"
 # Known issues documented in extra field
 known_limitations = [
   "Tools not supported in streaming mode",

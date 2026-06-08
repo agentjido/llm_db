@@ -1,0 +1,30 @@
+id = "anthropic.claude-sonnet-4-20250514-v1:0"
+provider = "amazon_bedrock"
+name = "Claude Sonnet 4"
+family = "claude"
+provider_model_id = "anthropic.claude-sonnet-4-20250514-v1:0"
+release_date = "2025-05-23"
+last_updated = "2025-05-23"
+knowledge = "2025-03"
+
+aliases = [
+  "us.anthropic.claude-sonnet-4-20250514-v1:0",
+  "eu.anthropic.claude-sonnet-4-20250514-v1:0",
+  "apac.anthropic.claude-sonnet-4-20250514-v1:0",
+  "global.anthropic.claude-sonnet-4-20250514-v1:0"
+]
+
+[limits]
+context = 200000
+output = 64000
+
+[modalities]
+input = ["text", "image"]
+output = ["text"]
+
+[capabilities.reasoning]
+enabled = true
+
+[extra]
+aws_lifecycle = "legacy"
+eol_date = "2026-10-14"
