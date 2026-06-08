@@ -34,6 +34,16 @@ tool = "web_search_preview"
 unit = "call"
 per = 1000
 rate = 10.0
+notes = "Reasoning models, including gpt-5 and o-series models"
+
+[[pricing_defaults.components]]
+id = "tool.web_search_preview.non_reasoning"
+kind = "tool"
+tool = "web_search_preview"
+unit = "call"
+per = 1000
+rate = 25.0
+notes = "Non-reasoning models"
 
 [[pricing_defaults.components]]
 id = "tool.file_search"
@@ -58,3 +68,31 @@ tool = "code_interpreter"
 unit = "session"
 per = 1
 rate = 0.03
+notes = "1 GB hosted shell/code interpreter container, 20-minute session"
+
+[[pricing_defaults.components]]
+id = "tool.code_interpreter.4gb"
+kind = "tool"
+tool = "code_interpreter"
+unit = "session"
+per = 1
+rate = 0.12
+notes = "4 GB hosted shell/code interpreter container, 20-minute session"
+
+[[pricing_defaults.components]]
+id = "tool.code_interpreter.16gb"
+kind = "tool"
+tool = "code_interpreter"
+unit = "session"
+per = 1
+rate = 0.48
+notes = "16 GB hosted shell/code interpreter container, 20-minute session"
+
+[[pricing_defaults.components]]
+id = "tool.code_interpreter.64gb"
+kind = "tool"
+tool = "code_interpreter"
+unit = "session"
+per = 1
+rate = 1.92
+notes = "64 GB hosted shell/code interpreter container, 20-minute session"
