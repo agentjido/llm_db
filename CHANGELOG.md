@@ -7,6 +7,17 @@ This project uses [Calendar Versioning](https://calver.org/) with the format `YY
 
 <!-- changelog -->
 
+## [2026.6.0](https://github.com/agentjido/llm_db/compare/2026.6.0...2026.6.0) (2026-06-09)
+
+
+
+
+### Features:
+
+* add Claude Fable 5 metadata (#211) by mikehostetler
+
+* add llm metadata verification skill by github-actions[bot]
+
 ## [2026.5.2](https://github.com/agentjido/llm_db/compare/2026.5.2...2026.5.2) (2026-05-28)
 
 
