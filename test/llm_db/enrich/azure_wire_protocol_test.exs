@@ -28,6 +28,23 @@ defmodule LLMDB.Enrich.AzureWireProtocolTest do
     {:ok, cache_dir: cache_dir}
   end
 
+  describe "pull/1" do
+    test "returns :noop on HTTP 429 when cache exists", %{cache_dir: cache_dir} do
+      write_cache(cache_dir, [])
+
+      plug = make_plug(fn conn -> Plug.Conn.send_resp(conn, 429, "Too Many Requests") end)
+
+      assert :noop = AzureWireProtocol.pull(%{req_opts: [plug: plug]})
+    end
+
+    test "returns error on HTTP 429 when cache is missing" do
+      plug = make_plug(fn conn -> Plug.Conn.send_resp(conn, 429, "Too Many Requests") end)
+
+      assert {:error, {:http_status, 429}} =
+               AzureWireProtocol.pull(%{req_opts: [plug: plug]})
+    end
+  end
+
   test "matches instruct-suffixed cache entries for azure providers", %{cache_dir: cache_dir} do
     write_cache(cache_dir, [
       foundry_model("Phi-4-mini-instruct", ["chat-completion"]),
@@ -46,6 +63,12 @@ defmodule LLMDB.Enrich.AzureWireProtocolTest do
     assert get_in(cognitive_model, [:extra, :wire_protocol]) == :openai_completion
     assert preserved.extra.wire_protocol == :openai_responses
     refute Map.has_key?(non_azure, :extra)
+  end
+
+  defp make_plug(fun) do
+    fn conn ->
+      fun.(conn)
+    end
   end
 
   defp write_cache(cache_dir, models) do

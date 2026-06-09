@@ -54,6 +54,9 @@ defmodule LLMDB.Enrich.AzureWireProtocol do
         write_cache(cache_path, manifest_path, bin)
         {:ok, cache_path}
 
+      {:error, {:http_status, 429}} ->
+        keep_existing_cache(cache_path, {:http_status, 429})
+
       {:error, reason} ->
         {:error, reason}
     end
@@ -222,6 +225,20 @@ defmodule LLMDB.Enrich.AzureWireProtocol do
   defp get_cache_dir do
     Application.get_env(:llm_db, :azure_foundry_cache_dir, @default_cache_dir)
   end
+
+  defp keep_existing_cache(cache_path, reason) do
+    if File.exists?(cache_path) do
+      Logger.warning(
+        "Azure Foundry pull failed with #{format_http_status(reason)}; keeping existing cache at #{cache_path}"
+      )
+
+      :noop
+    else
+      {:error, reason}
+    end
+  end
+
+  defp format_http_status({:http_status, status}), do: "HTTP #{status}"
 
   defp write_cache(cache_path, manifest_path, content) do
     File.mkdir_p!(Path.dirname(cache_path))

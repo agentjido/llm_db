@@ -1,0 +1,26 @@
+id = "claude-fable-5"
+release_date = "2026-06-09"
+knowledge = "2026-01"
+doc_url = "https://www.anthropic.com/news/claude-fable-5-mythos-5"
+
+[cost]
+input = 10
+output = 50
+cache_read = 1
+cache_write = 12.5
+
+[capabilities.tools]
+enabled = true
+
+[capabilities.streaming]
+text = true
+tool_calls = true
+
+[lifecycle]
+status = "active"
+
+[extra]
+availability = "general"
+training_data_cutoff = "2026-01"
+fallback_model = "claude-opus-4-8"
+fallback_domains = ["cybersecurity", "biology", "chemistry", "distillation"]
