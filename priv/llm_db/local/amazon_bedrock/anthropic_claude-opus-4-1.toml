@@ -4,17 +4,11 @@ name = "Claude Opus 4.1"
 family = "claude"
 release_date = "2025-08-05"
 
-# Bedrock requires inference profile prefix for API calls
-# Note: Opus 4.1 only available with us. prefix, not global.
+# Bedrock documents only the US geo inference profile for Opus 4.1.
 provider_model_id = "us.anthropic.claude-opus-4-1-20250805-v1:0"
 
-# Inference profile aliases - allow routing across AWS regions
 aliases = [
-  "us.anthropic.claude-opus-4-1-20250805-v1:0",
-  "eu.anthropic.claude-opus-4-1-20250805-v1:0",
-  "ap.anthropic.claude-opus-4-1-20250805-v1:0",
-  "ca.anthropic.claude-opus-4-1-20250805-v1:0",
-  "global.anthropic.claude-opus-4-1-20250805-v1:0"
+  "us.anthropic.claude-opus-4-1-20250805-v1:0"
 ]
 
 # Override: Disable object generation hack - wait for native Anthropic support

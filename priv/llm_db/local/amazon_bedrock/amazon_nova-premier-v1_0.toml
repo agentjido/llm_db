@@ -1,0 +1,27 @@
+id = "amazon.nova-premier-v1:0"
+provider = "amazon_bedrock"
+name = "Nova Premier"
+family = "nova"
+provider_model_id = "amazon.nova-premier-v1:0"
+release_date = "2025-10-31"
+last_updated = "2025-10-31"
+knowledge = "2024-10"
+
+aliases = [
+  "us.amazon.nova-premier-v1:0"
+]
+
+[limits]
+context = 1000000
+output = 25000
+
+[modalities]
+input = ["text", "image", "video"]
+output = ["text"]
+
+[capabilities.reasoning]
+enabled = true
+
+[extra]
+aws_lifecycle = "legacy"
+eol_date = "2026-09-14"
