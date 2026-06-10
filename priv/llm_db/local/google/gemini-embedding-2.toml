@@ -1,0 +1,54 @@
+id = "gemini-embedding-2"
+release_date = "2026-04-22"
+last_updated = "2026-04"
+
+[limits]
+context = 8192
+
+[cost]
+input = 0.20
+image = 0.45
+audio = 6.50
+input_video = 12.00
+
+[pricing]
+currency = "USD"
+merge = "merge_by_id"
+
+[[pricing.components]]
+id = "image.input"
+kind = "image"
+unit = "image"
+per = 1
+rate = 0.00012
+
+[[pricing.components]]
+id = "audio.input.second"
+kind = "other"
+unit = "other"
+per = 1
+rate = 0.00016
+meter = "audio_second"
+
+[[pricing.components]]
+id = "video.input.frame"
+kind = "other"
+unit = "other"
+per = 1
+rate = 0.00079
+meter = "video_frame"
+
+[modalities]
+input = ["text", "image", "video", "audio", "pdf"]
+output = ["embedding"]
+
+[capabilities]
+chat = false
+
+[capabilities.embeddings]
+min_dimensions = 128
+max_dimensions = 3072
+
+[extra]
+type = "embedding"
+open_weights = false
