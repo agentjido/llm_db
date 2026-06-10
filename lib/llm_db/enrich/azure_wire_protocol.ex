@@ -115,7 +115,7 @@ defmodule LLMDB.Enrich.AzureWireProtocol do
         model
 
       protocol ->
-        extra = Map.get(model, :extra, %{})
+        extra = Map.get(model, :extra) || %{}
         Map.put(model, :extra, Map.put(extra, :wire_protocol, protocol))
     end
   end

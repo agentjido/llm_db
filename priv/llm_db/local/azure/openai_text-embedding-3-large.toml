@@ -1,5 +1,8 @@
 id = "text-embedding-3-large"
 
+[capabilities]
+chat = false
+
 [capabilities.embeddings]
 min_dimensions = 1
 max_dimensions = 3072
@@ -7,7 +10,7 @@ default_dimensions = 3072
 
 [modalities]
 input = ["text"]
-output = ["text", "embedding"]
+output = ["embedding"]
 
 [extra]
 type = "embedding"

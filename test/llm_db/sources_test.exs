@@ -222,6 +222,76 @@ defmodule LLMDB.SourcesTest do
     end
   end
 
+  describe "Azure embedding overlays" do
+    test "embedding models are not chat-capable" do
+      {:ok, data} = Local.load(%{dir: "priv/llm_db/local"})
+
+      models_by_id = Map.new(data["azure"].models, &{&1.id, &1})
+
+      expected_ids = ~w[
+        cohere-embed-v-4-0
+        cohere-embed-v3-english
+        cohere-embed-v3-multilingual
+        text-embedding-3-large
+        text-embedding-3-small
+        text-embedding-ada-002
+      ]
+
+      Enum.each(expected_ids, fn id ->
+        model = models_by_id[id]
+        assert model, "Azure overlay for #{id} should be present"
+
+        assert model.capabilities.chat == false
+        assert model.modalities.output == ["embedding"]
+        assert is_map(model.capabilities.embeddings)
+      end)
+    end
+  end
+
+  describe "Azure lifecycle overlays" do
+    test "retirement schedule entries are captured for exact model IDs" do
+      {:ok, data} = Local.load(%{dir: "priv/llm_db/local"})
+
+      models_by_id = Map.new(data["azure"].models, &{&1.id, &1})
+
+      expected = %{
+        "cohere-command-r-08-2024" => {"retired", "2026-05-12"},
+        "cohere-command-r-plus-08-2024" => {"retired", "2026-05-12"},
+        "grok-4-fast-reasoning" => {"retired", "2026-05-01"},
+        "kimi-k2-thinking" => {"retired", "2026-03-29"},
+        "llama-3.2-11b-vision-instruct" => {"deprecated", "2026-06-13"},
+        "llama-3.2-90b-vision-instruct" => {"deprecated", "2026-06-13"},
+        "mai-ds-r1" => {"retired", "2026-02-27"},
+        "meta-llama-3-70b-instruct" => {"retired", "2025-06-30"},
+        "meta-llama-3-8b-instruct" => {"retired", "2025-06-30"},
+        "meta-llama-3.1-405b-instruct" => {"deprecated", "2026-06-13"},
+        "meta-llama-3.1-70b-instruct" => {"retired", "2025-06-30"},
+        "meta-llama-3.1-8b-instruct" => {"deprecated", "2026-06-13"},
+        "mistral-large-2411" => {"retired", "2026-01-30"},
+        "mistral-nemo" => {"retired", "2026-01-30"},
+        "o1" => {"deprecated", "2026-07-15"},
+        "o1-preview" => {"retired", "2025-07-28"},
+        "o3-mini" => {"deprecated", "2026-08-02"},
+        "phi-3-medium-128k-instruct" => {"retired", "2025-08-30"},
+        "phi-3-medium-4k-instruct" => {"retired", "2025-08-30"},
+        "phi-3-mini-128k-instruct" => {"retired", "2025-08-30"},
+        "phi-3-mini-4k-instruct" => {"retired", "2025-08-30"},
+        "phi-3-small-128k-instruct" => {"retired", "2025-08-30"},
+        "phi-3-small-8k-instruct" => {"retired", "2025-08-30"},
+        "phi-3.5-mini-instruct" => {"retired", "2025-08-30"},
+        "phi-3.5-moe-instruct" => {"retired", "2025-08-30"}
+      }
+
+      Enum.each(expected, fn {id, {status, retires_at}} ->
+        model = models_by_id[id]
+        assert model, "Azure lifecycle overlay for #{id} should be present"
+
+        assert model.lifecycle.status == status
+        assert model.lifecycle.retires_at == retires_at
+      end)
+    end
+  end
+
   describe "Source behavior contract" do
     test "all sources return {:ok, data} format with nested structure" do
       # Config
