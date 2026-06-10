@@ -74,6 +74,18 @@ defmodule LLMDB.Sources.OpenRouterTest do
       assert :noop = OpenRouter.pull(%{req_opts: [plug: plug]})
     end
 
+    test "requests all output modalities by default" do
+      body = %{"data" => []}
+
+      plug =
+        make_plug(fn conn ->
+          assert conn.query_string == "output_modalities=all"
+          Plug.Conn.send_resp(conn, 200, Jason.encode!(body))
+        end)
+
+      assert {:ok, _cache_path} = OpenRouter.pull(%{req_opts: [plug: plug]})
+    end
+
     test "returns error on non-200/304 status" do
       plug = make_plug(fn conn -> Plug.Conn.send_resp(conn, 404, "Not Found") end)
       assert {:error, {:http_status, 404}} = OpenRouter.pull(%{req_opts: [plug: plug]})
@@ -325,6 +337,27 @@ defmodule LLMDB.Sources.OpenRouterTest do
       assert model[:capabilities][:embeddings] == true
     end
 
+    test "sets embeddings capability when output_modalities contains 'embeddings'" do
+      input = %{
+        "data" => [
+          %{
+            "id" => "google/gemini-embedding-2",
+            "name" => "Google: Gemini Embedding 2",
+            "architecture" => %{
+              "modality" => "text->embeddings",
+              "output_modalities" => ["embeddings"]
+            }
+          }
+        ]
+      }
+
+      result = OpenRouter.transform(input)
+      model = hd(result["openrouter"][:models])
+
+      assert model[:modalities][:output] == [:embeddings]
+      assert model[:capabilities][:embeddings] == true
+    end
+
     test "does not set embeddings capability when output_modalities lacks 'embedding'" do
       input = %{
         "data" => [
@@ -393,6 +426,53 @@ defmodule LLMDB.Sources.OpenRouterTest do
 
       assert model[:capabilities][:embeddings] == true
       assert model[:capabilities][:tools][:enabled] == true
+    end
+  end
+
+  describe "pricing mapping" do
+    test "maps OpenRouter token and tool pricing fields" do
+      input = %{
+        "data" => [
+          %{
+            "id" => "google/gemini-3.5-flash",
+            "name" => "Google: Gemini 3.5 Flash",
+            "pricing" => %{
+              "prompt" => "0.0000015",
+              "completion" => "0.000009",
+              "input_cache_read" => "0.00000015",
+              "input_cache_write" => "0.00000008333333333333334",
+              "internal_reasoning" => "0.000009",
+              "image" => "0.0000015",
+              "audio" => "0.000003",
+              "web_search" => "0.014"
+            }
+          }
+        ]
+      }
+
+      result = OpenRouter.transform(input)
+      model = hd(result["openrouter"][:models])
+
+      assert_in_delta model[:cost][:input], 1.5, 0.000001
+      assert_in_delta model[:cost][:output], 9.0, 0.000001
+      assert_in_delta model[:cost][:cache_read], 0.15, 0.000001
+      assert_in_delta model[:cost][:cache_write], 0.083333, 0.000001
+      assert_in_delta model[:cost][:reasoning], 9.0, 0.000001
+      assert_in_delta model[:cost][:image], 1.5, 0.000001
+      assert_in_delta model[:cost][:audio], 3.0, 0.000001
+
+      assert model[:pricing][:currency] == "USD"
+
+      assert [
+               %{
+                 id: "tool.web_search",
+                 kind: "tool",
+                 tool: "web_search",
+                 unit: "call",
+                 per: 1,
+                 rate: 0.014
+               }
+             ] = model[:pricing][:components]
     end
   end
 

@@ -1,6 +1,6 @@
 defmodule LLMDB.Sources.OpenRouter do
   @moduledoc """
-  Remote source for OpenRouter metadata (https://openrouter.ai/api/v1/models).
+  Remote source for OpenRouter metadata (https://openrouter.ai/api/v1/models?output_modalities=all).
 
   - `pull/1` fetches data via Req and caches locally
   - `load/1` reads from cached file (no network call)
@@ -33,7 +33,7 @@ defmodule LLMDB.Sources.OpenRouter do
 
   require Logger
 
-  @default_url "https://openrouter.ai/api/v1/models"
+  @default_url "https://openrouter.ai/api/v1/models?output_modalities=all"
   @default_cache_dir "priv/llm_db/upstream"
 
   @impl true
@@ -166,6 +166,18 @@ defmodule LLMDB.Sources.OpenRouter do
           name: "GPT-4",
           limits: %{context: 128000, output: 16384},
           cost: %{input: 0.03, output: 0.06},
+          pricing: %{
+            components: [
+              %{
+                id: "tool.web_search",
+                kind: "tool",
+                tool: "web_search",
+                unit: "call",
+                per: 1,
+                rate: 0.01
+              }
+            ]
+          },
           ...
         },
         %{
@@ -305,6 +317,7 @@ defmodule LLMDB.Sources.OpenRouter do
       |> put_if_present(:release_date, parse_timestamp(model["created"]))
       |> map_limits(model)
       |> map_cost(model["pricing"])
+      |> map_pricing(model["pricing"])
       |> map_modalities(model["architecture"])
       |> map_capabilities(model)
       |> map_extra(model)
@@ -343,8 +356,11 @@ defmodule LLMDB.Sources.OpenRouter do
       |> put_cost_if_present(:input, pricing["prompt"])
       |> put_cost_if_present(:output, pricing["completion"])
       |> put_cost_if_present(:request, pricing["request"])
+      |> put_cost_if_present(:cache_read, pricing["input_cache_read"])
+      |> put_cost_if_present(:cache_write, pricing["input_cache_write"])
       |> put_cost_if_present(:reasoning, pricing["internal_reasoning"])
       |> put_cost_if_present(:image, pricing["image"])
+      |> put_cost_if_present(:audio, pricing["audio"])
       |> put_cost_if_present(:input_audio, pricing["input_audio"])
       |> put_cost_if_present(:output_audio, pricing["output_audio"])
       |> put_cost_if_present(:input_video, pricing["input_video"])
@@ -360,9 +376,9 @@ defmodule LLMDB.Sources.OpenRouter do
   defp put_cost_if_present(map, _key, nil), do: map
 
   defp put_cost_if_present(map, key, value) when is_binary(value) do
-    case Float.parse(value) do
-      {float_val, _} -> Map.put(map, key, Float.round(float_val * 1_000_000, 6))
-      :error -> map
+    case parse_price(value) do
+      nil -> map
+      float_val -> Map.put(map, key, Float.round(float_val * 1_000_000, 6))
     end
   end
 
@@ -371,6 +387,55 @@ defmodule LLMDB.Sources.OpenRouter do
   end
 
   defp put_cost_if_present(map, _key, _value), do: map
+
+  defp parse_price(value) when is_binary(value) do
+    case Float.parse(value) do
+      {float_val, _} -> float_val
+      :error -> nil
+    end
+  end
+
+  defp parse_price(value) when is_number(value), do: value
+  defp parse_price(_value), do: nil
+
+  defp map_pricing(model, nil), do: model
+
+  defp map_pricing(model, pricing) when is_map(pricing) do
+    components =
+      []
+      |> put_tool_component_if_present("tool.web_search", "web_search", pricing["web_search"])
+
+    if components == [] do
+      model
+    else
+      Map.put(model, :pricing, %{
+        currency: "USD",
+        components: components
+      })
+    end
+  end
+
+  defp put_tool_component_if_present(components, _id, _tool, nil), do: components
+
+  defp put_tool_component_if_present(components, id, tool, value) do
+    case parse_price(value) do
+      nil ->
+        components
+
+      rate ->
+        components ++
+          [
+            %{
+              id: id,
+              kind: "tool",
+              tool: tool,
+              unit: "call",
+              per: 1,
+              rate: rate
+            }
+          ]
+    end
+  end
 
   defp map_modalities(model, nil), do: model
 
@@ -423,9 +488,11 @@ defmodule LLMDB.Sources.OpenRouter do
         capabilities
       end
 
+    output_modalities = get_in(source, ["architecture", "output_modalities"])
+
     capabilities =
-      if is_list(get_in(source, ["architecture", "output_modalities"])) and
-           "embedding" in get_in(source, ["architecture", "output_modalities"]) do
+      if is_list(output_modalities) and
+           Enum.any?(output_modalities, &(&1 in ["embedding", "embeddings"])) do
         Map.put(capabilities, :embeddings, true)
       else
         capabilities
