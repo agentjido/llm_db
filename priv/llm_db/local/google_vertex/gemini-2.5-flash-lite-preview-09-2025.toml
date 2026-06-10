@@ -1,0 +1,26 @@
+id = "gemini-2.5-flash-lite-preview-09-2025"
+name = "Gemini 2.5 Flash-Lite Preview 09-2025"
+release_date = "2025-09-25"
+knowledge = "2025-01"
+
+[limits]
+context = 1048576
+output = 65535
+
+[modalities]
+input = ["text", "code", "image", "audio", "video"]
+output = ["text"]
+
+[capabilities.reasoning]
+enabled = true
+
+[capabilities.tools]
+enabled = true
+
+[capabilities.streaming]
+tool_calls = true
+
+[lifecycle]
+status = "active"
+retires_at = "2026-07-09"
+replacement = "gemini-2.5-flash-lite"

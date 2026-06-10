@@ -6,6 +6,10 @@ doc = "https://cloud.google.com/vertex-ai/docs"
 
 env = ["GOOGLE_APPLICATION_CREDENTIALS", "GOOGLE_CLOUD_PROJECT"]
 
+exclude_models = [
+  "claude-3-5-sonnet@20241022",
+]
+
 # Runtime configuration schema
 [[config_schema]]
 name = "service_account_json"
