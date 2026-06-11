@@ -327,8 +327,6 @@ defmodule LLMDB.Normalize do
     Map.get(lifecycle, :status) || Map.get(lifecycle, "status")
   end
 
-  defp lifecycle_status_from_map(_), do: nil
-
   defp normalize_date_field(model, field) do
     if Map.has_key?(model, field) do
       case Map.get(model, field) do

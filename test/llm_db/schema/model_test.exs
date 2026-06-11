@@ -107,6 +107,72 @@ defmodule LLMDB.Schema.ModelTest do
       assert result.execution.text.wire_protocol == "openai_chat"
       assert result.execution.text.transport == "http_request"
     end
+
+    test "parses extended limits, capabilities, and pricing component metadata" do
+      input = %{
+        id: "gpt-5.5",
+        provider: :openai,
+        limits: %{context: 1_050_000, input: 1_050_000, output: 128_000},
+        capabilities: %{
+          reasoning: %{
+            enabled: true,
+            effort: %{supported: true, values: ["none", "low", "medium"], default: "medium"},
+            thinking: %{
+              supported: true,
+              types: ["adaptive"],
+              default_type: "adaptive",
+              disable_supported: false,
+              raw_output_supported: false
+            },
+            token_budget: %{min: 0, max: 128_000, default: 16_000}
+          },
+          batch: %{supported: true},
+          citations: %{supported: true},
+          code_execution: %{supported: true},
+          context_management: %{supported: true, features: ["compact"]}
+        },
+        pricing: %{
+          currency: "USD",
+          components: [
+            %{
+              id: "token.input.long_context",
+              kind: "token",
+              unit: "token",
+              per: 1_000_000,
+              rate: 10.0,
+              multiplier: 2.0,
+              derives_from: "token.input",
+              applies_to: ["token.*"],
+              applies_when: %{input_tokens: %{gt: 272_000}},
+              excludes_when: %{api: "batch"},
+              mode: "standard",
+              charge_scope: "full_request",
+              source: "provider_docs",
+              notes: "Long-context tier"
+            }
+          ]
+        }
+      }
+
+      assert {:ok, result} = Model.new(input)
+
+      assert result.limits.input == 1_050_000
+      assert result.capabilities.reasoning.effort.values == ["none", "low", "medium"]
+      assert result.capabilities.reasoning.effort.default == "medium"
+      assert result.capabilities.reasoning.thinking.types == ["adaptive"]
+      assert result.capabilities.reasoning.token_budget.max == 128_000
+      assert result.capabilities.batch.supported == true
+      assert result.capabilities.context_management.features == ["compact"]
+
+      [component] = result.pricing.components
+      assert component.applies_when.input_tokens.gt == 272_000
+      assert component.excludes_when.api == "batch"
+      assert component.multiplier == 2.0
+      assert component.derives_from == "token.input"
+      assert component.applies_to == ["token.*"]
+      assert component.charge_scope == "full_request"
+      assert component.source == "provider_docs"
+    end
   end
 
   describe "defaults" do

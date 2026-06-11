@@ -4,7 +4,11 @@ This proposal describes how to evolve `%LLMDB.Model{}` and the build/runtime
 pipeline so LLMDB can represent provider-published conditional pricing and richer
 runtime capabilities without breaking existing consumers.
 
-Status: design proposal only. This is not the current runtime contract.
+Status: phase 1 implemented. The runtime contract now supports the additive
+schema fields described here for limits, pricing components, reasoning
+capabilities, provider capability groups, Anthropic direct-source mapping, and
+conditional pricing component selection. The OpenAI and Anthropic docs-sourced
+pricing overlays remain follow-up curation work.
 
 ## Why This Is Needed
 

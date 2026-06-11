@@ -106,6 +106,38 @@ defmodule LLMDB.Pricing do
     end)
   end
 
+  @doc """
+  Selects pricing components that apply for a request context.
+
+  This helper does not calculate final cost. It separates components with fully
+  satisfied conditions from components that cannot be resolved because the
+  supplied context is incomplete.
+
+  ## Examples
+
+      iex> model = %{pricing: %{components: [
+      ...>   %{id: "token.input", rate: 5.0},
+      ...>   %{id: "token.input.long_context", rate: 10.0, applies_when: %{input_tokens: %{gt: 272_000}}}
+      ...> ]}}
+      iex> LLMDB.Pricing.components_for(model, input_tokens: 900_000).components |> Enum.map(& &1.id)
+      ["token.input", "token.input.long_context"]
+  """
+  @spec components_for(map(), map() | keyword()) :: %{components: [map()], unresolved: [map()]}
+  def components_for(model, context \\ %{}) when is_map(model) do
+    request_context = context_map(context)
+
+    model
+    |> Map.get(:pricing, Map.get(model, "pricing", %{}))
+    |> components_list()
+    |> Enum.reduce(%{components: [], unresolved: []}, fn component, acc ->
+      case component_status(component, request_context) do
+        :applies -> update_in(acc.components, &(&1 ++ [component]))
+        :unresolved -> update_in(acc.unresolved, &(&1 ++ [component]))
+        :excluded -> acc
+      end
+    end)
+  end
+
   defp apply_defaults_to_model(model, defaults) do
     case Map.get(model, :pricing) do
       nil -> Map.put(model, :pricing, defaults)
@@ -174,6 +206,140 @@ defmodule LLMDB.Pricing do
   defp components_list(pricing) do
     Map.get(pricing, :components) || Map.get(pricing, "components") || []
   end
+
+  defp component_status(component, context) do
+    excludes_when = Map.get(component, :excludes_when) || Map.get(component, "excludes_when")
+    applies_when = Map.get(component, :applies_when) || Map.get(component, "applies_when")
+
+    case conditions_status(excludes_when, context, :exclusion) do
+      :match ->
+        :excluded
+
+      :no_match ->
+        case conditions_status(applies_when, context, :application) do
+          :match -> :applies
+          :unknown -> :unresolved
+          :no_match -> :excluded
+        end
+
+      :unknown ->
+        :unresolved
+    end
+  end
+
+  defp conditions_status(nil, _context, :application), do: :match
+  defp conditions_status(nil, _context, :exclusion), do: :no_match
+
+  defp conditions_status(conditions, context, _mode) when is_map(conditions) do
+    if map_size(conditions) == 0 do
+      :match
+    else
+      conditions
+      |> Enum.map(fn {key, expected} -> condition_status(key, expected, context) end)
+      |> merge_condition_statuses()
+    end
+  end
+
+  defp conditions_status(_conditions, _context, _mode), do: :unknown
+
+  defp condition_status(key, expected, context) do
+    case fetch_context(context, key) do
+      {:ok, actual} -> expected_status(expected, actual)
+      :error -> :unknown
+    end
+  end
+
+  defp expected_status(expected, actual) when is_map(expected) and is_map(actual) do
+    if comparison_map?(expected) do
+      comparison_status(expected, actual)
+    else
+      expected
+      |> Enum.map(fn {key, nested_expected} -> condition_status(key, nested_expected, actual) end)
+      |> merge_condition_statuses()
+    end
+  end
+
+  defp expected_status(expected, actual) when is_map(expected) do
+    if comparison_map?(expected) do
+      comparison_status(expected, actual)
+    else
+      :no_match
+    end
+  end
+
+  defp expected_status(true, actual), do: truthy_status(actual)
+  defp expected_status(expected, actual), do: if(expected == actual, do: :match, else: :no_match)
+
+  defp comparison_map?(map) when is_map(map) do
+    map
+    |> Map.keys()
+    |> Enum.any?(&(&1 in [:gt, "gt", :gte, "gte", :lt, "lt", :lte, "lte"]))
+  end
+
+  defp comparison_status(comparisons, actual) when is_number(actual) do
+    comparisons
+    |> Enum.map(fn
+      {key, expected} when key in [:gt, "gt"] and is_number(expected) -> actual > expected
+      {key, expected} when key in [:gte, "gte"] and is_number(expected) -> actual >= expected
+      {key, expected} when key in [:lt, "lt"] and is_number(expected) -> actual < expected
+      {key, expected} when key in [:lte, "lte"] and is_number(expected) -> actual <= expected
+      _other -> :unknown
+    end)
+    |> bools_to_status()
+  end
+
+  defp comparison_status(_comparisons, _actual), do: :unknown
+
+  defp truthy_status(false), do: :no_match
+  defp truthy_status(nil), do: :unknown
+  defp truthy_status(_actual), do: :match
+
+  defp merge_condition_statuses(statuses) do
+    cond do
+      Enum.any?(statuses, &(&1 == :no_match)) -> :no_match
+      Enum.any?(statuses, &(&1 == :unknown)) -> :unknown
+      true -> :match
+    end
+  end
+
+  defp bools_to_status(results) do
+    cond do
+      Enum.any?(results, &(&1 == false)) -> :no_match
+      Enum.any?(results, &(&1 == :unknown)) -> :unknown
+      true -> :match
+    end
+  end
+
+  defp fetch_context(context, key) do
+    cond do
+      Map.has_key?(context, key) ->
+        {:ok, Map.get(context, key)}
+
+      is_atom(key) and Map.has_key?(context, Atom.to_string(key)) ->
+        {:ok, Map.get(context, Atom.to_string(key))}
+
+      is_binary(key) ->
+        atom_key = existing_atom(key)
+
+        if not is_nil(atom_key) and Map.has_key?(context, atom_key) do
+          {:ok, Map.get(context, atom_key)}
+        else
+          :error
+        end
+
+      true ->
+        :error
+    end
+  end
+
+  defp existing_atom(key) when is_binary(key) do
+    String.to_existing_atom(key)
+  rescue
+    ArgumentError -> nil
+  end
+
+  defp context_map(context) when is_list(context), do: Map.new(context)
+  defp context_map(context) when is_map(context), do: context
 
   defp cost_components(cost) when is_map(cost) do
     []

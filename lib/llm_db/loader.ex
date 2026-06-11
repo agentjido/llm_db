@@ -254,8 +254,6 @@ defmodule LLMDB.Loader do
     end)
   end
 
-  defp deserialize_modality_list(other), do: other
-
   defp merge_custom({providers, models}, %{providers: [], models: []}) do
     # No custom overlay
     {providers, models}

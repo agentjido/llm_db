@@ -1280,8 +1280,6 @@ defmodule LLMDB.History.Backfill do
   defp canonical_sort_key(value) when is_atom(value), do: {1, Atom.to_string(value)}
   defp canonical_sort_key(value) when is_integer(value), do: {2, value}
   defp canonical_sort_key(value) when is_float(value), do: {3, value}
-  defp canonical_sort_key(value) when is_boolean(value), do: {4, value}
-  defp canonical_sort_key(nil), do: {5, nil}
   defp canonical_sort_key(value), do: {6, inspect(value)}
 
   defp commit_date_iso8601(sha) do

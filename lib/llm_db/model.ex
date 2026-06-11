@@ -55,6 +55,7 @@ defmodule LLMDB.Model do
 
   @limits_schema Zoi.object(%{
                    context: Zoi.integer() |> Zoi.min(1) |> Zoi.nullish(),
+                   input: Zoi.integer() |> Zoi.min(1) |> Zoi.nullish(),
                    output: Zoi.integer() |> Zoi.min(1) |> Zoi.nullish()
                  })
 
@@ -103,6 +104,14 @@ defmodule LLMDB.Model do
                               meter: Zoi.string() |> Zoi.nullish(),
                               tool: Zoi.union([Zoi.atom(), Zoi.string()]) |> Zoi.nullish(),
                               size_class: Zoi.string() |> Zoi.nullish(),
+                              multiplier: Zoi.number() |> Zoi.nullish(),
+                              derives_from: Zoi.string() |> Zoi.nullish(),
+                              applies_to: Zoi.array(Zoi.string()) |> Zoi.nullish(),
+                              applies_when: Zoi.map() |> Zoi.nullish(),
+                              excludes_when: Zoi.map() |> Zoi.nullish(),
+                              mode: Zoi.string() |> Zoi.nullish(),
+                              charge_scope: Zoi.string() |> Zoi.nullish(),
+                              source: Zoi.string() |> Zoi.nullish(),
                               notes: Zoi.string() |> Zoi.nullish()
                             })
 
@@ -112,9 +121,35 @@ defmodule LLMDB.Model do
                     merge: Zoi.enum(["replace", "merge_by_id"]) |> Zoi.default("merge_by_id")
                   })
 
+  @token_budget_schema Zoi.object(%{
+                         min: Zoi.integer() |> Zoi.min(0) |> Zoi.nullish(),
+                         max: Zoi.integer() |> Zoi.min(0) |> Zoi.nullish(),
+                         default: Zoi.integer() |> Zoi.min(0) |> Zoi.nullish()
+                       })
+
+  @reasoning_effort_schema Zoi.object(%{
+                             supported: Zoi.boolean() |> Zoi.default(false),
+                             values: Zoi.array(Zoi.string()) |> Zoi.default([]),
+                             default: Zoi.string() |> Zoi.nullish()
+                           })
+
+  @reasoning_thinking_schema Zoi.object(%{
+                               supported: Zoi.boolean() |> Zoi.default(false),
+                               types: Zoi.array(Zoi.string()) |> Zoi.default([]),
+                               default_type: Zoi.string() |> Zoi.nullish(),
+                               disable_supported: Zoi.boolean() |> Zoi.nullish(),
+                               raw_output_supported: Zoi.boolean() |> Zoi.nullish(),
+                               summary_supported: Zoi.boolean() |> Zoi.nullish(),
+                               encrypted_supported: Zoi.boolean() |> Zoi.nullish()
+                             })
+
   @reasoning_schema Zoi.object(%{
                       enabled: Zoi.boolean() |> Zoi.nullish(),
-                      token_budget: Zoi.integer() |> Zoi.min(0) |> Zoi.nullish()
+                      effort: @reasoning_effort_schema |> Zoi.nullish(),
+                      thinking: @reasoning_thinking_schema |> Zoi.nullish(),
+                      token_budget:
+                        Zoi.union([Zoi.integer() |> Zoi.min(0), @token_budget_schema])
+                        |> Zoi.nullish()
                     })
 
   @tools_schema Zoi.object(%{
@@ -139,6 +174,11 @@ defmodule LLMDB.Model do
                       text: Zoi.boolean() |> Zoi.nullish(),
                       tool_calls: Zoi.boolean() |> Zoi.nullish()
                     })
+
+  @supported_feature_schema Zoi.object(%{
+                              supported: Zoi.boolean() |> Zoi.default(false),
+                              features: Zoi.array(Zoi.string()) |> Zoi.default([])
+                            })
 
   @lifecycle_schema Zoi.object(%{
                       status: Zoi.enum(["active", "deprecated", "retired"]) |> Zoi.nullish(),
@@ -192,7 +232,11 @@ defmodule LLMDB.Model do
                            |> Zoi.default(%{native: false, schema: false, strict: false}),
                          caching: @caching_schema |> Zoi.nullish(),
                          streaming:
-                           @streaming_schema |> Zoi.default(%{text: true, tool_calls: false})
+                           @streaming_schema |> Zoi.default(%{text: true, tool_calls: false}),
+                         batch: @supported_feature_schema |> Zoi.nullish(),
+                         citations: @supported_feature_schema |> Zoi.nullish(),
+                         code_execution: @supported_feature_schema |> Zoi.nullish(),
+                         context_management: @supported_feature_schema |> Zoi.nullish()
                        })
 
   @derive {Jason.Encoder,

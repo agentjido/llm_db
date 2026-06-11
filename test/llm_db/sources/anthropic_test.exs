@@ -15,10 +15,33 @@ defmodule LLMDB.Sources.AnthropicTest do
             "max_input_tokens" => 1_000_000,
             "max_tokens" => 128_000,
             "capabilities" => %{
+              "batch" => %{"supported" => true},
+              "citations" => %{"supported" => true},
+              "code_execution" => %{"supported" => true},
+              "context_management" => %{
+                "clear_thinking_20251015" => %{"supported" => true},
+                "clear_tool_uses_20250919" => %{"supported" => true},
+                "compact_20260112" => %{"supported" => true},
+                "supported" => true
+              },
+              "effort" => %{
+                "high" => %{"supported" => true},
+                "low" => %{"supported" => true},
+                "max" => %{"supported" => true},
+                "medium" => %{"supported" => true},
+                "supported" => true,
+                "xhigh" => %{"supported" => true}
+              },
               "image_input" => %{"supported" => true},
               "pdf_input" => %{"supported" => true},
               "structured_outputs" => %{"supported" => true},
-              "thinking" => %{"supported" => true}
+              "thinking" => %{
+                "supported" => true,
+                "types" => %{
+                  "adaptive" => %{"supported" => true},
+                  "enabled" => %{"supported" => false}
+                }
+              }
             }
           }
         ]
@@ -30,11 +53,34 @@ defmodule LLMDB.Sources.AnthropicTest do
       assert model.provider == :anthropic
       assert model.name == "Claude Opus 4.8"
       assert model.release_date == "2026-05-28"
-      assert model.limits == %{context: 1_000_000, output: 128_000}
+      assert model.limits == %{context: 1_000_000, input: 1_000_000, output: 128_000}
       assert model.modalities == %{input: [:text, :image, :pdf], output: [:text]}
       assert model.capabilities.reasoning.enabled == true
+
+      assert model.capabilities.reasoning.effort.values == [
+               "low",
+               "medium",
+               "high",
+               "xhigh",
+               "max"
+             ]
+
+      assert model.capabilities.reasoning.thinking.types == ["adaptive"]
+      assert model.capabilities.reasoning.thinking.default_type == "adaptive"
+      assert model.capabilities.reasoning.thinking.disable_supported == false
       assert model.capabilities.json.schema == true
+      assert model.capabilities.batch.supported == true
+      assert model.capabilities.citations.supported == true
+      assert model.capabilities.code_execution.supported == true
+
+      assert model.capabilities.context_management.features == [
+               "clear_thinking",
+               "clear_tool_uses",
+               "compact"
+             ]
+
       assert model.extra.type == "model"
+      assert model.extra.provider_capabilities["effort"]["max"]["supported"] == true
 
       assert {:ok, validated} = Validate.validate_model_overlay(model)
       assert validated.limits == model.limits

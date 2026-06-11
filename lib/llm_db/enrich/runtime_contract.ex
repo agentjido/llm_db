@@ -673,11 +673,12 @@ defmodule LLMDB.Enrich.RuntimeContract do
   defp text_input?(%Model{modalities: %{input: input}}) when is_list(input), do: :text in input
   defp text_input?(_model), do: false
 
-  defp text_output?(%Model{modalities: %{output: output}}) when is_list(output),
-    do: :text in output
-
-  defp text_output?(%Model{capabilities: %{chat: true}}), do: true
-  defp text_output?(_model), do: false
+  defp text_output?(%Model{} = model) do
+    case model.modalities do
+      %{output: output} when is_list(output) -> :text in output
+      _other -> chat_capability?(model)
+    end
+  end
 
   defp embedding_model?(%Model{modalities: %{output: output}}) when is_list(output),
     do: :embedding in output or :embeddings in output

@@ -73,6 +73,14 @@ defmodule LLMDB.Provider do
                               meter: Zoi.string() |> Zoi.nullish(),
                               tool: Zoi.union([Zoi.atom(), Zoi.string()]) |> Zoi.nullish(),
                               size_class: Zoi.string() |> Zoi.nullish(),
+                              multiplier: Zoi.number() |> Zoi.nullish(),
+                              derives_from: Zoi.string() |> Zoi.nullish(),
+                              applies_to: Zoi.array(Zoi.string()) |> Zoi.nullish(),
+                              applies_when: Zoi.map() |> Zoi.nullish(),
+                              excludes_when: Zoi.map() |> Zoi.nullish(),
+                              mode: Zoi.string() |> Zoi.nullish(),
+                              charge_scope: Zoi.string() |> Zoi.nullish(),
+                              source: Zoi.string() |> Zoi.nullish(),
                               notes: Zoi.string() |> Zoi.nullish()
                             })
 

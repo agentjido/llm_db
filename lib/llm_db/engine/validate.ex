@@ -366,8 +366,6 @@ defmodule LLMDB.Validate do
       String.contains?(normalized_id, "whisper")
   end
 
-  defp explicit_transcription_model?(_model), do: false
-
   defp speech?(%Model{} = model) do
     exclusive_speech_model?(model) or explicit_speech_model?(model)
   end
@@ -386,8 +384,6 @@ defmodule LLMDB.Validate do
       String.contains?(normalized_id, "-tts")
   end
 
-  defp explicit_speech_model?(_model), do: false
-
   defp realtime?(%Model{provider: provider, id: id, extra: extra}) do
     extra_realtime? =
       case extra do
@@ -401,8 +397,6 @@ defmodule LLMDB.Validate do
     extra_realtime? or
       (provider == :openai and String.contains?(String.downcase(id), "realtime"))
   end
-
-  defp realtime?(_model), do: false
 
   defp exclusive_media_model?(%Model{} = model) do
     embeddings?(model) or image_generation?(model) or realtime?(model) or
@@ -565,7 +559,7 @@ defmodule LLMDB.Validate do
        when is_list(parsed_value) and is_list(raw_value) do
     if length(parsed_value) == length(raw_value) and
          Enum.all?(raw_value, &is_map/1) and
-         Enum.all?(parsed_value, &(is_map(&1) or is_struct(&1))) do
+         Enum.all?(parsed_value, &is_map/1) do
       Enum.zip(parsed_value, raw_value)
       |> Enum.map(fn {parsed_item, raw_item} ->
         sparse_overlay(parsed_item, raw_item, [])

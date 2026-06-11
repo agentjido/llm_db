@@ -42,6 +42,34 @@ defmodule LLMDB.PricingTest do
     assert output.rate == 3.0
   end
 
+  test "preserves explicit conditional components when converting legacy cost" do
+    model = %LLMDB.Model{
+      id: "m1",
+      provider: :test,
+      cost: %{input: 5.0},
+      pricing: %{
+        components: [
+          %{
+            id: "token.input.long_context",
+            kind: "token",
+            unit: "token",
+            per: 1_000_000,
+            rate: 10.0,
+            applies_when: %{input_tokens: %{gt: 272_000}},
+            charge_scope: "full_request"
+          }
+        ]
+      }
+    }
+
+    [updated] = Pricing.apply_cost_components([model])
+    components = Map.new(updated.pricing.components, &{&1.id, &1})
+
+    assert components["token.input"].rate == 5.0
+    assert components["token.input.long_context"].applies_when.input_tokens.gt == 272_000
+    assert components["token.input.long_context"].charge_scope == "full_request"
+  end
+
   test "applies provider defaults when model has no pricing" do
     provider = %LLMDB.Provider{
       id: :test,
@@ -119,5 +147,54 @@ defmodule LLMDB.PricingTest do
     [updated] = Pricing.apply_provider_defaults([provider], [model])
 
     assert [%{id: "token.output"}] = updated.pricing.components
+  end
+
+  test "components_for selects matching components and reports incomplete conditions" do
+    model = %{
+      pricing: %{
+        components: [
+          %{id: "token.input", kind: "token", rate: 5.0},
+          %{
+            id: "token.input.long_context",
+            kind: "token",
+            rate: 10.0,
+            applies_when: %{input_tokens: %{gt: 272_000}}
+          },
+          %{
+            id: "token.input.batch",
+            kind: "token",
+            rate: 2.5,
+            applies_when: %{api: "batch"}
+          },
+          %{
+            id: "pricing.data_residency",
+            kind: "other",
+            multiplier: 1.1,
+            applies_to: ["token.*"],
+            applies_when: %{inference_geo: true}
+          }
+        ]
+      }
+    }
+
+    result = Pricing.components_for(model, input_tokens: 900_000)
+
+    assert Enum.map(result.components, & &1.id) == ["token.input", "token.input.long_context"]
+    assert Enum.map(result.unresolved, & &1.id) == ["token.input.batch", "pricing.data_residency"]
+  end
+
+  test "components_for respects excludes_when" do
+    model = %{
+      pricing: %{
+        components: [
+          %{id: "tool.web_search", kind: "tool", excludes_when: %{api: "batch"}}
+        ]
+      }
+    }
+
+    assert %{components: [], unresolved: []} = Pricing.components_for(model, api: "batch")
+
+    assert %{components: [%{id: "tool.web_search"}], unresolved: []} =
+             Pricing.components_for(model, api: "responses")
   end
 end

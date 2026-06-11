@@ -79,6 +79,36 @@ defmodule LLMDB.Schema.ProviderTest do
       assert {:ok, result} = Provider.new(input)
       assert result.runtime.auth.type == "bearer"
     end
+
+    test "parses pricing defaults with conditional component metadata" do
+      input = %{
+        id: :anthropic,
+        pricing_defaults: %{
+          currency: "USD",
+          components: [
+            %{
+              id: "pricing.data_residency",
+              kind: "other",
+              unit: "other",
+              multiplier: 1.1,
+              applies_to: ["token.*"],
+              applies_when: %{inference_geo: true},
+              charge_scope: "full_request",
+              source: "provider_docs"
+            }
+          ]
+        }
+      }
+
+      assert {:ok, result} = Provider.new(input)
+
+      [component] = result.pricing_defaults.components
+      assert component.multiplier == 1.1
+      assert component.applies_to == ["token.*"]
+      assert component.applies_when.inference_geo == true
+      assert component.charge_scope == "full_request"
+      assert component.source == "provider_docs"
+    end
   end
 
   describe "optional fields" do

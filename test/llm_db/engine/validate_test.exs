@@ -496,6 +496,48 @@ defmodule LLMDB.Engine.ValidateTest do
     end
   end
 
+  describe "validate_model_overlay/1" do
+    test "preserves sparse extended pricing and capability fields" do
+      input = %{
+        id: "claude-fable-5",
+        provider: :anthropic,
+        limits: %{input: 1_000_000},
+        capabilities: %{
+          reasoning: %{
+            effort: %{supported: true, values: ["low", "medium", "high"]},
+            thinking: %{supported: true, types: ["adaptive"], default_type: "adaptive"}
+          },
+          context_management: %{supported: true, features: ["compact"]}
+        },
+        pricing: %{
+          components: [
+            %{
+              id: "token.cache_write.1h",
+              kind: "token",
+              unit: "token",
+              per: 1_000_000,
+              multiplier: 2.0,
+              derives_from: "token.input",
+              applies_when: %{cache_operation: "write", cache_ttl: "1h"}
+            }
+          ]
+        }
+      }
+
+      assert {:ok, overlay} = Validate.validate_model_overlay(input)
+
+      assert overlay.limits == %{input: 1_000_000}
+      assert overlay.capabilities.reasoning.effort.values == ["low", "medium", "high"]
+      assert overlay.capabilities.reasoning.thinking.default_type == "adaptive"
+      assert overlay.capabilities.context_management.features == ["compact"]
+
+      [component] = overlay.pricing.components
+      assert component.multiplier == 2.0
+      assert component.derives_from == "token.input"
+      assert component.applies_when == %{cache_operation: "write", cache_ttl: "1h"}
+    end
+  end
+
   describe "ensure_viable/2" do
     test "returns :ok with non-empty providers and models" do
       providers = [%{id: :test_provider_alpha}]

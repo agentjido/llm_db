@@ -264,6 +264,7 @@ defmodule LLMDB.Sources.XAI do
 
   defp token_price(nil), do: nil
   defp token_price(price) when is_number(price), do: price / 10_000
+  defp token_price(_price), do: nil
 
   defp maybe_put(map, _key, nil), do: map
   defp maybe_put(map, key, value), do: Map.put(map, key, value)

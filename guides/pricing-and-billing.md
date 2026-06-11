@@ -10,6 +10,8 @@ LLMDB provides a flexible pricing system that supports:
 - **Tool pricing** - Per-call fees for web search, code interpreter, file search, etc.
 - **Storage pricing** - Per-GB-day fees for file storage
 - **Image/media pricing** - Per-image or per-token fees for multimodal content
+- **Conditional pricing** - Context tiers, service tiers, Batch API discounts,
+  cache TTLs, and other provider-specific billing conditions
 
 The pricing system has two layers:
 
@@ -32,6 +34,14 @@ Each pricing component describes a single billable item with the following field
   meter: "input_tokens",       # Optional: billing meter name
   tool: "web_search",          # Optional: tool name (for kind: "tool")
   size_class: "1024x1024",     # Optional: size variant (for images)
+  multiplier: 1.1,             # Optional: multiplier for derived/modifier pricing
+  derives_from: "token.input", # Optional: base component for derived rates
+  applies_to: ["token.*"],     # Optional: component ids/prefixes affected by modifier
+  applies_when: %{api: "batch"},       # Optional: conditions that activate this component
+  excludes_when: %{region: "legacy"},  # Optional: conditions that suppress it
+  mode: "standard",            # Optional: provider/request mode label
+  charge_scope: "full_request",# Optional: full_request vs marginal semantics
+  source: "provider_docs",     # Optional: provider_api, provider_docs, local_override, ...
   notes: "Cached tokens"       # Optional: human-readable notes
 }
 ```
@@ -217,6 +227,33 @@ tool_components = Enum.filter(model.pricing.components, & &1.kind == "tool")
 # Check if model has web search pricing
 has_web_search = Enum.any?(model.pricing.components, & &1.tool == "web_search")
 ```
+
+### Select Conditional Components
+
+Use `LLMDB.Pricing.components_for/2` when pricing data includes `applies_when`
+or `excludes_when`. The helper selects components whose conditions are fully
+satisfied and returns unresolved components separately when the supplied context
+is incomplete.
+
+```elixir
+selection =
+  LLMDB.Pricing.components_for(model,
+    api: "batch",
+    input_tokens: 900_000,
+    cache_ttl: "1h",
+    inference_geo: "us"
+  )
+
+selection.components
+# => components that apply for this context
+
+selection.unresolved
+# => components that need more request context before they can be applied
+```
+
+The helper does not calculate invoices. It preserves the distinction between
+base rates, conditional rates, derived rates, and stackable modifiers so billing
+logic can make provider-specific choices explicitly.
 
 ### Calculate Costs
 

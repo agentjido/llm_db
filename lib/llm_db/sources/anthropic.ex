@@ -37,6 +37,8 @@ defmodule LLMDB.Sources.Anthropic do
   @default_url "https://api.anthropic.com/v1/models"
   @default_cache_dir "priv/llm_db/remote"
   @default_version "2023-06-01"
+  @effort_order ~w[low medium high xhigh max]
+  @thinking_type_order ~w[disabled enabled adaptive]
 
   @impl true
   def pull(opts) do
@@ -183,6 +185,7 @@ defmodule LLMDB.Sources.Anthropic do
     limits =
       %{}
       |> put_if_valid_limit(:context, source["max_input_tokens"])
+      |> put_if_valid_limit(:input, source["max_input_tokens"])
       |> put_if_valid_limit(:output, source["max_tokens"])
 
     if map_size(limits) > 0 do
@@ -208,13 +211,29 @@ defmodule LLMDB.Sources.Anthropic do
       %{}
       |> maybe_put_capability(
         :reasoning,
-        %{enabled: true},
-        supported?(capabilities, "thinking")
+        reasoning_capability(capabilities),
+        reasoning_supported?(capabilities)
       )
       |> maybe_put_capability(
         :json,
         %{schema: true},
         supported?(capabilities, "structured_outputs")
+      )
+      |> maybe_put_capability(:batch, %{supported: true}, supported?(capabilities, "batch"))
+      |> maybe_put_capability(
+        :citations,
+        %{supported: true},
+        supported?(capabilities, "citations")
+      )
+      |> maybe_put_capability(
+        :code_execution,
+        %{supported: true},
+        supported?(capabilities, "code_execution")
+      )
+      |> maybe_put_capability(
+        :context_management,
+        context_management_capability(capabilities["context_management"]),
+        supported?(capabilities, "context_management")
       )
 
     if map_size(canonical) > 0 do
@@ -231,6 +250,7 @@ defmodule LLMDB.Sources.Anthropic do
       source
       |> Map.drop(@mapped_fields)
       |> Enum.reduce(%{}, fn {k, v}, acc -> Map.put(acc, String.to_atom(k), v) end)
+      |> put_if_present(:provider_capabilities, source["capabilities"])
 
     if map_size(extra) > 0 do
       Map.put(model, :extra, extra)
@@ -262,6 +282,86 @@ defmodule LLMDB.Sources.Anthropic do
   defp supported?(capabilities, name) do
     match?(%{"supported" => true}, Map.get(capabilities, name))
   end
+
+  defp reasoning_supported?(capabilities) do
+    supported?(capabilities, "effort") or supported?(capabilities, "thinking")
+  end
+
+  defp reasoning_capability(capabilities) do
+    %{
+      enabled: true
+    }
+    |> maybe_put(:effort, effort_capability(capabilities["effort"]))
+    |> maybe_put(:thinking, thinking_capability(capabilities["thinking"]))
+  end
+
+  defp effort_capability(effort) when is_map(effort) do
+    values = supported_child_names(effort, @effort_order)
+
+    if supported?(%{"effort" => effort}, "effort") or values != [] do
+      %{supported: true, values: values}
+    end
+  end
+
+  defp effort_capability(_effort), do: nil
+
+  defp thinking_capability(thinking) when is_map(thinking) do
+    types = supported_child_names(thinking["types"], @thinking_type_order)
+
+    if supported?(%{"thinking" => thinking}, "thinking") or types != [] do
+      %{
+        supported: true,
+        types: types,
+        default_type: default_thinking_type(types),
+        disable_supported: "disabled" in types,
+        raw_output_supported: supported?(thinking, "raw_output"),
+        summary_supported: supported?(thinking, "summary"),
+        encrypted_supported: supported?(thinking, "encrypted")
+      }
+    end
+  end
+
+  defp thinking_capability(_thinking), do: nil
+
+  defp context_management_capability(context_management) when is_map(context_management) do
+    features =
+      context_management
+      |> supported_child_names([])
+      |> Enum.map(&strip_feature_date_suffix/1)
+      |> Enum.uniq()
+
+    %{supported: true, features: features}
+  end
+
+  defp context_management_capability(_context_management), do: %{supported: true}
+
+  defp supported_child_names(children, preferred_order) when is_map(children) do
+    supported =
+      children
+      |> Enum.reject(fn {key, _value} -> key == "supported" end)
+      |> Enum.filter(fn {_key, value} -> match?(%{"supported" => true}, value) end)
+      |> Enum.map(fn {key, _value} -> key end)
+
+    ordered = Enum.filter(preferred_order, &(&1 in supported))
+    extras = supported |> Enum.reject(&(&1 in ordered)) |> Enum.sort()
+
+    ordered ++ extras
+  end
+
+  defp supported_child_names(_children, _preferred_order), do: []
+
+  defp default_thinking_type(types) do
+    cond do
+      "adaptive" in types -> "adaptive"
+      types != [] -> hd(types)
+      true -> nil
+    end
+  end
+
+  defp strip_feature_date_suffix(feature), do: String.replace(feature, ~r/_\d{8}$/, "")
+
+  defp maybe_put(map, _key, nil), do: map
+  defp maybe_put(map, key, value), do: Map.put(map, key, value)
 
   defp fetch_all_pages(url, req_opts, limit, acc) do
     params = [limit: limit]

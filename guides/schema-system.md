@@ -227,8 +227,10 @@ See [Consumer Integration Guide](consumer-integration.md) for detailed guidance 
 
 - `:modalities` (map, required) - Input/output modalities (see below)
 - `:capabilities` (map, required) - Feature capabilities (see below)
-- `:limits` (map, optional) - Context and output limits
-- `:cost` (map, optional) - Pricing information
+- `:limits` (map, optional) - Context, input, and output token limits
+- `:cost` (map, optional) - Legacy standard pricing information
+- `:pricing` (map, optional) - Component-based pricing, including conditional
+  provider pricing metadata
 
 ### Construction
 
@@ -248,6 +250,7 @@ model_data = %{
   },
   "limits" => %{
     "context" => 8192,
+    "input" => 8192,
     "output" => 4096
   }
 }
@@ -279,7 +282,17 @@ The capabilities schema uses granular nested objects to accurately represent rea
   "rerank" => false,
   "reasoning" => %{
     "enabled" => true,
-    "token_budget" => 10000
+    "effort" => %{
+      "supported" => true,
+      "values" => ["low", "medium", "high"],
+      "default" => "medium"
+    },
+    "thinking" => %{
+      "supported" => true,
+      "types" => ["adaptive"],
+      "default_type" => "adaptive"
+    },
+    "token_budget" => %{"min" => 0, "max" => 10000, "default" => 5000}
   },
   "tools" => %{
     "enabled" => true,
@@ -295,6 +308,13 @@ The capabilities schema uses granular nested objects to accurately represent rea
   "streaming" => %{
     "text" => true,
     "tool_calls" => true
+  },
+  "batch" => %{"supported" => true},
+  "citations" => %{"supported" => true},
+  "code_execution" => %{"supported" => true},
+  "context_management" => %{
+    "supported" => true,
+    "features" => ["clear_thinking", "compact"]
   }
 }
 ```
@@ -323,6 +343,7 @@ Defaults applied during Enrich stage: booleans default to `false`, optional valu
 ```elixir
 %{
   "context" => 128000,
+  "input" => 128000,
   "output" => 4096
 }
 ```
@@ -353,9 +374,9 @@ Pricing per million tokens (USD):
 
 See `LLMDB.Schema.Cost`.
 
-For proposed additive schema changes that would capture conditional pricing,
-reasoning effort values, richer thinking modes, and provider-published capability
-trees while preserving `cost` compatibility, see the
+For conditional pricing components and request-context selection, see
+[Pricing and Billing](pricing-and-billing.md). For the rationale behind the
+additive model shape, see the
 [Model Struct Evolution Proposal](model-struct-evolution-proposal.md).
 
 ## Validation APIs
