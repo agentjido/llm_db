@@ -38,6 +38,12 @@ defmodule LLMDB.MergeTest do
              }
     end
 
+    test "does not leak the continuation sentinel for non-map conflicts" do
+      resolver = fn _key, _left, _right -> Merge.continue_deep_merge() end
+
+      assert Merge.deep_merge(%{value: 1}, %{value: 2}, resolver) == %{value: 2}
+    end
+
     test "drops nil fields from model struct overrides" do
       base = %LLMDB.Model{
         provider: :test_provider_alpha,

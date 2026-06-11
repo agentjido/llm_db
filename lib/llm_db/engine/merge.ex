@@ -67,7 +67,8 @@ defmodule LLMDB.Merge do
   `continue_deep_merge()` for a map conflict recursively merges the nested maps.
   """
   @spec deep_merge(any(), any(), resolver3()) :: any()
-  def deep_merge(left, right, resolver) when is_map(left) and is_map(right) do
+  def deep_merge(left, right, resolver)
+      when is_map(left) and is_map(right) and is_function(resolver, 3) do
     right = normalize_override(right)
 
     Map.merge(left, right, fn key, left_value, right_value ->
@@ -75,7 +76,7 @@ defmodule LLMDB.Merge do
     end)
   end
 
-  def deep_merge(_left, right, _resolver), do: right
+  def deep_merge(_left, right, resolver) when is_function(resolver, 3), do: right
 
   @doc """
   Merges two maps with precedence rules.
@@ -382,6 +383,9 @@ defmodule LLMDB.Merge do
     case resolver.(key, left, right) do
       @continue_deep_merge when is_map(left) and is_map(right) ->
         deep_merge(left, right, resolver)
+
+      @continue_deep_merge ->
+        right
 
       resolved ->
         resolved
