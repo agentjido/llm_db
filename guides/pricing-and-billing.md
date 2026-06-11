@@ -371,4 +371,5 @@ model.pricing.components
 ## Next Steps
 
 - **[Schema System](schema-system.md)**: Full schema definitions including pricing
+- **[Model Struct Evolution Proposal](model-struct-evolution-proposal.md)**: Proposed conditional pricing extensions
 - **[Using the Data](using-the-data.md)**: Runtime API and queries

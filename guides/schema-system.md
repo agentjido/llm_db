@@ -353,6 +353,11 @@ Pricing per million tokens (USD):
 
 See `LLMDB.Schema.Cost`.
 
+For proposed additive schema changes that would capture conditional pricing,
+reasoning effort values, richer thinking modes, and provider-published capability
+trees while preserving `cost` compatibility, see the
+[Model Struct Evolution Proposal](model-struct-evolution-proposal.md).
+
 ## Validation APIs
 
 ### Batch Validation

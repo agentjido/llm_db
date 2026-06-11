@@ -425,6 +425,7 @@ Types: `feat`, `fix`, `docs`, `style`, `refactor`, `perf`, `test`, `build`, `ci`
 - [Runtime Filters](guides/runtime-filters.md) — Load-time and runtime filtering
 - [Sources & Engine](guides/sources-and-engine.md) — ETL pipeline, data sources, precedence
 - [Schema System](guides/schema-system.md) — Zoi validation and data structures
+- [Model Struct Evolution Proposal](guides/model-struct-evolution-proposal.md) — Proposed conditional pricing and richer capability metadata
 - [Release Process](guides/release-process.md) — Snapshot-based releases
 
 ## License
