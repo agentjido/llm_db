@@ -205,4 +205,18 @@ defmodule LLMDB.PricingTest do
     assert %{components: [%{id: "tool.web_search"}], unresolved: []} =
              Pricing.components_for(model, api: "responses")
   end
+
+  test "components_for treats empty condition maps as absent conditions" do
+    model = %{
+      pricing: %{
+        components: [
+          %{id: "token.input", applies_when: %{}},
+          %{id: "token.output", excludes_when: %{}}
+        ]
+      }
+    }
+
+    assert %{components: components, unresolved: []} = Pricing.components_for(model)
+    assert Enum.map(components, & &1.id) == ["token.input", "token.output"]
+  end
 end

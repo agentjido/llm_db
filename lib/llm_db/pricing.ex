@@ -231,15 +231,13 @@ defmodule LLMDB.Pricing do
 
   defp conditions_status(nil, _context, :application), do: :match
   defp conditions_status(nil, _context, :exclusion), do: :no_match
+  defp conditions_status(conditions, _context, :application) when conditions == %{}, do: :match
+  defp conditions_status(conditions, _context, :exclusion) when conditions == %{}, do: :no_match
 
   defp conditions_status(conditions, context, _mode) when is_map(conditions) do
-    if map_size(conditions) == 0 do
-      :match
-    else
-      conditions
-      |> Enum.map(fn {key, expected} -> condition_status(key, expected, context) end)
-      |> merge_condition_statuses()
-    end
+    conditions
+    |> Enum.map(fn {key, expected} -> condition_status(key, expected, context) end)
+    |> merge_condition_statuses()
   end
 
   defp conditions_status(_conditions, _context, _mode), do: :unknown
