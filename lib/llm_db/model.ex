@@ -544,23 +544,3 @@ defmodule LLMDB.Model do
   @spec format_spec(t(), atom() | nil) :: String.t()
   def format_spec(%__MODULE__{} = model, format \\ nil), do: spec(model, format)
 end
-
-defimpl DeepMerge.Resolver, for: LLMDB.Model do
-  @moduledoc false
-
-  def resolve(original, override = %LLMDB.Model{}, resolver) do
-    cleaned_override =
-      override
-      |> Map.from_struct()
-      |> Enum.reject(fn {_key, value} -> is_nil(value) end)
-      |> Map.new()
-
-    Map.merge(original, cleaned_override, resolver)
-  end
-
-  def resolve(original, override, resolver) when is_map(override) do
-    Map.merge(original, override, resolver)
-  end
-
-  def resolve(_original, override, _resolver), do: override
-end

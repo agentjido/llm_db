@@ -6,12 +6,15 @@ defmodule LLMDB.Merge do
   configurable precedence rules. Handles excludes via exact match or glob patterns.
   """
 
-  alias LLMDB.DeepMergeShim
+  @continue_deep_merge {__MODULE__, :continue_deep_merge}
+
+  @type resolver3 :: (any(), any(), any() -> any())
+  @type continue_deep_merge :: {module(), :continue_deep_merge}
 
   @doc """
   Creates a configurable deep merge resolver function.
 
-  Returns a 3-arity function that can be passed to DeepMerge.deep_merge/3
+  Returns a 3-arity function that can be passed to `deep_merge/3`
   with customizable behavior for list and special key handling.
 
   ## Options
@@ -23,13 +26,13 @@ defmodule LLMDB.Merge do
 
       # Model merging with list unions
       resolver = Merge.resolver(union_list_keys: [:aliases, :tags])
-      DeepMerge.deep_merge(base, override, resolver)
+      Merge.deep_merge(base, override, resolver)
 
       # Provider merging preserving exclude_models
       resolver = Merge.resolver(preserve_empty_list_keys: [:exclude_models])
-      DeepMerge.deep_merge(base, override, resolver)
+      Merge.deep_merge(base, override, resolver)
   """
-  @spec resolver(keyword()) :: (any(), any(), any() -> any())
+  @spec resolver(keyword()) :: resolver3()
   def resolver(opts \\ []) do
     union_keys = Keyword.get(opts, :union_list_keys, [])
     preserve_empty_keys = Keyword.get(opts, :preserve_empty_list_keys, [])
@@ -43,7 +46,7 @@ defmodule LLMDB.Merge do
         end
 
       _key, left, right when is_map(left) and is_map(right) ->
-        DeepMerge.continue_deep_merge()
+        continue_deep_merge()
 
       _key, left, nil ->
         left
@@ -52,6 +55,27 @@ defmodule LLMDB.Merge do
         right
     end
   end
+
+  @doc false
+  @spec continue_deep_merge() :: continue_deep_merge()
+  def continue_deep_merge, do: @continue_deep_merge
+
+  @doc """
+  Deep merges two maps with conflict resolution delegated to a 3-arity resolver.
+
+  The resolver receives the current key, left value, and right value. Returning
+  `continue_deep_merge()` for a map conflict recursively merges the nested maps.
+  """
+  @spec deep_merge(any(), any(), resolver3()) :: any()
+  def deep_merge(left, right, resolver) when is_map(left) and is_map(right) do
+    right = normalize_override(right)
+
+    Map.merge(left, right, fn key, left_value, right_value ->
+      resolve_merge_conflict(key, left_value, right_value, resolver)
+    end)
+  end
+
+  def deep_merge(_left, right, _resolver), do: right
 
   @doc """
   Merges two maps with precedence rules.
@@ -81,8 +105,8 @@ defmodule LLMDB.Merge do
   @spec merge(map(), map(), :higher | :lower) :: map()
   def merge(base, override, precedence) when is_map(base) and is_map(override) do
     case precedence do
-      :higher -> deep_merge(base, override, fn _k, _v1, v2 -> v2 end)
-      :lower -> deep_merge(base, override, fn _k, v1, _v2 -> v1 end)
+      :higher -> deep_merge(base, override, precedence_resolver(:higher))
+      :lower -> deep_merge(base, override, precedence_resolver(:lower))
     end
   end
 
@@ -106,7 +130,7 @@ defmodule LLMDB.Merge do
     override_map = Map.new(override_providers, fn p -> {Map.get(p, :id), p} end)
 
     Map.merge(base_map, override_map, fn _id, base_provider, override_provider ->
-      DeepMergeShim.deep_merge(
+      deep_merge(
         base_provider,
         override_provider,
         resolver(preserve_empty_list_keys: [:exclude_models])
@@ -151,7 +175,7 @@ defmodule LLMDB.Merge do
       Map.new(override_models, fn m -> {{Map.get(m, :provider), Map.get(m, :id)}, m} end)
 
     Map.merge(base_map, override_map, fn _identity, base_model, override_model ->
-      deep_merge(base_model, override_model, fn _k, _v1, v2 -> v2 end)
+      deep_merge(base_model, override_model, precedence_resolver(:higher))
     end)
     |> Map.values()
     |> Enum.reject(fn model ->
@@ -334,26 +358,43 @@ defmodule LLMDB.Merge do
 
   # Private helpers
 
+  defp precedence_resolver(:higher) do
+    fn
+      _key, left, right when is_map(left) and is_map(right) -> continue_deep_merge()
+      _key, left, right when is_list(left) and is_list(right) -> union_unique(left, right)
+      _key, _left, right -> right
+    end
+  end
+
+  defp precedence_resolver(:lower) do
+    fn
+      _key, left, right when is_map(left) and is_map(right) -> continue_deep_merge()
+      _key, left, right when is_list(left) and is_list(right) -> union_unique(left, right)
+      _key, left, _right -> left
+    end
+  end
+
   defp union_unique(left, right) when is_list(left) and is_list(right) do
     (left ++ right) |> Enum.uniq()
   end
 
-  defp deep_merge(left, right, resolve_conflict) when is_map(left) and is_map(right) do
-    Map.merge(left, right, fn key, left_val, right_val ->
-      deep_merge_value(left_val, right_val, fn l, r -> resolve_conflict.(key, l, r) end)
-    end)
-  end
+  defp resolve_merge_conflict(key, left, right, resolver) do
+    case resolver.(key, left, right) do
+      @continue_deep_merge when is_map(left) and is_map(right) ->
+        deep_merge(left, right, resolver)
 
-  defp deep_merge_value(left, right, resolve_conflict) do
-    cond do
-      is_map(left) and is_map(right) ->
-        deep_merge(left, right, fn _k, l, r -> resolve_conflict.(l, r) end)
-
-      is_list(left) and is_list(right) ->
-        (left ++ right) |> Enum.uniq()
-
-      true ->
-        resolve_conflict.(left, right)
+      resolved ->
+        resolved
     end
   end
+
+  defp normalize_override(%{__struct__: struct} = override)
+       when struct in [LLMDB.Model, LLMDB.Provider] do
+    override
+    |> Map.from_struct()
+    |> Enum.reject(fn {_key, value} -> is_nil(value) end)
+    |> Map.new()
+  end
+
+  defp normalize_override(map) when is_map(map), do: map
 end

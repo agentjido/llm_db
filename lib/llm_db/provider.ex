@@ -205,23 +205,3 @@ defmodule LLMDB.Provider do
     |> Map.put(to_string(key), normalized)
   end
 end
-
-defimpl DeepMerge.Resolver, for: LLMDB.Provider do
-  @moduledoc false
-
-  def resolve(original, override = %LLMDB.Provider{}, resolver) do
-    cleaned_override =
-      override
-      |> Map.from_struct()
-      |> Enum.reject(fn {_key, value} -> is_nil(value) end)
-      |> Map.new()
-
-    Map.merge(original, cleaned_override, resolver)
-  end
-
-  def resolve(original, override, resolver) when is_map(override) do
-    Map.merge(original, override, resolver)
-  end
-
-  def resolve(_original, override, _resolver), do: override
-end

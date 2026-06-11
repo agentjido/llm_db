@@ -65,7 +65,6 @@ defmodule LLMDB.MixProject do
       {:jason, "~> 1.4"},
       {:toml, "~> 0.7"},
       {:req, "~> 0.5"},
-      {:deep_merge, "~> 1.0"},
       {:dotenvy, "~> 1.1"},
       {:plug, "~> 1.16", only: :test},
       {:meck, "~> 1.0", only: :test},

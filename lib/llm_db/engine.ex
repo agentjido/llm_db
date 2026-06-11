@@ -362,7 +362,7 @@ defmodule LLMDB.Engine do
 
   # Deep merge with special list handling
   defp deep_merge_with_list_rules(left, right) when is_map(left) and is_map(right) do
-    LLMDB.DeepMergeShim.deep_merge(left, right, Merge.resolver(union_list_keys: @list_union_keys))
+    Merge.deep_merge(left, right, Merge.resolver(union_list_keys: @list_union_keys))
   end
 
   defp matches_patterns?(_model_id, []), do: false
