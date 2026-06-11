@@ -75,6 +75,8 @@ Official provider references used for this proposal:
 The implementation work should be planned around these existing boundaries:
 
 - `lib/llm_db/model.ex` owns the `LLMDB.Model` struct and nested Zoi schemas.
+- `lib/llm_db/provider.ex` owns provider-level `pricing_defaults`, which shares
+  the pricing component shape and must be updated with model-level pricing.
 - `lib/llm_db/pricing.ex` converts legacy `cost` maps into
   `pricing.components` and merges provider defaults at load time.
 - `lib/llm_db/sources/openai.ex` maps OpenAI's direct `/v1/models` inventory.
@@ -86,6 +88,17 @@ The implementation work should be planned around these existing boundaries:
   not be hand-edited.
 - `priv/llm_db/providers/*.json` and `priv/llm_db/snapshot.json` should remain
   generated artifacts.
+
+Important current behavior:
+
+- `Zoi.parse/2` currently drops unknown nested keys in schemas such as
+  `limits`, `capabilities.reasoning`, and `pricing.components`.
+- Sparse overlay validation also preserves only schema-known keys.
+- Therefore, the schema must be expanded before any source transform or local
+  TOML starts emitting new canonical fields, or the data can be silently lost.
+- Runtime pricing enrichment runs in `LLMDB.Loader` after packaged/custom models
+  are validated, so new pricing fields must validate before
+  `LLMDB.Pricing.apply_cost_components/1` sees them.
 
 ## Goals
 
@@ -175,14 +188,17 @@ existing nested maps instead of replacing them.
         kind: "token",
         unit: "token",
         per: 1_000_000,
-        rate: 20.0,
-        applies_when: %{cache_ttl: "1h"}
+        meter: "cache_write_tokens",
+        multiplier: 2.0,
+        derives_from: "token.input",
+        applies_when: %{cache_operation: "write", cache_ttl: "1h"}
       },
       %{
         id: "pricing.data_residency",
         kind: "other",
         unit: "other",
         multiplier: 1.1,
+        applies_to: ["token.*"],
         applies_when: %{inference_geo: true}
       }
     ]
@@ -219,10 +235,13 @@ Extend `pricing.components` with optional fields:
   per: 1_000_000,
   rate: 10.0,
   multiplier: nil,
+  derives_from: nil,
+  applies_to: nil,
   applies_when: %{input_tokens: %{gt: 272_000}},
   excludes_when: nil,
   meter: "input_tokens",
   mode: "standard",
+  charge_scope: "full_request",
   source: "provider_docs",
   notes: "OpenAI GPT-5.5 long-context input rate"
 }
@@ -231,13 +250,41 @@ Extend `pricing.components` with optional fields:
 Recommended semantics:
 
 - `rate` is an absolute price in `pricing.currency`.
-- `multiplier` is a factor applied to one or more matched components.
+- `multiplier` is a factor applied to one or more matched components, or a
+  factor used to derive this component from another component.
+- `derives_from` identifies a base component ID used to calculate this
+  component's rate. This is useful for prompt-cache write/read rates that are
+  published as a multiplier of the active input-token rate.
+- `applies_to` identifies component IDs or prefixes that a modifier component
+  affects. Entries match exact component IDs unless they end in `.*`; reserve
+  prefixes such as `"token.*"` for provider-wide multipliers.
 - `applies_when` is a provider-neutral condition map.
 - `excludes_when` is optional and should be rare; prefer positive selectors.
+- `charge_scope` distinguishes full-request tier pricing from marginal overage
+  pricing. Use `"full_request"` for provider rules where crossing a threshold
+  changes the rate for all request/session tokens, not just tokens over the
+  threshold.
 - `source` should identify the evidence layer, not a full citation system. Use
   values such as `"provider_api"`, `"provider_docs"`, `"local_override"`, or
   `"provider_default"`.
 - `notes` remains human-readable and non-authoritative.
+
+Component classes:
+
+- **Base rate components** have `rate` and no `applies_when`, such as
+  `token.input`.
+- **Conditional rate components** have `rate` and `applies_when`, such as
+  `token.input.long_context`.
+- **Derived rate components** have `derives_from` and `multiplier`, such as
+  Anthropic cache writes derived from the active input-token rate.
+- **Modifier components** have `multiplier` and `applies_to`, such as data
+  residency uplifts.
+
+Do not encode a stackable provider multiplier only as a fixed absolute rate
+unless every supported combination is enumerated. For example, Anthropic prompt
+cache TTL multipliers stack with Batch API discounts and data residency, so a
+1-hour cache write should be represented as `2.0 * active token.input`, not only
+as `$20 / MTok` for Claude Fable 5 standard requests.
 
 Recommended condition keys:
 
@@ -247,10 +294,11 @@ Recommended condition keys:
 | `service_tier` | `%{service_tier: "priority"}` | OpenAI Priority or other service tier rates |
 | `processing_mode` | `%{processing_mode: "flex"}` | Flex, background, or similar processing modes |
 | `input_tokens` | `%{input_tokens: %{gt: 272_000}}` | Long-context tiers |
+| `cache_operation` | `%{cache_operation: "write"}` | Cache read/write billing meters |
 | `cache_ttl` | `%{cache_ttl: "1h"}` | Prompt cache write duration |
 | `inference_geo` | `%{inference_geo: true}` | Data residency/regional processing uplifts |
-| `request.body` | `%{request: %{body: %{speed: "fast"}}}` | Provider request body switches |
-| `request.headers` | `%{request: %{headers: %{"anthropic-beta" => "fast-mode-2026-02-01"}}}` | Provider beta/header switches |
+| `request_body` | `%{request_body: %{speed: "fast"}}` | Provider request body switches |
+| `request_headers` | `%{request_headers: %{"anthropic-beta" => "fast-mode-2026-02-01"}}` | Provider beta/header switches |
 
 Keep component IDs unique. The current merge behavior uses `id`, so conditional
 variants should be named explicitly:
@@ -342,7 +390,8 @@ Proposed capture:
         unit: "token",
         per: 1_000_000,
         rate: 10.0,
-        applies_when: %{input_tokens: %{gt: 272_000}}
+        applies_when: %{input_tokens: %{gt: 272_000}},
+        charge_scope: "full_request"
       },
       %{
         id: "token.output.long_context",
@@ -350,7 +399,8 @@ Proposed capture:
         unit: "token",
         per: 1_000_000,
         rate: 45.0,
-        applies_when: %{input_tokens: %{gt: 272_000}}
+        applies_when: %{input_tokens: %{gt: 272_000}},
+        charge_scope: "full_request"
       },
       %{
         id: "token.input.priority",
@@ -406,20 +456,34 @@ Proposed capture:
       %{id: "token.output", kind: "token", unit: "token", per: 1_000_000, rate: 50.0},
       %{id: "token.cache_read", kind: "token", unit: "token", per: 1_000_000, rate: 1.0},
       %{
+        id: "token.cache_read.derived",
+        kind: "token",
+        unit: "token",
+        per: 1_000_000,
+        meter: "cache_read_tokens",
+        multiplier: 0.1,
+        derives_from: "token.input",
+        applies_when: %{cache_operation: "read"}
+      },
+      %{
         id: "token.cache_write.5m",
         kind: "token",
         unit: "token",
         per: 1_000_000,
-        rate: 12.5,
-        applies_when: %{cache_ttl: "5m"}
+        meter: "cache_write_tokens",
+        multiplier: 1.25,
+        derives_from: "token.input",
+        applies_when: %{cache_operation: "write", cache_ttl: "5m"}
       },
       %{
         id: "token.cache_write.1h",
         kind: "token",
         unit: "token",
         per: 1_000_000,
-        rate: 20.0,
-        applies_when: %{cache_ttl: "1h"}
+        meter: "cache_write_tokens",
+        multiplier: 2.0,
+        derives_from: "token.input",
+        applies_when: %{cache_operation: "write", cache_ttl: "1h"}
       },
       %{
         id: "token.input.batch",
@@ -442,6 +506,7 @@ Proposed capture:
         kind: "other",
         unit: "other",
         multiplier: 1.1,
+        applies_to: ["token.*"],
         applies_when: %{inference_geo: true}
       }
     ]
@@ -498,6 +563,9 @@ Add optional Zoi schemas for:
 - `pricing.components[].applies_when`
 - `pricing.components[].excludes_when`
 - `pricing.components[].multiplier`
+- `pricing.components[].derives_from`
+- `pricing.components[].applies_to`
+- `pricing.components[].charge_scope`
 - `pricing.components[].source`
 
 Validation should remain permissive for unknown provider-specific condition keys
@@ -526,6 +594,9 @@ library releases.
   - `capabilities.tools.enabled = true` remains independent of code execution or
     provider-hosted tools.
 - Keep provider-level pricing defaults and merge them after model pricing.
+- Do not apply conditional pricing during enrichment. Enrichment should preserve
+  metadata; pricing selection belongs in an explicit helper or downstream
+  billing code.
 
 ### 7. Snapshot Build
 
@@ -534,6 +605,11 @@ library releases.
 - Old snapshots without new fields must load unchanged.
 - New snapshots should still include legacy `cost` where the provider publishes
   simple standard token rates.
+- Before publishing a snapshot that contains new canonical fields, test that the
+  minimum supported package version can either load the snapshot or fails with a
+  clear compatibility error. If older packages silently strip important fields,
+  add a snapshot metadata gate such as `min_reader_version` before publishing the
+  new shape through the public snapshot channel.
 
 ### 8. Runtime Load
 
@@ -541,6 +617,9 @@ library releases.
 - `LLMDB.Pricing.apply_cost_components/1` should remain idempotent and avoid
   overwriting explicit conditional components.
 - Consumers should be able to ignore `applies_when` and still read base rates.
+- Custom provider overlays must accept the new shape only after schema support is
+  in place; otherwise `validate_model_overlay/1` can strip the new fields before
+  merge.
 
 ### 9. Query Helpers
 
@@ -559,6 +638,10 @@ LLMDB.Pricing.components_for(model,
 This keeps `%LLMDB.Model{}` as metadata and lets billing logic evolve
 independently.
 
+The helper should return both selected components and unresolved modifiers when
+conditions are incomplete. Silent best guesses are worse than partial answers for
+billing.
+
 ## Backward Compatibility Plan
 
 1. Add new schema fields as optional.
@@ -572,6 +655,43 @@ independently.
 9. Add tests that construct old-format models and new-format models through
    `LLMDB.Model.new/1`, source transforms, snapshot loading, and runtime custom
    providers.
+10. Add regression tests proving unknown new fields are not stripped after the
+    schema PR lands.
+
+## Risk Register
+
+| Risk | Mitigation |
+| --- | --- |
+| New fields are emitted before schema support and silently stripped | Land schema and validation support before source/local overlay changes |
+| Conditional pricing is treated as marginal when provider docs mean full-request pricing | Capture `charge_scope` and test GPT-5.5 long-context selection |
+| Stackable modifiers are encoded as fixed rates | Use `derives_from`, `multiplier`, and `applies_to` for cache TTL and data residency cases |
+| Old consumers fetch new snapshots and lose important metadata | Add snapshot compatibility tests and a `min_reader_version` gate if needed |
+| Provider capability booleans become ambiguous | Preserve coarse booleans and add richer nested fields rather than replacing existing fields |
+| Provider docs change after metadata is encoded | Keep source URLs in local overlays or docs notes and make provider verification repeatable |
+| Atom leaks from provider-specific condition keys | Keep condition keys as strings unless they are part of a small canonical allowlist |
+
+## Test Matrix
+
+Implementation PRs should add coverage at these layers:
+
+- `LLMDB.Model.new/1` accepts old and new model maps.
+- `LLMDB.Provider.new/1` accepts provider pricing defaults with new component
+  fields.
+- `LLMDB.Validate.validate_model_overlay/1` preserves new sparse overlay fields.
+- `LLMDB.Sources.Anthropic.transform/1` maps direct API capabilities without
+  dropping raw provider capability data.
+- `LLMDB.Pricing.apply_cost_components/1` keeps legacy generated components and
+  preserves explicit conditional/derived components.
+- Snapshot load accepts old snapshots and new snapshots.
+- Runtime custom providers can define new pricing/capability fields.
+- Pricing helper selection handles:
+  - GPT-5.5 short-context standard pricing
+  - GPT-5.5 long-context full-request pricing
+  - GPT-5.5 Priority pricing
+  - Claude Fable 5 standard pricing
+  - Claude Fable 5 Batch pricing
+  - Claude Fable 5 1-hour cache write derived from active input rate
+  - data residency multiplier stacking
 
 ## Implementation Sequence
 
