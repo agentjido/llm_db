@@ -203,9 +203,11 @@ defmodule LLMDB.Pricing do
     |> Map.put(:components, merged_components)
   end
 
-  defp components_list(pricing) do
+  defp components_list(pricing) when is_map(pricing) do
     Map.get(pricing, :components) || Map.get(pricing, "components") || []
   end
+
+  defp components_list(_pricing), do: []
 
   defp component_status(component, context) do
     excludes_when = Map.get(component, :excludes_when) || Map.get(component, "excludes_when")
@@ -340,6 +342,7 @@ defmodule LLMDB.Pricing do
 
   defp context_map(context) when is_list(context), do: Map.new(context)
   defp context_map(context) when is_map(context), do: context
+  defp context_map(_context), do: %{}
 
   defp cost_components(cost) when is_map(cost) do
     []

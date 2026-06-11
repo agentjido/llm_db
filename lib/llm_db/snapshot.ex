@@ -296,7 +296,7 @@ defmodule LLMDB.Snapshot do
     value
     |> Enum.sort_by(fn {key, _nested} -> key end)
     |> Enum.map(fn {key, nested} -> {key, canonical_json_map(nested)} end)
-    |> Map.new()
+    |> Jason.OrderedObject.new()
   end
 
   defp canonical_json_map(value) when is_list(value), do: Enum.map(value, &canonical_json_map/1)

@@ -149,6 +149,14 @@ defmodule LLMDB.PricingTest do
     assert [%{id: "token.output"}] = updated.pricing.components
   end
 
+  test "components_for returns an empty selection when pricing is missing" do
+    assert %{components: [], unresolved: []} =
+             Pricing.components_for(%LLMDB.Model{id: "m1", provider: :test})
+
+    assert %{components: [], unresolved: []} = Pricing.components_for(%{pricing: nil})
+    assert %{components: [], unresolved: []} = Pricing.components_for(%{}, nil)
+  end
+
   test "components_for selects matching components and reports incomplete conditions" do
     model = %{
       pricing: %{

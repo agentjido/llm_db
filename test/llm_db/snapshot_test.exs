@@ -3,6 +3,20 @@ defmodule LLMDB.SnapshotTest do
 
   alias LLMDB.{Model, Provider, Snapshot}
 
+  test "encodes nested maps with stable sorted key order" do
+    encoded = Snapshot.encode(%{"b" => %{"d" => 1, "c" => 2}, "a" => 1})
+
+    assert [
+             "{",
+             "  \"a\": 1,",
+             "  \"b\": {",
+             "    \"c\": 2,",
+             "    \"d\": 1",
+             "  }",
+             "}"
+           ] = String.split(encoded, "\n", trim: true)
+  end
+
   test "omits empty runtime migration fields from snapshot output" do
     provider =
       Provider.new!(%{
