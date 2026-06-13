@@ -827,7 +827,7 @@
       },
       "kimi-k2:1t": {
         "attachment": false,
-        "family": "kimi",
+        "family": "kimi-k2",
         "id": "kimi-k2:1t",
         "knowledge": "2024-10",
         "last_updated": "2026-01-19",
@@ -931,7 +931,7 @@
       },
       "kimi-k2.6": {
         "attachment": true,
-        "family": "kimi",
+        "family": "kimi-k2",
         "id": "kimi-k2.6",
         "last_updated": "2026-04-20",
         "limit": {
@@ -1065,7 +1065,7 @@
       },
       "kimi-k2.5": {
         "attachment": true,
-        "family": "kimi",
+        "family": "kimi-k2",
         "id": "kimi-k2.5",
         "last_updated": "2026-01-27",
         "limit": {
@@ -2257,7 +2257,7 @@
           "input": 0.574,
           "output": 2.294
         },
-        "family": "kimi",
+        "family": "kimi-thinking",
         "id": "kimi-k2-thinking",
         "interleaved": {
           "field": "reasoning_content"
@@ -2319,7 +2319,7 @@
           "input": 0.6,
           "output": 3
         },
-        "family": "kimi",
+        "family": "kimi-k2",
         "id": "kimi/kimi-k2.5",
         "interleaved": {
           "field": "reasoning_content"
@@ -3247,7 +3247,7 @@
           "input": 0.929,
           "output": 3.858
         },
-        "family": "kimi",
+        "family": "kimi-k2",
         "id": "kimi-k2.6",
         "interleaved": {
           "field": "reasoning_content"
@@ -3311,7 +3311,7 @@
           "input": 0.574,
           "output": 2.294
         },
-        "family": "kimi",
+        "family": "kimi-k2",
         "id": "moonshot-kimi-k2-instruct",
         "last_updated": "2025-01-01",
         "limit": {
@@ -3462,7 +3462,7 @@
           "input": 0.574,
           "output": 2.411
         },
-        "family": "kimi",
+        "family": "kimi-k2",
         "id": "kimi-k2.5",
         "interleaved": {
           "field": "reasoning_content"
@@ -3794,7 +3794,7 @@
           "input": 0,
           "output": 0
         },
-        "family": "kimi-k2.6",
+        "family": "kimi-k2",
         "id": "umans-coder",
         "interleaved": {
           "field": "reasoning_content"
@@ -3817,6 +3817,11 @@
         "name": "Umans Coder",
         "open_weights": true,
         "reasoning": true,
+        "reasoning_options": [
+          {
+            "type": "toggle"
+          }
+        ],
         "release_date": "2026-04-21",
         "structured_output": true,
         "temperature": false,
@@ -3832,6 +3837,9 @@
         },
         "family": "qwen",
         "id": "umans-flash",
+        "interleaved": {
+          "field": "reasoning_content"
+        },
         "last_updated": "2026-04-17",
         "limit": {
           "context": 262144,
@@ -3849,6 +3857,11 @@
         "name": "Umans Flash",
         "open_weights": true,
         "reasoning": true,
+        "reasoning_options": [
+          {
+            "type": "toggle"
+          }
+        ],
         "release_date": "2026-04-17",
         "structured_output": true,
         "temperature": false,
@@ -3874,7 +3887,8 @@
         },
         "modalities": {
           "input": [
-            "text"
+            "text",
+            "image"
           ],
           "output": [
             "text"
@@ -3883,6 +3897,11 @@
         "name": "GLM 5.1",
         "open_weights": true,
         "reasoning": true,
+        "reasoning_options": [
+          {
+            "type": "toggle"
+          }
+        ],
         "release_date": "2026-03-27",
         "structured_output": true,
         "temperature": true,
@@ -3896,7 +3915,7 @@
           "input": 0,
           "output": 0
         },
-        "family": "kimi-k2.6",
+        "family": "kimi-k2",
         "id": "umans-kimi-k2.6",
         "interleaved": {
           "field": "reasoning_content"
@@ -3910,7 +3929,8 @@
         "modalities": {
           "input": [
             "text",
-            "image"
+            "image",
+            "video"
           ],
           "output": [
             "text"
@@ -3919,7 +3939,54 @@
         "name": "Kimi K2.6",
         "open_weights": true,
         "reasoning": true,
+        "reasoning_options": [
+          {
+            "type": "toggle"
+          }
+        ],
         "release_date": "2026-04-21",
+        "structured_output": true,
+        "temperature": false,
+        "tool_call": true
+      },
+      "umans-kimi-k2.7": {
+        "attachment": true,
+        "cost": {
+          "cache_read": 0,
+          "cache_write": 0,
+          "input": 0,
+          "output": 0
+        },
+        "family": "kimi-k2",
+        "id": "umans-kimi-k2.7",
+        "interleaved": {
+          "field": "reasoning_content"
+        },
+        "knowledge": "2025-01",
+        "last_updated": "2026-06-12",
+        "limit": {
+          "context": 262144,
+          "output": 262144
+        },
+        "modalities": {
+          "input": [
+            "text",
+            "image",
+            "video"
+          ],
+          "output": [
+            "text"
+          ]
+        },
+        "name": "Kimi K2.7 Code",
+        "open_weights": true,
+        "reasoning": true,
+        "reasoning_options": [
+          {
+            "type": "toggle"
+          }
+        ],
+        "release_date": "2026-06-12",
         "structured_output": true,
         "temperature": false,
         "tool_call": true
@@ -3934,6 +4001,9 @@
         },
         "family": "qwen",
         "id": "umans-qwen3.6-35b-a3b",
+        "interleaved": {
+          "field": "reasoning_content"
+        },
         "last_updated": "2026-04-17",
         "limit": {
           "context": 262144,
@@ -3951,6 +4021,11 @@
         "name": "Qwen3.6 35B A3B",
         "open_weights": true,
         "reasoning": true,
+        "reasoning_options": [
+          {
+            "type": "toggle"
+          }
+        ],
         "release_date": "2026-04-17",
         "structured_output": true,
         "temperature": false,
@@ -3992,6 +4067,7 @@
         "name": "MiniMax-M2.7",
         "open_weights": true,
         "reasoning": true,
+        "reasoning_options": [],
         "release_date": "2026-03-18",
         "temperature": true,
         "tool_call": true
@@ -4025,6 +4101,16 @@
         "name": "Gemini 3.1 Pro Preview",
         "open_weights": false,
         "reasoning": true,
+        "reasoning_options": [
+          {
+            "type": "effort",
+            "values": [
+              "low",
+              "medium",
+              "high"
+            ]
+          }
+        ],
         "release_date": "2026-02-19",
         "structured_output": true,
         "temperature": true,
@@ -4036,7 +4122,7 @@
           "input": 0.75,
           "output": 3.5
         },
-        "family": "kimi-k2.6",
+        "family": "kimi-k2",
         "id": "moonshotai/kimi-k2.6",
         "knowledge": "2025-01",
         "last_updated": "2026-04-21",
@@ -4057,6 +4143,11 @@
         "name": "Kimi K2.6",
         "open_weights": true,
         "reasoning": true,
+        "reasoning_options": [
+          {
+            "type": "toggle"
+          }
+        ],
         "release_date": "2026-04-21",
         "structured_output": true,
         "temperature": true,
@@ -4088,6 +4179,13 @@
         "name": "Claude Opus 4.8",
         "open_weights": false,
         "reasoning": true,
+        "reasoning_options": [
+          {
+            "max": 32000,
+            "min": 1024,
+            "type": "budget_tokens"
+          }
+        ],
         "release_date": "2026-05-28",
         "temperature": false,
         "tool_call": true
@@ -4144,6 +4242,11 @@
         "name": "GLM-5",
         "open_weights": true,
         "reasoning": true,
+        "reasoning_options": [
+          {
+            "type": "toggle"
+          }
+        ],
         "release_date": "2026-02-11",
         "temperature": true,
         "tool_call": true
@@ -4176,6 +4279,16 @@
         "name": "Nano Banana 2",
         "open_weights": false,
         "reasoning": true,
+        "reasoning_options": [
+          {
+            "type": "effort",
+            "values": [
+              "low",
+              "medium",
+              "high"
+            ]
+          }
+        ],
         "release_date": "2026-02-26",
         "temperature": true,
         "tool_call": false
@@ -4207,6 +4320,16 @@
         "name": "GPT-5.4 mini",
         "open_weights": false,
         "reasoning": true,
+        "reasoning_options": [
+          {
+            "type": "effort",
+            "values": [
+              "low",
+              "medium",
+              "high"
+            ]
+          }
+        ],
         "release_date": "2026-03-17",
         "structured_output": true,
         "temperature": false,
@@ -4239,6 +4362,7 @@
         "name": "GPT-5",
         "open_weights": false,
         "reasoning": true,
+        "reasoning_options": [],
         "release_date": "2025-08-07",
         "temperature": true,
         "tool_call": true
@@ -4318,6 +4442,7 @@
         "name": "Gemma 4 31B IT",
         "open_weights": true,
         "reasoning": true,
+        "reasoning_options": [],
         "release_date": "2026-04-02",
         "structured_output": true,
         "temperature": true,
@@ -4398,6 +4523,16 @@
         "name": "Grok 4.3",
         "open_weights": false,
         "reasoning": true,
+        "reasoning_options": [
+          {
+            "type": "effort",
+            "values": [
+              "low",
+              "medium",
+              "high"
+            ]
+          }
+        ],
         "release_date": "2026-04-17",
         "structured_output": true,
         "temperature": true,
@@ -4487,6 +4622,16 @@
         "name": "GPT-5.3 Codex",
         "open_weights": false,
         "reasoning": true,
+        "reasoning_options": [
+          {
+            "type": "effort",
+            "values": [
+              "low",
+              "medium",
+              "high"
+            ]
+          }
+        ],
         "release_date": "2026-02-05",
         "structured_output": true,
         "temperature": false,
@@ -4544,6 +4689,7 @@
         "name": "Grok 4",
         "open_weights": false,
         "reasoning": true,
+        "reasoning_options": [],
         "release_date": "2025-07-09",
         "temperature": true,
         "tool_call": true
@@ -4576,6 +4722,16 @@
         "name": "Gemini 2.5 Flash",
         "open_weights": false,
         "reasoning": true,
+        "reasoning_options": [
+          {
+            "type": "toggle"
+          },
+          {
+            "max": 24576,
+            "min": 0,
+            "type": "budget_tokens"
+          }
+        ],
         "release_date": "2025-06-17",
         "temperature": true,
         "tool_call": true
@@ -4607,6 +4763,13 @@
         "name": "Claude Sonnet 4.6",
         "open_weights": false,
         "reasoning": true,
+        "reasoning_options": [
+          {
+            "max": 32000,
+            "min": 1024,
+            "type": "budget_tokens"
+          }
+        ],
         "release_date": "2026-02-17",
         "temperature": true,
         "tool_call": true
@@ -4664,6 +4827,16 @@
         "name": "GPT-5.5",
         "open_weights": false,
         "reasoning": true,
+        "reasoning_options": [
+          {
+            "type": "effort",
+            "values": [
+              "low",
+              "medium",
+              "high"
+            ]
+          }
+        ],
         "release_date": "2026-04-23",
         "structured_output": true,
         "temperature": false,
@@ -4698,6 +4871,13 @@
         "name": "Claude Opus 4.1",
         "open_weights": false,
         "reasoning": true,
+        "reasoning_options": [
+          {
+            "max": 32000,
+            "min": 1024,
+            "type": "budget_tokens"
+          }
+        ],
         "release_date": "2025-08-05",
         "temperature": true,
         "tool_call": true
@@ -4728,6 +4908,16 @@
         "name": "Grok Build 0.1",
         "open_weights": false,
         "reasoning": true,
+        "reasoning_options": [
+          {
+            "type": "effort",
+            "values": [
+              "low",
+              "medium",
+              "high"
+            ]
+          }
+        ],
         "release_date": "2026-04-16",
         "structured_output": true,
         "temperature": true,
@@ -4757,6 +4947,16 @@
         "name": "GPT OSS 20B",
         "open_weights": true,
         "reasoning": true,
+        "reasoning_options": [
+          {
+            "type": "effort",
+            "values": [
+              "low",
+              "medium",
+              "high"
+            ]
+          }
+        ],
         "release_date": "2025-08-05",
         "temperature": true,
         "tool_call": true
@@ -4789,6 +4989,16 @@
         "name": "GPT-5.5 Pro",
         "open_weights": false,
         "reasoning": true,
+        "reasoning_options": [
+          {
+            "type": "effort",
+            "values": [
+              "low",
+              "medium",
+              "high"
+            ]
+          }
+        ],
         "release_date": "2026-04-23",
         "structured_output": true,
         "temperature": false,
@@ -4821,6 +5031,16 @@
         "name": "GPT-5.4 nano",
         "open_weights": false,
         "reasoning": true,
+        "reasoning_options": [
+          {
+            "type": "effort",
+            "values": [
+              "low",
+              "medium",
+              "high"
+            ]
+          }
+        ],
         "release_date": "2026-03-17",
         "structured_output": true,
         "temperature": false,
@@ -4910,6 +5130,7 @@
         "name": "Sarvam 30B",
         "open_weights": true,
         "reasoning": true,
+        "reasoning_options": [],
         "release_date": "2026-02-18",
         "temperature": true,
         "tool_call": true
@@ -4938,6 +5159,7 @@
         "name": "Sarvam 105B",
         "open_weights": true,
         "reasoning": true,
+        "reasoning_options": [],
         "release_date": "2025-09-01",
         "temperature": true,
         "tool_call": true
@@ -4971,6 +5193,13 @@
         "name": "Claude Sonnet 4",
         "open_weights": false,
         "reasoning": true,
+        "reasoning_options": [
+          {
+            "max": 32000,
+            "min": 1024,
+            "type": "budget_tokens"
+          }
+        ],
         "release_date": "2025-05-22",
         "temperature": true,
         "tool_call": true
@@ -4999,6 +5228,16 @@
         "name": "GPT OSS 120B",
         "open_weights": true,
         "reasoning": true,
+        "reasoning_options": [
+          {
+            "type": "effort",
+            "values": [
+              "low",
+              "medium",
+              "high"
+            ]
+          }
+        ],
         "release_date": "2025-08-05",
         "temperature": true,
         "tool_call": true
@@ -5027,6 +5266,7 @@
         "name": "MiniMax-M2.7-highspeed",
         "open_weights": true,
         "reasoning": true,
+        "reasoning_options": [],
         "release_date": "2026-03-18",
         "temperature": true,
         "tool_call": true
@@ -5055,6 +5295,11 @@
         "name": "GLM-5.1",
         "open_weights": true,
         "reasoning": true,
+        "reasoning_options": [
+          {
+            "type": "toggle"
+          }
+        ],
         "release_date": "2026-03-27",
         "structured_output": true,
         "temperature": true,
@@ -5088,6 +5333,13 @@
         "name": "Gemini 2.5 Pro",
         "open_weights": false,
         "reasoning": true,
+        "reasoning_options": [
+          {
+            "max": 32768,
+            "min": 128,
+            "type": "budget_tokens"
+          }
+        ],
         "release_date": "2025-06-17",
         "temperature": true,
         "tool_call": true
@@ -5119,6 +5371,16 @@
         "name": "GPT-5 Nano",
         "open_weights": false,
         "reasoning": true,
+        "reasoning_options": [
+          {
+            "type": "effort",
+            "values": [
+              "low",
+              "medium",
+              "high"
+            ]
+          }
+        ],
         "release_date": "2025-08-07",
         "temperature": true,
         "tool_call": true
@@ -5148,6 +5410,11 @@
         "name": "DeepSeek V4 Pro",
         "open_weights": true,
         "reasoning": true,
+        "reasoning_options": [
+          {
+            "type": "toggle"
+          }
+        ],
         "release_date": "2026-04-24",
         "structured_output": true,
         "temperature": true,
@@ -5180,6 +5447,16 @@
         "name": "GPT-5 Mini",
         "open_weights": false,
         "reasoning": true,
+        "reasoning_options": [
+          {
+            "type": "effort",
+            "values": [
+              "low",
+              "medium",
+              "high"
+            ]
+          }
+        ],
         "release_date": "2025-08-07",
         "temperature": true,
         "tool_call": true
@@ -5235,6 +5512,7 @@
         "name": "Nano Banana Pro",
         "open_weights": false,
         "reasoning": true,
+        "reasoning_options": [],
         "release_date": "2025-11-20",
         "temperature": true,
         "tool_call": false
@@ -5245,7 +5523,7 @@
           "input": 0.55,
           "output": 2.2
         },
-        "family": "kimi",
+        "family": "kimi-k2",
         "id": "moonshotai/kimi-k2",
         "knowledge": "2024-10",
         "last_updated": "2025-07-11",
@@ -5293,6 +5571,7 @@
         "name": "DeepSeek R1 Distill Llama 70B",
         "open_weights": true,
         "reasoning": true,
+        "reasoning_options": [],
         "release_date": "2025-01-23",
         "temperature": true,
         "tool_call": false
@@ -5350,6 +5629,16 @@
         "name": "Gemini 3.5 Flash",
         "open_weights": false,
         "reasoning": true,
+        "reasoning_options": [
+          {
+            "type": "effort",
+            "values": [
+              "low",
+              "medium",
+              "high"
+            ]
+          }
+        ],
         "release_date": "2026-05-19",
         "structured_output": true,
         "temperature": true,
@@ -5729,7 +6018,7 @@
           "input": 0.5,
           "output": 2.85
         },
-        "family": "kimi",
+        "family": "kimi-k2",
         "id": "moonshotai/Kimi-K2.5",
         "interleaved": {
           "field": "reasoning_content"
@@ -5925,7 +6214,7 @@
           "input": 0.6,
           "output": 2.5
         },
-        "family": "kimi",
+        "family": "kimi-k2",
         "id": "kimi-k2-0711-preview",
         "knowledge": "2024-10",
         "last_updated": "2025-07-14",
@@ -5955,7 +6244,7 @@
           "input": 0.6,
           "output": 2.5
         },
-        "family": "kimi",
+        "family": "kimi-k2",
         "id": "kimi-k2-0905-preview",
         "knowledge": "2024-10",
         "last_updated": "2025-09-05",
@@ -6051,7 +6340,7 @@
           "input": 2.4,
           "output": 10
         },
-        "family": "kimi",
+        "family": "kimi-k2",
         "id": "kimi-k2-turbo-preview",
         "knowledge": "2024-10",
         "last_updated": "2025-09-05",
@@ -6081,7 +6370,7 @@
           "input": 0.6,
           "output": 3
         },
-        "family": "kimi-k2.5",
+        "family": "kimi-k2",
         "id": "kimi-k2.5",
         "interleaved": {
           "field": "reasoning_content"
@@ -6122,7 +6411,7 @@
           "input": 0.95,
           "output": 4
         },
-        "family": "kimi-k2.6",
+        "family": "kimi-k2",
         "id": "kimi-k2.6",
         "interleaved": {
           "field": "reasoning_content"
@@ -7985,7 +8274,7 @@
           "input": 0.15,
           "output": 8
         },
-        "family": "kimi",
+        "family": "kimi-k2",
         "id": "kimi-k2-turbo-preview",
         "last_updated": "2025-07-08",
         "limit": {
@@ -8135,7 +8424,7 @@
           "input": 0.6,
           "output": 3
         },
-        "family": "kimi",
+        "family": "kimi-k2",
         "id": "kimi-k2.5",
         "knowledge": "2025-01",
         "last_updated": "2026-01",
@@ -10977,7 +11266,7 @@
           "input": 0.45,
           "output": 2.25
         },
-        "family": "kimi",
+        "family": "kimi-k2",
         "id": "moonshotai/Kimi-K2.5",
         "interleaved": {
           "field": "reasoning_content"
@@ -11018,7 +11307,7 @@
           "input": 0.75,
           "output": 3.5
         },
-        "family": "kimi",
+        "family": "kimi-k2",
         "id": "moonshotai/Kimi-K2.6",
         "interleaved": {
           "field": "reasoning_content"
@@ -12921,7 +13210,7 @@
         "family": "gemini-pro",
         "id": "google/gemini-2.5-pro",
         "knowledge": "2025-01",
-        "last_updated": "2025-06-05",
+        "last_updated": "2025-06-17",
         "limit": {
           "context": 1048576,
           "output": 65536
@@ -12941,7 +13230,7 @@
         "name": "Gemini 2.5 Pro",
         "open_weights": false,
         "reasoning": true,
-        "release_date": "2025-03-20",
+        "release_date": "2025-06-17",
         "temperature": true,
         "tool_call": true
       },
@@ -14770,7 +15059,7 @@
           "input": 0.95,
           "output": 4
         },
-        "family": "kimi",
+        "family": "kimi-k2",
         "id": "workers-ai/@cf/moonshotai/kimi-k2.6",
         "interleaved": {
           "field": "reasoning_content"
@@ -15025,7 +15314,7 @@
           "input": 0.6,
           "output": 3
         },
-        "family": "kimi",
+        "family": "kimi-k2",
         "id": "workers-ai/@cf/moonshotai/kimi-k2.5",
         "interleaved": {
           "field": "reasoning_content"
@@ -16373,7 +16662,7 @@
           "input": 0.95,
           "output": 4
         },
-        "family": "kimi-k2.6",
+        "family": "kimi-k2",
         "id": "moonshotai/kimi-k2.6",
         "interleaved": {
           "field": "reasoning_content"
@@ -17731,7 +18020,7 @@
           "input": 0.6,
           "output": 2.5
         },
-        "family": "kimi",
+        "family": "kimi-thinking",
         "id": "moonshotai/kimi-k2-thinking",
         "interleaved": {
           "field": "reasoning_content"
@@ -18162,7 +18451,7 @@
           "input": 0.6,
           "output": 2.5
         },
-        "family": "kimi",
+        "family": "kimi-k2",
         "id": "moonshotai/kimi-k2-0905",
         "knowledge": "2024-10",
         "last_updated": "2025-09-05",
@@ -18409,7 +18698,7 @@
           "input": 0.6,
           "output": 3
         },
-        "family": "kimi",
+        "family": "kimi-k2",
         "id": "moonshotai/kimi-k2.5",
         "interleaved": {
           "field": "reasoning_content"
@@ -19475,7 +19764,7 @@
           "input": 0,
           "output": 0
         },
-        "family": "kimi",
+        "family": "kimi-k2",
         "id": "kimi-k2",
         "knowledge": "2024-10",
         "last_updated": "2024-12-01",
@@ -19504,7 +19793,7 @@
           "input": 0,
           "output": 0
         },
-        "family": "kimi",
+        "family": "kimi-k2",
         "id": "kimi-k2-0905",
         "knowledge": "2024-12",
         "last_updated": "2025-09-05",
@@ -21788,7 +22077,7 @@
           "input": 0.4,
           "output": 2
         },
-        "family": "kimi",
+        "family": "kimi-k2",
         "id": "moonshotai/Kimi-K2-Instruct-0905",
         "last_updated": "2025-09-25",
         "limit": {
@@ -21846,7 +22135,7 @@
           "input": 0.53,
           "output": 2.73
         },
-        "family": "kimi-k2.6",
+        "family": "kimi-k2",
         "id": "moonshotai/kimi-k2.6",
         "last_updated": "2026-04-21",
         "limit": {
@@ -25239,7 +25528,7 @@
           "input": 0.1,
           "output": 2
         },
-        "family": "kimi",
+        "family": "kimi-k2",
         "id": "moonshotai/kimi-k2-instruct-0711",
         "last_updated": "2025-07-11",
         "limit": {
@@ -29022,7 +29311,7 @@
           "input": 0.3,
           "output": 1.9
         },
-        "family": "kimi",
+        "family": "kimi-k2",
         "id": "TEE/kimi-k2.5",
         "last_updated": "2026-01-29",
         "limit": {
@@ -30244,7 +30533,7 @@
           "input": 0.1,
           "output": 2
         },
-        "family": "kimi",
+        "family": "kimi-k2",
         "id": "baseten/Kimi-K2-Instruct-FP4",
         "last_updated": "2025-07-11",
         "limit": {
@@ -32836,7 +33125,7 @@
           "input": 0.3,
           "output": 1.9
         },
-        "family": "kimi",
+        "family": "kimi-k2",
         "id": "moonshotai/kimi-k2.5",
         "last_updated": "2026-01-26",
         "limit": {
@@ -36472,7 +36761,7 @@
           "input": 0.1,
           "output": 2
         },
-        "family": "kimi",
+        "family": "kimi-k2",
         "id": "moonshotai/kimi-k2-instruct",
         "last_updated": "2025-07-01",
         "limit": {
@@ -40277,7 +40566,7 @@
           "input": 0.95,
           "output": 4
         },
-        "family": "kimi-k2.6",
+        "family": "kimi-k2",
         "id": "kimi-k2.6",
         "interleaved": {
           "field": "reasoning_content"
@@ -40513,7 +40802,7 @@
           "input": 0.6,
           "output": 3
         },
-        "family": "kimi-k2.5",
+        "family": "kimi-k2",
         "id": "kimi-k2.5",
         "interleaved": {
           "field": "reasoning_content"
@@ -41995,7 +42284,7 @@
           "input": 0.855,
           "output": 3.6
         },
-        "family": "kimi-k2.6",
+        "family": "kimi-k2",
         "id": "moonshotai/Kimi-K2.6",
         "interleaved": {
           "field": "reasoning_content"
@@ -42281,7 +42570,7 @@
           "input": 0.4,
           "output": 2
         },
-        "family": "kimi",
+        "family": "kimi-k2",
         "id": "moonshotai/Kimi-K2-Instruct-0905",
         "last_updated": "2025-11-25",
         "limit": {
@@ -42607,7 +42896,7 @@
           "input": 0.58,
           "output": 2.29
         },
-        "family": "kimi",
+        "family": "kimi-k2",
         "id": "moonshotai/Kimi-K2-Instruct",
         "last_updated": "2025-11-25",
         "limit": {
@@ -44059,7 +44348,7 @@
           "input": 0.95,
           "output": 4
         },
-        "family": "kimi",
+        "family": "kimi-k2",
         "id": "moonshotai/Kimi-K2.6",
         "interleaved": {
           "field": "reasoning_content"
@@ -44238,7 +44527,7 @@
           "input": 0.45,
           "output": 2.25
         },
-        "family": "kimi",
+        "family": "kimi-k2",
         "id": "moonshotai/Kimi-K2.5",
         "interleaved": {
           "field": "reasoning_content"
@@ -45133,16 +45422,17 @@
       "qwen/qwen2.5-vl-72b-instruct": {
         "attachment": true,
         "cost": {
-          "input": 0.25,
-          "output": 0.75
+          "cache_read": 0.4,
+          "input": 0.8,
+          "output": 1
         },
         "family": "qwen",
         "id": "qwen/qwen2.5-vl-72b-instruct",
         "knowledge": "2024-06-30",
         "last_updated": "2025-02-01",
         "limit": {
-          "context": 32000,
-          "output": 8192
+          "context": 128000,
+          "output": 128000
         },
         "modalities": {
           "input": [
@@ -45261,11 +45551,11 @@
       "moonshotai/kimi-k2.6": {
         "attachment": true,
         "cost": {
-          "cache_read": 0.14,
-          "input": 0.67,
-          "output": 3.39
+          "cache_read": 0.34,
+          "input": 0.68,
+          "output": 3.41
         },
-        "family": "kimi-k2.6",
+        "family": "kimi-k2",
         "id": "moonshotai/kimi-k2.6",
         "interleaved": {
           "field": "reasoning_details"
@@ -45273,8 +45563,8 @@
         "knowledge": "2025-01",
         "last_updated": "2026-04-21",
         "limit": {
-          "context": 262144,
-          "output": 262144
+          "context": 262142,
+          "output": 262142
         },
         "modalities": {
           "input": [
@@ -46421,16 +46711,16 @@
       "~moonshotai/kimi-latest": {
         "attachment": true,
         "cost": {
-          "cache_read": 0.14,
-          "input": 0.67,
-          "output": 3.39
+          "cache_read": 0.34,
+          "input": 0.68,
+          "output": 3.41
         },
         "family": "kimi",
         "id": "~moonshotai/kimi-latest",
         "last_updated": "2026-04-27",
         "limit": {
-          "context": 262144,
-          "output": 262144
+          "context": 262142,
+          "output": 262142
         },
         "modalities": {
           "input": [
@@ -50608,7 +50898,7 @@
         "family": "gemini-flash",
         "id": "google/gemini-2.5-flash",
         "knowledge": "2025-01",
-        "last_updated": "2025-06-05",
+        "last_updated": "2025-06-17",
         "limit": {
           "context": 1048576,
           "output": 65535
@@ -50638,7 +50928,7 @@
             "type": "budget_tokens"
           }
         ],
-        "release_date": "2025-03-20",
+        "release_date": "2025-06-17",
         "structured_output": true,
         "temperature": true,
         "tool_call": true
@@ -51120,9 +51410,9 @@
       "deepseek/deepseek-v4-flash": {
         "attachment": false,
         "cost": {
-          "cache_read": 0.0197,
-          "input": 0.0983,
-          "output": 0.1966
+          "cache_read": 0.02,
+          "input": 0.098,
+          "output": 0.196
         },
         "family": "deepseek-flash",
         "id": "deepseek/deepseek-v4-flash",
@@ -51132,7 +51422,7 @@
         "knowledge": "2025-05",
         "last_updated": "2026-04-24",
         "limit": {
-          "context": 1048576,
+          "context": 1048575,
           "output": 131072
         },
         "modalities": {
@@ -51493,7 +51783,7 @@
         "knowledge": "2024-07-31",
         "last_updated": "2025-03-24",
         "limit": {
-          "context": 32768,
+          "context": 163840,
           "output": 16384
         },
         "modalities": {
@@ -51822,7 +52112,7 @@
           "input": 0.6,
           "output": 2.5
         },
-        "family": "kimi",
+        "family": "kimi-k2",
         "id": "moonshotai/kimi-k2-0905",
         "knowledge": "2024-12-31",
         "last_updated": "2025-09-04",
@@ -52575,7 +52865,7 @@
           "input": 0.4,
           "output": 1.9
         },
-        "family": "kimi-k2.5",
+        "family": "kimi-k2",
         "id": "moonshotai/kimi-k2.5",
         "interleaved": {
           "field": "reasoning_details"
@@ -52887,36 +53177,6 @@
         "reasoning": true,
         "reasoning_options": [],
         "release_date": "2025-06-30",
-        "structured_output": false,
-        "temperature": true,
-        "tool_call": false
-      },
-      "meta-llama/llama-guard-3-8b": {
-        "attachment": false,
-        "cost": {
-          "input": 0.484,
-          "output": 0.03
-        },
-        "family": "llama",
-        "id": "meta-llama/llama-guard-3-8b",
-        "knowledge": "2023-12-31",
-        "last_updated": "2025-02-12",
-        "limit": {
-          "context": 131072,
-          "output": 131072
-        },
-        "modalities": {
-          "input": [
-            "text"
-          ],
-          "output": [
-            "text"
-          ]
-        },
-        "name": "Llama Guard 3 8B",
-        "open_weights": true,
-        "reasoning": false,
-        "release_date": "2025-02-12",
         "structured_output": false,
         "temperature": true,
         "tool_call": false
@@ -54466,7 +54726,7 @@
         "family": "gemini-pro",
         "id": "google/gemini-2.5-pro",
         "knowledge": "2025-01",
-        "last_updated": "2025-06-05",
+        "last_updated": "2025-06-17",
         "limit": {
           "context": 1048576,
           "output": 65536
@@ -54493,7 +54753,7 @@
             "type": "budget_tokens"
           }
         ],
-        "release_date": "2025-03-20",
+        "release_date": "2025-06-17",
         "structured_output": true,
         "temperature": true,
         "tool_call": true
@@ -55264,6 +55524,39 @@
         "temperature": true,
         "tool_call": true
       },
+      "moonshotai/kimi-k2.7-code": {
+        "attachment": true,
+        "cost": {
+          "cache_read": 0.19,
+          "input": 0.95,
+          "output": 4
+        },
+        "family": "kimi-k2",
+        "id": "moonshotai/kimi-k2.7-code",
+        "knowledge": "2025-01",
+        "last_updated": "2026-06-12",
+        "limit": {
+          "context": 262144,
+          "output": 262144
+        },
+        "modalities": {
+          "input": [
+            "text",
+            "image",
+            "video"
+          ],
+          "output": [
+            "text"
+          ]
+        },
+        "name": "Kimi K2.7 Code",
+        "open_weights": true,
+        "reasoning": true,
+        "release_date": "2026-06-12",
+        "structured_output": true,
+        "temperature": true,
+        "tool_call": true
+      },
       "mistralai/mistral-small-3.1-24b-instruct": {
         "attachment": true,
         "cost": {
@@ -55428,7 +55721,7 @@
           "input": 0.57,
           "output": 2.3
         },
-        "family": "kimi",
+        "family": "kimi-k2",
         "id": "moonshotai/kimi-k2",
         "knowledge": "2024-12-31",
         "last_updated": "2025-07-11",
@@ -56022,15 +56315,15 @@
       "qwen/qwen3.6-27b": {
         "attachment": true,
         "cost": {
-          "input": 0.289,
-          "output": 2.4
+          "input": 0.2885,
+          "output": 3.17
         },
         "family": "qwen",
         "id": "qwen/qwen3.6-27b",
         "last_updated": "2026-04-22",
         "limit": {
-          "context": 131072,
-          "output": 131072
+          "context": 262140,
+          "output": 262140
         },
         "modalities": {
           "input": [
@@ -56461,7 +56754,7 @@
           "input": 1.47,
           "output": 5.9
         },
-        "family": "kimi",
+        "family": "kimi-k2",
         "id": "moonshotai/Kimi-K2.5",
         "interleaved": {
           "field": "reasoning_content"
@@ -56727,6 +57020,7 @@
         "name": "Nano Banana",
         "open_weights": false,
         "reasoning": true,
+        "reasoning_options": [],
         "release_date": "2025-08-26",
         "temperature": true,
         "tool_call": false
@@ -56967,6 +57261,7 @@
         "name": "Nano Banana Pro",
         "open_weights": false,
         "reasoning": true,
+        "reasoning_options": [],
         "release_date": "2025-11-20",
         "temperature": true,
         "tool_call": false
@@ -57060,6 +57355,15 @@
         "name": "Nano Banana 2",
         "open_weights": false,
         "reasoning": true,
+        "reasoning_options": [
+          {
+            "type": "effort",
+            "values": [
+              "minimal",
+              "high"
+            ]
+          }
+        ],
         "release_date": "2026-02-26",
         "temperature": true,
         "tool_call": false
@@ -57142,6 +57446,17 @@
         "name": "Gemini 3.1 Flash Lite Preview",
         "open_weights": false,
         "reasoning": true,
+        "reasoning_options": [
+          {
+            "type": "effort",
+            "values": [
+              "minimal",
+              "low",
+              "medium",
+              "high"
+            ]
+          }
+        ],
         "release_date": "2026-03-03",
         "status": "deprecated",
         "structured_output": true,
@@ -57255,6 +57570,16 @@
         "name": "Gemini 3.1 Pro Preview Custom Tools",
         "open_weights": false,
         "reasoning": true,
+        "reasoning_options": [
+          {
+            "type": "effort",
+            "values": [
+              "low",
+              "medium",
+              "high"
+            ]
+          }
+        ],
         "release_date": "2026-02-19",
         "structured_output": true,
         "temperature": true,
@@ -57367,6 +57692,16 @@
         "name": "Gemini Flash Latest",
         "open_weights": false,
         "reasoning": true,
+        "reasoning_options": [
+          {
+            "type": "toggle"
+          },
+          {
+            "max": 24576,
+            "min": 0,
+            "type": "budget_tokens"
+          }
+        ],
         "release_date": "2025-09-25",
         "structured_output": true,
         "temperature": true,
@@ -57402,6 +57737,16 @@
         "name": "Gemini Flash-Lite Latest",
         "open_weights": false,
         "reasoning": true,
+        "reasoning_options": [
+          {
+            "type": "toggle"
+          },
+          {
+            "max": 24576,
+            "min": 512,
+            "type": "budget_tokens"
+          }
+        ],
         "release_date": "2025-09-25",
         "structured_output": true,
         "temperature": true,
@@ -57428,6 +57773,11 @@
         "name": "Gemma 4 26B A4B IT",
         "open_weights": true,
         "reasoning": true,
+        "reasoning_options": [
+          {
+            "type": "toggle"
+          }
+        ],
         "release_date": "2026-04-02",
         "structured_output": true,
         "temperature": true,
@@ -57454,6 +57804,11 @@
         "name": "Gemma 4 31B IT",
         "open_weights": true,
         "reasoning": true,
+        "reasoning_options": [
+          {
+            "type": "toggle"
+          }
+        ],
         "release_date": "2026-04-02",
         "structured_output": true,
         "temperature": true,
@@ -57817,6 +58172,16 @@
         "name": "Claude Haiku 4.5 (latest)",
         "open_weights": false,
         "reasoning": true,
+        "reasoning_options": [
+          {
+            "type": "toggle"
+          },
+          {
+            "max": 63999,
+            "min": 1024,
+            "type": "budget_tokens"
+          }
+        ],
         "release_date": "2025-10-15",
         "temperature": true,
         "tool_call": true
@@ -57850,6 +58215,16 @@
         "name": "Claude Opus 4.1 (latest)",
         "open_weights": false,
         "reasoning": true,
+        "reasoning_options": [
+          {
+            "type": "toggle"
+          },
+          {
+            "max": 31999,
+            "min": 1024,
+            "type": "budget_tokens"
+          }
+        ],
         "release_date": "2025-08-05",
         "temperature": true,
         "tool_call": true
@@ -57883,6 +58258,16 @@
         "name": "Claude Opus 4.5 (latest)",
         "open_weights": false,
         "reasoning": true,
+        "reasoning_options": [
+          {
+            "type": "toggle"
+          },
+          {
+            "max": 63999,
+            "min": 1024,
+            "type": "budget_tokens"
+          }
+        ],
         "release_date": "2025-11-24",
         "temperature": true,
         "tool_call": true
@@ -57936,6 +58321,16 @@
         "name": "Claude Opus 4.6",
         "open_weights": false,
         "reasoning": true,
+        "reasoning_options": [
+          {
+            "type": "toggle"
+          },
+          {
+            "max": 127999,
+            "min": 1024,
+            "type": "budget_tokens"
+          }
+        ],
         "release_date": "2026-02-05",
         "temperature": true,
         "tool_call": true
@@ -57989,6 +58384,16 @@
         "name": "Claude Opus 4.7",
         "open_weights": false,
         "reasoning": true,
+        "reasoning_options": [
+          {
+            "type": "toggle"
+          },
+          {
+            "max": 127999,
+            "min": 1024,
+            "type": "budget_tokens"
+          }
+        ],
         "release_date": "2026-04-16",
         "temperature": false,
         "tool_call": true
@@ -58022,6 +58427,16 @@
         "name": "Claude Sonnet 4.5",
         "open_weights": false,
         "reasoning": true,
+        "reasoning_options": [
+          {
+            "type": "toggle"
+          },
+          {
+            "max": 63999,
+            "min": 1024,
+            "type": "budget_tokens"
+          }
+        ],
         "release_date": "2025-09-29",
         "temperature": true,
         "tool_call": true
@@ -58055,6 +58470,16 @@
         "name": "Claude Sonnet 4.5 (latest)",
         "open_weights": false,
         "reasoning": true,
+        "reasoning_options": [
+          {
+            "type": "toggle"
+          },
+          {
+            "max": 63999,
+            "min": 1024,
+            "type": "budget_tokens"
+          }
+        ],
         "release_date": "2025-09-29",
         "temperature": true,
         "tool_call": true
@@ -58088,6 +58513,16 @@
         "name": "Claude Sonnet 4.6",
         "open_weights": false,
         "reasoning": true,
+        "reasoning_options": [
+          {
+            "type": "toggle"
+          },
+          {
+            "max": 63999,
+            "min": 1024,
+            "type": "budget_tokens"
+          }
+        ],
         "release_date": "2026-02-17",
         "temperature": true,
         "tool_call": true
@@ -58103,7 +58538,7 @@
         "family": "gemini-flash",
         "id": "gemini-2-5-flash",
         "knowledge": "2025-01",
-        "last_updated": "2025-06-05",
+        "last_updated": "2025-06-17",
         "limit": {
           "context": 1048576,
           "output": 65536
@@ -58123,7 +58558,17 @@
         "name": "Gemini 2.5 Flash",
         "open_weights": false,
         "reasoning": true,
-        "release_date": "2025-03-20",
+        "reasoning_options": [
+          {
+            "type": "toggle"
+          },
+          {
+            "max": 24576,
+            "min": 0,
+            "type": "budget_tokens"
+          }
+        ],
+        "release_date": "2025-06-17",
         "structured_output": true,
         "temperature": true,
         "tool_call": true
@@ -58154,7 +58599,7 @@
         "family": "gemini-pro",
         "id": "gemini-2-5-pro",
         "knowledge": "2025-01",
-        "last_updated": "2025-06-05",
+        "last_updated": "2025-06-17",
         "limit": {
           "context": 1048576,
           "output": 65536
@@ -58174,7 +58619,14 @@
         "name": "Gemini 2.5 Pro",
         "open_weights": false,
         "reasoning": true,
-        "release_date": "2025-03-20",
+        "reasoning_options": [
+          {
+            "max": 32768,
+            "min": 128,
+            "type": "budget_tokens"
+          }
+        ],
+        "release_date": "2025-06-17",
         "structured_output": true,
         "temperature": true,
         "tool_call": true
@@ -58210,6 +58662,16 @@
         "name": "Gemini 3.1 Flash Lite Preview",
         "open_weights": false,
         "reasoning": true,
+        "reasoning_options": [
+          {
+            "type": "effort",
+            "values": [
+              "low",
+              "medium",
+              "high"
+            ]
+          }
+        ],
         "release_date": "2026-03-03",
         "structured_output": true,
         "temperature": true,
@@ -58261,6 +58723,16 @@
         "name": "Gemini 3.1 Pro Preview Custom Tools",
         "open_weights": false,
         "reasoning": true,
+        "reasoning_options": [
+          {
+            "type": "effort",
+            "values": [
+              "low",
+              "medium",
+              "high"
+            ]
+          }
+        ],
         "release_date": "2026-02-19",
         "structured_output": true,
         "temperature": true,
@@ -58297,6 +58769,16 @@
         "name": "Gemini 3 Flash Preview",
         "open_weights": false,
         "reasoning": true,
+        "reasoning_options": [
+          {
+            "type": "effort",
+            "values": [
+              "low",
+              "medium",
+              "high"
+            ]
+          }
+        ],
         "release_date": "2025-12-17",
         "structured_output": true,
         "temperature": true,
@@ -58348,6 +58830,16 @@
         "name": "Gemini 3 Pro Preview",
         "open_weights": false,
         "reasoning": true,
+        "reasoning_options": [
+          {
+            "type": "effort",
+            "values": [
+              "low",
+              "medium",
+              "high"
+            ]
+          }
+        ],
         "release_date": "2025-11-18",
         "structured_output": true,
         "temperature": true,
@@ -58381,6 +58873,17 @@
         "name": "GPT-5",
         "open_weights": false,
         "reasoning": true,
+        "reasoning_options": [
+          {
+            "type": "effort",
+            "values": [
+              "minimal",
+              "low",
+              "medium",
+              "high"
+            ]
+          }
+        ],
         "release_date": "2025-08-07",
         "structured_output": true,
         "temperature": false,
@@ -58414,6 +58917,17 @@
         "name": "GPT-5.1",
         "open_weights": false,
         "reasoning": true,
+        "reasoning_options": [
+          {
+            "type": "effort",
+            "values": [
+              "none",
+              "low",
+              "medium",
+              "high"
+            ]
+          }
+        ],
         "release_date": "2025-11-13",
         "structured_output": true,
         "temperature": false,
@@ -58447,6 +58961,18 @@
         "name": "GPT-5.2",
         "open_weights": false,
         "reasoning": true,
+        "reasoning_options": [
+          {
+            "type": "effort",
+            "values": [
+              "none",
+              "low",
+              "medium",
+              "high",
+              "xhigh"
+            ]
+          }
+        ],
         "release_date": "2025-12-11",
         "structured_output": true,
         "temperature": false,
@@ -58513,6 +59039,18 @@
         "name": "GPT-5.4",
         "open_weights": false,
         "reasoning": true,
+        "reasoning_options": [
+          {
+            "type": "effort",
+            "values": [
+              "none",
+              "low",
+              "medium",
+              "high",
+              "xhigh"
+            ]
+          }
+        ],
         "release_date": "2026-03-05",
         "structured_output": true,
         "temperature": false,
@@ -58562,6 +59100,18 @@
         "name": "GPT-5.4 mini",
         "open_weights": false,
         "reasoning": true,
+        "reasoning_options": [
+          {
+            "type": "effort",
+            "values": [
+              "none",
+              "low",
+              "medium",
+              "high",
+              "xhigh"
+            ]
+          }
+        ],
         "release_date": "2026-03-17",
         "structured_output": true,
         "temperature": false,
@@ -58595,6 +59145,18 @@
         "name": "GPT-5.4 nano",
         "open_weights": false,
         "reasoning": true,
+        "reasoning_options": [
+          {
+            "type": "effort",
+            "values": [
+              "none",
+              "low",
+              "medium",
+              "high",
+              "xhigh"
+            ]
+          }
+        ],
         "release_date": "2026-03-17",
         "structured_output": true,
         "temperature": false,
@@ -58661,6 +59223,18 @@
         "name": "GPT-5.5",
         "open_weights": false,
         "reasoning": true,
+        "reasoning_options": [
+          {
+            "type": "effort",
+            "values": [
+              "none",
+              "low",
+              "medium",
+              "high",
+              "xhigh"
+            ]
+          }
+        ],
         "release_date": "2026-04-23",
         "structured_output": true,
         "temperature": false,
@@ -58694,6 +59268,17 @@
         "name": "GPT-5 Mini",
         "open_weights": false,
         "reasoning": true,
+        "reasoning_options": [
+          {
+            "type": "effort",
+            "values": [
+              "minimal",
+              "low",
+              "medium",
+              "high"
+            ]
+          }
+        ],
         "release_date": "2025-08-07",
         "structured_output": true,
         "temperature": false,
@@ -58727,6 +59312,17 @@
         "name": "GPT-5 Nano",
         "open_weights": false,
         "reasoning": true,
+        "reasoning_options": [
+          {
+            "type": "effort",
+            "values": [
+              "minimal",
+              "low",
+              "medium",
+              "high"
+            ]
+          }
+        ],
         "release_date": "2025-08-07",
         "structured_output": true,
         "temperature": false,
@@ -58756,6 +59352,16 @@
         "name": "GPT OSS 120B",
         "open_weights": true,
         "reasoning": true,
+        "reasoning_options": [
+          {
+            "type": "effort",
+            "values": [
+              "low",
+              "medium",
+              "high"
+            ]
+          }
+        ],
         "release_date": "2025-08-05",
         "structured_output": true,
         "temperature": true,
@@ -58785,6 +59391,16 @@
         "name": "GPT OSS 20B",
         "open_weights": true,
         "reasoning": true,
+        "reasoning_options": [
+          {
+            "type": "effort",
+            "values": [
+              "low",
+              "medium",
+              "high"
+            ]
+          }
+        ],
         "release_date": "2025-08-05",
         "structured_output": true,
         "temperature": true,
@@ -59118,7 +59734,7 @@
         "family": "gemini-flash",
         "id": "google/gemini-2.5-flash",
         "knowledge": "2025-01",
-        "last_updated": "2025-06-05",
+        "last_updated": "2025-06-17",
         "limit": {
           "context": 1048576,
           "output": 65536
@@ -59138,7 +59754,7 @@
         "name": "Gemini 2.5 Flash",
         "open_weights": false,
         "reasoning": true,
-        "release_date": "2025-03-20",
+        "release_date": "2025-06-17",
         "structured_output": true,
         "temperature": true,
         "tool_call": true
@@ -59178,7 +59794,7 @@
         "family": "gemini-pro",
         "id": "google/gemini-2.5-pro",
         "knowledge": "2025-01",
-        "last_updated": "2025-06-05",
+        "last_updated": "2025-06-17",
         "limit": {
           "context": 1048576,
           "output": 65536
@@ -59198,7 +59814,7 @@
         "name": "Gemini 2.5 Pro",
         "open_weights": false,
         "reasoning": true,
-        "release_date": "2025-03-20",
+        "release_date": "2025-06-17",
         "structured_output": true,
         "temperature": true,
         "tool_call": true
@@ -60094,6 +60710,16 @@
         "name": "Google Gemini 2.5 Flash Lite",
         "open_weights": false,
         "reasoning": true,
+        "reasoning_options": [
+          {
+            "type": "toggle"
+          },
+          {
+            "max": 24576,
+            "min": 512,
+            "type": "budget_tokens"
+          }
+        ],
         "release_date": "2025-07-22",
         "temperature": true,
         "tool_call": true
@@ -60123,6 +60749,7 @@
         "name": "Perplexity Sonar Reasoning",
         "open_weights": false,
         "reasoning": true,
+        "reasoning_options": [],
         "release_date": "2025-01-27",
         "temperature": true,
         "tool_call": false
@@ -60276,6 +60903,16 @@
         "name": "Anthropic: Claude Opus 4.1 (20250805)",
         "open_weights": false,
         "reasoning": true,
+        "reasoning_options": [
+          {
+            "type": "toggle"
+          },
+          {
+            "max": 31999,
+            "min": 1024,
+            "type": "budget_tokens"
+          }
+        ],
         "release_date": "2025-08-05",
         "temperature": true,
         "tool_call": true
@@ -60366,6 +61003,16 @@
         "name": "Google Gemini 2.5 Flash",
         "open_weights": false,
         "reasoning": true,
+        "reasoning_options": [
+          {
+            "type": "toggle"
+          },
+          {
+            "max": 24576,
+            "min": 0,
+            "type": "budget_tokens"
+          }
+        ],
         "release_date": "2025-06-17",
         "temperature": true,
         "tool_call": true
@@ -60429,6 +61076,16 @@
         "name": "Anthropic: Claude Sonnet 4.5",
         "open_weights": false,
         "reasoning": true,
+        "reasoning_options": [
+          {
+            "type": "toggle"
+          },
+          {
+            "max": 63999,
+            "min": 1024,
+            "type": "budget_tokens"
+          }
+        ],
         "release_date": "2025-09-29",
         "temperature": true,
         "tool_call": true
@@ -60458,6 +61115,7 @@
         "name": "Qwen3 32B",
         "open_weights": false,
         "reasoning": true,
+        "reasoning_options": [],
         "release_date": "2025-04-28",
         "temperature": true,
         "tool_call": true
@@ -60487,6 +61145,7 @@
         "name": "Baidu Ernie 4.5 21B A3B Thinking",
         "open_weights": false,
         "reasoning": true,
+        "reasoning_options": [],
         "release_date": "2025-03-16",
         "temperature": true,
         "tool_call": false
@@ -60615,6 +61274,16 @@
         "name": "Anthropic: Claude Sonnet 4",
         "open_weights": false,
         "reasoning": true,
+        "reasoning_options": [
+          {
+            "type": "toggle"
+          },
+          {
+            "max": 63999,
+            "min": 1024,
+            "type": "budget_tokens"
+          }
+        ],
         "release_date": "2025-05-14",
         "temperature": true,
         "tool_call": true
@@ -60647,6 +61316,16 @@
         "name": "Anthropic: Claude Sonnet 4.5 (20250929)",
         "open_weights": false,
         "reasoning": true,
+        "reasoning_options": [
+          {
+            "type": "toggle"
+          },
+          {
+            "max": 63999,
+            "min": 1024,
+            "type": "budget_tokens"
+          }
+        ],
         "release_date": "2025-09-29",
         "temperature": true,
         "tool_call": true
@@ -60973,6 +61652,17 @@
         "name": "Perplexity Sonar Reasoning Pro",
         "open_weights": false,
         "reasoning": true,
+        "reasoning_options": [
+          {
+            "type": "effort",
+            "values": [
+              "minimal",
+              "low",
+              "medium",
+              "high"
+            ]
+          }
+        ],
         "release_date": "2025-01-27",
         "temperature": true,
         "tool_call": false
@@ -61182,6 +61872,16 @@
         "name": "OpenAI GPT-OSS 20b",
         "open_weights": false,
         "reasoning": true,
+        "reasoning_options": [
+          {
+            "type": "effort",
+            "values": [
+              "low",
+              "medium",
+              "high"
+            ]
+          }
+        ],
         "release_date": "2024-06-01",
         "temperature": true,
         "tool_call": true
@@ -61213,6 +61913,7 @@
         "name": "xAI Grok 4.1 Fast Reasoning",
         "open_weights": false,
         "reasoning": true,
+        "reasoning_options": [],
         "release_date": "2025-11-17",
         "temperature": true,
         "tool_call": true
@@ -61307,6 +62008,16 @@
         "name": "Anthropic: Claude Opus 4",
         "open_weights": false,
         "reasoning": true,
+        "reasoning_options": [
+          {
+            "type": "toggle"
+          },
+          {
+            "max": 31999,
+            "min": 1024,
+            "type": "budget_tokens"
+          }
+        ],
         "release_date": "2025-05-14",
         "temperature": true,
         "tool_call": true
@@ -61523,6 +62234,7 @@
         "name": "Qwen3 235B A22B Thinking",
         "open_weights": false,
         "reasoning": true,
+        "reasoning_options": [],
         "release_date": "2025-07-25",
         "temperature": true,
         "tool_call": false
@@ -61679,6 +62391,15 @@
         "name": "Google Gemini 3 Pro Preview",
         "open_weights": false,
         "reasoning": true,
+        "reasoning_options": [
+          {
+            "type": "effort",
+            "values": [
+              "low",
+              "high"
+            ]
+          }
+        ],
         "release_date": "2025-11-18",
         "temperature": true,
         "tool_call": true
@@ -61710,6 +62431,7 @@
         "name": "xAI: Grok 4 Fast Reasoning",
         "open_weights": false,
         "reasoning": true,
+        "reasoning_options": [],
         "release_date": "2025-09-01",
         "temperature": true,
         "tool_call": true
@@ -61771,6 +62493,7 @@
         "name": "Zai GLM-4.6",
         "open_weights": false,
         "reasoning": true,
+        "reasoning_options": [],
         "release_date": "2024-07-18",
         "temperature": true,
         "tool_call": true
@@ -61811,7 +62534,7 @@
           "input": 0.5,
           "output": 2
         },
-        "family": "kimi",
+        "family": "kimi-k2",
         "id": "kimi-k2-0905",
         "knowledge": "2025-09",
         "last_updated": "2025-09-05",
@@ -61860,6 +62583,7 @@
         "name": "DeepSeek V3.1 Terminus",
         "open_weights": false,
         "reasoning": true,
+        "reasoning_options": [],
         "release_date": "2025-09-22",
         "temperature": true,
         "tool_call": true
@@ -61980,6 +62704,16 @@
         "name": "Anthropic: Claude Opus 4.1",
         "open_weights": false,
         "reasoning": true,
+        "reasoning_options": [
+          {
+            "type": "toggle"
+          },
+          {
+            "max": 31999,
+            "min": 1024,
+            "type": "budget_tokens"
+          }
+        ],
         "release_date": "2025-08-05",
         "temperature": true,
         "tool_call": true
@@ -62164,6 +62898,17 @@
         "name": "Perplexity Sonar Deep Research",
         "open_weights": false,
         "reasoning": true,
+        "reasoning_options": [
+          {
+            "type": "effort",
+            "values": [
+              "minimal",
+              "low",
+              "medium",
+              "high"
+            ]
+          }
+        ],
         "release_date": "2025-01-27",
         "temperature": true,
         "tool_call": false
@@ -62196,6 +62941,13 @@
         "name": "Google Gemini 2.5 Pro",
         "open_weights": false,
         "reasoning": true,
+        "reasoning_options": [
+          {
+            "max": 32768,
+            "min": 128,
+            "type": "budget_tokens"
+          }
+        ],
         "release_date": "2025-06-17",
         "temperature": true,
         "tool_call": true
@@ -62225,6 +62977,7 @@
         "name": "DeepSeek R1 Distill Llama 70B",
         "open_weights": false,
         "reasoning": true,
+        "reasoning_options": [],
         "release_date": "2025-01-20",
         "temperature": true,
         "tool_call": true
@@ -62257,6 +63010,16 @@
         "name": "Anthropic: Claude Opus 4.5",
         "open_weights": false,
         "reasoning": true,
+        "reasoning_options": [
+          {
+            "type": "toggle"
+          },
+          {
+            "max": 63999,
+            "min": 1024,
+            "type": "budget_tokens"
+          }
+        ],
         "release_date": "2025-11-24",
         "temperature": true,
         "tool_call": true
@@ -62296,7 +63059,7 @@
           "input": 0.5700000000000001,
           "output": 2.3
         },
-        "family": "kimi",
+        "family": "kimi-k2",
         "id": "kimi-k2-0711",
         "knowledge": "2025-01",
         "last_updated": "2025-01-01",
@@ -62344,6 +63107,16 @@
         "name": "OpenAI GPT-OSS 120b",
         "open_weights": false,
         "reasoning": true,
+        "reasoning_options": [
+          {
+            "type": "effort",
+            "values": [
+              "low",
+              "medium",
+              "high"
+            ]
+          }
+        ],
         "release_date": "2024-06-01",
         "temperature": true,
         "tool_call": true
@@ -64531,7 +65304,7 @@
           "input": 0.95,
           "output": 4
         },
-        "family": "kimi",
+        "family": "kimi-k2",
         "id": "kimi-k2.6",
         "interleaved": {
           "field": "reasoning_content"
@@ -64675,7 +65448,7 @@
           "input": 0.5,
           "output": 2.7
         },
-        "family": "kimi",
+        "family": "kimi-k2",
         "id": "kimi-k2.5",
         "interleaved": {
           "field": "reasoning_content"
@@ -67876,7 +68649,7 @@
           "input": 0.95,
           "output": 4
         },
-        "family": "kimi",
+        "family": "kimi-k2",
         "id": "kimi-k2.6",
         "interleaved": true,
         "knowledge": "2025-01",
@@ -68211,7 +68984,7 @@
           "input": 0.6,
           "output": 3
         },
-        "family": "kimi",
+        "family": "kimi-k2",
         "id": "kimi-k2.5",
         "interleaved": true,
         "knowledge": "2025-01",
@@ -68898,7 +69671,7 @@
           "input": 0.78,
           "output": 3.5
         },
-        "family": "kimi-k2.6",
+        "family": "kimi-k2",
         "id": "moonshotai/Kimi-K2.6",
         "interleaved": {
           "field": "reasoning_content"
@@ -69080,6 +69853,41 @@
         "release_date": "2026-04",
         "structured_output": true,
         "temperature": true,
+        "tool_call": true
+      },
+      "k2p7": {
+        "attachment": true,
+        "cost": {
+          "cache_read": 0,
+          "cache_write": 0,
+          "input": 0,
+          "output": 0
+        },
+        "family": "kimi-k2",
+        "id": "k2p7",
+        "knowledge": "2025-01",
+        "last_updated": "2026-06-12",
+        "limit": {
+          "context": 262144,
+          "output": 32768
+        },
+        "modalities": {
+          "input": [
+            "text",
+            "image",
+            "video"
+          ],
+          "output": [
+            "text"
+          ]
+        },
+        "name": "Kimi K2.7 Code",
+        "open_weights": true,
+        "reasoning": true,
+        "reasoning_options": [],
+        "release_date": "2026-06-12",
+        "structured_output": true,
+        "temperature": false,
         "tool_call": true
       },
       "kimi-k2-thinking": {
@@ -69324,7 +70132,7 @@
         "family": "gemini-flash",
         "id": "gemini-2.5-flash",
         "knowledge": "2025-01",
-        "last_updated": "2025-06-05",
+        "last_updated": "2025-06-17",
         "limit": {
           "context": 1048576,
           "output": 65536
@@ -69344,7 +70152,7 @@
         "name": "Gemini 2.5 Flash",
         "open_weights": false,
         "reasoning": true,
-        "release_date": "2025-03-20",
+        "release_date": "2025-06-17",
         "structured_output": true,
         "temperature": true,
         "tool_call": true
@@ -69375,7 +70183,7 @@
         "family": "gemini-pro",
         "id": "gemini-2.5-pro",
         "knowledge": "2025-01",
-        "last_updated": "2025-06-05",
+        "last_updated": "2025-06-17",
         "limit": {
           "context": 1048576,
           "output": 65536
@@ -69395,7 +70203,7 @@
         "name": "Gemini 2.5 Pro",
         "open_weights": false,
         "reasoning": true,
-        "release_date": "2025-03-20",
+        "release_date": "2025-06-17",
         "structured_output": true,
         "temperature": true,
         "tool_call": true
@@ -69538,7 +70346,7 @@
           "input": 0.5,
           "output": 2.8
         },
-        "family": "kimi-k2.5",
+        "family": "kimi-k2",
         "id": "kimi-k2.5",
         "interleaved": {
           "field": "reasoning_content"
@@ -69574,7 +70382,7 @@
           "input": 0.95,
           "output": 4
         },
-        "family": "kimi-k2.6",
+        "family": "kimi-k2",
         "id": "kimi-k2.6",
         "interleaved": {
           "field": "reasoning_content"
@@ -71110,7 +71918,7 @@
           "input": 0.4,
           "output": 2.5
         },
-        "family": "kimi",
+        "family": "kimi-k2",
         "id": "kimi-k2",
         "knowledge": "2024-10",
         "last_updated": "2025-09-05",
@@ -71795,7 +72603,7 @@
           "input": 0.95,
           "output": 4
         },
-        "family": "kimi",
+        "family": "kimi-k2",
         "id": "kimi-k2.6",
         "interleaved": {
           "field": "reasoning_content"
@@ -72038,7 +72846,7 @@
           "input": 0.6,
           "output": 3
         },
-        "family": "kimi",
+        "family": "kimi-k2",
         "id": "kimi-k2.5",
         "interleaved": {
           "field": "reasoning_content"
@@ -75279,7 +76087,7 @@
           "input": 0.95,
           "output": 4
         },
-        "family": "kimi-k2.6",
+        "family": "kimi-k2",
         "id": "moonshotai/chat-completion/models/Kimi-K2_6",
         "interleaved": {
           "field": "reasoning_content"
@@ -76782,7 +77590,7 @@
           "input": 0.6,
           "output": 2.5
         },
-        "family": "kimi",
+        "family": "kimi-k2",
         "id": "kimi-k2-0711-preview",
         "knowledge": "2024-10",
         "last_updated": "2025-07-14",
@@ -76812,7 +77620,7 @@
           "input": 0.6,
           "output": 2.5
         },
-        "family": "kimi",
+        "family": "kimi-k2",
         "id": "kimi-k2-0905-preview",
         "knowledge": "2024-10",
         "last_updated": "2025-09-05",
@@ -76908,7 +77716,7 @@
           "input": 2.4,
           "output": 10
         },
-        "family": "kimi",
+        "family": "kimi-k2",
         "id": "kimi-k2-turbo-preview",
         "knowledge": "2024-10",
         "last_updated": "2025-09-05",
@@ -76938,7 +77746,7 @@
           "input": 0.6,
           "output": 3
         },
-        "family": "kimi-k2.5",
+        "family": "kimi-k2",
         "id": "kimi-k2.5",
         "interleaved": {
           "field": "reasoning_content"
@@ -76979,7 +77787,7 @@
           "input": 0.95,
           "output": 4
         },
-        "family": "kimi-k2.6",
+        "family": "kimi-k2",
         "id": "kimi-k2.6",
         "interleaved": {
           "field": "reasoning_content"
@@ -77011,6 +77819,43 @@
         "release_date": "2026-04-21",
         "structured_output": true,
         "temperature": true,
+        "tool_call": true
+      },
+      "kimi-k2.7-code": {
+        "attachment": true,
+        "cost": {
+          "cache_read": 0.19,
+          "input": 0.95,
+          "output": 4
+        },
+        "family": "kimi-k2",
+        "id": "kimi-k2.7-code",
+        "interleaved": {
+          "field": "reasoning_content"
+        },
+        "knowledge": "2025-01",
+        "last_updated": "2026-06-12",
+        "limit": {
+          "context": 262144,
+          "output": 262144
+        },
+        "modalities": {
+          "input": [
+            "text",
+            "image",
+            "video"
+          ],
+          "output": [
+            "text"
+          ]
+        },
+        "name": "Kimi K2.7 Code",
+        "open_weights": true,
+        "reasoning": true,
+        "reasoning_options": [],
+        "release_date": "2026-06-12",
+        "structured_output": true,
+        "temperature": false,
         "tool_call": true
       }
     },
@@ -78351,7 +79196,7 @@
         "family": "gemini-flash",
         "id": "gemini-2.5-flash",
         "knowledge": "2025-01",
-        "last_updated": "2025-06-05",
+        "last_updated": "2025-06-17",
         "limit": {
           "context": 1048576,
           "output": 65536
@@ -78371,7 +79216,7 @@
         "name": "Gemini 2.5 Flash",
         "open_weights": false,
         "reasoning": true,
-        "release_date": "2025-03-20",
+        "release_date": "2025-06-17",
         "structured_output": true,
         "temperature": true,
         "tool_call": true
@@ -80144,7 +80989,7 @@
           "input": 0.6,
           "output": 2.5
         },
-        "family": "kimi",
+        "family": "kimi-k2",
         "id": "kimi-k2",
         "last_updated": "2025-07-11",
         "limit": {
@@ -82325,7 +83170,7 @@
           "input": 0.95,
           "output": 4
         },
-        "family": "kimi-k2.6",
+        "family": "kimi-k2",
         "id": "kimi-k2.6",
         "interleaved": {
           "field": "reasoning_content"
@@ -82743,7 +83588,7 @@
         "family": "gemini-pro",
         "id": "gemini-2.5-pro",
         "knowledge": "2025-01",
-        "last_updated": "2025-06-05",
+        "last_updated": "2025-06-17",
         "limit": {
           "context": 1048576,
           "output": 65536
@@ -82763,7 +83608,7 @@
         "name": "Gemini 2.5 Pro",
         "open_weights": false,
         "reasoning": true,
-        "release_date": "2025-03-20",
+        "release_date": "2025-06-17",
         "structured_output": true,
         "temperature": true,
         "tool_call": true
@@ -82804,7 +83649,7 @@
           "input": 0.6,
           "output": 3
         },
-        "family": "kimi-k2.5",
+        "family": "kimi-k2",
         "id": "kimi-k2.5",
         "interleaved": {
           "field": "reasoning_content"
@@ -85008,6 +85853,15 @@
         "name": "DeepSeek V4 Flash",
         "open_weights": true,
         "reasoning": true,
+        "reasoning_options": [
+          {
+            "type": "effort",
+            "values": [
+              "high",
+              "max"
+            ]
+          }
+        ],
         "release_date": "2026-04-24",
         "structured_output": true,
         "temperature": true,
@@ -85042,6 +85896,15 @@
         "name": "DeepSeek V4 Pro",
         "open_weights": true,
         "reasoning": true,
+        "reasoning_options": [
+          {
+            "type": "effort",
+            "values": [
+              "high",
+              "max"
+            ]
+          }
+        ],
         "release_date": "2026-04-24",
         "structured_output": true,
         "temperature": true,
@@ -85076,6 +85939,7 @@
         "name": "GLM-5",
         "open_weights": true,
         "reasoning": true,
+        "reasoning_options": [],
         "release_date": "2026-02-11",
         "temperature": true,
         "tool_call": true
@@ -85109,6 +85973,7 @@
         "name": "GLM-5.1",
         "open_weights": true,
         "reasoning": true,
+        "reasoning_options": [],
         "release_date": "2026-04-07",
         "temperature": true,
         "tool_call": true
@@ -85120,7 +85985,7 @@
           "input": 0.6,
           "output": 3
         },
-        "family": "kimi-k2.5",
+        "family": "kimi-k2",
         "id": "kimi-k2.5",
         "interleaved": {
           "field": "reasoning_content"
@@ -85144,7 +86009,9 @@
         "name": "Kimi K2.5",
         "open_weights": true,
         "reasoning": true,
+        "reasoning_options": [],
         "release_date": "2026-01-27",
+        "status": "deprecated",
         "temperature": true,
         "tool_call": true
       },
@@ -85155,7 +86022,7 @@
           "input": 0.95,
           "output": 4
         },
-        "family": "kimi-k2.6",
+        "family": "kimi-k2",
         "id": "kimi-k2.6",
         "interleaved": {
           "field": "reasoning_content"
@@ -85179,8 +86046,46 @@
         "name": "Kimi K2.6",
         "open_weights": true,
         "reasoning": true,
+        "reasoning_options": [],
         "release_date": "2026-04-21",
         "temperature": true,
+        "tool_call": true
+      },
+      "kimi-k2.7-code": {
+        "attachment": true,
+        "cost": {
+          "cache_read": 0.19,
+          "input": 0.95,
+          "output": 4
+        },
+        "family": "kimi-k2",
+        "id": "kimi-k2.7-code",
+        "interleaved": {
+          "field": "reasoning_content"
+        },
+        "knowledge": "2025-01",
+        "last_updated": "2026-06-12",
+        "limit": {
+          "context": 262144,
+          "output": 262144
+        },
+        "modalities": {
+          "input": [
+            "text",
+            "image",
+            "video"
+          ],
+          "output": [
+            "text"
+          ]
+        },
+        "name": "Kimi K2.7 Code",
+        "open_weights": true,
+        "reasoning": true,
+        "reasoning_options": [],
+        "release_date": "2026-06-12",
+        "structured_output": true,
+        "temperature": false,
         "tool_call": true
       },
       "mimo-v2-omni": {
@@ -85215,6 +86120,16 @@
         "name": "MiMo V2 Omni",
         "open_weights": true,
         "reasoning": true,
+        "reasoning_options": [
+          {
+            "type": "effort",
+            "values": [
+              "low",
+              "medium",
+              "high"
+            ]
+          }
+        ],
         "release_date": "2026-03-18",
         "status": "deprecated",
         "temperature": true,
@@ -85265,6 +86180,16 @@
         "name": "MiMo V2 Pro",
         "open_weights": true,
         "reasoning": true,
+        "reasoning_options": [
+          {
+            "type": "effort",
+            "values": [
+              "low",
+              "medium",
+              "high"
+            ]
+          }
+        ],
         "release_date": "2026-03-18",
         "status": "deprecated",
         "temperature": true,
@@ -85302,6 +86227,16 @@
         "name": "MiMo V2.5",
         "open_weights": true,
         "reasoning": true,
+        "reasoning_options": [
+          {
+            "type": "effort",
+            "values": [
+              "low",
+              "medium",
+              "high"
+            ]
+          }
+        ],
         "release_date": "2026-04-22",
         "temperature": true,
         "tool_call": true
@@ -85335,6 +86270,16 @@
         "name": "MiMo V2.5 Pro",
         "open_weights": true,
         "reasoning": true,
+        "reasoning_options": [
+          {
+            "type": "effort",
+            "values": [
+              "low",
+              "medium",
+              "high"
+            ]
+          }
+        ],
         "release_date": "2026-04-22",
         "temperature": true,
         "tool_call": true
@@ -85368,7 +86313,9 @@
           "npm": "@ai-sdk/anthropic"
         },
         "reasoning": true,
+        "reasoning_options": [],
         "release_date": "2026-02-12",
+        "status": "deprecated",
         "temperature": true,
         "tool_call": true
       },
@@ -85401,6 +86348,7 @@
           "npm": "@ai-sdk/anthropic"
         },
         "reasoning": true,
+        "reasoning_options": [],
         "release_date": "2026-03-18",
         "temperature": true,
         "tool_call": true
@@ -85408,9 +86356,9 @@
       "minimax-m3": {
         "attachment": false,
         "cost": {
-          "cache_read": 0.06,
-          "input": 0.3,
-          "output": 1.2
+          "cache_read": 0.02,
+          "input": 0.1,
+          "output": 0.4
         },
         "family": "minimax-m3",
         "id": "minimax-m3",
@@ -85430,12 +86378,17 @@
             "text"
           ]
         },
-        "name": "MiniMax M3",
+        "name": "MiniMax M3 (3x usage)",
         "open_weights": true,
         "provider": {
           "npm": "@ai-sdk/anthropic"
         },
         "reasoning": true,
+        "reasoning_options": [
+          {
+            "type": "toggle"
+          }
+        ],
         "release_date": "2026-05-31",
         "temperature": true,
         "tool_call": true
@@ -85472,6 +86425,7 @@
           "npm": "@ai-sdk/anthropic"
         },
         "reasoning": true,
+        "reasoning_options": [],
         "release_date": "2026-02-16",
         "status": "deprecated",
         "temperature": true,
@@ -85527,6 +86481,7 @@
           "npm": "@ai-sdk/anthropic"
         },
         "reasoning": true,
+        "reasoning_options": [],
         "release_date": "2026-04-02",
         "temperature": true,
         "tool_call": true
@@ -85560,6 +86515,7 @@
           "npm": "@ai-sdk/anthropic"
         },
         "reasoning": true,
+        "reasoning_options": [],
         "release_date": "2026-05-21",
         "temperature": true,
         "tool_call": true
@@ -85613,6 +86569,7 @@
           "npm": "@ai-sdk/anthropic"
         },
         "reasoning": true,
+        "reasoning_options": [],
         "release_date": "2026-06-02",
         "temperature": true,
         "tool_call": true
@@ -86185,6 +87142,7 @@
         "name": "MiniMax-M2.5",
         "open_weights": true,
         "reasoning": true,
+        "reasoning_options": [],
         "release_date": "2026-02-12",
         "temperature": true,
         "tool_call": true
@@ -86214,6 +87172,11 @@
         "name": "DeepSeek V3.2",
         "open_weights": true,
         "reasoning": true,
+        "reasoning_options": [
+          {
+            "type": "toggle"
+          }
+        ],
         "release_date": "2025-12-03",
         "structured_output": true,
         "temperature": true,
@@ -86248,6 +87211,18 @@
         "name": "DeepSeek V4 Flash",
         "open_weights": true,
         "reasoning": true,
+        "reasoning_options": [
+          {
+            "type": "toggle"
+          },
+          {
+            "type": "effort",
+            "values": [
+              "high",
+              "max"
+            ]
+          }
+        ],
         "release_date": "2026-04-24",
         "structured_output": true,
         "temperature": true,
@@ -86282,6 +87257,18 @@
         "name": "DeepSeek V4 Pro",
         "open_weights": true,
         "reasoning": true,
+        "reasoning_options": [
+          {
+            "type": "toggle"
+          },
+          {
+            "type": "effort",
+            "values": [
+              "high",
+              "max"
+            ]
+          }
+        ],
         "release_date": "2026-04-24",
         "structured_output": true,
         "temperature": true,
@@ -86316,6 +87303,11 @@
         "name": "GLM-5",
         "open_weights": false,
         "reasoning": true,
+        "reasoning_options": [
+          {
+            "type": "toggle"
+          }
+        ],
         "release_date": "2026-02-11",
         "temperature": true,
         "tool_call": true
@@ -86349,6 +87341,11 @@
         "name": "GLM-5.1",
         "open_weights": true,
         "reasoning": true,
+        "reasoning_options": [
+          {
+            "type": "toggle"
+          }
+        ],
         "release_date": "2026-03-27",
         "structured_output": true,
         "temperature": true,
@@ -86362,7 +87359,7 @@
           "input": 0,
           "output": 0
         },
-        "family": "kimi",
+        "family": "kimi-k2",
         "id": "kimi-k2.5",
         "interleaved": {
           "field": "reasoning_content"
@@ -86386,6 +87383,14 @@
         "name": "Kimi K2.5",
         "open_weights": true,
         "reasoning": true,
+        "reasoning_options": [
+          {
+            "type": "toggle"
+          },
+          {
+            "type": "budget_tokens"
+          }
+        ],
         "release_date": "2026-01",
         "temperature": true,
         "tool_call": true
@@ -86398,7 +87403,7 @@
           "input": 0,
           "output": 0
         },
-        "family": "kimi",
+        "family": "kimi-k2",
         "id": "kimi-k2.6",
         "interleaved": {
           "field": "reasoning_content"
@@ -86422,6 +87427,14 @@
         "name": "Kimi K2.6",
         "open_weights": true,
         "reasoning": true,
+        "reasoning_options": [
+          {
+            "type": "toggle"
+          },
+          {
+            "type": "budget_tokens"
+          }
+        ],
         "release_date": "2026-04-21",
         "temperature": true,
         "tool_call": true
@@ -86510,6 +87523,15 @@
         "name": "Qwen3.6 Flash",
         "open_weights": false,
         "reasoning": true,
+        "reasoning_options": [
+          {
+            "type": "toggle"
+          },
+          {
+            "max": 81920,
+            "type": "budget_tokens"
+          }
+        ],
         "release_date": "2026-04-27",
         "structured_output": true,
         "temperature": true,
@@ -86544,6 +87566,15 @@
         "name": "Qwen3.6 Plus",
         "open_weights": false,
         "reasoning": true,
+        "reasoning_options": [
+          {
+            "type": "toggle"
+          },
+          {
+            "max": 81920,
+            "type": "budget_tokens"
+          }
+        ],
         "release_date": "2026-04-02",
         "temperature": true,
         "tool_call": true
@@ -86574,6 +87605,15 @@
         "name": "Qwen3.7 Max",
         "open_weights": false,
         "reasoning": true,
+        "reasoning_options": [
+          {
+            "type": "toggle"
+          },
+          {
+            "max": 262144,
+            "type": "budget_tokens"
+          }
+        ],
         "release_date": "2026-05-21",
         "temperature": true,
         "tool_call": true
@@ -86606,6 +87646,15 @@
         "name": "Qwen3.7 Plus",
         "open_weights": false,
         "reasoning": true,
+        "reasoning_options": [
+          {
+            "type": "toggle"
+          },
+          {
+            "max": 262144,
+            "type": "budget_tokens"
+          }
+        ],
         "release_date": "2026-06-02",
         "temperature": true,
         "tool_call": true
@@ -86718,7 +87767,6 @@
         "name": "Grok 4.20 (Non-Reasoning)",
         "open_weights": false,
         "reasoning": false,
-        "reasoning_options": [],
         "release_date": "2026-03-09",
         "structured_output": true,
         "temperature": true,
@@ -87240,46 +88288,6 @@
         "temperature": true,
         "tool_call": true
       },
-      "accounts/fireworks/models/kimi-k2p5": {
-        "attachment": true,
-        "cost": {
-          "cache_read": 0.1,
-          "input": 0.6,
-          "output": 3
-        },
-        "family": "kimi-thinking",
-        "id": "accounts/fireworks/models/kimi-k2p5",
-        "interleaved": {
-          "field": "reasoning_content"
-        },
-        "knowledge": "2025-01",
-        "last_updated": "2026-01-27",
-        "limit": {
-          "context": 256000,
-          "output": 256000
-        },
-        "modalities": {
-          "input": [
-            "text",
-            "image",
-            "video"
-          ],
-          "output": [
-            "text"
-          ]
-        },
-        "name": "Kimi K2.5",
-        "open_weights": true,
-        "reasoning": true,
-        "reasoning_options": [
-          {
-            "type": "toggle"
-          }
-        ],
-        "release_date": "2026-01-27",
-        "temperature": true,
-        "tool_call": true
-      },
       "accounts/fireworks/models/kimi-k2p6": {
         "attachment": true,
         "cost": {
@@ -87318,45 +88326,41 @@
         "temperature": true,
         "tool_call": true
       },
-      "accounts/fireworks/models/minimax-m2p5": {
-        "attachment": false,
+      "accounts/fireworks/models/kimi-k2p7-code": {
+        "attachment": true,
         "cost": {
-          "cache_read": 0.03,
-          "input": 0.3,
-          "output": 1.2
+          "cache_read": 0.19,
+          "input": 0.95,
+          "output": 4
         },
-        "family": "minimax",
-        "id": "accounts/fireworks/models/minimax-m2p5",
+        "family": "kimi-thinking",
+        "id": "accounts/fireworks/models/kimi-k2p7-code",
         "interleaved": {
           "field": "reasoning_content"
         },
-        "last_updated": "2026-02-12",
+        "last_updated": "2026-06-12",
         "limit": {
-          "context": 196608,
-          "output": 196608
+          "context": 262000,
+          "output": 262000
         },
         "modalities": {
           "input": [
-            "text"
+            "text",
+            "image"
           ],
           "output": [
             "text"
           ]
         },
-        "name": "MiniMax-M2.5",
+        "name": "Kimi K2.7 Code",
         "open_weights": true,
         "reasoning": true,
         "reasoning_options": [
           {
-            "type": "effort",
-            "values": [
-              "low",
-              "medium",
-              "high"
-            ]
+            "type": "toggle"
           }
         ],
-        "release_date": "2026-02-12",
+        "release_date": "2026-06-12",
         "temperature": true,
         "tool_call": true
       },
@@ -87402,16 +88406,58 @@
         "temperature": true,
         "tool_call": true
       },
-      "accounts/fireworks/models/qwen3p6-plus": {
+      "accounts/fireworks/models/minimax-m3": {
         "attachment": true,
         "cost": {
-          "cache_read": 0.1,
-          "input": 0.5,
-          "output": 3
+          "cache_read": 0.06,
+          "input": 0.3,
+          "output": 1.2
+        },
+        "family": "minimax",
+        "id": "accounts/fireworks/models/minimax-m3",
+        "interleaved": {
+          "field": "reasoning_content"
+        },
+        "last_updated": "2026-06-12",
+        "limit": {
+          "context": 512000,
+          "output": 512000
+        },
+        "modalities": {
+          "input": [
+            "text"
+          ],
+          "output": [
+            "text"
+          ]
+        },
+        "name": "MiniMax-M3",
+        "open_weights": true,
+        "reasoning": true,
+        "reasoning_options": [
+          {
+            "type": "effort",
+            "values": [
+              "low",
+              "medium",
+              "high"
+            ]
+          }
+        ],
+        "release_date": "2026-06-12",
+        "temperature": true,
+        "tool_call": true
+      },
+      "accounts/fireworks/models/qwen3p7-plus": {
+        "attachment": true,
+        "cost": {
+          "cache_read": 0.08,
+          "input": 0.4,
+          "output": 1.6
         },
         "family": "qwen",
-        "id": "accounts/fireworks/models/qwen3p6-plus",
-        "last_updated": "2026-04-04",
+        "id": "accounts/fireworks/models/qwen3p7-plus",
+        "last_updated": "2026-06-12",
         "limit": {
           "context": 262144,
           "output": 65536
@@ -87425,7 +88471,7 @@
             "text"
           ]
         },
-        "name": "Qwen 3.6 Plus",
+        "name": "Qwen 3.7 Plus",
         "open_weights": false,
         "reasoning": true,
         "reasoning_options": [
@@ -87445,7 +88491,7 @@
             "type": "budget_tokens"
           }
         ],
-        "release_date": "2026-04-04",
+        "release_date": "2026-06-12",
         "temperature": true,
         "tool_call": true
       },
@@ -87487,7 +88533,7 @@
         "tool_call": true
       },
       "accounts/fireworks/routers/kimi-k2p6-fast": {
-        "attachment": false,
+        "attachment": true,
         "cost": {
           "cache_read": 0.3,
           "input": 2,
@@ -87525,7 +88571,7 @@
         "tool_call": true
       },
       "accounts/fireworks/routers/kimi-k2p6-turbo": {
-        "attachment": false,
+        "attachment": true,
         "cost": {
           "cache_read": 0.3,
           "input": 2,
@@ -87559,6 +88605,44 @@
           }
         ],
         "release_date": "2026-04-17",
+        "temperature": true,
+        "tool_call": true
+      },
+      "accounts/fireworks/routers/kimi-k2p7-code-fast": {
+        "attachment": true,
+        "cost": {
+          "cache_read": 0.38,
+          "input": 2,
+          "output": 8
+        },
+        "family": "kimi-thinking",
+        "id": "accounts/fireworks/routers/kimi-k2p7-code-fast",
+        "interleaved": {
+          "field": "reasoning_content"
+        },
+        "last_updated": "2026-06-12",
+        "limit": {
+          "context": 262000,
+          "output": 262000
+        },
+        "modalities": {
+          "input": [
+            "text",
+            "image"
+          ],
+          "output": [
+            "text"
+          ]
+        },
+        "name": "Kimi K2.7 Code Fast",
+        "open_weights": true,
+        "reasoning": true,
+        "reasoning_options": [
+          {
+            "type": "toggle"
+          }
+        ],
+        "release_date": "2026-06-12",
         "temperature": true,
         "tool_call": true
       }
@@ -87858,7 +88942,7 @@
           "input": 0.6,
           "output": 3
         },
-        "family": "kimi",
+        "family": "kimi-k2",
         "id": "moonshotai/Kimi-K2.5",
         "interleaved": {
           "field": "reasoning_content"
@@ -87898,7 +88982,7 @@
           "input": 0.95,
           "output": 4
         },
-        "family": "kimi-k2.6",
+        "family": "kimi-k2",
         "id": "moonshotai/Kimi-K2.6",
         "interleaved": {
           "field": "reasoning_content"
@@ -88250,6 +89334,12 @@
         "name": "Claude Haiku 4.5",
         "open_weights": false,
         "reasoning": true,
+        "reasoning_options": [
+          {
+            "min": 1024,
+            "type": "budget_tokens"
+          }
+        ],
         "release_date": "2025-10-15",
         "temperature": true,
         "tool_call": true
@@ -88283,6 +89373,21 @@
         "name": "Claude Opus 4.6",
         "open_weights": false,
         "reasoning": true,
+        "reasoning_options": [
+          {
+            "type": "effort",
+            "values": [
+              "low",
+              "medium",
+              "high",
+              "max"
+            ]
+          },
+          {
+            "min": 1024,
+            "type": "budget_tokens"
+          }
+        ],
         "release_date": "2026-02-05",
         "temperature": true,
         "tool_call": true
@@ -88316,6 +89421,18 @@
         "name": "Claude Opus 4.7",
         "open_weights": false,
         "reasoning": true,
+        "reasoning_options": [
+          {
+            "type": "effort",
+            "values": [
+              "low",
+              "medium",
+              "high",
+              "xhigh",
+              "max"
+            ]
+          }
+        ],
         "release_date": "2026-04-16",
         "temperature": false,
         "tool_call": true
@@ -88348,6 +89465,18 @@
         "name": "Claude Opus 4.8",
         "open_weights": false,
         "reasoning": true,
+        "reasoning_options": [
+          {
+            "type": "effort",
+            "values": [
+              "low",
+              "medium",
+              "high",
+              "xhigh",
+              "max"
+            ]
+          }
+        ],
         "release_date": "2026-05-28",
         "temperature": false,
         "tool_call": true
@@ -88381,6 +89510,21 @@
         "name": "Claude Sonnet 4.6",
         "open_weights": false,
         "reasoning": true,
+        "reasoning_options": [
+          {
+            "type": "effort",
+            "values": [
+              "low",
+              "medium",
+              "high",
+              "max"
+            ]
+          },
+          {
+            "min": 1024,
+            "type": "budget_tokens"
+          }
+        ],
         "release_date": "2026-02-17",
         "temperature": true,
         "tool_call": true
@@ -88419,6 +89563,18 @@
           "npm": "@ai-sdk/openai-compatible"
         },
         "reasoning": true,
+        "reasoning_options": [
+          {
+            "type": "effort",
+            "values": [
+              "none",
+              "low",
+              "medium",
+              "high",
+              "xhigh"
+            ]
+          }
+        ],
         "release_date": "2026-02-05",
         "structured_output": true,
         "temperature": false,
@@ -88458,6 +89614,18 @@
           "npm": "@ai-sdk/openai-compatible"
         },
         "reasoning": true,
+        "reasoning_options": [
+          {
+            "type": "effort",
+            "values": [
+              "none",
+              "low",
+              "medium",
+              "high",
+              "xhigh"
+            ]
+          }
+        ],
         "release_date": "2026-03-05",
         "structured_output": true,
         "temperature": false,
@@ -88496,6 +89664,18 @@
           "npm": "@ai-sdk/openai-compatible"
         },
         "reasoning": true,
+        "reasoning_options": [
+          {
+            "type": "effort",
+            "values": [
+              "none",
+              "low",
+              "medium",
+              "high",
+              "xhigh"
+            ]
+          }
+        ],
         "release_date": "2026-03-17",
         "structured_output": true,
         "temperature": false,
@@ -88535,6 +89715,18 @@
           "npm": "@ai-sdk/openai-compatible"
         },
         "reasoning": true,
+        "reasoning_options": [
+          {
+            "type": "effort",
+            "values": [
+              "none",
+              "low",
+              "medium",
+              "high",
+              "xhigh"
+            ]
+          }
+        ],
         "release_date": "2026-04-23",
         "structured_output": true,
         "temperature": false,
@@ -89653,7 +90845,7 @@
           "input": 0.95,
           "output": 4
         },
-        "family": "kimi-k2.6",
+        "family": "kimi-k2",
         "id": "kimi/kimi-k2.6",
         "interleaved": {
           "field": "reasoning_content"
@@ -89839,7 +91031,7 @@
           "input": 0.6,
           "output": 3
         },
-        "family": "kimi-k2.5",
+        "family": "kimi-k2",
         "id": "kimi/kimi-k2.5",
         "interleaved": {
           "field": "reasoning_content"
@@ -90041,7 +91233,7 @@
         "family": "gemini-flash",
         "id": "google/gemini-2.5-flash",
         "knowledge": "2025-01",
-        "last_updated": "2025-06-05",
+        "last_updated": "2025-06-17",
         "limit": {
           "context": 1048576,
           "output": 65536
@@ -90061,7 +91253,7 @@
         "name": "Gemini 2.5 Flash",
         "open_weights": false,
         "reasoning": true,
-        "release_date": "2025-03-20",
+        "release_date": "2025-06-17",
         "structured_output": true,
         "temperature": true,
         "tool_call": true
@@ -91046,7 +92238,7 @@
         "family": "gemini-pro",
         "id": "google/gemini-2.5-pro",
         "knowledge": "2025-01",
-        "last_updated": "2025-06-05",
+        "last_updated": "2025-06-17",
         "limit": {
           "context": 1048576,
           "output": 65536
@@ -91066,7 +92258,7 @@
         "name": "Gemini 2.5 Pro",
         "open_weights": false,
         "reasoning": true,
-        "release_date": "2025-03-20",
+        "release_date": "2025-06-17",
         "structured_output": true,
         "temperature": true,
         "tool_call": true
@@ -91924,6 +93116,7 @@
         "name": "Agentic Chat (Claude Fable 5)",
         "open_weights": false,
         "reasoning": true,
+        "reasoning_options": [],
         "release_date": "2026-06-09",
         "temperature": false,
         "tool_call": true
@@ -91955,6 +93148,7 @@
         "name": "Agentic Chat (GPT-5.1)",
         "open_weights": false,
         "reasoning": true,
+        "reasoning_options": [],
         "release_date": "2026-01-22",
         "structured_output": true,
         "temperature": false,
@@ -91987,6 +93181,7 @@
         "name": "Agentic Chat (GPT-5.2)",
         "open_weights": false,
         "reasoning": true,
+        "reasoning_options": [],
         "release_date": "2026-01-23",
         "structured_output": true,
         "temperature": false,
@@ -92020,6 +93215,7 @@
         "name": "Agentic Chat (GPT-5.2 Codex)",
         "open_weights": false,
         "reasoning": true,
+        "reasoning_options": [],
         "release_date": "2026-01-22",
         "structured_output": true,
         "temperature": false,
@@ -92053,6 +93249,7 @@
         "name": "Agentic Chat (GPT-5.3 Codex)",
         "open_weights": false,
         "reasoning": true,
+        "reasoning_options": [],
         "release_date": "2026-02-05",
         "structured_output": true,
         "temperature": false,
@@ -92086,6 +93283,7 @@
         "name": "Agentic Chat (GPT-5.4)",
         "open_weights": false,
         "reasoning": true,
+        "reasoning_options": [],
         "release_date": "2026-03-05",
         "structured_output": true,
         "temperature": false,
@@ -92118,6 +93316,7 @@
         "name": "Agentic Chat (GPT-5.4 Mini)",
         "open_weights": false,
         "reasoning": true,
+        "reasoning_options": [],
         "release_date": "2026-03-17",
         "structured_output": true,
         "temperature": false,
@@ -92150,6 +93349,7 @@
         "name": "Agentic Chat (GPT-5.4 Nano)",
         "open_weights": false,
         "reasoning": true,
+        "reasoning_options": [],
         "release_date": "2026-03-17",
         "structured_output": true,
         "temperature": false,
@@ -92183,6 +93383,7 @@
         "name": "Agentic Chat (GPT-5.5)",
         "open_weights": false,
         "reasoning": true,
+        "reasoning_options": [],
         "release_date": "2026-04-23",
         "structured_output": true,
         "temperature": false,
@@ -92215,6 +93416,7 @@
         "name": "Agentic Chat (GPT-5 Codex)",
         "open_weights": false,
         "reasoning": true,
+        "reasoning_options": [],
         "release_date": "2026-01-22",
         "structured_output": true,
         "temperature": false,
@@ -92247,6 +93449,7 @@
         "name": "Agentic Chat (GPT-5 Mini)",
         "open_weights": false,
         "reasoning": true,
+        "reasoning_options": [],
         "release_date": "2026-01-22",
         "structured_output": true,
         "temperature": false,
@@ -92281,6 +93484,7 @@
         "name": "Agentic Chat (Claude Haiku 4.5)",
         "open_weights": false,
         "reasoning": true,
+        "reasoning_options": [],
         "release_date": "2026-01-08",
         "temperature": true,
         "tool_call": true
@@ -92314,6 +93518,7 @@
         "name": "Agentic Chat (Claude Opus 4.5)",
         "open_weights": false,
         "reasoning": true,
+        "reasoning_options": [],
         "release_date": "2026-01-08",
         "temperature": true,
         "tool_call": true
@@ -92347,6 +93552,7 @@
         "name": "Agentic Chat (Claude Opus 4.6)",
         "open_weights": false,
         "reasoning": true,
+        "reasoning_options": [],
         "release_date": "2026-02-05",
         "temperature": true,
         "tool_call": true
@@ -92380,6 +93586,7 @@
         "name": "Agentic Chat (Claude Opus 4.7)",
         "open_weights": false,
         "reasoning": true,
+        "reasoning_options": [],
         "release_date": "2026-04-16",
         "temperature": false,
         "tool_call": true
@@ -92413,6 +93620,7 @@
         "name": "Agentic Chat (Claude Opus 4.8)",
         "open_weights": false,
         "reasoning": true,
+        "reasoning_options": [],
         "release_date": "2026-05-28",
         "temperature": false,
         "tool_call": true
@@ -92446,6 +93654,7 @@
         "name": "Agentic Chat (Claude Sonnet 4.5)",
         "open_weights": false,
         "reasoning": true,
+        "reasoning_options": [],
         "release_date": "2026-01-08",
         "temperature": true,
         "tool_call": true
@@ -92479,6 +93688,7 @@
         "name": "Agentic Chat (Claude Sonnet 4.6)",
         "open_weights": false,
         "reasoning": true,
+        "reasoning_options": [],
         "release_date": "2026-02-17",
         "temperature": true,
         "tool_call": true
@@ -92864,6 +94074,218 @@
       }
     },
     "name": "Regolo AI",
+    "npm": "@ai-sdk/openai-compatible"
+  },
+  "umans-ai": {
+    "api": "https://api.code.umans.ai/v1",
+    "doc": "https://app.umans.ai/offers/code/docs/orgs",
+    "env": [
+      "UMANS_AI_API_KEY"
+    ],
+    "id": "umans-ai",
+    "models": {
+      "umans-coder": {
+        "attachment": true,
+        "cost": {
+          "cache_read": 0.2,
+          "input": 0.95,
+          "output": 4
+        },
+        "family": "kimi-k2",
+        "id": "umans-coder",
+        "interleaved": {
+          "field": "reasoning_content"
+        },
+        "knowledge": "2025-01",
+        "last_updated": "2026-04-21",
+        "limit": {
+          "context": 262144,
+          "output": 32768
+        },
+        "modalities": {
+          "input": [
+            "text",
+            "image"
+          ],
+          "output": [
+            "text"
+          ]
+        },
+        "name": "Umans Coder",
+        "open_weights": true,
+        "reasoning": true,
+        "reasoning_options": [
+          {
+            "type": "toggle"
+          }
+        ],
+        "release_date": "2026-04-21",
+        "structured_output": true,
+        "temperature": false,
+        "tool_call": true
+      },
+      "umans-flash": {
+        "attachment": true,
+        "cost": {
+          "cache_read": 0.05,
+          "input": 0.15,
+          "output": 1
+        },
+        "family": "qwen",
+        "id": "umans-flash",
+        "interleaved": {
+          "field": "reasoning_content"
+        },
+        "last_updated": "2026-04-17",
+        "limit": {
+          "context": 262144,
+          "output": 32768
+        },
+        "modalities": {
+          "input": [
+            "text",
+            "image"
+          ],
+          "output": [
+            "text"
+          ]
+        },
+        "name": "Umans Flash",
+        "open_weights": true,
+        "reasoning": true,
+        "reasoning_options": [
+          {
+            "type": "toggle"
+          }
+        ],
+        "release_date": "2026-04-17",
+        "structured_output": true,
+        "temperature": false,
+        "tool_call": true
+      },
+      "umans-glm-5.1": {
+        "attachment": false,
+        "cost": {
+          "cache_read": 0.29,
+          "input": 1.4,
+          "output": 4.4
+        },
+        "family": "glm",
+        "id": "umans-glm-5.1",
+        "interleaved": {
+          "field": "reasoning_content"
+        },
+        "last_updated": "2026-03-27",
+        "limit": {
+          "context": 204800,
+          "output": 131072
+        },
+        "modalities": {
+          "input": [
+            "text",
+            "image"
+          ],
+          "output": [
+            "text"
+          ]
+        },
+        "name": "GLM 5.1",
+        "open_weights": true,
+        "reasoning": true,
+        "reasoning_options": [
+          {
+            "type": "toggle"
+          }
+        ],
+        "release_date": "2026-03-27",
+        "structured_output": true,
+        "temperature": true,
+        "tool_call": true
+      },
+      "umans-kimi-k2.6": {
+        "attachment": true,
+        "cost": {
+          "cache_read": 0.2,
+          "input": 0.95,
+          "output": 4
+        },
+        "family": "kimi-k2",
+        "id": "umans-kimi-k2.6",
+        "interleaved": {
+          "field": "reasoning_content"
+        },
+        "knowledge": "2025-01",
+        "last_updated": "2026-04-21",
+        "limit": {
+          "context": 262144,
+          "output": 32768
+        },
+        "modalities": {
+          "input": [
+            "text",
+            "image",
+            "video"
+          ],
+          "output": [
+            "text"
+          ]
+        },
+        "name": "Kimi K2.6",
+        "open_weights": true,
+        "reasoning": true,
+        "reasoning_options": [
+          {
+            "type": "toggle"
+          }
+        ],
+        "release_date": "2026-04-21",
+        "structured_output": true,
+        "temperature": false,
+        "tool_call": true
+      },
+      "umans-kimi-k2.7": {
+        "attachment": true,
+        "cost": {
+          "cache_read": 0.19,
+          "input": 0.95,
+          "output": 4
+        },
+        "family": "kimi-k2",
+        "id": "umans-kimi-k2.7",
+        "interleaved": {
+          "field": "reasoning_content"
+        },
+        "knowledge": "2025-01",
+        "last_updated": "2026-06-12",
+        "limit": {
+          "context": 262144,
+          "output": 32768
+        },
+        "modalities": {
+          "input": [
+            "text",
+            "image",
+            "video"
+          ],
+          "output": [
+            "text"
+          ]
+        },
+        "name": "Kimi K2.7 Code",
+        "open_weights": true,
+        "reasoning": true,
+        "reasoning_options": [
+          {
+            "type": "toggle"
+          }
+        ],
+        "release_date": "2026-06-12",
+        "structured_output": true,
+        "temperature": false,
+        "tool_call": true
+      }
+    },
+    "name": "Umans AI",
     "npm": "@ai-sdk/openai-compatible"
   },
   "xpersona": {
@@ -102877,6 +104299,16 @@
         "name": "GPT OSS 20B",
         "open_weights": true,
         "reasoning": true,
+        "reasoning_options": [
+          {
+            "type": "effort",
+            "values": [
+              "low",
+              "medium",
+              "high"
+            ]
+          }
+        ],
         "release_date": "2025-08-05",
         "temperature": true,
         "tool_call": true
@@ -103029,6 +104461,7 @@
         "name": "MiniMax M2.1",
         "open_weights": true,
         "reasoning": true,
+        "reasoning_options": [],
         "release_date": "2025-12-23",
         "temperature": true,
         "tool_call": true
@@ -103060,6 +104493,7 @@
         "name": "MiniMax M2.5",
         "open_weights": true,
         "reasoning": true,
+        "reasoning_options": [],
         "release_date": "2026-02-12",
         "temperature": true,
         "tool_call": true
@@ -103151,6 +104585,7 @@
         "name": "Qwen3.5 Plus",
         "open_weights": false,
         "reasoning": true,
+        "reasoning_options": [],
         "release_date": "2026-02",
         "temperature": true,
         "tool_call": true
@@ -103180,6 +104615,11 @@
         "name": "MiMo V2 Flash",
         "open_weights": true,
         "reasoning": true,
+        "reasoning_options": [
+          {
+            "type": "toggle"
+          }
+        ],
         "release_date": "2025-12-17",
         "temperature": true,
         "tool_call": true
@@ -103212,6 +104652,7 @@
         "name": "DeepSeek R1 0528",
         "open_weights": true,
         "reasoning": true,
+        "reasoning_options": [],
         "release_date": "2025-05-28",
         "temperature": true,
         "tool_call": false
@@ -103447,6 +104888,7 @@
         "name": "Kimi K2 Thinking",
         "open_weights": true,
         "reasoning": true,
+        "reasoning_options": [],
         "release_date": "2025-11-06",
         "temperature": true,
         "tool_call": true
@@ -103457,7 +104899,7 @@
           "input": 0.45,
           "output": 2.8
         },
-        "family": "kimi",
+        "family": "kimi-k2",
         "id": "moonshotai/Kimi-K2.5",
         "interleaved": {
           "field": "reasoning_content"
@@ -103480,6 +104922,7 @@
         "name": "Kimi K2.5",
         "open_weights": true,
         "reasoning": true,
+        "reasoning_options": [],
         "release_date": "2026-01-27",
         "temperature": true,
         "tool_call": true
@@ -103512,6 +104955,7 @@
         "name": "GLM-4.6",
         "open_weights": true,
         "reasoning": true,
+        "reasoning_options": [],
         "release_date": "2025-09-30",
         "temperature": true,
         "tool_call": true
@@ -103544,6 +104988,7 @@
         "name": "GLM-4.7",
         "open_weights": true,
         "reasoning": true,
+        "reasoning_options": [],
         "release_date": "2025-12-22",
         "temperature": true,
         "tool_call": true
@@ -103575,6 +105020,11 @@
         "name": "GLM-5",
         "open_weights": true,
         "reasoning": true,
+        "reasoning_options": [
+          {
+            "type": "toggle"
+          }
+        ],
         "release_date": "2026-02-11",
         "temperature": true,
         "tool_call": true
@@ -105162,7 +106612,7 @@
           "input": 0.551,
           "output": 2.646
         },
-        "family": "kimi",
+        "family": "kimi-k2",
         "id": "kimi-k2-instruct",
         "knowledge": "2024-07",
         "last_updated": "2025-09-05",
@@ -106240,6 +107690,7 @@
         "name": "MiniMax M2.5",
         "open_weights": true,
         "reasoning": true,
+        "reasoning_options": [],
         "release_date": "2026-02-12",
         "structured_output": false,
         "temperature": true,
@@ -106252,7 +107703,7 @@
           "input": 0.3,
           "output": 1.5
         },
-        "family": "kimi",
+        "family": "kimi-k2",
         "id": "moonshotai/kimi-k2.5",
         "interleaved": {
           "field": "reasoning_content"
@@ -106276,6 +107727,11 @@
         "name": "Kimi K2.5",
         "open_weights": true,
         "reasoning": true,
+        "reasoning_options": [
+          {
+            "type": "toggle"
+          }
+        ],
         "release_date": "2026-01-01",
         "structured_output": true,
         "temperature": false,
@@ -106309,6 +107765,11 @@
         "name": "GLM 5.1",
         "open_weights": true,
         "reasoning": true,
+        "reasoning_options": [
+          {
+            "type": "toggle"
+          }
+        ],
         "release_date": "2026-04-08",
         "structured_output": true,
         "temperature": true,
@@ -106786,7 +108247,7 @@
           "input": 1,
           "output": 3
         },
-        "family": "kimi",
+        "family": "kimi-k2",
         "id": "moonshotai/Kimi-K2-Instruct",
         "knowledge": "2024-10",
         "last_updated": "2025-07-14",
@@ -106815,7 +108276,7 @@
           "input": 1,
           "output": 3
         },
-        "family": "kimi",
+        "family": "kimi-k2",
         "id": "moonshotai/Kimi-K2-Instruct-0905",
         "knowledge": "2024-10",
         "last_updated": "2025-09-04",
@@ -106878,7 +108339,7 @@
           "input": 0.6,
           "output": 3
         },
-        "family": "kimi",
+        "family": "kimi-k2",
         "id": "moonshotai/Kimi-K2.5",
         "interleaved": {
           "field": "reasoning_content"
@@ -106913,7 +108374,7 @@
           "input": 0.95,
           "output": 4
         },
-        "family": "kimi",
+        "family": "kimi-k2",
         "id": "moonshotai/Kimi-K2.6",
         "interleaved": {
           "field": "reasoning_content"
@@ -112760,7 +114221,7 @@
           "input": 0,
           "output": 0
         },
-        "family": "kimi",
+        "family": "kimi-k2",
         "id": "kimi-k2.5",
         "interleaved": {
           "field": "reasoning_content"
@@ -114360,7 +115821,7 @@
         "family": "gemini-flash",
         "id": "google/gemini-2.5-flash",
         "knowledge": "2025-01",
-        "last_updated": "2025-06-05",
+        "last_updated": "2025-06-17",
         "limit": {
           "context": 1048576,
           "output": 65536
@@ -114380,7 +115841,7 @@
         "name": "Gemini 2.5 Flash",
         "open_weights": false,
         "reasoning": true,
-        "release_date": "2025-03-20",
+        "release_date": "2025-06-17",
         "structured_output": true,
         "temperature": true,
         "tool_call": true
@@ -115004,7 +116465,7 @@
         "family": "mistral-large",
         "id": "mistral/mistral-large-2411",
         "knowledge": "2024-11",
-        "last_updated": "2024-11-04",
+        "last_updated": "2024-11-18",
         "limit": {
           "context": 131072,
           "output": 16384
@@ -115020,7 +116481,7 @@
         "name": "Mistral Large 2.1",
         "open_weights": true,
         "reasoning": false,
-        "release_date": "2024-11-01",
+        "release_date": "2024-11-18",
         "temperature": true,
         "tool_call": true
       },
@@ -115336,7 +116797,7 @@
         "family": "gemini-pro",
         "id": "google/gemini-2.5-pro",
         "knowledge": "2025-01",
-        "last_updated": "2025-06-05",
+        "last_updated": "2025-06-17",
         "limit": {
           "context": 1048576,
           "output": 65536
@@ -115356,7 +116817,7 @@
         "name": "Gemini 2.5 Pro",
         "open_weights": false,
         "reasoning": true,
-        "release_date": "2025-03-20",
+        "release_date": "2025-06-17",
         "structured_output": true,
         "temperature": true,
         "tool_call": true
@@ -116706,7 +118167,7 @@
           "input": 0.5,
           "output": 2.8
         },
-        "family": "kimi",
+        "family": "kimi-k2",
         "id": "moonshotai/Kimi-K2.5",
         "interleaved": true,
         "knowledge": "2026-01",
@@ -116744,7 +118205,7 @@
           "input": 1.2,
           "output": 4.5
         },
-        "family": "kimi-k2.6",
+        "family": "kimi-k2",
         "id": "moonshotai/Kimi-K2.6",
         "knowledge": "2025-01",
         "last_updated": "2026-04-21",
@@ -117517,7 +118978,7 @@
           "input": 0.95,
           "output": 4
         },
-        "family": "kimi-k2.6",
+        "family": "kimi-k2",
         "id": "moonshotai/Kimi-K2.6-TEE",
         "interleaved": {
           "field": "reasoning_content"
@@ -117711,7 +119172,7 @@
           "input": 0.44,
           "output": 2
         },
-        "family": "kimi-k2.5",
+        "family": "kimi-k2",
         "id": "moonshotai/Kimi-K2.5-TEE",
         "interleaved": {
           "field": "reasoning_content"
@@ -121846,7 +123307,7 @@
       },
       "novita/kimi-k2-thinking": {
         "attachment": true,
-        "family": "kimi",
+        "family": "kimi-thinking",
         "id": "novita/kimi-k2-thinking",
         "last_updated": "2025-11-07",
         "limit": {
@@ -122762,6 +124223,11 @@
         "name": "GLM-5.1",
         "open_weights": true,
         "reasoning": true,
+        "reasoning_options": [
+          {
+            "type": "toggle"
+          }
+        ],
         "release_date": "2026-04-07",
         "structured_output": true,
         "temperature": true,
@@ -122775,7 +124241,7 @@
           "input": 0.68,
           "output": 3.15
         },
-        "family": "kimi",
+        "family": "kimi-k2",
         "id": "Kimi-K2.6",
         "knowledge": "2025-01",
         "last_updated": "2026-06-01",
@@ -122796,6 +124262,11 @@
         "name": "Kimi-K2.6",
         "open_weights": true,
         "reasoning": true,
+        "reasoning_options": [
+          {
+            "type": "toggle"
+          }
+        ],
         "release_date": "2026-05-13",
         "structured_output": true,
         "temperature": true,
@@ -122830,6 +124301,11 @@
         "name": "Qwen3.5-397B-A17B",
         "open_weights": true,
         "reasoning": true,
+        "reasoning_options": [
+          {
+            "type": "toggle"
+          }
+        ],
         "release_date": "2026-02-16",
         "structured_output": true,
         "temperature": true,
@@ -122865,6 +124341,11 @@
         "name": "Qwen3.6-35B-A3B",
         "open_weights": true,
         "reasoning": true,
+        "reasoning_options": [
+          {
+            "type": "toggle"
+          }
+        ],
         "release_date": "2026-05-11",
         "structured_output": true,
         "temperature": true,
@@ -122900,6 +124381,18 @@
         "name": "DeepSeek V4 Flash",
         "open_weights": true,
         "reasoning": true,
+        "reasoning_options": [
+          {
+            "type": "toggle"
+          },
+          {
+            "type": "effort",
+            "values": [
+              "high",
+              "max"
+            ]
+          }
+        ],
         "release_date": "2026-04-24",
         "structured_output": true,
         "temperature": true,
@@ -122935,6 +124428,18 @@
         "name": "DeepSeek V4 Pro",
         "open_weights": true,
         "reasoning": true,
+        "reasoning_options": [
+          {
+            "type": "toggle"
+          },
+          {
+            "type": "effort",
+            "values": [
+              "high",
+              "max"
+            ]
+          }
+        ],
         "release_date": "2026-04-24",
         "structured_output": true,
         "temperature": true,
@@ -122966,6 +124471,11 @@
         "name": "Qwen3.7-Max",
         "open_weights": false,
         "reasoning": true,
+        "reasoning_options": [
+          {
+            "type": "toggle"
+          }
+        ],
         "release_date": "2026-05-21",
         "structured_output": true,
         "temperature": true,
@@ -123114,7 +124624,7 @@
           "input": 0.83,
           "output": 3.85
         },
-        "family": "kimi-k2.6",
+        "family": "kimi-k2",
         "id": "moonshotai/Kimi-K2.6",
         "interleaved": {
           "field": "reasoning_content"
@@ -123918,7 +125428,7 @@
           "input": 0,
           "output": 0
         },
-        "family": "kimi",
+        "family": "kimi-k2",
         "id": "kimi-k2.5",
         "interleaved": {
           "field": "reasoning_content"
@@ -123954,7 +125464,7 @@
           "input": 0,
           "output": 0
         },
-        "family": "kimi",
+        "family": "kimi-k2",
         "id": "kimi-k2.6",
         "interleaved": {
           "field": "reasoning_content"
@@ -124798,7 +126308,7 @@
           "input": 0,
           "output": 0
         },
-        "family": "kimi",
+        "family": "kimi-k2",
         "id": "kimi-k2.5",
         "interleaved": {
           "field": "reasoning_content"
@@ -125273,7 +126783,7 @@
           "input": 0,
           "output": 0
         },
-        "family": "kimi-k2.6",
+        "family": "kimi-k2",
         "id": "moonshotai/kimi-k2.6",
         "interleaved": {
           "field": "reasoning_content"
@@ -126503,7 +128013,7 @@
           "input": 0,
           "output": 0
         },
-        "family": "kimi",
+        "family": "kimi-k2",
         "id": "moonshotai/kimi-k2-instruct-0905",
         "knowledge": "2024-10",
         "last_updated": "2025-09-05",
@@ -129647,7 +131157,7 @@
           "input": 0.6,
           "output": 2.5
         },
-        "family": "kimi",
+        "family": "kimi-k2",
         "id": "moonshotai/kimi-k2-0905",
         "last_updated": "2026-01",
         "limit": {
@@ -129765,7 +131275,7 @@
           "input": 0.6,
           "output": 3
         },
-        "family": "kimi",
+        "family": "kimi-k2",
         "id": "moonshotai/kimi-k2.5",
         "last_updated": "2026-01",
         "limit": {
@@ -130159,7 +131669,7 @@
           "input": 0.57,
           "output": 2.3
         },
-        "family": "kimi",
+        "family": "kimi-k2",
         "id": "moonshotai/kimi-k2-instruct",
         "last_updated": "2026-01",
         "limit": {
@@ -130696,7 +132206,7 @@
           "input": 0.462,
           "output": 2.42
         },
-        "family": "kimi-k2.5",
+        "family": "kimi-k2",
         "id": "route/kimi-k2.5",
         "knowledge": "2025-01",
         "last_updated": "2026-01",
@@ -130729,7 +132239,7 @@
           "input": 0.462,
           "output": 2.42
         },
-        "family": "kimi-k2.6",
+        "family": "kimi-k2",
         "id": "route/kimi-k2.6",
         "interleaved": {
           "field": "reasoning_content"
@@ -130765,7 +132275,7 @@
           "input": 0.462,
           "output": 2.42
         },
-        "family": "kimi-k2.6",
+        "family": "kimi-k2",
         "id": "route/kimi-k2.6-6bit",
         "interleaved": {
           "field": "reasoning_content"
@@ -131704,7 +133214,7 @@
           "input": 0.52,
           "output": 2.59
         },
-        "family": "kimi",
+        "family": "kimi-k2",
         "id": "kimi-k2.5-fast",
         "last_updated": "2026-01-27",
         "limit": {
@@ -131733,7 +133243,7 @@
           "input": 0.69,
           "output": 3.22
         },
-        "family": "kimi",
+        "family": "kimi-k2",
         "id": "kimi-k2.6-fast",
         "last_updated": "2026-04-21",
         "limit": {
@@ -131791,7 +133301,7 @@
           "input": 0.52,
           "output": 2.59
         },
-        "family": "kimi",
+        "family": "kimi-k2",
         "id": "moonshotai/Kimi-K2.5",
         "interleaved": {
           "field": "reasoning_content"
@@ -131823,7 +133333,7 @@
           "input": 0.69,
           "output": 3.22
         },
-        "family": "kimi",
+        "family": "kimi-k2",
         "id": "moonshotai/Kimi-K2.6",
         "interleaved": {
           "field": "reasoning_content"
@@ -134528,7 +136038,7 @@
           "input": 0.95,
           "output": 4
         },
-        "family": "kimi",
+        "family": "kimi-k2",
         "id": "kimi-k2.6",
         "interleaved": true,
         "knowledge": "2025-01",
@@ -134863,7 +136373,7 @@
           "input": 0.6,
           "output": 3
         },
-        "family": "kimi",
+        "family": "kimi-k2",
         "id": "kimi-k2.5",
         "interleaved": true,
         "knowledge": "2025-01",
@@ -135350,7 +136860,7 @@
           "input": 0,
           "output": 0
         },
-        "family": "kimi",
+        "family": "kimi-k2",
         "id": "kimi-k2.5",
         "interleaved": {
           "field": "reasoning_content"
@@ -136010,7 +137520,7 @@
           "input": 0.95,
           "output": 4
         },
-        "family": "kimi-k2.6",
+        "family": "kimi-k2",
         "id": "hf:moonshotai/Kimi-K2.6",
         "interleaved": {
           "field": "reasoning_content"
@@ -136044,7 +137554,7 @@
           "input": 1.2,
           "output": 1.2
         },
-        "family": "kimi",
+        "family": "kimi-k2",
         "id": "hf:moonshotai/Kimi-K2-Instruct-0905",
         "knowledge": "2024-10",
         "last_updated": "2025-09-05",
@@ -136427,7 +137937,7 @@
           "input": 0.55,
           "output": 2.19
         },
-        "family": "kimi",
+        "family": "kimi-k2",
         "id": "hf:nvidia/Kimi-K2.5-NVFP4",
         "interleaved": {
           "field": "reasoning_content"
@@ -136776,7 +138286,7 @@
           "input": 0.55,
           "output": 2.19
         },
-        "family": "kimi",
+        "family": "kimi-k2",
         "id": "hf:moonshotai/Kimi-K2.5",
         "interleaved": {
           "field": "reasoning_content"
@@ -137278,7 +138788,7 @@
           "input": 0.95,
           "output": 4
         },
-        "family": "kimi-k2.6",
+        "family": "kimi-k2",
         "id": "@cf/moonshotai/kimi-k2.6",
         "interleaved": {
           "field": "reasoning_content"
@@ -137315,6 +138825,38 @@
           }
         ],
         "release_date": "2026-04-21",
+        "structured_output": true,
+        "temperature": true,
+        "tool_call": true
+      },
+      "@cf/moonshotai/kimi-k2.7-code": {
+        "attachment": true,
+        "cost": {
+          "cache_read": 0.19,
+          "input": 0.95,
+          "output": 4
+        },
+        "family": "kimi-k2",
+        "id": "@cf/moonshotai/kimi-k2.7-code",
+        "knowledge": "2025-01",
+        "last_updated": "2026-06-12",
+        "limit": {
+          "context": 262144,
+          "output": 262144
+        },
+        "modalities": {
+          "input": [
+            "text",
+            "image"
+          ],
+          "output": [
+            "text"
+          ]
+        },
+        "name": "Kimi K2.7 Code",
+        "open_weights": true,
+        "reasoning": true,
+        "release_date": "2026-06-12",
         "structured_output": true,
         "temperature": true,
         "tool_call": true
@@ -138003,7 +139545,7 @@
         "family": "gemini-flash",
         "id": "databricks-gemini-2-5-flash",
         "knowledge": "2025-01",
-        "last_updated": "2025-06-05",
+        "last_updated": "2025-06-17",
         "limit": {
           "context": 1048576,
           "output": 65536
@@ -138023,7 +139565,7 @@
         "name": "Gemini 2.5 Flash",
         "open_weights": false,
         "reasoning": true,
-        "release_date": "2025-03-20",
+        "release_date": "2025-06-17",
         "structured_output": true,
         "temperature": true,
         "tool_call": true
@@ -138054,7 +139596,7 @@
         "family": "gemini-pro",
         "id": "databricks-gemini-2-5-pro",
         "knowledge": "2025-01",
-        "last_updated": "2025-06-05",
+        "last_updated": "2025-06-17",
         "limit": {
           "context": 1048576,
           "output": 65536
@@ -138074,7 +139616,7 @@
         "name": "Gemini 2.5 Pro",
         "open_weights": false,
         "reasoning": true,
-        "release_date": "2025-03-20",
+        "release_date": "2025-06-17",
         "structured_output": true,
         "temperature": true,
         "tool_call": true
@@ -139414,7 +140956,7 @@
           "output": 2.5,
           "reasoning": 2.5
         },
-        "family": "kimi",
+        "family": "kimi-k2",
         "id": "moonshotai/Kimi-K2.5",
         "interleaved": {
           "field": "reasoning_content"
@@ -139457,7 +140999,7 @@
           "input": 0.5,
           "output": 2.5
         },
-        "family": "kimi",
+        "family": "kimi-k2",
         "id": "moonshotai/Kimi-K2.5-fast",
         "interleaved": {
           "field": "reasoning_content"
@@ -140152,7 +141694,7 @@
           "input": 0.39,
           "output": 1.9
         },
-        "family": "kimi",
+        "family": "kimi-k2",
         "id": "moonshotai/Kimi-K2-Instruct-0905",
         "knowledge": "2024-08",
         "last_updated": "2024-09-05",
@@ -144488,6 +146030,17 @@
           "npm": "@ai-sdk/openai-compatible"
         },
         "reasoning": true,
+        "reasoning_options": [
+          {
+            "type": "effort",
+            "values": [
+              "none",
+              "low",
+              "medium",
+              "high"
+            ]
+          }
+        ],
         "release_date": "2026-04-24",
         "structured_output": true,
         "temperature": true,
@@ -144525,6 +146078,17 @@
           "npm": "@ai-sdk/openai-compatible"
         },
         "reasoning": true,
+        "reasoning_options": [
+          {
+            "type": "effort",
+            "values": [
+              "none",
+              "low",
+              "medium",
+              "high"
+            ]
+          }
+        ],
         "release_date": "2026-04-24",
         "structured_output": true,
         "temperature": true,
@@ -144562,6 +146126,17 @@
           "npm": "@ai-sdk/openai-compatible"
         },
         "reasoning": true,
+        "reasoning_options": [
+          {
+            "type": "effort",
+            "values": [
+              "none",
+              "low",
+              "medium",
+              "high"
+            ]
+          }
+        ],
         "release_date": "2026-04-24",
         "structured_output": true,
         "temperature": true,
@@ -144596,6 +146171,17 @@
           "npm": "@ai-sdk/openai-compatible"
         },
         "reasoning": true,
+        "reasoning_options": [
+          {
+            "type": "effort",
+            "values": [
+              "none",
+              "low",
+              "medium",
+              "high"
+            ]
+          }
+        ],
         "release_date": "2026-04-02",
         "structured_output": true,
         "temperature": true,
@@ -144634,6 +146220,7 @@
           "npm": "@ai-sdk/openai-compatible"
         },
         "reasoning": true,
+        "reasoning_options": [],
         "release_date": "2025-12-22",
         "temperature": true,
         "tool_call": true
@@ -144668,6 +146255,7 @@
           "npm": "@ai-sdk/openai-compatible"
         },
         "reasoning": true,
+        "reasoning_options": [],
         "release_date": "2026-01-19",
         "temperature": true,
         "tool_call": true
@@ -144704,6 +146292,7 @@
           "npm": "@ai-sdk/openai-compatible"
         },
         "reasoning": true,
+        "reasoning_options": [],
         "release_date": "2026-02-11",
         "temperature": true,
         "tool_call": true
@@ -144740,6 +146329,17 @@
           "npm": "@ai-sdk/openai-compatible"
         },
         "reasoning": true,
+        "reasoning_options": [
+          {
+            "type": "effort",
+            "values": [
+              "none",
+              "low",
+              "medium",
+              "high"
+            ]
+          }
+        ],
         "release_date": "2026-03-27",
         "structured_output": true,
         "temperature": true,
@@ -144864,7 +146464,7 @@
           "input": 0.35,
           "output": 1.7
         },
-        "family": "kimi-k2.5",
+        "family": "kimi-k2",
         "id": "kimi-k2.5",
         "interleaved": {
           "field": "reasoning_content"
@@ -144891,6 +146491,17 @@
           "npm": "@ai-sdk/openai-compatible"
         },
         "reasoning": true,
+        "reasoning_options": [
+          {
+            "type": "effort",
+            "values": [
+              "none",
+              "low",
+              "medium",
+              "high"
+            ]
+          }
+        ],
         "release_date": "2026-01",
         "structured_output": true,
         "temperature": false,
@@ -144903,7 +146514,7 @@
           "input": 1,
           "output": 3
         },
-        "family": "kimi-k2.5",
+        "family": "kimi-k2",
         "id": "kimi-k2.5-lightning",
         "interleaved": {
           "field": "reasoning_content"
@@ -144926,6 +146537,17 @@
         "name": "Kimi K2.5 (Lightning)",
         "open_weights": true,
         "reasoning": true,
+        "reasoning_options": [
+          {
+            "type": "effort",
+            "values": [
+              "none",
+              "low",
+              "medium",
+              "high"
+            ]
+          }
+        ],
         "release_date": "2026-02-06",
         "structured_output": true,
         "temperature": false,
@@ -144938,7 +146560,7 @@
           "input": 0.5,
           "output": 1.99
         },
-        "family": "kimi-k2.6",
+        "family": "kimi-k2",
         "id": "kimi-k2.6",
         "interleaved": {
           "field": "reasoning_content"
@@ -144965,6 +146587,17 @@
           "npm": "@ai-sdk/openai-compatible"
         },
         "reasoning": true,
+        "reasoning_options": [
+          {
+            "type": "effort",
+            "values": [
+              "none",
+              "low",
+              "medium",
+              "high"
+            ]
+          }
+        ],
         "release_date": "2026-04-21",
         "structured_output": true,
         "temperature": true,
@@ -145018,6 +146651,17 @@
           "npm": "@ai-sdk/openai-compatible"
         },
         "reasoning": true,
+        "reasoning_options": [
+          {
+            "type": "effort",
+            "values": [
+              "none",
+              "low",
+              "medium",
+              "high"
+            ]
+          }
+        ],
         "release_date": "2026-04-22",
         "temperature": true,
         "tool_call": true
@@ -145051,6 +146695,7 @@
           "npm": "@ai-sdk/openai-compatible"
         },
         "reasoning": false,
+        "reasoning_options": [],
         "release_date": "2026-02-12",
         "temperature": true,
         "tool_call": true
@@ -145086,6 +146731,17 @@
           "npm": "@ai-sdk/openai-compatible"
         },
         "reasoning": true,
+        "reasoning_options": [
+          {
+            "type": "effort",
+            "values": [
+              "none",
+              "low",
+              "medium",
+              "high"
+            ]
+          }
+        ],
         "release_date": "2026-02-15",
         "structured_output": true,
         "temperature": true,
@@ -145122,6 +146778,17 @@
         "name": "Qwen3.5 9B",
         "open_weights": true,
         "reasoning": true,
+        "reasoning_options": [
+          {
+            "type": "effort",
+            "values": [
+              "none",
+              "low",
+              "medium",
+              "high"
+            ]
+          }
+        ],
         "release_date": "2026-03-13",
         "structured_output": true,
         "temperature": true,
@@ -145158,6 +146825,17 @@
           "npm": "@ai-sdk/openai-compatible"
         },
         "reasoning": true,
+        "reasoning_options": [
+          {
+            "type": "effort",
+            "values": [
+              "none",
+              "low",
+              "medium",
+              "high"
+            ]
+          }
+        ],
         "release_date": "2026-04-22",
         "structured_output": true,
         "temperature": true,
@@ -145183,7 +146861,7 @@
           "input": 0.95,
           "output": 4
         },
-        "family": "kimi-k2.6",
+        "family": "kimi-k2",
         "id": "moonshotai/kimi-k2.6",
         "interleaved": {
           "field": "reasoning_content"
@@ -145647,7 +147325,7 @@
         "family": "gemini-pro",
         "id": "gemini-2.5-pro",
         "knowledge": "2025-01",
-        "last_updated": "2025-06-05",
+        "last_updated": "2025-06-17",
         "limit": {
           "context": 128000,
           "input": 128000,
@@ -145668,7 +147346,7 @@
         "name": "Gemini 2.5 Pro",
         "open_weights": false,
         "reasoning": true,
-        "release_date": "2025-03-20",
+        "release_date": "2025-06-17",
         "structured_output": true,
         "temperature": true,
         "tool_call": true
@@ -146535,7 +148213,7 @@
           "input": 0.7,
           "output": 3.5
         },
-        "family": "kimi-k2.6",
+        "family": "kimi-k2",
         "id": "moonshotai/kimi-k2.6",
         "interleaved": {
           "field": "reasoning_content"
@@ -146762,7 +148440,7 @@
           "input": 0.4,
           "output": 2
         },
-        "family": "kimi",
+        "family": "kimi-k2",
         "id": "moonshotai/Kimi-K2-Instruct-0905",
         "last_updated": "2025-11-25",
         "limit": {
@@ -147090,7 +148768,7 @@
           "input": 0.95,
           "output": 4
         },
-        "family": "kimi",
+        "family": "kimi-k2",
         "id": "Pro/moonshotai/Kimi-K2.6",
         "interleaved": {
           "field": "reasoning_content"
@@ -148741,7 +150419,7 @@
           "input": 0.4,
           "output": 2
         },
-        "family": "kimi",
+        "family": "kimi-k2",
         "id": "Pro/moonshotai/Kimi-K2-Instruct-0905",
         "last_updated": "2025-11-25",
         "limit": {
@@ -148892,7 +150570,7 @@
           "input": 0.45,
           "output": 2.25
         },
-        "family": "kimi",
+        "family": "kimi-k2",
         "id": "Pro/moonshotai/Kimi-K2.5",
         "interleaved": {
           "field": "reasoning_content"
@@ -149658,7 +151336,7 @@
         "family": "gemini-flash",
         "id": "google/gemini-2.5-flash",
         "knowledge": "2025-01",
-        "last_updated": "2025-06-05",
+        "last_updated": "2025-06-17",
         "limit": {
           "context": 1048576,
           "output": 65536
@@ -149678,7 +151356,7 @@
         "name": "Gemini 2.5 Flash",
         "open_weights": false,
         "reasoning": true,
-        "release_date": "2025-03-20",
+        "release_date": "2025-06-17",
         "structured_output": true,
         "temperature": true,
         "tool_call": true
@@ -150035,7 +151713,7 @@
         "family": "gemini-pro",
         "id": "google/gemini-2.5-pro",
         "knowledge": "2025-01",
-        "last_updated": "2025-06-05",
+        "last_updated": "2025-06-17",
         "limit": {
           "context": 1048576,
           "output": 65536
@@ -150055,7 +151733,7 @@
         "name": "Gemini 2.5 Pro",
         "open_weights": false,
         "reasoning": true,
-        "release_date": "2025-03-20",
+        "release_date": "2025-06-17",
         "structured_output": true,
         "temperature": true,
         "tool_call": true
@@ -152224,6 +153902,7 @@
           "npm": "@ai-sdk/openai-compatible"
         },
         "reasoning": true,
+        "reasoning_options": [],
         "release_date": "2025-11-13",
         "structured_output": true,
         "temperature": true,
@@ -152353,6 +154032,11 @@
           "npm": "@ai-sdk/openai-compatible"
         },
         "reasoning": true,
+        "reasoning_options": [
+          {
+            "type": "toggle"
+          }
+        ],
         "release_date": "2026-02-11",
         "temperature": true,
         "tool_call": true
@@ -152588,6 +154272,7 @@
           "npm": "@ai-sdk/openai-compatible"
         },
         "reasoning": true,
+        "reasoning_options": [],
         "release_date": "2025-08-13",
         "structured_output": true,
         "temperature": true,
@@ -152899,6 +154584,11 @@
           "npm": "@ai-sdk/openai-compatible"
         },
         "reasoning": true,
+        "reasoning_options": [
+          {
+            "type": "toggle"
+          }
+        ],
         "release_date": "2026-01-06",
         "structured_output": true,
         "temperature": true,
@@ -152994,6 +154684,7 @@
           "npm": "@ai-sdk/openai-compatible"
         },
         "reasoning": true,
+        "reasoning_options": [],
         "release_date": "2025-08-28",
         "structured_output": true,
         "temperature": true,
@@ -153029,6 +154720,7 @@
           "npm": "@ai-sdk/openai-compatible"
         },
         "reasoning": true,
+        "reasoning_options": [],
         "release_date": "2025-12-17",
         "structured_output": true,
         "temperature": true,
@@ -153419,6 +155111,16 @@
         "name": "GPT OSS 20B",
         "open_weights": true,
         "reasoning": true,
+        "reasoning_options": [
+          {
+            "type": "effort",
+            "values": [
+              "low",
+              "medium",
+              "high"
+            ]
+          }
+        ],
         "release_date": "2025-08-05",
         "temperature": true,
         "tool_call": true
@@ -153529,7 +155231,7 @@
         "family": "gemini-pro",
         "id": "gemini-2.5-pro",
         "knowledge": "2025-01",
-        "last_updated": "2025-06-05",
+        "last_updated": "2025-06-17",
         "limit": {
           "context": 1048576,
           "output": 65536
@@ -153556,7 +155258,7 @@
             "type": "budget_tokens"
           }
         ],
-        "release_date": "2025-03-20",
+        "release_date": "2025-06-17",
         "temperature": true,
         "tool_call": true
       },
@@ -153687,6 +155389,16 @@
         "name": "GPT OSS 120B",
         "open_weights": true,
         "reasoning": true,
+        "reasoning_options": [
+          {
+            "type": "effort",
+            "values": [
+              "low",
+              "medium",
+              "high"
+            ]
+          }
+        ],
         "release_date": "2025-08-05",
         "temperature": true,
         "tool_call": true
@@ -156595,6 +158307,39 @@
         "temperature": true,
         "tool_call": true
       },
+      "moonshotai/kimi-k2.7-code-free": {
+        "attachment": true,
+        "cost": {
+          "cache_read": 0,
+          "input": 0,
+          "output": 0
+        },
+        "family": "kimi-k2",
+        "id": "moonshotai/kimi-k2.7-code-free",
+        "knowledge": "2025-01",
+        "last_updated": "2026-06-12",
+        "limit": {
+          "context": 262144,
+          "output": 262144
+        },
+        "modalities": {
+          "input": [
+            "text",
+            "image",
+            "video"
+          ],
+          "output": [
+            "text"
+          ]
+        },
+        "name": "Kimi K2.7 Code (Free)",
+        "open_weights": true,
+        "reasoning": true,
+        "release_date": "2026-06-12",
+        "structured_output": true,
+        "temperature": false,
+        "tool_call": true
+      },
       "anthropic/claude-opus-4": {
         "attachment": true,
         "cost": {
@@ -157334,6 +159079,39 @@
         "reasoning": true,
         "release_date": "2025-12-08",
         "temperature": true,
+        "tool_call": true
+      },
+      "moonshotai/kimi-k2.7-code": {
+        "attachment": true,
+        "cost": {
+          "cache_read": 0.16,
+          "input": 0.95,
+          "output": 4
+        },
+        "family": "kimi-k2",
+        "id": "moonshotai/kimi-k2.7-code",
+        "knowledge": "2025-01",
+        "last_updated": "2026-06-12",
+        "limit": {
+          "context": 262144,
+          "output": 262144
+        },
+        "modalities": {
+          "input": [
+            "text",
+            "image",
+            "video"
+          ],
+          "output": [
+            "text"
+          ]
+        },
+        "name": "Kimi K2.7 Code",
+        "open_weights": true,
+        "reasoning": true,
+        "release_date": "2026-06-12",
+        "structured_output": true,
+        "temperature": false,
         "tool_call": true
       },
       "xiaomi/mimo-v2-omni": {
@@ -158336,7 +160114,7 @@
           "input": 0.95,
           "output": 4
         },
-        "family": "kimi-k2.6",
+        "family": "kimi-k2",
         "id": "moonshotai/kimi-k2.6",
         "knowledge": "2025-01",
         "last_updated": "2026-04-21",
@@ -163081,7 +164859,7 @@
           "input": 0.6,
           "output": 3
         },
-        "family": "kimi",
+        "family": "kimi-k2",
         "id": "moonshotai/kimi-k2.5",
         "interleaved": true,
         "knowledge": "2025-01",
@@ -165352,6 +167130,39 @@
         "temperature": true,
         "tool_call": false
       },
+      "moonshotai/kimi-k2.7-code": {
+        "attachment": true,
+        "cost": {
+          "cache_read": 0.19,
+          "input": 0.95,
+          "output": 4
+        },
+        "family": "kimi-k2",
+        "id": "moonshotai/kimi-k2.7-code",
+        "knowledge": "2025-01",
+        "last_updated": "2026-06-12",
+        "limit": {
+          "context": 256000,
+          "output": 32768
+        },
+        "modalities": {
+          "input": [
+            "text",
+            "image",
+            "pdf"
+          ],
+          "output": [
+            "text"
+          ]
+        },
+        "name": "Kimi K2.7 Code",
+        "open_weights": false,
+        "reasoning": true,
+        "release_date": "2026-06-12",
+        "structured_output": true,
+        "temperature": true,
+        "tool_call": true
+      },
       "mistral/mistral-nemo": {
         "attachment": false,
         "cost": {
@@ -165442,7 +167253,7 @@
           "input": 0.57,
           "output": 2.3
         },
-        "family": "kimi",
+        "family": "kimi-k2",
         "id": "moonshotai/kimi-k2",
         "last_updated": "2025-09-05",
         "limit": {
@@ -166062,7 +167873,7 @@
           "input": 0.15,
           "output": 0.6
         },
-        "family": "kimi-k2.6",
+        "family": "kimi-k2",
         "id": "moonshotai/Kimi-K2.6",
         "interleaved": {
           "field": "reasoning_content"
@@ -168341,7 +170152,7 @@
           "input": 0.85,
           "output": 4.655
         },
-        "family": "kimi",
+        "family": "kimi-k2",
         "id": "kimi-k2-6",
         "interleaved": {
           "field": "reasoning_content"
@@ -168432,7 +170243,7 @@
           "input": 0.56,
           "output": 3.5
         },
-        "family": "kimi",
+        "family": "kimi-k2",
         "id": "kimi-k2-5",
         "interleaved": {
           "field": "reasoning_content"
