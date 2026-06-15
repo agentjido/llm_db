@@ -1,0 +1,53 @@
+id = "deepseek-v4-pro"
+name = "DeepSeek-V4-Pro"
+release_date = "2026-04-28"
+last_updated = "2026-04-28"
+
+[limits]
+context = 1000000
+output = 384000
+
+[cost]
+input = 1.74
+output = 3.48
+
+[pricing]
+currency = "USD"
+merge = "merge_by_id"
+
+[[pricing.components]]
+id = "token.input"
+kind = "token"
+unit = "token"
+per = 1000000
+rate = 1.74
+
+[[pricing.components]]
+id = "token.output"
+kind = "token"
+unit = "token"
+per = 1000000
+rate = 3.48
+
+[modalities]
+input = ["text"]
+output = ["text"]
+
+[capabilities.reasoning]
+enabled = true
+
+[capabilities.tools]
+enabled = true
+
+[capabilities.json]
+native = true
+
+[capabilities.streaming]
+tool_calls = true
+
+[extra]
+family = "deepseek-v4"
+open_weights = true
+temperature = true
+attachment = true
+interleaved = { field = "reasoning_content" }
