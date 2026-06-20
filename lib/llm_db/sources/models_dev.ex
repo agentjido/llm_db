@@ -390,7 +390,10 @@ defmodule LLMDB.Sources.ModelsDev do
     content
     |> Enum.reduce(%{}, fn {provider_id, provider_data}, acc ->
       # Convert provider string keys to atom keys (keep models for now)
-      provider_atomized = atomize_keys(provider_data, [:id, :name, :env, :doc])
+      provider_atomized =
+        provider_data
+        |> atomize_keys([:id, :name, :env, :doc])
+        |> map_provider_base_url(provider_data)
 
       # Extract models from nested map and convert to list
       models_map = Map.get(provider_data, "models", %{})
@@ -423,4 +426,10 @@ defmodule LLMDB.Sources.ModelsDev do
       end
     end)
   end
+
+  defp map_provider_base_url(provider, %{"api" => api}) when is_binary(api) do
+    Map.put(provider, :base_url, api)
+  end
+
+  defp map_provider_base_url(provider, _provider_data), do: provider
 end

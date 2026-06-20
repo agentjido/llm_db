@@ -28,6 +28,7 @@ defmodule LLMDB.Sources.ModelsDevTest do
       # models.dev format: providers as top-level keys with nested models
       body = %{
         "openai" => %{
+          "api" => "https://api.openai.example/v1",
           "id" => "openai",
           "name" => "OpenAI",
           "models" => %{
@@ -110,6 +111,7 @@ defmodule LLMDB.Sources.ModelsDevTest do
       # Create cache file in models.dev format
       cache_data = %{
         "openai" => %{
+          "api" => "https://api.openai.example/v1",
           "id" => "openai",
           "name" => "OpenAI",
           "models" => %{
@@ -134,6 +136,7 @@ defmodule LLMDB.Sources.ModelsDevTest do
       provider = data["openai"]
       assert provider[:id] == "openai"
       assert provider[:name] == "OpenAI"
+      assert provider[:base_url] == "https://api.openai.example/v1"
       assert is_list(provider[:models])
       assert length(provider[:models]) == 1
       assert hd(provider[:models])[:id] == "gpt-4o"
