@@ -1,6 +1,17 @@
 defmodule LLMDB.ApplicationTest do
   use ExUnit.Case, async: false
 
+  describe "start/2" do
+    test "returns a supervisor compatible with release_handler" do
+      master = :application_controller.get_master(:llm_db)
+      {root, _} = :application_master.get_child(master)
+
+      assert :supervisor.get_callback_module(root) == Supervisor.Default
+      assert {:status, ^root, _, _} = :sys.get_status(root, 5000)
+      assert Process.whereis(LLMDB.Supervisor) == root
+    end
+  end
+
   describe "load_dotenv configuration" do
     test "load_dotenv defaults to true" do
       original = Application.get_env(:llm_db, :load_dotenv)

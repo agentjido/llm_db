@@ -11,21 +11,21 @@ defmodule LLMDB.Application do
 
   @impl true
   def start(_type, _args) do
-    # Load .env file if it exists
-    LLMDB.Dotenv.load!()
+    with :ok <- load_catalog() do
+      Supervisor.start_link([], strategy: :one_for_one, name: LLMDB.Supervisor)
+    end
+  end
 
-    # Ensure modality atoms exist before loading snapshot
+  defp load_catalog do
+    LLMDB.Dotenv.load!()
     _ = LLMDB.Generated.ValidModalities.list()
 
     if Application.get_env(:llm_db, :skip_packaged_load, false) do
-      {:ok, self()}
+      :ok
     else
       case LLMDB.load() do
-        {:ok, _snapshot} ->
-          {:ok, self()}
-
-        {:error, reason} ->
-          {:error, reason}
+        {:ok, _snapshot} -> :ok
+        {:error, reason} -> {:error, reason}
       end
     end
   end
