@@ -41,6 +41,21 @@ defmodule LLMDB.Enrich.RuntimeContractTest do
       assert [%{name: "account_id", required: true}] = enriched.runtime.config_schema
     end
 
+    test "adds native MiniMax runtime defaults" do
+      provider =
+        Provider.new!(%{
+          id: :minimax,
+          env: ["MINIMAX_API_KEY"]
+        })
+
+      enriched = RuntimeContract.enrich_provider(provider)
+
+      assert enriched.catalog_only == false
+      assert enriched.runtime.base_url == "https://api.minimax.io/v1"
+      assert enriched.runtime.auth.type == "bearer"
+      assert enriched.runtime.auth.env == ["MINIMAX_API_KEY"]
+    end
+
     test "marks unsupported providers catalog only" do
       provider = Provider.new!(%{id: :docs_only_provider})
       enriched = RuntimeContract.enrich_provider(provider)
@@ -83,6 +98,46 @@ defmodule LLMDB.Enrich.RuntimeContractTest do
       assert enriched.execution.text.family == "openai_responses_compatible"
       assert enriched.execution.object.family == "openai_responses_compatible"
       assert enriched.execution.text.path == "/responses"
+    end
+
+    test "does not derive object execution for Anthropic models without JSON schema support" do
+      provider =
+        Provider.new!(%{id: :anthropic, env: ["ANTHROPIC_API_KEY"]})
+        |> RuntimeContract.enrich_provider()
+
+      model =
+        Model.new!(%{
+          id: "claude-opus-4-20250514",
+          provider: :anthropic,
+          capabilities: %{chat: true, json: %{schema: false, native: false, strict: false}},
+          modalities: %{input: [:text], output: [:text]}
+        })
+
+      enriched = RuntimeContract.enrich_model(model, provider)
+
+      assert enriched.catalog_only == false
+      assert enriched.execution.text.family == "anthropic_messages"
+      refute Map.has_key?(enriched.execution, :object)
+    end
+
+    test "derives object execution for Anthropic models with JSON schema support" do
+      provider =
+        Provider.new!(%{id: :anthropic, env: ["ANTHROPIC_API_KEY"]})
+        |> RuntimeContract.enrich_provider()
+
+      model =
+        Model.new!(%{
+          id: "claude-sonnet-4-5-20250929",
+          provider: :anthropic,
+          capabilities: %{chat: true, json: %{schema: true}},
+          modalities: %{input: [:text], output: [:text]}
+        })
+
+      enriched = RuntimeContract.enrich_model(model, provider)
+
+      assert enriched.catalog_only == false
+      assert enriched.execution.text.family == "anthropic_messages"
+      assert enriched.execution.object.family == "anthropic_messages"
     end
 
     test "derives speech execution for dedicated tts models without adding text operations" do

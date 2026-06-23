@@ -300,13 +300,30 @@ defmodule LLMDB.Validate do
   defp implied_operations(%Model{} = model) do
     []
     |> maybe_add_operation(text_like?(model), :text)
-    |> maybe_add_operation(text_like?(model), :object)
+    |> maybe_add_operation(object_like?(model), :object)
     |> maybe_add_operation(embeddings?(model), :embed)
     |> maybe_add_operation(image_generation?(model), :image)
     |> maybe_add_operation(transcription?(model), :transcription)
     |> maybe_add_operation(speech?(model), :speech)
     |> maybe_add_operation(realtime?(model), :realtime)
   end
+
+  defp object_like?(%Model{provider: :anthropic} = model) do
+    text_like?(model) and json_schema_capable?(model)
+  end
+
+  defp object_like?(%Model{} = model), do: text_like?(model)
+
+  defp json_schema_capable?(%Model{capabilities: capabilities}) when is_map(capabilities) do
+    case Map.get(capabilities, :json) do
+      %{schema: true} -> true
+      %{native: true} -> true
+      %{strict: true} -> true
+      _other -> false
+    end
+  end
+
+  defp json_schema_capable?(_model), do: false
 
   defp text_like?(%Model{} = model) do
     cond do
