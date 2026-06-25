@@ -7,6 +7,17 @@ This project uses [Calendar Versioning](https://calver.org/) with the format `YY
 
 <!-- changelog -->
 
+## [2026.6.4](https://github.com/agentjido/llm_db/compare/2026.6.4...2026.6.4) (2026-06-25)
+
+
+
+
+### Bug Fixes:
+
+* correct runtime metadata for req_llm compatibility (#221) by mikehostetler
+
+* start OTP-compatible application supervisor by Andrew Timberlake
+
 ## [2026.6.3](https://github.com/agentjido/llm_db/compare/2026.6.3...2026.6.3) (2026-06-20)
 
 
