@@ -143,6 +143,29 @@ defmodule LLMDB.Sources.ModelsDevTest do
       assert hd(provider[:models])[:provider] == "openai"
     end
 
+    test "normalizes provider api base urls without trailing slash" do
+      test_url = "https://test.example.com/api.json"
+
+      cache_data = %{
+        "fireworks_ai" => %{
+          "api" => "https://api.fireworks.ai/inference/v1/",
+          "id" => "fireworks_ai",
+          "name" => "Fireworks AI",
+          "models" => %{}
+        }
+      }
+
+      hash = :crypto.hash(:sha256, test_url) |> Base.encode16(case: :lower) |> binary_part(0, 8)
+      cache_path = "tmp/test/upstream/models-dev-#{hash}.json"
+
+      File.mkdir_p!(Path.dirname(cache_path))
+      File.write!(cache_path, Jason.encode!(cache_data))
+
+      assert {:ok, data} = ModelsDev.load(%{url: test_url})
+
+      assert data["fireworks_ai"][:base_url] == "https://api.fireworks.ai/inference/v1"
+    end
+
     test "returns error when cache file missing" do
       test_url = "https://missing.example.com/api.json"
       assert {:error, :no_cache} = ModelsDev.load(%{url: test_url})

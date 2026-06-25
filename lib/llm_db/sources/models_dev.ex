@@ -428,8 +428,10 @@ defmodule LLMDB.Sources.ModelsDev do
   end
 
   defp map_provider_base_url(provider, %{"api" => api}) when is_binary(api) do
-    Map.put(provider, :base_url, api)
+    Map.put(provider, :base_url, normalize_base_url(api))
   end
 
   defp map_provider_base_url(provider, _provider_data), do: provider
+
+  defp normalize_base_url(url), do: String.trim_trailing(url, "/")
 end

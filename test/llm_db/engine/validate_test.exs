@@ -695,6 +695,31 @@ defmodule LLMDB.Engine.ValidateTest do
              } in errors
     end
 
+    test "does not require object execution for Anthropic models without JSON schema support" do
+      providers = [
+        LLMDB.Provider.new!(%{
+          id: :anthropic,
+          runtime: %{
+            base_url: "https://api.anthropic.com",
+            auth: %{type: "x_api_key", env: ["ANTHROPIC_API_KEY"], header_name: "x-api-key"}
+          }
+        })
+      ]
+
+      models = [
+        LLMDB.Model.new!(%{
+          id: "claude-opus-4-20250514",
+          provider: :anthropic,
+          capabilities: %{chat: true, json: %{schema: false, native: false, strict: false}},
+          execution: %{
+            text: %{supported: true, family: "anthropic_messages"}
+          }
+        })
+      ]
+
+      assert :ok = Validate.validate_runtime_contract(providers, models)
+    end
+
     test "rejects unknown execution families" do
       providers = [
         LLMDB.Provider.new!(%{

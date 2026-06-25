@@ -94,6 +94,11 @@ defmodule LLMDB.Enrich.RuntimeContract do
       auth: %{type: "bearer"},
       doc_url: "https://fireworks.ai/docs/"
     },
+    minimax: %{
+      base_url: "https://api.minimax.io/v1",
+      auth: %{type: "bearer"},
+      doc_url: "https://platform.minimax.io/docs/guides/quickstart"
+    },
     friendli: %{
       base_url: "https://api.friendli.ai/serverless/v1",
       auth: %{type: "bearer"},
@@ -364,7 +369,7 @@ defmodule LLMDB.Enrich.RuntimeContract do
   end
 
   defp object_entry(model, provider_id) do
-    if text_object_capable?(model, provider_id) do
+    if object_capable?(model, provider_id) do
       execution_entry(model, provider_id, text_object_family(model, provider_id))
     end
   end
@@ -428,6 +433,23 @@ defmodule LLMDB.Enrich.RuntimeContract do
     family = text_object_family(model, provider_id)
     is_binary(family)
   end
+
+  defp object_capable?(model, :anthropic) do
+    text_object_capable?(model, :anthropic) and json_schema_capable?(model)
+  end
+
+  defp object_capable?(model, provider_id), do: text_object_capable?(model, provider_id)
+
+  defp json_schema_capable?(%Model{capabilities: capabilities}) when is_map(capabilities) do
+    case Map.get(capabilities, :json) do
+      %{schema: true} -> true
+      %{native: true} -> true
+      %{strict: true} -> true
+      _other -> false
+    end
+  end
+
+  defp json_schema_capable?(_model), do: false
 
   defp text_object_family(model, provider_id) do
     cond do
