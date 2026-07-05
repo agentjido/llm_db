@@ -14,6 +14,18 @@ defmodule LLMDB.PackagedTest do
                                    |> Map.fetch!("id")
                                  end)
                                  |> Enum.sort()
+  @local_nearai_dir Path.expand("../../priv/llm_db/local/nearai", __DIR__)
+  @local_nearai_chat_model_ids "*.toml"
+                               |> then(&Path.join(@local_nearai_dir, &1))
+                               |> Path.wildcard()
+                               |> Enum.reject(&String.ends_with?(&1, "/provider.toml"))
+                               |> Enum.map(fn path ->
+                                 path
+                                 |> File.read!()
+                                 |> Toml.decode!()
+                                 |> Map.fetch!("id")
+                               end)
+                               |> Enum.sort()
 
   describe "snapshot_path/0" do
     test "returns correct snapshot path" do
@@ -73,6 +85,7 @@ defmodule LLMDB.PackagedTest do
         anthropic = snapshot["providers"]["anthropic"]
         fireworks = snapshot["providers"]["fireworks_ai"]
         minimax = snapshot["providers"]["minimax"]
+        nearai = snapshot["providers"]["nearai"]
 
         assert openai["runtime"]["auth"]["type"] == "bearer"
         assert openai["runtime"]["base_url"] == "https://api.openai.com/v1"
@@ -82,6 +95,10 @@ defmodule LLMDB.PackagedTest do
         assert fireworks["runtime"]["base_url"] == "https://api.fireworks.ai/inference/v1"
         assert minimax["base_url"] == "https://api.minimax.io/v1"
         assert minimax["runtime"]["base_url"] == "https://api.minimax.io/v1"
+        assert nearai["runtime"]["base_url"] == "https://cloud-api.near.ai/v1"
+        assert nearai["runtime"]["auth"]["type"] == "bearer"
+        assert nearai["runtime"]["auth"]["env"] == ["NEARAI_API_KEY"]
+        refute Map.get(nearai, "catalog_only", false)
       end
     end
 
@@ -140,6 +157,32 @@ defmodule LLMDB.PackagedTest do
           assert model["execution"]["object"]["family"] == "openai_responses_compatible"
           assert model["execution"]["object"]["wire_protocol"] == "openai_responses"
           assert model["execution"]["object"]["path"] == "/responses"
+        end
+      end
+    end
+
+    test "snapshot carries NEAR AI chat execution metadata for local runtime overrides" do
+      snapshot = Packaged.snapshot()
+
+      if snapshot do
+        assert Enum.any?(@local_nearai_chat_model_ids)
+
+        nearai_models = snapshot["providers"]["nearai"]["models"]
+
+        for model_id <- @local_nearai_chat_model_ids do
+          model = nearai_models[model_id]
+
+          assert is_map(model),
+                 "expected local NEAR AI chat model #{inspect(model_id)} in packaged snapshot"
+
+          assert model["id"] == model_id
+          refute Map.get(model, "catalog_only", false)
+          assert model["execution"]["text"]["family"] == "openai_chat_compatible"
+          assert model["execution"]["text"]["wire_protocol"] == "openai_chat"
+          assert model["execution"]["text"]["path"] == "/chat/completions"
+          assert model["execution"]["object"]["family"] == "openai_chat_compatible"
+          assert model["execution"]["object"]["wire_protocol"] == "openai_chat"
+          assert model["execution"]["object"]["path"] == "/chat/completions"
         end
       end
     end
