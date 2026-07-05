@@ -26,6 +26,18 @@ defmodule LLMDB.PackagedTest do
                                  |> Map.fetch!("id")
                                end)
                                |> Enum.sort()
+  @local_opencode_dir Path.expand("../../priv/llm_db/local/opencode", __DIR__)
+  @local_opencode_execution_model_ids "*.toml"
+                                      |> then(&Path.join(@local_opencode_dir, &1))
+                                      |> Path.wildcard()
+                                      |> Enum.reject(&String.ends_with?(&1, "/provider.toml"))
+                                      |> Enum.map(fn path ->
+                                        path
+                                        |> File.read!()
+                                        |> Toml.decode!()
+                                        |> Map.fetch!("id")
+                                      end)
+                                      |> Enum.sort()
 
   describe "snapshot_path/0" do
     test "returns correct snapshot path" do
@@ -88,6 +100,7 @@ defmodule LLMDB.PackagedTest do
         nearai = snapshot["providers"]["nearai"]
         moonshot = snapshot["providers"]["moonshotai"]
         moonshot_cn = snapshot["providers"]["moonshotai_cn"]
+        opencode = snapshot["providers"]["opencode"]
 
         assert openai["runtime"]["auth"]["type"] == "bearer"
         assert openai["runtime"]["base_url"] == "https://api.openai.com/v1"
@@ -105,6 +118,10 @@ defmodule LLMDB.PackagedTest do
         assert moonshot["runtime"]["base_url"] == "https://api.moonshot.ai/v1"
         assert moonshot_cn["runtime"]["auth"]["type"] == "bearer"
         assert moonshot_cn["runtime"]["base_url"] == "https://api.moonshot.cn/v1"
+        assert opencode["runtime"]["auth"]["type"] == "bearer"
+        assert opencode["runtime"]["auth"]["env"] == ["OPENCODE_API_KEY"]
+        assert opencode["runtime"]["base_url"] == "https://opencode.ai/zen/v1"
+        refute Map.get(opencode, "catalog_only", false)
       end
     end
 
@@ -237,6 +254,50 @@ defmodule LLMDB.PackagedTest do
           assert model["lifecycle"]["status"] == "retired"
           assert model["lifecycle"]["retires_at"] == "2026-05-25"
           assert model["lifecycle"]["replacement"] == "kimi-k2.6"
+        end
+      end
+    end
+
+    test "snapshot carries OpenCode Zen execution metadata for documented live models" do
+      snapshot = Packaged.snapshot()
+
+      if snapshot do
+        assert length(@local_opencode_execution_model_ids) == 48
+
+        opencode_models = snapshot["providers"]["opencode"]["models"]
+
+        samples = [
+          {"gpt-5.5", "openai_responses_compatible", "openai_responses", "/responses"},
+          {"claude-fable-5", "anthropic_messages", "anthropic_messages", "/messages"},
+          {"gemini-3.5-flash", "google_generate_content", "google_generate_content",
+           "/models/gemini-3.5-flash"},
+          {"deepseek-v4-pro", "openai_chat_compatible", "openai_chat", "/chat/completions"}
+        ]
+
+        for {model_id, family, wire_protocol, path} <- samples do
+          model = opencode_models[model_id]
+
+          assert is_map(model), "expected OpenCode model #{inspect(model_id)} in snapshot"
+          refute Map.get(model, "catalog_only", false)
+          assert model["execution"]["text"]["family"] == family
+          assert model["execution"]["text"]["wire_protocol"] == wire_protocol
+          assert model["execution"]["text"]["path"] == path
+        end
+      end
+    end
+
+    test "snapshot leaves unverified OpenCode Zen models catalog-only" do
+      snapshot = Packaged.snapshot()
+
+      if snapshot do
+        opencode_models = snapshot["providers"]["opencode"]["models"]
+
+        for model_id <- ["claude-3-5-haiku", "qwen3-coder"] do
+          model = opencode_models[model_id]
+
+          assert is_map(model), "expected OpenCode model #{inspect(model_id)} in snapshot"
+          assert model["catalog_only"] == true
+          assert model["execution"] == nil
         end
       end
     end
