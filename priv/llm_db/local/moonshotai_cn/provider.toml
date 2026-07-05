@@ -1,0 +1,15 @@
+# Moonshot AI (China) Provider Definition
+id = "moonshotai_cn"
+name = "Moonshot AI (China)"
+base_url = "https://api.moonshot.cn/v1"
+doc = "https://platform.moonshot.cn/docs/api/chat"
+
+env = ["MOONSHOT_API_KEY"]
+
+[runtime]
+base_url = "https://api.moonshot.cn/v1"
+doc_url = "https://platform.moonshot.cn/docs/api/chat"
+
+[runtime.auth]
+type = "bearer"
+env = ["MOONSHOT_API_KEY"]
