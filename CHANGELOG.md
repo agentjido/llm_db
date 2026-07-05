@@ -7,6 +7,23 @@ This project uses [Calendar Versioning](https://calver.org/) with the format `YY
 
 <!-- changelog -->
 
+## [2026.7.0](https://github.com/agentjido/llm_db/compare/2026.7.0...2026.7.0) (2026-07-05)
+
+
+
+
+### Bug Fixes:
+
+* add OpenCode Zen execution metadata (#231) by mikehostetler
+
+* add opencode zen execution metadata by mikehostetler
+
+* add Moonshot execution metadata by mikehostetler
+
+* add NEAR AI execution metadata overrides by mikehostetler
+
+* update OpenAI GPT-5 response protocols by mikehostetler
+
 ## [2026.6.4](https://github.com/agentjido/llm_db/compare/2026.6.4...2026.6.4) (2026-06-25)
 
 
