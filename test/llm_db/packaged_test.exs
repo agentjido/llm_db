@@ -108,6 +108,42 @@ defmodule LLMDB.PackagedTest do
       end
     end
 
+    test "snapshot maps recent OpenAI GPT-5 text and tool models to Responses API" do
+      snapshot = Packaged.snapshot()
+
+      if snapshot do
+        openai_models = snapshot["providers"]["openai"]["models"]
+
+        for model_id <- [
+              "gpt-5.3-chat-latest",
+              "gpt-5.3-codex",
+              "gpt-5.3-codex-spark",
+              "gpt-5.4",
+              "gpt-5.4-2026-03-05",
+              "gpt-5.4-mini",
+              "gpt-5.4-mini-2026-03-17",
+              "gpt-5.4-nano",
+              "gpt-5.4-nano-2026-03-17",
+              "gpt-5.4-pro",
+              "gpt-5.4-pro-2026-03-05",
+              "gpt-5.5",
+              "gpt-5.5-2026-04-23",
+              "gpt-5.5-pro",
+              "gpt-5.5-pro-2026-04-23"
+            ] do
+          model = openai_models[model_id]
+
+          assert is_map(model), "expected #{model_id} in packaged OpenAI snapshot"
+          assert model["execution"]["text"]["family"] == "openai_responses_compatible"
+          assert model["execution"]["text"]["wire_protocol"] == "openai_responses"
+          assert model["execution"]["text"]["path"] == "/responses"
+          assert model["execution"]["object"]["family"] == "openai_responses_compatible"
+          assert model["execution"]["object"]["wire_protocol"] == "openai_responses"
+          assert model["execution"]["object"]["path"] == "/responses"
+        end
+      end
+    end
+
     test "snapshot carries rerank capability metadata for packaged local rerank models" do
       snapshot = Packaged.snapshot()
 
