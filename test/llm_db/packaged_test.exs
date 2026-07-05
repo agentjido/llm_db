@@ -86,6 +86,8 @@ defmodule LLMDB.PackagedTest do
         fireworks = snapshot["providers"]["fireworks_ai"]
         minimax = snapshot["providers"]["minimax"]
         nearai = snapshot["providers"]["nearai"]
+        moonshot = snapshot["providers"]["moonshotai"]
+        moonshot_cn = snapshot["providers"]["moonshotai_cn"]
 
         assert openai["runtime"]["auth"]["type"] == "bearer"
         assert openai["runtime"]["base_url"] == "https://api.openai.com/v1"
@@ -99,6 +101,10 @@ defmodule LLMDB.PackagedTest do
         assert nearai["runtime"]["auth"]["type"] == "bearer"
         assert nearai["runtime"]["auth"]["env"] == ["NEARAI_API_KEY"]
         refute Map.get(nearai, "catalog_only", false)
+        assert moonshot["runtime"]["auth"]["type"] == "bearer"
+        assert moonshot["runtime"]["base_url"] == "https://api.moonshot.ai/v1"
+        assert moonshot_cn["runtime"]["auth"]["type"] == "bearer"
+        assert moonshot_cn["runtime"]["base_url"] == "https://api.moonshot.cn/v1"
       end
     end
 
@@ -183,6 +189,54 @@ defmodule LLMDB.PackagedTest do
           assert model["execution"]["object"]["family"] == "openai_chat_compatible"
           assert model["execution"]["object"]["wire_protocol"] == "openai_chat"
           assert model["execution"]["object"]["path"] == "/chat/completions"
+        end
+      end
+    end
+
+    test "snapshot carries Moonshot OpenAI-chat execution metadata for current models" do
+      snapshot = Packaged.snapshot()
+
+      if snapshot do
+        for provider_id <- ["moonshotai", "moonshotai_cn"],
+            model_id <- [
+              "kimi-k2.5",
+              "kimi-k2.6",
+              "kimi-k2.7-code",
+              "kimi-k2.7-code-highspeed"
+            ] do
+          model = snapshot["providers"][provider_id]["models"][model_id]
+
+          refute model["catalog_only"] == true
+          assert model["execution"]["text"]["family"] == "openai_chat_compatible"
+          assert model["execution"]["text"]["wire_protocol"] == "openai_chat"
+          assert model["execution"]["text"]["path"] == "/chat/completions"
+          assert model["execution"]["object"]["family"] == "openai_chat_compatible"
+          assert model["execution"]["object"]["wire_protocol"] == "openai_chat"
+          assert model["execution"]["object"]["path"] == "/chat/completions"
+        end
+      end
+    end
+
+    test "snapshot keeps discontinued Moonshot K2 models catalog-only" do
+      snapshot = Packaged.snapshot()
+
+      if snapshot do
+        for provider_id <- ["moonshotai", "moonshotai_cn"],
+            model_id <- [
+              "kimi-k2-0711-preview",
+              "kimi-k2-0905-preview",
+              "kimi-k2-thinking",
+              "kimi-k2-thinking-turbo",
+              "kimi-k2-turbo-preview"
+            ] do
+          model = snapshot["providers"][provider_id]["models"][model_id]
+
+          assert model["catalog_only"] == true
+          assert model["execution"] == nil
+          assert model["retired"] == true
+          assert model["lifecycle"]["status"] == "retired"
+          assert model["lifecycle"]["retires_at"] == "2026-05-25"
+          assert model["lifecycle"]["replacement"] == "kimi-k2.6"
         end
       end
     end
