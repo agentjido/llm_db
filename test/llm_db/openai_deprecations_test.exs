@@ -164,6 +164,11 @@ defmodule LLMDB.OpenAIDeprecationsTest do
       retires_at: "2026-07-23",
       replacement: "gpt-5.4-mini"
     },
+    "gpt-5-2025-08-07" => %{
+      deprecated_at: "2026-06-11",
+      retires_at: "2026-12-11",
+      replacement: "gpt-5.5"
+    },
     "gpt-5-chat-latest" => %{
       deprecated_at: "2026-04-22",
       retires_at: "2026-07-23",
@@ -208,6 +213,21 @@ defmodule LLMDB.OpenAIDeprecationsTest do
       deprecated_at: "2026-05-08",
       retires_at: "2026-08-10",
       replacement: "gpt-5.5"
+    },
+    "gpt-5-mini-2025-08-07" => %{
+      deprecated_at: "2026-06-11",
+      retires_at: "2026-12-11",
+      replacement: "gpt-5.4-mini"
+    },
+    "gpt-5-nano-2025-08-07" => %{
+      deprecated_at: "2026-06-11",
+      retires_at: "2026-12-11",
+      replacement: "gpt-5.4-nano"
+    },
+    "gpt-5-pro-2025-10-06" => %{
+      deprecated_at: "2026-06-11",
+      retires_at: "2026-12-11",
+      replacement: "gpt-5.5-pro"
     },
     "gpt-audio-mini-2025-10-06" => %{
       deprecated_at: "2026-04-22",
