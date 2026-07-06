@@ -265,6 +265,11 @@ defmodule LLMDB.OpenAIDeprecationsTest do
       retires_at: "2026-10-23",
       replacement: "gpt-5.5-pro"
     },
+    "o3-2025-04-16" => %{
+      deprecated_at: "2026-06-11",
+      retires_at: "2026-12-11",
+      replacement: "gpt-5.5"
+    },
     "o3-deep-research-2025-06-26" => %{
       deprecated_at: "2026-04-22",
       retires_at: "2026-07-23",
@@ -275,6 +280,11 @@ defmodule LLMDB.OpenAIDeprecationsTest do
       deprecated_at: "2026-04-22",
       retires_at: "2026-10-23",
       replacement: "gpt-5.5"
+    },
+    "o3-pro-2025-06-10" => %{
+      deprecated_at: "2026-06-11",
+      retires_at: "2026-12-11",
+      replacement: "gpt-5.5-pro"
     },
     "o4-mini" => %{
       deprecated_at: "2026-04-22",
