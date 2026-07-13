@@ -201,8 +201,16 @@ defmodule LLMDB.Sources.XAI do
         |> maybe_put(:owned_by, model["owned_by"])
         |> maybe_put(:long_context_threshold, model["long_context_threshold"])
     }
+    |> maybe_put(:aliases, model["aliases"])
+    |> maybe_put(:limits, limits_from_model(model))
     |> maybe_put(:cost, cost_from_model(model))
     |> maybe_put(:pricing, pricing_from_model(model))
+  end
+
+  defp limits_from_model(model) do
+    %{}
+    |> maybe_put(:context, model["context_length"])
+    |> empty_to_nil()
   end
 
   defp cost_from_model(model) do

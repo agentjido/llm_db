@@ -6,7 +6,7 @@ defmodule LLMDB.Engine.EnrichTest do
 
   doctest LLMDB.Enrich
 
-  @llmfit_url "https://raw.githubusercontent.com/AlexsJones/llmfit/main/data/hf_models.json"
+  @llmfit_url "https://raw.githubusercontent.com/AlexsJones/llmfit/main/llmfit-core/data/hf_models.json"
 
   defp llmfit_cache_path(url) do
     hash = :crypto.hash(:sha256, url) |> Base.encode16(case: :lower) |> binary_part(0, 8)

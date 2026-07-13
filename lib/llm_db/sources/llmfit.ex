@@ -15,7 +15,7 @@ defmodule LLMDB.Sources.Llmfit do
 
   require Logger
 
-  @default_url "https://raw.githubusercontent.com/AlexsJones/llmfit/main/data/hf_models.json"
+  @default_url "https://raw.githubusercontent.com/AlexsJones/llmfit/main/llmfit-core/data/hf_models.json"
   @default_cache_dir "priv/llm_db/upstream"
 
   @valid_pipeline_tags MapSet.new([

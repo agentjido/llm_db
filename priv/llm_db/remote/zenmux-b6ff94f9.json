@@ -4,23 +4,427 @@
       "capabilities": {
         "reasoning": true
       },
-      "context_length": 1000000,
-      "created": 1782844408,
-      "display_name": "Anthropic: Claude Sonnet 5 (Free)",
-      "id": "anthropic/claude-sonnet-5-free",
+      "context_length": 1050000,
+      "created": 1783644444,
+      "display_name": "OpenAI: GPT-5.6 Luna",
+      "id": "openai/gpt-5.6-luna",
       "input_modalities": [
-        "image",
         "text",
+        "image",
         "file"
       ],
       "object": "model",
       "output_modalities": [
         "text"
       ],
-      "owned_by": "anthropic",
+      "owned_by": "openai",
       "pricings": {
         "completion": [
           {
+            "conditions": {
+              "prompt_tokens": {
+                "gte": 0,
+                "lt": 272,
+                "unit": "kTokens"
+              }
+            },
+            "currency": "USD",
+            "unit": "perMTokens",
+            "value": 6
+          },
+          {
+            "conditions": {
+              "prompt_tokens": {
+                "gte": 272,
+                "unit": "kTokens"
+              }
+            },
+            "currency": "USD",
+            "unit": "perMTokens",
+            "value": 9
+          }
+        ],
+        "input_cache_read": [
+          {
+            "conditions": {
+              "prompt_tokens": {
+                "gte": 0,
+                "lt": 272,
+                "unit": "kTokens"
+              }
+            },
+            "currency": "USD",
+            "unit": "perMTokens",
+            "value": 0.1
+          },
+          {
+            "conditions": {
+              "prompt_tokens": {
+                "gte": 272,
+                "unit": "kTokens"
+              }
+            },
+            "currency": "USD",
+            "unit": "perMTokens",
+            "value": 0.2
+          }
+        ],
+        "input_cache_write": [
+          {
+            "conditions": {
+              "prompt_tokens": {
+                "gte": 0,
+                "lt": 272,
+                "unit": "kTokens"
+              }
+            },
+            "currency": "USD",
+            "unit": "perMTokens",
+            "value": 1.25
+          },
+          {
+            "conditions": {
+              "prompt_tokens": {
+                "gte": 272,
+                "unit": "kTokens"
+              }
+            },
+            "currency": "USD",
+            "unit": "perMTokens",
+            "value": 2.5
+          }
+        ],
+        "prompt": [
+          {
+            "conditions": {
+              "prompt_tokens": {
+                "gte": 0,
+                "lt": 272,
+                "unit": "kTokens"
+              }
+            },
+            "currency": "USD",
+            "unit": "perMTokens",
+            "value": 1
+          },
+          {
+            "conditions": {
+              "prompt_tokens": {
+                "gte": 272,
+                "unit": "kTokens"
+              }
+            },
+            "currency": "USD",
+            "unit": "perMTokens",
+            "value": 2
+          }
+        ],
+        "web_search": [
+          {
+            "currency": "USD",
+            "unit": "perCount",
+            "value": 0.01
+          }
+        ]
+      },
+      "publish_time": "2026-07-10"
+    },
+    {
+      "capabilities": {
+        "reasoning": true
+      },
+      "context_length": 1050000,
+      "created": 1783645315,
+      "display_name": "OpenAI: GPT-5.6 Terra",
+      "id": "openai/gpt-5.6-terra",
+      "input_modalities": [
+        "text",
+        "image",
+        "file"
+      ],
+      "object": "model",
+      "output_modalities": [
+        "text"
+      ],
+      "owned_by": "openai",
+      "pricings": {
+        "completion": [
+          {
+            "conditions": {
+              "prompt_tokens": {
+                "gte": 0,
+                "lte": 272,
+                "unit": "kTokens"
+              }
+            },
+            "currency": "USD",
+            "unit": "perMTokens",
+            "value": 15
+          },
+          {
+            "conditions": {
+              "prompt_tokens": {
+                "gt": 272,
+                "unit": "kTokens"
+              }
+            },
+            "currency": "USD",
+            "unit": "perMTokens",
+            "value": 22.5
+          }
+        ],
+        "input_cache_read": [
+          {
+            "conditions": {
+              "prompt_tokens": {
+                "gte": 0,
+                "lte": 272,
+                "unit": "kTokens"
+              }
+            },
+            "currency": "USD",
+            "unit": "perMTokens",
+            "value": 0.25
+          },
+          {
+            "conditions": {
+              "prompt_tokens": {
+                "gt": 272,
+                "unit": "kTokens"
+              }
+            },
+            "currency": "USD",
+            "unit": "perMTokens",
+            "value": 0.5
+          }
+        ],
+        "input_cache_write": [
+          {
+            "conditions": {
+              "prompt_tokens": {
+                "gte": 0,
+                "lte": 272,
+                "unit": "kTokens"
+              }
+            },
+            "currency": "USD",
+            "unit": "perMTokens",
+            "value": 3.125
+          },
+          {
+            "conditions": {
+              "prompt_tokens": {
+                "gt": 272,
+                "unit": "kTokens"
+              }
+            },
+            "currency": "USD",
+            "unit": "perMTokens",
+            "value": 6.25
+          }
+        ],
+        "prompt": [
+          {
+            "conditions": {
+              "prompt_tokens": {
+                "gte": 0,
+                "lte": 272,
+                "unit": "kTokens"
+              }
+            },
+            "currency": "USD",
+            "unit": "perMTokens",
+            "value": 2.5
+          },
+          {
+            "conditions": {
+              "prompt_tokens": {
+                "gt": 272,
+                "unit": "kTokens"
+              }
+            },
+            "currency": "USD",
+            "unit": "perMTokens",
+            "value": 5
+          }
+        ],
+        "web_search": [
+          {
+            "currency": "USD",
+            "unit": "perCount",
+            "value": 0.01
+          }
+        ]
+      },
+      "publish_time": "2026-07-10"
+    },
+    {
+      "capabilities": {
+        "reasoning": true
+      },
+      "context_length": 1050000,
+      "created": 1783644683,
+      "display_name": "OpenAI: GPT-5.6 Sol",
+      "id": "openai/gpt-5.6-sol",
+      "input_modalities": [
+        "text",
+        "image",
+        "file"
+      ],
+      "object": "model",
+      "output_modalities": [
+        "text"
+      ],
+      "owned_by": "openai",
+      "pricings": {
+        "completion": [
+          {
+            "conditions": {
+              "prompt_tokens": {
+                "gte": 0,
+                "lt": 272,
+                "unit": "kTokens"
+              }
+            },
+            "currency": "USD",
+            "unit": "perMTokens",
+            "value": 30
+          },
+          {
+            "conditions": {
+              "prompt_tokens": {
+                "gte": 272,
+                "unit": "kTokens"
+              }
+            },
+            "currency": "USD",
+            "unit": "perMTokens",
+            "value": 45
+          }
+        ],
+        "input_cache_read": [
+          {
+            "conditions": {
+              "prompt_tokens": {
+                "gte": 0,
+                "lt": 272,
+                "unit": "kTokens"
+              }
+            },
+            "currency": "USD",
+            "unit": "perMTokens",
+            "value": 0.5
+          },
+          {
+            "conditions": {
+              "prompt_tokens": {
+                "gte": 272,
+                "unit": "kTokens"
+              }
+            },
+            "currency": "USD",
+            "unit": "perMTokens",
+            "value": 1
+          }
+        ],
+        "input_cache_write": [
+          {
+            "conditions": {
+              "prompt_tokens": {
+                "gte": 0,
+                "lt": 272,
+                "unit": "kTokens"
+              }
+            },
+            "currency": "USD",
+            "unit": "perMTokens",
+            "value": 6.25
+          },
+          {
+            "conditions": {
+              "prompt_tokens": {
+                "gte": 272,
+                "unit": "kTokens"
+              }
+            },
+            "currency": "USD",
+            "unit": "perMTokens",
+            "value": 12.5
+          }
+        ],
+        "prompt": [
+          {
+            "conditions": {
+              "prompt_tokens": {
+                "gte": 0,
+                "lt": 272,
+                "unit": "kTokens"
+              }
+            },
+            "currency": "USD",
+            "unit": "perMTokens",
+            "value": 5
+          },
+          {
+            "conditions": {
+              "prompt_tokens": {
+                "gte": 272,
+                "unit": "kTokens"
+              }
+            },
+            "currency": "USD",
+            "unit": "perMTokens",
+            "value": 10
+          }
+        ],
+        "web_search": [
+          {
+            "currency": "USD",
+            "unit": "perCount",
+            "value": 0.01
+          }
+        ]
+      },
+      "publish_time": "2026-07-10"
+    },
+    {
+      "capabilities": {
+        "reasoning": true
+      },
+      "context_length": 500000,
+      "created": 1783570513,
+      "display_name": "xAI: Grok 4.5 (Free)",
+      "id": "x-ai/grok-4.5-free",
+      "input_modalities": [
+        "text",
+        "image"
+      ],
+      "object": "model",
+      "output_modalities": [
+        "text"
+      ],
+      "owned_by": "x-ai",
+      "pricings": {
+        "completion": [
+          {
+            "conditions": {
+              "prompt_tokens": {
+                "gte": 0,
+                "lte": 200,
+                "unit": "kTokens"
+              }
+            },
+            "currency": "USD",
+            "unit": "perMTokens",
+            "value": 0
+          },
+          {
+            "conditions": {
+              "prompt_tokens": {
+                "gte": 200,
+                "unit": "kTokens"
+              }
+            },
             "currency": "USD",
             "unit": "perMTokens",
             "value": 0
@@ -28,20 +432,24 @@
         ],
         "input_cache_read": [
           {
+            "conditions": {
+              "prompt_tokens": {
+                "gte": 200,
+                "unit": "kTokens"
+              }
+            },
             "currency": "USD",
             "unit": "perMTokens",
             "value": 0
-          }
-        ],
-        "input_cache_write_1_h": [
+          },
           {
-            "currency": "USD",
-            "unit": "perMTokens",
-            "value": 0
-          }
-        ],
-        "input_cache_write_5_min": [
-          {
+            "conditions": {
+              "prompt_tokens": {
+                "gte": 0,
+                "lte": 200,
+                "unit": "kTokens"
+              }
+            },
             "currency": "USD",
             "unit": "perMTokens",
             "value": 0
@@ -49,6 +457,24 @@
         ],
         "prompt": [
           {
+            "conditions": {
+              "prompt_tokens": {
+                "gte": 200,
+                "unit": "kTokens"
+              }
+            },
+            "currency": "USD",
+            "unit": "perMTokens",
+            "value": 0
+          },
+          {
+            "conditions": {
+              "prompt_tokens": {
+                "gte": 0,
+                "lte": 200,
+                "unit": "kTokens"
+              }
+            },
             "currency": "USD",
             "unit": "perMTokens",
             "value": 0
@@ -62,7 +488,233 @@
           }
         ]
       },
-      "publish_time": "2026-06-30"
+      "publish_time": "2026-07-09"
+    },
+    {
+      "capabilities": {
+        "reasoning": true
+      },
+      "context_length": 500000,
+      "created": 1783566249,
+      "display_name": "xAI: Grok 4.5",
+      "id": "x-ai/grok-4.5",
+      "input_modalities": [
+        "text",
+        "image"
+      ],
+      "object": "model",
+      "output_modalities": [
+        "text"
+      ],
+      "owned_by": "x-ai",
+      "pricings": {
+        "completion": [
+          {
+            "conditions": {
+              "prompt_tokens": {
+                "gte": 0,
+                "lte": 200,
+                "unit": "kTokens"
+              }
+            },
+            "currency": "USD",
+            "unit": "perMTokens",
+            "value": 6
+          },
+          {
+            "conditions": {
+              "prompt_tokens": {
+                "gte": 200,
+                "unit": "kTokens"
+              }
+            },
+            "currency": "USD",
+            "unit": "perMTokens",
+            "value": 12
+          }
+        ],
+        "input_cache_read": [
+          {
+            "conditions": {
+              "prompt_tokens": {
+                "gte": 0,
+                "lte": 200,
+                "unit": "kTokens"
+              }
+            },
+            "currency": "USD",
+            "unit": "perMTokens",
+            "value": 0.5
+          },
+          {
+            "conditions": {
+              "prompt_tokens": {
+                "gte": 200,
+                "unit": "kTokens"
+              }
+            },
+            "currency": "USD",
+            "unit": "perMTokens",
+            "value": 1
+          }
+        ],
+        "prompt": [
+          {
+            "conditions": {
+              "prompt_tokens": {
+                "gte": 0,
+                "lte": 200,
+                "unit": "kTokens"
+              }
+            },
+            "currency": "USD",
+            "unit": "perMTokens",
+            "value": 2
+          },
+          {
+            "conditions": {
+              "prompt_tokens": {
+                "gte": 200,
+                "unit": "kTokens"
+              }
+            },
+            "currency": "USD",
+            "unit": "perMTokens",
+            "value": 4
+          }
+        ],
+        "web_search": [
+          {
+            "currency": "USD",
+            "unit": "perCount",
+            "value": 0.005
+          }
+        ]
+      },
+      "publish_time": "2026-07-09"
+    },
+    {
+      "capabilities": {
+        "reasoning": false
+      },
+      "context_length": 256000,
+      "created": 1783491139,
+      "display_name": "KwaiKAT: KAT-Coder-Air-V2.5",
+      "id": "kuaishou/kat-coder-air-v2.5",
+      "input_modalities": [
+        "text"
+      ],
+      "object": "model",
+      "output_modalities": [
+        "text"
+      ],
+      "owned_by": "kuaishou",
+      "pricings": {
+        "completion": [
+          {
+            "currency": "USD",
+            "unit": "perMTokens",
+            "value": 0.54
+          }
+        ],
+        "input_cache_read": [
+          {
+            "currency": "USD",
+            "unit": "perMTokens",
+            "value": 0.027
+          }
+        ],
+        "prompt": [
+          {
+            "currency": "USD",
+            "unit": "perMTokens",
+            "value": 0.135
+          }
+        ]
+      },
+      "publish_time": "2026-07-08"
+    },
+    {
+      "capabilities": {
+        "reasoning": false
+      },
+      "context_length": 256000,
+      "created": 1783490305,
+      "display_name": "KwaiKAT: KAT-Coder-Pro-V2.5",
+      "id": "kuaishou/kat-coder-pro-v2.5",
+      "input_modalities": [
+        "text"
+      ],
+      "object": "model",
+      "output_modalities": [
+        "text"
+      ],
+      "owned_by": "kuaishou",
+      "pricings": {
+        "completion": [
+          {
+            "currency": "USD",
+            "unit": "perMTokens",
+            "value": 1.776
+          }
+        ],
+        "input_cache_read": [
+          {
+            "currency": "USD",
+            "unit": "perMTokens",
+            "value": 0.09
+          }
+        ],
+        "prompt": [
+          {
+            "currency": "USD",
+            "unit": "perMTokens",
+            "value": 0.444
+          }
+        ]
+      },
+      "publish_time": "2026-07-08"
+    },
+    {
+      "capabilities": {
+        "reasoning": true
+      },
+      "context_length": 262144,
+      "created": 1783328862,
+      "display_name": "Tencent: Hy3",
+      "id": "tencent/hy3",
+      "input_modalities": [
+        "text"
+      ],
+      "object": "model",
+      "output_modalities": [
+        "text"
+      ],
+      "owned_by": "tencent",
+      "pricings": {
+        "completion": [
+          {
+            "currency": "USD",
+            "unit": "perMTokens",
+            "value": 0.5301
+          }
+        ],
+        "input_cache_read": [
+          {
+            "currency": "USD",
+            "unit": "perMTokens",
+            "value": 0.0333
+          }
+        ],
+        "prompt": [
+          {
+            "currency": "USD",
+            "unit": "perMTokens",
+            "value": 0.1323
+          }
+        ]
+      },
+      "publish_time": "2026-07-06"
     },
     {
       "capabilities": {
@@ -486,28 +1138,28 @@
           {
             "currency": "USD",
             "unit": "perMTokens",
-            "value": 1.3519924
+            "value": 4.4
           }
         ],
         "input_cache_read": [
           {
             "currency": "USD",
             "unit": "perMTokens",
-            "value": 0.07989046
+            "value": 0.26
           }
         ],
         "prompt": [
           {
             "currency": "USD",
             "unit": "perMTokens",
-            "value": 0.4301794
+            "value": 1.4
           }
         ],
         "web_search": [
           {
             "currency": "USD",
             "unit": "perCount",
-            "value": 0.00307271
+            "value": 0.01
           }
         ]
       },
@@ -672,70 +1324,6 @@
             "currency": "USD",
             "unit": "perCount",
             "value": 0.01
-          }
-        ]
-      },
-      "publish_time": "2026-06-09"
-    },
-    {
-      "capabilities": {
-        "reasoning": true
-      },
-      "context_length": 1000000,
-      "created": 1782938239,
-      "display_name": "Anthropic: Claude Fable 5 (Free)",
-      "id": "anthropic/claude-fable-5-free",
-      "input_modalities": [
-        "text",
-        "image",
-        "file"
-      ],
-      "object": "model",
-      "output_modalities": [
-        "text"
-      ],
-      "owned_by": "anthropic",
-      "pricings": {
-        "completion": [
-          {
-            "currency": "USD",
-            "unit": "perMTokens",
-            "value": 0
-          }
-        ],
-        "input_cache_read": [
-          {
-            "currency": "USD",
-            "unit": "perMTokens",
-            "value": 0
-          }
-        ],
-        "input_cache_write_1_h": [
-          {
-            "currency": "USD",
-            "unit": "perMTokens",
-            "value": 0
-          }
-        ],
-        "input_cache_write_5_min": [
-          {
-            "currency": "USD",
-            "unit": "perMTokens",
-            "value": 0
-          }
-        ],
-        "prompt": [
-          {
-            "currency": "USD",
-            "unit": "perMTokens",
-            "value": 0
-          }
-        ],
-        "web_search": [
-          {
-            "currency": "USD",
-            "unit": "perCount",
-            "value": 0
           }
         ]
       },
@@ -3770,71 +4358,6 @@
       "capabilities": {
         "reasoning": true
       },
-      "context_length": 1048576,
-      "created": 1772597406,
-      "display_name": "Google: Gemini 3.1 Flash Lite Preview",
-      "id": "google/gemini-3.1-flash-lite-preview",
-      "input_modalities": [
-        "file",
-        "image",
-        "text",
-        "audio"
-      ],
-      "object": "model",
-      "output_modalities": [
-        "text"
-      ],
-      "owned_by": "google",
-      "pricings": {
-        "audio_cache_read": [
-          {
-            "currency": "USD",
-            "unit": "perMTokens",
-            "value": 0.05
-          }
-        ],
-        "audio_input": [
-          {
-            "currency": "USD",
-            "unit": "perMTokens",
-            "value": 0.5
-          }
-        ],
-        "completion": [
-          {
-            "currency": "USD",
-            "unit": "perMTokens",
-            "value": 1.5
-          }
-        ],
-        "input_cache_read": [
-          {
-            "currency": "USD",
-            "unit": "perMTokens",
-            "value": 0.03
-          }
-        ],
-        "prompt": [
-          {
-            "currency": "USD",
-            "unit": "perMTokens",
-            "value": 0.25
-          }
-        ],
-        "web_search": [
-          {
-            "currency": "USD",
-            "unit": "perCount",
-            "value": 0.014
-          }
-        ]
-      },
-      "publish_time": "2026-03-04"
-    },
-    {
-      "capabilities": {
-        "reasoning": true
-      },
       "context_length": 128000,
       "created": 1772606899,
       "display_name": "OpenAI: GPT-5.3 Chat",
@@ -6838,7 +7361,7 @@
     },
     {
       "capabilities": {
-        "reasoning": false
+        "reasoning": true
       },
       "context_length": 128000,
       "created": 1757473982,
@@ -9248,7 +9771,7 @@
     },
     {
       "capabilities": {
-        "reasoning": false
+        "reasoning": true
       },
       "context_length": 1048576,
       "created": 1755135833,
@@ -10051,7 +10574,7 @@
     },
     {
       "capabilities": {
-        "reasoning": true
+        "reasoning": false
       },
       "context_length": 128000,
       "created": 1764216354,
@@ -10082,23 +10605,6 @@
         ]
       },
       "publish_time": "2024-12-06"
-    },
-    {
-      "capabilities": {},
-      "context_length": 200000,
-      "created": 1755152798,
-      "display_name": "Anthropic: Claude 3.5 Haiku",
-      "id": "anthropic/claude-3.5-haiku",
-      "input_modalities": [
-        "text",
-        "image"
-      ],
-      "object": "model",
-      "output_modalities": [
-        "text"
-      ],
-      "owned_by": "anthropic",
-      "publish_time": "2024-11-04"
     },
     {
       "capabilities": {

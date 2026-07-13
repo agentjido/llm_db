@@ -14,6 +14,8 @@ defmodule LLMDB.Sources.XAITest do
               "object" => "model",
               "created" => 1_776_384_000,
               "owned_by" => "xai",
+              "aliases" => ["grok-4.3-latest", "grok-latest"],
+              "context_length" => 1_000_000,
               "prompt_text_token_price" => 12_500,
               "cached_prompt_text_token_price" => 2_000,
               "completion_text_token_price" => 25_000,
@@ -33,6 +35,8 @@ defmodule LLMDB.Sources.XAITest do
       assert model.extra.created == 1_776_384_000
       assert model.extra.owned_by == "xai"
       assert model.extra.long_context_threshold == 200_000
+      assert model.aliases == ["grok-4.3-latest", "grok-latest"]
+      assert model.limits.context == 1_000_000
 
       assert model.cost.input == 1.25
       assert model.cost.cache_read == 0.2
