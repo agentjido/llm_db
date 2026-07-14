@@ -7,6 +7,21 @@ This project uses [Calendar Versioning](https://calver.org/) with the format `YY
 
 <!-- changelog -->
 
+## [2026.7.1](https://github.com/agentjido/llm_db/compare/2026.7.1...2026.7.1) (2026-07-14)
+
+
+
+
+### Bug Fixes:
+
+* deps: update plug to 1.20.3 by github-actions[bot]
+
+* refresh latest model catalog metadata by github-actions[bot]
+
+* add OpenAI o3 snapshot deprecations by mikehostetler
+
+* add OpenAI GPT-5 snapshot deprecations by mikehostetler
+
 ## [2026.7.0](https://github.com/agentjido/llm_db/compare/2026.7.0...2026.7.0) (2026-07-05)
 
 
