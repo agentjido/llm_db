@@ -36,6 +36,7 @@ defmodule LLMDB.MixProject do
           "guides/consumer-integration.md",
           "guides/model-spec-formats.md",
           "guides/model-struct-evolution-proposal.md",
+          "guides/package-footprint.md",
           "guides/pricing-and-billing.md",
           "guides/runtime-and-maintainer-boundaries.md",
           "guides/schema-system.md",
@@ -125,7 +126,7 @@ defmodule LLMDB.MixProject do
         "Website" => "https://agentjido.xyz"
       },
       files:
-        ~w(config guides lib priv/llm_db/snapshot.json mix.exs LICENSE README.md CHANGELOG.md AGENTS.md usage-rules.md .formatter.exs)
+        ~w(config guides lib priv/llm_db/snapshot.json mix.exs LICENSE README.md CHANGELOG.md)
     ]
   end
 

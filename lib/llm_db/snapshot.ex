@@ -167,14 +167,17 @@ defmodule LLMDB.Snapshot do
   end
 
   @doc """
-  Encodes a snapshot or metadata document as pretty JSON.
+  Encodes a snapshot or metadata document as deterministic compact JSON.
+
+  Object keys are sorted recursively. Array order and every encoded value are
+  preserved; only insignificant JSON whitespace is omitted.
   """
   @spec encode(map()) :: String.t()
   def encode(document) when is_map(document) do
     document
     |> json_safe()
     |> canonical_json_map()
-    |> Jason.encode!(pretty: true)
+    |> Jason.encode!()
   end
 
   @doc """
