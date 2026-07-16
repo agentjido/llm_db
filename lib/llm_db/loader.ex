@@ -9,7 +9,19 @@ defmodule LLMDB.Loader do
   LLMDB module focused on the query API.
   """
 
-  alias LLMDB.{Engine, Merge, Model, Packaged, Pricing, Provider, Runtime, Snapshot, Validate}
+  alias LLMDB.{
+    Catalog,
+    Engine,
+    Merge,
+    Model,
+    Packaged,
+    Pricing,
+    Provider,
+    Runtime,
+    Snapshot,
+    Validate
+  }
+
   alias LLMDB.Generated.{ProviderRegistry, ValidModalities}
   alias LLMDB.Snapshot.ReleaseStore
 
@@ -223,23 +235,15 @@ defmodule LLMDB.Loader do
   def load_empty(opts \\ []) do
     runtime = Runtime.compile(opts)
 
-    snapshot = %{
-      providers_by_id: %{},
-      models_by_key: %{},
-      aliases_by_key: %{},
-      providers: [],
-      models: %{},
-      base_models: [],
-      filters: runtime.filters,
-      prefer: runtime.prefer,
-      meta: %{
-        epoch: nil,
+    snapshot =
+      Catalog.empty(
+        filters: runtime.filters,
+        prefer: runtime.prefer,
         source_generated_at: nil,
         source_snapshot_id: nil,
         loaded_at: DateTime.utc_now() |> DateTime.to_iso8601(),
         digest: compute_digest([], [], runtime)
-      }
-    }
+      )
 
     {:ok, snapshot}
   end
@@ -542,66 +546,18 @@ defmodule LLMDB.Loader do
          generated_at,
          source_snapshot_id
        ) do
-    # Apply provider aliases AFTER all sources are loaded
-    providers_with_aliases = apply_provider_aliases(providers)
-
-    %{
-      providers_by_id: index_providers(providers_with_aliases),
-      models_by_key: index_models(filtered_models),
-      aliases_by_key: index_aliases(filtered_models),
-      providers: providers_with_aliases,
-      models: Enum.group_by(filtered_models, & &1.provider),
-      base_models: base_models,
+    Catalog.build(providers, filtered_models, base_models,
       filters: runtime.filters,
       prefer: runtime.prefer,
-      meta: %{
-        epoch: nil,
-        source_generated_at: generated_at,
-        source_snapshot_id: source_snapshot_id,
-        loaded_at: DateTime.utc_now() |> DateTime.to_iso8601(),
-        digest:
-          compute_digest(providers, base_models, runtime, %{
-            source_generated_at: generated_at,
-            source_snapshot_id: source_snapshot_id
-          })
-      }
-    }
-  end
-
-  # Apply provider aliases post-load (after all sources merged)
-  # This handles cases where a single implementation (e.g., GoogleVertex)
-  # should handle models from multiple LLMDB providers
-  defp apply_provider_aliases(providers) do
-    # Hardcoded provider alias mappings
-    # Key: aliased provider ID, Value: primary provider ID
-    alias_map = %{
-      google_vertex_anthropic: :google_vertex
-    }
-
-    Enum.map(providers, fn provider ->
-      case Map.get(alias_map, provider.id) do
-        nil -> provider
-        primary_id -> Map.put(provider, :alias_of, primary_id)
-      end
-    end)
-  end
-
-  defp index_providers(providers), do: Map.new(providers, &{&1.id, &1})
-
-  defp index_models(models), do: Map.new(models, &{{&1.provider, &1.id}, &1})
-
-  defp index_aliases(models) do
-    models
-    |> Enum.flat_map(fn model ->
-      provider = model.provider
-      canonical_id = model.id
-      aliases = Map.get(model, :aliases, [])
-
-      Enum.map(aliases, fn alias_name ->
-        {{provider, alias_name}, canonical_id}
-      end)
-    end)
-    |> Map.new()
+      source_generated_at: generated_at,
+      source_snapshot_id: source_snapshot_id,
+      loaded_at: DateTime.utc_now() |> DateTime.to_iso8601(),
+      digest:
+        compute_digest(providers, base_models, runtime, %{
+          source_generated_at: generated_at,
+          source_snapshot_id: source_snapshot_id
+        })
+    )
   end
 
   defp summarize_filter(:all), do: ":all"

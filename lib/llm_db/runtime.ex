@@ -25,7 +25,7 @@ defmodule LLMDB.Runtime do
       # Runtime config can then be used to filter and customize the catalog
   """
 
-  alias LLMDB.Config
+  alias LLMDB.{Catalog, Config}
 
   require Logger
 
@@ -309,39 +309,17 @@ defmodule LLMDB.Runtime do
          "(allow: #{allow_summary}, deny: #{deny_summary}). " <>
          "Use allow: :all to widen filters or remove deny patterns."}
     else
-      updated_snapshot = %{
-        snapshot
-        | filters: compiled_filters,
-          models_by_key: index_models(filtered_models),
-          models: Enum.group_by(filtered_models, & &1.provider),
-          aliases_by_key: index_aliases(filtered_models)
-      }
+      updated_snapshot = Catalog.with_runtime_view(snapshot, filtered_models, compiled_filters)
 
       {:ok, updated_snapshot}
     end
-  end
-
-  defp index_models(models), do: Map.new(models, &{{&1.provider, &1.id}, &1})
-
-  defp index_aliases(models) do
-    models
-    |> Enum.flat_map(fn model ->
-      provider = model.provider
-      canonical_id = model.id
-      aliases = Map.get(model, :aliases, [])
-
-      Enum.map(aliases, fn alias_name ->
-        {{provider, alias_name}, canonical_id}
-      end)
-    end)
-    |> Map.new()
   end
 
   defp maybe_update_prefer({:ok, snapshot}, nil), do: {:ok, snapshot}
   defp maybe_update_prefer({:ok, snapshot}, []), do: {:ok, snapshot}
 
   defp maybe_update_prefer({:ok, snapshot}, prefer) when is_list(prefer) do
-    {:ok, %{snapshot | prefer: prefer}}
+    {:ok, Catalog.with_prefer(snapshot, prefer)}
   end
 
   defp maybe_update_prefer({:error, _} = error, _prefer), do: error

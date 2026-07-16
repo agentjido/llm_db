@@ -5,7 +5,7 @@ defmodule LLMDB.Store do
   Uses `:persistent_term` for fast, concurrent reads with atomic updates tracked by monotonic epochs.
   """
 
-  @store_key :llm_db_store
+  alias LLMDB.{Catalog, Model, Provider}
 
   @doc """
   Reads the full store from persistent_term.
@@ -15,9 +15,7 @@ defmodule LLMDB.Store do
   Map with `:snapshot`, `:epoch`, and `:opts` keys, or `nil` if not set.
   """
   @spec get() :: map() | nil
-  def get do
-    :persistent_term.get(@store_key, nil)
-  end
+  defdelegate get(), to: Catalog
 
   @doc """
   Returns the snapshot portion from the store.
@@ -27,12 +25,7 @@ defmodule LLMDB.Store do
   The snapshot map or `nil` if not set.
   """
   @spec snapshot() :: map() | nil
-  def snapshot do
-    case get() do
-      %{snapshot: snapshot} -> snapshot
-      _ -> nil
-    end
-  end
+  defdelegate snapshot(), to: Catalog
 
   @doc """
   Returns the current epoch from the store.
@@ -42,12 +35,7 @@ defmodule LLMDB.Store do
   Non-negative integer representing the current epoch, or `0` if not set.
   """
   @spec epoch() :: non_neg_integer()
-  def epoch do
-    case get() do
-      %{epoch: epoch} -> epoch
-      _ -> 0
-    end
-  end
+  defdelegate epoch(), to: Catalog
 
   @doc """
   Returns the last load options from the store.
@@ -57,12 +45,7 @@ defmodule LLMDB.Store do
   Keyword list of options used in the last load, or `[]` if not set.
   """
   @spec last_opts() :: keyword()
-  def last_opts do
-    case get() do
-      %{opts: opts} -> opts
-      _ -> []
-    end
-  end
+  defdelegate last_opts(), to: Catalog
 
   @doc """
   Atomically swaps the store with new snapshot and options.
@@ -79,12 +62,7 @@ defmodule LLMDB.Store do
   `:ok`
   """
   @spec put!(map(), keyword()) :: :ok
-  def put!(snapshot, opts) do
-    epoch = :erlang.unique_integer([:monotonic, :positive])
-    store = %{snapshot: snapshot, epoch: epoch, opts: opts}
-    :persistent_term.put(@store_key, store)
-    :ok
-  end
+  defdelegate put!(snapshot, opts), to: Catalog
 
   @doc """
   Clears the persistent_term store.
@@ -96,10 +74,7 @@ defmodule LLMDB.Store do
   `:ok`
   """
   @spec clear!() :: :ok
-  def clear! do
-    :persistent_term.erase(@store_key)
-    :ok
-  end
+  defdelegate clear!(), to: Catalog
 
   # Query functions
 
@@ -112,16 +87,11 @@ defmodule LLMDB.Store do
   """
   @spec providers() :: [LLMDB.Provider.t()]
   def providers do
-    case snapshot() do
-      %{providers: providers} when is_list(providers) ->
-        Enum.map(providers, fn
-          %LLMDB.Provider{} = p -> p
-          provider -> LLMDB.Provider.new!(provider)
-        end)
-
-      _ ->
-        []
-    end
+    Catalog.providers()
+    |> Enum.map(fn
+      %Provider{} = provider -> provider
+      provider -> Provider.new!(provider)
+    end)
   end
 
   @doc """
@@ -138,15 +108,10 @@ defmodule LLMDB.Store do
   """
   @spec provider(atom()) :: {:ok, LLMDB.Provider.t()} | {:error, :not_found}
   def provider(provider_id) when is_atom(provider_id) do
-    case snapshot() do
-      %{providers_by_id: providers_by_id} ->
-        case Map.get(providers_by_id, provider_id) do
-          nil -> {:error, :not_found}
-          provider -> {:ok, LLMDB.Provider.new!(provider)}
-        end
-
-      _ ->
-        {:error, :not_found}
+    case Catalog.provider(provider_id) do
+      {:ok, %Provider{} = provider} -> {:ok, provider}
+      {:ok, provider} -> {:ok, Provider.new!(provider)}
+      {:error, :not_found} = error -> error
     end
   end
 
@@ -167,33 +132,11 @@ defmodule LLMDB.Store do
   """
   @spec models(atom()) :: [LLMDB.Model.t()]
   def models(provider_id) when is_atom(provider_id) do
-    case snapshot() do
-      %{models: models_by_provider, providers_by_id: providers_by_id} ->
-        # Get models for the requested provider
-        direct_models = Map.get(models_by_provider, provider_id, [])
-
-        # Find all providers that alias to this provider
-        aliased_models =
-          providers_by_id
-          |> Enum.filter(fn {_id, provider} ->
-            Map.get(provider, :alias_of) == provider_id ||
-              Map.get(provider, "alias_of") == Atom.to_string(provider_id)
-          end)
-          |> Enum.flat_map(fn {aliased_provider_id, _provider} ->
-            Map.get(models_by_provider, aliased_provider_id, [])
-          end)
-
-        # Combine and deduplicate models
-        (direct_models ++ aliased_models)
-        |> Enum.uniq_by(fn m -> Map.get(m, :id) || Map.get(m, "id") end)
-        |> Enum.map(fn
-          %LLMDB.Model{} = m -> m
-          model -> LLMDB.Model.new!(model)
-        end)
-
-      _ ->
-        []
-    end
+    Catalog.models(provider_id)
+    |> Enum.map(fn
+      %Model{} = model -> model
+      model -> Model.new!(model)
+    end)
   end
 
   @doc """
@@ -215,86 +158,10 @@ defmodule LLMDB.Store do
   """
   @spec model(atom(), String.t()) :: {:ok, LLMDB.Model.t()} | {:error, :not_found}
   def model(provider_id, model_id) when is_atom(provider_id) and is_binary(model_id) do
-    case snapshot() do
-      %{
-        models_by_key: models_by_key,
-        aliases_by_key: aliases_by_key,
-        providers_by_id: providers_by_id
-      } ->
-        # Build list of provider IDs to search: [requested_provider | aliased_providers]
-        providers_to_search =
-          [provider_id] ++
-            (providers_by_id
-             |> Enum.filter(fn {_id, provider} ->
-               Map.get(provider, :alias_of) == provider_id ||
-                 Map.get(provider, "alias_of") == Atom.to_string(provider_id)
-             end)
-             |> Enum.map(fn {id, _} -> id end))
-
-        # Strip inference profile prefix for Bedrock lookups
-        {lookup_id, _prefix} = LLMDB.Spec.strip_prefix(provider_id, model_id)
-
-        # Try each provider in the search list
-        result =
-          Enum.find_value(providers_to_search, fn search_provider_id ->
-            key = {search_provider_id, lookup_id}
-
-            # Try direct lookup first
-            case Map.get(models_by_key, key) do
-              nil ->
-                # Try alias resolution
-                case Map.get(aliases_by_key, key) do
-                  nil ->
-                    nil
-
-                  canonical_id ->
-                    canonical_key = {search_provider_id, canonical_id}
-                    Map.get(models_by_key, canonical_key)
-                end
-
-              model ->
-                model
-            end
-          end)
-
-        case result do
-          nil ->
-            {:error, :not_found}
-
-          %LLMDB.Model{provider: model_provider} = m ->
-            # If model's provider is aliased, normalize it to the requested provider
-            provider_info = Map.get(providers_by_id, model_provider)
-
-            normalized_provider =
-              cond do
-                is_nil(provider_info) -> model_provider
-                Map.get(provider_info, :alias_of) == provider_id -> provider_id
-                Map.get(provider_info, "alias_of") == Atom.to_string(provider_id) -> provider_id
-                true -> model_provider
-              end
-
-            {:ok, %{m | provider: normalized_provider}}
-
-          model ->
-            # Convert to struct first
-            {:ok, model_struct} = LLMDB.Model.new(model)
-
-            # Normalize provider
-            provider_info = Map.get(providers_by_id, model_struct.provider)
-
-            normalized_provider =
-              cond do
-                is_nil(provider_info) -> model_struct.provider
-                Map.get(provider_info, :alias_of) == provider_id -> provider_id
-                Map.get(provider_info, "alias_of") == Atom.to_string(provider_id) -> provider_id
-                true -> model_struct.provider
-              end
-
-            {:ok, %{model_struct | provider: normalized_provider}}
-        end
-
-      _ ->
-        {:error, :not_found}
+    case Catalog.model(provider_id, model_id) do
+      {:ok, %Model{} = model} -> {:ok, model}
+      {:ok, model} -> Model.new(model)
+      {:error, :not_found} = error -> error
     end
   end
 end
