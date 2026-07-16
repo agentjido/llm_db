@@ -6,7 +6,7 @@ defmodule LLMDB.Query do
   All queries operate on the filtered catalog loaded into the Store.
   """
 
-  alias LLMDB.{Model, Spec, Store}
+  alias LLMDB.{Catalog, Model, Spec}
 
   @type provider :: atom()
   @type model_id :: String.t()
@@ -73,10 +73,7 @@ defmodule LLMDB.Query do
     prefer =
       case Keyword.fetch(opts, :prefer) do
         :error ->
-          case Store.snapshot() do
-            %{prefer: p} when is_list(p) -> p
-            _ -> []
-          end
+          Catalog.prefer()
 
         {:ok, p} ->
           p
@@ -126,10 +123,7 @@ defmodule LLMDB.Query do
     prefer =
       case Keyword.fetch(opts, :prefer) do
         :error ->
-          case Store.snapshot() do
-            %{prefer: p} when is_list(p) -> p
-            _ -> []
-          end
+          Catalog.prefer()
 
         {:ok, p} ->
           p
@@ -164,7 +158,7 @@ defmodule LLMDB.Query do
   def capabilities(%Model{capabilities: caps}), do: caps
 
   def capabilities({provider, model_id}) when is_atom(provider) and is_binary(model_id) do
-    case Store.model(provider, model_id) do
+    case Catalog.model(provider, model_id) do
       {:ok, m} -> Map.get(m, :capabilities)
       _ -> nil
     end
@@ -180,7 +174,7 @@ defmodule LLMDB.Query do
   # Private helpers
 
   defp build_provider_list(:all, prefer) do
-    all_providers = Store.providers() |> Enum.map(& &1.id)
+    all_providers = Catalog.providers() |> Enum.map(&Map.get(&1, :id, Map.get(&1, "id")))
 
     if prefer != [] do
       prefer ++ (all_providers -- prefer)
@@ -197,7 +191,7 @@ defmodule LLMDB.Query do
 
   defp find_first_match([provider | rest], require_kw, forbid_kw) do
     models_list =
-      Store.models(provider)
+      Catalog.models(provider)
       |> Enum.filter(&matches_require?(&1, require_kw))
       |> Enum.reject(&matches_forbid?(&1, forbid_kw))
 
@@ -209,7 +203,7 @@ defmodule LLMDB.Query do
 
   defp find_all_matches(providers, require_kw, forbid_kw) do
     Enum.flat_map(providers, fn provider ->
-      Store.models(provider)
+      Catalog.models(provider)
       |> Enum.filter(&matches_require?(&1, require_kw))
       |> Enum.reject(&matches_forbid?(&1, forbid_kw))
       |> Enum.map(&{provider, &1.id})

@@ -30,12 +30,8 @@ defmodule LLMDB.Spec do
   model ID retains the "us." prefix for API routing purposes.
   """
 
-  alias LLMDB.{Normalize, Store}
+  alias LLMDB.{Catalog, Normalize}
   alias LLMDB.Model
-
-  # Valid Bedrock inference profile region prefixes.
-  # See: https://docs.aws.amazon.com/bedrock/latest/userguide/inference-profiles-support.html
-  @bedrock_prefixes ~w(us. eu. ap. apac. ca. au. jp. us-gov. global.)
 
   @doc """
   Parses and validates a provider identifier.
@@ -478,16 +474,10 @@ defmodule LLMDB.Spec do
   end
 
   defp verify_provider_exists(provider_atom) do
-    case Store.snapshot() do
-      %{providers_by_id: providers} when is_map(providers) ->
-        if Map.has_key?(providers, provider_atom) do
-          {:ok, provider_atom}
-        else
-          {:error, :unknown_provider}
-        end
-
-      _ ->
-        {:error, :unknown_provider}
+    if Catalog.provider_exists?(provider_atom) do
+      {:ok, provider_atom}
+    else
+      {:error, :unknown_provider}
     end
   end
 
@@ -501,91 +491,13 @@ defmodule LLMDB.Spec do
   For other providers, returns `{model_id, nil}` unchanged.
   """
   @spec strip_prefix(atom(), String.t()) :: {String.t(), String.t() | nil}
-  def strip_prefix(provider, model_id) do
-    lookup_id_and_prefix(provider, model_id)
-  end
-
-  defp lookup_id_and_prefix(provider, model_id) do
-    if provider == :amazon_bedrock do
-      case Enum.find_value(@bedrock_prefixes, fn prefix ->
-             if String.starts_with?(model_id, prefix),
-               do: {prefix, String.replace_prefix(model_id, prefix, "")}
-           end) do
-        nil -> {model_id, nil}
-        {prefix, base_id} -> {base_id, prefix}
-      end
-    else
-      {model_id, nil}
-    end
-  end
+  defdelegate strip_prefix(provider, model_id), to: Catalog
 
   defp resolve_model(provider, model_id) do
-    case Store.snapshot() do
-      nil ->
-        {:error, :not_found}
-
-      snapshot ->
-        {lookup_id, prefix} = lookup_id_and_prefix(provider, model_id)
-
-        key = {provider, lookup_id}
-        canonical_base_id = Map.get(snapshot.aliases_by_key, key, lookup_id)
-        canonical_key = {provider, canonical_base_id}
-
-        case Map.get(snapshot.models_by_key, canonical_key) do
-          nil ->
-            {:error, :not_found}
-
-          model ->
-            returned_id =
-              case prefix do
-                nil -> canonical_base_id
-                p -> p <> canonical_base_id
-              end
-
-            {:ok, {provider, returned_id, model}}
-        end
-    end
+    Catalog.resolve_model(Catalog.snapshot(), provider, model_id)
   end
 
   defp resolve_bare_model(model_id) do
-    case Store.snapshot() do
-      nil ->
-        {:error, :not_found}
-
-      snapshot ->
-        matches = find_all_matches(snapshot, model_id)
-
-        case matches do
-          [] -> {:error, :not_found}
-          [{provider, canonical_id, model}] -> {:ok, {provider, canonical_id, model}}
-          [_ | _] -> {:error, :ambiguous}
-        end
-    end
-  end
-
-  defp find_all_matches(snapshot, model_id) do
-    providers = Map.keys(snapshot.providers_by_id)
-
-    Enum.flat_map(providers, fn provider ->
-      {lookup_id, prefix} = lookup_id_and_prefix(provider, model_id)
-
-      key = {provider, lookup_id}
-      canonical_base_id = Map.get(snapshot.aliases_by_key, key, lookup_id)
-      canonical_key = {provider, canonical_base_id}
-
-      case Map.get(snapshot.models_by_key, canonical_key) do
-        nil ->
-          []
-
-        model ->
-          returned_id =
-            case prefix do
-              nil -> canonical_base_id
-              p -> p <> canonical_base_id
-            end
-
-          [{provider, returned_id, model}]
-      end
-    end)
+    Catalog.resolve_bare(Catalog.snapshot(), model_id)
   end
 end
