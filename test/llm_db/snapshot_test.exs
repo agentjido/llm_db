@@ -141,10 +141,10 @@ defmodule LLMDB.SnapshotTest do
   test "rejects unsupported schema versions after checksum verification" do
     snapshot =
       snapshot_document()
-      |> Map.put("schema_version", Snapshot.schema_version() + 1)
+      |> Map.put("schema_version", Snapshot.sparse_schema_version() + 1)
       |> then(fn document -> Map.put(document, "snapshot_id", Snapshot.snapshot_id(document)) end)
 
-    assert {:error, {:unsupported_schema_version, 2}} = Snapshot.prepare(snapshot)
+    assert {:error, {:unsupported_schema_version, 3}} = Snapshot.prepare(snapshot)
   end
 
   defp snapshot_document do

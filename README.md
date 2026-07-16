@@ -338,6 +338,16 @@ mix llm_db.build
 mix llm_db.build --install
 ```
 
+Snapshot schema v1 remains the packaged and published default. To evaluate the
+versioned sparse v2 representation side by side without installing it:
+
+```bash
+mix llm_db.build --schema-version 2
+```
+
+See [Snapshot Formats and Sparse v2 Rollout](guides/snapshot-formats.md) for the
+encoding rules, compatibility contract, measured sizes, and rollout gate.
+
 ### Maintained history workflow
 
 Migrate legacy Git-tracked metadata history into the snapshot store once:

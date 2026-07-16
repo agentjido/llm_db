@@ -19,6 +19,7 @@ defmodule Mix.Tasks.LlmDb.Build do
       mix llm_db.build --install
       mix llm_db.build --check
       mix llm_db.build --output-dir tmp/llm_db/build
+      mix llm_db.build --schema-version 2
 
   ## Options
 
@@ -27,6 +28,9 @@ defmodule Mix.Tasks.LlmDb.Build do
     * `--install` - Also install the built snapshot into
       `priv/llm_db/snapshot.json`.
     * `--output-dir` - Directory for local snapshot build artifacts.
+    * `--schema-version` - Snapshot wire schema to build (`1` by default; `2`
+      opts into a side-by-side sparse artifact). Sparse v2 cannot be installed as
+      the packaged default in this minor release.
   """
 
   @impl Mix.Task
@@ -38,7 +42,8 @@ defmodule Mix.Tasks.LlmDb.Build do
         strict: [
           check: :boolean,
           install: :boolean,
-          output_dir: :string
+          output_dir: :string,
+          schema_version: :integer
         ]
       )
 
@@ -46,11 +51,15 @@ defmodule Mix.Tasks.LlmDb.Build do
       Mix.raise("Invalid options: #{inspect(invalid)}")
     end
 
+    schema_version = opts[:schema_version] || LLMDB.Snapshot.schema_version()
+    validate_schema_version!(schema_version, opts)
+
     Mix.Task.run("app.start")
 
     build_opts =
       []
       |> maybe_put(:output_dir, opts[:output_dir])
+      |> Keyword.put(:schema_version, schema_version)
 
     Mix.shell().info("Building canonical snapshot from configured sources...\n")
 
@@ -107,12 +116,27 @@ defmodule Mix.Tasks.LlmDb.Build do
     Mix.shell().info("")
     Mix.shell().info("Summary:")
     Mix.shell().info("  Snapshot ID: #{artifact.snapshot_id}")
+    Mix.shell().info("  Schema:      v#{artifact.schema_version}")
     Mix.shell().info("  Providers:   #{counts.provider_count}")
     Mix.shell().info("  Models:      #{counts.model_count}")
   end
 
   defp maybe_put(opts, _key, nil), do: opts
   defp maybe_put(opts, key, value), do: Keyword.put(opts, key, value)
+
+  defp validate_schema_version!(schema_version, opts) do
+    unless schema_version in LLMDB.Snapshot.supported_schema_versions() do
+      Mix.raise(
+        "Unsupported snapshot schema version #{inspect(schema_version)}; expected one of #{inspect(LLMDB.Snapshot.supported_schema_versions())}"
+      )
+    end
+
+    if schema_version == LLMDB.Snapshot.sparse_schema_version() and opts[:install] do
+      Mix.raise(
+        "Sparse snapshot schema v#{schema_version} is opt-in and cannot be installed as the packaged default in this minor release"
+      )
+    end
+  end
 
   defp ensure_llm_db_project! do
     app = Mix.Project.config()[:app]
