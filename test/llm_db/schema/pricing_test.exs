@@ -1,0 +1,63 @@
+defmodule LLMDB.Schema.PricingTest do
+  use ExUnit.Case, async: true
+
+  alias LLMDB.{Model, Provider}
+
+  @pricing %{
+    currency: "USD",
+    components: [
+      %{
+        id: "token.input.long_context",
+        kind: "token",
+        unit: "token",
+        per: 1_000_000,
+        rate: 10.0,
+        meter: "input_tokens",
+        tool: :web_search,
+        size_class: "long",
+        multiplier: 2.0,
+        derives_from: "token.input",
+        applies_to: ["token.*"],
+        applies_when: %{input_tokens: %{gt: 272_000}},
+        excludes_when: %{api: "batch"},
+        mode: "standard",
+        charge_scope: "full_request",
+        source: "provider_docs",
+        notes: "Long-context tier"
+      }
+    ]
+  }
+
+  test "model and provider parents parse shared pricing fields identically" do
+    model = Model.new!(%{id: "model", provider: :provider, pricing: @pricing})
+    provider = Provider.new!(%{id: :provider, pricing_defaults: @pricing})
+
+    assert Map.drop(model.pricing, [:merge]) == provider.pricing_defaults
+
+    assert model.pricing.merge == "merge_by_id"
+  end
+
+  test "model-specific merge behavior remains available" do
+    model =
+      Model.new!(%{
+        id: "model",
+        provider: :provider,
+        pricing: Map.put(@pricing, :merge, "replace")
+      })
+
+    assert model.pricing.merge == "replace"
+  end
+
+  test "both parents reject the same invalid component payloads" do
+    invalid = put_in(@pricing, [:components, Access.at(0), :per], 0)
+
+    assert {:error, model_error} =
+             Model.new(%{id: "model", provider: :provider, pricing: invalid})
+
+    assert {:error, provider_error} =
+             Provider.new(%{id: :provider, pricing_defaults: invalid})
+
+    assert inspect(model_error) =~ "per"
+    assert inspect(provider_error) =~ "per"
+  end
+end

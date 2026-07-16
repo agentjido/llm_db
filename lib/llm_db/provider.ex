@@ -44,50 +44,7 @@ defmodule LLMDB.Provider do
                          doc: Zoi.string() |> Zoi.nullish()
                        })
 
-  @pricing_component_schema Zoi.object(%{
-                              id: Zoi.string(),
-                              kind:
-                                Zoi.enum([
-                                  "token",
-                                  "tool",
-                                  "image",
-                                  "storage",
-                                  "request",
-                                  "other"
-                                ])
-                                |> Zoi.nullish(),
-                              unit:
-                                Zoi.enum([
-                                  "token",
-                                  "call",
-                                  "query",
-                                  "session",
-                                  "gb_day",
-                                  "image",
-                                  "source",
-                                  "other"
-                                ])
-                                |> Zoi.nullish(),
-                              per: Zoi.integer() |> Zoi.min(1) |> Zoi.nullish(),
-                              rate: Zoi.number() |> Zoi.nullish(),
-                              meter: Zoi.string() |> Zoi.nullish(),
-                              tool: Zoi.union([Zoi.atom(), Zoi.string()]) |> Zoi.nullish(),
-                              size_class: Zoi.string() |> Zoi.nullish(),
-                              multiplier: Zoi.number() |> Zoi.nullish(),
-                              derives_from: Zoi.string() |> Zoi.nullish(),
-                              applies_to: Zoi.array(Zoi.string()) |> Zoi.nullish(),
-                              applies_when: Zoi.map() |> Zoi.nullish(),
-                              excludes_when: Zoi.map() |> Zoi.nullish(),
-                              mode: Zoi.string() |> Zoi.nullish(),
-                              charge_scope: Zoi.string() |> Zoi.nullish(),
-                              source: Zoi.string() |> Zoi.nullish(),
-                              notes: Zoi.string() |> Zoi.nullish()
-                            })
-
-  @pricing_defaults_schema Zoi.object(%{
-                             currency: Zoi.string() |> Zoi.nullish(),
-                             components: Zoi.array(@pricing_component_schema) |> Zoi.default([])
-                           })
+  @pricing_defaults_schema LLMDB.Schema.Pricing.schema()
 
   @runtime_auth_header_schema Zoi.object(%{
                                 name: Zoi.string(),
