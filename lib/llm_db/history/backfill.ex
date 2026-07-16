@@ -11,15 +11,12 @@ defmodule LLMDB.History.Backfill do
   `mix llm_db.history.migrate_git`.
   """
 
+  alias LLMDB.History.{Diff, Lineage}
+
   @providers_dir "priv/llm_db/providers"
   @manifest_path "priv/llm_db/manifest.json"
   @default_output_dir Path.join(["priv", "llm_db", "history"])
   @lineage_overrides_file "lineage_overrides.json"
-
-  @sortable_list_keys MapSet.new(["aliases", "tags", "input", "output"])
-
-  # Keep inference conservative. Use lineage overrides for ambiguous migrations.
-  @lineage_inference_threshold 30
 
   @type summary :: %{
           commits_scanned: non_neg_integer(),
@@ -137,53 +134,13 @@ defmodule LLMDB.History.Backfill do
   @spec diff_models(%{optional(String.t()) => map()}, %{optional(String.t()) => map()}) :: [map()]
   def diff_models(previous_models, current_models)
       when is_map(previous_models) and is_map(current_models) do
-    previous_keys = Map.keys(previous_models) |> MapSet.new()
-    current_keys = Map.keys(current_models) |> MapSet.new()
-
-    introduced =
-      MapSet.difference(current_keys, previous_keys)
-      |> MapSet.to_list()
-      |> Enum.sort()
-      |> Enum.map(fn model_key ->
-        %{type: "introduced", model_key: model_key, changes: []}
-      end)
-
-    removed =
-      MapSet.difference(previous_keys, current_keys)
-      |> MapSet.to_list()
-      |> Enum.sort()
-      |> Enum.map(fn model_key ->
-        %{type: "removed", model_key: model_key, changes: []}
-      end)
-
-    changed =
-      MapSet.intersection(previous_keys, current_keys)
-      |> MapSet.to_list()
-      |> Enum.sort()
-      |> Enum.reduce([], fn model_key, acc ->
-        before_model = Map.fetch!(previous_models, model_key)
-        after_model = Map.fetch!(current_models, model_key)
-        changes = deep_changes(before_model, after_model, [])
-
-        if changes == [] do
-          acc
-        else
-          [%{type: "changed", model_key: model_key, changes: changes} | acc]
-        end
-      end)
-      |> Enum.reverse()
-
-    introduced ++ removed ++ changed
+    Diff.models(previous_models, current_models)
   end
 
   @doc false
   @spec snapshot_digest(%{optional(String.t()) => map()}) :: String.t()
   def snapshot_digest(models) when is_map(models) do
-    models
-    |> canonical_digest_term()
-    |> :erlang.term_to_binary()
-    |> then(&:crypto.hash(:sha256, &1))
-    |> Base.encode16(case: :lower)
+    Diff.snapshot_digest(models)
   end
 
   # Internal pipeline
@@ -561,8 +518,8 @@ defmodule LLMDB.History.Backfill do
 
       {:ok, state_by_file} ->
         models = flatten_state_models(state_by_file)
-        lineage_by_key = initialize_lineage(models, acc.lineage_overrides)
-        events = diff_models(%{}, models) |> attach_lineage(%{}, lineage_by_key)
+        lineage_by_key = Lineage.initialize(models, acc.lineage_overrides)
+        events = diff_models(%{}, models) |> Lineage.attach(%{}, lineage_by_key)
         commit_date = commit_date_iso8601(sha)
         manifest_generated_at = manifest_generated_at(sha)
 
@@ -596,7 +553,7 @@ defmodule LLMDB.History.Backfill do
     current_models = flatten_state_models(next_state_by_file)
 
     current_lineage_by_key =
-      resolve_current_lineage(
+      Lineage.resolve(
         previous_models,
         current_models,
         previous_lineage_by_key,
@@ -605,7 +562,7 @@ defmodule LLMDB.History.Backfill do
 
     events =
       diff_models(previous_models, current_models)
-      |> attach_lineage(previous_lineage_by_key, current_lineage_by_key)
+      |> Lineage.attach(previous_lineage_by_key, current_lineage_by_key)
 
     if events == [] do
       %{
@@ -644,293 +601,6 @@ defmodule LLMDB.History.Backfill do
           previous_lineage_by_key: current_lineage_by_key
       }
     end
-  end
-
-  defp initialize_lineage(models, lineage_overrides) do
-    models
-    |> Map.keys()
-    |> Enum.sort()
-    |> Enum.reduce(%{}, fn model_key, acc ->
-      lineage = lineage_for_model_key(model_key, lineage_overrides, %{}, acc, model_key)
-      Map.put(acc, model_key, lineage)
-    end)
-  end
-
-  defp resolve_current_lineage(
-         previous_models,
-         current_models,
-         previous_lineage_by_key,
-         lineage_overrides
-       ) do
-    previous_keys = Map.keys(previous_models) |> MapSet.new()
-    current_keys = Map.keys(current_models) |> MapSet.new()
-
-    shared_keys =
-      MapSet.intersection(previous_keys, current_keys)
-      |> MapSet.to_list()
-      |> Enum.sort()
-
-    removed_keys =
-      MapSet.difference(previous_keys, current_keys)
-      |> MapSet.to_list()
-      |> Enum.sort()
-
-    introduced_keys =
-      MapSet.difference(current_keys, previous_keys)
-      |> MapSet.to_list()
-      |> Enum.sort()
-
-    current_lineage_by_key =
-      Enum.reduce(shared_keys, %{}, fn model_key, acc ->
-        default_lineage = Map.get(previous_lineage_by_key, model_key, model_key)
-
-        lineage =
-          lineage_for_model_key(
-            model_key,
-            lineage_overrides,
-            previous_lineage_by_key,
-            acc,
-            default_lineage
-          )
-
-        Map.put(acc, model_key, lineage)
-      end)
-
-    {current_lineage_by_key, unresolved_introduced} =
-      Enum.reduce(introduced_keys, {current_lineage_by_key, []}, fn model_key,
-                                                                    {acc, unresolved} ->
-        if Map.has_key?(lineage_overrides, model_key) do
-          lineage =
-            lineage_for_model_key(
-              model_key,
-              lineage_overrides,
-              previous_lineage_by_key,
-              acc,
-              model_key
-            )
-
-          {Map.put(acc, model_key, lineage), unresolved}
-        else
-          {acc, [model_key | unresolved]}
-        end
-      end)
-
-    unresolved_introduced = Enum.reverse(unresolved_introduced)
-
-    inferred_matches =
-      infer_lineage_matches(removed_keys, unresolved_introduced, previous_models, current_models)
-
-    {current_lineage_by_key, matched_introduced} =
-      Enum.reduce(inferred_matches, {current_lineage_by_key, MapSet.new()}, fn {new_key, old_key},
-                                                                               {acc, matched} ->
-        default_lineage = Map.get(previous_lineage_by_key, old_key, old_key)
-
-        lineage =
-          lineage_for_model_key(
-            new_key,
-            lineage_overrides,
-            previous_lineage_by_key,
-            acc,
-            default_lineage
-          )
-
-        {Map.put(acc, new_key, lineage), MapSet.put(matched, new_key)}
-      end)
-
-    Enum.reduce(unresolved_introduced, current_lineage_by_key, fn model_key, acc ->
-      if MapSet.member?(matched_introduced, model_key) do
-        acc
-      else
-        lineage =
-          lineage_for_model_key(
-            model_key,
-            lineage_overrides,
-            previous_lineage_by_key,
-            acc,
-            model_key
-          )
-
-        Map.put(acc, model_key, lineage)
-      end
-    end)
-  end
-
-  defp infer_lineage_matches(removed_keys, introduced_keys, previous_models, current_models) do
-    candidates =
-      for removed_key <- removed_keys,
-          introduced_key <- introduced_keys,
-          score =
-            lineage_inference_score(
-              Map.get(previous_models, removed_key, %{}),
-              Map.get(current_models, introduced_key, %{})
-            ),
-          score >= @lineage_inference_threshold do
-        {score, introduced_key, removed_key}
-      end
-
-    candidates
-    |> Enum.sort_by(fn {score, introduced_key, removed_key} ->
-      {-score, introduced_key, removed_key}
-    end)
-    |> Enum.reduce({[], MapSet.new(), MapSet.new()}, fn {_score, introduced_key, removed_key},
-                                                        {acc, claimed_new, claimed_old} ->
-      cond do
-        MapSet.member?(claimed_new, introduced_key) ->
-          {acc, claimed_new, claimed_old}
-
-        MapSet.member?(claimed_old, removed_key) ->
-          {acc, claimed_new, claimed_old}
-
-        true ->
-          {
-            [{introduced_key, removed_key} | acc],
-            MapSet.put(claimed_new, introduced_key),
-            MapSet.put(claimed_old, removed_key)
-          }
-      end
-    end)
-    |> elem(0)
-    |> Enum.reverse()
-  end
-
-  defp lineage_inference_score(previous_model, current_model)
-       when is_map(previous_model) and is_map(current_model) do
-    previous_id = Map.get(previous_model, "id")
-    current_id = Map.get(current_model, "id")
-
-    previous_provider_model_id = Map.get(previous_model, "provider_model_id")
-    current_provider_model_id = Map.get(current_model, "provider_model_id")
-
-    previous_aliases = string_list(Map.get(previous_model, "aliases"))
-    current_aliases = string_list(Map.get(current_model, "aliases"))
-
-    alias_overlap = overlap_count(previous_aliases, current_aliases)
-
-    id_match_score =
-      if is_binary(previous_id) and previous_id == current_id do
-        50
-      else
-        0
-      end
-
-    provider_model_score =
-      if is_binary(previous_provider_model_id) and
-           previous_provider_model_id == current_provider_model_id do
-        40
-      else
-        0
-      end
-
-    previous_id_in_current_aliases_score =
-      if is_binary(previous_id) and previous_id in current_aliases do
-        30
-      else
-        0
-      end
-
-    current_id_in_previous_aliases_score =
-      if is_binary(current_id) and current_id in previous_aliases do
-        30
-      else
-        0
-      end
-
-    model_field_score =
-      if is_binary(Map.get(previous_model, "model")) and
-           Map.get(previous_model, "model") == Map.get(current_model, "model") do
-        5
-      else
-        0
-      end
-
-    name_field_score =
-      if is_binary(Map.get(previous_model, "name")) and
-           Map.get(previous_model, "name") == Map.get(current_model, "name") do
-        2
-      else
-        0
-      end
-
-    id_match_score + provider_model_score + previous_id_in_current_aliases_score +
-      current_id_in_previous_aliases_score + alias_overlap * 5 + model_field_score +
-      name_field_score
-  end
-
-  defp string_list(value) when is_list(value) do
-    value
-    |> Enum.filter(&is_binary/1)
-    |> Enum.uniq()
-  end
-
-  defp string_list(_), do: []
-
-  defp overlap_count(left, right) do
-    right_lookup = Map.new(right, &{&1, true})
-    Enum.count(left, &Map.has_key?(right_lookup, &1))
-  end
-
-  defp lineage_for_model_key(
-         model_key,
-         lineage_overrides,
-         previous_lineage_by_key,
-         current_lineage_by_key,
-         default_lineage
-       ) do
-    case resolve_override_target(model_key, lineage_overrides) do
-      nil ->
-        default_lineage
-
-      target_key ->
-        Map.get(current_lineage_by_key, target_key) ||
-          Map.get(previous_lineage_by_key, target_key) ||
-          target_key
-    end
-  end
-
-  defp resolve_override_target(model_key, lineage_overrides) do
-    if Map.has_key?(lineage_overrides, model_key) do
-      follow_override_target(model_key, lineage_overrides, [], 0)
-    else
-      nil
-    end
-  end
-
-  defp follow_override_target(model_key, _lineage_overrides, _seen, depth) when depth >= 32,
-    do: model_key
-
-  defp follow_override_target(model_key, lineage_overrides, seen, depth) do
-    if model_key in seen do
-      model_key
-    else
-      case Map.get(lineage_overrides, model_key) do
-        nil ->
-          model_key
-
-        target when is_binary(target) ->
-          follow_override_target(
-            target,
-            lineage_overrides,
-            [model_key | seen],
-            depth + 1
-          )
-      end
-    end
-  end
-
-  defp attach_lineage(events, previous_lineage_by_key, current_lineage_by_key) do
-    Enum.map(events, fn event ->
-      lineage_key =
-        case event.type do
-          "removed" ->
-            Map.get(previous_lineage_by_key, event.model_key, event.model_key)
-
-          _ ->
-            Map.get(current_lineage_by_key, event.model_key) ||
-              Map.get(previous_lineage_by_key, event.model_key, event.model_key)
-        end
-
-      Map.put(event, :lineage_key, lineage_key)
-    end)
   end
 
   defp load_previous_lineage(output_dir, model_keys, previous_models) do
@@ -1028,7 +698,7 @@ defmodule LLMDB.History.Backfill do
               model_data
               |> Map.put_new("id", model_id)
               |> Map.put_new("provider", provider_id)
-              |> normalize_value([])
+              |> Diff.normalize()
 
             Map.put(acc, "#{provider_id}:#{model_id}", model)
           end)
@@ -1044,93 +714,6 @@ defmodule LLMDB.History.Backfill do
     Enum.reduce(state_by_file, %{}, fn {_path, models}, acc ->
       Map.merge(acc, models)
     end)
-  end
-
-  defp normalize_value(value, path)
-
-  defp normalize_value(value, path) when is_map(value) do
-    value
-    |> Enum.map(fn {k, v} -> {k, normalize_value(v, [to_string(k) | path])} end)
-    |> Map.new()
-  end
-
-  defp normalize_value(value, path) when is_list(value) do
-    normalized = Enum.map(value, &normalize_value(&1, path))
-
-    case path do
-      [key | _] ->
-        if key in @sortable_list_keys and Enum.all?(normalized, &scalar?/1) do
-          Enum.sort(normalized)
-        else
-          normalized
-        end
-
-      _ ->
-        normalized
-    end
-  end
-
-  defp normalize_value(value, _path), do: value
-
-  defp scalar?(value),
-    do: is_binary(value) or is_number(value) or is_boolean(value) or is_nil(value)
-
-  defp deep_changes(before_value, after_value, path)
-
-  defp deep_changes(before_value, after_value, path)
-       when is_map(before_value) and is_map(after_value) do
-    keys =
-      (Map.keys(before_value) ++ Map.keys(after_value))
-      |> Enum.uniq()
-      |> Enum.sort()
-
-    Enum.flat_map(keys, fn key ->
-      in_before = Map.has_key?(before_value, key)
-      in_after = Map.has_key?(after_value, key)
-      next_path = path ++ [to_string(key)]
-
-      cond do
-        in_before and in_after ->
-          deep_changes(Map.get(before_value, key), Map.get(after_value, key), next_path)
-
-        in_before ->
-          [
-            %{
-              path: Enum.join(next_path, "."),
-              op: "remove",
-              before: Map.get(before_value, key),
-              after: nil
-            }
-          ]
-
-        in_after ->
-          [
-            %{
-              path: Enum.join(next_path, "."),
-              op: "add",
-              before: nil,
-              after: Map.get(after_value, key)
-            }
-          ]
-      end
-    end)
-  end
-
-  defp deep_changes(before_value, after_value, path)
-       when is_list(before_value) and is_list(after_value) do
-    if before_value == after_value do
-      []
-    else
-      [%{path: Enum.join(path, "."), op: "replace", before: before_value, after: after_value}]
-    end
-  end
-
-  defp deep_changes(before_value, after_value, path) do
-    if before_value == after_value do
-      []
-    else
-      [%{path: Enum.join(path, "."), op: "replace", before: before_value, after: after_value}]
-    end
   end
 
   defp write_snapshot(sha, commit_date, manifest_generated_at, models, events, output_dir) do
@@ -1264,27 +847,6 @@ defmodule LLMDB.History.Backfill do
     line = Jason.encode!(map) <> "\n"
     File.write!(path, line, [:append])
   end
-
-  defp canonical_digest_term(value) when is_map(value) do
-    entries =
-      value
-      |> Enum.map(fn {key, nested} -> {key, canonical_digest_term(nested)} end)
-      |> Enum.sort_by(fn {key, _nested} -> canonical_sort_key(key) end)
-
-    {:map, entries}
-  end
-
-  defp canonical_digest_term(value) when is_list(value) do
-    {:list, Enum.map(value, &canonical_digest_term/1)}
-  end
-
-  defp canonical_digest_term(value), do: value
-
-  defp canonical_sort_key(value) when is_binary(value), do: {0, value}
-  defp canonical_sort_key(value) when is_atom(value), do: {1, Atom.to_string(value)}
-  defp canonical_sort_key(value) when is_integer(value), do: {2, value}
-  defp canonical_sort_key(value) when is_float(value), do: {3, value}
-  defp canonical_sort_key(value), do: {6, inspect(value)}
 
   defp commit_date_iso8601(sha) do
     case git(["show", "-s", "--format=%cI", sha]) do
