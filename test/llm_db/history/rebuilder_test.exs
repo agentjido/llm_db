@@ -119,10 +119,5 @@ defmodule LLMDB.History.RebuilderTest do
     path
   end
 
-  defp clear_history_cache do
-    case :ets.whereis(:llm_db_history) do
-      :undefined -> :ok
-      tid -> :ets.delete(tid)
-    end
-  end
+  defp clear_history_cache, do: History.clear_cache()
 end
