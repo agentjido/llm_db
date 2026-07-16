@@ -11,12 +11,10 @@ defmodule LLMDB.History.Migrator do
   `mix llm_db.history.migrate_git`.
   """
 
-  alias LLMDB.{History.Rebuilder, Snapshot}
+  alias LLMDB.{History.Diff, History.Rebuilder, Snapshot}
 
   @providers_dir "priv/llm_db/providers"
   @manifest_path "priv/llm_db/manifest.json"
-  @sortable_list_keys MapSet.new(["aliases", "tags", "input", "output"])
-
   @type summary :: %{
           commits_scanned: non_neg_integer(),
           commits_processed: non_neg_integer(),
@@ -198,14 +196,14 @@ defmodule LLMDB.History.Migrator do
           model_data
           |> Map.put_new("id", model_id)
           |> Map.put_new("provider", provider_data["id"])
-          |> normalize_value([])
+          |> Diff.normalize()
 
         {model_id, normalized}
       end)
 
     provider_data
     |> Map.put("models", models)
-    |> normalize_value([])
+    |> Diff.normalize()
   end
 
   defp manifest_for_commit(sha) do
@@ -312,36 +310,6 @@ defmodule LLMDB.History.Migrator do
       _ -> true
     end
   end
-
-  defp normalize_value(value, path)
-
-  defp normalize_value(value, path) when is_map(value) do
-    value
-    |> Enum.map(fn {k, v} -> {k, normalize_value(v, [to_string(k) | path])} end)
-    |> Enum.sort_by(fn {k, _v} -> k end)
-    |> Map.new()
-  end
-
-  defp normalize_value(value, path) when is_list(value) do
-    normalized = Enum.map(value, &normalize_value(&1, path))
-
-    case path do
-      [key | _] ->
-        if key in @sortable_list_keys and Enum.all?(normalized, &scalar?/1) do
-          Enum.sort(normalized)
-        else
-          normalized
-        end
-
-      _ ->
-        normalized
-    end
-  end
-
-  defp normalize_value(value, _path), do: value
-
-  defp scalar?(value),
-    do: is_binary(value) or is_number(value) or is_boolean(value) or is_nil(value)
 
   defp commit_date_iso8601(sha) do
     case git(["show", "-s", "--format=%cI", sha]) do
