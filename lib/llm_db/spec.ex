@@ -494,10 +494,10 @@ defmodule LLMDB.Spec do
   defdelegate strip_prefix(provider, model_id), to: Catalog
 
   defp resolve_model(provider, model_id) do
-    Catalog.resolve_model(Catalog.snapshot(), provider, model_id)
+    Catalog.resolve_model(provider, model_id)
   end
 
   defp resolve_bare_model(model_id) do
-    Catalog.resolve_bare(Catalog.snapshot(), model_id)
+    Catalog.resolve_bare(model_id)
   end
 end

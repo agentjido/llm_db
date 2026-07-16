@@ -10,6 +10,11 @@
 
 LLM model metadata catalog with fast, capability-aware lookups. Use simple `"provider:model"` or `"model@provider"` specs, get validated Provider/Model structs, and select models by capabilities. Ships with a packaged snapshot; no network required by default.
 
+The packaged catalog loads lazily on the first query and starts no llm_db
+supervisor or worker. Use `LLMDB.load/1` when you need explicit control over
+loading or want an error tuple; a lazy first-use failure raises
+`LLMDB.LoadError`. Loading never pulls provider metadata or reads dotenv files.
+
 - **Primary interface**: `model_spec` — a string like `"openai:gpt-4o-mini"` or `"gpt-4o-mini@openai"` (filename-safe)
 - **Fast O(1) reads** via `:persistent_term`
 - **Minimal dependencies** 
@@ -203,7 +208,7 @@ See the full function docs in [hexdocs](https://hexdocs.pm/llm_db).
 
 ## Configuration
 
-The packaged snapshot loads automatically at app start. Optional runtime filters, preferences, and custom providers:
+The packaged snapshot loads automatically on the first query. Optional runtime filters, preferences, and custom providers:
 
 ```elixir
 # config/runtime.exs

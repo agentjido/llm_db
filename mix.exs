@@ -79,7 +79,6 @@ defmodule LLMDB.MixProject do
 
   def application do
     [
-      mod: {LLMDB.Application, []},
       extra_applications: [:logger]
     ]
   end
