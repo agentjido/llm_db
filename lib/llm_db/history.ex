@@ -79,8 +79,10 @@ defmodule LLMDB.History do
   @doc false
   @spec clear_cache() :: :ok
   def clear_cache do
-    :persistent_term.erase(@cache_key)
-    :ok
+    with_load_lock(fn ->
+      :persistent_term.erase(@cache_key)
+      :ok
+    end)
   end
 
   @doc false
