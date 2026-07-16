@@ -197,8 +197,13 @@ defmodule LLMDB.Catalog do
   def resolve_bare(nil, _model_id), do: {:error, :not_found}
 
   def resolve_bare(catalog, model_id) when is_map(catalog) and is_binary(model_id) do
-    direct = Map.get(resolutions_by_model_id(catalog), model_id, [])
     {bedrock_id, bedrock_prefix} = strip_prefix(:amazon_bedrock, model_id)
+
+    direct =
+      catalog
+      |> resolutions_by_model_id()
+      |> Map.get(model_id, [])
+      |> maybe_reject_prefixed_bedrock(bedrock_prefix)
 
     prefixed_bedrock =
       if bedrock_prefix do
@@ -309,18 +314,41 @@ defmodule LLMDB.Catalog do
   end
 
   defp index_resolutions(models) do
-    models
-    |> Enum.reduce(%{}, fn model, acc ->
-      provider = field(model, :provider)
-      canonical_id = field(model, :id)
-      resolution = {provider, canonical_id, model}
-
-      [canonical_id | field(model, :aliases) || []]
-      |> Enum.reduce(acc, fn lookup_id, entries ->
-        Map.update(entries, lookup_id, [resolution], &[resolution | &1])
+    direct =
+      Map.new(models, fn model ->
+        provider = field(model, :provider)
+        canonical_id = field(model, :id)
+        {{provider, canonical_id}, {provider, canonical_id, model}}
       end)
+
+    aliases =
+      Enum.reduce(models, %{}, fn model, acc ->
+        provider = field(model, :provider)
+        canonical_id = field(model, :id)
+        resolution = {provider, canonical_id, model}
+
+        Enum.reduce(field(model, :aliases) || [], acc, fn alias_name, entries ->
+          Map.put(entries, {provider, alias_name}, resolution)
+        end)
+      end)
+
+    direct
+    |> Map.merge(aliases)
+    |> Enum.group_by(
+      fn {{_provider, lookup_id}, _resolution} -> lookup_id end,
+      fn {_key, resolution} -> resolution end
+    )
+    |> Map.new(fn {lookup_id, resolutions} ->
+      {lookup_id, Enum.sort_by(resolutions, fn {provider, _canonical_id, _model} -> provider end)}
     end)
-    |> Map.new(fn {model_id, entries} -> {model_id, Enum.reverse(entries)} end)
+  end
+
+  defp maybe_reject_prefixed_bedrock(resolutions, nil), do: resolutions
+
+  defp maybe_reject_prefixed_bedrock(resolutions, _prefix) do
+    Enum.reject(resolutions, fn {provider, _canonical_id, _model} ->
+      provider == :amazon_bedrock
+    end)
   end
 
   defp provider_lookup_ids(catalog, provider_id) do

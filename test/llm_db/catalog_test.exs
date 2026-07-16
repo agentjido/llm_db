@@ -80,6 +80,37 @@ defmodule LLMDB.CatalogTest do
     assert model.provider == :google_vertex
   end
 
+  test "bare aliases retain precedence over colliding canonical IDs" do
+    provider = Provider.new!(%{id: :openrouter, name: "OpenRouter"})
+
+    alias_target =
+      Model.new!(%{
+        id: "canonical-target",
+        provider: :openrouter,
+        aliases: ["colliding-id"]
+      })
+
+    colliding_model = Model.new!(%{id: "colliding-id", provider: :openrouter})
+    catalog = build_catalog([provider], [alias_target, colliding_model])
+
+    assert {:ok, {:openrouter, "canonical-target", model}} =
+             Catalog.resolve_bare(catalog, "colliding-id")
+
+    assert model.id == "canonical-target"
+  end
+
+  test "Bedrock-prefixed bare IDs retain stripped-prefix precedence" do
+    provider = Provider.new!(%{id: :amazon_bedrock, name: "Amazon Bedrock"})
+    base = Model.new!(%{id: "anthropic.model", provider: :amazon_bedrock})
+    regional = Model.new!(%{id: "us.anthropic.model", provider: :amazon_bedrock})
+    catalog = build_catalog([provider], [base, regional])
+
+    assert {:ok, {:amazon_bedrock, "us.anthropic.model", model}} =
+             Catalog.resolve_bare(catalog, "us.anthropic.model")
+
+    assert model.id == "anthropic.model"
+  end
+
   defp catalog_fixture do
     providers = [
       Provider.new!(%{id: :google_vertex, name: "Google Vertex"}),
@@ -94,7 +125,11 @@ defmodule LLMDB.CatalogTest do
         aliases: ["claude-alias"]
       })
 
-    Catalog.build(providers, [model], [model],
+    build_catalog(providers, [model])
+  end
+
+  defp build_catalog(providers, models) do
+    Catalog.build(providers, models, models,
       filters: %{allow: :all, deny: %{}},
       prefer: [:google_vertex],
       source_generated_at: "2026-07-16T00:00:00Z",
