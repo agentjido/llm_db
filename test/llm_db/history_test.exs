@@ -30,6 +30,22 @@ defmodule LLMDB.HistoryTest do
     assert {:error, :history_unavailable} = History.meta()
   end
 
+  test "corrupt metadata is unavailable without replacing a valid published index" do
+    dir = temp_history_dir()
+    write_meta(dir)
+    write_events(dir, "2026", [event("a:1")])
+
+    Application.put_env(:llm_db, :history_dir, dir)
+    clear_history_cache()
+
+    assert History.available?()
+    File.write!(Path.join(dir, "meta.json"), "not-json")
+
+    assert {:error, _reason} = History.reload()
+    refute History.available?()
+    assert {:error, :history_unavailable} = History.meta()
+  end
+
   test "timeline/2 follows lineage_key and returns deterministic ordering" do
     dir = temp_history_dir()
     write_meta(dir)
@@ -170,9 +186,31 @@ defmodule LLMDB.HistoryTest do
     refute Enum.any?(results, &match?({:exit, _}, &1))
 
     assert Enum.all?(results, fn
-             {:ok, value} when is_boolean(value) -> true
+             {:ok, true} -> true
              _ -> false
            end)
+
+    assert :ets.whereis(:llm_db_history) == :undefined
+  end
+
+  test "reload and clear replace one immutable cache entry deterministically" do
+    dir = temp_history_dir()
+    write_meta(dir)
+    write_events(dir, "2026", [event("a:1")])
+
+    Application.put_env(:llm_db, :history_dir, dir)
+    clear_history_cache()
+
+    assert {:ok, [%{"event_id" => "a:1"}]} = History.recent(1)
+
+    write_events(dir, "2026", [event("b:1")])
+    assert {:ok, :loaded} = History.reload()
+    assert {:ok, [%{"event_id" => "b:1"}]} = History.recent(1)
+
+    assert :ok = History.clear_cache()
+    assert :ok = History.clear_cache()
+    assert {:ok, [%{"event_id" => "b:1"}]} = History.recent(1)
+    assert :ets.whereis(:llm_db_history) == :undefined
   end
 
   defp write_meta(dir) do
@@ -210,10 +248,21 @@ defmodule LLMDB.HistoryTest do
     path
   end
 
-  defp clear_history_cache do
-    case :ets.whereis(:llm_db_history) do
-      :undefined -> :ok
-      tid -> :ets.delete(tid)
-    end
+  defp event(event_id) do
+    %{
+      "schema_version" => 1,
+      "event_id" => event_id,
+      "snapshot_id" => event_id,
+      "source_commit" => event_id,
+      "captured_at" => "2026-01-01T00:00:00Z",
+      "type" => "introduced",
+      "model_key" => "openai:gpt-4o",
+      "lineage_key" => "openai:gpt-4o",
+      "provider" => "openai",
+      "model_id" => "gpt-4o",
+      "changes" => []
+    }
   end
+
+  defp clear_history_cache, do: History.clear_cache()
 end
