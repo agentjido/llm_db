@@ -420,6 +420,7 @@ Types: `feat`, `fix`, `docs`, `style`, `refactor`, `perf`, `test`, `build`, `ci`
 
 ## Docs & Guides
 
+- [API and Support Policy](guides/api-and-support-policy.md) — Stable APIs, extension points, internal modules, and compatibility guarantees
 - [Using the Data](guides/using-the-data.md) — Runtime API and querying
 - [Consumer Integration](guides/consumer-integration.md) — Best practices for libraries using llm_db
 - [Runtime Filters](guides/runtime-filters.md) — Load-time and runtime filtering

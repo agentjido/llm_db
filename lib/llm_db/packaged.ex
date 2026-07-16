@@ -3,11 +3,13 @@ defmodule LLMDB.Packaged do
   Provides access to the packaged base snapshot.
 
   This is NOT a Source - it returns the pre-processed, version-stable snapshot
-  that ships with each release. The snapshot has already been through the full
-  ETL pipeline (normalize → validate → merge → enrich → filter → index).
+  that ships with each release. The snapshot has already been normalized,
+  validated, merged, and enriched by the build-time ETL pipeline. Consumer
+  filters and runtime indexes are applied later by `LLMDB.load/1`.
 
-  Sources (ModelsDev, Local, Config) provide raw data that gets merged ON TOP
-  of this base snapshot.
+  Build-time sources produce future packaged snapshots through `LLMDB.Engine`.
+  They are not contacted or merged automatically when consumers load this
+  packaged snapshot at runtime.
 
   ## Loading Strategy
 

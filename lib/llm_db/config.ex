@@ -9,9 +9,9 @@ defmodule LLMDB.Config do
   @doc """
   Returns the list of sources to load, in precedence order.
 
-  These sources provide raw data that will be merged ON TOP of the packaged
-  base snapshot. The packaged snapshot is always loaded first and is not
-  included in this sources list.
+  These are build-time inputs to `LLMDB.Engine`. The engine processes only the
+  configured sources, in precedence order; it does not automatically merge the
+  packaged runtime snapshot into the source list.
 
   ## Configuration
 
@@ -23,8 +23,9 @@ defmodule LLMDB.Config do
 
   ## Default Behavior
 
-  If not configured, returns an empty list `[]`, meaning only the packaged
-  snapshot will be used (stable, version-pinned behavior).
+  If not configured, returns an empty list `[]`, meaning no build-time sources
+  are configured. Runtime `LLMDB.load/1` independently defaults to the packaged,
+  version-pinned snapshot.
 
   ## Returns
 
@@ -36,7 +37,7 @@ defmodule LLMDB.Config do
 
     case Keyword.get(config, :sources) do
       nil ->
-        # Default: Empty list - only use packaged snapshot (stable mode)
+        # Default: no build-time Engine sources.
         []
 
       sources when is_list(sources) ->
