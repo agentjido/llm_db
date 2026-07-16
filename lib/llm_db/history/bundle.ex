@@ -1,6 +1,9 @@
 defmodule LLMDB.History.Bundle do
   @moduledoc """
   Snapshot-store helpers for local history bundles.
+
+  Direct use is documentation-deprecated. Use `mix llm_db.history.rebuild` to
+  create a bundle and `mix llm_db.history.sync` to install one.
   """
   @dialyzer {:nowarn_function, create_archive: 2}
 

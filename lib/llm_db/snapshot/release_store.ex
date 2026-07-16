@@ -6,6 +6,11 @@ defmodule LLMDB.Snapshot.ReleaseStore do
   GitHub Releases API and downloads public assets via Req. Publishing is
   handled with the `gh` CLI, intended for local maintainer workflows and
   GitHub Actions.
+
+  This shared transport is internal. Runtime consumers configure snapshot
+  sources through `LLMDB.load/1`; maintainers use the supported
+  `mix llm_db.snapshot.*` and `mix llm_db.history.*` tasks. Direct publishing
+  calls are documentation-deprecated through the current major release.
   """
 
   alias LLMDB.Snapshot

@@ -9,6 +9,14 @@ defmodule LLMDB.Engine do
   complete, unfiltered snapshots from remote/local sources that will be
   packaged into the library.
 
+  ## Maintainer boundary
+
+  Direct orchestration through `run/1` is documentation-deprecated. Maintainers
+  should use `mix llm_db.build`; custom source implementations should target
+  the supported `LLMDB.Source` behaviour. This module remains callable during
+  the compatibility window and can move or be removed no earlier than the next
+  major release.
+
   ## Pipeline Stages
 
   1. **Ingest** - Load data from configured sources

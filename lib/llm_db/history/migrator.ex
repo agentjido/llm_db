@@ -6,6 +6,9 @@ defmodule LLMDB.History.Migrator do
   materializes immutable snapshot artifacts by content hash, deduplicates adjacent
   identical states, and then rebuilds local history artifacts from the resulting
   snapshot observation chain.
+
+  Direct use is documentation-deprecated in favor of
+  `mix llm_db.history.migrate_git`.
   """
 
   alias LLMDB.{History.Rebuilder, Snapshot}

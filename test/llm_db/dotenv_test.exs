@@ -27,7 +27,7 @@ defmodule LLMDB.DotenvTest do
       System.put_env("LLMDB_DOTENV_EXISTING", "from_shell")
       System.delete_env("LLMDB_DOTENV_LOADED")
 
-      LLMDB.Dotenv.load!(path: env_path)
+      load_dotenv(path: env_path)
 
       assert System.get_env("LLMDB_DOTENV_EXISTING") == "from_shell"
       assert System.get_env("LLMDB_DOTENV_LOADED") == "from_dotenv"
@@ -48,7 +48,7 @@ defmodule LLMDB.DotenvTest do
       System.put_env("LLMDB_DOTENV_EXISTING", "from_shell")
       System.delete_env("LLMDB_DOTENV_LOADED")
 
-      LLMDB.Dotenv.load!(path: env_path, override: true)
+      load_dotenv(path: env_path, override: true)
 
       assert System.get_env("LLMDB_DOTENV_EXISTING") == "from_dotenv"
       assert System.get_env("LLMDB_DOTENV_LOADED") == "from_dotenv"
@@ -64,12 +64,14 @@ defmodule LLMDB.DotenvTest do
       Application.put_env(:llm_db, :load_dotenv, true)
 
       assert_raise RuntimeError, ~r/There was error with file/, fn ->
-        LLMDB.Dotenv.load!(path: env_path)
+        load_dotenv(path: env_path)
       end
     after
       File.rm(env_path)
     end
   end
+
+  defp load_dotenv(opts), do: apply(LLMDB.Dotenv, :load!, [opts])
 
   defp write_temp_env(contents) do
     path = Path.join(System.tmp_dir!(), "llm_db-dotenv-#{System.unique_integer([:positive])}.env")

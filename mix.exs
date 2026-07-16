@@ -37,6 +37,7 @@ defmodule LLMDB.MixProject do
           "guides/model-spec-formats.md",
           "guides/model-struct-evolution-proposal.md",
           "guides/pricing-and-billing.md",
+          "guides/runtime-and-maintainer-boundaries.md",
           "guides/schema-system.md",
           "guides/sources-and-engine.md",
           "guides/runtime-filters.md",
@@ -51,23 +52,32 @@ defmodule LLMDB.MixProject do
           "Stable Runtime API": [
             LLMDB,
             LLMDB.History,
+            LLMDB.LoadError,
             LLMDB.Model,
             LLMDB.Provider,
             LLMDB.Spec
           ],
-          "Supported Artifacts and Extensions": [
+          "Supported Build Extensions": [
             LLMDB.Snapshot,
             LLMDB.Source
           ],
-          "Maintainer Tooling": [
+          "Supported Mix Tasks": [
+            ~r/^Mix\.Tasks\.LlmDb\./
+          ],
+          "Compatibility Facades": [
+            LLMDB.Application,
+            LLMDB.Dotenv,
+            LLMDB.Store
+          ],
+          "Maintainer Internals": [
             LLMDB.Engine,
             LLMDB.Snapshot.Builder,
-            LLMDB.Snapshot.ReleaseStore,
+            ~r/^LLMDB\.(Enrich|History\.|Validate)(\.|$)/,
             ~r/^LLMDB\.Sources\./
           ],
-          "Internal Implementation": [
-            ~r/^LLMDB\.(Application|Config|Enrich|Generated|Loader|Merge|Normalize|Packaged|Pricing|Query|Runtime|Store|Validate)(\.|$)/,
-            ~r/^LLMDB\.History\./
+          "Internal Runtime Implementation": [
+            LLMDB.Snapshot.ReleaseStore,
+            ~r/^LLMDB\.(Catalog|Config|Generated|Loader|Merge|Normalize|Packaged|Pricing|Query|Runtime)(\.|$)/
           ]
         ]
       ]
