@@ -45,6 +45,12 @@ defmodule LLMDB.SpecTest do
         aliases: []
       },
       %{
+        id: "literal@anthropic",
+        provider: :openai,
+        name: "Model with @ in ID",
+        aliases: []
+      },
+      %{
         id: "shared-model",
         provider: :openai,
         name: "Shared Model OpenAI",
@@ -230,6 +236,10 @@ defmodule LLMDB.SpecTest do
   describe "parse_spec/2 with tuple input" do
     test "accepts tuple format" do
       assert {:ok, {:openai, "gpt-4"}} = Spec.parse_spec({:openai, "gpt-4"})
+      assert {:ok, {:openai, "gpt-4"}} = Spec.parse_spec({"openai", "gpt-4"})
+
+      assert {:ok, {:google_vertex, "gemini-pro"}} =
+               Spec.parse_spec({"google-vertex", "gemini-pro"})
     end
 
     test "ignores format option for tuple input" do
@@ -464,6 +474,37 @@ defmodule LLMDB.SpecTest do
     end
   end
 
+  describe "resolve/2 with model@provider string" do
+    test "matches the equivalent provider:model lookup" do
+      assert {:ok, {:openai, "gpt-4", colon_model}} = Spec.resolve("openai:gpt-4")
+      assert {:ok, {:openai, "gpt-4", ^colon_model}} = Spec.resolve("gpt-4@openai")
+    end
+
+    test "normalizes providers and resolves model aliases" do
+      assert {:ok, {:google_vertex, "gemini-pro", _model}} =
+               Spec.resolve("gemini-pro@google-vertex")
+
+      assert {:ok, {:openai, "gpt-4", model}} = Spec.resolve("gpt-4-0613@openai")
+      assert model.id == "gpt-4"
+    end
+
+    test "preserves qualified lookup errors" do
+      assert {:error, :not_found} = Spec.resolve("missing@openai")
+      assert {:error, :unknown_provider} = Spec.resolve("gpt-4@unknown")
+      assert {:error, :empty_segment} = Spec.resolve("gpt-4@")
+    end
+
+    test "preserves exact bare model IDs containing @" do
+      assert {:ok, {:openai, "literal@anthropic", model}} =
+               Spec.resolve("literal@anthropic")
+
+      assert model.id == "literal@anthropic"
+
+      assert {:ok, {:openai, "literal@anthropic", ^model}} =
+               Spec.resolve("literal@anthropic", scope: :openai)
+    end
+  end
+
   describe "resolve/2 with {provider, model_id} tuple" do
     test "resolves valid tuple" do
       assert {:ok, {:openai, "gpt-4", model}} = Spec.resolve({:openai, "gpt-4"})
@@ -475,6 +516,13 @@ defmodule LLMDB.SpecTest do
                Spec.resolve({:anthropic, "claude-3-opus"})
 
       assert model.id == "claude-3-opus"
+    end
+
+    test "normalizes string provider input" do
+      assert {:ok, {:google_vertex, "gemini-pro", model}} =
+               Spec.resolve({"google-vertex", "gemini-pro"})
+
+      assert model.id == "gemini-pro"
     end
 
     test "returns error for nonexistent model" do
@@ -558,7 +606,7 @@ defmodule LLMDB.SpecTest do
     end
 
     test "returns error for malformed tuple" do
-      assert {:error, :invalid_format} = Spec.resolve({"openai", "gpt-4"})
+      assert {:error, :invalid_format} = Spec.resolve({:openai, "gpt-4", :extra})
       assert {:error, :invalid_format} = Spec.resolve({:openai, :gpt_4})
     end
 

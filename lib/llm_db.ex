@@ -36,7 +36,7 @@ defmodule LLMDB do
 
   - `models/0` - Get all models as list of Model structs
   - `models/1` - Get all models for a provider
-  - `model/1` - Parse "provider:model" spec and get model
+  - `model/1` - Resolve a colon, @, or tuple model spec
   - `model/2` - Get a specific model by provider and ID
 
   ## Selection and Policy
@@ -83,6 +83,7 @@ defmodule LLMDB do
   alias LLMDB.{Loader, Model, Provider, Query, Spec, Store}
 
   @type provider :: atom()
+  @type provider_input :: provider() | String.t()
   @type model_id :: String.t()
   @type model_spec :: {provider(), model_id()} | String.t() | Model.t()
 
@@ -242,13 +243,15 @@ defmodule LLMDB do
   defdelegate models(provider), to: Store
 
   @doc """
-  Parses model spec string and returns the model.
+  Parses a model spec and returns the model.
 
-  Supports both "provider:model" and "model@provider" formats.
+  Supports "provider:model", "model@provider", and tuple formats. Tuple provider
+  identifiers may be atoms or strings and are normalized through the same
+  provider contract as string specs.
 
   ## Parameters
 
-  - `spec` - Model spec string like `"openai:gpt-4o-mini"` or `"gpt-4o-mini@openai"`
+  - `spec` - A string spec or `{provider, model_id}` tuple
 
   ## Returns
 
@@ -259,9 +262,20 @@ defmodule LLMDB do
 
       {:ok, model} = LLMDB.model("openai:gpt-4o-mini")
       {:ok, model} = LLMDB.model("gpt-4o-mini@openai")
+      {:ok, model} = LLMDB.model({:openai, "gpt-4o-mini"})
+      {:ok, model} = LLMDB.model({"openai", "gpt-4o-mini"})
       {:ok, model} = LLMDB.model("anthropic:claude-3-5-sonnet-20241022")
   """
-  @spec model(String.t()) :: {:ok, Model.t()} | {:error, term()}
+  @spec model(String.t() | {provider_input(), model_id()}) ::
+          {:ok, Model.t()} | {:error, term()}
+  def model({provider, model_id})
+      when (is_atom(provider) or is_binary(provider)) and is_binary(model_id) do
+    with {:ok, {normalized_provider, normalized_model_id}} <-
+           Spec.parse_spec({provider, model_id}) do
+      model(normalized_provider, normalized_model_id)
+    end
+  end
+
   def model(spec) when is_binary(spec) do
     with {:ok, {p, id}} <- Spec.parse_spec(spec) do
       model(p, id)
@@ -412,7 +426,7 @@ defmodule LLMDB do
 
   ## Parameters
 
-  - `spec` - String like `"openai:gpt-4o-mini"`, `"gpt-4o-mini@openai"`, or tuple `{:openai, "gpt-4o-mini"}`
+  - `spec` - String like `"openai:gpt-4o-mini"`, `"gpt-4o-mini@openai"`, or a tuple such as `{:openai, "gpt-4o-mini"}` or `{"openai", "gpt-4o-mini"}`
   - `opts` - Keyword list with optional `:format` to explicitly specify `:colon` or `:at`
 
   ## Returns
@@ -426,11 +440,12 @@ defmodule LLMDB do
       {:ok, {:openai, "gpt-4o-mini"}} = LLMDB.parse("gpt-4o-mini@openai")
       {:ok, {:anthropic, "claude-3-5-sonnet-20241022"}} = LLMDB.parse("anthropic:claude-3-5-sonnet-20241022")
       {:ok, {:openai, "gpt-4o"}} = LLMDB.parse({:openai, "gpt-4o"})
+      {:ok, {:openai, "gpt-4o"}} = LLMDB.parse({"openai", "gpt-4o"})
 
       # With explicit format when ambiguous
       {:ok, {:openai, "model@test"}} = LLMDB.parse("openai:model@test", format: :colon)
   """
-  @spec parse(String.t() | {provider(), model_id()}, keyword()) ::
+  @spec parse(String.t() | {provider_input(), model_id()}, keyword()) ::
           {:ok, {provider(), model_id()}} | {:error, term()}
   def parse(spec, opts \\ []), do: Spec.parse_spec(spec, opts)
 
@@ -444,7 +459,8 @@ defmodule LLMDB do
       {:openai, "gpt-4o-mini"} = LLMDB.parse!("openai:gpt-4o-mini")
       {:openai, "gpt-4o-mini"} = LLMDB.parse!("gpt-4o-mini@openai")
   """
-  @spec parse!(String.t() | {provider(), model_id()}, keyword()) :: {provider(), model_id()}
+  @spec parse!(String.t() | {provider_input(), model_id()}, keyword()) ::
+          {provider(), model_id()}
   def parse!(spec, opts \\ []), do: Spec.parse_spec!(spec, opts)
 
   @doc """

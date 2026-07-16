@@ -84,7 +84,8 @@ defmodule LLMDB.Spec do
 
   ## Parameters
 
-  - `spec` - String in "provider:model" or "model@provider" format, or {provider, model_id} tuple
+  - `spec` - String in "provider:model" or "model@provider" format, or a
+    `{provider, model_id}` tuple whose provider is an atom or string
   - `opts` - Keyword list with optional `:format` to explicitly specify format
 
   ## Options
@@ -118,7 +119,7 @@ defmodule LLMDB.Spec do
       iex> LLMDB.Spec.parse_spec("gpt-4")
       {:error, :invalid_format}
   """
-  @spec parse_spec(String.t() | {atom(), String.t()}, keyword()) ::
+  @spec parse_spec(String.t() | {atom() | String.t(), String.t()}, keyword()) ::
           {:ok, {atom(), String.t()}}
           | {:error,
              :invalid_format
@@ -131,6 +132,13 @@ defmodule LLMDB.Spec do
 
   def parse_spec({provider, model_id}, _opts) when is_atom(provider) and is_binary(model_id) do
     {:ok, {provider, model_id}}
+  end
+
+  def parse_spec({provider, model_id}, _opts)
+      when is_binary(provider) and is_binary(model_id) do
+    with {:ok, provider_atom} <- parse_provider(provider) do
+      {:ok, {provider_atom, model_id}}
+    end
   end
 
   def parse_spec(spec, opts) when is_binary(spec) do
@@ -366,7 +374,8 @@ defmodule LLMDB.Spec do
 
   Accepts multiple input formats:
   - "provider:model" string
-  - {provider, model_id} tuple
+  - "model@provider" string
+  - {provider, model_id} tuple with an atom or string provider
   - Bare "model" string with opts[:scope] = provider_atom
 
   Handles alias resolution and validates the model exists in the catalog.
@@ -392,28 +401,24 @@ defmodule LLMDB.Spec do
       iex> LLMDB.Spec.resolve({:openai, "gpt-4"})
       {:ok, {:openai, "gpt-4", %LLMDB.Model{}}}
 
+      iex> LLMDB.Spec.resolve("gpt-4@openai")
+      {:ok, {:openai, "gpt-4", %LLMDB.Model{}}}
+
       iex> LLMDB.Spec.resolve("gpt-4", scope: :openai)
       {:ok, {:openai, "gpt-4", %LLMDB.Model{}}}
 
       iex> LLMDB.Spec.resolve("gpt-4")
       {:error, :ambiguous}
   """
-  @spec resolve(String.t() | {atom(), String.t()}, keyword()) ::
+  @spec resolve(String.t() | {atom() | String.t(), String.t()}, keyword()) ::
           {:ok, {atom(), String.t(), Model.t()}} | {:error, term()}
   def resolve(input, opts \\ [])
 
   def resolve(spec, opts) when is_binary(spec) do
-    case String.contains?(spec, ":") do
-      true ->
-        with {:ok, {provider, model_id}} <- parse_spec(spec) do
-          resolve_model(provider, model_id)
-        end
-
-      false ->
-        case Keyword.get(opts, :scope) do
-          nil -> resolve_bare_model(spec)
-          scope -> resolve_model(scope, spec)
-        end
+    cond do
+      String.contains?(spec, ":") -> resolve_qualified_spec(spec)
+      String.contains?(spec, "@") -> resolve_at_or_bare(spec, opts)
+      true -> resolve_bare_with_scope(spec, opts)
     end
   end
 
@@ -421,9 +426,56 @@ defmodule LLMDB.Spec do
     resolve_model(provider, model_id)
   end
 
+  def resolve({provider, model_id}, _opts)
+      when is_binary(provider) and is_binary(model_id) do
+    with {:ok, provider_atom} <- parse_provider(provider) do
+      resolve_model(provider_atom, model_id)
+    end
+  end
+
   def resolve(_, _), do: {:error, :invalid_format}
 
   # Private helpers
+
+  defp resolve_qualified_spec(spec) do
+    with {:ok, {provider, model_id}} <- parse_spec(spec) do
+      resolve_model(provider, model_id)
+    end
+  end
+
+  # `@` is both the filename-safe qualified separator and a valid character in
+  # model IDs. Prefer an explicit scope, then the qualified form, while falling
+  # back to an exact legacy bare lookup when the qualified target is absent.
+  defp resolve_at_or_bare(spec, opts) do
+    case Keyword.get(opts, :scope) do
+      nil ->
+        qualified_result = resolve_qualified_spec(spec)
+
+        case qualified_result do
+          {:ok, _resolved} ->
+            qualified_result
+
+          {:error, _reason} ->
+            case resolve_bare_model(spec) do
+              {:error, :not_found} -> qualified_result
+              bare_result -> bare_result
+            end
+        end
+
+      scope ->
+        case resolve_model(scope, spec) do
+          {:error, :not_found} -> resolve_qualified_spec(spec)
+          scoped_result -> scoped_result
+        end
+    end
+  end
+
+  defp resolve_bare_with_scope(spec, opts) do
+    case Keyword.get(opts, :scope) do
+      nil -> resolve_bare_model(spec)
+      scope -> resolve_model(scope, spec)
+    end
+  end
 
   defp verify_provider_exists(provider_atom) do
     case Store.snapshot() do

@@ -79,7 +79,7 @@ A `model_spec` is a string in one of two formats:
 
 Both formats are automatically recognized and work interchangeably. Use the `@` format when model specs appear in filenames, CI artifact names, or other filesystem contexts where colons are problematic.
 
-Tuples `{:provider_atom, "id"}` also work, but prefer the string spec.
+Model lookup and parsing also accept tuples such as `{:provider_atom, "id"}` and `{"provider-id", "id"}`, but prefer the string spec. String provider IDs are normalized to the canonical provider atom.
 
 ```elixir
 {:ok, model} = LLMDB.model("openai:gpt-4o-mini")
@@ -119,7 +119,7 @@ LLMDB.allowed?("openai:gpt-4o-mini") #=> true
 
 ## API Cheatsheet
 
-- **`model/1`** — `"provider:model"`, `"model@provider"`, or `{:provider, id}` → `{:ok, %Model{}}` | `{:error, _}`
+- **`model/1`** — `"provider:model"`, `"model@provider"`, `{:provider, id}`, or `{"provider", id}` → `{:ok, %Model{}}` | `{:error, _}`
 - **`model/2`** — `provider` atom + `id` → `{:ok, %Model{}}` | `{:error, _}`
 - **`models/0`** — list all models → `[%Model{}]`
 - **`models/1`** — list provider's models → `[%Model{}]`

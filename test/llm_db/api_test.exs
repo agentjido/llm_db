@@ -111,6 +111,23 @@ defmodule LLMDB.APITest do
     end
   end
 
+  describe "model/1" do
+    test "accepts each documented qualified lookup form" do
+      assert {:ok, colon_model} = LLMDB.model("openai:gpt-4o")
+      assert {:ok, ^colon_model} = LLMDB.model("gpt-4o@openai")
+      assert {:ok, ^colon_model} = LLMDB.model({:openai, "gpt-4o"})
+      assert {:ok, ^colon_model} = LLMDB.model({"openai", "gpt-4o"})
+    end
+
+    test "normalizes string providers and preserves lookup errors" do
+      assert {:ok, model} = LLMDB.model({"openai", "gpt-4o-mini"})
+      assert model.provider == :openai
+
+      assert {:error, :not_found} = LLMDB.model({:openai, "missing"})
+      assert {:error, :unknown_provider} = LLMDB.model({"missing-provider", "missing"})
+    end
+  end
+
   describe "candidates/1" do
     test "returns all matching models in preference order" do
       candidates = LLMDB.candidates(require: [chat: true])
