@@ -32,8 +32,10 @@ defmodule LLMDB.MixProject do
         main: "readme",
         extras: [
           "README.md",
+          "guides/api-and-support-policy.md",
           "guides/consumer-integration.md",
           "guides/model-spec-formats.md",
+          "guides/model-struct-evolution-proposal.md",
           "guides/pricing-and-billing.md",
           "guides/schema-system.md",
           "guides/sources-and-engine.md",
@@ -44,6 +46,29 @@ defmodule LLMDB.MixProject do
         ],
         groups_for_extras: [
           Guides: ~r/guides\/.+\.md/
+        ],
+        groups_for_modules: [
+          "Stable Runtime API": [
+            LLMDB,
+            LLMDB.History,
+            LLMDB.Model,
+            LLMDB.Provider,
+            LLMDB.Spec
+          ],
+          "Supported Artifacts and Extensions": [
+            LLMDB.Snapshot,
+            LLMDB.Source
+          ],
+          "Maintainer Tooling": [
+            LLMDB.Engine,
+            LLMDB.Snapshot.Builder,
+            LLMDB.Snapshot.ReleaseStore,
+            ~r/^LLMDB\.Sources\./
+          ],
+          "Internal Implementation": [
+            ~r/^LLMDB\.(Application|Config|Enrich|Generated|Loader|Merge|Normalize|Packaged|Pricing|Query|Runtime|Store|Validate)(\.|$)/,
+            ~r/^LLMDB\.History\./
+          ]
         ]
       ]
     ]

@@ -87,7 +87,7 @@ provider = LLMDB.Provider.new!(provider_data)
 }
 ```
 
-See `LLMDB.Schema.Provider` and `LLMDB.Provider` for details.
+See `LLMDB.Provider` and `LLMDB.Provider.schema/0` for the executable schema.
 
 ## Model Schema
 
@@ -258,7 +258,7 @@ model_data = %{
 {:ok, model} = LLMDB.Model.new(model_data)
 ```
 
-See `LLMDB.Schema.Model` and `LLMDB.Model` for details.
+See `LLMDB.Model` and `LLMDB.Model.schema/0` for the executable schema.
 
 ## Nested Schemas
 
@@ -336,7 +336,7 @@ The `tools` capability object allows precise documentation of provider-specific 
 
 This granularity eliminates the need for client libraries to maintain provider-specific override lists, as the limitations are documented directly in the model metadata.
 
-Defaults applied during Enrich stage: booleans default to `false`, optional values to `nil`. See `LLMDB.Schema.Capabilities`.
+Defaults applied during Enrich stage: booleans default to `false`, optional values to `nil`. The capabilities schema is part of `LLMDB.Model.schema/0`.
 
 ### Limits
 
@@ -348,7 +348,7 @@ Defaults applied during Enrich stage: booleans default to `false`, optional valu
 }
 ```
 
-See `LLMDB.Schema.Limits`.
+The limits schema is part of `LLMDB.Model.schema/0`.
 
 ### Cost
 
@@ -372,7 +372,7 @@ Pricing per million tokens (USD):
 }
 ```
 
-See `LLMDB.Schema.Cost`.
+The legacy cost and additive pricing schemas are part of `LLMDB.Model.schema/0`.
 
 For conditional pricing components and request-context selection, see
 [Pricing and Billing](pricing-and-billing.md). For the rationale behind the

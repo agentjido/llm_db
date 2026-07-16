@@ -1,94 +1,106 @@
 # Sources and Engine
 
-The Engine runs a build-time ETL pipeline that loads data from sources, normalizes, validates, merges, enriches, and indexes it, then builds a canonical `snapshot.json` artifact. Runtime only loads the packaged or explicitly fetched snapshot.
+`LLMDB.Engine` is the build-time ETL pipeline. It loads only the sources passed
+to it (or returned by `LLMDB.Config.sources!/0`), normalizes and validates their
+data, merges the source layers, enriches the result, and emits a canonical
+snapshot. Consumer runtime loading is separate: `LLMDB.load/1` reads a packaged
+or explicitly configured snapshot, then applies consumer filters and indexes.
 
 ## Source Behaviour
 
-All sources implement the `LLMDB.Source` behaviour:
+Sources implement `LLMDB.Source`:
 
 ```elixir
 @callback load(opts :: map()) :: {:ok, data :: map()} | {:error, term()}
-@callback pull(opts :: map()) :: :ok | {:error, term()}  # Optional
+@callback pull(opts :: map()) ::
+            :noop | {:ok, cache_path :: String.t()} | {:error, term()}
 ```
+
+`pull/1` is optional. Remote sources use it to refresh a local cache; `load/1`
+reads that cache and performs no network request.
 
 ### Canonical Format
 
+Each outer key is a provider ID string. Its value is a provider map with atom
+keys and a `:models` list. Model maps also use atom keys:
+
 ```elixir
 %{
-  "providers" => %{
-    openai: %{
-      "id" => :openai,
-      "name" => "OpenAI",
-      "base_url" => "https://api.openai.com/v1",
-      # ...
-    }
-  },
-  "models" => [
-    %{
-      "id" => "gpt-4",
-      "provider" => :openai,
-      "name" => "GPT-4",
-      # ...
-    },
-    # ...
-  ]
+  "openai" => %{
+    id: :openai,
+    name: "OpenAI",
+    base_url: "https://api.openai.com/v1",
+    models: [
+      %{
+        id: "gpt-4o",
+        provider: :openai,
+        name: "GPT-4o",
+        capabilities: %{chat: true}
+      }
+    ]
+  }
 }
 ```
 
-Outer map uses string keys; provider keys are atoms; model IDs are strings. Use `LLMDB.Source.assert_canonical!/1` for validation.
+Use `LLMDB.Source.assert_canonical!/1` for the fast shape assertion. Full Zoi
+validation happens in the Engine.
 
 ## Built-in Sources
 
-### ModelsDev (Remote)
+### Remote cached sources
+
+Models.dev, OpenRouter, OpenAI, Anthropic, Google, xAI, ZenMux, and Llmfit have
+source adapters. Run `mix llm_db.pull` to refresh their repository-local cache;
+the Engine subsequently reads that cache through each source's `load/1`.
+
+### Local TOML
 
 ```elixir
-{LLMDB.Sources.ModelsDev, %{
-  url: "https://models.dev/api/models",
-  cache_path: "priv/llm_db/cache/models_dev.json"
-}}
+{LLMDB.Sources.Local, %{dir: "priv/llm_db/local"}}
 ```
 
-`pull/1` downloads and caches via Req. `load/1` loads from cache. Transforms models.dev schema to canonical format (`limit` → `limits`, modality strings → atoms, unmapped → `:extra`).
+The directory contains one subdirectory per provider. Each provider directory
+contains `provider.toml` and model TOML files. The adapter injects the provider
+ID from the directory name.
 
-### Local (TOML)
-
-```elixir
-{LLMDB.Sources.Local, %{dir: "priv/llm_db"}}
-```
-
-Structure: `provider.toml` + `models/{provider}/*.toml`. Atomizes keys, injects `:provider` from directory name.
-
-## Configuring Sources
+## Configuring Build-time Sources
 
 ```elixir
 config :llm_db,
   sources: [
     {LLMDB.Sources.ModelsDev, %{}},
-    {LLMDB.Sources.Local, %{dir: "priv/llm_db"}}
+    {LLMDB.Sources.Local, %{dir: "priv/llm_db/local"}}
   ]
 ```
 
-Sources processed in order. Later sources override earlier ones.
+Sources are processed in order and later sources have higher precedence. The
+Engine does not implicitly place the packaged runtime snapshot beneath these
+sources. Passing no sources produces an empty Engine catalog with a warning;
+this does not change the independent runtime default of loading the packaged
+snapshot.
 
 ## ETL Pipeline
 
-`LLMDB.Engine.run/1` executes 7 stages:
+`LLMDB.Engine.run/1` performs these build-time stages:
 
-1. **Ingest**: Load sources, validate canonical format, flatten nested provider data
-2. **Normalize**: Convert provider IDs to atoms, normalize modalities to atoms, parse dates
-3. **Validate**: Zoi validation via `LLMDB.Validate`, drop invalid, log warnings
-4. **Merge**: Last-wins precedence; `:aliases` are unioned, other lists replaced, maps deep merged
-5. **Filter**: Compile allow/deny patterns (deny wins, globs supported)
-6. **Enrich**: Derive `:family`, fill `:provider_model_id`, apply capability defaults
-7. **Index**: Build `providers_by_id`, `models_by_key`, `models_by_provider`, `aliases_by_key`, then v2 snapshot
+1. **Ingest** — load configured sources and assert canonical shape.
+2. **Normalize** — normalize provider IDs, dates, modalities, and source fields.
+3. **Validate** — parse provider/model data with the Zoi schemas.
+4. **Merge** — apply last-source-wins precedence and field merge rules.
+5. **Finalize** — enrich records and nest models beneath providers.
+6. **Ensure viable** — warn when the resulting catalog is empty.
 
-Final check warns if zero providers/models.
+Allow/deny filters, provider preferences, custom runtime overlays, and runtime
+indexes are `LLMDB.load/1` concerns, not Engine stages.
 
-## Mix Tasks
+## Supported Maintainer Tasks
 
-- `mix llm_db.pull` - Fetch and cache remote sources
-- `mix llm_db.build` - Run ETL and build canonical snapshot artifacts
-- `mix llm_db.snapshot.publish` - Publish an immutable content-addressed snapshot to GitHub Releases
+- `mix llm_db.pull` — fetch and cache upstream source data.
+- `mix llm_db.build` — run ETL and build canonical snapshot artifacts.
+- `mix llm_db.snapshot.publish` — publish an immutable snapshot release.
+
+These tasks are maintainer tooling. Downstream applications consume the
+snapshot shipped with the package.
 
 ## Custom Source Example
 
@@ -98,13 +110,26 @@ defmodule MyApp.InternalModels do
 
   @impl true
   def load(_opts) do
-    {:ok, %{
-      "providers" => %{internal: %{"id" => :internal, "name" => "Internal"}},
-      "models" => [%{"id" => "custom-gpt", "provider" => :internal, "capabilities" => %{"chat" => true}}]
-    }}
+    {:ok,
+     %{
+       "internal" => %{
+         id: :internal,
+         name: "Internal",
+         models: [
+           %{
+             id: "custom-gpt",
+             provider: :internal,
+             capabilities: %{chat: true}
+           }
+         ]
+       }
+     }}
   end
 end
 
-# config.exs
 config :llm_db, sources: [{MyApp.InternalModels, %{}}]
 ```
+
+Custom sources are supported build-time extensions. Their output contract is
+stable, while Engine implementation modules are internal and may change behind
+that contract.

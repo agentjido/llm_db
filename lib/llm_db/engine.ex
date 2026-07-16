@@ -71,8 +71,8 @@ defmodule LLMDB.Engine do
   }
   ```
 
-  The snapshot contains ALL models from all sources. Indexes and filters are
-  built at load-time by `LLMDB.load/1` using the `LLMDB.Index` module.
+  The snapshot contains ALL models from all sources. Runtime indexes and filters
+  are built at load-time by `LLMDB.load/1`.
   """
   @spec run(keyword()) :: {:ok, map()} | {:error, term()}
   def run(opts \\ []) do
