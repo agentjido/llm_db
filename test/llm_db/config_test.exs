@@ -113,6 +113,30 @@ defmodule LLMDB.ConfigTest do
       assert unknown == []
     end
 
+    test "preserves provider-wide :all sentinels" do
+      {result, unknown: []} =
+        LLMDB.Config.compile_filters(
+          %{openai: :all},
+          %{anthropic: :all},
+          [:openai, :anthropic]
+        )
+
+      assert result.allow == %{openai: :all}
+      assert result.deny == %{anthropic: :all}
+    end
+
+    test "does not turn a non-empty unknown allow map into allow all" do
+      {result, unknown: unknown} =
+        LLMDB.Config.compile_filters(
+          %{unknown_filter_provider: :all},
+          %{},
+          [:openai]
+        )
+
+      assert result.allow == :none
+      assert unknown == [:unknown_filter_provider]
+    end
+
     test "compiled patterns match correctly" do
       allow = %{openai: ["gpt-4*"]}
       {result, _unknown_info} = LLMDB.Config.compile_filters(allow, %{})
@@ -180,7 +204,7 @@ defmodule LLMDB.ConfigTest do
       allow = %{anthropic: [123]}
 
       assert_raise ArgumentError,
-                   ~r/llm_db: filter pattern must be string or Regex/,
+                   ~r/llm_db: filter pattern must be string, Regex, or :all/,
                    fn ->
                      LLMDB.Config.compile_filters(allow, %{})
                    end

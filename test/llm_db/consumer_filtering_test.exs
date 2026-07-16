@@ -106,6 +106,30 @@ defmodule LLMDB.ConsumerFilteringTest do
              end) =~ "unknown provider(s) in filter: [:unknown_provider]"
     end
 
+    test "does not widen an allow map containing only unknown providers" do
+      test_data = %{
+        anthropic: %{
+          id: :anthropic,
+          models: [%{id: "claude-3-haiku-20240307", provider: :anthropic}]
+        }
+      }
+
+      Application.put_env(:llm_db, :filter, %{
+        allow: %{unknown_provider: :all}
+      })
+
+      assert capture_log(fn ->
+               assert {:error, error_msg} =
+                        LLMDB.load(
+                          runtime_overrides: %{
+                            sources: [{ConfigSource, %{overrides: test_data}}]
+                          }
+                        )
+
+               assert error_msg =~ "filters eliminated all models"
+             end) =~ "unknown provider(s) in filter: [:unknown_provider]"
+    end
+
     test "fails fast when filter with explicit allow map eliminates all models" do
       # Use test data with known providers
       test_data = %{
@@ -209,6 +233,104 @@ defmodule LLMDB.ConsumerFilteringTest do
   end
 
   describe "consumer use case: custom providers via app config" do
+    test "allows only a custom provider without leaking packaged providers" do
+      snapshot_path =
+        write_test_snapshot!(%{
+          providers: [%{id: :filter_packaged, name: "Packaged"}],
+          models: [
+            %{id: "packaged-model", provider: :filter_packaged, capabilities: %{chat: true}}
+          ]
+        })
+
+      on_exit(fn -> File.rm(snapshot_path) end)
+
+      log =
+        capture_log(fn ->
+          assert {:ok, snapshot} =
+                   LLMDB.load(
+                     snapshot_source: {:file, snapshot_path},
+                     allow: %{filter_local: :all},
+                     custom: %{
+                       filter_local: [
+                         name: "Local",
+                         models: %{
+                           "local-model" => %{capabilities: %{chat: true}}
+                         }
+                       ]
+                     }
+                   )
+
+          assert Map.keys(snapshot.models) == [:filter_local]
+        end)
+
+      refute log =~ "unknown provider"
+      assert {:ok, _model} = LLMDB.model(:filter_local, "local-model")
+      assert {:error, :not_found} = LLMDB.model(:filter_packaged, "packaged-model")
+    end
+
+    test "provider-wide deny applies to custom providers" do
+      snapshot_path =
+        write_test_snapshot!(%{
+          providers: [%{id: :filter_packaged, name: "Packaged"}],
+          models: [
+            %{id: "packaged-model", provider: :filter_packaged, capabilities: %{chat: true}}
+          ]
+        })
+
+      on_exit(fn -> File.rm(snapshot_path) end)
+
+      assert {:ok, snapshot} =
+               LLMDB.load(
+                 snapshot_source: {:file, snapshot_path},
+                 allow: :all,
+                 deny: %{filter_local: :all},
+                 custom: %{
+                   filter_local: [
+                     models: %{
+                       "local-model" => %{capabilities: %{chat: true}}
+                     }
+                   ]
+                 }
+               )
+
+      assert Map.keys(snapshot.models) == [:filter_packaged]
+      assert {:error, :not_found} = LLMDB.model(:filter_local, "local-model")
+      assert {:ok, _model} = LLMDB.model(:filter_packaged, "packaged-model")
+    end
+
+    test "filters custom model additions to an existing packaged provider" do
+      snapshot_path =
+        write_test_snapshot!(%{
+          providers: [%{id: :filter_packaged, name: "Packaged"}],
+          models: [
+            %{id: "base-model", provider: :filter_packaged, capabilities: %{chat: true}}
+          ]
+        })
+
+      on_exit(fn -> File.rm(snapshot_path) end)
+
+      assert {:ok, snapshot} =
+               LLMDB.load(
+                 snapshot_source: {:file, snapshot_path},
+                 allow: %{filter_packaged: ["custom-*"]},
+                 custom: %{
+                   filter_packaged: [
+                     models: %{
+                       "custom-model" => %{
+                         aliases: ["friendly-model"],
+                         capabilities: %{chat: true}
+                       }
+                     }
+                   ]
+                 }
+               )
+
+      assert Enum.map(snapshot.models.filter_packaged, & &1.id) == ["custom-model"]
+      assert {:error, :not_found} = LLMDB.model(:filter_packaged, "base-model")
+      assert {:ok, model} = LLMDB.model(:filter_packaged, "friendly-model")
+      assert model.id == "custom-model"
+    end
+
     test "loads custom provider and models from app env config" do
       Application.put_env(:llm_db, :custom, %{
         local_llm: [

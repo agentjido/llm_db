@@ -52,8 +52,8 @@ defmodule LLMDB.Loader do
   def load(opts \\ []) do
     with {:ok, {providers, models, generated_at, source_snapshot_id}} <- load_packaged(opts),
          runtime <- Runtime.compile(opts ++ [provider_ids: Enum.map(providers, & &1.id)]),
-         :ok <- warn_unknown_providers(runtime.unknown, providers),
          {providers2, models2} <- merge_custom({providers, models}, runtime.custom),
+         :ok <- warn_unknown_providers(runtime.unknown, providers2),
          models3 <- Pricing.apply_cost_components(models2),
          models4 <- Pricing.apply_provider_defaults(providers2, models3),
          filtered_models <- Engine.apply_filters(models4, runtime.filters),
