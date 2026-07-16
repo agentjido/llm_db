@@ -72,7 +72,7 @@ defmodule LLMDB.MixProject do
           "Maintainer Internals": [
             LLMDB.Engine,
             LLMDB.Snapshot.Builder,
-            ~r/^LLMDB\.(Enrich|History\.|Validate)(\.|$)/,
+            ~r/^LLMDB\.(Enrich|History|Validate)(\.|$)/,
             ~r/^LLMDB\.Sources\./
           ],
           "Internal Runtime Implementation": [
