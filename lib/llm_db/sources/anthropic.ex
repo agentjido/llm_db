@@ -34,6 +34,8 @@ defmodule LLMDB.Sources.Anthropic do
 
   @behaviour LLMDB.Source
 
+  alias LLMDB.Sources.Remote
+
   @default_url "https://api.anthropic.com/v1/models"
   @default_cache_dir "priv/llm_db/remote"
   @default_version "2023-06-01"
@@ -53,9 +55,6 @@ defmodule LLMDB.Sources.Anthropic do
 
   defp do_pull(opts, api_key) do
     url = Map.get(opts, :url, @default_url)
-    cache_dir = get_cache_dir()
-    cache_path = cache_path(url, cache_dir)
-    manifest_path = manifest_path(url, cache_dir)
     req_opts = Map.get(opts, :req_opts, [])
 
     headers = build_headers(api_key, opts)
@@ -67,10 +66,10 @@ defmodule LLMDB.Sources.Anthropic do
 
     case all_models do
       {:ok, models} ->
-        response = %{"data" => models}
-        bin = Jason.encode!(response, pretty: true)
-        write_cache(cache_path, manifest_path, bin, url, [])
-        {:ok, cache_path}
+        Remote.store(url, %{"data" => models},
+          cache_dir: get_cache_dir(),
+          cache_key: "anthropic"
+        )
 
       {:error, reason} ->
         {:error, reason}
@@ -80,21 +79,10 @@ defmodule LLMDB.Sources.Anthropic do
   @impl true
   def load(opts) do
     url = Map.get(opts, :url, @default_url)
-    cache_dir = get_cache_dir()
-    cache_path = cache_path(url, cache_dir)
 
-    case File.read(cache_path) do
-      {:ok, bin} ->
-        case Jason.decode(bin) do
-          {:ok, decoded} -> {:ok, transform(decoded)}
-          {:error, err} -> {:error, {:json_error, err}}
-        end
-
-      {:error, :enoent} ->
-        {:error, :no_cache}
-
-      {:error, reason} ->
-        {:error, reason}
+    case Remote.load(url, cache_dir: get_cache_dir(), cache_key: "anthropic") do
+      {:ok, decoded} -> {:ok, transform(decoded)}
+      {:error, reason} -> {:error, reason}
     end
   end
 
@@ -374,8 +362,8 @@ defmodule LLMDB.Sources.Anthropic do
 
     req_opts = Keyword.put(req_opts, :params, params)
 
-    case Req.get(url, req_opts) do
-      {:ok, %Req.Response{status: 200, body: body}} ->
+    case Remote.request_json(url, req_opts) do
+      {:ok, body} when is_map(body) ->
         data = Map.get(body, "data", [])
         has_more = Map.get(body, "has_more", false)
         new_acc = acc ++ data
@@ -386,8 +374,8 @@ defmodule LLMDB.Sources.Anthropic do
           {:ok, new_acc}
         end
 
-      {:ok, %Req.Response{status: status}} when status >= 400 ->
-        {:error, {:http_status, status}}
+      {:ok, _body} ->
+        {:error, :invalid_shape}
 
       {:error, reason} ->
         {:error, reason}
@@ -400,16 +388,6 @@ defmodule LLMDB.Sources.Anthropic do
 
   defp get_cache_dir do
     Application.get_env(:llm_db, :anthropic_cache_dir, @default_cache_dir)
-  end
-
-  defp cache_path(url, cache_dir) do
-    hash = :crypto.hash(:sha256, url) |> Base.encode16(case: :lower) |> binary_part(0, 8)
-    Path.join(cache_dir, "anthropic-#{hash}.json")
-  end
-
-  defp manifest_path(url, cache_dir) do
-    hash = :crypto.hash(:sha256, url) |> Base.encode16(case: :lower) |> binary_part(0, 8)
-    Path.join(cache_dir, "anthropic-#{hash}.manifest.json")
   end
 
   defp build_headers(api_key, opts) do
@@ -427,19 +405,5 @@ defmodule LLMDB.Sources.Anthropic do
       beta when is_binary(beta) ->
         [{"anthropic-beta", beta} | headers]
     end
-  end
-
-  defp write_cache(cache_path, manifest_path, content, url, _headers) do
-    File.mkdir_p!(Path.dirname(cache_path))
-    File.write!(cache_path, content)
-
-    manifest = %{
-      source_url: url,
-      sha256: :crypto.hash(:sha256, content) |> Base.encode16(case: :lower),
-      size_bytes: byte_size(content),
-      downloaded_at: DateTime.utc_now() |> DateTime.to_iso8601()
-    }
-
-    File.write!(manifest_path, Jason.encode!(manifest, pretty: true))
   end
 end
