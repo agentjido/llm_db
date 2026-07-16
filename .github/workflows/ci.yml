@@ -24,7 +24,7 @@ jobs:
       MIX_ENV: dev
 
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v6
 
       - name: Check for CHANGELOG.md modifications
         if: github.event_name == 'pull_request'
@@ -45,7 +45,7 @@ jobs:
           elixir-version: "1.19"
 
       - name: Restore Hex/Mix cache
-        uses: actions/cache@v4
+        uses: actions/cache@v5
         with:
           path: |
             ~/.hex
@@ -62,7 +62,7 @@ jobs:
 
       - name: Restore dependencies cache
         id: deps-cache
-        uses: actions/cache@v4
+        uses: actions/cache@v5
         with:
           path: |
             deps
@@ -90,7 +90,7 @@ jobs:
         run: mkdir -p priv/plts
 
       - name: Restore Dialyzer PLT cache
-        uses: actions/cache@v4
+        uses: actions/cache@v5
         with:
           path: priv/plts
           key: ${{ runner.os }}-plt-otp28-elixir1.19-${{ hashFiles('mix.lock', 'mix.exs') }}
@@ -130,13 +130,13 @@ jobs:
       MIX_ENV: test
 
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v6
         with:
           fetch-depth: 0
 
       # Cache only immutable package downloads; avoid cached archives/binaries.
       - name: Restore Hex package cache
-        uses: actions/cache@v4
+        uses: actions/cache@v5
         with:
           path: |
             ~/.hex/packages
@@ -144,7 +144,7 @@ jobs:
           key: ${{ runner.os }}-hex-v2-otp${{ matrix.otp }}-elixir${{ matrix.elixir }}-${{ hashFiles('mix.lock') }}
 
       - name: Restore dependencies cache
-        uses: actions/cache@v4
+        uses: actions/cache@v5
         with:
           path: |
             deps
@@ -187,7 +187,7 @@ jobs:
     name: Build Check
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v6
         with:
           fetch-depth: 0
       - uses: erlef/setup-beam@v1
