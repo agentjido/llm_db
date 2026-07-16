@@ -2,6 +2,7 @@ defmodule LLMDB.Catalog do
   @moduledoc false
 
   @store_key :llm_db_store
+  @load_resource {__MODULE__, :load}
   @provider_aliases %{google_vertex_anthropic: :google_vertex}
   @bedrock_prefixes ~w(us. eu. ap. apac. ca. au. jp. us-gov. global.)
 
@@ -100,12 +101,46 @@ defmodule LLMDB.Catalog do
     :ok
   end
 
+  @spec load((-> result)) :: result when result: term()
+  def load(fun) when is_function(fun, 0), do: with_load_lock(fun)
+
+  @spec ensure_loaded() :: :ok | {:error, term()}
+  def ensure_loaded do
+    cond do
+      not is_nil(snapshot()) ->
+        :ok
+
+      skip_packaged_load?() ->
+        :ok
+
+      true ->
+        with_load_lock(fn ->
+          cond do
+            not is_nil(snapshot()) -> :ok
+            skip_packaged_load?() -> :ok
+            true -> lazy_load()
+          end
+        end)
+    end
+  end
+
+  @spec ensure_loaded!() :: :ok
+  def ensure_loaded! do
+    case ensure_loaded() do
+      :ok -> :ok
+      {:error, reason} -> raise LLMDB.LoadError, reason: reason
+    end
+  end
+
   @spec providers(t() | nil) :: list()
   def providers(%{providers: providers}) when is_list(providers), do: providers
   def providers(_catalog), do: []
 
   @spec providers() :: list()
-  def providers, do: providers(snapshot())
+  def providers do
+    ensure_loaded!()
+    providers(snapshot())
+  end
 
   @spec provider(t() | nil, atom()) :: {:ok, map()} | {:error, :not_found}
   def provider(%{providers_by_id: providers}, provider_id)
@@ -119,7 +154,10 @@ defmodule LLMDB.Catalog do
   def provider(_catalog, _provider_id), do: {:error, :not_found}
 
   @spec provider(atom()) :: {:ok, map()} | {:error, :not_found}
-  def provider(provider_id), do: provider(snapshot(), provider_id)
+  def provider(provider_id) do
+    ensure_loaded!()
+    provider(snapshot(), provider_id)
+  end
 
   @spec provider_exists?(t() | nil, atom()) :: boolean()
   def provider_exists?(%{providers_by_id: providers}, provider_id)
@@ -130,7 +168,10 @@ defmodule LLMDB.Catalog do
   def provider_exists?(_catalog, _provider_id), do: false
 
   @spec provider_exists?(atom()) :: boolean()
-  def provider_exists?(provider_id), do: provider_exists?(snapshot(), provider_id)
+  def provider_exists?(provider_id) do
+    ensure_loaded!()
+    provider_exists?(snapshot(), provider_id)
+  end
 
   @spec models(t() | nil, atom()) :: list()
   def models(catalog, provider_id) when is_map(catalog) and is_atom(provider_id) do
@@ -149,7 +190,10 @@ defmodule LLMDB.Catalog do
   def models(_catalog, _provider_id), do: []
 
   @spec models(atom()) :: list()
-  def models(provider_id), do: models(snapshot(), provider_id)
+  def models(provider_id) do
+    ensure_loaded!()
+    models(snapshot(), provider_id)
+  end
 
   @spec model(t() | nil, atom(), String.t()) :: {:ok, map()} | {:error, :not_found}
   def model(catalog, provider_id, model_id)
@@ -161,7 +205,17 @@ defmodule LLMDB.Catalog do
   end
 
   @spec model(atom(), String.t()) :: {:ok, map()} | {:error, :not_found}
-  def model(provider_id, model_id), do: model(snapshot(), provider_id, model_id)
+  def model(provider_id, model_id) do
+    ensure_loaded!()
+    model(snapshot(), provider_id, model_id)
+  end
+
+  @spec resolve_model(atom(), String.t()) ::
+          {:ok, {atom(), String.t(), map()}} | {:error, :not_found}
+  def resolve_model(provider_id, model_id) do
+    ensure_loaded!()
+    resolve_model(snapshot(), provider_id, model_id)
+  end
 
   @spec resolve_model(t() | nil, atom(), String.t()) ::
           {:ok, {atom(), String.t(), map()}} | {:error, :not_found}
@@ -233,7 +287,10 @@ defmodule LLMDB.Catalog do
 
   @spec resolve_bare(String.t()) ::
           {:ok, {atom(), String.t(), map()}} | {:error, :not_found | :ambiguous}
-  def resolve_bare(model_id), do: resolve_bare(snapshot(), model_id)
+  def resolve_bare(model_id) do
+    ensure_loaded!()
+    resolve_bare(snapshot(), model_id)
+  end
 
   @spec strip_prefix(atom(), String.t()) :: {String.t(), String.t() | nil}
   def strip_prefix(:amazon_bedrock, model_id) when is_binary(model_id) do
@@ -254,7 +311,27 @@ defmodule LLMDB.Catalog do
   def prefer(_catalog), do: []
 
   @spec prefer() :: [atom()]
-  def prefer, do: prefer(snapshot())
+  def prefer do
+    ensure_loaded!()
+    prefer(snapshot())
+  end
+
+  defp with_load_lock(fun) do
+    :global.trans({@load_resource, self()}, fun, [node()])
+  end
+
+  defp lazy_load do
+    # Avoid a compile-time Catalog -> LLMDB edge: the facade already depends on
+    # Catalog, and this callback exists only to enter the normal load pipeline.
+    case :erlang.apply(:"Elixir.LLMDB", :__lazy_load__, [[]]) do
+      {:ok, _catalog} -> :ok
+      {:error, _reason} = error -> error
+    end
+  end
+
+  defp skip_packaged_load? do
+    Application.get_env(:llm_db, :skip_packaged_load, false)
+  end
 
   defp put_resolution_indexes(catalog, models) do
     Map.merge(catalog, %{

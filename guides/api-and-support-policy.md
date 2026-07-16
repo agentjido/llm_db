@@ -40,6 +40,12 @@ does not pull upstream provider metadata, read a host `.env`, or own application
 environment setup. The maintainer-only `mix llm_db.pull` task is the sole
 automatic dotenv boundary.
 
+The catalog initializes on the first public query without an llm_db supervisor
+or worker. Strict integrity errors therefore surface as `LLMDB.LoadError` at
+first use; explicit `LLMDB.load/1` calls retain their `{:error, reason}` shape.
+`LLMDB.Application.start/2` is a deprecated compatibility shim for one minor
+release and is no longer registered as the package's OTP callback.
+
 ## Supported Artifacts and Extensions
 
 - `LLMDB.Source` is the supported build-time source behaviour. Its canonical

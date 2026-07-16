@@ -80,7 +80,7 @@ defmodule LLMDB do
       true = LLMDB.allowed?({:openai, "gpt-4o-mini"})
   """
 
-  alias LLMDB.{Loader, Model, Provider, Query, Spec, Store}
+  alias LLMDB.{Catalog, Loader, Model, Provider, Query, Spec, Store}
 
   @type provider :: atom()
   @type provider_input :: provider() | String.t()
@@ -144,6 +144,12 @@ defmodule LLMDB do
   """
   @spec load(keyword()) :: {:ok, map()} | {:error, term()}
   def load(opts \\ []) do
+    Catalog.load(fn -> __lazy_load__(opts) end)
+  end
+
+  @doc false
+  @spec __lazy_load__(keyword()) :: {:ok, map()} | {:error, term()}
+  def __lazy_load__(opts) do
     case Loader.load(opts) do
       {:ok, snapshot} ->
         maybe_store_snapshot(snapshot, opts)

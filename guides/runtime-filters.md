@@ -12,6 +12,22 @@ LLMDB separates build-time and load-time concerns:
 
 The `base_models` list stored in the snapshot enables widening filters later without rebuilding from sources.
 
+## Initialization
+
+The packaged catalog initializes lazily on the first public query. The library
+does not register an OTP application callback and starts no supervisor or
+worker. Concurrent first queries share one process-free initialization lock,
+while later queries only read the published immutable catalog.
+
+Lazy initialization uses the configured packaged, file, or release snapshot
+source and applies the same filters and custom data as `LLMDB.load/1`. It never
+pulls upstream provider metadata or loads dotenv files. Set
+`skip_packaged_load: true` to leave the catalog empty until an explicit load.
+
+With strict integrity checking, an invalid snapshot now fails on first query as
+`LLMDB.LoadError`, rather than during application startup. Call `LLMDB.load/1`
+explicitly to receive `{:error, reason}` instead.
+
 ## Configuration Model
 
 ### Keys
