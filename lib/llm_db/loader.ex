@@ -119,24 +119,64 @@ defmodule LLMDB.Loader do
 
   ## Returns
 
-  Integer digest (phash2 hash)
+  Lowercase SHA-256 semantic fingerprint.
   """
-  @spec compute_digest(list(), list(), map()) :: integer()
+  @spec compute_digest(list(), list(), map()) :: String.t()
   def compute_digest(providers, base_models, runtime) do
-    # Stable hash of configuration that affects the final snapshot
-    :erlang.phash2({
-      # Provider IDs (order matters for determinism)
-      Enum.map(providers, & &1.id),
-      # Model keys (provider + id)
-      Enum.map(base_models, fn m -> {m.provider, m.id} end),
-      # Runtime config that affects filtering
-      runtime.raw_allow,
-      runtime.raw_deny,
-      runtime.prefer,
-      # Custom overlay
-      custom_digest(runtime.custom)
+    compute_digest(providers, base_models, runtime, %{
+      source_generated_at: nil,
+      source_snapshot_id: nil
     })
   end
+
+  @doc false
+  @spec compute_digest(list(), list(), map(), map()) :: String.t()
+  def compute_digest(providers, base_models, runtime, source_metadata) do
+    semantic_catalog = %{
+      version: 2,
+      providers: Enum.sort_by(providers, & &1.id),
+      models: Enum.sort_by(base_models, &{&1.provider, &1.id}),
+      filters: runtime.filters,
+      prefer: runtime.prefer,
+      source: source_metadata
+    }
+
+    semantic_catalog
+    |> canonical_digest_term()
+    |> :erlang.term_to_binary()
+    |> then(&:crypto.hash(:sha256, &1))
+    |> Base.encode16(case: :lower)
+  end
+
+  # Encode maps as sorted entries so digest stability does not depend on the
+  # OTP 24.1+ `:deterministic` option or on a map's internal representation.
+  # Tagged composite values preserve distinctions between maps, lists, and
+  # tuples while recursively removing VM-specific representation details.
+  defp canonical_digest_term(%Regex{source: source, opts: opts}) do
+    {:llm_db_digest_regex, source, canonical_digest_term(opts)}
+  end
+
+  defp canonical_digest_term(term) when is_map(term) do
+    entries =
+      term
+      |> Map.to_list()
+      |> Enum.map(fn {key, value} ->
+        {canonical_digest_term(key), canonical_digest_term(value)}
+      end)
+      |> Enum.sort_by(fn {key, _value} -> :erlang.term_to_binary(key) end)
+
+    {:llm_db_digest_map, entries}
+  end
+
+  defp canonical_digest_term(term) when is_list(term) do
+    {:llm_db_digest_list, Enum.map(term, &canonical_digest_term/1)}
+  end
+
+  defp canonical_digest_term(term) when is_tuple(term) do
+    {:llm_db_digest_tuple, term |> Tuple.to_list() |> Enum.map(&canonical_digest_term/1)}
+  end
+
+  defp canonical_digest_term(term), do: term
 
   # Private helpers
   defp load_packaged(opts) do
@@ -364,7 +404,11 @@ defmodule LLMDB.Loader do
         source_generated_at: generated_at,
         source_snapshot_id: source_snapshot_id,
         loaded_at: DateTime.utc_now() |> DateTime.to_iso8601(),
-        digest: compute_digest(providers, base_models, runtime)
+        digest:
+          compute_digest(providers, base_models, runtime, %{
+            source_generated_at: generated_at,
+            source_snapshot_id: source_snapshot_id
+          })
       }
     }
   end
@@ -403,15 +447,6 @@ defmodule LLMDB.Loader do
       end)
     end)
     |> Map.new()
-  end
-
-  defp custom_digest(%{providers: [], models: []}), do: nil
-
-  defp custom_digest(%{providers: providers, models: models}) do
-    :erlang.phash2({
-      Enum.map(providers, & &1.id),
-      Enum.map(models, fn m -> {m.provider, m.id} end)
-    })
   end
 
   defp summarize_filter(:all), do: ":all"
