@@ -66,6 +66,20 @@ defmodule LLMDB.Sources.RemoteTest do
     assert File.read!(cache_path) == original
   end
 
+  test "does not hide HTTP status failures behind a stale cache" do
+    cache_path = seed_cache!()
+    original = File.read!(cache_path)
+
+    for status <- [401, 404, 429, 500] do
+      request = fn _url, _opts -> {:ok, %Req.Response{status: status}} end
+
+      assert {:error, {:http_status, ^status}} =
+               Remote.pull(@url, @remote_opts ++ [request: request])
+
+      assert File.read!(cache_path) == original
+    end
+  end
+
   test "reports invalid JSON when there is no stale cache" do
     request = fn _url, _opts ->
       {:ok, %Req.Response{status: 200, body: "not-json", headers: %{}}}

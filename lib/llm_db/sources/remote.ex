@@ -120,6 +120,8 @@ defmodule LLMDB.Sources.Remote do
     end
   end
 
+  defp fallback_to_cache({:error, {:http_status, _status}} = error, _cache_path), do: error
+
   defp fallback_to_cache({:error, _reason} = error, cache_path) do
     case File.read(cache_path) do
       {:ok, content} -> if match?({:ok, _}, decode(content)), do: {:ok, cache_path}, else: error
