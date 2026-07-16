@@ -5,18 +5,19 @@ defmodule LLMDB.SnapshotTest do
 
   import ExUnit.CaptureLog
 
-  test "encodes nested maps with stable sorted key order" do
+  test "encodes nested maps as deterministic compact JSON with sorted keys" do
     encoded = Snapshot.encode(%{"b" => %{"d" => 1, "c" => 2}, "a" => 1})
 
-    assert [
-             "{",
-             "  \"a\": 1,",
-             "  \"b\": {",
-             "    \"c\": 2,",
-             "    \"d\": 1",
-             "  }",
-             "}"
-           ] = String.split(encoded, "\n", trim: true)
+    assert encoded == ~s({"a":1,"b":{"c":2,"d":1}})
+    refute String.contains?(encoded, "\n")
+  end
+
+  test "serializing the same document twice is byte-identical" do
+    document = snapshot_document()
+    rebuilt = document |> Enum.reverse() |> Map.new()
+
+    assert document == rebuilt
+    assert Snapshot.encode(document) == Snapshot.encode(rebuilt)
   end
 
   test "omits empty runtime migration fields from snapshot output" do
