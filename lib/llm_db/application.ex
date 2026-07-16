@@ -17,7 +17,6 @@ defmodule LLMDB.Application do
   end
 
   defp load_catalog do
-    LLMDB.Dotenv.load!()
     _ = LLMDB.Generated.ValidModalities.list()
 
     if Application.get_env(:llm_db, :skip_packaged_load, false) do

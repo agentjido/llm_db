@@ -35,6 +35,11 @@ Minor releases may add fields or accepted inputs and may correct behavior that
 contradicts documented contracts. They do not remove accepted inputs, struct
 fields, snapshot readers, or supported task names without a deprecation window.
 
+Runtime catalog loading reads a packaged or explicitly configured snapshot. It
+does not pull upstream provider metadata, read a host `.env`, or own application
+environment setup. The maintainer-only `mix llm_db.pull` task is the sole
+automatic dotenv boundary.
+
 ## Supported Artifacts and Extensions
 
 - `LLMDB.Source` is the supported build-time source behaviour. Its canonical

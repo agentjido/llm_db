@@ -128,7 +128,9 @@ defmodule Mix.Tasks.LlmDb.Pull do
     # Load runtime.exs before consulting :load_dotenv so runtime configuration
     # can disable dotenv loading for this task.
     Mix.Task.run("app.config")
-    LLMDB.Dotenv.load!(override: true)
+
+    override? = Application.get_env(:llm_db, :dotenv_override, true)
+    LLMDB.Dotenv.load!(override: override?)
   end
 
   @doc false

@@ -208,8 +208,6 @@ The packaged snapshot loads automatically at app start. Optional runtime filters
 ```elixir
 # config/runtime.exs
 config :llm_db,
-  load_dotenv: true,                  # set false to skip .env loading
-  dotenv_override: false,             # set true to let .env override existing env vars
   filter: %{
     allow: :all,                     # :all or %{provider => [patterns]}
     deny: %{openai: ["*-preview"]}   # deny patterns override allow
@@ -227,7 +225,18 @@ config :llm_db,
   }
 ```
 
-**`.env` loading:** When `load_dotenv` is `true` (the default), LLM DB loads variables from a `.env` file at application start. Environment variables already set by the OS, shell, or tools like `direnv` are not overwritten unless `dotenv_override: true` is set. Set `load_dotenv: false` to skip `.env` loading entirely. Maintainer metadata pulls load the repo-local `.env` with override enabled so stale global API keys do not shadow local refresh credentials.
+**Runtime environment:** Starting or querying LLM DB never reads a host `.env`
+file. Applications own their runtime configuration and may use Dotenvy, direnv,
+or another mechanism before starting dependencies.
+
+The maintainer-only `mix llm_db.pull` task loads the repository-local `.env`
+before contacting upstream providers. These settings apply only to that task:
+
+```elixir
+config :llm_db,
+  load_dotenv: true,       # set false to skip .env during metadata pulls
+  dotenv_override: true   # repo credentials override the maintainer shell
+```
 
 ### Filter Examples
 
