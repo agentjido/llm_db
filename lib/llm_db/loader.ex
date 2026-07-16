@@ -10,9 +10,148 @@ defmodule LLMDB.Loader do
   """
 
   alias LLMDB.{Engine, Merge, Model, Packaged, Pricing, Provider, Runtime, Snapshot, Validate}
+  alias LLMDB.Generated.{ProviderRegistry, ValidModalities}
   alias LLMDB.Snapshot.ReleaseStore
 
   require Logger
+
+  @known_snapshot_keys [
+    :alias_of,
+    :aliases,
+    :applies_to,
+    :applies_when,
+    :audio,
+    :auth,
+    :base_url,
+    :batch,
+    :cache_read,
+    :cache_write,
+    :caching,
+    :capabilities,
+    :catalog_only,
+    :charge_scope,
+    :chat,
+    :citations,
+    :code_execution,
+    :components,
+    :config_schema,
+    :context,
+    :context_management,
+    :cost,
+    :currency,
+    :default,
+    :default_dimensions,
+    :default_headers,
+    :default_query,
+    :default_type,
+    :deprecated,
+    :deprecated_at,
+    :derives_from,
+    :disable_supported,
+    :doc,
+    :doc_url,
+    :effort,
+    :embed,
+    :embeddings,
+    :enabled,
+    :encrypted_supported,
+    :env,
+    :exclude_models,
+    :excludes_when,
+    :execution,
+    :extra,
+    :family,
+    :features,
+    :forced_choice,
+    :header_name,
+    :headers,
+    :id,
+    :image,
+    :input,
+    :input_audio,
+    :input_video,
+    :json,
+    :knowledge,
+    :kind,
+    :last_updated,
+    :lifecycle,
+    :limits,
+    :max,
+    :max_dimensions,
+    :merge,
+    :meter,
+    :min,
+    :min_dimensions,
+    :modalities,
+    :mode,
+    :model,
+    :multiplier,
+    :name,
+    :native,
+    :notes,
+    :object,
+    :output,
+    :output_audio,
+    :output_video,
+    :parallel,
+    :path,
+    :per,
+    :pricing,
+    :pricing_defaults,
+    :provider,
+    :provider_model_id,
+    :query_name,
+    :rate,
+    :raw_output_supported,
+    :realtime,
+    :reasoning,
+    :release_date,
+    :replacement,
+    :request,
+    :required,
+    :rerank,
+    :retired,
+    :retires_at,
+    :runtime,
+    :schema,
+    :size_class,
+    :source,
+    :speech,
+    :status,
+    :storage,
+    :streaming,
+    :strict,
+    :summary_supported,
+    :supported,
+    :tags,
+    :text,
+    :thinking,
+    :token_budget,
+    :tool,
+    :tool_calls,
+    :tools,
+    :training,
+    :transcription,
+    :transport,
+    :type,
+    :types,
+    :unit,
+    :value,
+    :values,
+    :video,
+    :wire_protocol
+  ]
+
+  @known_snapshot_keys_by_name Map.new(@known_snapshot_keys, &{Atom.to_string(&1), &1})
+  @known_snapshot_key_set MapSet.new(@known_snapshot_keys)
+  @opaque_snapshot_keys MapSet.new([
+                          :applies_when,
+                          :default,
+                          :default_headers,
+                          :default_query,
+                          :excludes_when,
+                          :extra
+                        ])
 
   @doc """
   Loads the packaged snapshot and applies runtime configuration.
@@ -180,54 +319,57 @@ defmodule LLMDB.Loader do
 
   # Private helpers
   defp load_packaged(opts) do
-    case load_snapshot_document(snapshot_source(opts)) do
-      nil ->
-        {:error, :no_snapshot}
+    with {:ok, snapshot} <- load_snapshot_document(snapshot_source(opts)) do
+      deserialize_snapshot_document(snapshot)
+    end
+  end
 
-      %{version: 2, providers: nested_providers, generated_at: generated_at} = snapshot ->
-        # V2 snapshot with nested providers
-        {providers, models} = flatten_nested_providers(nested_providers)
+  defp deserialize_snapshot_document(
+         %{version: 2, providers: nested_providers, generated_at: generated_at} = snapshot
+       ) do
+    {providers, models} = flatten_nested_providers(nested_providers)
+    deserialize_snapshot_items(providers, models, generated_at, snapshot_snapshot_id(snapshot))
+  end
 
-        {:ok,
-         {deserialize_json_atoms(providers, :provider), deserialize_json_atoms(models, :model),
-          generated_at, snapshot_snapshot_id(snapshot)}}
+  defp deserialize_snapshot_document(
+         %{"version" => 2, "providers" => nested_providers, "generated_at" => generated_at} =
+           snapshot
+       ) do
+    {providers, models} = flatten_nested_providers(nested_providers)
+    deserialize_snapshot_items(providers, models, generated_at, snapshot_snapshot_id(snapshot))
+  end
 
-      %{"version" => 2, "providers" => nested_providers, "generated_at" => generated_at} =
-          snapshot ->
-        {providers, models} = flatten_nested_providers(nested_providers)
+  defp deserialize_snapshot_document(
+         %{providers: providers, models: models, generated_at: generated_at} = snapshot
+       )
+       when is_list(providers) and is_list(models) do
+    deserialize_snapshot_items(providers, models, generated_at, snapshot_snapshot_id(snapshot))
+  end
 
-        {:ok,
-         {deserialize_json_atoms(providers, :provider), deserialize_json_atoms(models, :model),
-          generated_at, snapshot_snapshot_id(snapshot)}}
+  defp deserialize_snapshot_document(
+         %{"providers" => providers, "models" => models, "generated_at" => generated_at} =
+           snapshot
+       )
+       when is_list(providers) and is_list(models) do
+    deserialize_snapshot_items(providers, models, generated_at, snapshot_snapshot_id(snapshot))
+  end
 
-      %{providers: providers, models: models, generated_at: generated_at} = snapshot
-      when is_list(providers) and is_list(models) ->
-        # V1 snapshot with generated_at
-        {:ok,
-         {deserialize_json_atoms(providers, :provider), deserialize_json_atoms(models, :model),
-          generated_at, snapshot_snapshot_id(snapshot)}}
+  defp deserialize_snapshot_document(%{providers: providers, models: models} = snapshot)
+       when is_list(providers) and is_list(models) do
+    deserialize_snapshot_items(providers, models, nil, snapshot_snapshot_id(snapshot))
+  end
 
-      %{"providers" => providers, "models" => models, "generated_at" => generated_at} = snapshot
-      when is_list(providers) and is_list(models) ->
-        {:ok,
-         {deserialize_json_atoms(providers, :provider), deserialize_json_atoms(models, :model),
-          generated_at, snapshot_snapshot_id(snapshot)}}
+  defp deserialize_snapshot_document(%{"providers" => providers, "models" => models} = snapshot)
+       when is_list(providers) and is_list(models) do
+    deserialize_snapshot_items(providers, models, nil, snapshot_snapshot_id(snapshot))
+  end
 
-      %{providers: providers, models: models} = snapshot
-      when is_list(providers) and is_list(models) ->
-        # V1 snapshot without generated_at
-        {:ok,
-         {deserialize_json_atoms(providers, :provider), deserialize_json_atoms(models, :model),
-          nil, snapshot_snapshot_id(snapshot)}}
+  defp deserialize_snapshot_document(_snapshot), do: {:error, :invalid_snapshot_format}
 
-      %{"providers" => providers, "models" => models} = snapshot
-      when is_list(providers) and is_list(models) ->
-        {:ok,
-         {deserialize_json_atoms(providers, :provider), deserialize_json_atoms(models, :model),
-          nil, snapshot_snapshot_id(snapshot)}}
-
-      _ ->
-        {:error, :invalid_snapshot_format}
+  defp deserialize_snapshot_items(providers, models, generated_at, snapshot_id) do
+    with {:ok, providers} <- deserialize_json_atoms(providers, :provider),
+         {:ok, models} <- deserialize_json_atoms(models, :model) do
+      {:ok, {providers, models, generated_at, snapshot_id}}
     end
   end
 
@@ -264,34 +406,39 @@ defmodule LLMDB.Loader do
   end
 
   defp deserialize_json_atoms(items, :provider) do
-    Enum.map(items, fn provider ->
-      provider_map = normalize_provider_item(provider)
-
-      # Validate and create Provider struct
-      case provider_map do
-        %Provider{} = normalized -> normalized
-        _ -> Provider.new!(provider_map)
-      end
-    end)
+    deserialize_items(items, &normalize_provider_item/1, &Provider.new/1, :provider)
   end
 
   defp deserialize_json_atoms(items, :model) do
-    Enum.map(items, fn model ->
-      model_map = normalize_model_item(model)
+    deserialize_items(items, &normalize_model_item/1, &Model.new/1, :model)
+  end
 
-      # Validate and create Model struct
-      case model_map do
-        %Model{} = normalized -> normalized
-        _ -> Model.new!(model_map)
+  defp deserialize_items(items, normalize, validate, type) do
+    Enum.reduce_while(items, {:ok, []}, fn item, {:ok, acc} ->
+      with {:ok, normalized} <- normalize.(item),
+           {:ok, value} <- validate.(normalized) do
+        {:cont, {:ok, [value | acc]}}
+      else
+        {:error, reason} -> {:halt, {:error, {:invalid_snapshot_item, type, reason}}}
       end
     end)
+    |> case do
+      {:ok, values} -> {:ok, Enum.reverse(values)}
+      error -> error
+    end
   end
 
   defp deserialize_modality_list(list) when is_list(list) do
-    Enum.map(list, fn
-      s when is_binary(s) -> safe_existing_atom(s)
-      a when is_atom(a) -> a
+    Enum.reduce_while(list, {:ok, []}, fn modality, {:ok, acc} ->
+      case ValidModalities.fetch(modality) do
+        {:ok, atom} -> {:cont, {:ok, [atom | acc]}}
+        :error -> {:halt, {:error, {:unknown_modality, modality}}}
+      end
     end)
+    |> case do
+      {:ok, modalities} -> {:ok, Enum.reverse(modalities)}
+      error -> error
+    end
   end
 
   defp merge_custom({providers, models}, %{providers: [], models: []}) do
@@ -318,17 +465,25 @@ defmodule LLMDB.Loader do
 
   defp validate_custom_overlays!(items, :provider) when is_list(items) do
     Enum.map(items, fn provider ->
-      provider
-      |> normalize_provider_item()
-      |> validate_custom_overlay!(&Validate.validate_provider_overlay/1, "custom provider")
+      with {:ok, normalized} <- normalize_provider_item(provider) do
+        validate_custom_overlay!(
+          normalized,
+          &Validate.validate_provider_overlay/1,
+          "custom provider"
+        )
+      else
+        {:error, reason} -> raise ArgumentError, "Invalid custom provider: #{inspect(reason)}"
+      end
     end)
   end
 
   defp validate_custom_overlays!(items, :model) when is_list(items) do
     Enum.map(items, fn model ->
-      model
-      |> normalize_model_item()
-      |> validate_custom_overlay!(&Validate.validate_model_overlay/1, "custom model")
+      with {:ok, normalized} <- normalize_model_item(model) do
+        validate_custom_overlay!(normalized, &Validate.validate_model_overlay/1, "custom model")
+      else
+        {:error, reason} -> raise ArgumentError, "Invalid custom model: #{inspect(reason)}"
+      end
     end)
   end
 
@@ -470,28 +625,29 @@ defmodule LLMDB.Loader do
     Keyword.get(opts, :snapshot_source, base.snapshot_source)
   end
 
-  defp load_snapshot_document(:packaged), do: Packaged.snapshot()
+  defp load_snapshot_document(:packaged), do: Packaged.load()
 
   defp load_snapshot_document({:file, path}) when is_binary(path) do
-    case Snapshot.read(path) do
-      {:ok, snapshot} -> snapshot
-      {:error, _reason} -> nil
-    end
+    Snapshot.read(path, integrity_policy: integrity_policy())
   end
 
   defp load_snapshot_document({:github_releases, store_opts}) do
     {ref, overrides} = release_ref_and_overrides(store_opts)
 
     case ReleaseStore.fetch_snapshot(ref, overrides) do
-      {:ok, %{snapshot: snapshot}} -> snapshot
-      {:error, _reason} -> nil
+      {:ok, %{snapshot: snapshot}} -> {:ok, snapshot}
+      {:error, reason} -> {:error, reason}
     end
   end
 
   defp load_snapshot_document(other) when is_binary(other),
     do: load_snapshot_document({:file, other})
 
-  defp load_snapshot_document(_), do: Packaged.snapshot()
+  defp load_snapshot_document(_), do: Packaged.load()
+
+  defp integrity_policy do
+    Application.get_env(:llm_db, :integrity_policy, :strict)
+  end
 
   defp release_ref_and_overrides(store_opts) do
     normalized =
@@ -518,65 +674,79 @@ defmodule LLMDB.Loader do
     snapshot["snapshot_id"] || snapshot[:snapshot_id]
   end
 
+  defp provider_atom(provider) when is_atom(provider), do: {:ok, provider}
+
   defp provider_atom(provider) when is_binary(provider) do
-    safe_existing_atom(provider, true)
+    case ProviderRegistry.fetch(provider) do
+      {:ok, atom} ->
+        {:ok, atom}
+
+      :error ->
+        try do
+          {:ok, String.to_existing_atom(provider)}
+        rescue
+          ArgumentError -> {:error, {:unknown_provider_id, provider}}
+        end
+    end
   end
+
+  defp provider_atom(provider), do: {:error, {:invalid_provider_id, provider}}
 
   defp normalize_provider_item(provider) do
-    normalized_id =
-      case get_value(provider, :id) do
-        id when is_atom(id) -> id
-        id when is_binary(id) -> provider_atom(id)
-      end
+    case provider do
+      %Provider{} ->
+        {:ok, provider}
 
-    provider
-    |> deep_atomize_keys()
-    |> Map.put(:id, normalized_id)
+      provider when is_map(provider) ->
+        with {:ok, normalized_id} <- provider_atom(get_value(provider, :id)) do
+          {:ok,
+           provider
+           |> atomize_known_keys()
+           |> Map.put(:id, normalized_id)}
+        end
+
+      _other ->
+        {:error, :invalid_provider}
+    end
   end
 
-  defp normalize_model_item(model) do
-    normalized_provider =
-      case get_value(model, :provider) do
-        provider when is_atom(provider) -> provider
-        provider when is_binary(provider) -> provider_atom(provider)
-      end
+  defp normalize_model_item(%Model{} = model), do: {:ok, model}
 
-    model
-    |> normalize_model_modalities()
-    |> put_value(:provider, normalized_provider)
-    |> deep_atomize_keys()
+  defp normalize_model_item(model) when is_map(model) do
+    with {:ok, normalized_provider} <- provider_atom(get_value(model, :provider)),
+         {:ok, normalized_model} <- normalize_model_modalities(model) do
+      {:ok,
+       normalized_model
+       |> atomize_known_keys()
+       |> Map.put(:provider, normalized_provider)}
+    end
   end
+
+  defp normalize_model_item(_model), do: {:error, :invalid_model}
 
   defp normalize_model_modalities(model) do
     case get_value(model, :modalities) do
       modalities when is_map(modalities) ->
-        normalized =
-          modalities
-          |> maybe_normalize_modality(:input)
-          |> maybe_normalize_modality(:output)
-
-        put_value(model, :modalities, normalized)
+        with {:ok, normalized} <- maybe_normalize_modality(modalities, :input),
+             {:ok, normalized} <- maybe_normalize_modality(normalized, :output) do
+          {:ok, put_value(model, :modalities, normalized)}
+        end
 
       _other ->
-        model
+        {:ok, model}
     end
   end
 
   defp maybe_normalize_modality(modalities, key) do
     case get_value(modalities, key) do
-      list when is_list(list) -> put_value(modalities, key, deserialize_modality_list(list))
-      _other -> modalities
+      list when is_list(list) ->
+        with {:ok, normalized} <- deserialize_modality_list(list) do
+          {:ok, put_value(modalities, key, normalized)}
+        end
+
+      _other ->
+        {:ok, modalities}
     end
-  end
-
-  defp safe_existing_atom(value, allow_create \\ false)
-
-  defp safe_existing_atom(value, allow_create) when is_binary(value) do
-    String.to_existing_atom(value)
-  rescue
-    ArgumentError ->
-      _ = allow_create
-      String.to_atom(value)
   end
 
   defp get_value(map, key) when is_map(map) do
@@ -611,20 +781,29 @@ defmodule LLMDB.Loader do
     |> Map.delete(Atom.to_string(key))
   end
 
-  defp deep_atomize_keys(%_{} = struct), do: struct
+  defp atomize_known_keys(%_{} = struct), do: struct
 
-  defp deep_atomize_keys(map) when is_map(map) do
+  defp atomize_known_keys(map) when is_map(map) do
     Map.new(map, fn {key, value} ->
-      normalized_key =
-        case key do
-          key when is_atom(key) -> key
-          key when is_binary(key) -> safe_existing_atom(key, true)
+      normalized_key = normalize_known_key(key)
+
+      normalized_value =
+        cond do
+          MapSet.member?(@opaque_snapshot_keys, normalized_key) -> value
+          MapSet.member?(@known_snapshot_key_set, normalized_key) -> atomize_known_keys(value)
+          true -> value
         end
 
-      {normalized_key, deep_atomize_keys(value)}
+      {normalized_key, normalized_value}
     end)
   end
 
-  defp deep_atomize_keys(list) when is_list(list), do: Enum.map(list, &deep_atomize_keys/1)
-  defp deep_atomize_keys(value), do: value
+  defp atomize_known_keys(list) when is_list(list), do: Enum.map(list, &atomize_known_keys/1)
+  defp atomize_known_keys(value), do: value
+
+  defp normalize_known_key(key) when is_atom(key), do: key
+
+  defp normalize_known_key(key) when is_binary(key) do
+    Map.get(@known_snapshot_keys_by_name, key, key)
+  end
 end

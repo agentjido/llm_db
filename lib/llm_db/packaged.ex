@@ -17,16 +17,19 @@ defmodule LLMDB.Packaged do
   - `true` - Snapshot embedded at compile-time (zero runtime IO, recommended for production)
   - `false` - Snapshot loaded at runtime from priv directory with integrity checking
 
-  ## Security
+  ## Integrity and atom safety
 
-  Production deployments should use `compile_embed: true` to eliminate runtime atom
-  creation and file I/O. Runtime mode includes SHA-256 integrity verification to
-  prevent tampering with the snapshot file.
+  Production deployments can use `compile_embed: true` to eliminate runtime file
+  I/O. Embedded and file-based documents pass through the same checksum,
+  migration, structural-validation, and bounded atom-decoding contract.
+
+  Snapshot IDs detect accidental corruption or content mismatch. They do not
+  authenticate the snapshot or its publisher.
 
   ### Integrity Policy
 
   The `:integrity_policy` config option controls integrity check behavior:
-  - `:strict` (default) - Fail on hash mismatch, treating it as tampering
+  - `:strict` (default) - Fail on snapshot ID mismatch
   - `:warn` - Log warning and continue, useful in dev when snapshot regenerates frequently
   - `:off` - Skip mismatch warnings entirely
 
@@ -57,8 +60,17 @@ defmodule LLMDB.Packaged do
                 do: Jason.decode!(File.read!(@snapshot_compile_path)),
                 else: nil
 
+    @doc false
+    @spec load() :: {:ok, map()} | {:error, term()}
+    def load do
+      case @snapshot do
+        nil -> {:error, :no_snapshot}
+        snapshot -> Snapshot.prepare(snapshot, integrity_policy: integrity_policy())
+      end
+    end
+
     @doc """
-    Returns the packaged base snapshot (compile-time embedded).
+    Returns the verified packaged base snapshot (compile-time embedded).
 
     This snapshot is the pre-processed output of the ETL pipeline and serves
     as the stable foundation for this package version.
@@ -68,108 +80,40 @@ defmodule LLMDB.Packaged do
     Fully indexed snapshot map with providers, models, and indexes, or `nil` if not available.
     """
     @spec snapshot() :: map() | nil
-    def snapshot, do: @snapshot
+    def snapshot, do: unwrap_snapshot(load())
   else
+    @doc false
+    @spec load() :: {:ok, map()} | {:error, term()}
+    def load do
+      Snapshot.read(snapshot_path(), integrity_policy: integrity_policy())
+    end
+
     @doc """
-    Returns the packaged base snapshot (runtime loaded with integrity check).
+    Returns the packaged base snapshot loaded from the runtime file.
 
     This snapshot is the pre-processed output of the ETL pipeline and serves
     as the stable foundation for this package version.
 
-    Includes SHA-256 integrity verification to prevent tampering.
+    The same checksum, migration, structural validation, and atom-safety
+    boundary used by compile-time embedded snapshots is applied.
 
     ## Returns
 
     Fully indexed snapshot map with providers, models, and indexes, or `nil` if not available.
     """
     @spec snapshot() :: map() | nil
-    def snapshot do
-      with {:ok, content} <- File.read(snapshot_path()) do
-        case Snapshot.decode(content) do
-          {:ok, snapshot} ->
-            validate_schema(snapshot)
-            snapshot
+    def snapshot, do: unwrap_snapshot(load())
+  end
 
-          {:error, reason} ->
-            load_unverified_snapshot(content, reason)
-        end
-      else
-        {:error, :enoent} ->
-          # Snapshot doesn't exist yet (e.g., during build process)
-          nil
+  defp integrity_policy do
+    Application.get_env(:llm_db, :integrity_policy, :strict)
+  end
 
-        {:error, reason} ->
-          Logger.warning("llm_db: failed to load snapshot: #{inspect(reason)}")
-          nil
-      end
-    end
+  defp unwrap_snapshot({:ok, snapshot}), do: snapshot
+  defp unwrap_snapshot({:error, reason}) when reason in [:enoent, :no_snapshot], do: nil
 
-    defp integrity_policy do
-      Application.get_env(:llm_db, :integrity_policy, :strict)
-    end
-
-    defp load_unverified_snapshot(content, reason) do
-      case integrity_policy() do
-        :strict ->
-          Logger.error(
-            "llm_db: snapshot integrity check failed - refusing to load packaged snapshot: #{inspect(reason)}"
-          )
-
-          nil
-
-        mode when mode in [:warn, :off] ->
-          if mode == :warn do
-            Logger.warning(
-              "llm_db: snapshot integrity check failed in warn mode: #{inspect(reason)}. " <>
-                "Loading unverified snapshot content."
-            )
-          end
-
-          case Jason.decode(content) do
-            {:ok, snapshot} ->
-              validate_schema(snapshot)
-              snapshot
-
-            {:error, decode_reason} ->
-              Logger.warning(
-                "llm_db: failed to decode unverified snapshot: #{inspect(decode_reason)}"
-              )
-
-              nil
-          end
-      end
-    end
-
-    defp validate_schema(snapshot) do
-      providers =
-        case snapshot do
-          %{"providers" => providers} when is_map(providers) -> providers
-          %{providers: providers} when is_map(providers) -> providers
-          _ -> %{}
-        end
-
-      # Lightweight schema checks to prevent atom/memory exhaustion
-      provider_count = map_size(providers)
-
-      if provider_count > 1000 do
-        Logger.warning(
-          "llm_db: snapshot contains unusually large number of providers: #{provider_count}. " <>
-            "Expected < 1000. Potential DoS attempt."
-        )
-      end
-
-      # Check provider IDs match safe regex
-      Enum.each(providers, fn {provider_id, _data} ->
-        provider_id_str = to_string(provider_id)
-
-        unless provider_id_str =~ ~r/^[a-z0-9][a-z0-9_:-]{0,63}$/ do
-          Logger.warning(
-            "llm_db: snapshot contains suspicious provider ID: #{inspect(provider_id)}"
-          )
-        end
-      end)
-
-      :ok
-    end
+  defp unwrap_snapshot({:error, reason}) do
+    Logger.error("llm_db: refusing to load packaged snapshot: #{inspect(reason)}")
+    nil
   end
 end

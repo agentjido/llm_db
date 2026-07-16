@@ -1064,7 +1064,7 @@ defmodule LLMDBTest do
       assert model.modalities.output == [:audio]
       assert model.capabilities.chat == false
       assert model.capabilities.embeddings == false
-      assert model.extra.api == "tts"
+      assert model.extra["api"] == "tts"
     end
   end
 end

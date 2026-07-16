@@ -15,7 +15,7 @@ defmodule LLMDB.Provider do
   - `:doc` - Documentation URL
   - `:pricing_defaults` - Default pricing components applied to all models (see below)
   - `:exclude_models` - Model IDs to exclude from upstream sources
-  - `:extra` - Additional provider-specific data
+  - `:extra` - Additional provider-specific data; snapshot JSON keys remain strings
   - `:alias_of` - Primary provider ID if this is an alias
 
   ## Pricing Defaults
