@@ -34,15 +34,26 @@ defmodule LLMDB.ProviderRuntimeDataTest do
 
       assert is_binary(runtime.base_url), "missing runtime base URL for #{id}"
       assert runtime.auth.type == "bearer"
+
+      assert is_list(runtime.auth.env) and runtime.auth.env != [],
+             "missing runtime auth env for #{id}"
+
       assert runtime.execution.text == "openai_chat_compatible"
       assert runtime.execution.object == "openai_chat_compatible"
     end)
 
-    assert provider_runtime(providers, :anthropic).execution.text == "anthropic_messages"
-    assert provider_runtime(providers, :google).execution.text == "google_generate_content"
-    assert provider_runtime(providers, :cohere).execution.text == "cohere_chat"
+    for {id, family} <- [
+          anthropic: "anthropic_messages",
+          google: "google_generate_content",
+          cohere: "cohere_chat"
+        ] do
+      runtime = provider_runtime(providers, id)
+      assert runtime.execution.text == family
+      assert is_list(runtime.auth.env) and runtime.auth.env != []
+    end
 
     elevenlabs = provider_runtime(providers, :elevenlabs)
+    assert elevenlabs.auth.env == ["ELEVENLABS_API_KEY"]
     assert elevenlabs.execution.speech == "elevenlabs_speech"
     assert elevenlabs.execution.transcription == "elevenlabs_transcription"
   end

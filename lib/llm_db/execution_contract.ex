@@ -68,6 +68,15 @@ defmodule LLMDB.ExecutionContract do
 
   @spec enrich([Provider.t()], [Model.t()]) :: {[Provider.t()], [Model.t()]}
   def enrich(providers, models) when is_list(providers) and is_list(models) do
+    {enriched_providers, enriched_models} = enrich_for_validation(providers, models)
+    published_providers = Enum.map(enriched_providers, &publish_provider/1)
+
+    {published_providers, enriched_models}
+  end
+
+  @doc false
+  @spec enrich_for_validation([Provider.t()], [Model.t()]) :: {[Provider.t()], [Model.t()]}
+  def enrich_for_validation(providers, models) when is_list(providers) and is_list(models) do
     enriched_providers = Enum.map(providers, &enrich_provider/1)
     provider_lookup = Map.new(enriched_providers, &{&1.id, &1})
 
@@ -76,10 +85,16 @@ defmodule LLMDB.ExecutionContract do
         enrich_model(model, Map.get(provider_lookup, model.provider))
       end)
 
-    published_providers = Enum.map(enriched_providers, &strip_execution_policy/1)
-
-    {published_providers, enriched_models}
+    {enriched_providers, enriched_models}
   end
+
+  @doc false
+  @spec publish_provider(Provider.t()) :: Provider.t()
+  def publish_provider(%Provider{runtime: runtime} = provider) when is_map(runtime) do
+    %{provider | runtime: Map.delete(runtime, :execution)}
+  end
+
+  def publish_provider(provider), do: provider
 
   @spec enrich_provider(Provider.t()) :: Provider.t()
   def enrich_provider(%Provider{} = provider) do
@@ -178,12 +193,6 @@ defmodule LLMDB.ExecutionContract do
     |> Map.put(:env, env)
     |> Map.put_new(:headers, [])
   end
-
-  defp strip_execution_policy(%Provider{runtime: runtime} = provider) when is_map(runtime) do
-    %{provider | runtime: Map.delete(runtime, :execution)}
-  end
-
-  defp strip_execution_policy(provider), do: provider
 
   defp derive_execution(
          %Model{} = model,
