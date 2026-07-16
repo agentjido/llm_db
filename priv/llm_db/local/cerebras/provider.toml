@@ -9,3 +9,17 @@ env = ["CEREBRAS_API_KEY"]
 exclude_models = [
   "qwen-3-235b-a22b-thinking-2507"
 ]
+
+[runtime]
+base_url = "https://api.cerebras.ai/v1"
+doc_url = "https://cerebras.ai/docs"
+
+[runtime.auth]
+type = "bearer"
+
+[runtime.execution]
+text = "openai_chat_compatible"
+object = "openai_chat_compatible"
+embed = "openai_embeddings"
+image = "openai_images"
+transcription = "openai_transcription"

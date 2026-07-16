@@ -65,6 +65,24 @@ defmodule LLMDB.Schema.ProviderTest do
       assert result.runtime.default_query["project"] == "demo"
       assert hd(result.runtime.config_schema).name == "project"
       assert result.runtime.doc_url == "https://platform.openai.com/docs/api-reference"
+      assert Map.get(result.runtime, :execution) == nil
+    end
+
+    test "parses additive runtime execution policy" do
+      input = %{
+        id: :openai,
+        runtime: %{
+          execution: %{
+            text: "openai_chat_compatible",
+            object: "openai_responses_compatible"
+          }
+        }
+      }
+
+      assert {:ok, result} = Provider.new(input)
+      assert result.runtime.execution.text == "openai_chat_compatible"
+      assert result.runtime.execution.object == "openai_responses_compatible"
+      assert Map.get(result.runtime.execution, :embed) == nil
     end
 
     test "normalizes auth type atoms through Provider.new/1" do

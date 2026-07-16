@@ -35,3 +35,17 @@ exclude_models = [
   "qwen-2.5-coder-32b",
   "qwen-qwq-32b"
 ]
+
+[runtime]
+base_url = "https://api.groq.com/openai/v1"
+doc_url = "https://groq.com/docs"
+
+[runtime.auth]
+type = "bearer"
+
+[runtime.execution]
+text = "openai_chat_compatible"
+object = "openai_chat_compatible"
+embed = "openai_embeddings"
+image = "openai_images"
+transcription = "openai_transcription"
