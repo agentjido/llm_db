@@ -96,7 +96,7 @@ All three formats can be used interchangeably throughout the API.
 
 ### Syntax
 - Two-element tuple: `{provider_atom, model_id_string}`
-- Provider is always an atom with underscores (not hyphens)
+- Accepted lookup inputs may use a provider atom or string; parsed tuples always contain the canonical atom with underscores
 - Model ID is always a string
 
 ### When to Use
@@ -110,6 +110,10 @@ All three formats can be used interchangeably throughout the API.
 ```elixir
 # Parse to tuple
 {:openai, "gpt-4o-mini"} = LLMDB.parse!("openai:gpt-4o-mini")
+
+# String providers in tuple inputs normalize to the canonical atom
+{:ok, {:google_vertex, "gemini-1.5-pro"}} =
+  LLMDB.parse({"google-vertex", "gemini-1.5-pro"})
 
 # Format from tuple
 "openai:gpt-4o-mini" = LLMDB.format({:openai, "gpt-4o-mini"})
