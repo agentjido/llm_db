@@ -42,7 +42,7 @@ module it currently calls:
 | `mix llm_db.pull` | Maintainer-only upstream synchronization and the sole automatic dotenv boundary |
 | `mix llm_db.build`, `mix llm_db.snapshot.build` | Maintainer-only canonical snapshot build (`snapshot.build` is a supported alias) |
 | `mix llm_db.snapshot.publish` | Maintainer-only snapshot publication |
-| `mix llm_db.history.backfill` | Legacy Git-history backfill kept for compatibility |
+| `mix llm_db.history.backfill` | Deprecated legacy Git-history backfill kept callable through the compatibility window |
 | `mix llm_db.history.migrate_git` | One-time migration to snapshot-store history |
 | `mix llm_db.history.rebuild`, `mix llm_db.history.sync`, `mix llm_db.history.check` | Published history maintenance |
 | `mix llm_db.version` | Maintainer-only CalVer bump |
@@ -67,7 +67,8 @@ No module or task is removed in this minor release.
 | `LLMDB.Dotenv.load!/1` | `mix llm_db.pull` | Compiler-deprecated; pull remains task-scoped |
 | `LLMDB.Store` query calls | Equivalent `LLMDB` query/load calls | Compatibility facade; direct use is documentation-deprecated |
 | `LLMDB.Engine.run/1`, `LLMDB.Snapshot.Builder` | `mix llm_db.build` | Documentation-deprecated maintainer orchestration |
-| `LLMDB.History.Backfill`, `LLMDB.History.Migrator`, `LLMDB.History.Rebuilder`, `LLMDB.History.Bundle`, `LLMDB.History.Diff`, `LLMDB.History.Lineage` | Corresponding `mix llm_db.history.*` task | Documentation-deprecated maintainer orchestration with internal shared diff/lineage logic |
+| `LLMDB.History.Backfill` | One-time `mix llm_db.history.migrate_git --publish`, then `mix llm_db.history.rebuild --publish` | Compiler- and runtime-deprecated; remains callable until no earlier than `v2027.0.0` |
+| `LLMDB.History.Migrator`, `LLMDB.History.Rebuilder`, `LLMDB.History.Bundle`, `LLMDB.History.Diff`, `LLMDB.History.Lineage` | Corresponding `mix llm_db.history.*` task | Documentation-deprecated maintainer orchestration with internal shared diff/lineage logic |
 | `LLMDB.Snapshot.ReleaseStore` mutation/publishing calls | `mix llm_db.snapshot.publish` or `mix llm_db.history.rebuild --publish` | Internal shared transport; runtime fetch behavior remains supported through configuration |
 | `LLMDB.Enrich`, `LLMDB.Validate`, `LLMDB.Enrich.AzureWireProtocol`, `LLMDB.Enrich.RuntimeContract` | `mix llm_db.build` | Internal ETL stages |
 | LLMDB.Sources.Anthropic, LLMDB.Sources.Google, LLMDB.Sources.Llmfit, LLMDB.Sources.Local, LLMDB.Sources.ModelsDev, LLMDB.Sources.OpenAI, LLMDB.Sources.OpenRouter, LLMDB.Sources.Remote, LLMDB.Sources.XAI, LLMDB.Sources.Zenmux | `LLMDB.Source` for extensions; `mix llm_db.pull`/`build` for workflows | Internal bundled adapters and shared remote transport |
@@ -108,6 +109,13 @@ Every direct dependency remains available in this minor release:
 5. `toml` can move with source ingestion. `req` can leave the runtime dependency
    graph only after configured GitHub-release snapshot/history reads are moved
    behind an equivalent adapter or companion dependency.
+
+The legacy `mix llm_db.history.backfill` task and `LLMDB.History.Backfill`
+functions may be removed no earlier than `v2027.0.0`, and only after at least
+one minor release has carried their actionable deprecation warnings. The
+maintained replacement is the one-time `mix llm_db.history.migrate_git --publish`
+seed followed by `mix llm_db.snapshot.publish` and
+`mix llm_db.history.rebuild --publish` for new observations.
 
 Upstream synchronization never runs during application startup, lazy catalog
 initialization, explicit `LLMDB.load/1`, or queries. Provider credentials and

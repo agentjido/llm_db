@@ -31,7 +31,7 @@ defmodule LLMDB.History.DiffLineageTest do
              }
            ] = Diff.models(previous, current)
 
-    assert Backfill.diff_models(previous, current) == Diff.models(previous, current)
+    assert apply(Backfill, :diff_models, [previous, current]) == Diff.models(previous, current)
   end
 
   test "normalization prevents alias and modality ordering noise" do

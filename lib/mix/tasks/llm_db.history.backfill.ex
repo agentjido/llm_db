@@ -2,10 +2,25 @@ defmodule Mix.Tasks.LlmDb.History.Backfill do
   use Mix.Task
   @dialyzer {:nowarn_function, run: 1}
 
-  @shortdoc "Backfill model history from git commits into priv/llm_db/history NDJSON"
+  @shortdoc "Deprecated: legacy Git-to-NDJSON history backfill"
+
+  @deprecation """
+  warning: mix llm_db.history.backfill is deprecated and retained only for compatibility.
+  Seed history once with `mix llm_db.history.migrate_git --publish`, then use
+  `mix llm_db.history.rebuild --publish`. The legacy task may be removed no
+  earlier than v2027.0.0.
+  """
 
   @moduledoc """
-  Backfills model history from committed provider snapshots.
+  > #### Deprecated {: .warning}
+  >
+  > This legacy task remains callable for compatibility. Seed snapshot-based
+  > history once with `mix llm_db.history.migrate_git --publish`, then use
+  > `mix llm_db.history.rebuild --publish`. Removal may occur no earlier than
+  > `v2027.0.0`, after at least one minor release deprecation window.
+
+  Backfills model history from committed provider snapshots using the legacy
+  Git-to-NDJSON implementation.
 
   The task walks git history for `priv/llm_db/providers/*.json`, computes model
   deltas per commit, and writes append-only history artifacts:
@@ -31,8 +46,10 @@ defmodule Mix.Tasks.LlmDb.History.Backfill do
   """
 
   @impl Mix.Task
+  @deprecated "use mix llm_db.history.migrate_git --publish once, then mix llm_db.history.rebuild --publish; may be removed in v2027.0.0"
   def run(args) do
     ensure_llm_db_project!()
+    Mix.shell().error(@deprecation)
 
     {opts, _, invalid} =
       OptionParser.parse(args,
@@ -57,7 +74,7 @@ defmodule Mix.Tasks.LlmDb.History.Backfill do
 
     Mix.shell().info("Backfilling model history from git...")
 
-    case LLMDB.History.Backfill.run(runtime_opts) do
+    case apply(LLMDB.History.Backfill, :run, [runtime_opts]) do
       {:ok, summary} ->
         Mix.shell().info("✓ History backfill complete")
         Mix.shell().info("  commits scanned:   #{summary.commits_scanned}")
