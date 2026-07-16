@@ -1,6 +1,8 @@
 defmodule LLMDB.ToolingBoundaryTest do
   use ExUnit.Case, async: true
 
+  import ExUnit.CaptureIO
+
   @project_root Path.expand("../..", __DIR__)
   @boundary_guide Path.join(@project_root, "guides/runtime-and-maintainer-boundaries.md")
 
@@ -34,6 +36,52 @@ defmodule LLMDB.ToolingBoundaryTest do
     assert {{:load!, 0}, message} = List.keyfind(deprecations, {:load!, 0}, 0)
     assert message =~ "mix llm_db.pull"
     assert {{:load!, 1}, ^message} = List.keyfind(deprecations, {:load!, 1}, 0)
+  end
+
+  test "legacy history backfill APIs identify the maintained replacement and removal window" do
+    deprecations = LLMDB.History.Backfill.__info__(:deprecated)
+
+    for arity <- [0, 1] do
+      assert {{:run, ^arity}, message} = List.keyfind(deprecations, {:run, arity}, 0)
+      assert message =~ "mix llm_db.history.migrate_git --publish"
+      assert message =~ "v2027.0.0"
+    end
+
+    for arity <- [0, 1] do
+      assert {{:sync, ^arity}, message} = List.keyfind(deprecations, {:sync, arity}, 0)
+      assert message =~ "mix llm_db.history.rebuild --publish"
+      assert message =~ "v2027.0.0"
+    end
+
+    assert {{:run, 1}, task_message} =
+             List.keyfind(Mix.Tasks.LlmDb.History.Backfill.__info__(:deprecated), {:run, 1}, 0)
+
+    assert task_message =~ "mix llm_db.history.migrate_git --publish"
+    assert task_message =~ "mix llm_db.history.rebuild --publish"
+    assert task_message =~ "v2027.0.0"
+
+    assert {:shortdoc, [shortdoc]} =
+             List.keyfind(
+               Mix.Tasks.LlmDb.History.Backfill.module_info(:attributes),
+               :shortdoc,
+               0
+             )
+
+    assert shortdoc =~ "Deprecated"
+  end
+
+  test "legacy history backfill task emits actionable migration guidance" do
+    warning =
+      capture_io(:stderr, fn ->
+        assert_raise Mix.Error, ~r/Invalid options/, fn ->
+          apply(Mix.Tasks.LlmDb.History.Backfill, :run, [["--invalid"]])
+        end
+      end)
+
+    assert warning =~ "mix llm_db.history.backfill is deprecated"
+    assert warning =~ "mix llm_db.history.migrate_git --publish"
+    assert warning =~ "mix llm_db.history.rebuild --publish"
+    assert warning =~ "v2027.0.0"
   end
 
   test "the boundary guide inventories every shipped module and direct dependency" do

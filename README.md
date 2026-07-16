@@ -338,16 +338,21 @@ mix llm_db.build
 mix llm_db.build --install
 ```
 
-To migrate legacy Git-tracked metadata history into the snapshot store (one-time maintainer task):
+### Maintained history workflow
+
+Migrate legacy Git-tracked metadata history into the snapshot store once:
 
 ```bash
-mix llm_db.history.migrate_git
+mix llm_db.history.migrate_git --publish
 ```
 
 This writes snapshot-based history artifacts under `priv/llm_db/history/` and
-materializes immutable historical snapshots under `_build/llm_db/snapshot_store/snapshots/`.
+materializes immutable historical snapshots under
+`_build/llm_db/snapshot_store/snapshots/`. With `--publish`, it also seeds the
+immutable snapshot releases and publishes the rebuilt history bundle.
 
-For daily publication and local history maintenance:
+After that one-time migration, publish each current snapshot and rebuild history
+from the published snapshot observation chain:
 
 ```bash
 mix llm_db.snapshot.publish
@@ -356,6 +361,10 @@ mix llm_db.history.sync
 mix llm_db.history.check
 mix llm_db.history.check --allow-outdated
 ```
+
+`mix llm_db.history.backfill` and `LLMDB.History.Backfill` remain functional for
+compatibility but are deprecated. They may be removed no earlier than
+`v2027.0.0`, after at least one minor release deprecation window.
 
 For exceptional spec migrations (renames/provider moves that inference cannot match),
 add optional lineage overrides in `priv/llm_db/history/lineage_overrides.json`:

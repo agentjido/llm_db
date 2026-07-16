@@ -37,7 +37,7 @@ defmodule LLMDB.History.BackfillTest do
         "anthropic:claude-sonnet-4" => %{"id" => "claude-sonnet-4", "provider" => "anthropic"}
       }
 
-      events = Backfill.diff_models(previous, current)
+      events = call_backfill(:diff_models, [previous, current])
 
       assert [
                %{type: "introduced", model_key: "anthropic:claude-sonnet-4", changes: []},
@@ -91,7 +91,7 @@ defmodule LLMDB.History.BackfillTest do
         }
       }
 
-      assert Backfill.diff_models(previous_normalized, current_normalized) == []
+      assert call_backfill(:diff_models, [previous_normalized, current_normalized]) == []
     end
   end
 
@@ -127,9 +127,10 @@ defmodule LLMDB.History.BackfillTest do
         }
       }
 
-      assert Backfill.snapshot_digest(models_a) == Backfill.snapshot_digest(models_b)
+      assert call_backfill(:snapshot_digest, [models_a]) ==
+               call_backfill(:snapshot_digest, [models_b])
 
-      assert Backfill.snapshot_digest(models_a) ==
+      assert call_backfill(:snapshot_digest, [models_a]) ==
                "394e65bbcd07442b886d554fb25fddd33bf47393c9b7996e1c71a4f4dae892e0"
     end
   end
@@ -141,7 +142,7 @@ defmodule LLMDB.History.BackfillTest do
 
       on_exit(fn -> File.rm_rf!(output_dir) end)
 
-      assert {:ok, first} = Backfill.sync(output_dir: output_dir, to: first_commit)
+      assert {:ok, first} = call_backfill(:sync, [[output_dir: output_dir, to: first_commit]])
       assert first.from_commit == first_commit
       assert first.to_commit == first_commit
       assert first.commits_processed == 1
@@ -150,7 +151,7 @@ defmodule LLMDB.History.BackfillTest do
       assert File.exists?(Path.join(output_dir, "meta.json"))
       assert File.exists?(Path.join(output_dir, "snapshots.ndjson"))
 
-      assert {:ok, second} = Backfill.sync(output_dir: output_dir, to: first_commit)
+      assert {:ok, second} = call_backfill(:sync, [[output_dir: output_dir, to: first_commit]])
       assert second.from_commit == first_commit
       assert second.to_commit == first_commit
       assert second.commits_processed == first.commits_processed
@@ -163,14 +164,17 @@ defmodule LLMDB.History.BackfillTest do
 
       on_exit(fn -> File.rm_rf!(output_dir) end)
 
-      assert {:ok, _summary} = Backfill.sync(output_dir: output_dir, to: latest_commit)
+      assert {:ok, _summary} =
+               call_backfill(:sync, [[output_dir: output_dir, to: latest_commit]])
 
       snapshot_count = snapshot_line_count(output_dir)
       event_count = event_line_count(output_dir)
 
       overwrite_meta_to_commit(output_dir, String.duplicate("0", 40))
 
-      assert {:ok, repaired} = Backfill.sync(output_dir: output_dir, to: latest_commit)
+      assert {:ok, repaired} =
+               call_backfill(:sync, [[output_dir: output_dir, to: latest_commit]])
+
       assert repaired.to_commit == latest_commit
       assert read_meta_file(output_dir)["to_commit"] == latest_commit
       assert snapshot_line_count(output_dir) == snapshot_count
@@ -184,14 +188,17 @@ defmodule LLMDB.History.BackfillTest do
 
       on_exit(fn -> File.rm_rf!(output_dir) end)
 
-      assert {:ok, _summary} = Backfill.sync(output_dir: output_dir, to: previous_commit)
+      assert {:ok, _summary} =
+               call_backfill(:sync, [[output_dir: output_dir, to: previous_commit]])
 
       snapshot_count = snapshot_line_count(output_dir)
       event_count = event_line_count(output_dir)
 
       overwrite_meta_to_commit(output_dir, String.duplicate("0", 40))
 
-      assert {:ok, repaired} = Backfill.sync(output_dir: output_dir, to: latest_commit)
+      assert {:ok, repaired} =
+               call_backfill(:sync, [[output_dir: output_dir, to: latest_commit]])
+
       assert repaired.to_commit == latest_commit
       assert read_meta_file(output_dir)["to_commit"] == latest_commit
       assert snapshot_line_count(output_dir) == snapshot_count + 1
@@ -206,11 +213,13 @@ defmodule LLMDB.History.BackfillTest do
 
       on_exit(fn -> File.rm_rf!(output_dir) end)
 
-      assert {:ok, _summary} = Backfill.sync(output_dir: output_dir, to: latest_commit)
+      assert {:ok, _summary} =
+               call_backfill(:sync, [[output_dir: output_dir, to: latest_commit]])
 
       overwrite_meta_to_commit(output_dir, nil)
 
-      assert {:ok, :up_to_date} = Backfill.check(output_dir: output_dir, to: latest_commit)
+      assert {:ok, :up_to_date} =
+               call_backfill(:check, [[output_dir: output_dir, to: latest_commit]])
     end
 
     test "treats rewritten anchors as up to date when the snapshot digest matches reachable history" do
@@ -219,11 +228,13 @@ defmodule LLMDB.History.BackfillTest do
 
       on_exit(fn -> File.rm_rf!(output_dir) end)
 
-      assert {:ok, _summary} = Backfill.sync(output_dir: output_dir, to: latest_commit)
+      assert {:ok, _summary} =
+               call_backfill(:sync, [[output_dir: output_dir, to: latest_commit]])
 
       overwrite_meta_to_commit(output_dir, String.duplicate("0", 40))
 
-      assert {:ok, :up_to_date} = Backfill.check(output_dir: output_dir, to: latest_commit)
+      assert {:ok, :up_to_date} =
+               call_backfill(:check, [[output_dir: output_dir, to: latest_commit]])
     end
 
     test "reports pending commits from the resolved reachable anchor" do
@@ -233,12 +244,13 @@ defmodule LLMDB.History.BackfillTest do
 
       on_exit(fn -> File.rm_rf!(output_dir) end)
 
-      assert {:ok, _summary} = Backfill.sync(output_dir: output_dir, to: previous_commit)
+      assert {:ok, _summary} =
+               call_backfill(:sync, [[output_dir: output_dir, to: previous_commit]])
 
       overwrite_meta_to_commit(output_dir, String.duplicate("0", 40))
 
       assert {:ok, {:outdated, %{new_commits: 1, latest_commit: ^latest_commit}}} =
-               Backfill.check(output_dir: output_dir, to: latest_commit)
+               call_backfill(:check, [[output_dir: output_dir, to: latest_commit]])
     end
 
     test "returns backfill guidance when an unreachable anchor cannot be re-anchored" do
@@ -247,12 +259,15 @@ defmodule LLMDB.History.BackfillTest do
 
       on_exit(fn -> File.rm_rf!(output_dir) end)
 
-      assert {:ok, _summary} = Backfill.sync(output_dir: output_dir, to: first_commit)
+      assert {:ok, _summary} =
+               call_backfill(:sync, [[output_dir: output_dir, to: first_commit]])
 
       overwrite_meta_to_commit(output_dir, String.duplicate("0", 40))
       overwrite_last_snapshot_digest(output_dir, String.duplicate("f", 64))
 
-      assert {:error, message} = Backfill.check(output_dir: output_dir, to: first_commit)
+      assert {:error, message} =
+               call_backfill(:check, [[output_dir: output_dir, to: first_commit]])
+
       assert message =~ "cannot be re-anchored"
       assert message =~ "backfill --force"
     end
@@ -269,6 +284,8 @@ defmodule LLMDB.History.BackfillTest do
     File.mkdir_p!(path)
     path
   end
+
+  defp call_backfill(function, arguments), do: apply(Backfill, function, arguments)
 
   defp first_metadata_commit do
     metadata_commits()

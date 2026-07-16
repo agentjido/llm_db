@@ -6,9 +6,13 @@ defmodule LLMDB.History.Backfill do
   `priv/llm_db/providers/*.json` from commit history and writes append-only
   NDJSON event files under a local history directory.
 
-  Direct use is documentation-deprecated. Use
-  `mix llm_db.history.backfill`; new snapshot-store migrations should use
-  `mix llm_db.history.migrate_git`.
+  This legacy Git-to-NDJSON path is deprecated and remains available only for
+  compatibility. For the maintained snapshot workflow, seed historical data
+  once with `mix llm_db.history.migrate_git --publish`, then use
+  `mix llm_db.history.rebuild --publish` for subsequent rebuilds.
+
+  These compatibility functions may be removed no earlier than `v2027.0.0`,
+  after at least one minor release deprecation window.
   """
 
   alias LLMDB.History.{Diff, Lineage}
@@ -43,6 +47,7 @@ defmodule LLMDB.History.Backfill do
   - `:output_dir` - Output directory (default: `"priv/llm_db/history"`)
   - `:force` - Remove previously generated history files first (default: `false`)
   """
+  @deprecated "use mix llm_db.history.migrate_git --publish for the one-time migration; legacy backfill may be removed in v2027.0.0"
   @spec run(keyword()) :: {:ok, summary()} | {:error, term()}
   def run(opts \\ []) do
     output_dir = Keyword.get(opts, :output_dir, @default_output_dir)
@@ -68,6 +73,7 @@ defmodule LLMDB.History.Backfill do
   - `:to` - Optional end commit/reference (default: `"HEAD"`)
   - `:output_dir` - Output directory (default: `"priv/llm_db/history"`)
   """
+  @deprecated "use mix llm_db.snapshot.publish and mix llm_db.history.rebuild --publish; legacy backfill may be removed in v2027.0.0"
   @spec sync(keyword()) :: {:ok, summary()} | {:error, term()}
   def sync(opts \\ []) do
     output_dir = Keyword.get(opts, :output_dir, @default_output_dir)
@@ -100,6 +106,7 @@ defmodule LLMDB.History.Backfill do
   Returns `:history_unavailable` when `meta.json` is missing, `:up_to_date` when no
   metadata commits are pending, or `{:outdated, ...}` when new commits exist.
   """
+  @deprecated "use mix llm_db.history.check; legacy backfill may be removed in v2027.0.0"
   @spec check(keyword()) :: {:ok, check_result()} | {:error, term()}
   def check(opts \\ []) do
     output_dir = Keyword.get(opts, :output_dir, @default_output_dir)
@@ -131,6 +138,7 @@ defmodule LLMDB.History.Backfill do
 
   Expects maps keyed by `"provider:model_id"` with normalized model payload values.
   """
+  @deprecated "use the maintained mix llm_db.history.* workflows; legacy Backfill APIs may be removed in v2027.0.0"
   @spec diff_models(%{optional(String.t()) => map()}, %{optional(String.t()) => map()}) :: [map()]
   def diff_models(previous_models, current_models)
       when is_map(previous_models) and is_map(current_models) do
@@ -138,6 +146,7 @@ defmodule LLMDB.History.Backfill do
   end
 
   @doc false
+  @deprecated "use the maintained mix llm_db.history.* workflows; legacy Backfill APIs may be removed in v2027.0.0"
   @spec snapshot_digest(%{optional(String.t()) => map()}) :: String.t()
   def snapshot_digest(models) when is_map(models) do
     Diff.snapshot_digest(models)
