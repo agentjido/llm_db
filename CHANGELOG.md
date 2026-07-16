@@ -7,6 +7,29 @@ This project uses [Calendar Versioning](https://calver.org/) with the format `YY
 
 <!-- changelog -->
 
+## [2026.7.2](https://github.com/agentjido/llm_db/compare/2026.7.2...2026.7.2) (2026-07-16)
+
+
+
+
+### Features:
+
+* add opt-in sparse snapshot v2 (#277) by mikehostetler
+
+### Bug Fixes:
+
+* bound snapshot atom creation (#266) by mikehostetler
+
+* restore documented model lookup forms (#262) by mikehostetler
+
+* apply filters to custom catalog entries (#261) by mikehostetler
+
+* invalidate reloads on semantic changes (#260) by mikehostetler
+
+* scope dotenv loading to metadata pulls (#259) by mikehostetler
+
+* deps: update Mint for CVE-2026-59249 by mikehostetler
+
 ## [2026.7.1](https://github.com/agentjido/llm_db/compare/2026.7.1...2026.7.1) (2026-07-14)
 
 
