@@ -4,13 +4,18 @@ defmodule LLMDBTest do
   alias LLMDB.Store
 
   setup do
+    reset_test_state!()
+    on_exit(&reset_test_state!/0)
+    :ok
+  end
+
+  defp reset_test_state! do
     Store.clear!()
-    # Clear any polluted application env
+
     Application.delete_env(:llm_db, :allow)
     Application.delete_env(:llm_db, :deny)
     Application.delete_env(:llm_db, :prefer)
     Application.delete_env(:llm_db, :filter)
-    :ok
   end
 
   # Helper to load test data directly via Engine (bypassing packaged snapshot)
