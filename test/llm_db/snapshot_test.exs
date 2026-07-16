@@ -3,6 +3,8 @@ defmodule LLMDB.SnapshotTest do
 
   alias LLMDB.{Model, Provider, Snapshot}
 
+  import ExUnit.CaptureLog
+
   test "encodes nested maps with stable sorted key order" do
     encoded = Snapshot.encode(%{"b" => %{"d" => 1, "c" => 2}, "a" => 1})
 
@@ -90,5 +92,71 @@ defmodule LLMDB.SnapshotTest do
     assert model_json["catalog_only"] == true
     assert model_json["execution"]["text"]["family"] == "openai_chat_compatible"
     assert model_json["execution"]["text"]["path"] == "/chat/completions"
+  end
+
+  test "strict integrity rejects mismatched snapshot content" do
+    snapshot = snapshot_document()
+    mismatched = put_in(snapshot, ["providers", "test_provider", "name"], "Changed")
+
+    assert {:error, {:snapshot_id_mismatch, details}} =
+             mismatched
+             |> Jason.encode!()
+             |> Snapshot.decode()
+
+    assert details[:expected] == snapshot["snapshot_id"]
+    assert details[:computed] != details[:expected]
+  end
+
+  test "warn and off integrity policies preserve validation" do
+    snapshot = snapshot_document()
+    mismatched = put_in(snapshot, ["providers", "test_provider", "name"], "Changed")
+    encoded = Jason.encode!(mismatched)
+
+    log =
+      capture_log(fn ->
+        assert {:ok, ^mismatched} = Snapshot.decode(encoded, integrity_policy: :warn)
+      end)
+
+    assert log =~ "checksum check failed"
+    assert log =~ "do not authenticate publishers"
+    assert {:ok, ^mismatched} = Snapshot.decode(encoded, integrity_policy: :off)
+
+    malformed = Map.put(mismatched, "providers", [])
+
+    assert {:error, :invalid_snapshot_format} =
+             malformed
+             |> Jason.encode!()
+             |> Snapshot.decode(integrity_policy: :warn)
+  end
+
+  test "embedded documents and JSON content use the same preparation contract" do
+    snapshot = snapshot_document()
+
+    assert {:ok, prepared} = Snapshot.prepare(snapshot)
+    assert {:ok, decoded} = snapshot |> Jason.encode!() |> Snapshot.decode()
+    assert prepared == decoded
+  end
+
+  test "rejects unsupported schema versions after checksum verification" do
+    snapshot =
+      snapshot_document()
+      |> Map.put("schema_version", Snapshot.schema_version() + 1)
+      |> then(fn document -> Map.put(document, "snapshot_id", Snapshot.snapshot_id(document)) end)
+
+    assert {:error, {:unsupported_schema_version, 2}} = Snapshot.prepare(snapshot)
+  end
+
+  defp snapshot_document do
+    Snapshot.from_engine_snapshot(%{
+      version: 2,
+      generated_at: "2026-03-26T00:00:00Z",
+      providers: %{
+        test_provider: %{
+          id: :test_provider,
+          name: "Test Provider",
+          models: %{}
+        }
+      }
+    })
   end
 end

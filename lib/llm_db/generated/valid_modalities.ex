@@ -16,8 +16,15 @@ defmodule LLMDB.Generated.ValidModalities do
     :code,
     :document,
     :embedding,
+    :embeddings,
+    :file,
+    :rerank,
+    :speech,
+    :transcription,
     :pdf
   ]
+
+  @modalities_by_name Map.new(@modalities, &{Atom.to_string(&1), &1})
 
   @doc """
   Returns the list of all valid modality atoms.
@@ -30,4 +37,14 @@ defmodule LLMDB.Generated.ValidModalities do
   """
   @spec member?(atom()) :: boolean()
   def member?(atom), do: atom in @modalities
+
+  @doc false
+  @spec fetch(String.t() | atom()) :: {:ok, atom()} | :error
+  def fetch(modality) when is_atom(modality) do
+    if member?(modality), do: {:ok, modality}, else: :error
+  end
+
+  def fetch(modality) when is_binary(modality) do
+    Map.fetch(@modalities_by_name, modality)
+  end
 end

@@ -51,6 +51,9 @@ defmodule LLMDB.Model do
 
   The `:cost` field is automatically converted to `:pricing.components` at load time
   for backward compatibility. See `LLMDB.Pricing` and the [Pricing and Billing guide](pricing-and-billing.md).
+
+  Snapshot-loaded `:extra` metadata retains its JSON string keys. Treat that
+  field as provider-owned opaque data rather than a schema-keyed map.
   """
 
   @limits_schema Zoi.object(%{

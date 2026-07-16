@@ -33,6 +33,10 @@ defmodule LLMDB.Snapshot do
 
   @provider_id_regex ~r/^[a-z0-9][a-z0-9_:-]{0,63}$/
 
+  require Logger
+
+  @type integrity_policy :: :strict | :warn | :off
+
   @doc """
   Returns the canonical snapshot schema version.
   """
@@ -174,23 +178,39 @@ defmodule LLMDB.Snapshot do
   end
 
   @doc """
-  Decodes and verifies a snapshot document from JSON.
+  Decodes, verifies, migrates, and validates a snapshot document from JSON.
+
+  The optional `:integrity_policy` controls checksum mismatch handling. A
+  snapshot ID detects accidental corruption or content mismatch; it does not
+  authenticate the snapshot publisher.
   """
-  @spec decode(binary()) :: {:ok, map()} | {:error, term()}
-  def decode(content) when is_binary(content) do
+  @spec decode(binary(), keyword()) :: {:ok, map()} | {:error, term()}
+  def decode(content, opts \\ []) when is_binary(content) and is_list(opts) do
     with {:ok, snapshot} <- Jason.decode(content),
-         :ok <- verify(snapshot) do
-      {:ok, snapshot}
+         {:ok, prepared} <- prepare(snapshot, opts) do
+      {:ok, prepared}
     end
   end
 
   @doc """
-  Reads and verifies a snapshot document from disk.
+  Reads, verifies, migrates, and validates a snapshot document from disk.
   """
-  @spec read(String.t()) :: {:ok, map()} | {:error, term()}
-  def read(path) when is_binary(path) do
+  @spec read(String.t(), keyword()) :: {:ok, map()} | {:error, term()}
+  def read(path, opts \\ []) when is_binary(path) and is_list(opts) do
     with {:ok, content} <- File.read(path) do
-      decode(content)
+      decode(content, opts)
+    end
+  end
+
+  @doc false
+  @spec prepare(map(), keyword()) :: {:ok, map()} | {:error, term()}
+  def prepare(snapshot, opts \\ []) when is_map(snapshot) and is_list(opts) do
+    policy = Keyword.get(opts, :integrity_policy, :strict)
+
+    with :ok <- apply_integrity_policy(snapshot, policy),
+         {:ok, migrated} <- migrate(snapshot),
+         :ok <- validate_document(migrated) do
+      {:ok, migrated}
     end
   end
 
@@ -207,18 +227,27 @@ defmodule LLMDB.Snapshot do
   end
 
   @doc """
-  Verifies snapshot integrity and provider ID safety.
+  Verifies snapshot checksum consistency and document safety.
+
+  Snapshot IDs detect corruption or mismatched content. They are not an
+  authenticity or trust guarantee.
   """
   @spec verify(map()) :: :ok | {:error, term()}
   def verify(snapshot) when is_map(snapshot) do
     with :ok <- verify_snapshot_id(snapshot),
-         :ok <- validate_provider_ids(snapshot) do
+         {:ok, migrated} <- migrate(snapshot),
+         :ok <- validate_document(migrated) do
       :ok
     end
   end
 
-  defp verify_snapshot_id(%{"snapshot_id" => embedded_id} = snapshot)
-       when is_binary(embedded_id) do
+  defp verify_snapshot_id(snapshot) do
+    embedded_id = snapshot["snapshot_id"] || snapshot[:snapshot_id]
+
+    verify_snapshot_id(snapshot, embedded_id)
+  end
+
+  defp verify_snapshot_id(snapshot, embedded_id) when is_binary(embedded_id) do
     computed_id = snapshot_id(snapshot)
 
     if embedded_id == computed_id do
@@ -228,14 +257,65 @@ defmodule LLMDB.Snapshot do
     end
   end
 
-  defp verify_snapshot_id(_snapshot), do: {:error, :missing_snapshot_id}
+  defp verify_snapshot_id(_snapshot, _embedded_id), do: {:error, :missing_snapshot_id}
 
-  defp validate_provider_ids(snapshot) do
-    providers = provider_map(snapshot)
+  defp apply_integrity_policy(snapshot, policy) when policy in [:strict, :warn, :off] do
+    case verify_snapshot_id(snapshot) do
+      :ok ->
+        :ok
 
+      {:error, reason} when policy == :strict ->
+        {:error, reason}
+
+      {:error, reason} when policy == :warn ->
+        Logger.warning(
+          "llm_db: snapshot checksum check failed: #{inspect(reason)}. " <>
+            "Loading because integrity_policy is :warn. Snapshot IDs detect " <>
+            "corruption or mismatch; they do not authenticate publishers."
+        )
+
+        :ok
+
+      {:error, _reason} ->
+        :ok
+    end
+  end
+
+  defp apply_integrity_policy(_snapshot, policy),
+    do: {:error, {:invalid_integrity_policy, policy}}
+
+  # Schema version 1 is already the canonical in-memory document. Keeping the
+  # migration step explicit gives embedded, packaged-file, and configured-file
+  # sources one contract when future wire migrations are introduced.
+  defp migrate(snapshot) do
+    case snapshot["schema_version"] || snapshot[:schema_version] do
+      nil -> {:ok, snapshot}
+      @schema_version -> {:ok, snapshot}
+      version -> {:error, {:unsupported_schema_version, version}}
+    end
+  end
+
+  defp validate_document(snapshot) do
+    providers = snapshot["providers"] || snapshot[:providers]
+    models = snapshot["models"] || snapshot[:models]
+    version = snapshot["version"] || snapshot[:version]
+
+    cond do
+      version == 2 and is_map(providers) ->
+        validate_provider_ids(providers)
+
+      is_list(providers) and is_list(models) ->
+        validate_legacy_provider_ids(providers)
+
+      true ->
+        {:error, :invalid_snapshot_format}
+    end
+  end
+
+  defp validate_provider_ids(providers) when is_map(providers) do
     case Enum.find(providers, fn {provider_id, provider} ->
            provider_id_str = to_string(provider_id)
-           provider_doc_id = provider["id"] || provider[:id]
+           provider_doc_id = is_map(provider) && (provider["id"] || provider[:id])
 
            not String.match?(provider_id_str, @provider_id_regex) or
              not is_binary(provider_doc_id) or provider_doc_id != provider_id_str
@@ -244,6 +324,21 @@ defmodule LLMDB.Snapshot do
       {provider_id, _provider} -> {:error, {:invalid_provider_id, provider_id}}
     end
   end
+
+  defp validate_legacy_provider_ids(providers) do
+    case Enum.find(providers, fn provider ->
+           provider_id = is_map(provider) && (provider["id"] || provider[:id])
+
+           not is_binary(provider_id) or
+             not String.match?(provider_id, @provider_id_regex)
+         end) do
+      nil -> :ok
+      provider -> {:error, {:invalid_provider_id, provider_id(provider)}}
+    end
+  end
+
+  defp provider_id(provider) when is_map(provider), do: provider["id"] || provider[:id]
+  defp provider_id(_provider), do: nil
 
   defp provider_map(%{"providers" => providers}) when is_map(providers), do: providers
   defp provider_map(%{providers: providers}) when is_map(providers), do: providers
