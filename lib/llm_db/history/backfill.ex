@@ -5,6 +5,10 @@ defmodule LLMDB.History.Backfill do
   This module is intentionally git-driven and infrastructure-free: it reads
   `priv/llm_db/providers/*.json` from commit history and writes append-only
   NDJSON event files under a local history directory.
+
+  Direct use is documentation-deprecated. Use
+  `mix llm_db.history.backfill`; new snapshot-store migrations should use
+  `mix llm_db.history.migrate_git`.
   """
 
   @providers_dir "priv/llm_db/providers"

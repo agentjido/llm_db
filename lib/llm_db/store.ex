@@ -3,6 +3,11 @@ defmodule LLMDB.Store do
   Manages persistent_term storage for LLM model snapshots with atomic swaps.
 
   Uses `:persistent_term` for fast, concurrent reads with atomic updates tracked by monotonic epochs.
+
+  This module is a compatibility facade over the internal catalog boundary.
+  Consumers should use `LLMDB` query and load functions. Raw store access has
+  no backwards-compatibility guarantee and can be removed no earlier than the
+  next major release.
   """
 
   alias LLMDB.{Catalog, Model, Provider}

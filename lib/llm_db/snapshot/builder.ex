@@ -1,6 +1,11 @@
 defmodule LLMDB.Snapshot.Builder do
   @moduledoc """
   Builds canonical snapshot artifacts from configured sources.
+
+  This is maintainer-internal orchestration. Direct use is
+  documentation-deprecated in favor of `mix llm_db.build` (or
+  `mix llm_db.snapshot.publish` when publishing). The module remains callable
+  through the current major release.
   """
 
   alias LLMDB.{Config, Engine, Snapshot}

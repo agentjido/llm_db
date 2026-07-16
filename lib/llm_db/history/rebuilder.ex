@@ -5,6 +5,9 @@ defmodule LLMDB.History.Rebuilder do
   The observation chain is typically sourced from `snapshot-index.json` and contains
   entries keyed by immutable `snapshot_id`, with optional provenance such as
   `captured_at`, `source_commit`, and `parent_snapshot_id`.
+
+  Direct use is documentation-deprecated in favor of
+  `mix llm_db.history.rebuild`.
   """
 
   alias LLMDB.{History.Backfill, Snapshot}

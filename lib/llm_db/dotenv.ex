@@ -1,6 +1,14 @@
 defmodule LLMDB.Dotenv do
-  @moduledoc false
+  @moduledoc """
+  Deprecated compatibility facade for maintainer dotenv loading.
 
+  Dotenv loading belongs exclusively to `mix llm_db.pull`; runtime startup,
+  loading, and queries never call this module. Direct calls remain functional
+  for this minor release and can be removed no earlier than the next major
+  release, together with the core `Dotenvy` dependency.
+  """
+
+  @deprecated "dotenv loading is owned by the mix llm_db.pull maintainer task"
   def load!(opts \\ []) do
     if Application.get_env(:llm_db, :load_dotenv, true) do
       env_path = Keyword.get(opts, :path, Path.join(File.cwd!(), ".env"))

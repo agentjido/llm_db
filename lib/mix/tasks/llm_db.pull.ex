@@ -130,7 +130,10 @@ defmodule Mix.Tasks.LlmDb.Pull do
     Mix.Task.run("app.config")
 
     override? = Application.get_env(:llm_db, :dotenv_override, true)
-    LLMDB.Dotenv.load!(override: override?)
+
+    # Keep task ownership explicit without making the task itself a static
+    # caller of the deprecated compatibility facade.
+    apply(LLMDB.Dotenv, :load!, [[override: override?]])
   end
 
   @doc false

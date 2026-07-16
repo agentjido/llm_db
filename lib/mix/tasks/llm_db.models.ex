@@ -6,10 +6,10 @@ defmodule Mix.Tasks.LlmDb.Models do
 
   ## Usage
 
-      mix llmdb.models              # List all models
-      mix llmdb.models "anthropic:*"     # List all Anthropic models
-      mix llmdb.models "openai:gpt-4o"   # List specific model
-      mix llmdb.models "*:*"             # List all models (explicit)
+      mix llm_db.models                  # List all models
+      mix llm_db.models "anthropic:*"     # List all Anthropic models
+      mix llm_db.models "openai:gpt-4o"   # List specific model
+      mix llm_db.models "*:*"             # List all models (explicit)
 
   ## Model Specs
 
@@ -35,16 +35,16 @@ defmodule Mix.Tasks.LlmDb.Models do
   ## Examples
 
       # List all Anthropic models
-      mix llmdb.models "anthropic:*"
+      mix llm_db.models "anthropic:*"
 
       # List all OpenAI GPT-4 models
-      mix llmdb.models "openai:gpt-4*"
+      mix llm_db.models "openai:gpt-4*"
 
       # List specific model by alias
-      mix llmdb.models "anthropic:claude-3.5-haiku"
+      mix llm_db.models "anthropic:claude-3.5-haiku"
 
       # List all models
-      mix llmdb.models
+      mix llm_db.models
   """
 
   use Mix.Task
