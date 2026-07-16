@@ -9,7 +9,7 @@ defmodule LLMDB.MixProject do
     [
       app: :llm_db,
       version: @version,
-      elixir: "~> 1.14",
+      elixir: "~> 1.17",
       start_permanent: Mix.env() == :prod,
       deps: deps(),
       aliases: aliases(),
