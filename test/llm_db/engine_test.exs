@@ -201,6 +201,32 @@ defmodule LLMDB.EngineTest do
       assert length(filtered) == 2
     end
 
+    test "treats an empty allow map as allow all" do
+      models = [
+        %{id: "model-1", provider: :provider_a},
+        %{id: "model-2", provider: :provider_b}
+      ]
+
+      assert Engine.apply_filters(models, %{allow: %{}, deny: %{}}) == models
+    end
+
+    test "supports provider-wide allow and deny sentinels" do
+      models = [
+        %{id: "model-a", provider: :provider_a},
+        %{id: "model-b", provider: :provider_b}
+      ]
+
+      filters = %{allow: %{provider_a: :all, provider_b: []}, deny: %{provider_b: :all}}
+
+      assert Engine.apply_filters(models, filters) == [hd(models)]
+    end
+
+    test "allows no models with the compiled :none sentinel" do
+      models = [%{id: "model-a", provider: :provider_a}]
+
+      assert Engine.apply_filters(models, %{allow: :none, deny: %{}}) == []
+    end
+
     test "filters by allow patterns" do
       models = [
         %{id: "model-a1", provider: :provider_a},

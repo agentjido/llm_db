@@ -287,7 +287,7 @@ defmodule LLMDB.Engine do
       # Deny wins - check first
       deny_patterns = Map.get(deny, provider, [])
 
-      if matches_patterns?(model_id, deny_patterns) do
+      if deny_patterns == :all or matches_patterns?(model_id, deny_patterns) do
         false
       else
         # Then check allow
@@ -295,13 +295,15 @@ defmodule LLMDB.Engine do
           :all ->
             true
 
-          allow_map when is_map(allow_map) ->
-            allow_patterns = Map.get(allow_map, provider, [])
+          :none ->
+            false
 
-            if map_size(allow_map) > 0 and allow_patterns == [] do
-              false
-            else
-              allow_patterns == [] or matches_patterns?(model_id, allow_patterns)
+          allow_map when is_map(allow_map) ->
+            case Map.fetch(allow_map, provider) do
+              {:ok, :all} -> true
+              {:ok, []} -> false
+              {:ok, allow_patterns} -> matches_patterns?(model_id, allow_patterns)
+              :error -> map_size(allow_map) == 0
             end
         end
       end

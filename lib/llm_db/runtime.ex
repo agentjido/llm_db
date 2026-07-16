@@ -87,7 +87,7 @@ defmodule LLMDB.Runtime do
     deny = normalize_deny(Keyword.get(opts, :deny, base.deny))
     prefer = Keyword.get(opts, :prefer, base.prefer) || []
     custom = normalize_custom(Keyword.get(opts, :custom, base.custom))
-    provider_ids = Keyword.get(opts, :provider_ids)
+    provider_ids = include_custom_provider_ids(Keyword.get(opts, :provider_ids), custom.providers)
 
     # Compile filters (deferred if provider_ids not provided)
     {filters, unknown: unknown} =
@@ -207,6 +207,13 @@ defmodule LLMDB.Runtime do
   end
 
   defp normalize_custom(_), do: %{providers: [], models: []}
+
+  defp include_custom_provider_ids(nil, _custom_providers), do: nil
+
+  defp include_custom_provider_ids(provider_ids, custom_providers) do
+    custom_ids = Enum.map(custom_providers, & &1.id)
+    Enum.uniq(provider_ids ++ custom_ids)
+  end
 
   # Helper to conditionally add non-nil values to a map
   defp maybe_put(map, _key, nil), do: map

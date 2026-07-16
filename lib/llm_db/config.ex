@@ -128,14 +128,22 @@ defmodule LLMDB.Config do
 
   `{%{allow: compiled_patterns, deny: compiled_patterns}, unknown_providers}`
 
-  Where `compiled_patterns` is either `:all` or `%{provider => [%Regex{}]}`,
+  Where allow patterns are `:all`, `:none`, or
+  `%{provider => :all | [%Regex{}]}`,
   and `unknown_providers` is a list of provider keys that were ignored.
   """
   @spec compile_filters(allow :: :all | map(), deny :: map(), known_providers :: [atom()] | nil) ::
-          {%{allow: :all | map(), deny: map()}, unknown: [term()]}
+          {%{allow: :all | :none | map(), deny: map()}, unknown: [term()]}
   def compile_filters(allow, deny, known_providers \\ nil) do
     {compiled_allow, unknown_allow} = compile_patterns(allow, known_providers)
     {compiled_deny, unknown_deny} = compile_patterns(deny, known_providers)
+
+    compiled_allow =
+      if is_map(allow) and map_size(allow) > 0 and compiled_allow == %{} do
+        :none
+      else
+        compiled_allow
+      end
 
     unknown = Enum.uniq(unknown_allow ++ unknown_deny)
 
@@ -158,22 +166,7 @@ defmodule LLMDB.Config do
                                           {acc_compiled, acc_unknown} ->
         case resolve_provider_key(provider, known_providers) do
           {:ok, provider_atom} ->
-            # Ensure patterns_list is a list
-            list = List.wrap(patterns_list)
-
-            # Compile each pattern (string glob or Regex)
-            compiled =
-              Enum.map(list, fn
-                %Regex{} = r ->
-                  r
-
-                s when is_binary(s) ->
-                  LLMDB.Merge.compile_pattern(s)
-
-                other ->
-                  raise ArgumentError,
-                        "llm_db: filter pattern must be string or Regex, got: #{inspect(other)} for provider #{inspect(provider_atom)}"
-              end)
+            compiled = compile_provider_patterns(patterns_list, provider_atom)
 
             {Map.put(acc_compiled, provider_atom, compiled), acc_unknown}
 
@@ -187,6 +180,24 @@ defmodule LLMDB.Config do
   end
 
   defp compile_patterns(_, _known_providers), do: {%{}, []}
+
+  defp compile_provider_patterns(:all, _provider), do: :all
+
+  defp compile_provider_patterns(patterns, provider) do
+    patterns
+    |> List.wrap()
+    |> Enum.map(fn
+      %Regex{} = regex ->
+        regex
+
+      pattern when is_binary(pattern) ->
+        LLMDB.Merge.compile_pattern(pattern)
+
+      other ->
+        raise ArgumentError,
+              "llm_db: filter pattern must be string, Regex, or :all, got: #{inspect(other)} for provider #{inspect(provider)}"
+    end)
+  end
 
   defp resolve_provider_key(provider, known_providers) when is_atom(provider) do
     # If known_providers specified, validate; otherwise trust the atom
