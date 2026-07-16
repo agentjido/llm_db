@@ -1,8 +1,8 @@
 # Package Footprint
 
-The packaged catalog uses deterministic compact JSON. This changes only JSON
-whitespace: decoded keys, values, array order, schema version, and snapshot ID
-remain unchanged.
+The packaged catalog uses deterministic compact schema-v1 JSON. This changes
+only JSON whitespace: decoded keys, values, array order, schema version, and
+snapshot ID remain unchanged.
 
 ## Size comparison
 
@@ -22,6 +22,21 @@ mix hex.build
 
 These measurements are release-audit evidence, not fixed size budgets; catalog
 growth will change them.
+
+## Opt-in sparse v2 comparison
+
+The same 168-provider, 5,988-model catalog was encoded with the schema-v2 sparse
+rules using `LLMDB.Snapshot.to_sparse/1`. The packaged and published default is
+still v1; this comparison records the evidence for the opt-in format.
+
+| Artifact | Compact v1 | Sparse v2 | Change from v1 |
+| --- | ---: | ---: | ---: |
+| Raw `snapshot.json` | 6,325,229 bytes | 5,264,366 bytes | -16.8% |
+| Gzip (`gzip -n`) | 455,025 bytes | 430,800 bytes | -5.3% |
+
+Sparse v2 omits only schema-enumerated provider/model nulls and defaults. See
+[Snapshot Formats and Sparse v2 Rollout](snapshot-formats.md) for the exact
+rules, integrity behavior, and packaged-default rollout gate.
 
 ## Hex package manifest
 

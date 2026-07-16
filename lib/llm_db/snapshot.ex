@@ -7,7 +7,10 @@ defmodule LLMDB.Snapshot do
   and optionally mirrored to GitHub Releases.
   """
 
+  alias LLMDB.Snapshot.Sparse
+
   @schema_version 1
+  @sparse_schema_version 2
   @default_packaged_path "priv/llm_db/snapshot.json"
   @default_build_dir Path.join(["_build", "llm_db", "snapshot"])
   @snapshot_filename "snapshot.json"
@@ -42,6 +45,21 @@ defmodule LLMDB.Snapshot do
   """
   @spec schema_version() :: pos_integer()
   def schema_version, do: @schema_version
+
+  @doc """
+  Returns the opt-in sparse snapshot schema version.
+
+  Sparse snapshots are readable in this release, but the packaged and published
+  default remains schema v1 for backwards compatibility.
+  """
+  @spec sparse_schema_version() :: pos_integer()
+  def sparse_schema_version, do: @sparse_schema_version
+
+  @doc """
+  Returns every snapshot schema version accepted by the reader.
+  """
+  @spec supported_schema_versions() :: [pos_integer()]
+  def supported_schema_versions, do: [@schema_version, @sparse_schema_version]
 
   @doc """
   Returns the packaged snapshot file path.
@@ -104,8 +122,11 @@ defmodule LLMDB.Snapshot do
   @doc """
   Builds a canonical snapshot document from an engine snapshot.
   """
-  @spec from_engine_snapshot(map()) :: map()
-  def from_engine_snapshot(%{version: version, generated_at: generated_at, providers: providers}) do
+  @spec from_engine_snapshot(map(), keyword()) :: map()
+  def from_engine_snapshot(
+        %{version: version, generated_at: generated_at, providers: providers},
+        opts \\ []
+      ) do
     snapshot = %{
       "schema_version" => @schema_version,
       "version" => version,
@@ -113,7 +134,32 @@ defmodule LLMDB.Snapshot do
       "providers" => json_safe(providers)
     }
 
-    Map.put(snapshot, "snapshot_id", snapshot_id(snapshot))
+    snapshot = Map.put(snapshot, "snapshot_id", snapshot_id(snapshot))
+
+    case Keyword.get(opts, :schema_version, @schema_version) do
+      @schema_version -> snapshot
+      @sparse_schema_version -> to_sparse(snapshot)
+      version -> raise ArgumentError, "unsupported snapshot schema version: #{inspect(version)}"
+    end
+  end
+
+  @doc """
+  Converts a canonical v1 snapshot to the deterministic sparse v2 wire shape.
+
+  Only schema-known provider/model nulls and defaults are omitted. Unknown keys,
+  nested `extra` data, explicit values, and array order are preserved. The
+  content-addressed snapshot ID is recalculated for the v2 representation.
+  """
+  @spec to_sparse(map()) :: map()
+  def to_sparse(snapshot) when is_map(snapshot) do
+    sparse =
+      snapshot
+      |> json_safe()
+      |> Map.put("schema_version", @sparse_schema_version)
+      |> Map.delete("snapshot_id")
+      |> Sparse.encode()
+
+    Map.put(sparse, "snapshot_id", snapshot_id(sparse))
   end
 
   @doc """
@@ -159,6 +205,7 @@ defmodule LLMDB.Snapshot do
     attrs
     |> Enum.into(%{
       "schema_version" => @schema_version,
+      "snapshot_schema_version" => snapshot["schema_version"] || snapshot[:schema_version],
       "snapshot_id" => snapshot["snapshot_id"] || snapshot_id(snapshot),
       "captured_at" => snapshot["generated_at"],
       "provider_count" => provider_count,
@@ -170,12 +217,15 @@ defmodule LLMDB.Snapshot do
   Encodes a snapshot or metadata document as deterministic compact JSON.
 
   Object keys are sorted recursively. Array order and every encoded value are
-  preserved; only insignificant JSON whitespace is omitted.
+  preserved. Schema v2 documents are normalized to the sparse wire shape before
+  encoding; schema v1 and non-snapshot metadata documents only lose
+  insignificant JSON whitespace.
   """
   @spec encode(map()) :: String.t()
   def encode(document) when is_map(document) do
     document
     |> json_safe()
+    |> wire_document()
     |> canonical_json_map()
     |> Jason.encode!()
   end
@@ -287,13 +337,11 @@ defmodule LLMDB.Snapshot do
   defp apply_integrity_policy(_snapshot, policy),
     do: {:error, {:invalid_integrity_policy, policy}}
 
-  # Schema version 1 is already the canonical in-memory document. Keeping the
-  # migration step explicit gives embedded, packaged-file, and configured-file
-  # sources one contract when future wire migrations are introduced.
   defp migrate(snapshot) do
     case snapshot["schema_version"] || snapshot[:schema_version] do
       nil -> {:ok, snapshot}
       @schema_version -> {:ok, snapshot}
+      @sparse_schema_version -> {:ok, Sparse.expand(snapshot)}
       version -> {:error, {:unsupported_schema_version, version}}
     end
   end
@@ -350,9 +398,16 @@ defmodule LLMDB.Snapshot do
   defp hash_payload(snapshot) do
     snapshot
     |> json_safe()
+    |> wire_document()
     |> Enum.reject(fn {key, _value} -> MapSet.member?(@hash_excluded_keys, key) end)
     |> Map.new()
   end
+
+  defp wire_document(%{"schema_version" => @sparse_schema_version} = snapshot) do
+    Sparse.encode(snapshot)
+  end
+
+  defp wire_document(snapshot), do: snapshot
 
   defp json_safe(%LLMDB.Provider{} = value) do
     value

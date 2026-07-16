@@ -37,6 +37,7 @@ defmodule LLMDB.MixProject do
           "guides/model-spec-formats.md",
           "guides/model-struct-evolution-proposal.md",
           "guides/package-footprint.md",
+          "guides/snapshot-formats.md",
           "guides/pricing-and-billing.md",
           "guides/runtime-and-maintainer-boundaries.md",
           "guides/schema-system.md",

@@ -13,6 +13,7 @@ defmodule LLMDB.Snapshot.Builder do
   @type artifact :: %{
           snapshot: map(),
           snapshot_id: String.t(),
+          schema_version: pos_integer(),
           metadata: map(),
           output_dir: String.t(),
           snapshot_path: String.t(),
@@ -30,8 +31,9 @@ defmodule LLMDB.Snapshot.Builder do
              deny: config.deny,
              prefer: config.prefer
            ) do
-      output_dir = output_dir(opts)
-      snapshot = Snapshot.from_engine_snapshot(engine_snapshot)
+      schema_version = Keyword.get(opts, :schema_version, Snapshot.schema_version())
+      output_dir = output_dir(opts, schema_version)
+      snapshot = Snapshot.from_engine_snapshot(engine_snapshot, schema_version: schema_version)
       snapshot_id = snapshot["snapshot_id"]
 
       metadata =
@@ -45,6 +47,7 @@ defmodule LLMDB.Snapshot.Builder do
        %{
          snapshot: snapshot,
          snapshot_id: snapshot_id,
+         schema_version: schema_version,
          metadata: metadata,
          output_dir: output_dir,
          snapshot_path: Path.join(output_dir, Snapshot.snapshot_filename()),
@@ -55,6 +58,8 @@ defmodule LLMDB.Snapshot.Builder do
 
   @spec write!(artifact(), keyword()) :: artifact()
   def write!(artifact, opts \\ []) do
+    ensure_installable!(artifact, opts)
+
     Snapshot.write!(artifact.snapshot_path, artifact.snapshot)
     Snapshot.write!(artifact.metadata_path, artifact.metadata)
 
@@ -112,10 +117,25 @@ defmodule LLMDB.Snapshot.Builder do
     comparable.(actual) == comparable.(expected)
   end
 
-  defp output_dir(opts) do
+  defp output_dir(opts, schema_version) do
+    default_dir =
+      if schema_version == Snapshot.schema_version() do
+        Snapshot.build_dir()
+      else
+        Snapshot.build_dir() <> "-v#{schema_version}"
+      end
+
     opts
-    |> Keyword.get(:output_dir, Snapshot.build_dir())
+    |> Keyword.get(:output_dir, default_dir)
     |> expand_path()
+  end
+
+  defp ensure_installable!(artifact, opts) do
+    if Keyword.get(opts, :install, false) and
+         artifact.schema_version != Snapshot.schema_version() do
+      raise ArgumentError,
+            "sparse schema v#{artifact.schema_version} is opt-in and cannot replace the packaged v1 snapshot in this minor release"
+    end
   end
 
   defp maybe_put_parent_snapshot_id(metadata, opts) do
