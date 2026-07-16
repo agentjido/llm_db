@@ -2,6 +2,20 @@ defmodule LLMDB.History.MigratorTest do
   use ExUnit.Case, async: false
 
   alias LLMDB.History.Migrator
+  alias LLMDB.Test.GitHistoryFixture
+
+  setup_all do
+    fixture = GitHistoryFixture.create!()
+    previous_cwd = File.cwd!()
+    File.cd!(fixture.repo)
+
+    on_exit(fn ->
+      File.cd!(previous_cwd)
+      GitHistoryFixture.cleanup(fixture)
+    end)
+
+    :ok
+  end
 
   test "migrates a reachable git range into snapshot-based history artifacts" do
     [first_commit, second_commit | _rest] = metadata_commits()

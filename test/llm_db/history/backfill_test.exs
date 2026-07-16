@@ -2,6 +2,20 @@ defmodule LLMDB.History.BackfillTest do
   use ExUnit.Case, async: false
 
   alias LLMDB.History.Backfill
+  alias LLMDB.Test.GitHistoryFixture
+
+  setup_all do
+    fixture = GitHistoryFixture.create!()
+    previous_cwd = File.cwd!()
+    File.cd!(fixture.repo)
+
+    on_exit(fn ->
+      File.cd!(previous_cwd)
+      GitHistoryFixture.cleanup(fixture)
+    end)
+
+    :ok
+  end
 
   describe "diff_models/2" do
     test "emits introduced, removed, and changed events deterministically" do
