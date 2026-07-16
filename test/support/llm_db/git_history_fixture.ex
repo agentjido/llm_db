@@ -17,6 +17,7 @@ defmodule LLMDB.Test.GitHistoryFixture do
     git!(repo, ["init", "--quiet", "--initial-branch=main"])
     git!(repo, ["config", "user.name", "LLMDB Test"])
     git!(repo, ["config", "user.email", "llm_db@example.test"])
+    git!(repo, ["config", "commit.gpgSign", "false"])
     git!(repo, ["remote", "add", "origin", "https://example.test/llm_db.git"])
 
     commits = [
@@ -45,7 +46,7 @@ defmodule LLMDB.Test.GitHistoryFixture do
 
     git!(repo, ["add", @provider_path, @manifest_path])
 
-    git!(repo, ["commit", "--quiet", "-m", message],
+    git!(repo, ["commit", "--quiet", "--no-gpg-sign", "-m", message],
       env: [
         {"GIT_AUTHOR_DATE", captured_at},
         {"GIT_COMMITTER_DATE", captured_at}
