@@ -8,46 +8,9 @@ defmodule LLMDB.Validate do
 
   require Logger
 
-  alias LLMDB.{Model, Provider}
+  alias LLMDB.{ExecutionContract, Model, Provider}
 
   @type validation_error :: term()
-
-  @execution_operations [:text, :object, :embed, :image, :transcription, :speech, :realtime]
-
-  @openai_compatible_providers MapSet.new([
-                                 :openai,
-                                 :openrouter,
-                                 :groq,
-                                 :xai,
-                                 :zenmux,
-                                 :mistral,
-                                 :togetherai,
-                                 :github_models,
-                                 :perplexity,
-                                 :cloudflare_workers_ai,
-                                 :fireworks_ai,
-                                 :friendli,
-                                 :ollama_cloud,
-                                 :deepseek,
-                                 :alibaba,
-                                 :venice,
-                                 :cerebras,
-                                 :zai
-                               ])
-  @execution_families [
-    "openai_chat_compatible",
-    "openai_responses_compatible",
-    "openai_embeddings",
-    "openai_images",
-    "openai_transcription",
-    "openai_speech",
-    "openai_realtime",
-    "anthropic_messages",
-    "google_generate_content",
-    "cohere_chat",
-    "elevenlabs_speech",
-    "elevenlabs_transcription"
-  ]
 
   @doc """
   Validates a single provider map against the Provider schema.
@@ -227,10 +190,10 @@ defmodule LLMDB.Validate do
 
   defp model_execution_errors(%Model{execution: execution} = model, provider)
        when is_map(execution) do
-    implied = implied_operations(model)
+    implied = ExecutionContract.implied_operations(model, provider)
 
     entry_errors =
-      Enum.flat_map(@execution_operations, fn operation ->
+      Enum.flat_map(ExecutionContract.operations(), fn operation ->
         case Map.get(execution, operation) do
           nil ->
             if operation in implied do
@@ -253,7 +216,7 @@ defmodule LLMDB.Validate do
       end)
 
     provider_errors =
-      if executable_model?(execution) and is_nil(provider_runtime(provider)) and
+      if ExecutionContract.executable?(execution) and is_nil(provider_runtime(provider)) and
            not catalog_only?(provider) do
         [
           %{
@@ -285,7 +248,7 @@ defmodule LLMDB.Validate do
       error: :missing_execution_family
     })
     |> maybe_add_error(
-      supported? and is_binary(family) and family not in @execution_families,
+      supported? and is_binary(family) and not ExecutionContract.valid_family?(family),
       %{
         scope: :model,
         provider: model.provider,
@@ -295,174 +258,6 @@ defmodule LLMDB.Validate do
         family: family
       }
     )
-  end
-
-  defp implied_operations(%Model{} = model) do
-    []
-    |> maybe_add_operation(text_like?(model), :text)
-    |> maybe_add_operation(object_like?(model), :object)
-    |> maybe_add_operation(embeddings?(model), :embed)
-    |> maybe_add_operation(image_generation?(model), :image)
-    |> maybe_add_operation(transcription?(model), :transcription)
-    |> maybe_add_operation(speech?(model), :speech)
-    |> maybe_add_operation(realtime?(model), :realtime)
-  end
-
-  defp object_like?(%Model{provider: :anthropic} = model) do
-    text_like?(model) and json_schema_capable?(model)
-  end
-
-  defp object_like?(%Model{} = model), do: text_like?(model)
-
-  defp json_schema_capable?(%Model{capabilities: capabilities}) when is_map(capabilities) do
-    case Map.get(capabilities, :json) do
-      %{schema: true} -> true
-      %{native: true} -> true
-      %{strict: true} -> true
-      _other -> false
-    end
-  end
-
-  defp json_schema_capable?(_model), do: false
-
-  defp text_like?(%Model{} = model) do
-    cond do
-      exclusive_media_model?(model) ->
-        false
-
-      chat_capability?(model) ->
-        true
-
-      text_input?(model) and text_output?(model) ->
-        true
-
-      no_capability_or_modality_metadata?(model) ->
-        true
-
-      true ->
-        false
-    end
-  end
-
-  defp embeddings?(%Model{capabilities: capabilities}) when is_map(capabilities) do
-    case Map.get(capabilities, :embeddings) do
-      true -> true
-      embeddings when is_map(embeddings) -> true
-      _other -> false
-    end
-  end
-
-  defp embeddings?(_model), do: false
-
-  defp image_generation?(%Model{provider: provider, modalities: %{output: output}})
-       when is_list(output) do
-    provider in @openai_compatible_providers and :image in output
-  end
-
-  defp image_generation?(%Model{extra: extra}) when is_map(extra) do
-    Map.get(extra, :api) == "images" or get_in(extra, [:wire, :protocol]) == "openai_images"
-  end
-
-  defp image_generation?(_model), do: false
-
-  defp transcription?(%Model{} = model) do
-    exclusive_transcription_model?(model) or explicit_transcription_model?(model)
-  end
-
-  defp explicit_transcription_model?(%Model{id: id, extra: extra}) do
-    normalized_id = String.downcase(id)
-
-    api =
-      case extra do
-        map when is_map(map) -> Map.get(map, :api)
-        _other -> nil
-      end
-
-    api in ["audio.transcriptions", "audio.translation"] or
-      String.contains?(normalized_id, "transcribe") or
-      String.contains?(normalized_id, "whisper")
-  end
-
-  defp speech?(%Model{} = model) do
-    exclusive_speech_model?(model) or explicit_speech_model?(model)
-  end
-
-  defp explicit_speech_model?(%Model{id: id, extra: extra}) do
-    normalized_id = String.downcase(id)
-
-    api =
-      case extra do
-        map when is_map(map) -> Map.get(map, :api)
-        _other -> nil
-      end
-
-    api == "audio.speech" or
-      String.starts_with?(normalized_id, "tts-") or
-      String.contains?(normalized_id, "-tts")
-  end
-
-  defp realtime?(%Model{provider: provider, id: id, extra: extra}) do
-    extra_realtime? =
-      case extra do
-        map when is_map(map) ->
-          Map.get(map, :api) == "realtime" or get_in(map, [:wire, :protocol]) == "openai_realtime"
-
-        _other ->
-          false
-      end
-
-    extra_realtime? or
-      (provider == :openai and String.contains?(String.downcase(id), "realtime"))
-  end
-
-  defp exclusive_media_model?(%Model{} = model) do
-    embeddings?(model) or image_generation?(model) or realtime?(model) or
-      exclusive_transcription_model?(model) or explicit_transcription_model?(model) or
-      exclusive_speech_model?(model) or explicit_speech_model?(model)
-  end
-
-  defp exclusive_transcription_model?(%Model{} = model) do
-    audio_input?(model) and text_output?(model) and not chat_capability?(model) and
-      not text_input?(model)
-  end
-
-  defp exclusive_speech_model?(%Model{} = model) do
-    text_input?(model) and audio_output?(model) and not chat_capability?(model) and
-      not text_output?(model)
-  end
-
-  defp chat_capability?(%Model{capabilities: capabilities}) when is_map(capabilities) do
-    Map.get(capabilities, :chat) == true
-  end
-
-  defp chat_capability?(_model), do: false
-
-  defp no_capability_or_modality_metadata?(%Model{capabilities: nil, modalities: nil}), do: true
-  defp no_capability_or_modality_metadata?(_model), do: false
-
-  defp text_input?(%Model{modalities: %{input: input}}) when is_list(input), do: :text in input
-  defp text_input?(_model), do: false
-
-  defp text_output?(%Model{modalities: %{output: output}}) when is_list(output),
-    do: :text in output
-
-  defp text_output?(_model), do: false
-
-  defp audio_input?(%Model{modalities: %{input: input}}) when is_list(input), do: :audio in input
-  defp audio_input?(_model), do: false
-
-  defp audio_output?(%Model{modalities: %{output: output}}) when is_list(output),
-    do: :audio in output
-
-  defp audio_output?(_model), do: false
-
-  defp executable_model?(execution) when is_map(execution) do
-    Enum.any?(@execution_operations, fn operation ->
-      case Map.get(execution, operation) do
-        %{supported: true} -> true
-        _other -> false
-      end
-    end)
   end
 
   defp catalog_only?(%Provider{catalog_only: value}), do: value == true
@@ -502,9 +297,6 @@ defmodule LLMDB.Validate do
 
   defp maybe_add_error(errors, true, error), do: [error | errors]
   defp maybe_add_error(errors, false, _error), do: errors
-
-  defp maybe_add_operation(operations, true, operation), do: [operation | operations]
-  defp maybe_add_operation(operations, false, _operation), do: operations
 
   defp validate_overlay(map, validator, required_keys) when is_map(map) do
     with {:ok, parsed} <- validator.(map) do
