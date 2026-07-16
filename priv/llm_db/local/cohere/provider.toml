@@ -1,0 +1,13 @@
+id = "cohere"
+
+[runtime]
+base_url = "https://api.cohere.com"
+doc_url = "https://docs.cohere.com/docs/models"
+
+[runtime.auth]
+type = "bearer"
+env = ["COHERE_API_KEY"]
+
+[runtime.execution]
+text = "cohere_chat"
+object = "cohere_chat"

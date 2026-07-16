@@ -667,7 +667,11 @@ defmodule LLMDB.Engine.ValidateTest do
           id: :openai,
           runtime: %{
             base_url: "https://api.openai.com/v1",
-            auth: %{type: "bearer", env: ["OPENAI_API_KEY"]}
+            auth: %{type: "bearer", env: ["OPENAI_API_KEY"]},
+            execution: %{
+              text: "openai_chat_compatible",
+              object: "openai_chat_compatible"
+            }
           }
         })
       ]
@@ -701,7 +705,8 @@ defmodule LLMDB.Engine.ValidateTest do
           id: :anthropic,
           runtime: %{
             base_url: "https://api.anthropic.com",
-            auth: %{type: "x_api_key", env: ["ANTHROPIC_API_KEY"], header_name: "x-api-key"}
+            auth: %{type: "x_api_key", env: ["ANTHROPIC_API_KEY"], header_name: "x-api-key"},
+            execution: %{text: "anthropic_messages", object: "anthropic_messages"}
           }
         })
       ]

@@ -15,144 +15,11 @@ defmodule LLMDB.ExecutionContract do
 
   alias LLMDB.{Merge, Model, Provider}
 
-  @provider_runtime_defaults %{
-    openai: %{
-      base_url: "https://api.openai.com/v1",
-      auth: %{type: "bearer"},
-      doc_url: "https://platform.openai.com/docs"
-    },
-    anthropic: %{
-      base_url: "https://api.anthropic.com",
-      auth: %{type: "x_api_key", header_name: "x-api-key"},
-      doc_url: "https://docs.anthropic.com"
-    },
-    google: %{
-      base_url: "https://generativelanguage.googleapis.com/v1beta",
-      auth: %{type: "header", header_name: "x-goog-api-key"},
-      doc_url: "https://ai.google.dev/docs"
-    },
-    openrouter: %{
-      base_url: "https://openrouter.ai/api/v1",
-      auth: %{type: "bearer"},
-      doc_url: "https://openrouter.ai/docs"
-    },
-    groq: %{
-      base_url: "https://api.groq.com/openai/v1",
-      auth: %{type: "bearer"},
-      doc_url: "https://groq.com/docs"
-    },
-    xai: %{
-      base_url: "https://api.x.ai/v1",
-      auth: %{type: "bearer"},
-      doc_url: "https://docs.x.ai"
-    },
-    zenmux: %{
-      base_url: "https://zenmux.ai/api/v1",
-      auth: %{type: "bearer"},
-      doc_url: "https://docs.zenmux.ai"
-    },
-    elevenlabs: %{
-      base_url: "https://api.elevenlabs.io",
-      auth: %{type: "header", header_name: "xi-api-key"},
-      doc_url: "https://elevenlabs.io/docs/api-reference/introduction"
-    },
-    cohere: %{
-      base_url: "https://api.cohere.com",
-      auth: %{type: "bearer"},
-      doc_url: "https://docs.cohere.com/docs/models"
-    },
-    mistral: %{
-      base_url: "https://api.mistral.ai/v1",
-      auth: %{type: "bearer"},
-      doc_url: "https://docs.mistral.ai/getting-started/models/"
-    },
-    togetherai: %{
-      base_url: "https://api.together.xyz/v1",
-      auth: %{type: "bearer"},
-      doc_url: "https://docs.together.ai/docs/serverless-models"
-    },
-    github_models: %{
-      base_url: "https://models.github.ai/inference",
-      auth: %{type: "bearer"},
-      doc_url: "https://docs.github.com/en/github-models"
-    },
-    perplexity: %{
-      base_url: "https://api.perplexity.ai",
-      auth: %{type: "bearer"},
-      doc_url: "https://docs.perplexity.ai"
-    },
-    cloudflare_workers_ai: %{
-      base_url: "https://api.cloudflare.com/client/v4/accounts/{account_id}/ai/v1",
-      auth: %{type: "bearer", env: ["CLOUDFLARE_API_KEY"]},
-      config_schema: [
-        %{
-          name: "account_id",
-          type: "string",
-          required: true,
-          doc: "Cloudflare account ID used in the Workers AI base URL template."
-        }
-      ],
-      doc_url: "https://developers.cloudflare.com/workers-ai/models/"
-    },
-    fireworks_ai: %{
-      base_url: "https://api.fireworks.ai/inference/v1",
-      auth: %{type: "bearer"},
-      doc_url: "https://fireworks.ai/docs/"
-    },
-    minimax: %{
-      base_url: "https://api.minimax.io/v1",
-      auth: %{type: "bearer"},
-      doc_url: "https://platform.minimax.io/docs/guides/quickstart"
-    },
-    friendli: %{
-      base_url: "https://api.friendli.ai/serverless/v1",
-      auth: %{type: "bearer"},
-      doc_url: "https://friendli.ai/docs/guides/serverless_endpoints/introduction"
-    },
-    ollama_cloud: %{
-      base_url: "https://ollama.com/v1",
-      auth: %{type: "bearer"},
-      doc_url: "https://docs.ollama.com/cloud"
-    },
-    deepseek: %{
-      base_url: "https://api.deepseek.com",
-      auth: %{type: "bearer"},
-      doc_url: "https://api-docs.deepseek.com"
-    },
-    alibaba: %{
-      base_url: "https://dashscope-intl.aliyuncs.com/compatible-mode/v1",
-      auth: %{type: "bearer"},
-      doc_url: "https://www.alibabacloud.com/help/en/model-studio/models"
-    },
-    venice: %{
-      base_url: "https://api.venice.ai/api/v1",
-      auth: %{type: "bearer"},
-      doc_url: "https://docs.venice.ai"
-    },
-    cerebras: %{
-      base_url: "https://api.cerebras.ai/v1",
-      auth: %{type: "bearer"},
-      doc_url: "https://cerebras.ai/docs"
-    },
-    zai: %{
-      base_url: "https://api.z.ai/api/paas/v4",
-      auth: %{type: "bearer"},
-      doc_url: "https://docs.z.ai/guides/overview/pricing"
-    }
-  }
-
-  @openai_compatible_providers Map.keys(@provider_runtime_defaults)
-                               |> Enum.filter(
-                                 &(&1 not in [:anthropic, :google, :cohere, :elevenlabs])
-                               )
-                               |> MapSet.new()
-
   @google_generation_methods MapSet.new([
                                "generateAnswer",
                                "generateContent",
                                "batchGenerateContent"
                              ])
-  @google_embedding_methods MapSet.new(["embedContent", "asyncBatchEmbedContent"])
   @cohere_embedding_methods MapSet.new(["embed", "embedText", "embedTexts"])
   @cohere_rerank_methods MapSet.new(["rerank"])
 
@@ -201,6 +68,15 @@ defmodule LLMDB.ExecutionContract do
 
   @spec enrich([Provider.t()], [Model.t()]) :: {[Provider.t()], [Model.t()]}
   def enrich(providers, models) when is_list(providers) and is_list(models) do
+    {enriched_providers, enriched_models} = enrich_for_validation(providers, models)
+    published_providers = Enum.map(enriched_providers, &publish_provider/1)
+
+    {published_providers, enriched_models}
+  end
+
+  @doc false
+  @spec enrich_for_validation([Provider.t()], [Model.t()]) :: {[Provider.t()], [Model.t()]}
+  def enrich_for_validation(providers, models) when is_list(providers) and is_list(models) do
     enriched_providers = Enum.map(providers, &enrich_provider/1)
     provider_lookup = Map.new(enriched_providers, &{&1.id, &1})
 
@@ -211,6 +87,14 @@ defmodule LLMDB.ExecutionContract do
 
     {enriched_providers, enriched_models}
   end
+
+  @doc false
+  @spec publish_provider(Provider.t()) :: Provider.t()
+  def publish_provider(%Provider{runtime: runtime} = provider) when is_map(runtime) do
+    %{provider | runtime: Map.delete(runtime, :execution)}
+  end
+
+  def publish_provider(provider), do: provider
 
   @spec enrich_provider(Provider.t()) :: Provider.t()
   def enrich_provider(%Provider{} = provider) do
@@ -271,26 +155,12 @@ defmodule LLMDB.ExecutionContract do
   @spec executable?(map() | nil) :: boolean()
   def executable?(execution), do: executable_execution?(execution)
 
-  defp resolved_runtime(%Provider{id: provider_id} = provider) do
-    defaults = Map.get(@provider_runtime_defaults, provider_id)
-    existing = provider.runtime
-
-    cond do
-      is_map(existing) and runtime_complete?(existing) ->
+  defp resolved_runtime(%Provider{} = provider) do
+    case provider.runtime do
+      existing when is_map(existing) ->
         normalize_runtime(existing, provider)
 
-      is_map(defaults) ->
-        defaults
-        |> normalize_runtime(provider)
-        |> merge_runtime(existing, provider)
-        |> maybe_runtime(existing)
-
-      is_map(existing) ->
-        existing
-        |> normalize_runtime(provider)
-        |> maybe_runtime(existing)
-
-      true ->
+      _other ->
         nil
     end
   end
@@ -307,7 +177,8 @@ defmodule LLMDB.ExecutionContract do
       default_headers: Map.get(runtime, :default_headers, %{}),
       default_query: Map.get(runtime, :default_query, %{}),
       config_schema: Map.get(runtime, :config_schema) || provider.config_schema,
-      doc_url: Map.get(runtime, :doc_url) || provider.doc
+      doc_url: Map.get(runtime, :doc_url) || provider.doc,
+      execution: Map.get(runtime, :execution)
     }
   end
 
@@ -323,153 +194,67 @@ defmodule LLMDB.ExecutionContract do
     |> Map.put_new(:headers, [])
   end
 
-  defp merge_runtime(defaults, existing, provider) when is_map(existing) do
-    auth = defaults.auth |> Map.merge(Map.get(existing, :auth, %{})) |> normalize_auth(provider)
-
-    %{
-      base_url: Map.get(existing, :base_url) || defaults.base_url || provider.base_url,
-      auth: auth,
-      default_headers:
-        Map.merge(defaults.default_headers || %{}, Map.get(existing, :default_headers, %{})),
-      default_query:
-        Map.merge(defaults.default_query || %{}, Map.get(existing, :default_query, %{})),
-      config_schema:
-        Map.get(existing, :config_schema) || defaults.config_schema || provider.config_schema,
-      doc_url: Map.get(existing, :doc_url) || defaults.doc_url || provider.doc
-    }
-  end
-
-  defp merge_runtime(defaults, _existing, _provider), do: defaults
-
-  defp maybe_runtime(runtime, existing) do
-    cond do
-      runtime_complete?(runtime) ->
-        runtime
-
-      is_map(existing) ->
-        runtime
-
-      true ->
-        nil
-    end
-  end
-
-  defp runtime_complete?(%{base_url: base_url, auth: auth})
-       when is_binary(base_url) and is_map(auth) do
-    valid_auth?(auth)
-  end
-
-  defp runtime_complete?(_runtime), do: false
-
-  defp valid_auth?(%{type: type, env: env}) when type in ["bearer", "x_api_key"],
-    do: is_list(env) and env != []
-
-  defp valid_auth?(%{type: "header", env: env, header_name: header_name}),
-    do: is_binary(header_name) and is_list(env) and env != []
-
-  defp valid_auth?(%{type: "query", env: env, query_name: query_name}),
-    do: is_binary(query_name) and is_list(env) and env != []
-
-  defp valid_auth?(%{type: "multi_header", headers: headers}),
-    do: is_list(headers) and headers != []
-
-  defp valid_auth?(_auth), do: false
-
   defp derive_execution(
          %Model{} = model,
-         %Provider{id: provider_id, catalog_only: false}
+         %Provider{catalog_only: false} = provider
        ) do
     []
-    |> maybe_put_entry(:text, text_entry(model, provider_id))
-    |> maybe_put_entry(:object, object_entry(model, provider_id))
-    |> maybe_put_entry(:embed, embed_entry(model, provider_id))
-    |> maybe_put_entry(:image, image_entry(model, provider_id))
-    |> maybe_put_entry(:transcription, transcription_entry(model, provider_id))
-    |> maybe_put_entry(:speech, speech_entry(model, provider_id))
-    |> maybe_put_entry(:realtime, realtime_entry(model, provider_id))
+    |> maybe_put_entry(:text, text_entry(model, provider))
+    |> maybe_put_entry(:object, object_entry(model, provider))
+    |> maybe_put_entry(:embed, media_entry(model, provider, :embed, &embedding_model?/1))
+    |> maybe_put_entry(:image, media_entry(model, provider, :image, &image_generation_model?/1))
+    |> maybe_put_entry(
+      :transcription,
+      media_entry(model, provider, :transcription, &dedicated_transcription_model?/1)
+    )
+    |> maybe_put_entry(:speech, media_entry(model, provider, :speech, &dedicated_speech_model?/1))
+    |> maybe_put_entry(:realtime, realtime_entry(model, provider))
     |> Map.new()
     |> nil_if_empty()
   end
 
   defp derive_execution(_model, _provider), do: nil
 
-  defp text_entry(model, provider_id) do
-    if text_object_capable?(model, provider_id) do
-      execution_entry(model, provider_id, text_object_family(model, provider_id))
+  defp text_entry(model, provider) do
+    if text_object_capable?(model, provider) do
+      execution_entry(model, provider, text_object_family(model, provider, :text))
     end
   end
 
-  defp object_entry(model, provider_id) do
-    if object_capable?(model, provider_id) do
-      execution_entry(model, provider_id, text_object_family(model, provider_id))
+  defp object_entry(model, provider) do
+    if object_capable?(model, provider) do
+      execution_entry(model, provider, text_object_family(model, provider, :object))
     end
   end
 
-  defp embed_entry(model, provider_id) do
-    cond do
-      provider_id == :google and google_embedding_model?(model) ->
-        nil
+  defp media_entry(model, provider, operation, classifier) do
+    family = provider_family(provider, operation)
 
-      provider_id == :cohere and cohere_embedding_or_rerank_model?(model) ->
-        nil
-
-      provider_id in @openai_compatible_providers and embedding_model?(model) ->
-        execution_entry(model, provider_id, "openai_embeddings")
-
-      true ->
-        nil
+    if is_binary(family) and classifier.(model) do
+      execution_entry(model, provider, family)
     end
   end
 
-  defp image_entry(model, provider_id) do
-    if provider_id in @openai_compatible_providers and image_generation_model?(model) do
-      execution_entry(model, provider_id, "openai_images")
-    end
-  end
+  defp realtime_entry(model, provider) do
+    family = provider_family(provider, :realtime)
 
-  defp transcription_entry(model, provider_id) do
-    cond do
-      provider_id == :elevenlabs and elevenlabs_transcription_model?(model) ->
-        execution_entry(model, provider_id, "elevenlabs_transcription")
-
-      provider_id in @openai_compatible_providers and dedicated_transcription_model?(model) ->
-        execution_entry(model, provider_id, "openai_transcription")
-
-      true ->
-        nil
-    end
-  end
-
-  defp speech_entry(model, provider_id) do
-    cond do
-      provider_id == :elevenlabs and elevenlabs_speech_model?(model) ->
-        execution_entry(model, provider_id, "elevenlabs_speech")
-
-      provider_id == :openai and openai_speech_model?(model) ->
-        execution_entry(model, provider_id, "openai_speech")
-
-      true ->
-        nil
-    end
-  end
-
-  defp realtime_entry(model, provider_id) do
-    if provider_id == :openai and realtime_model?(model) do
-      execution_entry(model, provider_id, "openai_realtime")
+    if is_binary(family) and realtime_model?(model) do
+      execution_entry(model, provider, family)
       |> Map.put(:transport, "websocket")
     end
   end
 
-  defp text_object_capable?(model, provider_id) do
-    family = text_object_family(model, provider_id)
+  defp text_object_capable?(model, provider) do
+    family = text_object_family(model, provider, :text)
     is_binary(family)
   end
 
-  defp object_capable?(model, :anthropic) do
-    text_object_capable?(model, :anthropic) and json_schema_capable?(model)
-  end
+  defp object_capable?(model, provider) do
+    family = text_object_family(model, provider, :object)
 
-  defp object_capable?(model, provider_id), do: text_object_capable?(model, provider_id)
+    is_binary(family) and
+      (family != "anthropic_messages" or json_schema_capable?(model))
+  end
 
   defp json_schema_capable?(%Model{capabilities: capabilities}) when is_map(capabilities) do
     case Map.get(capabilities, :json) do
@@ -482,34 +267,40 @@ defmodule LLMDB.ExecutionContract do
 
   defp json_schema_capable?(_model), do: false
 
-  defp text_object_family(model, provider_id) do
+  defp text_object_family(model, provider, operation) do
+    configured_family = provider_family(provider, operation)
+
     cond do
-      google_text_object_model?(model, provider_id) ->
-        "google_generate_content"
-
-      provider_id == :anthropic and chat_generation_model?(model) ->
-        "anthropic_messages"
-
-      provider_id == :cohere and cohere_chat_model?(model) ->
-        "cohere_chat"
-
       protocol = text_object_protocol(model) ->
         protocol_family(protocol)
 
-      provider_id in @openai_compatible_providers and chat_generation_model?(model) ->
-        "openai_chat_compatible"
+      configured_family == "google_generate_content" and google_text_object_model?(model) ->
+        configured_family
+
+      configured_family == "cohere_chat" and cohere_chat_model?(model) ->
+        configured_family
+
+      configured_family in ["google_generate_content", "cohere_chat"] ->
+        nil
+
+      is_binary(configured_family) and chat_generation_model?(model) ->
+        configured_family
 
       true ->
         nil
     end
   end
 
-  defp google_text_object_model?(model, :google) do
+  defp google_text_object_model?(model) do
     methods = supported_generation_methods(model)
     MapSet.disjoint?(@google_generation_methods, methods) == false
   end
 
-  defp google_text_object_model?(_model, _provider_id), do: false
+  defp provider_family(%Provider{runtime: %{execution: execution}}, operation)
+       when is_map(execution),
+       do: Map.get(execution, operation)
+
+  defp provider_family(_provider, _operation), do: nil
 
   defp cohere_chat_model?(model) do
     chat_generation_model?(model) and not cohere_embedding_or_rerank_model?(model)
@@ -535,11 +326,6 @@ defmodule LLMDB.ExecutionContract do
     Merge.merge(existing, derived, :higher)
   end
 
-  defp google_embedding_model?(model) do
-    methods = supported_generation_methods(model)
-    MapSet.disjoint?(@google_embedding_methods, methods) == false or embedding_model?(model)
-  end
-
   defp text_object_protocol(model) do
     protocol =
       case wire_protocol(model) do
@@ -557,10 +343,10 @@ defmodule LLMDB.ExecutionContract do
   defp protocol_family("anthropic_messages"), do: "anthropic_messages"
   defp protocol_family(_protocol), do: nil
 
-  defp execution_entry(model, provider_id, family) when is_binary(family) do
+  defp execution_entry(model, provider, family) when is_binary(family) do
     wire_protocol = Map.get(@family_wire_protocol, family)
     provider_model_id = provider_model_id_override(model)
-    base_url = model_base_url_override(model, provider_id)
+    base_url = model_base_url_override(model, provider)
 
     %{
       supported: true,
@@ -580,17 +366,14 @@ defmodule LLMDB.ExecutionContract do
 
   defp provider_model_id_override(_model), do: nil
 
-  defp model_base_url_override(%Model{base_url: base_url}, provider_id)
+  defp model_base_url_override(%Model{base_url: base_url}, %Provider{} = provider)
        when is_binary(base_url) do
-    provider_base_url =
-      @provider_runtime_defaults
-      |> Map.get(provider_id, %{})
-      |> Map.get(:base_url)
+    provider_base_url = get_in(provider, [Access.key(:runtime), Access.key(:base_url)])
 
     if base_url != provider_base_url, do: base_url
   end
 
-  defp model_base_url_override(_model, _provider_id), do: nil
+  defp model_base_url_override(_model, _provider), do: nil
 
   defp merge_execution(nil, existing), do: existing
   defp merge_execution(derived, nil), do: derived
@@ -791,13 +574,6 @@ defmodule LLMDB.ExecutionContract do
 
     wire_protocol(model) in ["realtime", "openai_realtime"] or
       String.contains?(normalized_id, "realtime")
-  end
-
-  defp openai_speech_model?(model), do: dedicated_speech_model?(model)
-  defp elevenlabs_speech_model?(model), do: dedicated_speech_model?(model)
-
-  defp elevenlabs_transcription_model?(model) do
-    dedicated_transcription_model?(model) and not elevenlabs_speech_model?(model)
   end
 
   defp exclusive_media_model?(model) do

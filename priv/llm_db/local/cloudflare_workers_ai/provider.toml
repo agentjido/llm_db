@@ -1,0 +1,22 @@
+id = "cloudflare_workers_ai"
+
+[runtime]
+base_url = "https://api.cloudflare.com/client/v4/accounts/{account_id}/ai/v1"
+doc_url = "https://developers.cloudflare.com/workers-ai/models/"
+
+[[runtime.config_schema]]
+name = "account_id"
+type = "string"
+required = true
+doc = "Cloudflare account ID used in the Workers AI base URL template."
+
+[runtime.auth]
+type = "bearer"
+env = ["CLOUDFLARE_API_KEY"]
+
+[runtime.execution]
+text = "openai_chat_compatible"
+object = "openai_chat_compatible"
+embed = "openai_embeddings"
+image = "openai_images"
+transcription = "openai_transcription"

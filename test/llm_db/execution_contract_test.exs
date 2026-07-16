@@ -68,8 +68,70 @@ defmodule LLMDB.ExecutionContractTest do
     assert :ok = Validate.validate_runtime_contract([provider], [enriched])
   end
 
+  test "enrich/2 consumes provider execution policy without publishing it" do
+    provider = executable_provider()
+
+    model =
+      Model.new!(%{
+        id: "chat-model",
+        provider: :openai,
+        modalities: %{input: [:text], output: [:text]}
+      })
+
+    assert {[published_provider], [published_model]} =
+             ExecutionContract.enrich([provider], [model])
+
+    refute Map.has_key?(published_provider.runtime, :execution)
+    assert published_model.execution.text.family == "openai_chat_compatible"
+  end
+
+  test "validation sees provider policy before the publication boundary strips it" do
+    provider = executable_provider()
+
+    model =
+      Model.new!(%{
+        id: "chat-model",
+        provider: :openai,
+        modalities: %{input: [:text], output: [:text]}
+      })
+
+    assert {[validation_provider], [enriched_model]} =
+             ExecutionContract.enrich_for_validation([provider], [model])
+
+    assert validation_provider.runtime.execution.object == "openai_chat_compatible"
+
+    incomplete_model = %{
+      enriched_model
+      | execution: Map.delete(enriched_model.execution, :object)
+    }
+
+    assert {:error, {:invalid_runtime_contract, errors}} =
+             Validate.validate_runtime_contract([validation_provider], [incomplete_model])
+
+    assert Enum.any?(errors, &(&1.error == :missing_execution_entry and &1.operation == :object))
+
+    published_provider = ExecutionContract.publish_provider(validation_provider)
+    refute Map.has_key?(published_provider.runtime, :execution)
+  end
+
   defp executable_provider do
-    Provider.new!(%{id: :openai, env: ["OPENAI_API_KEY"]})
+    Provider.new!(%{
+      id: :openai,
+      env: ["OPENAI_API_KEY"],
+      runtime: %{
+        base_url: "https://api.openai.com/v1",
+        auth: %{type: "bearer"},
+        execution: %{
+          text: "openai_chat_compatible",
+          object: "openai_chat_compatible",
+          embed: "openai_embeddings",
+          image: "openai_images",
+          transcription: "openai_transcription",
+          speech: "openai_speech",
+          realtime: "openai_realtime"
+        }
+      }
+    })
     |> ExecutionContract.enrich_provider()
   end
 end

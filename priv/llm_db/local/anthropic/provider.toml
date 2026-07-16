@@ -49,3 +49,16 @@ tool = "web_search"
 unit = "call"
 per = 1000
 rate = 10.0
+
+[runtime]
+base_url = "https://api.anthropic.com"
+doc_url = "https://docs.anthropic.com"
+
+[runtime.auth]
+type = "x_api_key"
+env = ["ANTHROPIC_API_KEY"]
+header_name = "x-api-key"
+
+[runtime.execution]
+text = "anthropic_messages"
+object = "anthropic_messages"

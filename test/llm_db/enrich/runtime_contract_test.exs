@@ -2,18 +2,12 @@ defmodule LLMDB.Enrich.RuntimeContractTest do
   use ExUnit.Case, async: true
 
   alias LLMDB.Enrich.RuntimeContract
+  alias LLMDB.Sources.Local
   alias LLMDB.{Model, Provider}
 
   describe "enrich_provider/1" do
     test "adds typed runtime defaults for executable providers" do
-      provider =
-        Provider.new!(%{
-          id: :openai,
-          env: ["OPENAI_API_KEY"],
-          doc: "https://platform.openai.com/docs"
-        })
-
-      enriched = RuntimeContract.enrich_provider(provider)
+      enriched = local_provider(:openai)
 
       assert enriched.catalog_only == false
       assert enriched.runtime.base_url == "https://api.openai.com/v1"
@@ -23,13 +17,7 @@ defmodule LLMDB.Enrich.RuntimeContractTest do
     end
 
     test "adds config schema for providers with required runtime placeholders" do
-      provider =
-        Provider.new!(%{
-          id: :cloudflare_workers_ai,
-          env: ["CLOUDFLARE_ACCOUNT_ID", "CLOUDFLARE_API_KEY"]
-        })
-
-      enriched = RuntimeContract.enrich_provider(provider)
+      enriched = local_provider(:cloudflare_workers_ai)
 
       assert enriched.catalog_only == false
 
@@ -42,13 +30,7 @@ defmodule LLMDB.Enrich.RuntimeContractTest do
     end
 
     test "adds native MiniMax runtime defaults" do
-      provider =
-        Provider.new!(%{
-          id: :minimax,
-          env: ["MINIMAX_API_KEY"]
-        })
-
-      enriched = RuntimeContract.enrich_provider(provider)
+      enriched = local_provider(:minimax)
 
       assert enriched.catalog_only == false
       assert enriched.runtime.base_url == "https://api.minimax.io/v1"
@@ -81,9 +63,7 @@ defmodule LLMDB.Enrich.RuntimeContractTest do
 
   describe "enrich_model/2" do
     test "derives responses-family execution from explicit wire protocol" do
-      provider =
-        Provider.new!(%{id: :openai, env: ["OPENAI_API_KEY"]})
-        |> RuntimeContract.enrich_provider()
+      provider = local_provider(:openai)
 
       model =
         Model.new!(%{
@@ -101,9 +81,7 @@ defmodule LLMDB.Enrich.RuntimeContractTest do
     end
 
     test "does not derive object execution for Anthropic models without JSON schema support" do
-      provider =
-        Provider.new!(%{id: :anthropic, env: ["ANTHROPIC_API_KEY"]})
-        |> RuntimeContract.enrich_provider()
+      provider = local_provider(:anthropic)
 
       model =
         Model.new!(%{
@@ -121,9 +99,7 @@ defmodule LLMDB.Enrich.RuntimeContractTest do
     end
 
     test "derives object execution for Anthropic models with JSON schema support" do
-      provider =
-        Provider.new!(%{id: :anthropic, env: ["ANTHROPIC_API_KEY"]})
-        |> RuntimeContract.enrich_provider()
+      provider = local_provider(:anthropic)
 
       model =
         Model.new!(%{
@@ -141,9 +117,7 @@ defmodule LLMDB.Enrich.RuntimeContractTest do
     end
 
     test "derives speech execution for dedicated tts models without adding text operations" do
-      provider =
-        Provider.new!(%{id: :openai, env: ["OPENAI_API_KEY"]})
-        |> RuntimeContract.enrich_provider()
+      provider = local_provider(:openai)
 
       model = Model.new!(%{id: "gpt-4o-mini-tts", provider: :openai})
       enriched = RuntimeContract.enrich_model(model, provider)
@@ -156,9 +130,7 @@ defmodule LLMDB.Enrich.RuntimeContractTest do
     end
 
     test "keeps multimodal chat models on the text lane instead of misclassifying them as transcription" do
-      provider =
-        Provider.new!(%{id: :alibaba, env: ["DASHSCOPE_API_KEY"]})
-        |> RuntimeContract.enrich_provider()
+      provider = local_provider(:alibaba)
 
       model =
         Model.new!(%{
@@ -177,9 +149,7 @@ defmodule LLMDB.Enrich.RuntimeContractTest do
     end
 
     test "marks models without a safe execution contract catalog only" do
-      provider =
-        Provider.new!(%{id: :google, env: ["GOOGLE_API_KEY"]})
-        |> RuntimeContract.enrich_provider()
+      provider = local_provider(:google)
 
       model =
         Model.new!(%{
@@ -195,9 +165,7 @@ defmodule LLMDB.Enrich.RuntimeContractTest do
     end
 
     test "derives rerank capability metadata from explicit rerank source hints" do
-      provider =
-        Provider.new!(%{id: :cohere, env: ["COHERE_API_KEY"]})
-        |> RuntimeContract.enrich_provider()
+      provider = local_provider(:cohere)
 
       model =
         Model.new!(%{
@@ -216,9 +184,7 @@ defmodule LLMDB.Enrich.RuntimeContractTest do
     end
 
     test "derives embed execution for openrouter model with :embeddings plural in output modalities" do
-      provider =
-        Provider.new!(%{id: :openrouter, env: ["OPENROUTER_API_KEY"]})
-        |> RuntimeContract.enrich_provider()
+      provider = local_provider(:openrouter)
 
       model =
         Model.new!(%{
@@ -237,9 +203,7 @@ defmodule LLMDB.Enrich.RuntimeContractTest do
     end
 
     test "derives embed execution for openrouter model with :embedding singular in output modalities" do
-      provider =
-        Provider.new!(%{id: :openrouter, env: ["OPENROUTER_API_KEY"]})
-        |> RuntimeContract.enrich_provider()
+      provider = local_provider(:openrouter)
 
       model =
         Model.new!(%{
@@ -275,5 +239,16 @@ defmodule LLMDB.Enrich.RuntimeContractTest do
       assert enriched.capabilities.chat == false
       assert enriched.capabilities.rerank == true
     end
+  end
+
+  defp local_provider(id) do
+    {:ok, providers} = Local.load(%{dir: "priv/llm_db/local"})
+
+    providers
+    |> Map.fetch!(Atom.to_string(id))
+    |> Map.delete(:models)
+    |> Map.put(:id, id)
+    |> Provider.new!()
+    |> RuntimeContract.enrich_provider()
   end
 end

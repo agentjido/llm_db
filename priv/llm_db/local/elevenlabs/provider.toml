@@ -5,3 +5,16 @@ base_url = "https://api.elevenlabs.io"
 doc = "https://elevenlabs.io/docs/api-reference/introduction"
 
 env = ["ELEVENLABS_API_KEY"]
+
+[runtime]
+base_url = "https://api.elevenlabs.io"
+doc_url = "https://elevenlabs.io/docs/api-reference/introduction"
+
+[runtime.auth]
+type = "header"
+env = ["ELEVENLABS_API_KEY"]
+header_name = "xi-api-key"
+
+[runtime.execution]
+transcription = "elevenlabs_transcription"
+speech = "elevenlabs_speech"

@@ -62,13 +62,24 @@ defmodule LLMDB.Provider do
                          headers: Zoi.array(@runtime_auth_header_schema) |> Zoi.default([])
                        })
 
+  @runtime_execution_schema Zoi.object(%{
+                              text: Zoi.string() |> Zoi.nullish(),
+                              object: Zoi.string() |> Zoi.nullish(),
+                              embed: Zoi.string() |> Zoi.nullish(),
+                              image: Zoi.string() |> Zoi.nullish(),
+                              transcription: Zoi.string() |> Zoi.nullish(),
+                              speech: Zoi.string() |> Zoi.nullish(),
+                              realtime: Zoi.string() |> Zoi.nullish()
+                            })
+
   @runtime_schema Zoi.object(%{
                     base_url: Zoi.string() |> Zoi.nullish(),
                     auth: @runtime_auth_schema |> Zoi.nullish(),
                     default_headers: Zoi.map() |> Zoi.default(%{}),
                     default_query: Zoi.map() |> Zoi.default(%{}),
                     config_schema: Zoi.array(@config_field_schema) |> Zoi.nullish(),
-                    doc_url: Zoi.string() |> Zoi.nullish()
+                    doc_url: Zoi.string() |> Zoi.nullish(),
+                    execution: @runtime_execution_schema |> Zoi.nullish()
                   })
 
   @schema Zoi.struct(

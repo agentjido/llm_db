@@ -91,6 +91,7 @@ defmodule LLMDB.Engine do
          {:ok, merged_validated} <- validate_merged(merged),
          {:ok, snapshot} <- finalize(merged_validated),
          :ok <- validate_runtime_contract(snapshot),
+         snapshot <- publish_runtime_contract(snapshot),
          :ok <- ensure_viable(snapshot) do
       {:ok, snapshot}
     end
@@ -231,7 +232,7 @@ defmodule LLMDB.Engine do
       merged.models
       |> Enrich.enrich_models()
 
-    {providers, models} = RuntimeContract.enrich(merged.providers, models)
+    {providers, models} = RuntimeContract.enrich_for_validation(merged.providers, models)
     nested_providers = build_nested_providers(providers, models)
 
     snapshot = %{
@@ -269,6 +270,15 @@ defmodule LLMDB.Engine do
       |> Enum.flat_map(fn provider -> Map.values(provider.models) end)
 
     Validate.validate_runtime_contract(provider_list, model_list)
+  end
+
+  defp publish_runtime_contract(%{providers: providers} = snapshot) do
+    published =
+      Map.new(providers, fn {provider_id, provider} ->
+        {provider_id, RuntimeContract.publish_provider(provider)}
+      end)
+
+    %{snapshot | providers: published}
   end
 
   @doc """

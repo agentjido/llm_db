@@ -46,3 +46,16 @@ tool = "web_search"
 unit = "call"
 per = 1000
 rate = 35.0
+
+[runtime]
+base_url = "https://generativelanguage.googleapis.com/v1beta"
+doc_url = "https://ai.google.dev/docs"
+
+[runtime.auth]
+type = "header"
+env = ["GOOGLE_API_KEY", "GEMINI_API_KEY"]
+header_name = "x-goog-api-key"
+
+[runtime.execution]
+text = "google_generate_content"
+object = "google_generate_content"
