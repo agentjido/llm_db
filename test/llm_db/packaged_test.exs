@@ -116,6 +116,7 @@ defmodule LLMDB.PackagedTest do
         refute Map.get(nearai, "catalog_only", false)
         assert moonshot["runtime"]["auth"]["type"] == "bearer"
         assert moonshot["runtime"]["base_url"] == "https://api.moonshot.ai/v1"
+        assert moonshot["runtime"]["doc_url"] == "https://platform.kimi.ai/docs/api/chat"
         assert moonshot_cn["runtime"]["auth"]["type"] == "bearer"
         assert moonshot_cn["runtime"]["base_url"] == "https://api.moonshot.cn/v1"
         assert opencode["runtime"]["auth"]["type"] == "bearer"
@@ -231,6 +232,66 @@ defmodule LLMDB.PackagedTest do
           assert model["execution"]["object"]["wire_protocol"] == "openai_chat"
           assert model["execution"]["object"]["path"] == "/chat/completions"
         end
+      end
+    end
+
+    test "snapshot carries verified Moonshot Kimi K3 metadata" do
+      snapshot = Packaged.snapshot()
+
+      if snapshot do
+        model = snapshot["providers"]["moonshotai"]["models"]["kimi-k3"]
+
+        refute model["catalog_only"] == true
+        assert model["limits"]["context"] == 1_048_576
+        assert model["limits"]["output"] == 1_048_576
+        assert model["cost"] == %{"cache_read" => 0.3, "input" => 3, "output" => 15}
+
+        assert model["modalities"] == %{
+                 "input" => ["text", "image", "video"],
+                 "output" => ["text"]
+               }
+
+        assert model["capabilities"]["reasoning"]["enabled"] == true
+
+        assert model["capabilities"]["json"] == %{
+                 "native" => true,
+                 "schema" => true,
+                 "strict" => true
+               }
+
+        assert model["extra"]["reasoning_options"] == [
+                 %{"type" => "effort", "values" => ["max"]}
+               ]
+
+        assert model["extra"]["temperature"] == false
+
+        assert model["extra"]["constraints"] == %{
+                 "reasoning_effort" => "required",
+                 "temperature" => "fixed_1",
+                 "token_limit_key" => "max_completion_tokens"
+               }
+
+        assert model["execution"]["text"]["family"] == "openai_chat_compatible"
+        assert model["execution"]["text"]["wire_protocol"] == "openai_chat"
+        assert model["execution"]["text"]["path"] == "/chat/completions"
+        assert model["execution"]["object"]["family"] == "openai_chat_compatible"
+        assert model["execution"]["object"]["wire_protocol"] == "openai_chat"
+        assert model["execution"]["object"]["path"] == "/chat/completions"
+      end
+    end
+
+    test "snapshot carries Moonshot Kimi K2.5 retirement metadata" do
+      snapshot = Packaged.snapshot()
+
+      if snapshot do
+        model = snapshot["providers"]["moonshotai"]["models"]["kimi-k2.5"]
+
+        assert model["deprecated"] == true
+        assert model["retired"] == false
+        assert model["lifecycle"]["status"] == "deprecated"
+        assert model["lifecycle"]["deprecated_at"] == "2026-07-17"
+        assert model["lifecycle"]["retires_at"] == "2026-08-31"
+        assert model["lifecycle"]["replacement"] == "kimi-k3"
       end
     end
 

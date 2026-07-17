@@ -1,0 +1,35 @@
+id = "kimi-k3"
+catalog_only = false
+
+[limits]
+output = 1048576
+
+[capabilities.json]
+native = true
+schema = true
+strict = true
+
+[extra]
+description = "Multimodal Kimi flagship with a 1M-token context window and always-on max-effort reasoning"
+reasoning_options = [{ type = "effort", values = ["max"] }]
+structured_output = true
+temperature = false
+
+[extra.constraints]
+token_limit_key = "max_completion_tokens"
+temperature = "fixed_1"
+reasoning_effort = "required"
+
+[execution.text]
+supported = true
+family = "openai_chat_compatible"
+wire_protocol = "openai_chat"
+transport = "http_request"
+path = "/chat/completions"
+
+[execution.object]
+supported = true
+family = "openai_chat_compatible"
+wire_protocol = "openai_chat"
+transport = "http_request"
+path = "/chat/completions"
