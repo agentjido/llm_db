@@ -21,10 +21,10 @@ indexes. Re-run the script when the snapshot or runtime changes materially.
 
 ## Regression policy
 
-The normal test suite checks the supported preload boundary without a wall-clock
-limit. It starts a fresh BEAM VM, resolves a packaged provider without a
-pre-existing atom, explicitly loads the catalog, and verifies that the first
-model lookup does not change the catalog epoch.
+The normal test suite checks behavior without a wall-clock limit. A fresh BEAM
+VM must resolve a packaged string provider on its first query. A separate test
+explicitly preloads the catalog and verifies that the next query does not
+change the catalog epoch.
 
 Use this benchmark for load-time measurements. Measure VM boot separately when
 you compare total startup-to-first-lookup time. If load time needs a numeric CI

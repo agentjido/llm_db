@@ -1,7 +1,7 @@
 defmodule LLMDB.ColdStartTest do
   use ExUnit.Case, async: false
 
-  test "a fresh VM can preload the catalog before its first lookup" do
+  test "a fresh VM resolves a packaged string provider on first lookup" do
     ebin_paths =
       Mix.Project.build_path()
       |> Path.join("lib/*/ebin")
@@ -10,27 +10,21 @@ defmodule LLMDB.ColdStartTest do
     assert ebin_paths != [], "test build has no ebin paths"
 
     script = """
-    {:ok, provider} = LLMDB.Normalize.normalize_provider_id("openai")
-
-    if Atom.to_string(provider) != "openai" do
-      raise "provider registry returned the wrong provider"
-    end
-
     if not is_nil(LLMDB.snapshot()) do
-      raise "fresh VM loaded the catalog before explicit preload"
+      raise "fresh VM loaded the catalog before first lookup"
     end
 
-    {:ok, _snapshot} = LLMDB.load()
-    preload_epoch = LLMDB.epoch()
-    [model | _models] = LLMDB.models(provider)
-    spec = Atom.to_string(provider) <> ":" <> model.id
-    {:ok, _model} = LLMDB.model(spec)
+    {:ok, model} = LLMDB.model("openai:gpt-4o")
 
-    if LLMDB.epoch() != preload_epoch do
-      raise "first lookup reloaded the catalog"
+    if model.provider != :openai do
+      raise "first lookup returned the wrong provider"
     end
 
-    IO.puts("cold-start-ok")
+    if is_nil(LLMDB.snapshot()) do
+      raise "first lookup did not load the catalog"
+    end
+
+    IO.puts("cold-string-lookup-ok")
     """
 
     args = Enum.flat_map(ebin_paths, &["-pa", &1]) ++ ["-e", script]
@@ -43,6 +37,6 @@ defmodule LLMDB.ColdStartTest do
       )
 
     assert status == 0, output
-    assert output =~ "cold-start-ok"
+    assert output =~ "cold-string-lookup-ok"
   end
 end
