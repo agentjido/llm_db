@@ -11,9 +11,9 @@
 LLM model metadata catalog with fast, capability-aware lookups. Use simple `"provider:model"` or `"model@provider"` specs, get validated Provider/Model structs, and select models by capabilities. Ships with a packaged snapshot; no network required by default.
 
 The packaged catalog loads lazily on the first query and starts no llm_db
-supervisor or worker. Use `LLMDB.load/1` when you need explicit control over
-loading or want an error tuple; a lazy first-use failure raises
-`LLMDB.LoadError`. Loading never pulls provider metadata or reads dotenv files.
+supervisor or worker. To keep catalog preparation outside the first request,
+call `LLMDB.load/0` from your application startup. Loading never pulls provider
+metadata or reads dotenv files.
 
 - **Primary interface**: `model_spec` — a string like `"openai:gpt-4o-mini"` or `"gpt-4o-mini@openai"` (filename-safe)
 - **Fast O(1) reads** via `:persistent_term`
@@ -229,6 +229,24 @@ config :llm_db,
     ]
   }
 ```
+
+### Preload Before Requests
+
+Lazy loading keeps normal application startup small. If the first request must
+not pay the catalog preparation cost, preload the catalog in your consumer
+application before you start its supervision tree:
+
+```elixir
+def start(_type, _args) do
+  with {:ok, _snapshot} <- LLMDB.load() do
+    MyApp.Supervisor.start_link(name: MyApp.Supervisor)
+  end
+end
+```
+
+This is opt-in. It uses the same configured snapshot, filters, and custom data
+as lazy loading. Do not call the deprecated `LLMDB.Application` compatibility
+module directly.
 
 **Runtime environment:** Starting or querying LLM DB never reads a host `.env`
 file. Applications own their runtime configuration and may use Dotenvy, direnv,
