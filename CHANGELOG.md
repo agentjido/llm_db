@@ -7,6 +7,15 @@ This project uses [Calendar Versioning](https://calver.org/) with the format `YY
 
 <!-- changelog -->
 
+## [2026.7.4](https://github.com/agentjido/llm_db/compare/2026.7.4...2026.7.4) (2026-07-31)
+
+
+
+
+### Bug Fixes:
+
+* openrouter: consolidate alias targets (#288) by mikehostetler
+
 ## [2026.7.3](https://github.com/agentjido/llm_db/compare/2026.7.3...2026.7.3) (2026-07-25)
 
 
