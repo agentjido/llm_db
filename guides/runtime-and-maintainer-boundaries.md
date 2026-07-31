@@ -63,7 +63,7 @@ No module or task is removed in this minor release.
 
 | Current direct call | Supported replacement | Status |
 | --- | --- | --- |
-| `LLMDB.Application` direct callback | Rely on lazy queries; use `LLMDB.load/1` for explicit loading | Compiler-deprecated for one minor release |
+| `LLMDB.Application.start/2` direct calls | Start `:llm_db` through the OTP application lifecycle; use `LLMDB.load/1` for explicit loading | Registered OTP callback; direct calls remain internal |
 | `LLMDB.Dotenv.load!/1` | `mix llm_db.pull` | Compiler-deprecated; pull remains task-scoped |
 | `LLMDB.Store` query calls | Equivalent `LLMDB` query/load calls | Compatibility facade; direct use is documentation-deprecated |
 | `LLMDB.Engine.run/1`, `LLMDB.Snapshot.Builder` | `mix llm_db.build` | Documentation-deprecated maintainer orchestration |

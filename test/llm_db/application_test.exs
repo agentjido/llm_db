@@ -27,6 +27,8 @@ defmodule LLMDB.ApplicationTest do
         {key, {:ok, value}} -> Application.put_env(:llm_db, key, value)
         {key, :error} -> Application.delete_env(:llm_db, key)
       end)
+
+      ensure_application_started!()
     end)
 
     :ok
@@ -130,7 +132,7 @@ defmodule LLMDB.ApplicationTest do
     assert [_ | _] = LLMDB.providers()
   end
 
-  test "lazy loading applies configured filters and custom models" do
+  test "application startup applies configured filters and custom models" do
     enable_lazy_loading()
 
     Application.put_env(:llm_db, :allow, %{lazy_local: :all})
@@ -142,11 +144,33 @@ defmodule LLMDB.ApplicationTest do
       ]
     })
 
+    restart_application!()
+
     assert {:ok, model} = LLMDB.model(:lazy_local, "local-model")
     assert model.provider == :lazy_local
     assert model.id == "local-model"
     assert model.capabilities.chat == true
     assert LLMDB.models(:openai) == []
+  end
+
+  test "strict integrity failure prevents application startup" do
+    path = mismatched_snapshot_path()
+
+    on_exit(fn -> File.rm(path) end)
+
+    Application.put_env(:llm_db, :skip_packaged_load, false)
+    Application.put_env(:llm_db, :snapshot_source, {:file, path})
+    Application.put_env(:llm_db, :integrity_policy, :strict)
+
+    stop_application!()
+    Catalog.clear!()
+
+    assert {:error, {reason, {LLMDB.Application, :start, [:normal, []]}}} =
+             Application.start(:llm_db)
+
+    assert {:snapshot_id_mismatch, _details} = reason
+    assert {:error, ^reason} = LLMDB.load()
+    assert Catalog.snapshot() == nil
   end
 
   test "lazy strict integrity failures raise and explicit load retains tuples" do
@@ -168,7 +192,7 @@ defmodule LLMDB.ApplicationTest do
     assert {:error, ^reason} = LLMDB.load()
   end
 
-  test "lazy catalog loading does not load the repository dotenv file" do
+  test "application startup does not load the repository dotenv file" do
     key = "LLMDB_RUNTIME_LOAD_MUST_NOT_LOAD_DOTENV"
     original_dotenv = dotenv_file()
     original_env = System.get_env(key)
@@ -177,6 +201,7 @@ defmodule LLMDB.ApplicationTest do
       File.write!(@dotenv_path, "#{key}=from_dotenv\n")
       System.delete_env(key)
       enable_lazy_loading()
+      restart_application!()
 
       assert [_ | _] = LLMDB.providers()
       assert System.get_env(key) == nil
@@ -193,8 +218,25 @@ defmodule LLMDB.ApplicationTest do
   end
 
   defp restart_application! do
-    assert :ok = Application.stop(:llm_db)
-    assert {:ok, [:llm_db]} = Application.ensure_all_started(:llm_db)
+    stop_application!()
+    Catalog.clear!()
+
+    assert {:ok, started_apps} = Application.ensure_all_started(:llm_db)
+    assert :llm_db in started_apps
+  end
+
+  defp stop_application! do
+    case Application.stop(:llm_db) do
+      :ok -> :ok
+      {:error, {:not_started, :llm_db}} -> :ok
+    end
+  end
+
+  defp ensure_application_started! do
+    case Application.ensure_all_started(:llm_db) do
+      {:ok, _started_apps} -> :ok
+      {:error, reason} -> raise "could not restore :llm_db application: #{inspect(reason)}"
+    end
   end
 
   defp mismatched_snapshot_path do

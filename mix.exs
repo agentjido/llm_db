@@ -67,7 +67,6 @@ defmodule LLMDB.MixProject do
             ~r/^Mix\.Tasks\.LlmDb\./
           ],
           "Compatibility Facades": [
-            LLMDB.Application,
             LLMDB.Dotenv,
             LLMDB.Store
           ],
@@ -78,6 +77,7 @@ defmodule LLMDB.MixProject do
             ~r/^LLMDB\.Sources\./
           ],
           "Internal Runtime Implementation": [
+            LLMDB.Application,
             LLMDB.Snapshot.ReleaseStore,
             ~r/^LLMDB\.(Catalog|Config|Generated|Loader|Merge|Normalize|Packaged|Pricing|Query|Runtime)(\.|$)/
           ]
