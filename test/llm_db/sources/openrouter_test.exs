@@ -509,6 +509,58 @@ defmodule LLMDB.Sources.OpenRouterTest do
       assert Map.has_key?(result, "openrouter")
       assert result["openrouter"][:models] == []
     end
+
+    test "consolidates an exact alias target into the canonical model" do
+      input = %{
+        "data" => [
+          %{
+            "id" => "anthropic/claude-fable-latest",
+            "name" => "Anthropic: Claude Fable Latest",
+            "alias_target" => %{"slug" => "anthropic/claude-fable-5"}
+          },
+          %{
+            "id" => "anthropic/claude-fable-5",
+            "name" => "Anthropic: Claude Fable 5"
+          }
+        ]
+      }
+
+      result = OpenRouter.transform(input)
+
+      assert result["openrouter"][:exclude_models] == [
+               "anthropic/claude-fable-latest"
+             ]
+
+      assert [
+               %{
+                 id: "anthropic/claude-fable-5",
+                 aliases: ["anthropic/claude-fable-latest"]
+               }
+             ] = result["openrouter"][:models]
+    end
+
+    test "keeps an alias model when its target is not in the response" do
+      input = %{
+        "data" => [
+          %{
+            "id" => "anthropic/claude-fable-latest",
+            "name" => "Anthropic: Claude Fable Latest",
+            "alias_target" => %{"slug" => "anthropic/claude-fable-5"}
+          }
+        ]
+      }
+
+      result = OpenRouter.transform(input)
+
+      assert result["openrouter"][:exclude_models] == []
+
+      assert [
+               %{
+                 id: "anthropic/claude-fable-latest",
+                 extra: %{alias_target: %{"slug" => "anthropic/claude-fable-5"}}
+               }
+             ] = result["openrouter"][:models]
+    end
   end
 
   describe "integration" do
