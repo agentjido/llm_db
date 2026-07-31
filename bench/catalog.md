@@ -18,3 +18,16 @@ snapshot and the same Erlang/Elixir installation for both revisions:
 These are directional local measurements, not release guarantees. The warm
 lookup difference reflects replacing provider scanning with immutable lookup
 indexes. Re-run the script when the snapshot or runtime changes materially.
+
+## Regression policy
+
+The normal test suite checks the cold-start boundary without a wall-clock
+limit. It starts a fresh BEAM VM, verifies that application startup publishes
+the catalog, and verifies that the first model lookup does not change the
+catalog epoch. This detects a move of catalog loading back into the first query
+without depending on shared CI runner speed.
+
+Use this benchmark for load-time measurements. If load time needs a numeric CI
+limit, run it on a dedicated performance runner and compare several samples
+with a stored baseline. Do not use an absolute millisecond assertion in the
+normal test suite.

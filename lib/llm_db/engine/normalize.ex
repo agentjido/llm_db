@@ -14,6 +14,8 @@ defmodule LLMDB.Normalize do
   Uses `String.to_atom/1` ONLY in unsafe mode during build-time (mix tasks).
   """
 
+  alias LLMDB.Generated.ProviderRegistry
+
   @doc """
   Normalizes a provider ID to an atom.
 
@@ -57,16 +59,23 @@ defmodule LLMDB.Normalize do
       # Only used during activation task when generating provider atoms
       {:ok, String.to_atom(str)}
     else
-      # Runtime: only accept existing atoms to prevent atom leaking
-      try do
-        atom = String.to_existing_atom(str)
-        {:ok, atom}
-        # Note: Whitelist check removed - validation now happens in verify_provider_exists
-        # which checks the loaded catalog, supporting custom/test providers
-      rescue
-        # Atom doesn't exist at all - treat as unknown provider
-        ArgumentError -> {:error, :unknown_provider}
+      case ProviderRegistry.fetch(str) do
+        {:ok, atom} ->
+          {:ok, atom}
+
+        :error ->
+          existing_provider_atom(str)
       end
+    end
+  end
+
+  # Custom providers can be declared by trusted runtime configuration. Accept
+  # their atoms only after another trusted code path has created them.
+  defp existing_provider_atom(str) do
+    try do
+      {:ok, String.to_existing_atom(str)}
+    rescue
+      ArgumentError -> {:error, :unknown_provider}
     end
   end
 

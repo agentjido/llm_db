@@ -117,6 +117,6 @@ maintained replacement is the one-time `mix llm_db.history.migrate_git --publish
 seed followed by `mix llm_db.snapshot.publish` and
 `mix llm_db.history.rebuild --publish` for new observations.
 
-Upstream synchronization never runs during application startup, lazy catalog
+Upstream synchronization never runs during application startup, catalog
 initialization, explicit `LLMDB.load/1`, or queries. Provider credentials and
 dotenv parsing remain exclusively inside the maintainer pull workflow.

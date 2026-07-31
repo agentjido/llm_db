@@ -40,11 +40,11 @@ does not pull upstream provider metadata, read a host `.env`, or own application
 environment setup. The maintainer-only `mix llm_db.pull` task is the sole
 automatic dotenv boundary.
 
-The catalog initializes on the first public query without an llm_db supervisor
-or worker. Strict integrity errors therefore surface as `LLMDB.LoadError` at
-first use; explicit `LLMDB.load/1` calls retain their `{:error, reason}` shape.
-The `LLMDB.Application` callback is a deprecated compatibility shim for one
-minor release and is no longer registered as the package's OTP callback.
+The catalog initializes during `:llm_db` application startup. This keeps the
+catalog load outside the first consumer request. Public queries retain lazy
+initialization for runtimes that do not start the application. Strict integrity
+errors prevent application startup, while explicit `LLMDB.load/1` calls retain
+their `{:error, reason}` shape.
 
 ## Supported Artifacts and Extensions
 

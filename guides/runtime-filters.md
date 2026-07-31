@@ -14,19 +14,20 @@ The `base_models` list stored in the snapshot enables widening filters later wit
 
 ## Initialization
 
-The packaged catalog initializes lazily on the first public query. The library
-does not register an OTP application callback and starts no supervisor or
-worker. Concurrent first queries share one process-free initialization lock,
-while later queries only read the published immutable catalog.
+The packaged catalog initializes when the `:llm_db` application starts. This
+keeps snapshot preparation and validation outside the first consumer request.
+The application owns an empty supervisor only as the OTP application root.
 
-Lazy initialization uses the configured packaged, file, or release snapshot
-source and applies the same filters and custom data as `LLMDB.load/1`. It never
-pulls upstream provider metadata or loads dotenv files. Set
-`skip_packaged_load: true` to leave the catalog empty until an explicit load.
+If a runtime does not start the application, the first public query uses the
+same process-free initialization lock as before. Startup and lazy initialization
+use the configured packaged, file, or release snapshot source. They apply the
+same filters and custom data as `LLMDB.load/1`. They never pull upstream
+provider metadata or load dotenv files. Set `skip_packaged_load: true` to leave
+the catalog empty until an explicit load.
 
-With strict integrity checking, an invalid snapshot now fails on first query as
-`LLMDB.LoadError`, rather than during application startup. Call `LLMDB.load/1`
-explicitly to receive `{:error, reason}` instead.
+With strict integrity checking, an invalid snapshot prevents application
+startup. A lazy first-use failure raises `LLMDB.LoadError`. Call `LLMDB.load/1`
+explicitly to receive `{:error, reason}`.
 
 ## Configuration Model
 
