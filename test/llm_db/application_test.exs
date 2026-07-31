@@ -27,25 +27,40 @@ defmodule LLMDB.ApplicationTest do
         {key, {:ok, value}} -> Application.put_env(:llm_db, key, value)
         {key, :error} -> Application.delete_env(:llm_db, key)
       end)
-
-      ensure_application_started!()
     end)
 
     :ok
   end
 
-  test "application startup loads the catalog before the first public query" do
+  test "the OTP application starts no llm_db callback, supervisor, or worker" do
+    assert Application.spec(:llm_db, :mod) in [nil, []]
+    refute Process.whereis(LLMDB.Supervisor)
+    refute Process.whereis(LLMDB.Application)
+    assert Catalog.snapshot() == nil
+  end
+
+  test "the deprecated direct-call shim starts only its former empty supervisor" do
+    assert {:ok, supervisor} = apply(LLMDB.Application, :start, [:normal, []])
+
+    try do
+      assert Process.whereis(LLMDB.Supervisor) == supervisor
+      assert Supervisor.which_children(supervisor) == []
+      assert Catalog.snapshot() == nil
+    after
+      Supervisor.stop(supervisor)
+    end
+  end
+
+  test "explicit preload prepares the catalog before the first public query" do
     enable_lazy_loading()
-    restart_application!()
 
-    assert Application.spec(:llm_db, :mod) == {LLMDB.Application, []}
-    assert is_pid(Process.whereis(LLMDB.Supervisor))
-    assert Supervisor.which_children(LLMDB.Supervisor) == []
-    assert Catalog.snapshot() != nil
+    assert Catalog.snapshot() == nil
+    assert {:ok, _catalog} = LLMDB.load()
+    preload_epoch = Catalog.epoch()
 
-    startup_epoch = Catalog.epoch()
+    assert preload_epoch > 0
     assert {:ok, _model} = LLMDB.model("openai:gpt-4o")
-    assert Catalog.epoch() == startup_epoch
+    assert Catalog.epoch() == preload_epoch
   end
 
   test "first query lazily loads once and warm queries do no initialization work" do
@@ -58,7 +73,7 @@ defmodule LLMDB.ApplicationTest do
     assert first_epoch > 0
     assert LLMDB.providers() == providers
     assert Catalog.epoch() == first_epoch
-    assert is_pid(Process.whereis(LLMDB.Supervisor))
+    refute Process.whereis(LLMDB.Supervisor)
   end
 
   test "concurrent first queries publish one catalog" do
@@ -120,10 +135,9 @@ defmodule LLMDB.ApplicationTest do
     assert LLMDB.models(:anthropic) == []
   end
 
-  test "skip_packaged_load leaves startup and lazy queries empty but preserves explicit load" do
+  test "skip_packaged_load leaves lazy queries empty but preserves explicit load" do
     Application.put_env(:llm_db, :skip_packaged_load, true)
     Application.put_env(:llm_db, :snapshot_source, :packaged)
-    restart_application!()
 
     assert LLMDB.providers() == []
     assert Catalog.snapshot() == nil
@@ -132,7 +146,7 @@ defmodule LLMDB.ApplicationTest do
     assert [_ | _] = LLMDB.providers()
   end
 
-  test "application startup applies configured filters and custom models" do
+  test "lazy loading applies configured filters and custom models" do
     enable_lazy_loading()
 
     Application.put_env(:llm_db, :allow, %{lazy_local: :all})
@@ -144,8 +158,6 @@ defmodule LLMDB.ApplicationTest do
       ]
     })
 
-    restart_application!()
-
     assert {:ok, model} = LLMDB.model(:lazy_local, "local-model")
     assert model.provider == :lazy_local
     assert model.id == "local-model"
@@ -153,27 +165,7 @@ defmodule LLMDB.ApplicationTest do
     assert LLMDB.models(:openai) == []
   end
 
-  test "strict integrity failure prevents application startup" do
-    path = mismatched_snapshot_path()
-
-    on_exit(fn -> File.rm(path) end)
-
-    Application.put_env(:llm_db, :skip_packaged_load, false)
-    Application.put_env(:llm_db, :snapshot_source, {:file, path})
-    Application.put_env(:llm_db, :integrity_policy, :strict)
-
-    stop_application!()
-    Catalog.clear!()
-
-    assert {:error, {reason, {LLMDB.Application, :start, [:normal, []]}}} =
-             Application.start(:llm_db)
-
-    assert {:snapshot_id_mismatch, _details} = reason
-    assert {:error, ^reason} = LLMDB.load()
-    assert Catalog.snapshot() == nil
-  end
-
-  test "lazy strict integrity failures raise and explicit load retains tuples" do
+  test "strict integrity failures move to first query and explicit load retains tuples" do
     path = mismatched_snapshot_path()
 
     on_exit(fn -> File.rm(path) end)
@@ -192,7 +184,7 @@ defmodule LLMDB.ApplicationTest do
     assert {:error, ^reason} = LLMDB.load()
   end
 
-  test "application startup does not load the repository dotenv file" do
+  test "lazy catalog loading does not load the repository dotenv file" do
     key = "LLMDB_RUNTIME_LOAD_MUST_NOT_LOAD_DOTENV"
     original_dotenv = dotenv_file()
     original_env = System.get_env(key)
@@ -201,7 +193,6 @@ defmodule LLMDB.ApplicationTest do
       File.write!(@dotenv_path, "#{key}=from_dotenv\n")
       System.delete_env(key)
       enable_lazy_loading()
-      restart_application!()
 
       assert [_ | _] = LLMDB.providers()
       assert System.get_env(key) == nil
@@ -215,28 +206,6 @@ defmodule LLMDB.ApplicationTest do
     Application.put_env(:llm_db, :skip_packaged_load, false)
     Application.put_env(:llm_db, :snapshot_source, :packaged)
     Application.put_env(:llm_db, :integrity_policy, :warn)
-  end
-
-  defp restart_application! do
-    stop_application!()
-    Catalog.clear!()
-
-    assert {:ok, started_apps} = Application.ensure_all_started(:llm_db)
-    assert :llm_db in started_apps
-  end
-
-  defp stop_application! do
-    case Application.stop(:llm_db) do
-      :ok -> :ok
-      {:error, {:not_started, :llm_db}} -> :ok
-    end
-  end
-
-  defp ensure_application_started! do
-    case Application.ensure_all_started(:llm_db) do
-      {:ok, _started_apps} -> :ok
-      {:error, reason} -> raise "could not restore :llm_db application: #{inspect(reason)}"
-    end
   end
 
   defp mismatched_snapshot_path do

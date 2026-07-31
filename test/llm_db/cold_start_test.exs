@@ -1,7 +1,7 @@
 defmodule LLMDB.ColdStartTest do
   use ExUnit.Case, async: false
 
-  test "a fresh VM loads known provider atoms and prepares the catalog before lookup" do
+  test "a fresh VM can preload the catalog before its first lookup" do
     ebin_paths =
       Mix.Project.build_path()
       |> Path.join("lib/*/ebin")
@@ -16,18 +16,17 @@ defmodule LLMDB.ColdStartTest do
       raise "provider registry returned the wrong provider"
     end
 
-    {:ok, _started} = Application.ensure_all_started(:llm_db)
-
-    if is_nil(LLMDB.snapshot()) do
-      raise "catalog was not loaded during application startup"
+    if not is_nil(LLMDB.snapshot()) do
+      raise "fresh VM loaded the catalog before explicit preload"
     end
 
-    startup_epoch = LLMDB.epoch()
+    {:ok, _snapshot} = LLMDB.load()
+    preload_epoch = LLMDB.epoch()
     [model | _models] = LLMDB.models(provider)
     spec = Atom.to_string(provider) <> ":" <> model.id
     {:ok, _model} = LLMDB.model(spec)
 
-    if LLMDB.epoch() != startup_epoch do
+    if LLMDB.epoch() != preload_epoch do
       raise "first lookup reloaded the catalog"
     end
 

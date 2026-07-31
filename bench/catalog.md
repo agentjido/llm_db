@@ -21,13 +21,13 @@ indexes. Re-run the script when the snapshot or runtime changes materially.
 
 ## Regression policy
 
-The normal test suite checks the cold-start boundary without a wall-clock
-limit. It starts a fresh BEAM VM, verifies that application startup publishes
-the catalog, and verifies that the first model lookup does not change the
-catalog epoch. This detects a move of catalog loading back into the first query
-without depending on shared CI runner speed.
+The normal test suite checks the supported preload boundary without a wall-clock
+limit. It starts a fresh BEAM VM, resolves a packaged provider without a
+pre-existing atom, explicitly loads the catalog, and verifies that the first
+model lookup does not change the catalog epoch.
 
-Use this benchmark for load-time measurements. If load time needs a numeric CI
+Use this benchmark for load-time measurements. Measure VM boot separately when
+you compare total startup-to-first-lookup time. If load time needs a numeric CI
 limit, run it on a dedicated performance runner and compare several samples
 with a stored baseline. Do not use an absolute millisecond assertion in the
 normal test suite.

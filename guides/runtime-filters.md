@@ -14,20 +14,31 @@ The `base_models` list stored in the snapshot enables widening filters later wit
 
 ## Initialization
 
-The packaged catalog initializes when the `:llm_db` application starts. This
-keeps snapshot preparation and validation outside the first consumer request.
-The application owns an empty supervisor only as the OTP application root.
+The packaged catalog initializes lazily on the first public query. The library
+does not register an OTP application callback and starts no supervisor or
+worker. Concurrent first queries share one process-free initialization lock,
+while later queries only read the published immutable catalog.
 
-If a runtime does not start the application, the first public query uses the
-same process-free initialization lock as before. Startup and lazy initialization
-use the configured packaged, file, or release snapshot source. They apply the
-same filters and custom data as `LLMDB.load/1`. They never pull upstream
-provider metadata or load dotenv files. Set `skip_packaged_load: true` to leave
-the catalog empty until an explicit load.
+Lazy initialization uses the configured packaged, file, or release snapshot
+source and applies the same filters and custom data as `LLMDB.load/1`. It never
+pulls upstream provider metadata or loads dotenv files. Set
+`skip_packaged_load: true` to leave the catalog empty until an explicit load.
 
-With strict integrity checking, an invalid snapshot prevents application
-startup. A lazy first-use failure raises `LLMDB.LoadError`. Call `LLMDB.load/1`
-explicitly to receive `{:error, reason}`.
+To keep the load outside the first request, call `LLMDB.load/0` at the start of
+your consumer application's `start/2` callback, before you start its supervision
+tree:
+
+```elixir
+def start(_type, _args) do
+  with {:ok, _snapshot} <- LLMDB.load() do
+    MyApp.Supervisor.start_link(name: MyApp.Supervisor)
+  end
+end
+```
+
+With strict integrity checking, an invalid snapshot fails this explicit preload
+with `{:error, reason}`. Without a preload, it raises `LLMDB.LoadError` on the
+first query.
 
 ## Configuration Model
 
