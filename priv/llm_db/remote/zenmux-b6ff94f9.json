@@ -9,7 +9,9 @@
       "display_name": "Qwen: Qwen3.7-Flash",
       "id": "qwen/qwen3.7-flash",
       "input_modalities": [
-        "text"
+        "text",
+        "image",
+        "video"
       ],
       "object": "model",
       "output_modalities": [
@@ -452,7 +454,7 @@
             },
             "currency": "USD",
             "unit": "perMTokens",
-            "value": 6
+            "value": 1.2
           },
           {
             "conditions": {
@@ -463,7 +465,7 @@
             },
             "currency": "USD",
             "unit": "perMTokens",
-            "value": 9
+            "value": 1.8
           }
         ],
         "input_cache_read": [
@@ -477,7 +479,7 @@
             },
             "currency": "USD",
             "unit": "perMTokens",
-            "value": 0.1
+            "value": 0.02
           },
           {
             "conditions": {
@@ -488,7 +490,7 @@
             },
             "currency": "USD",
             "unit": "perMTokens",
-            "value": 0.2
+            "value": 0.04
           }
         ],
         "input_cache_write": [
@@ -502,7 +504,7 @@
             },
             "currency": "USD",
             "unit": "perMTokens",
-            "value": 1.25
+            "value": 0.25
           },
           {
             "conditions": {
@@ -513,7 +515,7 @@
             },
             "currency": "USD",
             "unit": "perMTokens",
-            "value": 2.5
+            "value": 0.5
           }
         ],
         "prompt": [
@@ -527,7 +529,7 @@
             },
             "currency": "USD",
             "unit": "perMTokens",
-            "value": 1
+            "value": 0.2
           },
           {
             "conditions": {
@@ -538,7 +540,7 @@
             },
             "currency": "USD",
             "unit": "perMTokens",
-            "value": 2
+            "value": 0.4
           }
         ],
         "web_search": [
@@ -581,7 +583,7 @@
             },
             "currency": "USD",
             "unit": "perMTokens",
-            "value": 15
+            "value": 12
           },
           {
             "conditions": {
@@ -592,7 +594,7 @@
             },
             "currency": "USD",
             "unit": "perMTokens",
-            "value": 22.5
+            "value": 18
           }
         ],
         "input_cache_read": [
@@ -606,7 +608,7 @@
             },
             "currency": "USD",
             "unit": "perMTokens",
-            "value": 0.25
+            "value": 0.2
           },
           {
             "conditions": {
@@ -617,35 +619,10 @@
             },
             "currency": "USD",
             "unit": "perMTokens",
-            "value": 0.5
+            "value": 0.4
           }
         ],
         "input_cache_write": [
-          {
-            "conditions": {
-              "prompt_tokens": {
-                "gte": 0,
-                "lte": 272,
-                "unit": "kTokens"
-              }
-            },
-            "currency": "USD",
-            "unit": "perMTokens",
-            "value": 3.125
-          },
-          {
-            "conditions": {
-              "prompt_tokens": {
-                "gt": 272,
-                "unit": "kTokens"
-              }
-            },
-            "currency": "USD",
-            "unit": "perMTokens",
-            "value": 6.25
-          }
-        ],
-        "prompt": [
           {
             "conditions": {
               "prompt_tokens": {
@@ -668,6 +645,31 @@
             "currency": "USD",
             "unit": "perMTokens",
             "value": 5
+          }
+        ],
+        "prompt": [
+          {
+            "conditions": {
+              "prompt_tokens": {
+                "gte": 0,
+                "lte": 272,
+                "unit": "kTokens"
+              }
+            },
+            "currency": "USD",
+            "unit": "perMTokens",
+            "value": 2
+          },
+          {
+            "conditions": {
+              "prompt_tokens": {
+                "gt": 272,
+                "unit": "kTokens"
+              }
+            },
+            "currency": "USD",
+            "unit": "perMTokens",
+            "value": 4
           }
         ],
         "web_search": [
