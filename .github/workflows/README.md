@@ -13,11 +13,13 @@ Runs on every push and pull request to ensure code quality.
 - Pull requests to `main` branch
 
 **Jobs:**
+- NPM package spike job: build and check `@jido/llmdb` on the supported Node.js versions
 - Lint job: format check, compile with warnings as errors, Credo, Dialyzer, unused dependency check, Hex audit
 - Test job: compile and run the test suite across the supported Elixir/OTP matrix
 - Build check job: verify the packaged snapshot is up to date and check history drift
 
 **Matrix Testing:**
+- Node.js versions: 22.14, 24
 - Elixir versions: 1.18, 1.19
 - OTP versions: 27, 28
 
